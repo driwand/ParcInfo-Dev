@@ -66,7 +66,8 @@ namespace ParcInfo.ucClient
                 }
             }
         }
-    
+       
+
         public void clientRequets()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())

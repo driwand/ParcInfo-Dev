@@ -1,6 +1,7 @@
 ﻿using ParcInfo.ucControls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ParcInfo.Classes
 {
-    public class Methods
+    public static class Methods
     {
 
         public static void Clear(Control control)
@@ -140,36 +141,115 @@ namespace ParcInfo.Classes
                 }
             }
             return count;
-
         }
 
+        public static DataTable ToDataTable<T>(IList<T> data)
+        {
+            PropertyDescriptorCollection properties =
+                TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+
+            foreach (PropertyDescriptor prop in properties)
+            {
+                if (!prop.PropertyType.IsClass)
+                {
+                    var j = prop.GetType();
+                    table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                }
+            }
+
+            foreach (T item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    if (!prop.PropertyType.IsClass)
+                    {
+                        row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                        
+                    }
+                table.Rows.Add(row);
+            }
+            return table;
+        }
+        public static void FilterDataGridViewIni(DataGridView grid, TextBox txt, Button btnclear)
+        {
+            grid.DataSource = new DataView(grid.DataSource as DataTable);
+            grid.Tag = grid.DataSource;
+            EventHandler textchanged = new EventHandler(delegate (Object o, EventArgs a)
+            {
+                FilterDataGridView(grid, txt.Text);
+            });
+            EventHandler clear = new EventHandler(delegate (Object o, EventArgs a)
+            {
+                txt.Text = "";
+            });
+            btnclear.Click -= clear;
+            btnclear.Click += clear;
+            txt.TextChanged -= textchanged;
+            txt.TextChanged += textchanged;
+        }
+        static void FilterDataGridView(DataGridView grid, string s)
+        {
+            DataView defaultdataView = grid.Tag as DataView;
+            DataTable dataTable = (grid.DataSource as DataView).ToTable();
+            var words = s.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (!words.Any())
+            {
+                grid.DataSource = defaultdataView;
+                return;
+            }
+
+            var dv = defaultdataView;
+
+            foreach (var word in words)
+            {
+                var values = dataTable.Columns
+                    .OfType<DataColumn>()
+                    .Select(c => "Convert([" + c.ColumnName + "], System.String)")
+                    .Select(c => c + " like '%" + word + "%'");
+
+                var filter = string.Join(" or ", values);
+                dv = new DataView(dv.ToTable());
+                dv.RowFilter = filter;
+                grid.DataSource = dv;
+            }
+        }
 
         //list to datatable
-        public static DataTable ToDataTable<T>(List<T> items)
-        {
-            var firste = items[0].GetType();
-            DataTable dataTable = new DataTable("jjjj");
+        //public static DataTable ToDataTable<T>(List<T> items)
+        //{
+        //    var firste = items[0].GetType();
+        //    DataTable dataTable = new DataTable("jjjj");
             
-            //Get all the properties
-            PropertyInfo[] Props = firste.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            foreach (PropertyInfo prop in Props)
-            {
-                //Setting column names as Property names
-                dataTable.Columns.Add(prop.Name);
-            }
-            foreach (var item in items)
-            {
-                var values = new object[Props.Length];
-                for (int i = 0; i < Props.Length; i++)
-                {
-                    //inserting property values to datatable rows
-                    values[i] = Props[i].GetValue(item, null);
-                }
-                dataTable.Rows.Add(values);
-            }
-            //put a breakpoint here and check datatable
-            return dataTable;
-        }
+        //    //Get all the properties
+        //    PropertyInfo[] Props = firste.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        //    foreach (PropertyInfo prop in Props)
+        //    {
+        //        if(!prop.PropertyType.IsInterface)
+        //        //Setting column names as Property names
+        //        dataTable.Columns.Add(prop.Name);
+        //    }
+        //    foreach (var item in items)
+        //    {
+        //        List<object> values = new List<object>();
+        //        for (int i = 0; i < Props.Length; i++)
+        //        {
+                   
+        //            if (!Props[i].PropertyType.IsInterface)
+        //            {
+        //                //inserting property values to datatable rows
+        //                values.Add(Props[i].GetValue(item, null));
+        //            }
+        //        }
+        //            dataTable.Rows.Add(values);
+                
+
+
+        //    }
+        //    //put a breakpoint here and check datatable
+        //    return dataTable;
+        //}
     }
     public class LabelControl
     {

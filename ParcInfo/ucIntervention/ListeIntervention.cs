@@ -21,18 +21,23 @@ namespace ParcInfo.ucInterevntion
             {
                 if (countInterv == 0 && statutInterv == "")
                 {
-                    dgIntervention.DataSource = context.GetInterventionBystatut(lblTotalIntervention).ToList();
+                    var ls = from ir in context.GetInterventionBystatut(lblTotalIntervention).ToList()
+                             select new { ir.Id, ir.DateIntervention, ir.Debut, ir.Fin, ir.Idclient, ir.IdDemande };
+                    dgIntervention.DataSource = Methods.ToDataTable(ls.ToList());
+                    dgIntervention.Columns["id"].Visible = false;
                 }
                 else
                 {
-                    dgIntervention.DataSource = context.GetInterventionBystatut(lblTotalIntervention, statutInterv);
+                    var ls = context.GetInterventionBystatut(lblTotalIntervention, statutInterv).ToList();
+                    dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
+                ControlsClass.Nice_grid(new string[] { "DateIntervention" }, new string[] { "Date Intervention" },dgIntervention);
+                Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
             }
         }
 
         private void ListeIntervention_Load(object sender, EventArgs e)
         {            
-
 
         }
        
@@ -47,6 +52,9 @@ namespace ParcInfo.ucInterevntion
             }
         }
 
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
