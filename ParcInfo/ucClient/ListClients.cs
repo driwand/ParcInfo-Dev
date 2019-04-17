@@ -133,7 +133,7 @@ namespace ParcInfo.ucClient
 
             GlobVars.NomClient = nom;
             GlobVars.SearchValue = txtFind.Text;
-            GlobVars.frmindex.ShowControl(new ListDemande());
+            GlobVars.frmindex.ShowControl(new ListDemande("",0));
 
         }
 

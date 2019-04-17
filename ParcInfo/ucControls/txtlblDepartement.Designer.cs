@@ -28,24 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDelDepar = new System.Windows.Forms.Button();
             this.txtValue = new System.Windows.Forms.TextBox();
             this.lbl = new System.Windows.Forms.Label();
             this.lblid = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button2
+            // btnDelDepar
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::ParcInfo.Properties.Resources.Delete20;
-            this.button2.Location = new System.Drawing.Point(267, 2);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(20, 20);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDelDepar.FlatAppearance.BorderSize = 0;
+            this.btnDelDepar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelDepar.Image = global::ParcInfo.Properties.Resources.Delete20;
+            this.btnDelDepar.Location = new System.Drawing.Point(267, 2);
+            this.btnDelDepar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDelDepar.Name = "btnDelDepar";
+            this.btnDelDepar.Size = new System.Drawing.Size(20, 20);
+            this.btnDelDepar.TabIndex = 5;
+            this.btnDelDepar.UseVisualStyleBackColor = true;
             // 
             // txtValue
             // 
@@ -79,7 +78,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblid);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDelDepar);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.lbl);
             this.Name = "txtlblDepartement";
@@ -91,7 +90,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelDepar;
         private System.Windows.Forms.TextBox txtValue;
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.Label lblid;

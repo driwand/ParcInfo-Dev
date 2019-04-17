@@ -12,7 +12,7 @@ namespace ParcInfo.ucControls
 {
     public partial class txtlblDepartement : UserControl
     {
-        public string Txtvalue
+        public string TxtValue
         {
             get { return txtValue.Text; }
             set { txtValue.Text = value; }
@@ -31,20 +31,6 @@ namespace ParcInfo.ucControls
         public txtlblDepartement()
         {
             InitializeComponent();
-        }
-        public static event EventHandler DelDep;
-
-        protected virtual void OnClickedDel(EventArgs e)
-        {
-            EventHandler eh = DelDep;
-            if (eh != null)
-            {
-                eh(this, e);
-            }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            OnClickedDel(e);
         }
     }
 }

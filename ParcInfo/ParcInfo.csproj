@@ -62,10 +62,13 @@
     <Compile Include="AffectationClient.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ParcInformatiqueEntities.cs" />
     <Compile Include="Classes\ControlsClass.cs" />
+    <Compile Include="Classes\Demande.cs" />
     <Compile Include="Classes\GradientPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\Intervention.cs" />
     <Compile Include="Classes\Methods.cs" />
     <Compile Include="Client.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>

@@ -103,7 +103,7 @@
             this.btnEditClient.Name = "btnEditClient";
             this.btnEditClient.Size = new System.Drawing.Size(113, 28);
             this.btnEditClient.TabIndex = 10014;
-            this.btnEditClient.Text = "   Modifier";
+            this.btnEditClient.Text = "   Enregister";
             this.btnEditClient.UseVisualStyleBackColor = false;
             this.btnEditClient.Visible = false;
             this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
@@ -140,6 +140,7 @@
             this.btnAddDepartement.TabIndex = 46;
             this.btnAddDepartement.Text = "Ajouter";
             this.btnAddDepartement.UseVisualStyleBackColor = false;
+            this.btnAddDepartement.Click += new System.EventHandler(this.btnAddDepartement_Click);
             // 
             // PnlDepart
             // 

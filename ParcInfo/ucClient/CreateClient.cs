@@ -41,6 +41,7 @@ namespace ParcInfo.ucClient
             depr.Name = "ucDepart" + deparName;
             depr.Lblname = "Nom :";
             depr.Margin = new Padding(0, 0, 0, 12);
+            depr.Lblid = "0";
             deparName++;
             PnlUsers.Controls.Add(user1);
             PnlDepart.Controls.Add(depr);
@@ -54,7 +55,6 @@ namespace ParcInfo.ucClient
                 btnEditClient.Visible = true;
                 btnEditClient.Location = new Point(738, 443);
                 btnDelClient.Visible = true;
-
 
                 int id = GlobVars.selectedClient;
                 lblClient.Text = "Fiche du client : ";
@@ -164,6 +164,7 @@ namespace ParcInfo.ucClient
             depr.Name = "ucDepart" + deparName;
             depr.Lblname = "Nom :";
             depr.Margin = new Padding(0, 0, 0, 12);
+            depr.Lblid = "0";
             deparName++;
             PnlDepart.Controls.Add(depr);
             PnlDepart.Height += 23;
@@ -178,57 +179,103 @@ namespace ParcInfo.ucClient
         // Edit Client
         private void btnEditClient_Click(object sender, EventArgs e)
         {
-
             // get Client id 
             int id = GlobVars.selectedClient;
             Departement dt;
             int txtEmpty = 0;
+            List<Departement> lsdep = new List<Departement>();
 
-            List<string> DepartementNames = new List<string>();
-            List<int> listdep = new List<int>();
 
-            // Get Departement Names
-            txtEmpty += Methods.CheckDepart(PnlDepart, DepartementNames);
+
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
+                var dep = context.Departements.ToList();
+
+
+
+
+
+                // Departement
+
+                //var listDep = Methods.GetidList(PnlDepart);
+
+                //foreach (var item in listDep)
+                //{
+                //    MessageBox.Show(item.isVisible.ToString());
+                //}
+
+                //foreach (var item in emptyList)
+                //{
+                //    //if (item.Id > 0)
+                //    //{
+
+                //    //    var depart = dep.Where(dd => dd.id == item.Id).FirstOrDefault();
+                //    //    depart.Nom = item.Name;
+                //    //}
+                //    //else if (item.Id == 0)
+                //    //{
+                //    //    context.Departements.Add(new Departement { Nom = item.Name, IdCLient = id });
+                //    //}
+                //     if (item.Id > 0)
+                //    {
+                //        MessageBox.Show(item.isVisible.ToString());
+                //    }
+
+                //}
+
+
+
+
+                context.SaveChanges();
+
+
+
+
+
+
+
+
                 //var listDepart = (from d in context.Departements
                 //                  where d.IdCLient == id && d.IdDeleted != 1
                 //                  select new { d.id, d.Nom }).ToList();
 
-                var DepartCount = context.Departements.Where(dep => dep.IdCLient == id).Count();
 
-                for (int i = DepartCount; i < DepartementNames.Count; i++)
-                {
-                    dt = new Departement { IdCLient = id, Nom = DepartementNames[i] };
-                    context.Departements.Add(dt);
-                }
 
-                listdep = Methods.GetidList(PnlDepart);
-                var sec = DepartementID.Except(listdep).ToList();
-                foreach (var item in sec)
-                {
-                    var dep = context.Departements.Find(item);
-                    dep.IdDeleted = 1;
-                }
+
+                //var DepartCount = context.Departements.Where(dep => dep.IdCLient == id).Count();
+
+                //for (int i = DepartCount; i < DepartementNames.Count; i++)
+                //{
+                //    dt = new Departement { IdCLient = id, Nom = DepartementNames[i] };
+                //    context.Departements.Add(dt);
+                //}
+
+                //listdep = Methods.GetidList(PnlDepart);
+                //var sec = DepartementID.Except(listdep).ToList();
+                //foreach (var item in sec)
+                //{
+                //    var dep = context.Departements.Find(item);
+                //    dep.IdDeleted = 1;
+                //}
 
                 // Check if TextBox is empty
-                txtEmpty += Methods.Foucs(this);
-                Client cli = context.Clients.Find(id);
+                //txtEmpty += Methods.Foucs(this);
+                //Client cli = context.Clients.Find(id);
 
-                if (txtEmpty == 0)
-                {
-                    // get Values From Textbox
-                    cli.Nom = txtNom.Text;
-                    cli.Adresse = txtAdr.Text;
-                    cli.Ville = txtVille.Text;
-                    cli.Tel = txtTel.Text;
-                    cli.Fax = txtFax.Text;
-                    cli.Siteweb = txtSiteweb.Text;
-                    cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
-                    cli.Prixheur = float.Parse(txtPrix.Text);
-                    cli.Heurecontract = int.Parse(txtHeure.Text);
-                    context.SaveChanges();
-                }
+                //if (txtEmpty == 0)
+                //{
+                //    // get Values From Textbox
+                //    cli.Nom = txtNom.Text;
+                //    cli.Adresse = txtAdr.Text;
+                //    cli.Ville = txtVille.Text;
+                //    cli.Tel = txtTel.Text;
+                //    cli.Fax = txtFax.Text;
+                //    cli.Siteweb = txtSiteweb.Text;
+                //    cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
+                //    cli.Prixheur = float.Parse(txtPrix.Text);
+                //    cli.Heurecontract = int.Parse(txtHeure.Text);
+                //    context.SaveChanges();
+                //}
 
             }
         }
@@ -249,7 +296,7 @@ namespace ParcInfo.ucClient
             // Check if TextBox is empty
             txtEmpty += Methods.Foucs(this);
             // Fil list UtilisateurID
-            UtilisateurID = Methods.GetidList(PnlUsers);
+            //UtilisateurID = Methods.GetidList(PnlUsers);
             if (txtEmpty == 0)
             { // get Values From Textbox
                 string Nom = txtNom.Text;
@@ -340,7 +387,7 @@ namespace ParcInfo.ucClient
         {
         }
 
-      
+
 
         private void btnDelClient_Click(object sender, EventArgs e)
         {
@@ -367,5 +414,11 @@ namespace ParcInfo.ucClient
 
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -32,33 +32,6 @@ namespace ParcInfo.ucControls
             get { return lblid.Text; }
             set { lblid.Text = value; }
         }
-        /// <summary>
-        /// Event to indicate UserControl Button Clicked
-        /// </summary>
-        public static event EventHandler ClickedAdd;
-        public static event EventHandler ClickedDell;
-        /// <summary>
-        /// Called to signal to subscribers that UserControl Button Clicked
-        /// </summary>
-        /// <param name="e"></param>
-        protected virtual void OnClicked(EventArgs e)
-        {
-            EventHandler eh = ClickedAdd;
-            if (eh != null)
-            {
-                eh(this, e);
-            }
-        }
-
-        protected virtual void OnClickedDel(EventArgs e)
-        {
-            EventHandler eh = ClickedDell;
-            if (eh != null)
-            {
-                eh(this, e);
-            }
-        }
-
         public lblTextbox()
         {
             InitializeComponent();
@@ -73,7 +46,7 @@ namespace ParcInfo.ucControls
 
         private void btn_supprimer_Click(object sender, EventArgs e)
         {
-            Parent.Controls.Remove(this);
+            this.Visible = false;
         }
     }
 }

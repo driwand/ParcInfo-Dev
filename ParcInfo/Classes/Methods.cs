@@ -72,31 +72,27 @@ namespace ParcInfo.Classes
                         c.Focus();
                         count++;
                     }
-
                 }
             }
             return count;
         }
-        public static List<int> GetidList(Control control)
+
+        public static List<LabelControl> GetidList(Control control)
         {
-            List<int> list = new List<int>();
+            List<LabelControl> list = new List<LabelControl>();
             foreach (Control c in control.Controls)
             {
-                if (c is lblTextbox)
+                if (c is lblTextbox lbl)
                 {
-                    int id = int.Parse(((lblTextbox)c).Lblid);
-                    list.Add(id);
+                    list.Add(new LabelControl() { Id = int.Parse(lbl.Lblid), Value = lbl.TxtValue, IsDeleted = !lbl.Visible });
                 }
-                else if (c is txtlblDepartement)
+                else if (c is txtlblDepartement lbl2)
                 {
-                    int id = int.Parse(((txtlblDepartement)c).Lblid);
-                    list.Add(id);
+                    list.Add(new LabelControl() { Id = int.Parse(lbl2.Lblid), Value = lbl2.Txtvalue, IsDeleted = !lbl2.Visible });
                 }
             }
             return list;
         }
-        
-
 
         public static void getDemande(DataGridView dg, int idEmploye, string statut)
         {
@@ -174,5 +170,11 @@ namespace ParcInfo.Classes
             //put a breakpoint here and check datatable
             return dataTable;
         }
+    }
+    public class LabelControl
+    {
+        public int Id { get; set; }
+        public bool IsDeleted { get; set; }
+        public string Value  { get; set; }
     }
 }

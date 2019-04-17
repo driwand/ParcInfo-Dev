@@ -52,7 +52,7 @@ namespace ParcInfo.ucClient
                 GlobVars.selectedEmploye = int.Parse(id);
                 GlobVars.BtnName = "gpDemandeEncours";
                 GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListDemande(), true);
+                //GlobVars.frmindex.ShowControl(new ListDemande(), true);
             }
         }
 
@@ -65,7 +65,7 @@ namespace ParcInfo.ucClient
                 GlobVars.selectedEmploye = int.Parse(id);
                 GlobVars.BtnName = "gpDemandeEnRetard";
                 GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListDemande(), true);
+                //GlobVars.frmindex.ShowControl(new ListDemande(), true);
             }
         }
 
@@ -78,7 +78,7 @@ namespace ParcInfo.ucClient
                 GlobVars.selectedEmploye = int.Parse(id);
                 GlobVars.BtnName = "gpDemandeE";
                 GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListDemande(), true);
+                //GlobVars.frmindex.ShowControl(new ListDemande(), true);
             }
         }
 
