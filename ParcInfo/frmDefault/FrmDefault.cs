@@ -261,24 +261,24 @@ namespace ParcInfo.frmDefault
     #region list of request
     private void btnListDemande_Click(object sender, EventArgs e)
     {
-        ListDemande req = new ListDemande("", 0);
+        ListDemande req = new ListDemande("", 0,0);
         ShowControl(req);
     }
 
     private void btnDemandeCours_Click(object sender, EventArgs e)
     {
-        ListDemande req = new ListDemande("en cours", countRequestCours);
+        ListDemande req = new ListDemande("en cours", countRequestCours,0);
         ShowControl(req);
     }
 
     private void btnDemandeRetard_Click(object sender, EventArgs e)
     {
-        ListDemande req = new ListDemande("en retard", countRequestRetard);
+        ListDemande req = new ListDemande("en retard", countRequestRetard,0);
         ShowControl(req);
     }
     private void btnDemandeTerminer_Click(object sender, EventArgs e)
     {
-        ListDemande req = new ListDemande("terminer", countRequestTerminer);
+        ListDemande req = new ListDemande("terminer", countRequestTerminer,0);
         ShowControl(req);
     }
     #endregion

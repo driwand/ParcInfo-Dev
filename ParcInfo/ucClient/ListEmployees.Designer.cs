@@ -46,22 +46,22 @@
             this.btnNewEmployee = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gpProduits = new ParcInfo.Classes.GradientPanel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.produitCount = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.gpDemandeRetard = new ParcInfo.Classes.GradientPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.enretardCount = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.gpDemandeEnCours = new ParcInfo.Classes.GradientPanel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.encoursCount = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gpDemande = new ParcInfo.Classes.GradientPanel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.allCount = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -261,7 +261,7 @@
             this.gpProduits.Angle = 0F;
             this.gpProduits.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(205)))), ((int)(((byte)(207)))));
             this.gpProduits.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(192)))), ((int)(((byte)(195)))));
-            this.gpProduits.Controls.Add(this.label11);
+            this.gpProduits.Controls.Add(this.produitCount);
             this.gpProduits.Controls.Add(this.panel6);
             this.gpProduits.Controls.Add(this.label12);
             this.gpProduits.Controls.Add(this.pictureBox6);
@@ -272,17 +272,17 @@
             this.gpProduits.TabIndex = 111;
             this.gpProduits.Click += new System.EventHandler(this.gpProduits_Click);
             // 
-            // label11
+            // produitCount
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label11.Location = new System.Drawing.Point(73, 42);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(24, 16);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "30";
+            this.produitCount.AutoSize = true;
+            this.produitCount.BackColor = System.Drawing.Color.Transparent;
+            this.produitCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.produitCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.produitCount.Location = new System.Drawing.Point(73, 41);
+            this.produitCount.Name = "produitCount";
+            this.produitCount.Size = new System.Drawing.Size(24, 16);
+            this.produitCount.TabIndex = 9;
+            this.produitCount.Text = "30";
             // 
             // panel6
             // 
@@ -298,7 +298,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(55, 16);
+            this.label12.Location = new System.Drawing.Point(60, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 8;
@@ -321,7 +321,7 @@
             this.gpDemandeRetard.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(212)))), ((int)(((byte)(84)))));
             this.gpDemandeRetard.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(16)))));
             this.gpDemandeRetard.Controls.Add(this.label3);
-            this.gpDemandeRetard.Controls.Add(this.label4);
+            this.gpDemandeRetard.Controls.Add(this.enretardCount);
             this.gpDemandeRetard.Controls.Add(this.panel3);
             this.gpDemandeRetard.Controls.Add(this.pictureBox4);
             this.gpDemandeRetard.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -343,17 +343,17 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Demande en\r\n     retard";
             // 
-            // label4
+            // enretardCount
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(73, 42);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "30";
+            this.enretardCount.AutoSize = true;
+            this.enretardCount.BackColor = System.Drawing.Color.Transparent;
+            this.enretardCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enretardCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.enretardCount.Location = new System.Drawing.Point(73, 42);
+            this.enretardCount.Name = "enretardCount";
+            this.enretardCount.Size = new System.Drawing.Size(24, 16);
+            this.enretardCount.TabIndex = 9;
+            this.enretardCount.Text = "30";
             // 
             // panel3
             // 
@@ -379,7 +379,7 @@
             this.gpDemandeEnCours.Angle = 0F;
             this.gpDemandeEnCours.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(193)))), ((int)(((byte)(231)))));
             this.gpDemandeEnCours.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(176)))), ((int)(((byte)(224)))));
-            this.gpDemandeEnCours.Controls.Add(this.label2);
+            this.gpDemandeEnCours.Controls.Add(this.encoursCount);
             this.gpDemandeEnCours.Controls.Add(this.panel4);
             this.gpDemandeEnCours.Controls.Add(this.label9);
             this.gpDemandeEnCours.Controls.Add(this.pictureBox2);
@@ -390,17 +390,17 @@
             this.gpDemandeEnCours.TabIndex = 109;
             this.gpDemandeEnCours.Click += new System.EventHandler(this.gpDemandeEnCours_Click);
             // 
-            // label2
+            // encoursCount
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(74, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 16);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "30";
+            this.encoursCount.AutoSize = true;
+            this.encoursCount.BackColor = System.Drawing.Color.Transparent;
+            this.encoursCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.encoursCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.encoursCount.Location = new System.Drawing.Point(74, 38);
+            this.encoursCount.Name = "encoursCount";
+            this.encoursCount.Size = new System.Drawing.Size(24, 16);
+            this.encoursCount.TabIndex = 9;
+            this.encoursCount.Text = "30";
             // 
             // panel4
             // 
@@ -439,7 +439,7 @@
             this.gpDemande.Angle = 0F;
             this.gpDemande.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(131)))), ((int)(((byte)(231)))));
             this.gpDemande.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(102)))), ((int)(((byte)(226)))));
-            this.gpDemande.Controls.Add(this.label6);
+            this.gpDemande.Controls.Add(this.allCount);
             this.gpDemande.Controls.Add(this.panel5);
             this.gpDemande.Controls.Add(this.label7);
             this.gpDemande.Controls.Add(this.pictureBox5);
@@ -450,17 +450,17 @@
             this.gpDemande.TabIndex = 112;
             this.gpDemande.Click += new System.EventHandler(this.gpDemande_Click);
             // 
-            // label6
+            // allCount
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(73, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 16);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "30";
+            this.allCount.AutoSize = true;
+            this.allCount.BackColor = System.Drawing.Color.Transparent;
+            this.allCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.allCount.Location = new System.Drawing.Point(73, 44);
+            this.allCount.Name = "allCount";
+            this.allCount.Size = new System.Drawing.Size(24, 16);
+            this.allCount.TabIndex = 9;
+            this.allCount.Text = "30";
             // 
             // panel5
             // 
@@ -559,21 +559,21 @@
         private System.Windows.Forms.DataGridView dgEmployees;
         private System.Windows.Forms.Label lblClientName;
         private Classes.GradientPanel gpProduits;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label produitCount;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox6;
         private Classes.GradientPanel gpDemandeRetard;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label enretardCount;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private Classes.GradientPanel gpDemandeEnCours;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label encoursCount;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Classes.GradientPanel gpDemande;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label allCount;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox5;

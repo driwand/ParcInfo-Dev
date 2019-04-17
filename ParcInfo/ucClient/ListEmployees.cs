@@ -49,11 +49,9 @@ namespace ParcInfo.ucClient
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                string id = myrow.Cells[0].Value.ToString();
-                GlobVars.selectedEmploye = int.Parse(id);
-                GlobVars.BtnName = "gpDemandeEncours";
+                int id = int.Parse(myrow.Cells[0].Value.ToString());
                 GlobVars.frmBack = this;
-                //GlobVars.frmindex.ShowControl(new ListDemande(), true);
+               GlobVars.frmindex.ShowControl(new ListDemande("en cours", 22,id), true);
             }
         }
 
@@ -85,14 +83,26 @@ namespace ParcInfo.ucClient
 
         private void gpProduits_Click(object sender, EventArgs e)
         {
+
+
+            if (dgEmployees.SelectedRows.Count > 0)
+            {
+                var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
+                int id = int.Parse(myrow.Cells[0].Value.ToString());
+               
+                GlobVars.frmBack = this;
+                GlobVars.frmindex.ShowControl(new ListProduitClient(id), true);
+            }
         }
 
+
+        // Create Employe 
         private void btnNewEmploye_Click(object sender, EventArgs e)
         {
             frmCreateEmploye frm = new frmCreateEmploye(0,idC);
             frm.ShowDialog();
         }
-
+        // Edit Employe
         private void btnEditEmploye_Click(object sender, EventArgs e)
         {
             if (dgEmployees.SelectedRows.Count > 0)
@@ -101,9 +111,7 @@ namespace ParcInfo.ucClient
                 int id = int.Parse(myrow.Cells[0].Value.ToString());
                 //GlobVars.selectedEmploye = int.Parse(id);
                 //GlobVars.BtnName = "editEmploye";
-
                 frmCreateEmploye frm = new frmCreateEmploye(id,idC);
-
                 frm.Show();
 
 
@@ -118,6 +126,8 @@ namespace ParcInfo.ucClient
                 int id = int.Parse(myrow.Cells[0].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
+
+                    var Cli = context.Employees.Where(c => c.Id == id).FirstOrDefault();
                     var clt = (from c in context.Employees
                                where c.Id == id && c.Modifierpar != null
                                join u in context.Utilisateurs on c.Modifierpar equals u.Id
@@ -132,6 +142,15 @@ namespace ParcInfo.ucClient
                         lblEdited.Text = "aucune";
                         lblEditedDate.Text = "****-**-**";
                     }
+                    // Employe Count
+
+                    encoursCount.Text = Cli.Demandes.Where(d => d.Statut == "en cours").Count().ToString();
+                    enretardCount.Text = Cli.Demandes.Where(d => d.Statut == "en retard").Count().ToString();
+
+
+                    allCount.Text = Cli.Demandes.Count().ToString();
+                    produitCount.Text = Cli.ProduitUtilisers.Count.ToString();
+
 
                 }
             }

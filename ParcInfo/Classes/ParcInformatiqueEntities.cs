@@ -108,10 +108,12 @@ namespace ParcInfo
         public ICollection<Demande> GetRequestbyStatut(Label lbl, string statut = "")
         {
             IQueryable<Demande> list = GetRequests;
+          
             switch (statut)
             {
                 case "en cours":
-                    list = GetRequestCours;
+                        list = GetRequestCours;
+                   
                     lbl.BackColor = Color.FromArgb(250, 130, 49);
                     break;
                 case "en retard":
@@ -124,6 +126,10 @@ namespace ParcInfo
                     break;
 
             }
+            //if (idEmp > 0)
+            //{
+            //    return list.ToList().Where(c=> c.IdEmployee == idEmp).ToList();
+            //}
             lbl.Text = list.Count().ToString();
             return list.ToList();
         }

@@ -43,12 +43,12 @@ namespace ParcInfo.ucClient
             {
                 using (var context = new ParcInformatiqueEntities())
                 {
-                    var reqEmploye = context.Employees.Find(idEmployee).Demandes.ToList();
-                    dgDemande.DataSource = reqEmploye;
+                  
+
                 }
             }
         }
-        public ListDemande(string statutReq, int countReq)
+        public ListDemande(string statutReq, int countReq,int idEmploye)
         {
             InitializeComponent();
             {
@@ -67,39 +67,39 @@ namespace ParcInfo.ucClient
             }
         }
     
-        public void clientRequets()
-        {
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-            {
-                var demand = Methods.ToDataTable<Demande>(context.Demandes.ToList());
-                dgDemande.DataSource = demand;
+        //public void clientRequets()
+        //{
+        //    using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+        //    {
+        //        var demand = Methods.ToDataTable<Demande>(context.Demandes.ToList());
+        //        dgDemande.DataSource = demand;
 
-                if (GlobVars.selectedEmploye > 0)
-                {
-                    string name = GlobVars.BtnName;
-                    int id = GlobVars.selectedEmploye;
-                    var emp = context.Employees.Find(id);
-                    lblEmployeClient.Visible = true;
-                    switch (name)
-                    {
-                        case "gpDemandeEncours":
-                            Methods.getDemande(dgDemande, id, "en cours");
-                            lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
-                            break;
-                        case "gpDemandeEnRetard":
-                            Methods.getDemande(dgDemande, id, "en retard");
-                            lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
-                            break;
-                        case "gpDemandeE":
-                            Methods.getDemande(dgDemande, id, "");
-                            lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-        }
+        //        if (GlobVars.selectedEmploye > 0)
+        //        {
+        //            string name = GlobVars.BtnName;
+        //            int id = GlobVars.selectedEmploye;
+        //            var emp = context.Employees.Find(id);
+        //            lblEmployeClient.Visible = true;
+        //            switch (name)
+        //            {
+        //                case "gpDemandeEncours":
+        //                    Methods.getDemande(dgDemande, id, "en cours");
+        //                    lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
+        //                    break;
+        //                case "gpDemandeEnRetard":
+        //                    Methods.getDemande(dgDemande, id, "en retard");
+        //                    lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
+        //                    break;
+        //                case "gpDemandeE":
+        //                    Methods.getDemande(dgDemande, id, "");
+        //                    lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //}
         private void ListRequest_Load(object sender, EventArgs e)
         {
             //ControlsClass.CreateRadiusBorder(this);

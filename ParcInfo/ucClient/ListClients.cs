@@ -84,9 +84,6 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id =int.Parse(myrow.Cells[0].Value.ToString());
-                //GlobVars.selectedClient = int.Parse(id);
-                //GlobVars.BtnName = ((Control)sender).Name;
-
                 GlobVars.frmindex.ShowControl(new CreateClient(id));
             }
         }
@@ -102,22 +99,16 @@ namespace ParcInfo.ucClient
             int index = dgClients.CurrentRow.Index;
 
             string nom = dgClients.Rows[index].Cells[0].Value.ToString();
-
-            GlobVars.NomClient = nom;
-            GlobVars.SearchValue = txtFind.Text;
-            GlobVars.frmindex.ShowControl(new ListDemande("",0));
+           // GlobVars.frmindex.ShowControl(new ListDemande("",0));
 
         }
 
         private void gpProduit_Click(object sender, EventArgs e)
         {
-            int index = dgClients.CurrentRow.Index;
+            var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
+            int id = int.Parse(myrow.Cells[0].Value.ToString());
 
-            string nom = dgClients.Rows[index].Cells[0].Value.ToString();
-
-            GlobVars.NomClient = nom;
-
-            GlobVars.frmindex.ShowControl(new ListProduit());
+            GlobVars.frmindex.ShowControl(new ListProduitClient(id,true));
 
         }
 
