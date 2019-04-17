@@ -14,26 +14,25 @@ namespace ParcInfo.ucInterevntion
 {
     public partial class ListeIntervention : UserControl
     {
-        public ListeIntervention()
+        public ListeIntervention(string statutInterv,int countInterv)
         {
             InitializeComponent();
-        }
-
-        public string statutInterv;
-        public int countInterv;
-        private void ListeIntervention_Load(object sender, EventArgs e)
-        {            
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (countInterv == 0 && statutInterv == "")
                 {
-                    dgIntervention.DataSource = context.GetInterventionBystatut(lblTotalIntervention); ;
+                    dgIntervention.DataSource = context.GetInterventionBystatut(lblTotalIntervention).ToList();
                 }
                 else
                 {
-                    dgIntervention.DataSource = context.GetInterventionBystatut(lblTotalIntervention,statutInterv );
+                    dgIntervention.DataSource = context.GetInterventionBystatut(lblTotalIntervention, statutInterv);
                 }
             }
+        }
+
+        private void ListeIntervention_Load(object sender, EventArgs e)
+        {            
+
 
         }
        

@@ -121,7 +121,7 @@ namespace ParcInfo.ucClient
 
         private void gpIntervention_Click(object sender, EventArgs e)
         {
-            GlobVars.frmindex.ShowControl(new ListeIntervention());
+            GlobVars.frmindex.ShowControl(new ListeIntervention("",0));
           
         }
 

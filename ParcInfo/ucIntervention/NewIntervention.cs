@@ -42,7 +42,36 @@ namespace ParcInfo.ucInterevntion
         }
         public void startInterRequest()
         {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                //create first empty intervention - assigned to a request
+                Intervention intr = new Intervention
+                {
+                    IdDemande = selectedRequest,
+                    Idutilisateur = GlobVars.currentUser,
+                    Idclient = selectedClient
+                };
+                context.Interventions.Add(intr);
 
+                //create first observetion that contain date and who started the intervention
+                observation obs = new observation()
+                {
+                    IdIntervention = intr.Id,
+                    Textobservation = "new intervention get started"
+                };
+                context.observations.Add(obs);
+                context.SaveChanges();
+
+                var getRequest = context.Demandes.Find(selectedRequest); //current request
+
+
+                //show request description and details
+                AddTxtDescription(getRequest.Employee.Nom,getRequest.Datedemande.ToString(),getRequest.Description_d,pnlObservetion);
+
+
+                //to fill with first intervention informations
+
+            }
         }
         public void startInterClient()
         {

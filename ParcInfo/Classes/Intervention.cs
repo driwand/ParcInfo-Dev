@@ -12,7 +12,7 @@ namespace ParcInfo
         {
             get
             {
-                if (DateIntervention < DateTime.Now.AddDays(2) && Statut != "terminer") return "en retard";
+                if (DateIntervention.Value.AddDays(2) < DateTime.Now && Statut != "terminer") return "en retard";
                 else return Statut;
             }
         }
