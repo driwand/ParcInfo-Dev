@@ -187,7 +187,7 @@ namespace ParcInfo.frmDefault
     // Create Client 
     private void BtnCreateClient_Click(object sender, EventArgs e)
     {
-        CreateClient frmcc = new CreateClient();
+        CreateClient frmcc = new CreateClient(0);
         PanelContainer.Controls.Clear();
         PanelContainer.Controls.Add(frmcc);
         frmcc.BringToFront();

@@ -18,23 +18,22 @@ namespace ParcInfo.ucClient
 
         int userName = 1;
         int deparName = 1;
-
-
         List<int> DepartementID = new List<int>();
-        public CreateClient()
+        int idC = 0;
+        public CreateClient(int idClient)
         {
             InitializeComponent();
 
-        }
-        private void CreateClient_Load(object sender, EventArgs e)
-        {
-            //ControlsClass.CreateRadiusBorder(this);
 
+            
+            //ControlsClass.CreateRadiusBorder(this);
             //Default lblTextbox
             lblTextbox user1 = new lblTextbox();
             user1.Name = "userC" + userName;
             user1.LblText = "Nom :";
             user1.Margin = new Padding(0, 0, 0, 12);
+            user1.Lblid = "0";
+            user1.LblAff =  "0";
             userName++;
             //Default txtlblDepartement
             txtlblDepartement depr = new txtlblDepartement();
@@ -45,10 +44,10 @@ namespace ParcInfo.ucClient
             deparName++;
             PnlUsers.Controls.Add(user1);
             PnlDepart.Controls.Add(depr);
-
-            // Cons Client
-            if (GlobVars.selectedClient > 0 && GlobVars.BtnName == "btnCons")
+            if ( idClient > 0)
             {
+
+                idC = idClient;
                 // Hide Button Ajouter
                 btnAddClient.Visible = false;
                 btnAddClient.Location = new Point(619, 443);
@@ -56,15 +55,12 @@ namespace ParcInfo.ucClient
                 btnEditClient.Location = new Point(738, 443);
                 btnDelClient.Visible = true;
 
-                int id = GlobVars.selectedClient;
                 lblClient.Text = "Fiche du client : ";
-                lblNameClient.Text = "C" + id;
+                lblNameClient.Text = "C" + idClient;
                 lblNameClient.Visible = true;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-                    var client = context.Clients.Find(id);
-
-
+                    var client = context.Clients.Find(idClient);
 
                     txtNom.Text = client.Nom;
                     txtAdr.Text = client.Adresse;
@@ -75,25 +71,16 @@ namespace ParcInfo.ucClient
                     dtDebutcontract.Text = client.Debutcontract.ToString();
                     txtHeure.Text = client.Heurecontract.ToString();
                     txtPrix.Text = client.Prixheur.ToString();
-                    //remove fist txtlblDepartement
-                    //lblTextbox dx = this.Controls.Find("userC" + userName, false) as lblTextbox;
-                    //txtlblDepartement tbx = this.Controls.Find("ucDepart1", true).FirstOrDefault() as txtlblDepartement;
-                    //PnlDepart.Controls.Remove(tbx);
-                    //deparName--;
-                    ////remove fist lblTextbox
-                    //lblTextbox ltb = this.Controls.Find("userC1", true).FirstOrDefault() as lblTextbox;
-                    //PnlUsers.Controls.Remove(ltb);
-                    //Get Depart
 
-                    var listDepart = (from d in context.Departements
-                                      where d.IdCLient == id && d.IdDeleted != 1
+                    var listDepart = (from d in client.Departements
+                                      where d.IdCLient == idClient && d.IdDeleted != 1
                                       select new { d.id, d.Nom }).ToList();
-                    var listUtilisateur = (from c in context.AffectationClients
-                                           where c.Idclient == id
+                    var listUtilisateur = (from c in client.AffectationClients
+                                           where c.Idclient == idClient && c.IsDeleted != 1
                                            join d in context.Utilisateurs on c.Idutilisateur equals d.Id
-                                           select new { d.Id, d.Nom, d.Prenom }).ToList();
+                                           select new { idAff = c.Id, d.Id, d.Nom, d.Prenom }).ToList();
 
-                    DepartementID = listDepart.Select(c => c.id).ToList();
+                   // DepartementID = listDepart.Select(c => c.id).ToList();
                     txtlblDepartement tbx = this.Controls.Find("ucDepart1", true).FirstOrDefault() as txtlblDepartement;
                     lblTextbox ltb = this.Controls.Find("userC1", true).FirstOrDefault() as lblTextbox;
 
@@ -121,6 +108,7 @@ namespace ParcInfo.ucClient
                         var user = listUtilisateur.FirstOrDefault();
                         ltb.TxtValue = user.Nom + " " + user.Prenom;
                         ltb.Lblid = user.Id.ToString();
+                        ltb.LblAff = user.idAff.ToString();
                         foreach (var item in listUtilisateur.Skip(1))
                         {
                             //first lblTexbox to fill user
@@ -128,15 +116,24 @@ namespace ParcInfo.ucClient
                             user2.TxtValue = item.Nom + " " + item.Prenom;
                             user2.Name = "userC" + userName;
                             user2.Lblid = item.Id.ToString();
+                            user2.LblAff = item.idAff.ToString();
                             user2.LblText = "Nom :";
                             user2.Margin = new Padding(0, 0, 0, 12);
                             userName++;
                             PnlUsers.Controls.Add(user2);
-
                         }
                     }
                 }
             }
+        
+
+        }
+        private void CreateClient_Load(object sender, EventArgs e)
+        {
+
+           
+              
+    
         }
         // ADD lblTextbox Control
         private void BtnAddUser_Click(object sender, EventArgs e)
@@ -144,6 +141,8 @@ namespace ParcInfo.ucClient
             lblTextbox user1 = new lblTextbox();
             user1.Name = "userC" + userName;
             user1.LblText = "Nom :";
+            user1.Lblid = "0";
+            user1.LblAff = "0";
             user1.Margin = new Padding(0, 0, 0, 12);
             userName++;
             PnlUsers.Controls.Add(user1);
@@ -179,72 +178,77 @@ namespace ParcInfo.ucClient
         // Edit Client
         private void btnEditClient_Click(object sender, EventArgs e)
         {
-            // get Client id 
-            //int id = GlobVars.selectedClient;
-            //Departement dt;
-            //int txtEmpty = 0;
-            //List<Departement> lsdep = new List<Departement>();
-
-
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
+                var labelControlList = Methods.GetidList(PnlDepart);
 
-                var labelControlList = Methods.GetidList(PnlUsers);
-
-
-
+                var cli = context.Clients.Find(idC);
+                //Departement
                 foreach (var item in labelControlList)
                 {
-                    if (item.Id > 0)
+                    if (item.Id > 0 && !item.IsDeleted)
                     {
-                        MessageBox.Show(item.Value);
+                        var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
+                        dep.Nom = item.Value;
+                    }
+                    else if (item.Id == 0)
+                    {
+                        context.Departements.Add(new Departement { Nom = item.Value, IdCLient = idC });
+                    }
+                    else if (item.Id >= 0 && item.IsDeleted)
+                    {
+
+                        var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
+                        dep.IdDeleted = 1;
+                        txtlblDepartement tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as txtlblDepartement;  
+                        PnlDepart.Controls.Remove(tbx);
                     }
                 }
+                // Utilisateur 
+                var labelControlList2 = Methods.GetidList(PnlUsers);
 
+                foreach (var item in labelControlList2)
+                {
+                    if (item.Idaffectation > 0 && !item.IsDeleted)
+                    {
+                        
+                    }
+                    else if (item.Idaffectation == 0)
+                    {
+                        var ac = cli.AffectationClients.Where(af => af.Idutilisateur == item.Id).FirstOrDefault() ;
+                        if (ac == null)
+                        {
+                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id });
+                        }
+                        else
+                        {
+                           
+                        }
+                       
+                    }
+                    else if (item.Idaffectation >= 0 && item.IsDeleted)
+                    {
+                        var affectation = cli.AffectationClients.Where(d => d.Id == item.Idaffectation).FirstOrDefault();
+                        affectation.IsDeleted = 1;
+                        affectation.Dateaffectation = DateTime.Now;
+                        lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
+                        PnlUsers.Controls.Remove(tbx);
 
-
-                //var listDepart = (from d in context.Departements
-                //                  where d.IdCLient == id && d.IdDeleted != 1
-                //                  select new { d.id, d.Nom }).ToList();
-
-
-
-
-                //var DepartCount = context.Departements.Where(dep => dep.IdCLient == id).Count();
-
-                //for (int i = DepartCount; i < DepartementNames.Count; i++)
-                //{
-                //    dt = new Departement { IdCLient = id, Nom = DepartementNames[i] };
-                //    context.Departements.Add(dt);
-                //}
-
-                //listdep = Methods.GetidList(PnlDepart);
-                //var sec = DepartementID.Except(listdep).ToList();
-                //foreach (var item in sec)
-                //{
-                //    var dep = context.Departements.Find(item);
-                //    dep.IdDeleted = 1;
-                //}
-
-                // Check if TextBox is empty
-                //txtEmpty += Methods.Foucs(this);
-                //Client cli = context.Clients.Find(id);
-
-                //if (txtEmpty == 0)
-                //{
-                //    // get Values From Textbox
-                //    cli.Nom = txtNom.Text;
-                //    cli.Adresse = txtAdr.Text;
-                //    cli.Ville = txtVille.Text;
-                //    cli.Tel = txtTel.Text;
-                //    cli.Fax = txtFax.Text;
-                //    cli.Siteweb = txtSiteweb.Text;
-                //    cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
-                //    cli.Prixheur = float.Parse(txtPrix.Text);
-                //    cli.Heurecontract = int.Parse(txtHeure.Text);
-                //    context.SaveChanges();
-                //}
-
+                    }
+                }
+               // get Values From Textbox
+                    cli.Nom = txtNom.Text;
+                cli.Adresse = txtAdr.Text;
+                cli.Ville = txtVille.Text;
+                cli.Tel = txtTel.Text;
+                cli.Fax = txtFax.Text;
+                cli.Siteweb = txtSiteweb.Text;
+                cli.Datemodification = DateTime.Now;
+                cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
+                cli.Prixheur = float.Parse(txtPrix.Text);
+                cli.Heurecontract = int.Parse(txtHeure.Text);
+                context.SaveChanges();
+                MessageBox.Show("Client modifié");
             }
         }
 

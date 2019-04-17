@@ -22,53 +22,26 @@ namespace ParcInfo.ucClient
         public ListClients()
         {
             InitializeComponent();
-        }
-        
 
-        
+            // ControlsClass.CreateRadiusBorder(this);
+
+        }
+
+
+
         private void ListClients_Load(object sender, EventArgs e)
         {
-            
-            ControlsClass.CreateRadiusBorder(this);
+
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                //var listClient = (from c in context.Clients
-                //                  select new {c.id,c.Nom,c.Tel,c.Fax,c.Adresse,c.Ville,c.Siteweb,c.Debutcontract,c.Heurecontract,c.Prixheur,c.Datecreation,c.Datemodification,c.Creepar,c.Modifierpar }).ToList();
-               
 
-                dgClients.DataSource = context.Clients.ToList();
-
-
-
-                //DataTable dataTable = new DataTable("kkh");
-                //object jjj = vr.First();
-                //Type myt = jjj.GetType();
                 
-                ////Get all the properties
-                //PropertyInfo[] Props = myt.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                //foreach (PropertyInfo prop in Props)
-                //{
-                //    //Setting column names as Property names
-                //    dataTable.Columns.Add(prop.Name);
-                //}
-                //foreach (var item in vr)
-                //{
-                //    var values = new object[Props.Length];
-                //    for (int i = 0; i < Props.Length; i++)
-                //    {
-                //        //inserting property values to datatable rows
-                //        values[i] = Props[i].GetValue(item, null);
-                //    }
-                //    dataTable.Rows.Add(values);
-                //}
-                //put a breakpoint here and check datatable
+                var vr = (from c in context.Clients
+                          where c.IsDeleted != 1
+                          select new { c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract, }).ToList();
+                dgClients.DataSource = vr;
 
-                //dgClients.DataSource = dataTable;
-
-
- 
             }
-            
 
         }
 
@@ -80,10 +53,9 @@ namespace ParcInfo.ucClient
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-                string id = myrow.Cells[0].Value.ToString();
-                GlobVars.selectedClient = int.Parse(id);
-                GlobVars.BtnName = "btnCons";
-                GlobVars.frmindex.ShowControl(new CreateClient());
+                int id = int.Parse(myrow.Cells[0].Value.ToString());
+               
+                GlobVars.frmindex.ShowControl(new CreateClient(id));
             }
 
         }
@@ -93,18 +65,17 @@ namespace ParcInfo.ucClient
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-                string id = myrow.Cells[0].Value.ToString();
-                GlobVars.selectedClient = int.Parse(id);
-                GlobVars.BtnName = "gpEmploye";
+                int id = int.Parse(myrow.Cells[0].Value.ToString());
+            
                 GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListEmployees(), true);
+                GlobVars.frmindex.ShowControl(new ListEmployees(id), true);
             }
         }
       
         private void btnNewClient_Click(object sender, EventArgs e)
         {
             
-            GlobVars.frmindex.ShowControl(new CreateClient());
+            GlobVars.frmindex.ShowControl(new CreateClient(0));
         }
 
         private void btnCons_Click(object sender, EventArgs e)
@@ -112,10 +83,11 @@ namespace ParcInfo.ucClient
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-                string id = myrow.Cells[0].Value.ToString();
-                GlobVars.selectedClient = int.Parse(id);
-                GlobVars.BtnName = ((Control)sender).Name;
-                GlobVars.frmindex.ShowControl(new CreateClient());
+                int id =int.Parse(myrow.Cells[0].Value.ToString());
+                //GlobVars.selectedClient = int.Parse(id);
+                //GlobVars.BtnName = ((Control)sender).Name;
+
+                GlobVars.frmindex.ShowControl(new CreateClient(id));
             }
         }
 
@@ -166,18 +138,22 @@ namespace ParcInfo.ucClient
             {
 
                 var vr = (from c in context.Clients
-                          select new { c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract, c.IsDeleted }).ToList();
-                dgClients.DataSource = vr;
+                          select c).ToList();
+                //dgClients.DataSource = vr;
 
                 if (CkDeletedClient.Checked)
                 {
 
-                    var ClientsDeleted = vr.Where(d => d.IsDeleted == 1).ToList();
+                    var ClientsDeleted = (from c in vr
+                                          where c.IsDeleted == 1
+                                          select new { c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
                     dgClients.DataSource = ClientsDeleted;
                 }
                 else
                 {
-                    var Clients = vr.Where(d => d.IsDeleted != 1).ToList();
+                    var Clients = (from c in vr
+                                   where c.IsDeleted != 1
+                                   select new { c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
                     dgClients.DataSource = Clients;
                 }
             }
@@ -185,7 +161,6 @@ namespace ParcInfo.ucClient
 
         private void dgClients_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
             if (e.RowIndex >= 0)
             {
                 var myrow = dgClients.Rows[e.RowIndex];
@@ -210,13 +185,13 @@ namespace ParcInfo.ucClient
                         lblEditedDate.Text = "****-**-**";
                     }
                     // Count
-
                     lblEmpC.Text = Cli.Employees.Count.ToString();
                     lblInterC.Text = Cli.Interventions.Count.ToString();
 
-                    //var demC = (from c in Cli.Employees
-                    //            select new { c.Demandes.Count }).ToList() ;
-                    //lblDemC.Text = demC.Count().ToString();
+                    var demC = (from c in Cli.Employees
+                                select new { c.Demandes }).ToList();
+
+                    lblDemC.Text = demC.Count().ToString();
                     lblProdC.Text = Cli.ProduitClients.Count.ToString();
                 }
             }

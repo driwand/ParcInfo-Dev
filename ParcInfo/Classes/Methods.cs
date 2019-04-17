@@ -84,11 +84,11 @@ namespace ParcInfo.Classes
             {
                 if (c is lblTextbox lbl)
                 {
-                    list.Add(new LabelControl() { Id = int.Parse(lbl.Lblid), Value = lbl.TxtValue, IsDeleted = !lbl.Visible });
+                    list.Add(new LabelControl() { Id = int.Parse(lbl.Lblid), Value = lbl.TxtValue, IsDeleted = !lbl.Visible,Controlname=lbl.Name ,Idaffectation = int.Parse(lbl.LblAff)});
                 }
                 else if (c is txtlblDepartement lbl2)
                 {
-                    list.Add(new LabelControl() { Id = int.Parse(lbl2.Lblid), Value = lbl2.TxtValue, IsDeleted = !lbl2.Visible });
+                    list.Add(new LabelControl() { Id = int.Parse(lbl2.Lblid), Value = lbl2.TxtValue, IsDeleted = !lbl2.Visible, Controlname = lbl2.Name });
                 }
             }
             return list;
@@ -176,5 +176,7 @@ namespace ParcInfo.Classes
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public string Value  { get; set; }
+        public string Controlname { get; set; }
+        public int Idaffectation { get; set; }
     }
 }

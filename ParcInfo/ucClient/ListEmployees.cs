@@ -13,36 +13,37 @@ namespace ParcInfo.ucClient
 {
     public partial class ListEmployees : UserControl
     {
-        public ListEmployees()
+
+
+        public int idC = 0;
+        public ListEmployees(int idClient)
         {
             InitializeComponent();
-        }
-
-        private void ListEmployees_Load(object sender, EventArgs e)
-        {
-
-            // Show List Employe [Client]
-            if (GlobVars.selectedClient > 0 && GlobVars.BtnName == "gpEmploye")
+            if (idClient > 0)
             {
+                idC = idClient;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-                    int id = GlobVars.selectedClient;
-                    Client c = context.Clients.Find(id);
+
+                    Client c = context.Clients.Find(idClient);
                     lblClientName.Visible = true;
                     lblClientName.Text = $"[{c.Nom}]";
 
 
                     var listEmp = (from emp in c.Employees
                                    join d in c.Departements on emp.IdDep equals d.id
+                                   where emp.IsDeleted != 1
                                    select new { emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
                     dgEmployees.DataSource = listEmp;
                 }
-
             }
+
         }
 
+        private void ListEmployees_Load(object sender, EventArgs e)
+        {
 
-
+        }
         private void gpDemandeEnCours_Click(object sender, EventArgs e)
         {
             if (dgEmployees.SelectedRows.Count > 0)
@@ -88,7 +89,7 @@ namespace ParcInfo.ucClient
 
         private void btnNewEmploye_Click(object sender, EventArgs e)
         {
-            frmCreateEmploye frm = new frmCreateEmploye();
+            frmCreateEmploye frm = new frmCreateEmploye(0,idC);
             frm.ShowDialog();
         }
 
@@ -97,11 +98,11 @@ namespace ParcInfo.ucClient
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                string id = myrow.Cells[0].Value.ToString();
-                GlobVars.selectedEmploye = int.Parse(id);
-                GlobVars.BtnName = "editEmploye";
+                int id = int.Parse(myrow.Cells[0].Value.ToString());
+                //GlobVars.selectedEmploye = int.Parse(id);
+                //GlobVars.BtnName = "editEmploye";
 
-                frmCreateEmploye frm = new frmCreateEmploye();
+                frmCreateEmploye frm = new frmCreateEmploye(id,idC);
 
                 frm.Show();
 

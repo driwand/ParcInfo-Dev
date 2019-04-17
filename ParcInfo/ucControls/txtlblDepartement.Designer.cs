@@ -45,6 +45,7 @@
             this.btnDelDepar.Size = new System.Drawing.Size(20, 20);
             this.btnDelDepar.TabIndex = 5;
             this.btnDelDepar.UseVisualStyleBackColor = true;
+            this.btnDelDepar.Click += new System.EventHandler(this.btnDelDepar_Click);
             // 
             // txtValue
             // 

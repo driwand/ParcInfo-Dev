@@ -32,5 +32,10 @@ namespace ParcInfo.ucControls
         {
             InitializeComponent();
         }
+
+        private void btnDelDepar_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }

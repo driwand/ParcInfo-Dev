@@ -42,9 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgEmployees = new System.Windows.Forms.DataGridView();
             this.lblClientName = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEditEmploye = new System.Windows.Forms.Button();
+            this.btnNewEmployee = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gpProduits = new ParcInfo.Classes.GradientPanel();
             this.label11 = new System.Windows.Forms.Label();
@@ -172,6 +171,7 @@
             this.cbDeleted.TabIndex = 75;
             this.cbDeleted.Text = "Afficher les elements supprimer";
             this.cbDeleted.UseVisualStyleBackColor = true;
+            this.cbDeleted.Click += new System.EventHandler(this.cbDeleted_CheckedChanged);
             // 
             // panel1
             // 
@@ -200,8 +200,10 @@
             this.dgEmployees.Location = new System.Drawing.Point(14, 104);
             this.dgEmployees.Name = "dgEmployees";
             this.dgEmployees.ReadOnly = true;
+            this.dgEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgEmployees.Size = new System.Drawing.Size(716, 351);
             this.dgEmployees.TabIndex = 69;
+            this.dgEmployees.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmployees_RowEnter);
             // 
             // lblClientName
             // 
@@ -213,46 +215,36 @@
             this.lblClientName.Text = "[Nom Client]";
             this.lblClientName.Visible = false;
             // 
-            // button3
+            // btnEditEmploye
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::ParcInfo.Properties.Resources.btnedit;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(777, 420);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 35);
-            this.button3.TabIndex = 74;
-            this.button3.Text = "    Modifier";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnEditEmploye.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnEditEmploye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditEmploye.ForeColor = System.Drawing.Color.White;
+            this.btnEditEmploye.Image = global::ParcInfo.Properties.Resources.btnedit;
+            this.btnEditEmploye.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditEmploye.Location = new System.Drawing.Point(736, 420);
+            this.btnEditEmploye.Name = "btnEditEmploye";
+            this.btnEditEmploye.Size = new System.Drawing.Size(141, 35);
+            this.btnEditEmploye.TabIndex = 74;
+            this.btnEditEmploye.Text = "    Consulter";
+            this.btnEditEmploye.UseVisualStyleBackColor = false;
+            this.btnEditEmploye.Click += new System.EventHandler(this.btnEditEmploye_Click);
             // 
-            // button2
+            // btnNewEmployee
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::ParcInfo.Properties.Resources.btndelete;
-            this.button2.Location = new System.Drawing.Point(736, 420);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 35);
-            this.button2.TabIndex = 73;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(736, 57);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 35);
-            this.button1.TabIndex = 72;
-            this.button1.Text = "  Nouveau";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnNewEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnNewEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnNewEmployee.Image = global::ParcInfo.Properties.Resources.btnadd;
+            this.btnNewEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewEmployee.Location = new System.Drawing.Point(736, 57);
+            this.btnNewEmployee.Name = "btnNewEmployee";
+            this.btnNewEmployee.Size = new System.Drawing.Size(141, 35);
+            this.btnNewEmployee.TabIndex = 72;
+            this.btnNewEmployee.Text = "  Nouveau";
+            this.btnNewEmployee.UseVisualStyleBackColor = false;
+            this.btnNewEmployee.Click += new System.EventHandler(this.btnNewEmploye_Click);
             // 
             // pictureBox1
             // 
@@ -518,9 +510,8 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cbDeleted);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnEditEmploye);
+            this.Controls.Add(this.btnNewEmployee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -560,9 +551,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox cbDeleted;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEditEmploye;
+        private System.Windows.Forms.Button btnNewEmployee;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;

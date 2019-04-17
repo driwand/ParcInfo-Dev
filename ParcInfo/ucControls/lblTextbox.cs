@@ -32,6 +32,11 @@ namespace ParcInfo.ucControls
             get { return lblid.Text; }
             set { lblid.Text = value; }
         }
+        public string LblAff
+        {
+            get { return lblAff.Text; }
+            set { lblAff.Text = value; }
+        }
         public lblTextbox()
         {
             InitializeComponent();

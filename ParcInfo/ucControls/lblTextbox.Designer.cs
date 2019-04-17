@@ -33,6 +33,7 @@
             this.btn_nouveau = new System.Windows.Forms.Button();
             this.btn_supprimer = new System.Windows.Forms.Button();
             this.lblid = new System.Windows.Forms.Label();
+            this.lblAff = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl
@@ -50,6 +51,7 @@
             this.txtValue.Location = new System.Drawing.Point(44, 2);
             this.txtValue.Margin = new System.Windows.Forms.Padding(0);
             this.txtValue.Name = "txtValue";
+            this.txtValue.ReadOnly = true;
             this.txtValue.Size = new System.Drawing.Size(217, 20);
             this.txtValue.TabIndex = 1;
             // 
@@ -88,10 +90,20 @@
             this.lblid.TabIndex = 3;
             this.lblid.Visible = false;
             // 
+            // lblAff
+            // 
+            this.lblAff.AutoSize = true;
+            this.lblAff.Location = new System.Drawing.Point(33, 0);
+            this.lblAff.Name = "lblAff";
+            this.lblAff.Size = new System.Drawing.Size(0, 13);
+            this.lblAff.TabIndex = 4;
+            this.lblAff.Visible = false;
+            // 
             // lblTextbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblAff);
             this.Controls.Add(this.lblid);
             this.Controls.Add(this.btn_supprimer);
             this.Controls.Add(this.btn_nouveau);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button btn_nouveau;
         private System.Windows.Forms.Button btn_supprimer;
         private System.Windows.Forms.Label lblid;
+        private System.Windows.Forms.Label lblAff;
     }
 }

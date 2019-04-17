@@ -13,33 +13,26 @@ namespace ParcInfo.ucClient
 {
     public partial class frmCreateEmploye : Form
     {
-        public frmCreateEmploye()
+
+        public int idemp = 0;
+        public int idC = 0;
+        public frmCreateEmploye(int idEmploye, int idClient)
         {
             InitializeComponent();
-
-               
-                int idClient = GlobVars.selectedClient;
-                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            idC = idClient;
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                // Edit Employee
+                if (idEmploye > 0)
                 {
-                // var listClient = context.Clients.ToList();
-                btnAjouter.Text = "Ajouter";
-                var Cli = context.Clients.Where(c=> c.id == idClient).FirstOrDefault();
-                
-
-
-                    txtDeaprt.DataSource = Cli.Departements.Where(d => d.IdDeleted != 1).ToList();
-                    txtDeaprt.ValueMember = "id";
-                    txtDeaprt.DisplayMember = "Nom";
-
-
-                if (GlobVars.selectedEmploye > 0)
-                {
+                    idemp = idEmploye;
                     btnAjouter.Text = "Enregistrer";
                     btnDelEmp.Visible = true;
-                    int idEmp = GlobVars.selectedEmploye;
-                    var emp = Cli.Employees.Where(e => e.Id == idEmp).FirstOrDefault();
+
+                    var emp = context.Employees.Find(idEmploye);
                     if (emp != null)
                     {
+
                         txtNom.Text = emp.Nom;
                         txtPrenom.Text = emp.Prenom;
                         txtTel.Text = emp.Tel;
@@ -55,9 +48,17 @@ namespace ParcInfo.ucClient
                         }
                     }
                 }
+
+                else
+                {
+                    btnAjouter.Text = "Ajouter";
+                }
+                txtDeaprt.DataSource = context.Departements.Where(c => c.IdCLient == idClient).ToList();
+                txtDeaprt.ValueMember = "id";
+                txtDeaprt.DisplayMember = "Nom";
             }
-            
         }
+
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
@@ -66,21 +67,16 @@ namespace ParcInfo.ucClient
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            int idC = GlobVars.selectedClient;
-            int idE = GlobVars.selectedEmploye;
+
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-
-
                 int txtEmpty = 0;
-
-
                 txtEmpty += Methods.Foucs(gbEmploye);
                 if (btnAjouter.Text == "Enregistrer")
                 {
                     // get values 
 
-                    var idEmp = context.Employees.Find(idE);
+                    var idEmp = context.Employees.Find(idemp);
                     idEmp.Nom = txtNom.Text;
                     idEmp.Prenom = txtPrenom.Text;
                     idEmp.Tel = txtTel.Text;
@@ -94,6 +90,7 @@ namespace ParcInfo.ucClient
                     idEmp.IsResponsable = Respo;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
+                    Close();
                 }
                 else if (btnAjouter.Text == "Ajouter")
                 {
@@ -120,8 +117,8 @@ namespace ParcInfo.ucClient
                         Close();
                     }
                 }
-            
-              
+
+
             }
         }
 
