@@ -36,7 +36,7 @@ namespace ParcInfo.Classes
                 }
                 else if (c is txtlblDepartement)
                 {
-                    ((txtlblDepartement)c).Txtvalue = "";
+                    ((txtlblDepartement)c).TxtValue = "";
                 }
             }
 
@@ -88,7 +88,7 @@ namespace ParcInfo.Classes
                 }
                 else if (c is txtlblDepartement lbl2)
                 {
-                    list.Add(new LabelControl() { Id = int.Parse(lbl2.Lblid), Value = lbl2.Txtvalue, IsDeleted = !lbl2.Visible });
+                    list.Add(new LabelControl() { Id = int.Parse(lbl2.Lblid), Value = lbl2.TxtValue, IsDeleted = !lbl2.Visible });
                 }
             }
             return list;
@@ -127,14 +127,14 @@ namespace ParcInfo.Classes
             {
                 if (c is txtlblDepartement)
                 {
-                    if (((txtlblDepartement)c).Txtvalue == "")
+                    if (((txtlblDepartement)c).TxtValue == "")
                     {
                         c.Focus();
                         count++;
                     }
                     else
                     {
-                        string name = ((txtlblDepartement)c).Txtvalue;
+                        string name = ((txtlblDepartement)c).TxtValue;
                         list.Add(name);
                     }
                 }

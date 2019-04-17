@@ -101,14 +101,14 @@ namespace ParcInfo.ucClient
                     if (listDepart != null && listDepart.Count > 0)
                     {
                         var depart = listDepart.FirstOrDefault();
-                        tbx.Txtvalue = depart.Nom;
+                        tbx.TxtValue = depart.Nom;
                         tbx.Lblid = depart.id.ToString();
                         foreach (var item in listDepart.Skip(1))
                         {
                             txtlblDepartement depr1 = new txtlblDepartement();
 
                             depr1.Name = "ucDepart" + deparName;
-                            depr1.Txtvalue = item.Nom.ToString();
+                            depr1.TxtValue = item.Nom.ToString();
                             depr1.Lblname = "Nom :";
                             depr1.Lblid = item.id.ToString();
                             depr1.Margin = new Padding(0, 0, 0, 12);
@@ -180,58 +180,26 @@ namespace ParcInfo.ucClient
         private void btnEditClient_Click(object sender, EventArgs e)
         {
             // get Client id 
-            int id = GlobVars.selectedClient;
-            Departement dt;
-            int txtEmpty = 0;
-            List<Departement> lsdep = new List<Departement>();
-
+            //int id = GlobVars.selectedClient;
+            //Departement dt;
+            //int txtEmpty = 0;
+            //List<Departement> lsdep = new List<Departement>();
 
 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                var dep = context.Departements.ToList();
+
+                var labelControlList = Methods.GetidList(PnlUsers);
 
 
 
-
-
-                // Departement
-
-                //var listDep = Methods.GetidList(PnlDepart);
-
-                //foreach (var item in listDep)
-                //{
-                //    MessageBox.Show(item.isVisible.ToString());
-                //}
-
-                //foreach (var item in emptyList)
-                //{
-                //    //if (item.Id > 0)
-                //    //{
-
-                //    //    var depart = dep.Where(dd => dd.id == item.Id).FirstOrDefault();
-                //    //    depart.Nom = item.Name;
-                //    //}
-                //    //else if (item.Id == 0)
-                //    //{
-                //    //    context.Departements.Add(new Departement { Nom = item.Name, IdCLient = id });
-                //    //}
-                //     if (item.Id > 0)
-                //    {
-                //        MessageBox.Show(item.isVisible.ToString());
-                //    }
-
-                //}
-
-
-
-
-                context.SaveChanges();
-
-
-
-
-
+                foreach (var item in labelControlList)
+                {
+                    if (item.Id > 0)
+                    {
+                        MessageBox.Show(item.Value);
+                    }
+                }
 
 
 

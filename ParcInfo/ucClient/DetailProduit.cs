@@ -19,8 +19,7 @@ namespace ParcInfo.ucClient
         public DetailProduit()
         {
             InitializeComponent();
-            lblTextbox.ClickedAdd += new EventHandler(ShowUserList_clicked);
-            AffectEmloyee.Close += new EventHandler(HideEmployeClient_clicked);
+          
 
             //ListUser.Clicked += new EventHandler(hideLog_click);
 
