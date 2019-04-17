@@ -15,7 +15,7 @@ namespace ParcInfo.Classes
     public static class ControlsClass
     {
 
-        
+
         public static bool isCollapsed = true;
         public static bool IsOpen = false;
         public static Panel isPanel;
@@ -41,7 +41,7 @@ namespace ParcInfo.Classes
         public static void CreateRadiusBorder(UserControl panel)
         {
             panel.BorderStyle = BorderStyle.None;
-            panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height,15, 15));
+            panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 15, 15));
         }
 
         public static void CreateRadiusBorder(Panel panel, int width, int height)
@@ -60,16 +60,16 @@ namespace ParcInfo.Classes
         /// <param name="panel"></param>
         public static void OpenMenu(Timer timer, Button btn, Panel panel)
         {
-                btn.Image = Resources.arrowDown1;
-                panel.Height += 10;
-                if (panel.Size == panel.MaximumSize)
-                {
-                    timer.Stop();
-                    IsOpen = true;
-                    isPanel = panel;
-                    isTimer = timer;
-                    isbtn = btn;
-                }
+            btn.Image = Resources.arrowDown1;
+            panel.Height += 10;
+            if (panel.Size == panel.MaximumSize)
+            {
+                timer.Stop();
+                IsOpen = true;
+                isPanel = panel;
+                isTimer = timer;
+                isbtn = btn;
+            }
         }
         public static void CloseMenu(Timer timer, Button btn, Panel panel)
         {
@@ -141,5 +141,45 @@ namespace ParcInfo.Classes
         //    shadow.RefreshShadow();
         //}
         //#endregion
+
+        public static void Nice_grid(string[] columns, string[] columnstext, DataGridView grid)
+        {
+            grid.AllowUserToAddRows = false;
+            grid.AllowUserToDeleteRows = false;
+            grid.AllowUserToResizeColumns = true;
+            grid.AllowUserToResizeRows = false;
+            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            DataGridViewCellStyle DataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            DataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25f);
+            DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            DataGridViewCellStyle1.FormatProvider = new System.Globalization.CultureInfo("fr-FR");
+            DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            grid.BackgroundColor = Color.WhiteSmoke;
+            grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1;
+            grid.ReadOnly = true;
+            grid.ColumnHeadersHeight = 30;
+            grid.RowHeadersVisible = false;
+            grid.ScrollBars = ScrollBars.Vertical;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.MultiSelect = false;
+            int index = 0;
+            foreach (DataGridViewColumn r in grid.Columns)
+            {
+                if (!(Array.IndexOf(columns, r.Name) > -1))
+                {
+                    r.Visible = false;
+                }
+                else
+                {
+                    index = index + 1;
+                    r.Width = grid.Width / columns.Length;
+                    r.HeaderText = columnstext[index - 1];
+                }
+            }
+        }
     }
 }
