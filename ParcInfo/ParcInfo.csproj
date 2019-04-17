@@ -184,6 +184,12 @@
     <Compile Include="ucControls\MultiLineLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ucControls\notifMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\notifMenu.Designer.cs">
+      <DependentUpon>notifMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\ProduitInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -334,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\lblTextbox.resx">
       <DependentUpon>lblTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\notifMenu.resx">
+      <DependentUpon>notifMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\ProduitInfo.resx">
       <DependentUpon>ProduitInfo.cs</DependentUpon>

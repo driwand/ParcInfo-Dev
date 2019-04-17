@@ -287,7 +287,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ParcInfo.Properties.Resources.addForms;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -297,7 +297,7 @@
             // lblIntervention
             // 
             this.lblIntervention.AutoSize = true;
-            this.lblIntervention.Location = new System.Drawing.Point(143, 24);
+            this.lblIntervention.Location = new System.Drawing.Point(143, 21);
             this.lblIntervention.Name = "lblIntervention";
             this.lblIntervention.Size = new System.Drawing.Size(62, 13);
             this.lblIntervention.TabIndex = 45;
@@ -343,7 +343,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(56, 23);
+            this.label1.Location = new System.Drawing.Point(56, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 69;
@@ -352,7 +352,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.panel1.Location = new System.Drawing.Point(19, 58);
+            this.panel1.Location = new System.Drawing.Point(19, 49);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(854, 2);
             this.panel1.TabIndex = 71;
@@ -383,16 +383,16 @@
             // pnlObservetion
             // 
             this.pnlObservetion.AutoScroll = true;
-            this.pnlObservetion.Location = new System.Drawing.Point(18, 20);
+            this.pnlObservetion.Location = new System.Drawing.Point(18, 32);
             this.pnlObservetion.Name = "pnlObservetion";
             this.pnlObservetion.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlObservetion.Size = new System.Drawing.Size(529, 262);
+            this.pnlObservetion.Size = new System.Drawing.Size(529, 250);
             this.pnlObservetion.TabIndex = 0;
             // 
             // lblDetails
             // 
             this.lblDetails.AutoSize = true;
-            this.lblDetails.Location = new System.Drawing.Point(238, 24);
+            this.lblDetails.Location = new System.Drawing.Point(238, 21);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(122, 13);
             this.lblDetails.TabIndex = 79;

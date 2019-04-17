@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.Classes;
+using ParcInfo.ucInterevntion;
 
 namespace ParcInfo.ucClient
 {
@@ -53,48 +54,19 @@ namespace ParcInfo.ucClient
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
+
                     if (countReq == 0 && statutReq == "")
                     {
-                        var lsReq = context.Demandes.ToList();
-                        dgDemande.DataSource = lsReq;
-                        lblTotalRequest.Text = lsReq.Count().ToString();
-
+                        dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest);
                     }
                     else
                     {
-                        dgDemande.DataSource = getRequest(statutReq);
-                        lblTotalRequest.Text = countReq.ToString();
+                        dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest, statutReq);
                     }
                 }
             }
         }
-        public List<Demande> getRequest(string stat, bool tes = false)
-        {
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-            {
-                var lsReq = new List<Demande>();
-
-                switch (stat)
-                {
-                    case "en cours":
-                        lblTotalRequest.BackColor = Color.FromArgb(250, 130, 49);
-                        break;
-                    case "en retard":
-                        lblTotalRequest.BackColor = Color.FromArgb(252, 92, 101);
-                        break;
-                    case "terminer":
-                        lblTotalRequest.BackColor = Color.FromArgb(32, 191, 107);
-                        break;
-                }
-
-                lsReq = (from c in context.Demandes
-                         where c.Statut == stat
-                         select c).ToList();
-
-
-                return lsReq.ToList();
-            }
-        }
+    
         public void clientRequets()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -141,12 +113,12 @@ namespace ParcInfo.ucClient
         private void btnTraiter_Click(object sender, EventArgs e)
         {
             int index = dgDemande.CurrentRow.Index;
-            GlobVars.selectedRequest = int.Parse(dgDemande.Rows[index].Cells[0].Value.ToString());
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
+            using (var db = new ParcInformatiqueEntities())
             {
-                GlobVars.selectedClient = context.Demandes.Find(GlobVars.selectedRequest).Employee.Client.id;
+                int idClient = db.Employees.Find(selectedRequest).Client.id;
+                GlobVars.frmindex.ShowControl(new NewIntervention() { selectedRequest = selectedRequest, selectedClient = idClient });
             }
-
         }
     }
 }

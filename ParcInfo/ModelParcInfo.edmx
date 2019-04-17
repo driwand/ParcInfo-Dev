@@ -50,7 +50,7 @@
           <Property Name="IdEmployee" Type="int" />
           <Property Name="Datemodification" Type="date" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Departement">
           <Key>
@@ -970,7 +970,7 @@
           <Property Name="IdEmployee" Type="Int32" />
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Demande__IdEmplo__3F466844" FromRole="Demande" ToRole="Employee" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Demande__Modifie__403A8C7D" FromRole="Demande" ToRole="Utilisateur" />
           <NavigationProperty Name="Interventions" Relationship="Self.FK__Intervent__IdDem__440B1D61" FromRole="Demande" ToRole="Intervention" />

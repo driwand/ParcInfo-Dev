@@ -94,12 +94,11 @@ namespace ParcInfo.frmDefault
             this.TmrParms = new System.Windows.Forms.Timer(this.components);
             this.tmrReal = new System.Windows.Forms.Timer(this.components);
             this.tmrRetard = new System.Windows.Forms.Timer(this.components);
-            this.dragControl1 = new ParcInfo.ucControls.DragControl();
             this.getRealdata = new System.ComponentModel.BackgroundWorker();
+            this.dragControl1 = new ParcInfo.ucControls.DragControl();
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
-            this.PanelContainer.SuspendLayout();
             this.DropDemande.SuspendLayout();
             this.PanelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).BeginInit();
@@ -201,7 +200,6 @@ namespace ParcInfo.frmDefault
             // PanelContainer
             // 
             this.PanelContainer.BackColor = System.Drawing.Color.White;
-            this.PanelContainer.Controls.Add(this.DropDemande);
             this.PanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContainer.Location = new System.Drawing.Point(20, 20);
             this.PanelContainer.Name = "PanelContainer";
@@ -220,11 +218,11 @@ namespace ParcInfo.frmDefault
             this.DropDemande.Controls.Add(this.btnDemandeCours);
             this.DropDemande.Controls.Add(this.btnListDemande);
             this.DropDemande.Controls.Add(this.btnRequest);
-            this.DropDemande.Location = new System.Drawing.Point(24, 94);
+            this.DropDemande.Location = new System.Drawing.Point(2, 143);
             this.DropDemande.MaximumSize = new System.Drawing.Size(224, 206);
             this.DropDemande.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropDemande.Name = "DropDemande";
-            this.DropDemande.Size = new System.Drawing.Size(224, 206);
+            this.DropDemande.Size = new System.Drawing.Size(224, 41);
             this.DropDemande.TabIndex = 7;
             // 
             // lblRequestTerminer
@@ -479,6 +477,7 @@ namespace ParcInfo.frmDefault
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.DropDemande);
             this.pnlMenu.Controls.Add(this.DropIntervention);
             this.pnlMenu.Controls.Add(this.DropParametre);
             this.pnlMenu.Controls.Add(this.DropProduit);
@@ -506,7 +505,7 @@ namespace ParcInfo.frmDefault
             this.DropIntervention.MaximumSize = new System.Drawing.Size(224, 206);
             this.DropIntervention.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropIntervention.Name = "DropIntervention";
-            this.DropIntervention.Size = new System.Drawing.Size(224, 206);
+            this.DropIntervention.Size = new System.Drawing.Size(224, 41);
             this.DropIntervention.TabIndex = 9;
             // 
             // lblInterventionTerminer
@@ -941,14 +940,14 @@ namespace ParcInfo.frmDefault
             this.tmrReal.Interval = 1000;
             this.tmrReal.Tick += new System.EventHandler(this.tmrReal_Tick);
             // 
-            // dragControl1
-            // 
-            this.dragControl1.SelectControl = this.PanelHeader;
-            // 
             // getRealdata
             // 
             this.getRealdata.DoWork += new System.ComponentModel.DoWorkEventHandler(this.getRealdata_DoWork);
             this.getRealdata.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.getRealdata_RunWorkerCompleted);
+            // 
+            // dragControl1
+            // 
+            this.dragControl1.SelectControl = this.PanelHeader;
             // 
             // FrmDefault
             // 
@@ -964,7 +963,6 @@ namespace ParcInfo.frmDefault
             this.panel2.ResumeLayout(false);
             this.PanelMain.ResumeLayout(false);
             this.DropdownUserMenu.ResumeLayout(false);
-            this.PanelContainer.ResumeLayout(false);
             this.DropDemande.ResumeLayout(false);
             this.PanelHeader.ResumeLayout(false);
             this.PanelHeader.PerformLayout();

@@ -56,33 +56,21 @@ namespace ParcInfo.frmDefault
 
         void checkDb()
         {
-            using (ParcInformatiqueEntities db = new ParcInformatiqueEntities())
+            using (var db = new ParcInformatiqueEntities())
             {
 
                 countIntervTerminer = db.GetIntervtermine.Count();
                 countIntervCours = db.GetIntervEncours.Count();
                 countIntervRetard = db.GetIntervenretard.Count();
 
-
                 countIntervDeInt = countIntervRetard + countIntervCours;
 
-                //foreach (var demande in db.getin)
-                //    switch (demande.Key)
-                //    {
-                //        case "en attente":
-                //            countRequestAttente = demande.Count();
-                //            break;
-                //        case "terminer":
-                //            countRequestTerminer = demande.Count();
-                //            break;
-                //        case "en cours":
-                //            countRequestCours = demande.Count();
-                //            break;
-                //        case "en retard":
-                //            countRequestRetard = demande.Count();
-                //            break;
 
-                //    }
+                countRequestTerminer = db.GetRequestTerminer.Count();
+                countRequestCours = db.GetRequestCours.Count();
+                countRequestRetard = db.GetRequestRetard.Count();
+                countRequestAttente = db.GetRequestAttent.Count();
+                  
                 countRequestDeInt = countRequestRetard + countRequestCours;
             }
         }
@@ -305,25 +293,25 @@ namespace ParcInfo.frmDefault
     //all the interventions
     private void btnListIntervention_Click(object sender, EventArgs e)
     {
-        ListeIntervention intervention = new ListeIntervention() { statutInterv = "" };
+            ListeIntervention intervention = new ListeIntervention("",0);
         ShowControl(intervention);
     }
     //intervention 'en cours'
     private void btnInterventionCours_Click(object sender, EventArgs e)
     {
-        ListeIntervention intervention = new ListeIntervention() { countInterv = countIntervCours, statutInterv = "en cours" };
+        ListeIntervention intervention = new ListeIntervention("en cours", countIntervCours);
         ShowControl(intervention);
     }
     //intervention 'en retard'
     private void btnInterventionRetard_Click(object sender, EventArgs e)
     {
-        ListeIntervention intervention = new ListeIntervention() { countInterv = countIntervRetard, statutInterv = "en retard" };
+        ListeIntervention intervention = new ListeIntervention("en retard", countIntervRetard);
         ShowControl(intervention);
     }
     //intervention 'terminer'
     private void btnInterventionTerminer_Click(object sender, EventArgs e)
     {
-        ListeIntervention intervention = new ListeIntervention() { countInterv = countIntervTerminer, statutInterv = "terminer" };
+        ListeIntervention intervention = new ListeIntervention("terminer",countIntervTerminer);
         ShowControl(intervention);
     }
     #endregion
@@ -390,6 +378,8 @@ namespace ParcInfo.frmDefault
         lblRequestCours.Text = countRequestCours.ToString();
         lblRequestRetard.Text = countRequestRetard.ToString();
         lblRequestTerminer.Text = countRequestTerminer.ToString();
+        
+
         lblNotif.Text = countRequestAttente.ToString();
 
         lblInterventionTerminer.Update();
