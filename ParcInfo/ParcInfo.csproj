@@ -121,13 +121,13 @@
     <Compile Include="ProduitUtiliser.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProprietesProduit.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="RoleUtilisateur.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="TypeProduit.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="ucClient\CreateEmploye.cs">

@@ -211,11 +211,20 @@ namespace ParcInfo.ucClient
                 {
                     if (item.Idaffectation > 0 && !item.IsDeleted)
                     {
-                        
+                        var aff = cli.AffectationClients.Where(d => d.Idutilisateur == item.Id).FirstOrDefault();
+                        if (aff == null)
+                        {
+                            aff = cli.AffectationClients.Where(a => a.Id == item.Idaffectation).FirstOrDefault();
+                            aff.IsDeleted = 1;
+                            aff.Datemodification = DateTime.Now;
+                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id });
+                        }
+                   
                     }
                     else if (item.Idaffectation == 0)
                     {
                         var ac = cli.AffectationClients.Where(af => af.Idutilisateur == item.Id).FirstOrDefault() ;
+                        // check if user already 
                         if (ac == null)
                         {
                             context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id });
@@ -224,7 +233,6 @@ namespace ParcInfo.ucClient
                         {
                            
                         }
-                       
                     }
                     else if (item.Idaffectation >= 0 && item.IsDeleted)
                     {

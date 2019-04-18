@@ -32,74 +32,51 @@ namespace ParcInfo.ucClient
             InitializeComponent();
             using (var db = new ParcInformatiqueEntities())
             {
-               
+
                 var res = db.Demandes.Where(x => x.Employee.Client.id == idClient).ToList();
                 dgDemande.DataSource = res;
             }
         }
-        public ListDemande(int idEmployee)
-        {
-            InitializeComponent();
-            {
-                using (var context = new ParcInformatiqueEntities())
-                {
-                  
+        //public ListDemande(int idEmployee,string statut,int count)
+        //{
+        //    InitializeComponent();
+        //    {
+        //        using (var db = new ParcInformatiqueEntities())
+        //        {
 
-                }
-            }
-        }
-        public ListDemande(string statutReq, int countReq,int idEmploye)
+
+        //            if (count == 0 && statut == "")
+        //            {
+        //              // var d = db.GetRequestbyStatut(lblTotalRequest);
+        //                dgDemande.DataSource = db.GetRequestbyStatut(lblTotalRequest).Where(e => e.IdEmployee == idEmployee).ToList();
+        //            }
+        //            else
+        //            {
+        //                 var d = db.GetRequestbyStatut(lblTotalRequest, statut);
+        //                dgDemande.DataSource = d.Where(e => e.IdEmployee == idEmployee).ToList();
+        //            }
+        //        }
+        //    }
+        //}
+        public ListDemande(string statutReq, int countReq, int idEmploye)
         {
             InitializeComponent();
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-
-                    if (countReq == 0 && statutReq == "")
+                    if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
                         dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest);
                     }
+                 
                     else
                     {
-                        dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest, statutReq);
+                        dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest, statutReq, idEmploye);
                     }
                 }
             }
         }
-    
-        //public void clientRequets()
-        //{
-        //    using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-        //    {
-        //        var demand = Methods.ToDataTable<Demande>(context.Demandes.ToList());
-        //        dgDemande.DataSource = demand;
 
-        //        if (GlobVars.selectedEmploye > 0)
-        //        {
-        //            string name = GlobVars.BtnName;
-        //            int id = GlobVars.selectedEmploye;
-        //            var emp = context.Employees.Find(id);
-        //            lblEmployeClient.Visible = true;
-        //            switch (name)
-        //            {
-        //                case "gpDemandeEncours":
-        //                    Methods.getDemande(dgDemande, id, "en cours");
-        //                    lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
-        //                    break;
-        //                case "gpDemandeEnRetard":
-        //                    Methods.getDemande(dgDemande, id, "en retard");
-        //                    lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
-        //                    break;
-        //                case "gpDemandeE":
-        //                    Methods.getDemande(dgDemande, id, "");
-        //                    lblEmployeClient.Text = $"[{emp.Nom} {emp.Prenom}]";
-        //                    break;
-        //                default:
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //}
         private void ListRequest_Load(object sender, EventArgs e)
         {
             //ControlsClass.CreateRadiusBorder(this);

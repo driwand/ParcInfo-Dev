@@ -33,7 +33,7 @@ namespace ParcInfo.ucClient
                     var listEmp = (from emp in c.Employees
                                    join d in c.Departements on emp.IdDep equals d.id
                                    where emp.IsDeleted != 1
-                                   select new { emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
+                                   select new {  emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
                     dgEmployees.DataSource = listEmp;
                 }
             }
@@ -44,6 +44,7 @@ namespace ParcInfo.ucClient
         {
 
         }
+        // Employe demande en cours
         private void gpDemandeEnCours_Click(object sender, EventArgs e)
         {
             if (dgEmployees.SelectedRows.Count > 0)
@@ -51,36 +52,34 @@ namespace ParcInfo.ucClient
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells[0].Value.ToString());
                 GlobVars.frmBack = this;
-               GlobVars.frmindex.ShowControl(new ListDemande("en cours", 22,id), true);
+                GlobVars.frmindex.ShowControl(new ListDemande("en cours",0,id), true);
             }
         }
-
+        //Employe Demande En retard
         private void gpDemandeRetard_Click(object sender, EventArgs e)
         {
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                string id = myrow.Cells[0].Value.ToString();
-                GlobVars.selectedEmploye = int.Parse(id);
-                GlobVars.BtnName = "gpDemandeEnRetard";
+                int id = int.Parse(myrow.Cells[0].Value.ToString());
+                
                 GlobVars.frmBack = this;
-                //GlobVars.frmindex.ShowControl(new ListDemande(), true);
+                GlobVars.frmindex.ShowControl(new ListDemande("en retard", 0, id), true);
             }
         }
-
+        // Employe demandes
         private void gpDemande_Click(object sender, EventArgs e)
         {
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                string id = myrow.Cells[0].Value.ToString();
-                GlobVars.selectedEmploye = int.Parse(id);
-                GlobVars.BtnName = "gpDemandeE";
+                int id = int.Parse(myrow.Cells[0].Value.ToString());
+               
                 GlobVars.frmBack = this;
-                //GlobVars.frmindex.ShowControl(new ListDemande(), true);
+                GlobVars.frmindex.ShowControl(new ListDemande("", 0, id), true);
             }
         }
-
+        // Employe Produits
         private void gpProduits_Click(object sender, EventArgs e)
         {
 
@@ -144,12 +143,12 @@ namespace ParcInfo.ucClient
                     }
                     // Employe Count
 
-                    encoursCount.Text = Cli.Demandes.Where(d => d.Statut == "en cours").Count().ToString();
-                    enretardCount.Text = Cli.Demandes.Where(d => d.Statut == "en retard").Count().ToString();
 
-
-                    allCount.Text = Cli.Demandes.Count().ToString();
-                    produitCount.Text = Cli.ProduitUtilisers.Count.ToString();
+                   
+                    encoursCount.Text = context.GetRequestCours.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
+                    enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
+                   allCount.Text = Cli.Demandes.Count().ToString();
+                   produitCount.Text = Cli.ProduitUtilisers.Count.ToString();
 
 
                 }
@@ -161,9 +160,8 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
 
-
-                int id = GlobVars.selectedClient;
-                Client c = context.Clients.Find(id);
+            
+                Client c = context.Clients.Find(idC);
 
 
 

@@ -1134,7 +1134,7 @@
           <NavigationProperty Name="UtilisateurEdit" Relationship="Self.FK__ProduitUt__Modif__5DCAEF64" FromRole="ProduitUtiliser" ToRole="Utilisateur" />
           <Property Name="Dateaffectation" Type="DateTime" Precision="0" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
-        <EntityType Name="ProprietesProduit">
+        <EntityType Name="u">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1639,7 +1639,7 @@
         </Association>
         <Association Name="FK__Propriete__idTyp__38996AB5">
           <End Role="TypeProduit" Type="Self.TypeProduit" Multiplicity="0..1" />
-          <End Role="ProprietesProduit" Type="Self.ProprietesProduit" Multiplicity="*" />
+          <End Role="ProprietesProduit" Type="ParcInformatiqueModel.u" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeProduit">
               <PropertyRef Name="id" />
@@ -1650,7 +1650,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ValeurPro__IdPro__3C69FB99">
-          <End Role="ProprietesProduit" Type="Self.ProprietesProduit" Multiplicity="0..1" />
+          <End Role="ProprietesProduit" Type="ParcInformatiqueModel.u" Multiplicity="0..1" />
           <End Role="ValeurProp" Type="Self.ValeurProp" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProprietesProduit">
@@ -1733,7 +1733,7 @@
           <EntitySet Name="Produits" EntityType="Self.Produit" />
           <EntitySet Name="ProduitClients" EntityType="Self.ProduitClient" />
           <EntitySet Name="ProduitUtilisers" EntityType="Self.ProduitUtiliser" />
-          <EntitySet Name="ProprietesProduits" EntityType="Self.ProprietesProduit" />
+          <EntitySet Name="u" EntityType="ParcInformatiqueModel.u" />
           <EntitySet Name="RoleUtilisateurs" EntityType="Self.RoleUtilisateur" />
           <EntitySet Name="TypeProduits" EntityType="Self.TypeProduit" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
@@ -1876,10 +1876,10 @@
           </AssociationSet>
           <AssociationSet Name="FK__Propriete__idTyp__38996AB5" Association="Self.FK__Propriete__idTyp__38996AB5">
             <End Role="TypeProduit" EntitySet="TypeProduits" />
-            <End Role="ProprietesProduit" EntitySet="ProprietesProduits" />
+            <End Role="ProprietesProduit" EntitySet="u" />
           </AssociationSet>
           <AssociationSet Name="FK__ValeurPro__IdPro__3C69FB99" Association="Self.FK__ValeurPro__IdPro__3C69FB99">
-            <End Role="ProprietesProduit" EntitySet="ProprietesProduits" />
+            <End Role="ProprietesProduit" EntitySet="u" />
             <End Role="ValeurProp" EntitySet="ValeurProps" />
           </AssociationSet>
           <AssociationSet Name="FK__RoleUtili__Creep__182C9B23" Association="Self.FK__RoleUtili__Creep__182C9B23">
@@ -2086,8 +2086,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProprietesProduits">
-            <EntityTypeMapping TypeName="ParcInformatiqueModel.ProprietesProduit">
+          <EntitySetMapping Name="u">
+            <EntityTypeMapping TypeName="ParcInformatiqueModel.u">
               <MappingFragment StoreEntitySet="ProprietesProduit">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />

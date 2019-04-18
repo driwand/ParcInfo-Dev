@@ -14,7 +14,7 @@ namespace ParcInfo.ucClient
     public partial class frmCreateEmploye : Form
     {
 
-        public int idemp = 0;
+        public int idE = 0;
         public int idC = 0;
         public frmCreateEmploye(int idEmploye, int idClient)
         {
@@ -25,7 +25,7 @@ namespace ParcInfo.ucClient
                 // Edit Employee
                 if (idEmploye > 0)
                 {
-                    idemp = idEmploye;
+                    idE = idEmploye;
                     btnAjouter.Text = "Enregistrer";
                     btnDelEmp.Visible = true;
 
@@ -76,7 +76,7 @@ namespace ParcInfo.ucClient
                 {
                     // get values 
 
-                    var idEmp = context.Employees.Find(idemp);
+                    var idEmp = context.Employees.Find(idE);
                     idEmp.Nom = txtNom.Text;
                     idEmp.Prenom = txtPrenom.Text;
                     idEmp.Tel = txtTel.Text;
@@ -88,7 +88,9 @@ namespace ParcInfo.ucClient
                         Respo = 1;
                     }
                     idEmp.IsResponsable = Respo;
+                    idEmp.Modifierpar = 1;
                     idEmp.Datemodification = DateTime.Now;
+                    
                     context.SaveChanges();
                     Close();
                 }

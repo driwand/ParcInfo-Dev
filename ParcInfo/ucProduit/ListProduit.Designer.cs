@@ -44,10 +44,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.produitInfo1 = new ParcInfo.ucControls.ProduitInfo();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.produitInfo1 = new ParcInfo.ucControls.ProduitInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -198,7 +198,7 @@
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Image = global::ParcInfo.Properties.Resources.edit201;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(230, 433);
+            this.button5.Location = new System.Drawing.Point(120, 433);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(91, 32);
             this.button5.TabIndex = 132;
@@ -212,21 +212,12 @@
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = global::ParcInfo.Properties.Resources.btnadd;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(133, 433);
+            this.button4.Location = new System.Drawing.Point(233, 433);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(91, 32);
             this.button4.TabIndex = 133;
             this.button4.Text = "   Ajouter";
             this.button4.UseVisualStyleBackColor = false;
-            // 
-            // produitInfo1
-            // 
-            this.produitInfo1.BackColor = System.Drawing.Color.White;
-            this.produitInfo1.Location = new System.Drawing.Point(14, 49);
-            this.produitInfo1.Margin = new System.Windows.Forms.Padding(0);
-            this.produitInfo1.Name = "produitInfo1";
-            this.produitInfo1.Size = new System.Drawing.Size(318, 381);
-            this.produitInfo1.TabIndex = 136;
             // 
             // groupBox1
             // 
@@ -258,13 +249,22 @@
             this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
             this.numericUpDown1.TabIndex = 0;
             // 
+            // produitInfo1
+            // 
+            this.produitInfo1.BackColor = System.Drawing.Color.White;
+            this.produitInfo1.Location = new System.Drawing.Point(14, 49);
+            this.produitInfo1.Margin = new System.Windows.Forms.Padding(0);
+            this.produitInfo1.Name = "produitInfo1";
+            this.produitInfo1.Size = new System.Drawing.Size(309, 386);
+            this.produitInfo1.TabIndex = 138;
+            // 
             // ListProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.produitInfo1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.groupBox2);
@@ -308,9 +308,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private ucControls.ProduitInfo produitInfo1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button1;
+        private ucControls.ProduitInfo produitInfo1;
     }
 }

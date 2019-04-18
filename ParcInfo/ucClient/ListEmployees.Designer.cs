@@ -89,7 +89,7 @@
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(456, 462);
+            this.lblEditedDate.Location = new System.Drawing.Point(473, 462);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
             this.lblEditedDate.TabIndex = 83;
@@ -98,7 +98,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(389, 462);
+            this.label13.Location = new System.Drawing.Point(406, 462);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 13);
             this.label13.TabIndex = 82;

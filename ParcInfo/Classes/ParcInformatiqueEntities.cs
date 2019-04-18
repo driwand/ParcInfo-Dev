@@ -105,7 +105,7 @@ namespace ParcInfo
                 return GetRequests.Where(x => x.Statut == "terminer");
             }
         }
-        public ICollection<Demande> GetRequestbyStatut(Label lbl, string statut = "")
+        public ICollection<Demande> GetRequestbyStatut(Label lbl, string statut = "",int idEmp= 0)
         {
             IQueryable<Demande> list = GetRequests;
           
@@ -126,10 +126,10 @@ namespace ParcInfo
                     break;
 
             }
-            //if (idEmp > 0)
-            //{
-            //    return list.ToList().Where(c=> c.IdEmployee == idEmp).ToList();
-            //}
+            if (idEmp > 0)
+            {
+                return list.ToList().Where(c => c.IdEmployee == idEmp).ToList();
+            }
             lbl.Text = list.Count().ToString();
             return list.ToList();
         }

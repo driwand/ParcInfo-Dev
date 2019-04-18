@@ -93,7 +93,7 @@ namespace ParcInfo.ucClient
             GlobVars.frmindex.ShowControl(new ListeIntervention("",0));
           
         }
-
+        
         private void gpDemande_Click(object sender, EventArgs e)
         {
             int index = dgClients.CurrentRow.Index;

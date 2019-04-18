@@ -18,7 +18,7 @@ namespace ParcInfo
         public TypeProduit()
         {
             this.Produits = new HashSet<Produit>();
-            this.ProprietesProduits = new HashSet<ProprietesProduit>();
+            this.ProprietesProduits = new HashSet<u>();
         }
     
         public int id { get; set; }
@@ -30,6 +30,6 @@ namespace ParcInfo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produit> Produits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProprietesProduit> ProprietesProduits { get; set; }
+        public virtual ICollection<u> ProprietesProduits { get; set; }
     }
 }

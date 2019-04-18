@@ -15,6 +15,9 @@ namespace ParcInfo.ucClient
         public ListProduit()
         {
             InitializeComponent();
+
+            
+            
         }
     }
 }
