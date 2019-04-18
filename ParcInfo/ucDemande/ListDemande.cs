@@ -72,6 +72,12 @@ namespace ParcInfo.ucClient
                     else
                     {
                         dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest, statutReq, idEmploye);
+                        if (idEmploye > 0)
+                        {
+                            Employee em = context.Employees.Find(idEmploye);
+                            lblEmployeClient.Text = $"[{em.Nom} {em.Prenom}]";
+                            lblEmployeClient.Visible = true;
+                        }
                     }
                 }
             }
