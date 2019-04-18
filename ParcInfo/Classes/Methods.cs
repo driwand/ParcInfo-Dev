@@ -41,42 +41,53 @@ namespace ParcInfo.Classes
                     ((txtlblDepartement)c).TxtValue = "";
                 }
             }
-
+       
         }
-        public static int Foucs(Control control)
+
+        public static int Focus(Control control)
         {
             int count = 0;
             foreach (Control c in control.Controls)
             {
                 if (c is GroupBox)
                 {
-                    Foucs(c);
-                }
-                else if (c is TextBox)
-                {
-                    if (c.Tag != null)
+                    var em = (from x in c.Controls.OfType<TextBox>()
+                              where x.Text == "" && x.Tag != null
+                              select x
+                                ).LastOrDefault();
+                    if (em != null)
                     {
-                        if (c.Text == "")
-                        {
-                            c.Focus();
-                            count++;
-                        }
+                        em.Focus();
+                        count++;
                     }
+                  
                 }
-                else if (c is Panel)
+                if (c is Panel)
                 {
-                    Foucs(c);
-                }
-                else if (c is lblTextbox)
-                {
-                    if (((lblTextbox)c).TxtValue == "")
+                    var lblDep = (from x in c.Controls.OfType<txtlblDepartement>()
+                               where x.TxtValue == ""
+                               select x
+                           ).LastOrDefault();
+
+                    if (lblDep != null)
                     {
-                        c.Focus();
+                        lblDep.Focus();
+                        count++;
+                    }
+                    var lblUser = (from x in c.Controls.OfType<lblTextbox>()
+                               where x.TxtValue == ""
+                               select x
+                          ).LastOrDefault();
+
+                    if (lblUser != null)
+                    {
+                        lblUser.Focus();
                         count++;
                     }
                 }
             }
             return count;
+
         }
 
         public static List<LabelControl> GetidList(Control control)
@@ -119,29 +130,6 @@ namespace ParcInfo.Classes
                     dg.DataSource = DemandesEmp;
                 }
             }
-        }
-
-
-        public static int CheckDepart(Control control, List<string> list)
-        {
-            int count = 0;
-            foreach (Control c in control.Controls)
-            {
-                if (c is txtlblDepartement)
-                {
-                    if (((txtlblDepartement)c).TxtValue == "")
-                    {
-                        c.Focus();
-                        count++;
-                    }
-                    else
-                    {
-                        string name = ((txtlblDepartement)c).TxtValue;
-                        list.Add(name);
-                    }
-                }
-            }
-            return count;
         }
 
         public static DataTable ToDataTable<T>(IList<T> data)

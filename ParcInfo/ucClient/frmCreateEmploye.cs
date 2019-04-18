@@ -71,7 +71,7 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 int txtEmpty = 0;
-                txtEmpty += Methods.Foucs(gbEmploye);
+              //  txtEmpty += Methods.Foucs(gbEmploye);
                 if (btnAjouter.Text == "Enregistrer")
                 {
                     // get values 

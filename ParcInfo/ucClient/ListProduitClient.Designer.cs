@@ -78,7 +78,7 @@
             this.dgProduit.AllowUserToAddRows = false;
             this.dgProduit.AllowUserToDeleteRows = false;
             this.dgProduit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProduit.Location = new System.Drawing.Point(14, 104);
+            this.dgProduit.Location = new System.Drawing.Point(-16, 206);
             this.dgProduit.Name = "dgProduit";
             this.dgProduit.ReadOnly = true;
             this.dgProduit.Size = new System.Drawing.Size(863, 363);
