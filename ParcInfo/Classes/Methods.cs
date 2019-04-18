@@ -228,6 +228,7 @@ namespace ParcInfo.Classes
             grid.AllowUserToDeleteRows = false;
             grid.AllowUserToResizeColumns = true;
             grid.AllowUserToResizeRows = false;
+          
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             DataGridViewCellStyle DataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
