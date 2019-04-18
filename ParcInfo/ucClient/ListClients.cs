@@ -137,7 +137,7 @@ namespace ParcInfo.ucClient
             int id = int.Parse(dgClients.Rows[index].Cells[0].Value.ToString());
             //GlobVars.selectedClient = id;
 
-            GlobVars.frmindex.ShowControl(new NewIntervention() { selectedClient = id });
+            GlobVars.frmindex.ShowControl(new NewIntervention(id,0,0));
         }
 
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)

@@ -26,57 +26,71 @@ namespace ParcInfo.ucInterevntion
 
                     var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
                              select new {
-                                 idInter = "INV-" + splitdate(ir.DateIntervention.ToString()) + ir.Id,
+                                 ir.IdIntrv,
                                  ir.Id,
                                  ir.Debut,
                                  ir.Fin,
-                                 ir.Getstatut,
                                  ir.Idclient,
-                                 ir.IdDemande
+                                 ir.IdDemande,
+                                 ir.Getstatut
                              }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
 
-                    dgIntervention.Columns["id"].Visible = false;
+                    
                 }
                 else
                 {
-                    var ls = context.GetInterventionBystatut(lblTotalIntervention, statutInterv).ToList();
+                    var ls = ( from ir in context.GetInterventionBystatut(lblTotalIntervention, statutInterv)
+                               select new {
+                                   ir.IdIntrv,
+                                   ir.Id,
+                                   ir.Debut,
+                                   ir.Fin,
+                                   ir.Idclient,
+                                   ir.IdDemande,
+                                   ir.Getstatut
+                               }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
+                dgIntervention.Columns["id"].Visible = false;
                 Methods.Nice_grid(
-                    new string[] { "idInter", "Debut", "Fin", "Getstatut", "Idclient", "IdDemande" },
-                    new string[] { "ID Intervention", "Debut Intervention","Statut", "Fin Intervention", "Client", "Demande" },
+                    new string[] { "IdIntrv", "Debut", "Fin", "Idclient", "IdDemande","Getstatut"},
+                    new string[] { "ID Intervention", "Debut Intervention", "Fin Intervention", "Client", "Demande", "Statut" },
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
             }
         }
 
-        private void ListeIntervention_Load(object sender, EventArgs e)
-        {            
 
-        }
-        string splitdate(string dty)
-        {
-            DateTime dt = DateTime.Parse(dty);
-            string r = dt.ToString("dMMyy");
-            return r;
-        }
         private void dgIntervention_DoubleClick(object sender, EventArgs e)
         {
             if (dgIntervention.SelectedRows.Count > -1)
             {
                 int index = dgIntervention.CurrentRow.Index;
                 
-                int sl = int.Parse(dgIntervention.Rows[index].Cells["id"].Value.ToString());
-                GlobVars.frmindex.ShowControl(new NewIntervention() { currentInterv = sl});
+                int selectedInt = int.Parse(dgIntervention.Rows[index].Cells["id"].Value.ToString());
+                
+                if (dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString() != "")
+                {
+                    GlobVars.frmindex.ShowControl(
+                        new NewIntervention(
+                            0,
+                            0, 
+                            selectedInt, 
+                            int.Parse(dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString()))
+                            );
+                }
+                GlobVars.frmindex.ShowControl(
+                    new NewIntervention(
+                        0,
+                        0, 
+                        selectedInt, 
+                        int.Parse(dgIntervention.Rows[index].Cells["IdClient"].Value.ToString()))
+                        );
             }
         }
 
-        private void txtFind_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

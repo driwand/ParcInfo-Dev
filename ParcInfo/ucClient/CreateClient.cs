@@ -275,6 +275,12 @@ namespace ParcInfo.ucClient
             // check if user empty
             txtEmpty += Methods.Focus(this);
 
+            //check if departement is empty
+
+            // Check if TextBox is empty
+            txtEmpty += Methods.Focus(this);
+            // Fil list UtilisateurID
+            //UtilisateurID = Methods.GetidList(PnlUsers);
             if (txtEmpty == 0)
 
             { // get Values From Textbox

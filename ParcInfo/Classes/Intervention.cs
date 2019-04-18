@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParcInfo.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace ParcInfo
         {
             get
             {
-                return "ITRV"+Id;
+                return "INV-" + Methods.Splitdate(DateIntervention.ToString()) + Id;
             }
         }
     }

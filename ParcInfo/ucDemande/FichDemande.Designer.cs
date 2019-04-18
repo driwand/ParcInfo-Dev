@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDemande = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,10 +39,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblNom = new System.Windows.Forms.Label();
+            this.lbltel = new System.Windows.Forms.Label();
+            this.lblPrenom = new System.Windows.Forms.Label();
+            this.lblDepart = new System.Windows.Forms.Label();
+            this.lblStatut = new System.Windows.Forms.Label();
+            this.lblDateDemande = new System.Windows.Forms.Label();
+            this.pnlDesc = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,16 +63,16 @@
             this.panel1.Size = new System.Drawing.Size(863, 2);
             this.panel1.TabIndex = 70;
             // 
-            // label1
+            // lblDemande
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(55, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 15);
-            this.label1.TabIndex = 68;
-            this.label1.Text = "Demande N° 15";
+            this.lblDemande.AutoSize = true;
+            this.lblDemande.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDemande.ForeColor = System.Drawing.Color.Black;
+            this.lblDemande.Location = new System.Drawing.Point(55, 14);
+            this.lblDemande.Name = "lblDemande";
+            this.lblDemande.Size = new System.Drawing.Size(109, 15);
+            this.lblDemande.TabIndex = 68;
+            this.lblDemande.Text = "Demande N° 15";
             // 
             // pictureBox1
             // 
@@ -80,6 +86,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblDepart);
+            this.groupBox1.Controls.Add(this.lblPrenom);
+            this.groupBox1.Controls.Add(this.lbltel);
+            this.groupBox1.Controls.Add(this.lblNom);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
@@ -133,13 +143,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.pnlDesc);
+            this.groupBox2.Controls.Add(this.lblDateDemande);
+            this.groupBox2.Controls.Add(this.lblStatut);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(14, 183);
+            this.groupBox2.Location = new System.Drawing.Point(14, 174);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(420, 295);
+            this.groupBox2.Size = new System.Drawing.Size(420, 289);
             this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Demande";
@@ -164,15 +176,6 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Description :";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Location = new System.Drawing.Point(31, 98);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(367, 173);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -188,18 +191,80 @@
             this.groupBox3.Controls.Add(this.flowLayoutPanel1);
             this.groupBox3.Location = new System.Drawing.Point(440, 47);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(420, 407);
+            this.groupBox3.Size = new System.Drawing.Size(420, 416);
             this.groupBox3.TabIndex = 72;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Interventions :";
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(408, 382);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(408, 391);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(74, 29);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(35, 13);
+            this.lblNom.TabIndex = 4;
+            this.lblNom.Text = "label9";
+            // 
+            // lbltel
+            // 
+            this.lbltel.AutoSize = true;
+            this.lbltel.Location = new System.Drawing.Point(74, 61);
+            this.lbltel.Name = "lbltel";
+            this.lbltel.Size = new System.Drawing.Size(41, 13);
+            this.lbltel.TabIndex = 5;
+            this.lbltel.Text = "label10";
+            // 
+            // lblPrenom
+            // 
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(240, 29);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(41, 13);
+            this.lblPrenom.TabIndex = 6;
+            this.lblPrenom.Text = "label11";
+            // 
+            // lblDepart
+            // 
+            this.lblDepart.AutoSize = true;
+            this.lblDepart.Location = new System.Drawing.Point(121, 93);
+            this.lblDepart.Name = "lblDepart";
+            this.lblDepart.Size = new System.Drawing.Size(41, 13);
+            this.lblDepart.TabIndex = 7;
+            this.lblDepart.Text = "label12";
+            // 
+            // lblStatut
+            // 
+            this.lblStatut.AutoSize = true;
+            this.lblStatut.Location = new System.Drawing.Point(83, 26);
+            this.lblStatut.Name = "lblStatut";
+            this.lblStatut.Size = new System.Drawing.Size(41, 13);
+            this.lblStatut.TabIndex = 8;
+            this.lblStatut.Text = "label13";
+            // 
+            // lblDateDemande
+            // 
+            this.lblDateDemande.AutoSize = true;
+            this.lblDateDemande.Location = new System.Drawing.Point(163, 48);
+            this.lblDateDemande.Name = "lblDateDemande";
+            this.lblDateDemande.Size = new System.Drawing.Size(41, 13);
+            this.lblDateDemande.TabIndex = 9;
+            this.lblDateDemande.Text = "label14";
+            // 
+            // pnlDesc
+            // 
+            this.pnlDesc.Location = new System.Drawing.Point(31, 101);
+            this.pnlDesc.Name = "pnlDesc";
+            this.pnlDesc.Size = new System.Drawing.Size(354, 164);
+            this.pnlDesc.TabIndex = 10;
             // 
             // FichDemande
             // 
@@ -210,7 +275,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDemande);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FichDemande";
             this.Size = new System.Drawing.Size(890, 481);
@@ -228,7 +293,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDemande;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
@@ -237,10 +302,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDepart;
+        private System.Windows.Forms.Label lblPrenom;
+        private System.Windows.Forms.Label lbltel;
+        private System.Windows.Forms.Label lblNom;
+        private System.Windows.Forms.Label lblDateDemande;
+        private System.Windows.Forms.Label lblStatut;
+        private System.Windows.Forms.FlowLayoutPanel pnlDesc;
     }
 }

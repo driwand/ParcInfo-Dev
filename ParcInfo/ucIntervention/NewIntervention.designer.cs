@@ -336,7 +336,7 @@
             this.txtAddDescription.Size = new System.Drawing.Size(451, 51);
             this.txtAddDescription.TabIndex = 0;
             this.txtAddDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddDescription_KeyDown);
-            this.txtAddDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAddDescription_KeyPress);
+
             // 
             // label1
             // 

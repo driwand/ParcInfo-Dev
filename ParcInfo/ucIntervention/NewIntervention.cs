@@ -15,37 +15,40 @@ namespace ParcInfo.ucInterevntion
 
     public partial class NewIntervention : UserControl
     {
-        public NewIntervention()
+        public NewIntervention(int selCli = 0,int selReq = 0,int curInter = 0,int source = 0)
         {
             InitializeComponent();
+            if (curInter != 0)
+            {
+                currentInterv = curInter;
+                lblIntervention.Text = currentInterv.ToString();
+                Interventions(currentInterv,source);
+            }
+            if (selCli != 0)
+            {
+                selectedClient = selCli;
+                startInterClient();
+            }
+            if (selReq != 0)
+            {
+                selectedRequest = selReq;
+                startInterRequest();
+            }
         }
 
-        
-        public int selectedClient;
         public int selectedRequest;
+        public int selectedClient;
         public int currentInterv;
         private void NewIntervention_Load(object sender, EventArgs e)
         {
-            if (currentInterv != 0)
-            {
-                lblIntervention.Text = currentInterv.ToString();
-                Interventions(currentInterv);
-            }
-            if (selectedClient != 0)
-            {
-                startInterClient();
-            }
-            if (selectedRequest != 0)
-            {
-                startInterRequest();
-            }
+
         }
         public void startInterRequest()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 //create first empty intervention - assigned to a request
-                Intervention intr = new Intervention
+                Intervention intr = new Intervention()
                 {
                     IdDemande = selectedRequest,
                     Idutilisateur = GlobVars.currentUser,
@@ -146,14 +149,6 @@ namespace ParcInfo.ucInterevntion
             
         }
 
-        private void txtAddDescription_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (e.KeyChar == (char)Keys.Enter)
-            //{
-            //    AddDescription();
-            //}
-        }
-
         private void btnAddDexcription_Click(object sender, EventArgs e)
         {
             AddDescription();
@@ -247,12 +242,22 @@ namespace ParcInfo.ucInterevntion
             tmrDone.Stop();
         }
 
-        public void Interventions(int selectedInre)
+        public void Interventions(int selectedInre,int source)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                var currentintr = context.Interventions.Find(selectedInre); //the selected intervention from datagrid
-                
+                Intervention currentintr = context.Interventions.Find(selectedInre); //the selected intervention from datagrid
+                if (source != 0)
+                {
+                    try
+                    {
+                        lblSource.Text = currentintr.Demande.IdReq;
+                    }catch
+                    {
+                        lblSource.Text = currentintr.Client.IdCLient.ToString();
+                    }
+                }
+                    
                 if (currentintr != null)
                 {
                     
