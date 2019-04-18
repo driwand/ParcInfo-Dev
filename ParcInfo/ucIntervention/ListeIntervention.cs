@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.Classes;
 using ParcInfo.ucControls;
+using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 
 namespace ParcInfo.ucInterevntion
 {
@@ -21,17 +23,23 @@ namespace ParcInfo.ucInterevntion
             {
                 if (countInterv == 0 && statutInterv == "")
                 {
-                    var ls = from ir in context.GetInterventionBystatut(lblTotalIntervention).ToList()
-                             select new { ir.Id, ir.DateIntervention, ir.Debut, ir.Fin, ir.Idclient, ir.IdDemande };
-                    dgIntervention.DataSource = Methods.ToDataTable(ls.ToList());
-                    dgIntervention.Columns["id"].Visible = false;
+                    var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
+                             select new {ir.IdIntrv,ir.Id, ir.Getstatut, ir.Debut, ir.Fin, ir.Idclient, ir.IdDemande }).ToList();
+
+                    dgIntervention.DataSource = Methods.ToDataTable(ls);
+
+                    //dgIntervention.Columns["id"].Visible = false;
                 }
                 else
                 {
                     var ls = context.GetInterventionBystatut(lblTotalIntervention, statutInterv).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
-                ControlsClass.Nice_grid(new string[] { "DateIntervention" }, new string[] { "Date Intervention" },dgIntervention);
+                //ControlsClass.Nice_grid(
+                //    new string[] { "Getstatut", "Debut", "Fin", "Debut", "Debut", "Debut", "Debut", "Debut", "Debut" },
+                //    new string[] { "Etat" ,"Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention" },
+                //    dgIntervention);
+
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
             }
         }

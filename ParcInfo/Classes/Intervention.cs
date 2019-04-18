@@ -16,5 +16,12 @@ namespace ParcInfo
                 else return Statut;
             }
         }
+        public string IdIntrv
+        {
+            get
+            {
+                return "ITRV"+Id;
+            }
+        }
     }
 }

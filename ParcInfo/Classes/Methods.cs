@@ -151,33 +151,34 @@ namespace ParcInfo.Classes
 
             foreach (PropertyDescriptor prop in properties)
             {
-                if (!prop.PropertyType.IsClass)
-                {
+                //if (!prop.PropertyType.IsClass)
+                //{
                     var j = prop.GetType();
                     table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-                }
+                //}
             }
 
             foreach (T item in data)
             {
                 DataRow row = table.NewRow();
                 foreach (PropertyDescriptor prop in properties)
-                    if (!prop.PropertyType.IsClass)
-                    {
+                    //if (!prop.PropertyType.is)
+                    //{
                         row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
-                        
-                    }
+                    //}
                 table.Rows.Add(row);
             }
             return table;
         }
-        public static void FilterDataGridViewIni(DataGridView grid, TextBox txt, Button btnclear)
+        public static DataTable FilterDataGridViewIni(DataGridView grid, TextBox txt, Button btnclear)
         {
+
             grid.DataSource = new DataView(grid.DataSource as DataTable);
             grid.Tag = grid.DataSource;
+
             EventHandler textchanged = new EventHandler(delegate (Object o, EventArgs a)
             {
-                FilterDataGridView(grid, txt.Text);
+                FilterDataGridView(grid, txt.Text);   
             });
             EventHandler clear = new EventHandler(delegate (Object o, EventArgs a)
             {
@@ -187,11 +188,15 @@ namespace ParcInfo.Classes
             btnclear.Click += clear;
             txt.TextChanged -= textchanged;
             txt.TextChanged += textchanged;
+            return null;
         }
         static void FilterDataGridView(DataGridView grid, string s)
         {
+            DataTable dataTable = new DataTable();
             DataView defaultdataView = grid.Tag as DataView;
-            DataTable dataTable = (grid.DataSource as DataView).ToTable();
+
+            dataTable = (grid.DataSource as DataView).ToTable();
+
             var words = s.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             if (!words.Any())
@@ -215,41 +220,6 @@ namespace ParcInfo.Classes
                 grid.DataSource = dv;
             }
         }
-
-        //list to datatable
-        //public static DataTable ToDataTable<T>(List<T> items)
-        //{
-        //    var firste = items[0].GetType();
-        //    DataTable dataTable = new DataTable("jjjj");
-            
-        //    //Get all the properties
-        //    PropertyInfo[] Props = firste.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-        //    foreach (PropertyInfo prop in Props)
-        //    {
-        //        if(!prop.PropertyType.IsInterface)
-        //        //Setting column names as Property names
-        //        dataTable.Columns.Add(prop.Name);
-        //    }
-        //    foreach (var item in items)
-        //    {
-        //        List<object> values = new List<object>();
-        //        for (int i = 0; i < Props.Length; i++)
-        //        {
-                   
-        //            if (!Props[i].PropertyType.IsInterface)
-        //            {
-        //                //inserting property values to datatable rows
-        //                values.Add(Props[i].GetValue(item, null));
-        //            }
-        //        }
-        //            dataTable.Rows.Add(values);
-                
-
-
-        //    }
-        //    //put a breakpoint here and check datatable
-        //    return dataTable;
-        //}
     }
     public class LabelControl
     {
