@@ -47,7 +47,7 @@ namespace ParcInfo.ucClient
 
                 Methods.Nice_grid(
                     new string[] {"id","Nom","Adresse", "Tel","Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract"},
-                    new string[] {"ID Client","Nom","Adresse","Tel","Fax","Prix Heure", "Heure Contract", "Debut Contract" },
+                    new string[] {"ID Client","Nom","Adresse","Tel","Fax","Site web ","Prix Heure", "Heure Contract", "Debut Contract" },
                     dgClients
                     );
             }

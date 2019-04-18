@@ -60,9 +60,9 @@ namespace ParcInfo.Classes
                         em.Focus();
                         count++;
                     }
-                  
+                    Focus(c);
                 }
-                if (c is Panel)
+                else if (c is FlowLayoutPanel)
                 {
                     var lblDep = (from x in c.Controls.OfType<txtlblDepartement>()
                                where x.TxtValue == ""

@@ -16,5 +16,21 @@ namespace ParcInfo.ucControls
         {
             InitializeComponent();
         }
+
+        public string TxtValue
+        {
+            get { return txtValue.Text; }
+            set { txtValue.Text = value; }
+        }
+         public string lblName
+        {
+            get { return lblname.Text; }
+            set { lblname.Text = value; }
+        }
+        public string LblID
+        {
+            get { return lblid.Text; }
+            set { lblid.Text = value; }
+        }
     }
 }

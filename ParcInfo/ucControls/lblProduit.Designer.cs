@@ -28,33 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtValue = new System.Windows.Forms.TextBox();
+            this.lblname = new System.Windows.Forms.Label();
+            this.lblid = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtNom
+            // txtValue
             // 
-            this.txtNom.Location = new System.Drawing.Point(91, 1);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(167, 20);
-            this.txtNom.TabIndex = 42;
+            this.txtValue.Location = new System.Drawing.Point(91, 1);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(167, 20);
+            this.txtValue.TabIndex = 42;
             // 
-            // label3
+            // lblname
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 41;
-            this.label3.Text = "Nom :";
+            this.lblname.AutoSize = true;
+            this.lblname.Location = new System.Drawing.Point(9, 5);
+            this.lblname.Name = "lblname";
+            this.lblname.Size = new System.Drawing.Size(35, 13);
+            this.lblname.TabIndex = 41;
+            this.lblname.Text = "Nom :";
+            // 
+            // lblid
+            // 
+            this.lblid.AutoSize = true;
+            this.lblid.Location = new System.Drawing.Point(50, 9);
+            this.lblid.Name = "lblid";
+            this.lblid.Size = new System.Drawing.Size(0, 13);
+            this.lblid.TabIndex = 43;
+            this.lblid.Visible = false;
             // 
             // lblProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.txtNom);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblid);
+            this.Controls.Add(this.txtValue);
+            this.Controls.Add(this.lblname);
             this.Name = "lblProduit";
             this.Size = new System.Drawing.Size(264, 22);
             this.ResumeLayout(false);
@@ -64,7 +75,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNom;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtValue;
+        private System.Windows.Forms.Label lblname;
+        private System.Windows.Forms.Label lblid;
     }
 }

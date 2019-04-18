@@ -331,7 +331,7 @@ namespace ParcInfo.frmDefault
 
     private void btnListProduct_Click(object sender, EventArgs e)
     {
-        ListProduit product = new ListProduit();
+        listProduits product = new listProduits();
         ShowControl(product);
     }
 
