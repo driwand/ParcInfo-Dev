@@ -25,13 +25,15 @@ namespace ParcInfo.ucInterevntion
                 {
 
                     var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
-                             select new {idInter = "INV-" + splitdate(ir.DateIntervention.ToString()) + ir.Id,
+                             select new {
+                                 idInter = "INV-" + splitdate(ir.DateIntervention.ToString()) + ir.Id,
                                  ir.Id,
-                                 ir.Getstatut,
                                  ir.Debut,
                                  ir.Fin,
+                                 ir.Getstatut,
                                  ir.Idclient,
-                                 ir.IdDemande }).ToList();
+                                 ir.IdDemande
+                             }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
 
@@ -42,9 +44,9 @@ namespace ParcInfo.ucInterevntion
                     var ls = context.GetInterventionBystatut(lblTotalIntervention, statutInterv).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
-                ControlsClass.Nice_grid(
-                    new string[] { "Getstatut", "Debut", "Fin", "Debut", "Debut", "Debut", "Debut", "Debut", "Debut" },
-                    new string[] { "Etat", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention" },
+                Methods.Nice_grid(
+                    new string[] { "idInter", "Debut", "Fin", "Getstatut", "Idclient", "IdDemande" },
+                    new string[] { "ID Intervention", "Debut Intervention","Statut", "Fin Intervention", "Client", "Demande" },
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);

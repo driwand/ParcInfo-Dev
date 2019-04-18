@@ -246,6 +246,13 @@ namespace ParcInfo.Classes
             grid.ScrollBars = ScrollBars.Vertical;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
+
+            int x = grid.Width;
+            foreach (DataGridViewColumn column in grid.Columns)
+                x -= column.Width;
+            if (x < grid.Width)
+                grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             int index = 0;
             foreach (DataGridViewColumn r in grid.Columns)
             {
