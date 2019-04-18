@@ -125,7 +125,7 @@ namespace ParcInfo
                     break;
 
             }
-           
+
             if (lbl != null)
                 lbl.Text = list.Count().ToString();
             if (idEmp > 0)
