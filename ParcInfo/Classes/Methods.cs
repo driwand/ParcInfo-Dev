@@ -45,6 +45,9 @@ namespace ParcInfo.Classes
         }
         public static int Foucs(Control control)
         {
+            var em = (from t in control.Controls.OfType<TextBox>()
+                      where string.IsNullOrEmpty(t.Text)
+                      select t).First();
             int count = 0;
             foreach (Control c in control.Controls)
             {
@@ -76,7 +79,23 @@ namespace ParcInfo.Classes
                     }
                 }
             }
-            return count;
+            return 0;
+        }
+
+        public static string Splitdate(string date)
+        {
+            DateTime dt = DateTime.Parse(date);
+            return dt.ToString("dMMy");
+        }
+        public static string GetDesc(string des,int len)
+        {
+            var f = des.Split(' ').Take(len);
+            string res = "";
+            foreach (string s in f)
+            {
+                res += s+" ";
+            }
+            return res+"...";
         }
 
         public static List<LabelControl> GetidList(Control control)

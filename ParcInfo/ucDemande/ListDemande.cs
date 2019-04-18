@@ -37,27 +37,7 @@ namespace ParcInfo.ucClient
                 dgDemande.DataSource = res;
             }
         }
-        //public ListDemande(int idEmployee,string statut,int count)
-        //{
-        //    InitializeComponent();
-        //    {
-        //        using (var db = new ParcInformatiqueEntities())
-        //        {
 
-
-        //            if (count == 0 && statut == "")
-        //            {
-        //              // var d = db.GetRequestbyStatut(lblTotalRequest);
-        //                dgDemande.DataSource = db.GetRequestbyStatut(lblTotalRequest).Where(e => e.IdEmployee == idEmployee).ToList();
-        //            }
-        //            else
-        //            {
-        //                 var d = db.GetRequestbyStatut(lblTotalRequest, statut);
-        //                dgDemande.DataSource = d.Where(e => e.IdEmployee == idEmployee).ToList();
-        //            }
-        //        }
-        //    }
-        //}
         public ListDemande(string statutReq, int countReq, int idEmploye)
         {
             InitializeComponent();
@@ -66,12 +46,30 @@ namespace ParcInfo.ucClient
                 {
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
-                        dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest);
+                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(lblTotalRequest)
+                                               select new
+                                               {
+                                                   d.Id,
+                                                   Idreq = "DEM-" + Methods.Splitdate(d.Datedemande.ToString()) + d.Id,
+                                                   d.Datedemande,
+                                                   Desc = Methods.GetDesc(d.Description_d,4),
+                                                   d.Employee.Nom,
+                                                   d.Getstatut
+                                               }).ToList();
                     }
                  
                     else
                     {
-                        dgDemande.DataSource = context.GetRequestbyStatut(lblTotalRequest, statutReq, idEmploye);
+                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(lblTotalRequest, statutReq, idEmploye)
+                                               select new {
+                                                   d.Id,
+                                                   Idreq = "DEM-" + Methods.Splitdate(d.Datedemande.ToString()) + d.Id,
+                                                   d.Datedemande,
+                                                   Desc = Methods.GetDesc(d.Description_d, 4),
+                                                   d.Employee.Nom,
+                                                   d.Getstatut
+                                               }).ToList();
+                        
                         if (idEmploye > 0)
                         {
                             Employee em = context.Employees.Find(idEmploye);
@@ -79,6 +77,12 @@ namespace ParcInfo.ucClient
                             lblEmployeClient.Visible = true;
                         }
                     }
+                    dgDemande.Columns["id"].Visible = false;
+
+                    //Methods.Nice_grid(
+                    //    new string[] { "idInter", "Debut", "Fin", "Idclient", "IdDemande", "Getstatut" },
+                    //    new string[] { "ID Intervention", "Debut Intervention", "Fin Intervention", "Client", "Demande", "Statut" },
+                    //    dgDemande);
                 }
             }
         }
@@ -86,11 +90,12 @@ namespace ParcInfo.ucClient
         private void ListRequest_Load(object sender, EventArgs e)
         {
             //ControlsClass.CreateRadiusBorder(this);
-
         }
 
         private void dgDemande_DoubleClick(object sender, EventArgs e)
         {
+            int index = dgDemande.CurrentRow.Index;
+            int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
         }
 
         private void btnTraiter_Click(object sender, EventArgs e)

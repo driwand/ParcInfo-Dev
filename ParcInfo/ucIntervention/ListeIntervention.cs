@@ -26,13 +26,13 @@ namespace ParcInfo.ucInterevntion
 
                     var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
                              select new {
-                                 idInter = "INV-" + splitdate(ir.DateIntervention.ToString()) + ir.Id,
+                                 idInter = "INV-" + Methods.Splitdate(ir.DateIntervention.ToString()) + ir.Id,
                                  ir.Id,
                                  ir.Debut,
                                  ir.Fin,
-                                 ir.Getstatut,
                                  ir.Idclient,
-                                 ir.IdDemande
+                                 ir.IdDemande,
+                                 ir.Getstatut
                              }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
@@ -45,8 +45,8 @@ namespace ParcInfo.ucInterevntion
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
                 Methods.Nice_grid(
-                    new string[] { "idInter", "Debut", "Fin", "Getstatut", "Idclient", "IdDemande" },
-                    new string[] { "ID Intervention", "Debut Intervention","Statut", "Fin Intervention", "Client", "Demande" },
+                    new string[] { "idInter", "Debut", "Fin", "Idclient", "IdDemande","Getstatut"},
+                    new string[] { "ID Intervention", "Debut Intervention", "Fin Intervention", "Client", "Demande", "Statut" },
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
@@ -57,12 +57,7 @@ namespace ParcInfo.ucInterevntion
         {            
 
         }
-        string splitdate(string dty)
-        {
-            DateTime dt = DateTime.Parse(dty);
-            string r = dt.ToString("dMMyy");
-            return r;
-        }
+
         private void dgIntervention_DoubleClick(object sender, EventArgs e)
         {
             if (dgIntervention.SelectedRows.Count > -1)
