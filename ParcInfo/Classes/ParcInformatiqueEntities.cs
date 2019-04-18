@@ -125,17 +125,13 @@ namespace ParcInfo
                     break;
 
             }
-            //if (idEmp > 0)
-            //{
-            //    return list.ToList().Where(c=> c.IdEmployee == idEmp).ToList();
-            //}
+           
             if (lbl != null)
                 lbl.Text = list.Count().ToString();
             if (idEmp > 0)
             {
                 return list.ToList().Where(c => c.IdEmployee == idEmp).ToList();
             }
-            lbl.Text = list.Count().ToString();
             return list.ToList();
         }
     }
