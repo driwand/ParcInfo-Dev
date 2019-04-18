@@ -23,22 +23,29 @@ namespace ParcInfo.ucInterevntion
             {
                 if (countInterv == 0 && statutInterv == "")
                 {
+
                     var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
-                             select new {ir.IdIntrv,ir.Id, ir.Getstatut, ir.Debut, ir.Fin, ir.Idclient, ir.IdDemande }).ToList();
+                             select new {idInter = "INV-" + splitdate(ir.DateIntervention.ToString()) + ir.Id,
+                                 ir.Id,
+                                 ir.Getstatut,
+                                 ir.Debut,
+                                 ir.Fin,
+                                 ir.Idclient,
+                                 ir.IdDemande }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
 
-                    //dgIntervention.Columns["id"].Visible = false;
+                    dgIntervention.Columns["id"].Visible = false;
                 }
                 else
                 {
                     var ls = context.GetInterventionBystatut(lblTotalIntervention, statutInterv).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
-                //ControlsClass.Nice_grid(
-                //    new string[] { "Getstatut", "Debut", "Fin", "Debut", "Debut", "Debut", "Debut", "Debut", "Debut" },
-                //    new string[] { "Etat" ,"Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention" },
-                //    dgIntervention);
+                ControlsClass.Nice_grid(
+                    new string[] { "Getstatut", "Debut", "Fin", "Debut", "Debut", "Debut", "Debut", "Debut", "Debut" },
+                    new string[] { "Etat", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention" },
+                    dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
             }
@@ -48,7 +55,12 @@ namespace ParcInfo.ucInterevntion
         {            
 
         }
-       
+        string splitdate(string dty)
+        {
+            DateTime dt = DateTime.Parse(dty);
+            string r = dt.ToString("dMMyy");
+            return r;
+        }
         private void dgIntervention_DoubleClick(object sender, EventArgs e)
         {
             if (dgIntervention.SelectedRows.Count > -1)
