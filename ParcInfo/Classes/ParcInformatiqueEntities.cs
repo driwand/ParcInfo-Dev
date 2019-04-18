@@ -112,8 +112,7 @@ namespace ParcInfo
             switch (statut)
             {
                 case "en cours":
-                        list = GetRequestCours;
-                   
+                    list = GetRequestCours;
                     lbl.BackColor = Color.FromArgb(250, 130, 49);
                     break;
                 case "en retard":
@@ -130,7 +129,8 @@ namespace ParcInfo
             //{
             //    return list.ToList().Where(c=> c.IdEmployee == idEmp).ToList();
             //}
-            lbl.Text = list.Count().ToString();
+            if (lbl != null)
+                lbl.Text = list.Count().ToString();
             return list.ToList();
         }
     }
