@@ -43,6 +43,21 @@ namespace ParcInfo.Classes
             }
        
         }
+        public static string Splitdate(string date)
+        {
+            DateTime dt = DateTime.Parse(date);
+            return dt.ToString("dMMy");
+        }
+        public static string GetDesc(string des, int len)
+        {
+            var f = des.Split(' ').Take(len);
+            string res = "";
+            foreach (string s in f)
+            {
+                res += s + " ";
+            }
+            return res + "...";
+        }
 
         public static int Focus(Control control)
         {
@@ -62,7 +77,7 @@ namespace ParcInfo.Classes
                     }
                   
                 }
-                if (c is Panel)
+                if (c is FlowLayoutPanel)
                 {
                     var lblDep = (from x in c.Controls.OfType<txtlblDepartement>()
                                where x.TxtValue == ""
@@ -229,15 +244,16 @@ namespace ParcInfo.Classes
             grid.BackgroundColor = Color.WhiteSmoke;
             grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1;
             grid.ReadOnly = true;
-            grid.ColumnHeadersHeight = 30;
+            grid.ColumnHeadersHeight = 40;
             grid.RowHeadersVisible = false;
-            grid.ScrollBars = ScrollBars.Vertical;
+            grid.ScrollBars = ScrollBars.Both;
+            
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
 
-            int x = grid.Width;
+            int x = 0;
             foreach (DataGridViewColumn column in grid.Columns)
-                x -= column.Width;
+                x += column.Width;
             if (x < grid.Width)
                 grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 

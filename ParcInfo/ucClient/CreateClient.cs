@@ -276,9 +276,9 @@ namespace ParcInfo.ucClient
             txtEmpty += Methods.Focus(this);
 
             //check if departement is empty
-            txtEmpty += Methods.CheckDepart(PnlDepart, DepartementNames);
+
             // Check if TextBox is empty
-            txtEmpty += Methods.Foucs(this);
+            txtEmpty += Methods.Focus(this);
             // Fil list UtilisateurID
             //UtilisateurID = Methods.GetidList(PnlUsers);
             if (txtEmpty == 0)

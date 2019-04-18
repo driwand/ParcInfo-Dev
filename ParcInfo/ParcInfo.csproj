@@ -62,6 +62,7 @@
     <Compile Include="AffectationClient.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\ParcInformatiqueEntities.cs" />
     <Compile Include="Classes\ControlsClass.cs" />
     <Compile Include="Classes\Demande.cs" />
