@@ -270,9 +270,8 @@ namespace ParcInfo.ucClient
             List<string> DepartementNames = new List<string>();
             int txtEmpty = 0;
 
-
             //check if departement is empty
-            txtEmpty += Methods.CheckDepart(PnlDepart, DepartementNames);
+            //txtEmpty += Methods.CheckDepart(PnlDepart, DepartementNames);
             // Check if TextBox is empty
             txtEmpty += Methods.Foucs(this);
             // Fil list UtilisateurID

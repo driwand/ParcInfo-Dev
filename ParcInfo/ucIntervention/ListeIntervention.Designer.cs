@@ -37,6 +37,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgIntervention = new System.Windows.Forms.DataGridView();
             this.lblTotalIntervention = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblEditedDate = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblEdited = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervention)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +125,7 @@
             this.dgIntervention.Location = new System.Drawing.Point(14, 104);
             this.dgIntervention.Name = "dgIntervention";
             this.dgIntervention.ReadOnly = true;
-            this.dgIntervention.Size = new System.Drawing.Size(863, 363);
+            this.dgIntervention.Size = new System.Drawing.Size(863, 347);
             this.dgIntervention.TabIndex = 112;
             this.dgIntervention.DoubleClick += new System.EventHandler(this.dgIntervention_DoubleClick);
             // 
@@ -135,11 +141,71 @@
             this.lblTotalIntervention.Text = "41";
             this.lblTotalIntervention.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Location = new System.Drawing.Point(191, 458);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 15);
+            this.panel2.TabIndex = 136;
+            // 
+            // lblEditedDate
+            // 
+            this.lblEditedDate.AutoSize = true;
+            this.lblEditedDate.Location = new System.Drawing.Point(456, 459);
+            this.lblEditedDate.Name = "lblEditedDate";
+            this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
+            this.lblEditedDate.TabIndex = 134;
+            this.lblEditedDate.Text = "2018/08/08";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(389, 459);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 13);
+            this.label13.TabIndex = 135;
+            this.label13.Text = "Modifier le :";
+            // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Location = new System.Drawing.Point(333, 459);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(33, 13);
+            this.lblEdited.TabIndex = 133;
+            this.lblEdited.Text = "user1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(203, 459);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 13);
+            this.label8.TabIndex = 132;
+            this.label8.Text = "Dernier modification par :";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(14, 457);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(171, 17);
+            this.checkBox1.TabIndex = 131;
+            this.checkBox1.Text = "Afficher les elements supprimer";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // ListeIntervention
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblEditedDate);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblEdited);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lblTotalIntervention);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblSource);
@@ -168,5 +234,11 @@
         public System.Windows.Forms.DataGridView dgIntervention;
         public System.Windows.Forms.Button btnFind;
         public System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblEditedDate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblEdited;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
