@@ -42,7 +42,7 @@ namespace ParcInfo.ucInterevntion
                     var ls = context.GetInterventionBystatut(lblTotalIntervention, statutInterv).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
-                ControlsClass.Nice_grid(
+                Methods.Nice_grid(
                     new string[] { "Getstatut", "Debut", "Fin", "Debut", "Debut", "Debut", "Debut", "Debut", "Debut" },
                     new string[] { "Etat", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention", "Debut Intervention" },
                     dgIntervention);

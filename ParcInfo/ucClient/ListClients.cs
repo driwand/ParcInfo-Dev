@@ -44,7 +44,12 @@ namespace ParcInfo.ucClient
                 dgClients.DataSource = Methods.ToDataTable(vr);
 
                 Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
-               
+
+                Methods.Nice_grid(
+                    new string[] {"id","Nom","Adresse", "Tel", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract"},
+                    new string[] {"ID Client","Nom","Adresse","Tel","Prix Heure", "Heure Contract", "Debut Contract" },
+                    dgClients
+                    );
             }
 
         }
