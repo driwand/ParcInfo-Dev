@@ -38,23 +38,34 @@ namespace ParcInfo.ucClient
                 
                 var vr = (from c in context.Clients
                           where c.IsDeleted != 1
-                          select new { c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract, }).ToList();
-                dgClients.DataSource = vr;
+                          select new {c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract,c= c.Debutcontract, }).ToList();
 
+                
+                dgClients.DataSource = Methods.ToDataTable(vr);
+
+                Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
+               
             }
 
         }
 
 
+         string getDate(string date)
+        {
+                
+            DateTime d = DateTime.Parse(date);
+            string s = d.ToString("dMMyy");
 
+            return s;
+        }
         private void GridListClient_DoubleClick(object sender, EventArgs e)
         {
 
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
-               
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
                 GlobVars.frmindex.ShowControl(new CreateClient(id));
             }
 
@@ -65,7 +76,7 @@ namespace ParcInfo.ucClient
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
             
                 GlobVars.frmBack = this;
                 GlobVars.frmindex.ShowControl(new ListEmployees(id), true);
@@ -83,7 +94,7 @@ namespace ParcInfo.ucClient
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-                int id =int.Parse(myrow.Cells[0].Value.ToString());
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 GlobVars.frmindex.ShowControl(new CreateClient(id));
             }
         }
@@ -96,17 +107,18 @@ namespace ParcInfo.ucClient
         
         private void gpDemande_Click(object sender, EventArgs e)
         {
-            int index = dgClients.CurrentRow.Index;
+            var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
 
-            string nom = dgClients.Rows[index].Cells[0].Value.ToString();
-           // GlobVars.frmindex.ShowControl(new ListDemande("",0));
+            int id = int.Parse(myrow.Cells["id"].Value.ToString());
+            string nom = myrow.Cells["Nom"].Value.ToString();
+            GlobVars.frmindex.ShowControl(new ListDemande(id,nom));
 
         }
 
         private void gpProduit_Click(object sender, EventArgs e)
         {
             var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-            int id = int.Parse(myrow.Cells[0].Value.ToString());
+            int id = int.Parse(myrow.Cells["id"].Value.ToString());
 
             GlobVars.frmindex.ShowControl(new ListProduitClient(id,true));
 
@@ -155,7 +167,7 @@ namespace ParcInfo.ucClient
             if (e.RowIndex >= 0)
             {
                 var myrow = dgClients.Rows[e.RowIndex];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var Cli = context.Clients.Where(c => c.id == id).FirstOrDefault();
