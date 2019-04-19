@@ -16,10 +16,12 @@ namespace ParcInfo.ucControls
         public ProduitInfo()
         {
             InitializeComponent();
+         
         }
 
         private void ProduitInfo_Load(object sender, EventArgs e)
         {
+
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var listType = context.TypeProduits.ToList();
@@ -28,19 +30,6 @@ namespace ParcInfo.ucControls
                 cbType.ValueMember = "Id";
                 cbType.DisplayMember = "Nom";
             }
-            //first lblTexbox to fill user
-            //lblProduit prop = new lblProduit();
-            //prop.Name = "propC" + nameProp;
-            //prop.Margin = new Padding(0, 0, 0, 12);
-            //nameProp++;
-            //flowLayoutPanel2.Controls.Add(prop);
-            //flowLayoutPanel2.Height += 23;
-
-            //if (flowLayoutPanel2.Size == flowLayoutPanel2.MaximumSize)
-            //{
-            //    flowLayoutPanel2.AutoScroll = true;
-
-            //}
         }
 
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,7 +40,6 @@ namespace ParcInfo.ucControls
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-
                     var d = context.TypeProduits.Find(id);
 
                     foreach (var item in d.ProprietesProduits)

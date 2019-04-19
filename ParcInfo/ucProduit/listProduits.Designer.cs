@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nuAffecter = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,29 +48,30 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.produitInfo1 = new ParcInfo.ucControls.ProduitInfo();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // numericUpDown1
+            // nuAffecter
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(14, 18);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nuAffecter.Location = new System.Drawing.Point(14, 18);
+            this.nuAffecter.Name = "nuAffecter";
+            this.nuAffecter.Size = new System.Drawing.Size(44, 20);
+            this.nuAffecter.TabIndex = 0;
+            this.nuAffecter.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.nuAffecter.ValueChanged += new System.EventHandler(this.nuAffecter_ValueChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.nuAffecter);
             this.groupBox1.Location = new System.Drawing.Point(772, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(102, 49);
@@ -218,6 +219,7 @@
             this.button5.TabIndex = 145;
             this.button5.Text = "  Modifier";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // btnAddProduit
             // 
@@ -287,7 +289,7 @@
             this.Controls.Add(this.label1);
             this.Name = "listProduits";
             this.Size = new System.Drawing.Size(890, 481);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -300,7 +302,7 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nuAffecter;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;

@@ -34,54 +34,56 @@ namespace ParcInfo.ucClient
                     dgProduits
                     );
                 Methods.FilterDataGridViewIni(dgProduits, txtFind, btnFind);
+                dgProduits.MultiSelect = true;
             }
+         
         }
 
         private void btnAddProduit_Click(object sender, EventArgs e)
         {
-            int txtEmpty = 0;
-             txtEmpty = Methods.Focus(produitInfo1);
-            if (txtEmpty == 0)
-            {
-                //get values
-                int pType = int.Parse(produitInfo1.cbType.SelectedValue.ToString());
-                var pMarq = produitInfo1.txtMarque.Text;
-                var pModel = produitInfo1.txtModel.Text;
-                var pPrix = produitInfo1.txtPrix.Text;
-                DateTime pDate = produitInfo1.DateProduit.Value;
-                var pQte = produitInfo1.txtQte.Text;
-                int isHardware = 0;
-                if (produitInfo1.isHardware.Checked)
-                {
-                    isHardware = 1;
-                }
-                //string pcode = $"{pMarq}-{pModel}-{pType}";
+            //int txtEmpty = 0;
+            // txtEmpty = Methods.Focus(produitInfo1);
+            //if (txtEmpty == 0)
+            //{
+            //    //get values
+            //    int pType = int.Parse(produitInfo1.cbType.SelectedValue.ToString());
+            //    var pMarq = produitInfo1.txtMarque.Text;
+            //    var pModel = produitInfo1.txtModel.Text;
+            //    var pPrix = produitInfo1.txtPrix.Text;
+            //    DateTime pDate = produitInfo1.DateProduit.Value;
+            //    var pQte = produitInfo1.txtQte.Text;
+            //    int isHardware = 0;
+            //    if (produitInfo1.isHardware.Checked)
+            //    {
+            //        isHardware = 1;
+            //    }
+            //    //string pcode = $"{pMarq}-{pModel}-{pType}";
 
-                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-                {
+            //    using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            //    {
 
-                    var prod = new Produit
-                    {
+            //        var prod = new Produit
+            //        {
                        
-                        Marque = pMarq.ToUpper(),
-                        Model = pModel,
-                        Prix = float.Parse(pPrix),
-                        Datefabrication = pDate,
-                        IsHardware = isHardware,
-                        IdType = pType
-                    };
-                    context.Produits.Add(prod);
-                    foreach (Control c in produitInfo1.pnlProp.Controls)
-                    {
-                        if (c is lblProduit)
-                        {
-                            lblProduit lb = (lblProduit)c;
-                            context.ValeurProps.Add(new ValeurProp { Valeur = lb.TxtValue, IdProduit = prod.id, IdPropriete = pType });
-                        }
-                    }
-                    context.SaveChanges();
-                }
-            }
+            //            Marque = pMarq.ToUpper(),
+            //            Model = pModel,
+            //            Prix = float.Parse(pPrix),
+            //            Datefabrication = pDate,
+            //            IsHardware = isHardware,
+            //            IdType = pType
+            //        };
+            //        context.Produits.Add(prod);
+            //        foreach (Control c in produitInfo1.pnlProp.Controls)
+            //        {
+            //            if (c is lblProduit)
+            //            {
+            //                lblProduit lb = (lblProduit)c;
+            //                context.ValeurProps.Add(new ValeurProp { Valeur = lb.TxtValue, IdProduit = prod.id, IdPropriete = pType });
+            //            }
+            //        }
+            //        context.SaveChanges();
+            //    }
+            //}
             
          
         }
@@ -89,6 +91,24 @@ namespace ParcInfo.ucClient
         private void dgProduits_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgProduits.SelectedRows)
+            {
+                MessageBox.Show(row.Cells["id"].Value.ToString());
+            }
+        }
+
+        private void nuAffecter_ValueChanged(object sender, EventArgs e)
+        {
+
+            int d = int.Parse(nuAffecter.Value.ToString());
+            for (int i = 0; i < d; i++)
+            {
+                MessageBox.Show("d");
+            }
         }
     }
 }
