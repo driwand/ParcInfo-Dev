@@ -84,7 +84,7 @@ namespace ParcInfo.ucClient
 
         private void dgProduits_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
     }
 }

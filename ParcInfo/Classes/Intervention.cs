@@ -35,4 +35,14 @@ namespace ParcInfo
             }
         }
     }
+    public partial class Client
+    {
+        public string IdCLient
+        {
+            get
+            {
+                return "CLI-" + Methods.Splitdate(Datecreation.ToString()) + id;
+            }
+        }
+    }
 }
