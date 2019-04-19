@@ -48,29 +48,31 @@ namespace ParcInfo.ucClient
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
                         dgDemande.DataSource = (from d in context.GetRequestbyStatut(lblTotalRequest)
-                                               select new
-                                               {
-                                                   d.Id,
-                                                   d.IdReq,
-                                                   d.Datedemande,
-                                                   Desc = Methods.GetDesc(d.Description_d,4),
-                                                   d.Employee.Nom,
-                                                   d.Getstatut
-                                               }).ToList();
+                                                select new
+                                                {
+                                                    d.Id,
+                                                    d.IdReq,
+                                                    d.Datedemande,
+                                                    Desc = Methods.GetDesc(d.Description_d, 4),
+                                                    d.Employee.Nom,
+                                                    d.Getstatut,
+                                                    IdClient = d.Employee.Client.id
+                                                }).ToList();
                     }
-                 
+
                     else
                     {
                         dgDemande.DataSource = (from d in context.GetRequestbyStatut(lblTotalRequest, statutReq, idEmploye)
-                                               select new {
-                                                   d.Id,
-                                                   d.IdReq,
-                                                   d.Datedemande,
-                                                   Desc = Methods.GetDesc(d.Description_d, 4),
-                                                   d.Employee.Nom,
-                                                   d.Getstatut
-                                               }).ToList();
-                        
+                                                select new {
+                                                    d.Id,
+                                                    d.IdReq,
+                                                    d.Datedemande,
+                                                    Desc = Methods.GetDesc(d.Description_d, 4),
+                                                    d.Employee.Nom,
+                                                    d.Getstatut,
+                                                    IdClient = d.Employee.Client.id
+                                                }).ToList();
+
                         if (idEmploye > 0)
                         {
                             Employee em = context.Employees.Find(idEmploye);
@@ -78,13 +80,21 @@ namespace ParcInfo.ucClient
                             lblEmployeClient.Visible = true;
                         }
                     }
-                    dgDemande.Columns["id"].Visible = false;
-
+                    HideColumns(new string[] { "id", "IdClient" }, dgDemande);
+                    
                     Methods.Nice_grid(
                         new string[] { "IdReq", "Datedemande", "Desc", "Nom", "Getstatut" },
                         new string[] { "ID Demande", "Date Demande", "Description", "Employee", "Statut" },
                         dgDemande);
                 }
+            }
+        }
+
+        public void HideColumns(string[] clms,DataGridView grid)
+        {
+            foreach (var s in clms)
+            {
+                grid.Columns[s].Visible = false;
             }
         }
 
@@ -105,16 +115,13 @@ namespace ParcInfo.ucClient
         {
             int index = dgDemande.CurrentRow.Index;
             int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
-            using (var db = new ParcInformatiqueEntities())
-            {
-                if (dgDemande.Rows[index].Cells["GetStatut"].Value.ToString() == "terminer")
-                    MessageBox.Show("Youn cant start intervention for done request");
-                else
-                {
-                    int idClient = db.Employees.Find(selectedRequest).Client.id;
-                    GlobVars.frmindex.ShowControl(new NewIntervention(idClient,selectedRequest));
-                }
 
+            if (dgDemande.Rows[index].Cells["GetStatut"].Value.ToString() == "terminer")
+                MessageBox.Show("Youn cant start intervention for done request");
+            else
+            {
+                int idcl = int.Parse(dgDemande.Rows[index].Cells["IdClient"].Value.ToString());
+                GlobVars.frmindex.ShowControl(new NewIntervention(idcl,selectedRequest));
             }
         }
     }
