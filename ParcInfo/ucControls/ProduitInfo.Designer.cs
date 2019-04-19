@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.isHardware = new System.Windows.Forms.CheckBox();
             this.txtQte = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.DateProduit = new System.Windows.Forms.DateTimePicker();
@@ -43,7 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pnlProp = new System.Windows.Forms.FlowLayoutPanel();
-            this.isHardware = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQte)).BeginInit();
             this.groupBox6.SuspendLayout();
@@ -71,12 +71,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produit";
             // 
+            // isHardware
+            // 
+            this.isHardware.AutoSize = true;
+            this.isHardware.Location = new System.Drawing.Point(96, 176);
+            this.isHardware.Name = "isHardware";
+            this.isHardware.Size = new System.Drawing.Size(79, 17);
+            this.isHardware.TabIndex = 48;
+            this.isHardware.Text = "isHardware";
+            this.isHardware.UseVisualStyleBackColor = true;
+            // 
             // txtQte
             // 
             this.txtQte.Location = new System.Drawing.Point(223, 146);
             this.txtQte.Name = "txtQte";
             this.txtQte.Size = new System.Drawing.Size(48, 20);
             this.txtQte.TabIndex = 4;
+            this.txtQte.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -191,16 +206,6 @@
             this.pnlProp.Name = "pnlProp";
             this.pnlProp.Size = new System.Drawing.Size(283, 124);
             this.pnlProp.TabIndex = 47;
-            // 
-            // isHardware
-            // 
-            this.isHardware.AutoSize = true;
-            this.isHardware.Location = new System.Drawing.Point(96, 176);
-            this.isHardware.Name = "isHardware";
-            this.isHardware.Size = new System.Drawing.Size(79, 17);
-            this.isHardware.TabIndex = 48;
-            this.isHardware.Text = "isHardware";
-            this.isHardware.UseVisualStyleBackColor = true;
             // 
             // ProduitInfo
             // 

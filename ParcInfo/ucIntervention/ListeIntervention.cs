@@ -28,16 +28,14 @@ namespace ParcInfo.ucInterevntion
                              select new {
                                  ir.IdIntrv,
                                  ir.Id,
+                                 ir.Client.Nom,
                                  ir.Debut,
                                  ir.Fin,
-                                 ir.Idclient,
                                  ir.IdDemande,
                                  ir.Getstatut
                              }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
-
-                    
                 }
                 else
                 {
@@ -45,24 +43,53 @@ namespace ParcInfo.ucInterevntion
                                select new {
                                    ir.IdIntrv,
                                    ir.Id,
+                                   ir.Client.Nom,
                                    ir.Debut,
                                    ir.Fin,
-                                   ir.Idclient,
                                    ir.IdDemande,
                                    ir.Getstatut
                                }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
-                dgIntervention.Columns["id"].Visible = false;
+              
                 Methods.Nice_grid(
-                    new string[] { "IdIntrv", "Debut", "Fin", "Idclient", "IdDemande","Getstatut"},
-                    new string[] { "ID Intervention", "Debut Intervention", "Fin Intervention", "Client", "Demande", "Statut" },
+                    new string[] { "IdIntrv", "Nom" ,"Debut", "Fin", "Idclient", "IdDemande","Getstatut"},
+                    new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention",  "Demande", "Statut" },
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
             }
         }
-
+        public ListeIntervention(int idClient,string Code)
+        {
+            InitializeComponent();
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                if (idClient > 0 && Code != "")
+                {
+                    lblSource.Text = $"[{Code}]";
+                    lblSource.Visible = true;
+                    var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
+                              where ir.Idclient == idClient
+                              select new
+                              {
+                                  ir.IdIntrv,
+                                  ir.Id,
+                                  ir.Client.Nom,
+                                  ir.Debut,
+                                  ir.Fin,
+                                  ir.IdDemande,
+                                  ir.Getstatut
+                              }).ToList();
+                    dgIntervention.DataSource = Methods.ToDataTable(ls);
+                    Methods.Nice_grid(
+                       new string[] { "IdIntrv", "Nom", "Debut", "Fin", "Idclient", "IdDemande", "Getstatut" },
+                       new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut" },
+                       dgIntervention);
+                    Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
+                }
+            }
+        }
         private void dgIntervention_DoubleClick(object sender, EventArgs e)
         {
             if (dgIntervention.SelectedRows.Count > -1)

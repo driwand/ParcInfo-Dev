@@ -45,4 +45,24 @@ namespace ParcInfo
             }
         }
     }
+    public partial class Employee
+    {
+        public string IdEmploye
+        {
+            get
+            {
+                return "EMP-" + Methods.Splitdate(Datecreation.ToString()) + Id;
+            }
+        }
+    }
+    public partial class Produit
+    {
+        public string CodeP
+        {
+            get
+            {
+                return $"{Marque}-{Model}-{id}";
+            }
+        }
+    }
 }

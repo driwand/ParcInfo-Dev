@@ -26,52 +26,33 @@ namespace ParcInfo.ucClient
             // ControlsClass.CreateRadiusBorder(this);
 
         }
-
-
-
         private void ListClients_Load(object sender, EventArgs e)
         {
 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
+                //var vr = (from c in context.Clients
+                //          where c.IsDeleted != 1
+                //          select new {c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, });
+                var vr = context.Clients.Where(c => c.IsDeleted != 1).ToList();
+                var s = (from c in vr
+                         where c.IsDeleted != 1
+                         select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
+                dgClients.DataSource = Methods.ToDataTable(s);
 
-                
-                var vr = (from c in context.Clients
-                          where c.IsDeleted != 1
-                          select new {c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract,c= c.Debutcontract, }).ToList();
-
-                
-                dgClients.DataSource = Methods.ToDataTable(vr);
-
-                Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
-
-                Methods.Nice_grid(
-                    new string[] {"id","Nom","Adresse", "Tel","Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract"},
-                    new string[] {"ID Client","Nom","Adresse","Tel","Fax","Site web ","Prix Heure", "Heure Contract", "Debut Contract" },
-                    dgClients
-                    );
+                myGrid();
             }
-
         }
 
-
-         string getDate(string date)
-        {
-                
-            DateTime d = DateTime.Parse(date);
-            string s = d.ToString("dMMyy");
-
-            return s;
-        }
+        
         private void GridListClient_DoubleClick(object sender, EventArgs e)
         {
-
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-
-                GlobVars.frmindex.ShowControl(new CreateClient(id));
+                string code = myrow.Cells["IdCLient"].Value.ToString();
+                GlobVars.frmindex.ShowControl(new CreateClient(id,code));
             }
 
         }
@@ -91,7 +72,7 @@ namespace ParcInfo.ucClient
         private void btnNewClient_Click(object sender, EventArgs e)
         {
             
-            GlobVars.frmindex.ShowControl(new CreateClient(0));
+            GlobVars.frmindex.ShowControl(new CreateClient(0,""));
         }
 
         private void btnCons_Click(object sender, EventArgs e)
@@ -100,13 +81,22 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                GlobVars.frmindex.ShowControl(new CreateClient(id));
+                string code = myrow.Cells["IdCLient"].Value.ToString();
+
+                GlobVars.frmindex.ShowControl(new CreateClient(id, code));
             }
         }
 
         private void gpIntervention_Click(object sender, EventArgs e)
         {
-            GlobVars.frmindex.ShowControl(new ListeIntervention("",0));
+            if (dgClients.SelectedRows.Count > 0)
+            {
+                var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                string code = myrow.Cells["IdCLient"].Value.ToString();
+                GlobVars.frmBack = this;
+                GlobVars.frmindex.ShowControl(new ListeIntervention(id,code));
+            }
           
         }
         
@@ -151,19 +141,21 @@ namespace ParcInfo.ucClient
 
                 if (CkDeletedClient.Checked)
                 {
-
                     var ClientsDeleted = (from c in vr
                                           where c.IsDeleted == 1
-                                          select new { c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
-                    dgClients.DataSource = ClientsDeleted;
+                                          select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
+                    dgClients.DataSource = Methods.ToDataTable(ClientsDeleted);
+                    myGrid();
                 }
                 else
                 {
                     var Clients = (from c in vr
                                    where c.IsDeleted != 1
-                                   select new { c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
-                    dgClients.DataSource = Clients;
+                                   select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
+                    dgClients.DataSource = Methods.ToDataTable(Clients);
+                    myGrid();
                 }
+              
             }
         }
 
@@ -203,6 +195,17 @@ namespace ParcInfo.ucClient
                     lblProdC.Text = Cli.ProduitClients.Count.ToString();
                 }
             }
+
+        }
+
+        public void myGrid()
+        {
+            Methods.Nice_grid(
+                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract" },
+                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract" },
+                dgClients
+                );
+            Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
 
         }
     }

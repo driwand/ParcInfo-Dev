@@ -20,7 +20,7 @@ namespace ParcInfo.ucClient
         int deparName = 1;
         List<int> DepartementID = new List<int>();
         int idC = 0;
-        public CreateClient(int idClient)
+        public CreateClient(int idClient,string Code)
         {
             InitializeComponent();
             //ControlsClass.CreateRadiusBorder(this);
@@ -52,7 +52,7 @@ namespace ParcInfo.ucClient
                 btnEditClient.Location = new Point(738, 443);
                 btnDelClient.Visible = true;
                 lblClient.Text = "Fiche du client : ";
-                lblNameClient.Text = "C" + idClient;
+                lblNameClient.Text =  Code;
                 lblNameClient.Visible = true;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {

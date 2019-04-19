@@ -34,8 +34,8 @@
             this.lblEdited = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cbDeleted = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -124,8 +124,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.btnFind);
+            this.groupBox2.Controls.Add(this.txtFind);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Location = new System.Drawing.Point(14, 48);
             this.groupBox2.Name = "groupBox2";
@@ -134,24 +134,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recherche";
             // 
-            // button4
+            // btnFind
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.button4.Location = new System.Drawing.Point(682, 14);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 28);
-            this.button4.TabIndex = 51;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
+            this.btnFind.Location = new System.Drawing.Point(682, 14);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(28, 28);
+            this.btnFind.TabIndex = 51;
+            this.btnFind.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txtFind
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(550, 20);
-            this.textBox2.TabIndex = 42;
+            this.txtFind.Location = new System.Drawing.Point(126, 19);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(550, 20);
+            this.txtFind.TabIndex = 42;
             // 
             // label15
             // 
@@ -547,8 +547,8 @@
         private System.Windows.Forms.Label lblEdited;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox cbDeleted;
         private System.Windows.Forms.Button btnEditEmploye;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.ucClient;
+using ParcInfo.Classes;
 
 namespace ParcInfo.ucClient
 {
@@ -33,8 +34,10 @@ namespace ParcInfo.ucClient
                     var listEmp = (from emp in c.Employees
                                    join d in c.Departements on emp.IdDep equals d.id
                                    where emp.IsDeleted != 1
-                                   select new {  emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
-                    dgEmployees.DataSource = listEmp;
+                                   select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
+                    dgEmployees.DataSource = Methods.ToDataTable(listEmp);
+                    myGrid();
+                   
                 }
             }
 
@@ -50,7 +53,7 @@ namespace ParcInfo.ucClient
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 GlobVars.frmBack = this;
                 GlobVars.frmindex.ShowControl(new ListDemande("en cours",0,id), true);
             }
@@ -61,8 +64,8 @@ namespace ParcInfo.ucClient
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
-                
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
                 GlobVars.frmBack = this;
                 GlobVars.frmindex.ShowControl(new ListDemande("en retard", 0, id), true);
             }
@@ -73,8 +76,8 @@ namespace ParcInfo.ucClient
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
-               
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
                 GlobVars.frmBack = this;
                 GlobVars.frmindex.ShowControl(new ListDemande("", 0, id), true);
             }
@@ -87,8 +90,8 @@ namespace ParcInfo.ucClient
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
-               
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
                 GlobVars.frmBack = this;
                 GlobVars.frmindex.ShowControl(new ListProduitClient(id), true);
             }
@@ -98,7 +101,7 @@ namespace ParcInfo.ucClient
         // Create Employe 
         private void btnNewEmploye_Click(object sender, EventArgs e)
         {
-            frmCreateEmploye frm = new frmCreateEmploye(0,idC);
+            frmCreateEmploye frm = new frmCreateEmploye(0,idC,"");
             frm.ShowDialog();
         }
         // Edit Employe
@@ -107,10 +110,11 @@ namespace ParcInfo.ucClient
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+               string code =myrow.Cells["IdEmploye"].Value.ToString();
                 //GlobVars.selectedEmploye = int.Parse(id);
                 //GlobVars.BtnName = "editEmploye";
-                frmCreateEmploye frm = new frmCreateEmploye(id,idC);
+                frmCreateEmploye frm = new frmCreateEmploye(id,idC,code);
                 frm.Show();
 
 
@@ -122,7 +126,7 @@ namespace ParcInfo.ucClient
             if (e.RowIndex >= 0)
             {
                 var myrow = dgEmployees.Rows[e.RowIndex];
-                int id = int.Parse(myrow.Cells[0].Value.ToString());
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
 
@@ -167,21 +171,32 @@ namespace ParcInfo.ucClient
 
                 var listEmp = (from emp in c.Employees
                                join d in c.Departements on emp.IdDep equals d.id
-                               select new { emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom, emp.IsDeleted }).ToList();
-                dgEmployees.DataSource = listEmp;
-
+                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom, emp.IsDeleted }).ToList();
                 if (cbDeleted.Checked)
                 {
 
                     var EmployeesDeleted = listEmp.Where(d => d.IsDeleted == 1).ToList();
-                    dgEmployees.DataSource = EmployeesDeleted;
+                    dgEmployees.DataSource = Methods.ToDataTable(EmployeesDeleted);
+                    myGrid();
                 }
                 else
                 {
                     var Employees = listEmp.Where(d => d.IsDeleted != 1).ToList();
-                    dgEmployees.DataSource = Employees;
+                    dgEmployees.DataSource = Methods.ToDataTable(Employees);
+                    myGrid();
                 }
             }
+        }
+
+        public void myGrid()
+        {
+           
+            Methods.Nice_grid(
+                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },
+                new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
+                dgEmployees
+                );
+            Methods.FilterDataGridViewIni(dgEmployees, txtFind, btnFind);
         }
     }
 }

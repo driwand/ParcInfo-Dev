@@ -44,7 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDelEmp = new System.Windows.Forms.Button();
             this.gbEmploye.SuspendLayout();
@@ -204,16 +204,16 @@
             this.panel1.Size = new System.Drawing.Size(415, 2);
             this.panel1.TabIndex = 53;
             // 
-            // label1
+            // lblHeading
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(59, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 15);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "Nouveau employee";
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.ForeColor = System.Drawing.Color.Black;
+            this.lblHeading.Location = new System.Drawing.Point(59, 20);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(129, 15);
+            this.lblHeading.TabIndex = 51;
+            this.lblHeading.Text = "Nouveau employee";
             // 
             // pictureBox1
             // 
@@ -250,7 +250,7 @@
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.gbEmploye);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCreateEmploye";
@@ -282,7 +282,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnDelEmp;
     }

@@ -19,13 +19,18 @@ namespace ParcInfo.ucClient
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                var listType = (from c in context.Produits
-                                select new { c.id, c.CodeProduit, c.TypeProduit.Nom, c.Marque, c.Model, c.Prix }).ToList();
-                dgProduits.DataSource = Methods.ToDataTable(listType);
-               
+                var listType = context.Produits.Where(c => c.IsDeleted != 1).ToList();
+                var listProduit = (from p in listType
+                                   select new { p.CodeP, p.id, p.TypeProduit.Nom ,p.Marque, p.Model, p.Prix, p.Datefabrication}).ToList();
+                if (listType != null)
+                {
+                    dgProduits.DataSource = Methods.ToDataTable(listProduit);
+                }
+
+
                 Methods.Nice_grid(
-                    new string[] { "id", "CodeProduit", "Nom", "Marque", "Model", "Prix" },
-                    new string[] { "id", "Code Produit", "Type", "Marque", "Model", "Prix" },
+                    new string[] { "CodeP", "id","Nom", "Marque", "Model", "Prix" , "Datefabrication" },
+                    new string[] { "Code Produit", "id","Type", "Marque", "Model", "Prix", "Date de fabrication" },
                     dgProduits
                     );
                 Methods.FilterDataGridViewIni(dgProduits, txtFind, btnFind);
@@ -50,15 +55,15 @@ namespace ParcInfo.ucClient
                 {
                     isHardware = 1;
                 }
-                string pcode = $"{pMarq}-{pModel}-{pType}";
+                //string pcode = $"{pMarq}-{pModel}-{pType}";
 
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
 
                     var prod = new Produit
                     {
-                        CodeProduit = pcode,
-                        Marque = pMarq,
+                       
+                        Marque = pMarq.ToUpper(),
                         Model = pModel,
                         Prix = float.Parse(pPrix),
                         Datefabrication = pDate,
@@ -71,7 +76,6 @@ namespace ParcInfo.ucClient
                         if (c is lblProduit)
                         {
                             lblProduit lb = (lblProduit)c;
-
                             context.ValeurProps.Add(new ValeurProp { Valeur = lb.TxtValue, IdProduit = prod.id, IdPropriete = pType });
                         }
                     }

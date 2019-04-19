@@ -250,7 +250,7 @@ namespace ParcInfo.ucInterevntion
             if (selectedRequest != 0)
                 GlobVars.frmindex.ShowControl(new FichDemande(selectedRequest));
             else
-                GlobVars.frmindex.ShowControl(new CreateClient(selectedClient));
+                GlobVars.frmindex.ShowControl(new CreateClient(selectedClient,""));
         }
 
         public void Interventions(int selectedInre,int source)

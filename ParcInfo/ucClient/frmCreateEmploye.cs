@@ -16,7 +16,7 @@ namespace ParcInfo.ucClient
 
         public int idE = 0;
         public int idC = 0;
-        public frmCreateEmploye(int idEmploye, int idClient)
+        public frmCreateEmploye(int idEmploye, int idClient,string code)
         {
             InitializeComponent();
             idC = idClient;
@@ -26,6 +26,7 @@ namespace ParcInfo.ucClient
                 if (idEmploye > 0)
                 {
                     idE = idEmploye;
+                    lblHeading.Text = $"Edit employee [{code}]" ;
                     btnAjouter.Text = "Enregistrer";
                     btnDelEmp.Visible = true;
 
