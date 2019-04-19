@@ -104,6 +104,7 @@ namespace ParcInfo.Classes
             return count;
         }
 
+        
         public static List<LabelControl> GetidList(Control control)
         {
             List<LabelControl> list = new List<LabelControl>();
@@ -120,32 +121,6 @@ namespace ParcInfo.Classes
             }
             return list;
         }
-
-        public static void getDemande(DataGridView dg, int idEmploye, string statut)
-        {
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-            {
-                string btname = GlobVars.BtnName;
-                var listDemande = (from d in context.Demandes
-                                   select new { d.Id, d.Datedemande, d.Description_d, d.Statut, d.IdEmployee }).ToList();
-                if (!string.IsNullOrEmpty(statut))
-                {
-                    var DemandesEmp = (from c in listDemande
-                                       where c.IdEmployee == idEmploye && c.Statut == statut
-                                       select new { c.Id, c.Datedemande, c.Description_d, c.Statut }).ToList();
-                    dg.DataSource = DemandesEmp;
-
-                }
-                else
-                {
-                    var DemandesEmp = (from c in listDemande
-                                       where c.IdEmployee == idEmploye
-                                       select new { c.Id, c.Datedemande, c.Description_d, c.Statut }).ToList();
-                    dg.DataSource = DemandesEmp;
-                }
-            }
-        }
-
         public static DataTable ToDataTable<T>(IList<T> data)
         {
             PropertyDescriptorCollection properties =

@@ -23,9 +23,6 @@ namespace ParcInfo.ucClient
         public CreateClient(int idClient)
         {
             InitializeComponent();
-
-
-
             //ControlsClass.CreateRadiusBorder(this);
             //Default lblTextbox
             lblTextbox user1 = new lblTextbox();
@@ -54,14 +51,13 @@ namespace ParcInfo.ucClient
                 btnEditClient.Visible = true;
                 btnEditClient.Location = new Point(738, 443);
                 btnDelClient.Visible = true;
-
                 lblClient.Text = "Fiche du client : ";
                 lblNameClient.Text = "C" + idClient;
                 lblNameClient.Visible = true;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var client = context.Clients.Find(idClient);
-
+                    
                     txtNom.Text = client.Nom;
                     txtAdr.Text = client.Adresse;
                     txtVille.Text = client.Ville;
@@ -79,7 +75,6 @@ namespace ParcInfo.ucClient
                                            where c.Idclient == idClient && c.IsDeleted != 1
                                            join d in context.Utilisateurs on c.Idutilisateur equals d.Id
                                            select new { idAff = c.Id, d.Id, d.Nom, d.Prenom }).ToList();
-
                     // DepartementID = listDepart.Select(c => c.id).ToList();
                     txtlblDepartement tbx = this.Controls.Find("ucDepart1", true).FirstOrDefault() as txtlblDepartement;
                     lblTextbox ltb = this.Controls.Find("userC1", true).FirstOrDefault() as lblTextbox;
@@ -131,9 +126,6 @@ namespace ParcInfo.ucClient
         private void CreateClient_Load(object sender, EventArgs e)
         {
 
-
-
-
         }
         // ADD lblTextbox Control
         private void BtnAddUser_Click(object sender, EventArgs e)
@@ -147,7 +139,6 @@ namespace ParcInfo.ucClient
             userName++;
             PnlUsers.Controls.Add(user1);
             PnlUsers.Height += 23;
-
             if (PnlUsers.Size == PnlUsers.MaximumSize)
             {
                 PnlUsers.AutoScroll = true;
@@ -155,7 +146,6 @@ namespace ParcInfo.ucClient
             }
 
         }
-
         //add txtlblDepartement Control
         private void btnAddDepartement_Click(object sender, EventArgs e)
         {
@@ -173,8 +163,6 @@ namespace ParcInfo.ucClient
 
             }
         }
-
-
         // Edit Client
         private void btnEditClient_Click(object sender, EventArgs e)
         {
@@ -231,7 +219,6 @@ namespace ParcInfo.ucClient
                         }
                         else
                         {
-
                         }
                     }
                     else if (item.Idaffectation >= 0 && item.IsDeleted)
@@ -241,7 +228,6 @@ namespace ParcInfo.ucClient
                         affectation.Dateaffectation = DateTime.Now;
                         lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                         PnlUsers.Controls.Remove(tbx);
-
                     }
                 }
                 // get Values From Textbox
@@ -273,16 +259,9 @@ namespace ParcInfo.ucClient
             UtilisateursList = Methods.GetidList(PnlUsers);
             DepartementList = Methods.GetidList(PnlDepart);
             // check if user empty
-            txtEmpty += Methods.Focus(this);
-
-            //check if departement is empty
-
-            // Check if TextBox is empty
-            txtEmpty += Methods.Focus(this);
+            txtEmpty = Methods.Focus(this);
             // Fil list UtilisateurID
-            //UtilisateurID = Methods.GetidList(PnlUsers);
             if (txtEmpty == 0)
-
             { // get Values From Textbox
                 string Nom = txtNom.Text;
                 string Adr = txtAdr.Text;
@@ -323,9 +302,7 @@ namespace ParcInfo.ucClient
                             txtlblDepartement tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as txtlblDepartement;
                             PnlDepart.Controls.Remove(tbx);
                         }
-
                     }
-
                     foreach (var item in UtilisateursList)
                     {
                         if (item.Id == 0 && !item.IsDeleted && item.Value != "")
@@ -338,7 +315,6 @@ namespace ParcInfo.ucClient
                             lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                             PnlUsers.Controls.Remove(tbx);
                         }
-
                     }
                     //save Change
                     context.SaveChanges();
