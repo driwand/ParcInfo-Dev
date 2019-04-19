@@ -69,7 +69,7 @@ namespace ParcInfo.ucClient
                     txtPrix.Text = client.Prixheur.ToString();
 
                     var listDepart = (from d in client.Departements
-                                      where d.IdCLient == idClient && d.IdDeleted != 1
+                                      where d.IdCLient == idClient && d.IsDeleted != 1
                                       select new { d.id, d.Nom }).ToList();
                     var listUtilisateur = (from c in client.AffectationClients
                                            where c.Idclient == idClient && c.IsDeleted != 1
@@ -187,7 +187,7 @@ namespace ParcInfo.ucClient
                     {
 
                         var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
-                        dep.IdDeleted = 1;
+                        dep.IsDeleted = 1;
                         txtlblDepartement tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as txtlblDepartement;
                         PnlDepart.Controls.Remove(tbx);
                     }
