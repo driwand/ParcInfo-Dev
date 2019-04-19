@@ -24,5 +24,15 @@ namespace ParcInfo
                 return "INV-" + Methods.Splitdate(DateIntervention.ToString()) + Id;
             }
         }
+        public int? IdSource
+        {
+            get
+            {
+                if (IdDemande != 0)
+                    return IdDemande;
+                else
+                    return Idclient;
+            }
+        }
     }
 }

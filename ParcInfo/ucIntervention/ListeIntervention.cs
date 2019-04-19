@@ -63,7 +63,6 @@ namespace ParcInfo.ucInterevntion
             }
         }
 
-
         private void dgIntervention_DoubleClick(object sender, EventArgs e)
         {
             if (dgIntervention.SelectedRows.Count > -1)

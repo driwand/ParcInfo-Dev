@@ -35,7 +35,6 @@
             this.numHeur = new System.Windows.Forms.NumericUpDown();
             this.lblSource = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.lbidSource = new System.Windows.Forms.Label();
             this.lblModifierPar = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -87,7 +86,6 @@
             this.groupBox1.Controls.Add(this.numHeur);
             this.groupBox1.Controls.Add(this.lblSource);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.lbidSource);
             this.groupBox1.Controls.Add(this.lblModifierPar);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label12);
@@ -119,11 +117,15 @@
             // lblSource
             // 
             this.lblSource.AutoSize = true;
+            this.lblSource.BackColor = System.Drawing.Color.Transparent;
+            this.lblSource.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblSource.ForeColor = System.Drawing.Color.Blue;
             this.lblSource.Location = new System.Drawing.Point(97, 27);
             this.lblSource.Name = "lblSource";
             this.lblSource.Size = new System.Drawing.Size(57, 13);
             this.lblSource.TabIndex = 131;
             this.lblSource.Text = "[Id source]";
+            this.lblSource.Click += new System.EventHandler(this.lblSource_Click);
             // 
             // button1
             // 
@@ -137,15 +139,6 @@
             this.button1.Size = new System.Drawing.Size(32, 28);
             this.button1.TabIndex = 130;
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // lbidSource
-            // 
-            this.lbidSource.AutoSize = true;
-            this.lbidSource.Location = new System.Drawing.Point(168, 27);
-            this.lbidSource.Name = "lbidSource";
-            this.lbidSource.Size = new System.Drawing.Size(57, 13);
-            this.lbidSource.TabIndex = 75;
-            this.lbidSource.Text = "[Id source]";
             // 
             // lblModifierPar
             // 
@@ -336,7 +329,6 @@
             this.txtAddDescription.Size = new System.Drawing.Size(451, 51);
             this.txtAddDescription.TabIndex = 0;
             this.txtAddDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddDescription_KeyDown);
-
             // 
             // label1
             // 
@@ -505,7 +497,6 @@
         public System.Windows.Forms.Label lblDetails;
         public System.Windows.Forms.Button btnDone;
         public System.Windows.Forms.Label lblSource;
-        public System.Windows.Forms.Label lbidSource;
         public System.Windows.Forms.NumericUpDown numHeur;
         private System.Windows.Forms.Timer tmrDone;
         public System.Windows.Forms.Panel pnlStatut;

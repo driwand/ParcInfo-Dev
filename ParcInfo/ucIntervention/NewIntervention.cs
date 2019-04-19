@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using ParcInfo.ucControls;
+using ParcInfo.ucClient;
+using ParcInfo.ucDemande;
 
 namespace ParcInfo.ucInterevntion
 {
@@ -240,6 +242,15 @@ namespace ParcInfo.ucInterevntion
                 lblStatut.Location = new Point(103, 8);
             }
             tmrDone.Stop();
+        }
+
+
+        private void lblSource_Click(object sender, EventArgs e)
+        {
+            if (selectedRequest != 0)
+                GlobVars.frmindex.ShowControl(new FichDemande(selectedRequest));
+            else
+                GlobVars.frmindex.ShowControl(new CreateClient(selectedClient));
         }
 
         public void Interventions(int selectedInre,int source)
