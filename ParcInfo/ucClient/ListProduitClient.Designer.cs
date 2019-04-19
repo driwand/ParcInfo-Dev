@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgProduit = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnStartInterv = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,7 +86,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnStartInterv);
             this.groupBox1.Controls.Add(this.btnFind);
             this.groupBox1.Controls.Add(this.txtFind);
             this.groupBox1.Controls.Add(this.label2);
@@ -98,29 +96,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recherche";
             // 
-            // btnStartInterv
-            // 
-            this.btnStartInterv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnStartInterv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStartInterv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStartInterv.ForeColor = System.Drawing.Color.White;
-            this.btnStartInterv.Image = global::ParcInfo.Properties.Resources.start;
-            this.btnStartInterv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStartInterv.Location = new System.Drawing.Point(719, 10);
-            this.btnStartInterv.Name = "btnStartInterv";
-            this.btnStartInterv.Size = new System.Drawing.Size(141, 35);
-            this.btnStartInterv.TabIndex = 123;
-            this.btnStartInterv.Text = "    Demarer intervention";
-            this.btnStartInterv.UseVisualStyleBackColor = false;
-            this.btnStartInterv.Visible = false;
-            // 
             // btnFind
             // 
             this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
             this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(829, 14);
+            this.btnFind.Location = new System.Drawing.Point(719, 15);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
             this.btnFind.TabIndex = 51;
@@ -193,7 +175,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgProduit;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnStartInterv;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Label label2;

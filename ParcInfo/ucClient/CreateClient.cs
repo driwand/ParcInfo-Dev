@@ -57,7 +57,6 @@ namespace ParcInfo.ucClient
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var client = context.Clients.Find(idClient);
-                    
                     txtNom.Text = client.Nom;
                     txtAdr.Text = client.Adresse;
                     txtVille.Text = client.Ville;
@@ -120,8 +119,6 @@ namespace ParcInfo.ucClient
                     }
                 }
             }
-
-
         }
         private void CreateClient_Load(object sender, EventArgs e)
         {

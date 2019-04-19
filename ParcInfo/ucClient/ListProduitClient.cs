@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ParcInfo.Classes;
 
 namespace ParcInfo.ucClient
 {
@@ -31,7 +32,7 @@ namespace ParcInfo.ucClient
               
             }
         }
-        public ListProduitClient(int idClient,bool isClient)
+        public ListProduitClient(int idClient,string code)
         {
             InitializeComponent();
 
@@ -40,7 +41,15 @@ namespace ParcInfo.ucClient
 
                 if (idClient > 0)
                 {
-                    MessageBox.Show("client");
+                    lblClient.Text = $"[{code}]";
+                     var c =  context.Clients.Find(idClient);
+
+                    var listProduit = (from pc in c.ProduitClients
+                                       join p in context.Produits on pc.Idproduit equals p.id
+                                       join pu in context.ProduitUtilisers on pc.Id equals pu.IdProduitClient
+                                       select new { p.CodeP,idprodA = pc.Id,p.TypeProduit.Nom ,p.Marque,p.Model, employe = pu.Employee.Nom + pu.Employee.Prenom,pc.Dateaffectation }).ToList();
+
+                    dgProduit.DataSource = Methods.ToDataTable(listProduit);
                 }
 
             }

@@ -43,7 +43,7 @@
             // 
             this.btn_annuler.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btn_annuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_annuler.Location = new System.Drawing.Point(344, 337);
+            this.btn_annuler.Location = new System.Drawing.Point(357, 337);
             this.btn_annuler.Name = "btn_annuler";
             this.btn_annuler.Size = new System.Drawing.Size(113, 28);
             this.btn_annuler.TabIndex = 70;
@@ -57,7 +57,7 @@
             this.btn_select.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btn_select.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_select.ForeColor = System.Drawing.Color.White;
-            this.btn_select.Location = new System.Drawing.Point(462, 337);
+            this.btn_select.Location = new System.Drawing.Point(475, 337);
             this.btn_select.Name = "btn_select";
             this.btn_select.Size = new System.Drawing.Size(113, 28);
             this.btn_select.TabIndex = 69;
@@ -68,7 +68,7 @@
             // dgUsers
             // 
             this.dgUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgUsers.Location = new System.Drawing.Point(12, 74);
+            this.dgUsers.Location = new System.Drawing.Point(25, 74);
             this.dgUsers.Name = "dgUsers";
             this.dgUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgUsers.Size = new System.Drawing.Size(563, 257);
@@ -79,7 +79,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnFind);
             this.groupBox1.Controls.Add(this.txtFind);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(25, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(563, 55);
             this.groupBox1.TabIndex = 67;
@@ -119,12 +119,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(590, 379);
+            this.ClientSize = new System.Drawing.Size(615, 379);
             this.Controls.Add(this.btn_annuler);
             this.Controls.Add(this.btn_select);
             this.Controls.Add(this.dgUsers);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmselectuser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Utilisateurs";

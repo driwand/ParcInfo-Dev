@@ -30,7 +30,7 @@
         {
             this.nuAffecter = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAffecter = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
@@ -43,11 +43,11 @@
             this.dgProduits = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.btnAddProduit = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.produitInfo1 = new ParcInfo.ucControls.ProduitInfo();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -70,7 +70,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnAffecter);
             this.groupBox1.Controls.Add(this.nuAffecter);
             this.groupBox1.Location = new System.Drawing.Point(772, 49);
             this.groupBox1.Name = "groupBox1";
@@ -79,17 +79,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "affecter";
             // 
-            // button1
+            // btnAffecter
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ParcInfo.Properties.Resources.Taskicon20;
-            this.button1.Location = new System.Drawing.Point(67, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 28);
-            this.button1.TabIndex = 52;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAffecter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnAffecter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAffecter.ForeColor = System.Drawing.Color.White;
+            this.btnAffecter.Image = global::ParcInfo.Properties.Resources.Taskicon20;
+            this.btnAffecter.Location = new System.Drawing.Point(67, 14);
+            this.btnAffecter.Name = "btnAffecter";
+            this.btnAffecter.Size = new System.Drawing.Size(28, 28);
+            this.btnAffecter.TabIndex = 52;
+            this.btnAffecter.UseVisualStyleBackColor = false;
+            this.btnAffecter.Click += new System.EventHandler(this.btnAffecter_Click);
             // 
             // groupBox2
             // 
@@ -206,33 +207,18 @@
             this.label1.TabIndex = 138;
             this.label1.Text = "Liste des produits";
             // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = global::ParcInfo.Properties.Resources.edit201;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(120, 437);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(91, 32);
-            this.button5.TabIndex = 145;
-            this.button5.Text = "  Modifier";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // btnAddProduit
             // 
             this.btnAddProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnAddProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProduit.ForeColor = System.Drawing.Color.White;
-            this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.btnadd;
+            this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.edit201;
             this.btnAddProduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddProduit.Location = new System.Drawing.Point(233, 437);
+            this.btnAddProduit.Location = new System.Drawing.Point(217, 437);
             this.btnAddProduit.Name = "btnAddProduit";
-            this.btnAddProduit.Size = new System.Drawing.Size(91, 32);
+            this.btnAddProduit.Size = new System.Drawing.Size(107, 32);
             this.btnAddProduit.TabIndex = 147;
-            this.btnAddProduit.Text = "   Ajouter";
+            this.btnAddProduit.Text = "  Enregister";
             this.btnAddProduit.UseVisualStyleBackColor = false;
             this.btnAddProduit.Click += new System.EventHandler(this.btnAddProduit_Click);
             // 
@@ -267,14 +253,26 @@
             this.produitInfo1.Size = new System.Drawing.Size(309, 386);
             this.produitInfo1.TabIndex = 152;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::ParcInfo.Properties.Resources.btnadd;
+            this.button1.Location = new System.Drawing.Point(172, 437);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 32);
+            this.button1.TabIndex = 153;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // listProduits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.produitInfo1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.btnAddProduit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
@@ -304,8 +302,7 @@
 
         private System.Windows.Forms.NumericUpDown nuAffecter;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnAffecter;
         private System.Windows.Forms.Button btnAddProduit;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -322,5 +319,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private ucControls.ProduitInfo produitInfo1;
+        private System.Windows.Forms.Button button1;
     }
 }

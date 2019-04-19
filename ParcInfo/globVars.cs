@@ -11,11 +11,19 @@ using System.Windows.Forms;
 
 namespace ParcInfo
 {
+    public  class AffectC
+    {
+        public int IdProduit { get; set; }
+        public float Prix { get; set; }
+
+    }
     public static class GlobVars
     {
         public static int selectedEmploye;
         public static int selectedClient;
         public static string BtnName;
+
+  
 
         public static string NomUtilisateur;
         public static int idUtilisateur;

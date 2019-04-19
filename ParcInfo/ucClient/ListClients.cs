@@ -24,27 +24,28 @@ namespace ParcInfo.ucClient
             InitializeComponent();
 
             // ControlsClass.CreateRadiusBorder(this);
-
         }
         private void ListClients_Load(object sender, EventArgs e)
         {
-
+            
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                //var vr = (from c in context.Clients
-                //          where c.IsDeleted != 1
-                //          select new {c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, });
-                var vr = context.Clients.Where(c => c.IsDeleted != 1).ToList();
-                var s = (from c in vr
-                         where c.IsDeleted != 1
-                         select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
-                dgClients.DataSource = Methods.ToDataTable(s);
+                var vr = (from c in context.Clients
+                              //where c.IsDeleted != 1
+                          select new { dsds = c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, });
+
+                //var fd = context.Clients.Select(p => new { p.IdCLient}
+
+                //).ToList();
+                //var vr = context.Clients.Where(c => c.IsDeleted != 1).ToList();
+                //var s = (from c in vr
+                //         where c.IsDeleted != 1
+                //         select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
+                dgClients.DataSource = Methods.ToDataTable(vr.ToList());
 
                 myGrid();
             }
         }
-
-        
         private void GridListClient_DoubleClick(object sender, EventArgs e)
         {
             if (dgClients.SelectedRows.Count > 0)
@@ -112,10 +113,16 @@ namespace ParcInfo.ucClient
 
         private void gpProduit_Click(object sender, EventArgs e)
         {
-            var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-            int id = int.Parse(myrow.Cells["id"].Value.ToString());
+            if (dgClients.SelectedRows.Count > 0)
+            {
+                var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                string code = myrow.Cells["IdCLient"].Value.ToString();
+                GlobVars.frmBack = this;
+                GlobVars.frmindex.ShowControl(new ListProduitClient(id, code));
+            }
 
-            GlobVars.frmindex.ShowControl(new ListProduitClient(id,true));
+           
 
         }
 
@@ -208,5 +215,6 @@ namespace ParcInfo.ucClient
             Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
 
         }
+
     }
 }
