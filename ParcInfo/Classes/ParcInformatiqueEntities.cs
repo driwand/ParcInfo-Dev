@@ -94,7 +94,7 @@ namespace ParcInfo
         {
             get
             {
-                return GetRequests.Where(x => x.Statut == "en attent");
+                return GetRequests.Where(x => x.Statut == "en attente");
             }
         }
 

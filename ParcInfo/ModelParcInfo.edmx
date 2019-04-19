@@ -46,7 +46,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Datedemande" Type="date" StoreGeneratedPattern="Computed" />
           <Property Name="Description_d" Type="text" />
-          <Property Name="Statut" Type="varchar" MaxLength="30" />
+          <Property Name="Statut" Type="varchar" MaxLength="30" StoreGeneratedPattern="None" />
           <Property Name="IdEmployee" Type="int" />
           <Property Name="Datemodification" Type="date" />
           <Property Name="Modifierpar" Type="int" />
@@ -105,7 +105,7 @@
           <Property Name="Debut" Type="date" />
           <Property Name="Fin" Type="date" />
           <Property Name="Duree" Type="int" />
-          <Property Name="Statut" Type="varchar" MaxLength="20" />
+          <Property Name="Statut" Type="varchar" MaxLength="20" StoreGeneratedPattern="None" />
           <Property Name="IdDemande" Type="int" />
           <Property Name="Idutilisateur" Type="int" />
           <Property Name="Idclient" Type="int" />
@@ -966,7 +966,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Datedemande" Type="DateTime" Precision="0" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Description_d" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Statut" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Statut" Type="String" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="IdEmployee" Type="Int32" />
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Modifierpar" Type="Int32" />
@@ -1040,7 +1040,7 @@
           <Property Name="Debut" Type="DateTime" Precision="0" />
           <Property Name="Fin" Type="DateTime" Precision="0" />
           <Property Name="Duree" Type="Int32" />
-          <Property Name="Statut" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Statut" Type="String" MaxLength="20" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="IdDemande" Type="Int32" />
           <Property Name="Idutilisateur" Type="Int32" />
           <Property Name="Idclient" Type="Int32" />

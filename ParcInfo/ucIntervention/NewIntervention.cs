@@ -86,7 +86,8 @@ namespace ParcInfo.ucInterevntion
                 Intervention intr = new Intervention
                 {
                     Idclient = selectedClient,
-                    Idutilisateur = GlobVars.currentUser
+                    Idutilisateur = GlobVars.currentUser,
+                    Statut = "en cours"
                 };
                 context.Interventions.Add(intr);
 
