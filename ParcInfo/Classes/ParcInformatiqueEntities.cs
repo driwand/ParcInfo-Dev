@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ParcInfo
 {
     public partial class ParcInformatiqueEntities
@@ -22,7 +23,7 @@ namespace ParcInfo
         {
             get {
                 var retarddate = DateTime.Now;
-                return GetInterventions.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention,2) < retarddate);
+                return GetInterventions.Where(x => x.Statut == "en cours"  && DbFunctions.AddDays(x.DateIntervention,2) < retarddate);
             }
         }
         public IQueryable<Intervention> GetIntervEncours
@@ -78,7 +79,7 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.Datedemande, 2) < retarddate);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) < retarddate);
             }
         }
         public IQueryable<Demande> GetRequestCours
@@ -86,7 +87,7 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.Datedemande,2) > retarddate);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut!="en attente" && DbFunctions.AddDays(x.Datedemande,2) > retarddate);
             }
         }
 
@@ -94,7 +95,7 @@ namespace ParcInfo
         {
             get
             {
-                return GetRequests.Where(x => x.Statut == "en attent");
+                return GetRequests.Where(x => x.Statut == "en attente");
             }
         }
 

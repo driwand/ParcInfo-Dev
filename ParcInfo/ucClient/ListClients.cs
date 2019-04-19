@@ -30,18 +30,14 @@ namespace ParcInfo.ucClient
             
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                var vr = (from c in context.Clients
-                              //where c.IsDeleted != 1
-                          select new { dsds = c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, });
+                var vr = context.Clients.Where(c=> c.IsDeleted == 0).ToList();
 
-                //var fd = context.Clients.Select(p => new { p.IdCLient}
-
-                //).ToList();
                 //var vr = context.Clients.Where(c => c.IsDeleted != 1).ToList();
                 //var s = (from c in vr
                 //         where c.IsDeleted != 1
                 //         select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
-                dgClients.DataSource = Methods.ToDataTable(vr.ToList());
+                dgClients.DataSource = Methods.ToDataTable(vr.Select(c=>new
+                { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, }).ToList());
 
                 myGrid();
             }
@@ -131,10 +127,10 @@ namespace ParcInfo.ucClient
         {
             int index = dgClients.CurrentRow.Index;
 
-            int id = int.Parse(dgClients.Rows[index].Cells[0].Value.ToString());
+            int id = int.Parse(dgClients.Rows[index].Cells["id"].Value.ToString());
             //GlobVars.selectedClient = id;
 
-            GlobVars.frmindex.ShowControl(new NewIntervention(id,0,0));
+            GlobVars.frmindex.ShowControl(new NewIntervention(id));
         }
 
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)

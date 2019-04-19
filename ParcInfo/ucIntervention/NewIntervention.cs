@@ -24,17 +24,17 @@ namespace ParcInfo.ucInterevntion
             {
                 currentInterv = curInter;
                 lblIntervention.Text = currentInterv.ToString();
-                Interventions(currentInterv,source);
-            }
-            if (selCli != 0)
-            {
-                selectedClient = selCli;
-                startInterClient();
+                Interventions(currentInterv, source);
             }
             if (selReq != 0)
             {
                 selectedRequest = selReq;
-                startInterRequest();
+                selectedClient = selCli;
+                StartInterRequest();
+            }else if (selCli != 0)
+            {
+                selectedClient = selCli;
+                StartInterClient();
             }
         }
 
@@ -45,7 +45,7 @@ namespace ParcInfo.ucInterevntion
         {
 
         }
-        public void startInterRequest()
+        public void StartInterRequest()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
@@ -54,7 +54,8 @@ namespace ParcInfo.ucInterevntion
                 {
                     IdDemande = selectedRequest,
                     Idutilisateur = GlobVars.currentUser,
-                    Idclient = selectedClient
+                    Idclient = selectedClient,
+                    Statut = "en cours"
                 };
                 context.Interventions.Add(intr);
 
@@ -65,20 +66,24 @@ namespace ParcInfo.ucInterevntion
                     Textobservation = "new intervention get started"
                 };
                 context.observations.Add(obs);
-                context.SaveChanges();
+                
 
                 var getRequest = context.Demandes.Find(selectedRequest); //current request
-
+                if (getRequest.Statut == "en attente")
+                    getRequest.Statut = "en cours";
+              
+                context.SaveChanges();
+                currentInterv = intr.Id;
 
                 //show request description and details
                 AddTxtDescription(getRequest.Employee.Nom,getRequest.Datedemande.ToString(),getRequest.Description_d,pnlObservetion);
 
 
                 //to fill with first intervention informations
-
+                AddTxtDescription("Parc info", obs.Dateobservation.ToString(), obs.Textobservation, pnlObservetion);
             }
         }
-        public void startInterClient()
+        public void StartInterClient()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
@@ -86,7 +91,8 @@ namespace ParcInfo.ucInterevntion
                 Intervention intr = new Intervention
                 {
                     Idclient = selectedClient,
-                    Idutilisateur = GlobVars.currentUser
+                    Idutilisateur = GlobVars.currentUser,
+                    Statut = "en cours"
                 };
                 context.Interventions.Add(intr);
 

@@ -354,8 +354,6 @@ namespace ParcInfo.frmDefault
             getRealdata.RunWorkerAsync();
     }
 
-
-
     #endregion
     private void getRealdata_DoWork(object sender, DoWorkEventArgs e)
     {
