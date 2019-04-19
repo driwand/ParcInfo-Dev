@@ -32,23 +32,25 @@ namespace ParcInfo.ucInterevntion
                                  ir.Debut,
                                  ir.Fin,
                                  ir.IdDemande,
-                                 ir.Getstatut
+                                 ir.Getstatut,
+                                 IdClient = ir.Client.id
                              }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
                 else
                 {
-                    var ls = ( from ir in context.GetInterventionBystatut(lblTotalIntervention, statutInterv)
-                               select new {
-                                   ir.IdIntrv,
-                                   ir.Id,
-                                   ir.Client.Nom,
-                                   ir.Debut,
-                                   ir.Fin,
-                                   ir.IdDemande,
-                                   ir.Getstatut
-                               }).ToList();
+                    var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention, statutInterv)
+                              select new {
+                                  ir.IdIntrv,
+                                  ir.Id,
+                                  ir.Client.Nom,
+                                  ir.Debut,
+                                  ir.Fin,
+                                  ir.IdDemande,
+                                  ir.Getstatut,
+                                  IdClient = ir.Client.id
+                              }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                 }
               

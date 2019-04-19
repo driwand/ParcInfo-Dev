@@ -12,10 +12,10 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class u
+    public partial class ProprietesProduit
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public u()
+        public ProprietesProduit()
         {
             this.ValeurProps = new HashSet<ValeurProp>();
         }

@@ -20,6 +20,6 @@ namespace ParcInfo
         public Nullable<int> IdPropriete { get; set; }
     
         public virtual Produit Produit { get; set; }
-        public virtual u ProprietesProduit { get; set; }
+        public virtual ProprietesProduit ProprietesProduit { get; set; }
     }
 }

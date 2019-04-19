@@ -22,8 +22,8 @@ namespace ParcInfo
     
         public int id { get; set; }
         public string Nom { get; set; }
-        public Nullable<int> IdDeleted { get; set; }
         public Nullable<int> IdCLient { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
     
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
