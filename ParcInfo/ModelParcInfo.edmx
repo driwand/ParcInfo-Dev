@@ -111,7 +111,7 @@
           <Property Name="Idclient" Type="int" />
           <Property Name="Datemodification" Type="date" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
           <Property Name="TypeIntervention" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="observation">
@@ -1046,7 +1046,7 @@
           <Property Name="Idclient" Type="Int32" />
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Intervent__Idcli__45F365D3" FromRole="Intervention" ToRole="Client" />
           <NavigationProperty Name="Demande" Relationship="Self.FK__Intervent__IdDem__440B1D61" FromRole="Intervention" ToRole="Demande" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Intervent__Iduti__44FF419A" FromRole="Intervention" ToRole="Utilisateur" />
