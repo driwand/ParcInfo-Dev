@@ -31,14 +31,14 @@ namespace ParcInfo.ucClient
 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                //var vr = (from c in context.Clients
-                //          where c.IsDeleted != 1
-                //          select new {c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, });
-                var vr = context.Clients.Where(c => c.IsDeleted != 1).ToList();
-                var s = (from c in vr
-                         where c.IsDeleted != 1
-                         select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
-                dgClients.DataSource = Methods.ToDataTable(s);
+                var vr = context.Clients.Where(c=> c.IsDeleted == 0).ToList();
+
+                //var vr = context.Clients.Where(c => c.IsDeleted != 1).ToList();
+                //var s = (from c in vr
+                //         where c.IsDeleted != 1
+                //         select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
+                dgClients.DataSource = Methods.ToDataTable(vr.Select(c=>new
+                { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, }).ToList());
 
                 myGrid();
             }

@@ -110,15 +110,23 @@ namespace ParcInfo.ucInterevntion
                             int.Parse(dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString()))
                             );
                 }
-                GlobVars.frmindex.ShowControl(
-                    new NewIntervention(
-                        0,
-                        0, 
-                        selectedInt, 
-                        int.Parse(dgIntervention.Rows[index].Cells["IdClient"].Value.ToString()))
-                        );
+                else
+                {
+                    GlobVars.frmindex.ShowControl(
+                        new NewIntervention(
+                            0,
+                            0,
+                            selectedInt,
+                            int.Parse(dgIntervention.Rows[index].Cells["IdClient"].Value.ToString()))
+                            );
+                }
+
             }
         }
 
+        private void ListeIntervention_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

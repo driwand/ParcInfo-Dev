@@ -38,16 +38,6 @@ namespace ParcInfo.frmDefault
             this.line3 = new System.Windows.Forms.Panel();
             this.btnProfile = new System.Windows.Forms.Button();
             this.PanelContainer = new System.Windows.Forms.Panel();
-            this.DropDemande = new System.Windows.Forms.Panel();
-            this.lblRequestTerminer = new System.Windows.Forms.Label();
-            this.btnDemandeTerminer = new System.Windows.Forms.Button();
-            this.lblRequestCours = new System.Windows.Forms.Label();
-            this.lblTotalRequest = new System.Windows.Forms.Label();
-            this.lblRequestRetard = new System.Windows.Forms.Label();
-            this.btnDemandeRetard = new System.Windows.Forms.Button();
-            this.btnDemandeCours = new System.Windows.Forms.Button();
-            this.btnListDemande = new System.Windows.Forms.Button();
-            this.btnRequest = new System.Windows.Forms.Button();
             this.PanelHeader = new System.Windows.Forms.Panel();
             this.PicBack = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,6 +49,16 @@ namespace ParcInfo.frmDefault
             this.PickBell = new System.Windows.Forms.PictureBox();
             this.PanelLeftSide = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.DropDemande = new System.Windows.Forms.Panel();
+            this.lblRequestTerminer = new System.Windows.Forms.Label();
+            this.btnDemandeRetard = new System.Windows.Forms.Button();
+            this.lblRequestCours = new System.Windows.Forms.Label();
+            this.lblTotalRequest = new System.Windows.Forms.Label();
+            this.lblRequestRetard = new System.Windows.Forms.Label();
+            this.btnDemandeCours = new System.Windows.Forms.Button();
+            this.btnDemandeAttent = new System.Windows.Forms.Button();
+            this.btnListDemande = new System.Windows.Forms.Button();
+            this.btnRequest = new System.Windows.Forms.Button();
             this.DropIntervention = new System.Windows.Forms.Panel();
             this.lblInterventionTerminer = new System.Windows.Forms.Label();
             this.btnInterventionTerminer = new System.Windows.Forms.Button();
@@ -95,11 +95,11 @@ namespace ParcInfo.frmDefault
             this.tmrReal = new System.Windows.Forms.Timer(this.components);
             this.tmrRetard = new System.Windows.Forms.Timer(this.components);
             this.getRealdata = new System.ComponentModel.BackgroundWorker();
+            this.btnDemandeTerminer = new System.Windows.Forms.Button();
             this.dragControl1 = new ParcInfo.ucControls.DragControl();
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
-            this.DropDemande.SuspendLayout();
             this.PanelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).BeginInit();
             this.panel1.SuspendLayout();
@@ -108,6 +108,7 @@ namespace ParcInfo.frmDefault
             ((System.ComponentModel.ISupportInitialize)(this.PickBell)).BeginInit();
             this.PanelLeftSide.SuspendLayout();
             this.pnlMenu.SuspendLayout();
+            this.DropDemande.SuspendLayout();
             this.DropIntervention.SuspendLayout();
             this.DropParametre.SuspendLayout();
             this.DropProduit.SuspendLayout();
@@ -205,164 +206,6 @@ namespace ParcInfo.frmDefault
             this.PanelContainer.Name = "PanelContainer";
             this.PanelContainer.Size = new System.Drawing.Size(890, 481);
             this.PanelContainer.TabIndex = 0;
-            // 
-            // DropDemande
-            // 
-            this.DropDemande.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.DropDemande.Controls.Add(this.lblRequestTerminer);
-            this.DropDemande.Controls.Add(this.btnDemandeTerminer);
-            this.DropDemande.Controls.Add(this.lblRequestCours);
-            this.DropDemande.Controls.Add(this.lblTotalRequest);
-            this.DropDemande.Controls.Add(this.lblRequestRetard);
-            this.DropDemande.Controls.Add(this.btnDemandeRetard);
-            this.DropDemande.Controls.Add(this.btnDemandeCours);
-            this.DropDemande.Controls.Add(this.btnListDemande);
-            this.DropDemande.Controls.Add(this.btnRequest);
-            this.DropDemande.Location = new System.Drawing.Point(2, 143);
-            this.DropDemande.MaximumSize = new System.Drawing.Size(224, 206);
-            this.DropDemande.MinimumSize = new System.Drawing.Size(224, 41);
-            this.DropDemande.Name = "DropDemande";
-            this.DropDemande.Size = new System.Drawing.Size(224, 41);
-            this.DropDemande.TabIndex = 7;
-            // 
-            // lblRequestTerminer
-            // 
-            this.lblRequestTerminer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.lblRequestTerminer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRequestTerminer.ForeColor = System.Drawing.Color.White;
-            this.lblRequestTerminer.Location = new System.Drawing.Point(191, 175);
-            this.lblRequestTerminer.Name = "lblRequestTerminer";
-            this.lblRequestTerminer.Size = new System.Drawing.Size(21, 18);
-            this.lblRequestTerminer.TabIndex = 16;
-            this.lblRequestTerminer.Text = "12";
-            this.lblRequestTerminer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnDemandeTerminer
-            // 
-            this.btnDemandeTerminer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDemandeTerminer.FlatAppearance.BorderSize = 0;
-            this.btnDemandeTerminer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDemandeTerminer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDemandeTerminer.ForeColor = System.Drawing.Color.White;
-            this.btnDemandeTerminer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDemandeTerminer.Location = new System.Drawing.Point(0, 164);
-            this.btnDemandeTerminer.Name = "btnDemandeTerminer";
-            this.btnDemandeTerminer.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnDemandeTerminer.Size = new System.Drawing.Size(224, 41);
-            this.btnDemandeTerminer.TabIndex = 15;
-            this.btnDemandeTerminer.Text = "Demande terminer";
-            this.btnDemandeTerminer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDemandeTerminer.UseVisualStyleBackColor = true;
-            this.btnDemandeTerminer.Click += new System.EventHandler(this.btnDemandeTerminer_Click);
-            // 
-            // lblRequestCours
-            // 
-            this.lblRequestCours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(130)))), ((int)(((byte)(49)))));
-            this.lblRequestCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRequestCours.ForeColor = System.Drawing.Color.White;
-            this.lblRequestCours.Location = new System.Drawing.Point(191, 93);
-            this.lblRequestCours.Name = "lblRequestCours";
-            this.lblRequestCours.Size = new System.Drawing.Size(21, 18);
-            this.lblRequestCours.TabIndex = 14;
-            this.lblRequestCours.Text = "21";
-            this.lblRequestCours.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblTotalRequest
-            // 
-            this.lblTotalRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(92)))), ((int)(((byte)(101)))));
-            this.lblTotalRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRequest.ForeColor = System.Drawing.Color.White;
-            this.lblTotalRequest.Location = new System.Drawing.Point(124, 11);
-            this.lblTotalRequest.Name = "lblTotalRequest";
-            this.lblTotalRequest.Size = new System.Drawing.Size(21, 18);
-            this.lblTotalRequest.TabIndex = 9;
-            this.lblTotalRequest.Text = "0";
-            this.lblTotalRequest.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblRequestRetard
-            // 
-            this.lblRequestRetard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(92)))), ((int)(((byte)(101)))));
-            this.lblRequestRetard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRequestRetard.ForeColor = System.Drawing.Color.White;
-            this.lblRequestRetard.Location = new System.Drawing.Point(191, 134);
-            this.lblRequestRetard.Name = "lblRequestRetard";
-            this.lblRequestRetard.Size = new System.Drawing.Size(21, 18);
-            this.lblRequestRetard.TabIndex = 13;
-            this.lblRequestRetard.Text = "12";
-            this.lblRequestRetard.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnDemandeRetard
-            // 
-            this.btnDemandeRetard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDemandeRetard.FlatAppearance.BorderSize = 0;
-            this.btnDemandeRetard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDemandeRetard.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDemandeRetard.ForeColor = System.Drawing.Color.White;
-            this.btnDemandeRetard.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDemandeRetard.Location = new System.Drawing.Point(0, 123);
-            this.btnDemandeRetard.Name = "btnDemandeRetard";
-            this.btnDemandeRetard.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnDemandeRetard.Size = new System.Drawing.Size(224, 41);
-            this.btnDemandeRetard.TabIndex = 6;
-            this.btnDemandeRetard.Text = "Demande en retard";
-            this.btnDemandeRetard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDemandeRetard.UseVisualStyleBackColor = true;
-            this.btnDemandeRetard.Click += new System.EventHandler(this.btnDemandeRetard_Click);
-            // 
-            // btnDemandeCours
-            // 
-            this.btnDemandeCours.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDemandeCours.FlatAppearance.BorderSize = 0;
-            this.btnDemandeCours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDemandeCours.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDemandeCours.ForeColor = System.Drawing.Color.White;
-            this.btnDemandeCours.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDemandeCours.Location = new System.Drawing.Point(0, 82);
-            this.btnDemandeCours.Name = "btnDemandeCours";
-            this.btnDemandeCours.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnDemandeCours.Size = new System.Drawing.Size(224, 41);
-            this.btnDemandeCours.TabIndex = 5;
-            this.btnDemandeCours.Text = "Demande en cours";
-            this.btnDemandeCours.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDemandeCours.UseVisualStyleBackColor = true;
-            this.btnDemandeCours.Click += new System.EventHandler(this.btnDemandeCours_Click);
-            // 
-            // btnListDemande
-            // 
-            this.btnListDemande.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnListDemande.FlatAppearance.BorderSize = 0;
-            this.btnListDemande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListDemande.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListDemande.ForeColor = System.Drawing.Color.White;
-            this.btnListDemande.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnListDemande.Location = new System.Drawing.Point(0, 41);
-            this.btnListDemande.Name = "btnListDemande";
-            this.btnListDemande.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnListDemande.Size = new System.Drawing.Size(224, 41);
-            this.btnListDemande.TabIndex = 4;
-            this.btnListDemande.Text = "Liste des demandes";
-            this.btnListDemande.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListDemande.UseVisualStyleBackColor = true;
-            this.btnListDemande.Click += new System.EventHandler(this.btnListDemande_Click);
-            // 
-            // btnRequest
-            // 
-            this.btnRequest.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRequest.FlatAppearance.BorderSize = 0;
-            this.btnRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRequest.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequest.ForeColor = System.Drawing.Color.White;
-            this.btnRequest.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
-            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRequest.Location = new System.Drawing.Point(0, 0);
-            this.btnRequest.Name = "btnRequest";
-            this.btnRequest.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnRequest.Size = new System.Drawing.Size(224, 41);
-            this.btnRequest.TabIndex = 3;
-            this.btnRequest.Text = "Demande";
-            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequest.UseVisualStyleBackColor = true;
-            this.btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
             // 
             // PanelHeader
             // 
@@ -489,6 +332,164 @@ namespace ParcInfo.frmDefault
             this.pnlMenu.Size = new System.Drawing.Size(224, 501);
             this.pnlMenu.TabIndex = 4;
             // 
+            // DropDemande
+            // 
+            this.DropDemande.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.DropDemande.Controls.Add(this.lblRequestRetard);
+            this.DropDemande.Controls.Add(this.lblRequestTerminer);
+            this.DropDemande.Controls.Add(this.btnDemandeTerminer);
+            this.DropDemande.Controls.Add(this.btnDemandeRetard);
+            this.DropDemande.Controls.Add(this.lblRequestCours);
+            this.DropDemande.Controls.Add(this.lblTotalRequest);
+            this.DropDemande.Controls.Add(this.btnDemandeCours);
+            this.DropDemande.Controls.Add(this.btnDemandeAttent);
+            this.DropDemande.Controls.Add(this.btnListDemande);
+            this.DropDemande.Controls.Add(this.btnRequest);
+            this.DropDemande.Location = new System.Drawing.Point(1, 153);
+            this.DropDemande.MaximumSize = new System.Drawing.Size(224, 247);
+            this.DropDemande.MinimumSize = new System.Drawing.Size(224, 41);
+            this.DropDemande.Name = "DropDemande";
+            this.DropDemande.Size = new System.Drawing.Size(224, 41);
+            this.DropDemande.TabIndex = 7;
+            // 
+            // lblRequestTerminer
+            // 
+            this.lblRequestTerminer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.lblRequestTerminer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRequestTerminer.ForeColor = System.Drawing.Color.White;
+            this.lblRequestTerminer.Location = new System.Drawing.Point(191, 217);
+            this.lblRequestTerminer.Name = "lblRequestTerminer";
+            this.lblRequestTerminer.Size = new System.Drawing.Size(21, 18);
+            this.lblRequestTerminer.TabIndex = 16;
+            this.lblRequestTerminer.Text = "12";
+            this.lblRequestTerminer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnDemandeRetard
+            // 
+            this.btnDemandeRetard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDemandeRetard.FlatAppearance.BorderSize = 0;
+            this.btnDemandeRetard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDemandeRetard.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDemandeRetard.ForeColor = System.Drawing.Color.White;
+            this.btnDemandeRetard.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDemandeRetard.Location = new System.Drawing.Point(0, 164);
+            this.btnDemandeRetard.Name = "btnDemandeRetard";
+            this.btnDemandeRetard.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnDemandeRetard.Size = new System.Drawing.Size(224, 41);
+            this.btnDemandeRetard.TabIndex = 15;
+            this.btnDemandeRetard.Text = "Demande en retard";
+            this.btnDemandeRetard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDemandeRetard.UseVisualStyleBackColor = true;
+            this.btnDemandeRetard.Click += new System.EventHandler(this.btnDemandeRetard_Click);
+            // 
+            // lblRequestCours
+            // 
+            this.lblRequestCours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(130)))), ((int)(((byte)(49)))));
+            this.lblRequestCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRequestCours.ForeColor = System.Drawing.Color.White;
+            this.lblRequestCours.Location = new System.Drawing.Point(191, 135);
+            this.lblRequestCours.Name = "lblRequestCours";
+            this.lblRequestCours.Size = new System.Drawing.Size(21, 18);
+            this.lblRequestCours.TabIndex = 14;
+            this.lblRequestCours.Text = "21";
+            this.lblRequestCours.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblTotalRequest
+            // 
+            this.lblTotalRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(92)))), ((int)(((byte)(101)))));
+            this.lblTotalRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRequest.ForeColor = System.Drawing.Color.White;
+            this.lblTotalRequest.Location = new System.Drawing.Point(124, 11);
+            this.lblTotalRequest.Name = "lblTotalRequest";
+            this.lblTotalRequest.Size = new System.Drawing.Size(21, 18);
+            this.lblTotalRequest.TabIndex = 9;
+            this.lblTotalRequest.Text = "0";
+            this.lblTotalRequest.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblRequestRetard
+            // 
+            this.lblRequestRetard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(92)))), ((int)(((byte)(101)))));
+            this.lblRequestRetard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRequestRetard.ForeColor = System.Drawing.Color.White;
+            this.lblRequestRetard.Location = new System.Drawing.Point(191, 176);
+            this.lblRequestRetard.Name = "lblRequestRetard";
+            this.lblRequestRetard.Size = new System.Drawing.Size(21, 18);
+            this.lblRequestRetard.TabIndex = 13;
+            this.lblRequestRetard.Text = "12";
+            this.lblRequestRetard.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnDemandeCours
+            // 
+            this.btnDemandeCours.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDemandeCours.FlatAppearance.BorderSize = 0;
+            this.btnDemandeCours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDemandeCours.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDemandeCours.ForeColor = System.Drawing.Color.White;
+            this.btnDemandeCours.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDemandeCours.Location = new System.Drawing.Point(0, 123);
+            this.btnDemandeCours.Name = "btnDemandeCours";
+            this.btnDemandeCours.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnDemandeCours.Size = new System.Drawing.Size(224, 41);
+            this.btnDemandeCours.TabIndex = 6;
+            this.btnDemandeCours.Text = "Demande en cours";
+            this.btnDemandeCours.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDemandeCours.UseVisualStyleBackColor = true;
+            this.btnDemandeCours.Click += new System.EventHandler(this.btnDemandeCours_Click);
+            // 
+            // btnDemandeAttent
+            // 
+            this.btnDemandeAttent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDemandeAttent.FlatAppearance.BorderSize = 0;
+            this.btnDemandeAttent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDemandeAttent.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDemandeAttent.ForeColor = System.Drawing.Color.White;
+            this.btnDemandeAttent.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDemandeAttent.Location = new System.Drawing.Point(0, 82);
+            this.btnDemandeAttent.Name = "btnDemandeAttent";
+            this.btnDemandeAttent.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnDemandeAttent.Size = new System.Drawing.Size(224, 41);
+            this.btnDemandeAttent.TabIndex = 5;
+            this.btnDemandeAttent.Text = "Demande en attente";
+            this.btnDemandeAttent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDemandeAttent.UseVisualStyleBackColor = true;
+            // 
+            // btnListDemande
+            // 
+            this.btnListDemande.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnListDemande.FlatAppearance.BorderSize = 0;
+            this.btnListDemande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListDemande.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListDemande.ForeColor = System.Drawing.Color.White;
+            this.btnListDemande.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnListDemande.Location = new System.Drawing.Point(0, 41);
+            this.btnListDemande.Name = "btnListDemande";
+            this.btnListDemande.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnListDemande.Size = new System.Drawing.Size(224, 41);
+            this.btnListDemande.TabIndex = 4;
+            this.btnListDemande.Text = "Liste des demandes";
+            this.btnListDemande.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListDemande.UseVisualStyleBackColor = true;
+            this.btnListDemande.Click += new System.EventHandler(this.btnListDemande_Click);
+            // 
+            // btnRequest
+            // 
+            this.btnRequest.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRequest.FlatAppearance.BorderSize = 0;
+            this.btnRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRequest.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRequest.ForeColor = System.Drawing.Color.White;
+            this.btnRequest.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRequest.Location = new System.Drawing.Point(0, 0);
+            this.btnRequest.Name = "btnRequest";
+            this.btnRequest.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnRequest.Size = new System.Drawing.Size(224, 41);
+            this.btnRequest.TabIndex = 3;
+            this.btnRequest.Text = "Demande";
+            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.UseVisualStyleBackColor = true;
+            this.btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
+            // 
             // DropIntervention
             // 
             this.DropIntervention.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -501,7 +502,7 @@ namespace ParcInfo.frmDefault
             this.DropIntervention.Controls.Add(this.btnInterventionCours);
             this.DropIntervention.Controls.Add(this.btnListIntervention);
             this.DropIntervention.Controls.Add(this.btnIntervention);
-            this.DropIntervention.Location = new System.Drawing.Point(1, 190);
+            this.DropIntervention.Location = new System.Drawing.Point(0, 213);
             this.DropIntervention.MaximumSize = new System.Drawing.Size(224, 206);
             this.DropIntervention.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropIntervention.Name = "DropIntervention";
@@ -945,6 +946,24 @@ namespace ParcInfo.frmDefault
             this.getRealdata.DoWork += new System.ComponentModel.DoWorkEventHandler(this.getRealdata_DoWork);
             this.getRealdata.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.getRealdata_RunWorkerCompleted);
             // 
+            // btnDemandeTerminer
+            // 
+            this.btnDemandeTerminer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDemandeTerminer.FlatAppearance.BorderSize = 0;
+            this.btnDemandeTerminer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDemandeTerminer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDemandeTerminer.ForeColor = System.Drawing.Color.White;
+            this.btnDemandeTerminer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDemandeTerminer.Location = new System.Drawing.Point(0, 205);
+            this.btnDemandeTerminer.Name = "btnDemandeTerminer";
+            this.btnDemandeTerminer.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnDemandeTerminer.Size = new System.Drawing.Size(224, 41);
+            this.btnDemandeTerminer.TabIndex = 17;
+            this.btnDemandeTerminer.Text = "Demande terminer";
+            this.btnDemandeTerminer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDemandeTerminer.UseVisualStyleBackColor = true;
+            this.btnDemandeTerminer.Click += new System.EventHandler(this.btnDemandeTerminer_Click);
+            // 
             // dragControl1
             // 
             this.dragControl1.SelectControl = this.PanelHeader;
@@ -963,7 +982,6 @@ namespace ParcInfo.frmDefault
             this.panel2.ResumeLayout(false);
             this.PanelMain.ResumeLayout(false);
             this.DropdownUserMenu.ResumeLayout(false);
-            this.DropDemande.ResumeLayout(false);
             this.PanelHeader.ResumeLayout(false);
             this.PanelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).EndInit();
@@ -974,6 +992,7 @@ namespace ParcInfo.frmDefault
             ((System.ComponentModel.ISupportInitialize)(this.PickBell)).EndInit();
             this.PanelLeftSide.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
+            this.DropDemande.ResumeLayout(false);
             this.DropIntervention.ResumeLayout(false);
             this.DropParametre.ResumeLayout(false);
             this.DropProduit.ResumeLayout(false);
@@ -1024,10 +1043,10 @@ namespace ParcInfo.frmDefault
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel DropDemande;
-        private System.Windows.Forms.Button btnDemandeCours;
+        private System.Windows.Forms.Button btnDemandeAttent;
         private System.Windows.Forms.Button btnListDemande;
         private System.Windows.Forms.Button btnRequest;
-        private System.Windows.Forms.Button btnDemandeRetard;
+        private System.Windows.Forms.Button btnDemandeCours;
         private System.Windows.Forms.Label lblTotalRequest;
         private System.Windows.Forms.Panel DropParametre;
         private System.Windows.Forms.Button btnNewUser;
@@ -1044,7 +1063,7 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Button btnInterventionCours;
         private System.Windows.Forms.Button btnListIntervention;
         private System.Windows.Forms.Button btnIntervention;
-        private System.Windows.Forms.Button btnDemandeTerminer;
+        private System.Windows.Forms.Button btnDemandeRetard;
         private System.Windows.Forms.Button btnInterventionTerminer;
         private System.Windows.Forms.Label lblRequestTerminer;
         private System.Windows.Forms.Label lblInterventionTerminer;
@@ -1053,5 +1072,6 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Timer tmrReal;
         private System.Windows.Forms.Timer tmrRetard;
         private System.ComponentModel.BackgroundWorker getRealdata;
+        private System.Windows.Forms.Button btnDemandeTerminer;
     }
 }
