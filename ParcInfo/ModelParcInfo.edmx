@@ -17,7 +17,7 @@
           <Property Name="Dateaffectation" Type="date" StoreGeneratedPattern="Computed" />
           <Property Name="Datemodification" Type="date" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -37,7 +37,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Demande">
           <Key>
@@ -58,8 +58,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="30" />
-          <Property Name="IdDeleted" Type="int" />
           <Property Name="IdCLient" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -79,7 +79,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Installer">
           <Key>
@@ -93,7 +93,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Intervention">
           <Key>
@@ -141,7 +141,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="ProduitClient">
           <Key>
@@ -156,7 +156,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="ProduitUtiliser">
           <Key>
@@ -173,7 +173,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="ProprietesProduit">
           <Key>
@@ -182,7 +182,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="30" />
           <Property Name="idType" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="RoleUtilisateur">
           <Key>
@@ -195,7 +195,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="TypeProduit">
           <Key>
@@ -205,7 +205,7 @@
           <Property Name="Nom" Type="varchar" MaxLength="20" />
           <Property Name="SupportingSoftware" Type="int" />
           <Property Name="SupportingUser" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Utilisateur">
           <Key>
@@ -226,7 +226,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="ValeurProp">
           <Key>
@@ -927,7 +927,7 @@
           <Property Name="Dateaffectation" Type="DateTime" Precision="0" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Affectati__Idcli__20C1E124" FromRole="AffectationClient" ToRole="Client" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Affectati__Iduti__21B6055D" FromRole="AffectationClient" ToRole="Utilisateur" />
           <NavigationProperty Name="Utilisateur1" Relationship="Self.FK__Affectati__Modif__22AA2996" FromRole="AffectationClient" ToRole="Utilisateur" />
@@ -950,7 +950,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="AffectationClients" Relationship="Self.FK__Affectati__Idcli__20C1E124" FromRole="Client" ToRole="AffectationClient" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Client__Creepar__1CF15040" FromRole="Client" ToRole="Utilisateur" />
           <NavigationProperty Name="UtilisateurEdit" Relationship="Self.FK__Client__Modifier__1DE57479" FromRole="Client" ToRole="Utilisateur" />
@@ -981,10 +981,10 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="IdDeleted" Type="Int32" />
           <Property Name="IdCLient" Type="Int32" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Departeme__IdCLi__25869641" FromRole="Departement" ToRole="Client" />
           <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__IdDep__2A4B4B5E" FromRole="Departement" ToRole="Employee" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -1004,7 +1004,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Employee__Idclie__2B3F6F97" FromRole="Employee" ToRole="Client" />
           <NavigationProperty Name="Demandes" Relationship="Self.FK__Demande__IdEmplo__3F466844" FromRole="Employee" ToRole="Demande" />
           <NavigationProperty Name="Departement" Relationship="Self.FK__Employee__IdDep__2A4B4B5E" FromRole="Employee" ToRole="Departement" />
@@ -1024,7 +1024,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Installer__Creep__5629CD9C" FromRole="Installer" ToRole="Utilisateur" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__Installer__Idlog__534D60F1" FromRole="Installer" ToRole="ProduitClient" />
           <NavigationProperty Name="ProduitClientOther" Relationship="Self.FK__Installer__Idsof__5441852A" FromRole="Installer" ToRole="ProduitClient" />
@@ -1082,7 +1082,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Produit__Creepar__34C8D9D1" FromRole="Produit" ToRole="Utilisateur" />
           <NavigationProperty Name="TypeProduit" Relationship="Self.FK__Produit__IdType__32E0915F" FromRole="Produit" ToRole="TypeProduit" />
           <NavigationProperty Name="UtilisateurEdit" Relationship="Self.FK__Produit__Modifie__35BCFE0A" FromRole="Produit" ToRole="Utilisateur" />
@@ -1103,7 +1103,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Client" Relationship="Self.FK__ProduitCl__Idcli__4CA06362" FromRole="ProduitClient" ToRole="Client" />
           <NavigationProperty Name="Installers" Relationship="Self.FK__Installer__Idlog__534D60F1" FromRole="ProduitClient" ToRole="Installer" />
           <NavigationProperty Name="InstallersOther" Relationship="Self.FK__Installer__Idsof__5441852A" FromRole="ProduitClient" ToRole="Installer" />
@@ -1127,21 +1127,21 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__ProduitUt__IdEmp__5AEE82B9" FromRole="ProduitUtiliser" ToRole="Employee" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__ProduitUt__IdPro__59FA5E80" FromRole="ProduitUtiliser" ToRole="ProduitClient" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__ProduitUt__Creep__5CD6CB2B" FromRole="ProduitUtiliser" ToRole="Utilisateur" />
           <NavigationProperty Name="UtilisateurEdit" Relationship="Self.FK__ProduitUt__Modif__5DCAEF64" FromRole="ProduitUtiliser" ToRole="Utilisateur" />
           <Property Name="Dateaffectation" Type="DateTime" Precision="0" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
-        <EntityType Name="u">
+        <EntityType Name="ProprietesProduit">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="idType" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="TypeProduit" Relationship="Self.FK__Propriete__idTyp__38996AB5" FromRole="ProprietesProduit" ToRole="TypeProduit" />
           <NavigationProperty Name="ValeurProps" Relationship="Self.FK__ValeurPro__IdPro__3C69FB99" FromRole="ProprietesProduit" ToRole="ValeurProp" />
         </EntityType>
@@ -1156,7 +1156,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="UtilisateurCreate" Relationship="Self.FK__RoleUtili__Creep__182C9B23" FromRole="RoleUtilisateur" ToRole="Utilisateur" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__RoleUtili__IdUti__164452B1" FromRole="RoleUtilisateur" ToRole="Utilisateur" />
           <NavigationProperty Name="UtilisateurEdit" Relationship="Self.FK__RoleUtili__Modif__1920BF5C" FromRole="RoleUtilisateur" ToRole="Utilisateur" />
@@ -1169,7 +1169,7 @@
           <Property Name="Nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SupportingSoftware" Type="Int32" />
           <Property Name="SupportingUser" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Produits" Relationship="Self.FK__Produit__IdType__32E0915F" FromRole="TypeProduit" ToRole="Produit" />
           <NavigationProperty Name="ProprietesProduits" Relationship="Self.FK__Propriete__idTyp__38996AB5" FromRole="TypeProduit" ToRole="ProprietesProduit" />
         </EntityType>
@@ -1192,7 +1192,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="AffectationClients" Relationship="Self.FK__Affectati__Iduti__21B6055D" FromRole="Utilisateur" ToRole="AffectationClient" />
           <NavigationProperty Name="AffectationClients1" Relationship="Self.FK__Affectati__Modif__22AA2996" FromRole="Utilisateur" ToRole="AffectationClient" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__Client__Creepar__1CF15040" FromRole="Utilisateur" ToRole="Client" />
@@ -1639,7 +1639,7 @@
         </Association>
         <Association Name="FK__Propriete__idTyp__38996AB5">
           <End Role="TypeProduit" Type="Self.TypeProduit" Multiplicity="0..1" />
-          <End Role="ProprietesProduit" Type="ParcInformatiqueModel.u" Multiplicity="*" />
+          <End Role="ProprietesProduit" Type="ParcInformatiqueModel.ProprietesProduit" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeProduit">
               <PropertyRef Name="id" />
@@ -1650,7 +1650,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ValeurPro__IdPro__3C69FB99">
-          <End Role="ProprietesProduit" Type="ParcInformatiqueModel.u" Multiplicity="0..1" />
+          <End Role="ProprietesProduit" Type="ParcInformatiqueModel.ProprietesProduit" Multiplicity="0..1" />
           <End Role="ValeurProp" Type="Self.ValeurProp" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProprietesProduit">
@@ -1733,7 +1733,7 @@
           <EntitySet Name="Produits" EntityType="Self.Produit" />
           <EntitySet Name="ProduitClients" EntityType="Self.ProduitClient" />
           <EntitySet Name="ProduitUtilisers" EntityType="Self.ProduitUtiliser" />
-          <EntitySet Name="u" EntityType="ParcInformatiqueModel.u" />
+          <EntitySet Name="ProprietesProduits" EntityType="ParcInformatiqueModel.ProprietesProduit" />
           <EntitySet Name="RoleUtilisateurs" EntityType="Self.RoleUtilisateur" />
           <EntitySet Name="TypeProduits" EntityType="Self.TypeProduit" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
@@ -1876,10 +1876,10 @@
           </AssociationSet>
           <AssociationSet Name="FK__Propriete__idTyp__38996AB5" Association="Self.FK__Propriete__idTyp__38996AB5">
             <End Role="TypeProduit" EntitySet="TypeProduits" />
-            <End Role="ProprietesProduit" EntitySet="u" />
+            <End Role="ProprietesProduit" EntitySet="ProprietesProduits" />
           </AssociationSet>
           <AssociationSet Name="FK__ValeurPro__IdPro__3C69FB99" Association="Self.FK__ValeurPro__IdPro__3C69FB99">
-            <End Role="ProprietesProduit" EntitySet="u" />
+            <End Role="ProprietesProduit" EntitySet="ProprietesProduits" />
             <End Role="ValeurProp" EntitySet="ValeurProps" />
           </AssociationSet>
           <AssociationSet Name="FK__RoleUtili__Creep__182C9B23" Association="Self.FK__RoleUtili__Creep__182C9B23">
@@ -1960,9 +1960,9 @@
           <EntitySetMapping Name="Departements">
             <EntityTypeMapping TypeName="ParcInformatiqueModel.Departement">
               <MappingFragment StoreEntitySet="Departement">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
-                <ScalarProperty Name="IdDeleted" ColumnName="IdDeleted" />
                 <ScalarProperty Name="IdCLient" ColumnName="IdCLient" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2086,8 +2086,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="u">
-            <EntityTypeMapping TypeName="ParcInformatiqueModel.u">
+          <EntitySetMapping Name="ProprietesProduits">
+            <EntityTypeMapping TypeName="ParcInformatiqueModel.ProprietesProduit">
               <MappingFragment StoreEntitySet="ProprietesProduit">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />

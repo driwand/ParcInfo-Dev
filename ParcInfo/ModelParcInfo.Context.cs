@@ -36,7 +36,7 @@ namespace ParcInfo
         public virtual DbSet<Produit> Produits { get; set; }
         public virtual DbSet<ProduitClient> ProduitClients { get; set; }
         public virtual DbSet<ProduitUtiliser> ProduitUtilisers { get; set; }
-        public virtual DbSet<u> u { get; set; }
+        public virtual DbSet<ProprietesProduit> ProprietesProduits { get; set; }
         public virtual DbSet<RoleUtilisateur> RoleUtilisateurs { get; set; }
         public virtual DbSet<TypeProduit> TypeProduits { get; set; }
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
