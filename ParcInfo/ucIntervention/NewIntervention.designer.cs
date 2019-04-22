@@ -146,9 +146,9 @@
             this.lblModifierPar.AutoSize = true;
             this.lblModifierPar.Location = new System.Drawing.Point(125, 267);
             this.lblModifierPar.Name = "lblModifierPar";
-            this.lblModifierPar.Size = new System.Drawing.Size(35, 13);
+            this.lblModifierPar.Size = new System.Drawing.Size(97, 13);
             this.lblModifierPar.TabIndex = 52;
-            this.lblModifierPar.Text = "User1";
+            this.lblModifierPar.Text = "Acune modification";
             // 
             // label9
             // 
@@ -173,9 +173,9 @@
             this.lblDateModification.AutoSize = true;
             this.lblDateModification.Location = new System.Drawing.Point(125, 237);
             this.lblDateModification.Name = "lblDateModification";
-            this.lblDateModification.Size = new System.Drawing.Size(65, 13);
+            this.lblDateModification.Size = new System.Drawing.Size(37, 13);
             this.lblDateModification.TabIndex = 50;
-            this.lblDateModification.Text = "[4/12/2019]";
+            this.lblDateModification.Text = "*/*/***";
             // 
             // cbPlace
             // 
