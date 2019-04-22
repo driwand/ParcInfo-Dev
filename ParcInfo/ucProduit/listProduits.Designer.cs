@@ -36,17 +36,17 @@
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.lblDateMod = new System.Windows.Forms.Label();
+            this.lblM = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.cbDelete = new System.Windows.Forms.CheckBox();
             this.dgProduits = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddProduit = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDelP = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -141,42 +141,43 @@
             this.label8.TabIndex = 144;
             this.label8.Text = "Dernier modification par :";
             // 
-            // label14
+            // lblDateMod
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(581, 454);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 13);
-            this.label14.TabIndex = 148;
-            this.label14.Text = "2018/08/08";
+            this.lblDateMod.AutoSize = true;
+            this.lblDateMod.Location = new System.Drawing.Point(580, 454);
+            this.lblDateMod.Name = "lblDateMod";
+            this.lblDateMod.Size = new System.Drawing.Size(45, 13);
+            this.lblDateMod.TabIndex = 148;
+            this.lblDateMod.Text = "**-**-****";
             // 
-            // label13
+            // lblM
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(514, 454);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 13);
-            this.label13.TabIndex = 149;
-            this.label13.Text = "Modifier le :";
+            this.lblM.AutoSize = true;
+            this.lblM.Location = new System.Drawing.Point(513, 454);
+            this.lblM.Name = "lblM";
+            this.lblM.Size = new System.Drawing.Size(61, 13);
+            this.lblM.TabIndex = 149;
+            this.lblM.Text = "Modifier le :";
             // 
-            // label10
+            // lblUser
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(475, 454);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(33, 13);
-            this.label10.TabIndex = 146;
-            this.label10.Text = "user1";
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(475, 454);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(35, 13);
+            this.lblUser.TabIndex = 146;
+            this.lblUser.Text = "*******";
             // 
-            // checkBox1
+            // cbDelete
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(347, 429);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(171, 17);
-            this.checkBox1.TabIndex = 143;
-            this.checkBox1.Text = "Afficher les elements supprimer";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbDelete.AutoSize = true;
+            this.cbDelete.Location = new System.Drawing.Point(347, 429);
+            this.cbDelete.Name = "cbDelete";
+            this.cbDelete.Size = new System.Drawing.Size(171, 17);
+            this.cbDelete.TabIndex = 143;
+            this.cbDelete.Text = "Afficher les elements supprimer";
+            this.cbDelete.UseVisualStyleBackColor = true;
+            this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
             // 
             // dgProduits
             // 
@@ -221,17 +222,19 @@
             this.btnAddProduit.UseVisualStyleBackColor = false;
             this.btnAddProduit.Click += new System.EventHandler(this.btnAddProduit_Click);
             // 
-            // button2
+            // btnDelP
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::ParcInfo.Properties.Resources.btndelete;
-            this.button2.Location = new System.Drawing.Point(15, 437);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 32);
-            this.button2.TabIndex = 141;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDelP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnDelP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelP.ForeColor = System.Drawing.Color.White;
+            this.btnDelP.Image = global::ParcInfo.Properties.Resources.btndelete;
+            this.btnDelP.Location = new System.Drawing.Point(20, 437);
+            this.btnDelP.Name = "btnDelP";
+            this.btnDelP.Size = new System.Drawing.Size(32, 32);
+            this.btnDelP.TabIndex = 141;
+            this.btnDelP.UseVisualStyleBackColor = false;
+            this.btnDelP.Visible = false;
+            this.btnDelP.Click += new System.EventHandler(this.btnDelP_Click);
             // 
             // pictureBox1
             // 
@@ -243,35 +246,35 @@
             this.pictureBox1.TabIndex = 139;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnClear
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.button1.Location = new System.Drawing.Point(172, 437);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 32);
-            this.button1.TabIndex = 153;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Image = global::ParcInfo.Properties.Resources.btnadd;
+            this.btnClear.Location = new System.Drawing.Point(172, 437);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(32, 32);
+            this.btnClear.TabIndex = 153;
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // listProduits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAddProduit);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDelP);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.lblDateMod);
+            this.Controls.Add(this.lblM);
+            this.Controls.Add(this.lblUser);
+            this.Controls.Add(this.cbDelete);
             this.Controls.Add(this.dgProduits);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -295,20 +298,20 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAffecter;
         private System.Windows.Forms.Button btnAddProduit;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelP;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnFind;
         public System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label lblDateMod;
+        private System.Windows.Forms.Label lblM;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.CheckBox cbDelete;
         private System.Windows.Forms.DataGridView dgProduits;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClear;
     }
 }

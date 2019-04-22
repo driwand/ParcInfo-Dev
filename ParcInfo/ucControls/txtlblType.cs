@@ -12,13 +12,17 @@ namespace ParcInfo.ucControls
 {
     public partial class txtlblType : UserControl
     {
-        public string Txtvalue
+        public string TxtValue
         {
             get { return txtValue.Text; }
             set { txtValue.Text = value; }
         }
+        public string LblID
+        {
+            get { return lblID.Text; }
+            set { lblID.Text = value; }
+        }
 
-     
         public txtlblType()
         {
             InitializeComponent();

@@ -37,7 +37,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
         </EntityType>
         <EntityType Name="Demande">
           <Key>
@@ -962,7 +962,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="0" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IsDeleted" Type="Int32" annotation:StoreGeneratedPattern="None" />
           <NavigationProperty Name="AffectationClients" Relationship="Self.FK__Affectati__Idcli__20C1E124" FromRole="Client" ToRole="AffectationClient" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Client__Creepar__1CF15040" FromRole="Client" ToRole="Utilisateur" />
           <NavigationProperty Name="UtilisateurEdit" Relationship="Self.FK__Client__Modifier__1DE57479" FromRole="Client" ToRole="Utilisateur" />

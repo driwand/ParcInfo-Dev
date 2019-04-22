@@ -278,7 +278,8 @@ namespace ParcInfo.ucClient
                         Debutcontract = dtDebutcontract.Value,
                         Heurecontract = Heure,
                         Prixheur = Prix,
-                        Datecreation = DateTime.Now
+                        Datecreation = DateTime.Now,
+                        IsDeleted = 0
                     };
                     context.Clients.Add(client);
                     // ADD Departement To Client 
@@ -316,6 +317,7 @@ namespace ParcInfo.ucClient
                     MessageBox.Show("Ajout d'un client effectué");
                     // clear textbox 
                     Methods.Clear(this);
+                    Methods.ClearControls(this);
                 }
             }
         }
@@ -349,7 +351,7 @@ namespace ParcInfo.ucClient
 
         private void btnDelClient_Click(object sender, EventArgs e)
         {
-            int id = GlobVars.selectedClient;
+
 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
@@ -360,6 +362,8 @@ namespace ParcInfo.ucClient
                 {
 
                     c.IsDeleted = 1;
+                    c.Datemodification = DateTime.Now;
+                    c.Modifierpar = 1;
                     context.SaveChanges();
                     MessageBox.Show("client supprimé");
                     Methods.Clear(this);

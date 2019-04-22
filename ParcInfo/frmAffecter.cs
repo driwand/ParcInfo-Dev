@@ -17,9 +17,30 @@ namespace ParcInfo
     {
         int prixName = 1;
         int idC;
+        lblTextbox lblx;
+        loginPass lg;
         public frmAffecter()
         {
             InitializeComponent();
+        }
+        public frmAffecter(lblTextbox tbx, int id)
+        {
+            InitializeComponent();
+            lblx = tbx;
+             lg = new loginPass();
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+               var e= context.Employees.Find(id);
+                this.Text = $"{e.Nom} {e.Prenom}";
+                this.Size = new Size(385, 180);
+                btnSave.Location = new Point(239, 113);
+                pnlCntrl.Size = new Size(344, 81);
+             
+                //   prop.Margin = new Padding(0, 0, 0, 12);
+                prixName++;
+                pnlCntrl.Controls.Add(lg);
+            }
+         
         }
         public frmAffecter(int idClient, List<int> prod)
         {
@@ -32,6 +53,7 @@ namespace ParcInfo
                     var listprod = context.Produits.ToList();
                     foreach (var item in prod)
                     {
+                        this.Text = "produit";
                         var p = listprod.Where(i => item == i.id).FirstOrDefault();
                         prixVente prop = new prixVente();
                         prop.LblCode = p.CodeP;
@@ -52,18 +74,36 @@ namespace ParcInfo
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            List<LabelControl> list;
-            list = Methods.GetidList(pnlCntrl);
-            using (ParcInformatiqueEntities context= new ParcInformatiqueEntities())
+            if (lg != null)
             {
-                foreach (var item in list)
+                if (lg.TxtLogin != "" && lg.TxtPass != "")
                 {
-                    context.ProduitClients.Add(new ProduitClient { Idproduit = item.Id, Idclient = idC, Prixvente = float.Parse(item.Value)});
+                    lblx.LblUser = lg.TxtLogin;
+                    lblx.LblPass = lg.TxtPass;
+                    this.Close();
                 }
-                context.SaveChanges();
-                this.Close();
-            }
+                else
+                {
+                    lg.Focus();
+                }
             
+            }
+            else
+            {
+                List<LabelControl> list;
+                list = Methods.GetidList(pnlCntrl);
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+                {
+                    foreach (var item in list)
+                    {
+                        context.ProduitClients.Add(new ProduitClient { Idproduit = item.Id, Idclient = idC, Prixvente = float.Parse(item.Value) });
+                    }
+                    context.SaveChanges();
+                    this.Close();
+                }
+            }
+         
+
         }
     }
 }

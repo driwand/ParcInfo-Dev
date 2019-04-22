@@ -31,7 +31,6 @@ namespace ParcInfo
                        new string[] { "ID Utilisateur", "id", "Nom", "Prenom", "Adresse", "Tel" },
                        dgUsers
                        );
-                
             }
         }
         public frmselectuser(lblTextbox txtbx, string cod, int id)
@@ -43,7 +42,9 @@ namespace ParcInfo
                 if (cod == "emp" && id > 0)
                 {
                     var empLIST = context.Employees.Where(c=> c.Idclient == id).ToList();
-                        
+                    idemp = id;
+                    this.Text = "Liste des Employees";
+                    lblText.Text = "Les Employees : ";
                     dgUsers.DataSource = Methods.ToDataTable(empLIST.Select(c => new { c.IdEmploye,c.Id, c.Nom, c.Prenom, c.Email, c.Tel }).ToList());
                     Methods.Nice_grid(
                           new string[] { "IdEmploye", "id", "Nom", "Prenom", "Email", "Tel"},
@@ -53,23 +54,25 @@ namespace ParcInfo
                 }
                 else if (cod == "log")
                 {
+                    this.Text = "Liste des produits";
+                    lblText.Text = "Les produits : ";
                     var userList = (from p in context.Produits
                                     select new { p.id, p.TypeProduit.Nom, p.Marque, p.Model, p.Prix, p.Datefabrication }).ToList();
                     dgUsers.DataSource = userList;
                 }
             }
         }
+        int idemp = 0;
         public frmselectuser(List<int> listAf)
         {
-            InitializeComponent();
-            
+            InitializeComponent(); 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (listAf != null && listAf.Count > 0)
                 {
                     listProdid = listAf;
                     var cList = context.Clients.Where(c => c.IsDeleted == 0).ToList();
-                    
+                  
                     var clientList = (from c in cList
                                       select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Siteweb }).ToList();
                     dgUsers.DataSource = Methods.ToDataTable(clientList);
@@ -99,13 +102,18 @@ namespace ParcInfo
                         int id = int.Parse(myrow.Cells["id"].Value.ToString());
                         frmAffecter frm = new frmAffecter(id, listProdid);
                         frm.ShowDialog();
-                      
-                        //foreach (var item in listAfc)
-                        //{
-                        //    context.ProduitClients.Add(new ProduitClient { Idproduit = item.IdProduit, Idclient = id, Prixvente = item.Prix });
-                        //}
-                        //context.SaveChanges();
                     }
+                }
+                else if (idemp > 0)
+                {
+                    var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
+                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                    string Nom = myrow.Cells["Nom"].Value.ToString();
+                    string Prenom = myrow.Cells["Prenom"].Value.ToString();
+                    tbx.TxtValue = Nom + " " + Prenom;
+                    tbx.Lblid = id.ToString();
+                    frmAffecter frm = new frmAffecter(tbx,id);
+                    frm.ShowDialog();
                 }
                 else
                 {

@@ -43,6 +43,33 @@ namespace ParcInfo.Classes
             }
 
         }
+        public static void ClearControls(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if ( c is GroupBox )
+                {
+                    ClearControls(c);
+                }
+                else if (c is FlowLayoutPanel)
+                {
+                    var lblDep = (from x in c.Controls.OfType<txtlblDepartement>()
+                                  select x
+                                 ).ToList();
+                    foreach (var item in lblDep.Skip(1))
+                    {   
+                        c.Controls.Remove(item);
+                    }
+                    var lblDep2 = (from x in c.Controls.OfType<lblTextbox>()
+                               select x
+                               ).ToList();
+                    foreach (var item in lblDep2.Skip(1))
+                    {
+                        c.Controls.Remove(item);
+                    }
+                }
+            }
+        }
         public static string Splitdate(string date)
         {
             DateTime dt = DateTime.Parse(date);
@@ -122,7 +149,15 @@ namespace ParcInfo.Classes
             {
                 if (c is lblTextbox lbl)
                 {
-                    list.Add(new LabelControl() { Id = int.Parse(lbl.Lblid), Value = lbl.TxtValue, IsDeleted = !lbl.Visible, Controlname = lbl.Name, Idaffectation = int.Parse(lbl.LblAff) });
+                    list.Add(new LabelControl() {
+                        Id = int.Parse(lbl.Lblid),
+                        Value = lbl.TxtValue,
+                        IsDeleted = !lbl.Visible,
+                        Controlname = lbl.Name,
+                        Idaffectation = int.Parse(lbl.LblAff),
+                        Login = lbl.LblUser,
+                        Pass = lbl.LblPass
+                    });
                 }
                 else if (c is txtlblDepartement lbl2)
                 {
@@ -280,5 +315,7 @@ namespace ParcInfo.Classes
         public string Value  { get; set; }
         public string Controlname { get; set; }
         public int Idaffectation { get; set; }
+        public string Login { get; set; }
+        public string Pass { get; set; }
     }
 }

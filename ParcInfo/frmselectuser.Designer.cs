@@ -32,7 +32,7 @@
             this.btn_select = new System.Windows.Forms.Button();
             this.dgUsers = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblText = new System.Windows.Forms.Label();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
@@ -76,7 +76,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblText);
             this.groupBox1.Controls.Add(this.btnFind);
             this.groupBox1.Controls.Add(this.txtFind);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -86,14 +86,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rechercher";
             // 
-            // label1
+            // lblText
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 53;
-            this.label1.Text = "Les utilisateurs :";
+            this.lblText.AutoSize = true;
+            this.lblText.Location = new System.Drawing.Point(15, 24);
+            this.lblText.Name = "lblText";
+            this.lblText.Size = new System.Drawing.Size(82, 13);
+            this.lblText.TabIndex = 53;
+            this.lblText.Text = "Les utilisateurs :";
             // 
             // btnFind
             // 
@@ -142,7 +142,7 @@
         private System.Windows.Forms.Button btn_select;
         private System.Windows.Forms.DataGridView dgUsers;
         private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label lblText;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFind;
     }

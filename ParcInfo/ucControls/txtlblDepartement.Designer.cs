@@ -61,9 +61,9 @@
             this.lbl.Location = new System.Drawing.Point(4, 5);
             this.lbl.Margin = new System.Windows.Forms.Padding(0);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(35, 13);
+            this.lbl.Size = new System.Drawing.Size(41, 13);
             this.lbl.TabIndex = 3;
-            this.lbl.Text = "label1";
+            this.lbl.Text = "label1 :";
             // 
             // lblid
             // 
