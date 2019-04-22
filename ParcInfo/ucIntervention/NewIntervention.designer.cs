@@ -362,6 +362,7 @@
             this.btnAddProduct.Size = new System.Drawing.Size(37, 74);
             this.btnAddProduct.TabIndex = 66;
             this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // gpDemandeActivite
             // 

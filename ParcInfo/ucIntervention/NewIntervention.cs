@@ -12,6 +12,7 @@ using ParcInfo.ucControls;
 using ParcInfo.ucClient;
 using ParcInfo.ucDemande;
 using System.Text.RegularExpressions;
+using ParcInfo.frmList;
 
 namespace ParcInfo.ucInterevntion
 {
@@ -38,6 +39,8 @@ namespace ParcInfo.ucInterevntion
                 StartInterClient();
             }
         }
+        public int IdPeoduct;
+        public string CodeProduct;
 
         public int selectedRequest;
         public int selectedClient;
@@ -197,7 +200,7 @@ namespace ParcInfo.ucInterevntion
                 var interv = (from it in context.Interventions
                               where it.Id == currentInterv
                               select it).FirstOrDefault();
-                
+
                 //add new description to an exesiting intervention of selected client
                 observation obs = new observation()
                 {
@@ -206,7 +209,10 @@ namespace ParcInfo.ucInterevntion
                     TypeOb = cbType.Text,
                     IdIntervention = interv.Id
                 };
-                
+
+                if (IdPeoduct != 0)
+                    obs.Detailproduit = IdPeoduct + " " + CodeProduct;
+
                 context.observations.Add(obs);
 
                 context.SaveChanges();
@@ -355,7 +361,8 @@ namespace ParcInfo.ucInterevntion
                             AddTxtDescription(v.IdUser,
                                 v.Dateobservation.ToString(),
                                 v.Textobservation,
-                                pnlObservetion);
+                                pnlObservetion,
+                                v.Detailproduit);
                         }
                     }
                 }
@@ -383,6 +390,15 @@ namespace ParcInfo.ucInterevntion
                     break;
             }
         }
+
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            frmListProducts frm = new frmListProducts(this);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
+        }
+
         private void btnDelInt_Click(object sender, EventArgs e)
         {
             using (var db = new ParcInformatiqueEntities())
@@ -396,7 +412,7 @@ namespace ParcInfo.ucInterevntion
             }
         }
 
-        public void AddTxtDescription(string userInfo, string details, string description, Panel container)
+        public void AddTxtDescription(string userInfo, string date, string description, Panel container,string details = null)
         {
             MultiLineLabel ml = new MultiLineLabel();
 
@@ -407,7 +423,12 @@ namespace ParcInfo.ucInterevntion
             ml.AutoSize = true;
             ml.MultiLine = true;
             us.lblUser.Text = userInfo; //show name of current user in description
-            us.lblDetails.Text = details; //datetime.now in description
+            us.lblDetails.Text = date; //datetime.now in description
+
+            if (details != null)
+            {
+                us.lblProdut.Text = details.Split(' ').Take(2).Last();
+            }
 
             ml.Text = description;//show text of description
             int o = ml.Height;

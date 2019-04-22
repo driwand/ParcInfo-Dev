@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gpFind = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
@@ -44,8 +45,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblEditedDate = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStartIntervention = new System.Windows.Forms.ToolStripMenuItem();
             this.gpFind.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDemande)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpFind
@@ -133,7 +138,9 @@
             this.dgDemande.ReadOnly = true;
             this.dgDemande.Size = new System.Drawing.Size(863, 347);
             this.dgDemande.TabIndex = 118;
+            this.dgDemande.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDemande_CellMouseDown);
             this.dgDemande.DoubleClick += new System.EventHandler(this.dgDemande_DoubleClick);
+           
             // 
             // lblTotalRequest
             // 
@@ -211,6 +218,28 @@
             this.panel2.Size = new System.Drawing.Size(1, 15);
             this.panel2.TabIndex = 130;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDetails,
+            this.menuStartIntervention});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 70);
+            // 
+            // menuDetails
+            // 
+            this.menuDetails.Name = "menuDetails";
+            this.menuDetails.Size = new System.Drawing.Size(186, 22);
+            this.menuDetails.Text = "Details";
+            this.menuDetails.Click += new System.EventHandler(this.menuDetails_Click);
+            // 
+            // menuStartIntervention
+            // 
+            this.menuStartIntervention.Name = "menuStartIntervention";
+            this.menuStartIntervention.Size = new System.Drawing.Size(186, 22);
+            this.menuStartIntervention.Text = "Demarer Intervention";
+            this.menuStartIntervention.Click += new System.EventHandler(this.menuStartIntervention_Click);
+            // 
             // ListDemande
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +264,7 @@
             this.gpFind.ResumeLayout(false);
             this.gpFind.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDemande)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +287,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblEditedDate;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuDetails;
+        private System.Windows.Forms.ToolStripMenuItem menuStartIntervention;
     }
 }

@@ -32,7 +32,6 @@ namespace ParcInfo
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Installer> Installers { get; set; }
         public virtual DbSet<Intervention> Interventions { get; set; }
-        public virtual DbSet<observation> observations { get; set; }
         public virtual DbSet<Produit> Produits { get; set; }
         public virtual DbSet<ProduitClient> ProduitClients { get; set; }
         public virtual DbSet<ProduitUtiliser> ProduitUtilisers { get; set; }
@@ -41,5 +40,7 @@ namespace ParcInfo
         public virtual DbSet<TypeProduit> TypeProduits { get; set; }
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
         public virtual DbSet<ValeurProp> ValeurProps { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<observation> observations { get; set; }
     }
 }

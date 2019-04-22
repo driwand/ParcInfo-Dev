@@ -32,6 +32,7 @@
             this.pnlText = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblUser = new System.Windows.Forms.Label();
+            this.lblProdut = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDetails
@@ -68,12 +69,23 @@
             this.lblUser.TabIndex = 11;
             this.lblUser.Text = "label1";
             // 
+            // lblProdut
+            // 
+            this.lblProdut.AutoSize = true;
+            this.lblProdut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblProdut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblProdut.Location = new System.Drawing.Point(202, 8);
+            this.lblProdut.Name = "lblProdut";
+            this.lblProdut.Size = new System.Drawing.Size(0, 13);
+            this.lblProdut.TabIndex = 15;
+            // 
             // TxtDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lblProdut);
             this.Controls.Add(this.lblDetails);
             this.Controls.Add(this.pnlText);
             this.Controls.Add(this.panel1);
@@ -93,5 +105,6 @@
         public System.Windows.Forms.Panel pnlText;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label lblUser;
+        public System.Windows.Forms.Label lblProdut;
     }
 }

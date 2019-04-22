@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="ParcInformatiqueModel.Employee" Width="1.5" PointX="7.5" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Installer" Width="1.5" PointX="19.5" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Intervention" Width="1.5" PointX="12" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.observation" Width="1.5" PointX="14.25" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Produit" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitClient" Width="1.5" PointX="17.25" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitUtiliser" Width="1.5" PointX="22.5" PointY="12" IsExpanded="true" />
@@ -43,7 +42,6 @@
         <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Modif__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Intervent__Iduti__44FF419A" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Intervent__Modif__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__observati__IdInt__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__ParIn__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Produit__Creepar__34C8D9D1" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Produit__IdType__32E0915F" ManuallyRouted="false" />
@@ -62,6 +60,9 @@
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__Modif__1920BF5C" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Creep__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Modif__1367E606" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.observation" Width="1.5" PointX="14.25" PointY="12.625" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__observati__IdInt__208CD6FA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

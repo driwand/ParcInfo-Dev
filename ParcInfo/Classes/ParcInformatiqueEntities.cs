@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace ParcInfo
 {
@@ -83,7 +83,8 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) < retarddate);
+                int delayDays = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultDelay"]);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delayDays) < retarddate);
             }
         }
         public IQueryable<Demande> GetRequestCours
@@ -91,7 +92,8 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut!="en attente" && DbFunctions.AddDays(x.Datedemande,2) > retarddate);
+                int delayDays = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultDelay"]);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut!="en attente" && DbFunctions.AddDays(x.Datedemande, delayDays) > retarddate);
             }
         }
 

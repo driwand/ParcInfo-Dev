@@ -17,7 +17,7 @@
           <Property Name="Dateaffectation" Type="date" StoreGeneratedPattern="Computed" />
           <Property Name="Datemodification" Type="date" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -59,7 +59,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="30" />
           <Property Name="IdCLient" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -79,7 +79,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="Installer">
           <Key>
@@ -123,7 +123,8 @@
           <Property Name="IdUser" Type="varchar" MaxLength="30" />
           <Property Name="TypeOb" Type="varchar" MaxLength="30" />
           <Property Name="Textobservation" Type="text" />
-          <Property Name="Dateobservation" Type="date" StoreGeneratedPattern="Computed" />
+          <Property Name="Dateobservation" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="Detailproduit" Type="text" />
         </EntityType>
         <EntityType Name="Produit">
           <Key>
@@ -141,7 +142,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="ProduitClient">
           <Key>
@@ -173,7 +174,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="ProprietesProduit">
           <Key>
@@ -197,6 +198,16 @@
           <Property Name="Modifierpar" Type="int" />
           <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TypeProduit">
           <Key>
             <PropertyRef Name="id" />
@@ -205,7 +216,7 @@
           <Property Name="Nom" Type="varchar" MaxLength="20" />
           <Property Name="SupportingSoftware" Type="int" />
           <Property Name="SupportingUser" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="Utilisateur">
           <Key>
@@ -226,7 +237,7 @@
           <Property Name="Datemodification" Type="date" />
           <Property Name="Creepar" Type="int" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="ValeurProp">
           <Key>
@@ -477,7 +488,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__observati__IdInt__49C3F6B7">
+        <Association Name="FK__observati__IdInt__208CD6FA">
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="0..1" />
           <End Role="observation" Type="Self.observation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -743,6 +754,7 @@
           <EntitySet Name="ProduitUtiliser" EntityType="Self.ProduitUtiliser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProprietesProduit" EntityType="Self.ProprietesProduit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleUtilisateur" EntityType="Self.RoleUtilisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeProduit" EntityType="Self.TypeProduit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ValeurProp" EntityType="Self.ValeurProp" Schema="dbo" store:Type="Tables" />
@@ -826,7 +838,7 @@
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Intervention" EntitySet="Intervention" />
           </AssociationSet>
-          <AssociationSet Name="FK__observati__IdInt__49C3F6B7" Association="Self.FK__observati__IdInt__49C3F6B7">
+          <AssociationSet Name="FK__observati__IdInt__208CD6FA" Association="Self.FK__observati__IdInt__208CD6FA">
             <End Role="Intervention" EntitySet="Intervention" />
             <End Role="observation" EntitySet="observation" />
           </AssociationSet>
@@ -1051,21 +1063,9 @@
           <NavigationProperty Name="Demande" Relationship="Self.FK__Intervent__IdDem__440B1D61" FromRole="Intervention" ToRole="Demande" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Intervent__Iduti__44FF419A" FromRole="Intervention" ToRole="Utilisateur" />
           <NavigationProperty Name="UtilisateurEdit" Relationship="Self.FK__Intervent__Modif__46E78A0C" FromRole="Intervention" ToRole="Utilisateur" />
-          <NavigationProperty Name="observations" Relationship="Self.FK__observati__IdInt__49C3F6B7" FromRole="Intervention" ToRole="observation" />
           <NavigationProperty Name="ProduitClients" Relationship="Self.FK__ProduitCl__ParIn__4E88ABD4" FromRole="Intervention" ToRole="ProduitClient" />
           <Property Name="TypeIntervention" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="observation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdIntervention" Type="Int32" />
-          <Property Name="IdUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="TypeOb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Textobservation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Intervention" Relationship="Self.FK__observati__IdInt__49C3F6B7" FromRole="observation" ToRole="Intervention" />
-          <Property Name="Dateobservation" Type="DateTime" Precision="0" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="observations" Relationship="ParcInformatiqueModel.FK__observati__IdInt__208CD6FA" FromRole="Intervention" ToRole="observation" />
         </EntityType>
         <EntityType Name="Produit">
           <Key>
@@ -1493,18 +1493,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__observati__IdInt__49C3F6B7">
-          <End Role="Intervention" Type="Self.Intervention" Multiplicity="0..1" />
-          <End Role="observation" Type="Self.observation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Intervention">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="observation">
-              <PropertyRef Name="IdIntervention" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ProduitCl__ParIn__4E88ABD4">
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="0..1" />
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="*" />
@@ -1729,7 +1717,6 @@
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Installers" EntityType="Self.Installer" />
           <EntitySet Name="Interventions" EntityType="Self.Intervention" />
-          <EntitySet Name="observations" EntityType="Self.observation" />
           <EntitySet Name="Produits" EntityType="Self.Produit" />
           <EntitySet Name="ProduitClients" EntityType="Self.ProduitClient" />
           <EntitySet Name="ProduitUtilisers" EntityType="Self.ProduitUtiliser" />
@@ -1826,10 +1813,6 @@
             <End Role="Utilisateur" EntitySet="Utilisateurs" />
             <End Role="Intervention" EntitySet="Interventions" />
           </AssociationSet>
-          <AssociationSet Name="FK__observati__IdInt__49C3F6B7" Association="Self.FK__observati__IdInt__49C3F6B7">
-            <End Role="Intervention" EntitySet="Interventions" />
-            <End Role="observation" EntitySet="observations" />
-          </AssociationSet>
           <AssociationSet Name="FK__ProduitCl__ParIn__4E88ABD4" Association="Self.FK__ProduitCl__ParIn__4E88ABD4">
             <End Role="Intervention" EntitySet="Interventions" />
             <End Role="ProduitClient" EntitySet="ProduitClients" />
@@ -1902,7 +1885,48 @@
             <End Role="Utilisateur" EntitySet="Utilisateurs" />
             <End Role="Utilisateur1" EntitySet="Utilisateurs" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="ParcInformatiqueModel.sysdiagram" />
+          <EntitySet Name="observations" EntityType="ParcInformatiqueModel.observation" />
+          <AssociationSet Name="FK__observati__IdInt__208CD6FA" Association="ParcInformatiqueModel.FK__observati__IdInt__208CD6FA">
+            <End Role="Intervention" EntitySet="Interventions" />
+            <End Role="observation" EntitySet="observations" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="observation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdIntervention" Type="Int32" />
+          <Property Name="IdUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TypeOb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Textobservation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dateobservation" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Detailproduit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Intervention" Relationship="ParcInformatiqueModel.FK__observati__IdInt__208CD6FA" FromRole="observation" ToRole="Intervention" />
+        </EntityType>
+        <Association Name="FK__observati__IdInt__208CD6FA">
+          <End Type="ParcInformatiqueModel.Intervention" Role="Intervention" Multiplicity="0..1" />
+          <End Type="ParcInformatiqueModel.observation" Role="observation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Intervention">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="observation">
+              <PropertyRef Name="IdIntervention" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2023,18 +2047,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="observations">
-            <EntityTypeMapping TypeName="ParcInformatiqueModel.observation">
-              <MappingFragment StoreEntitySet="observation">
-                <ScalarProperty Name="Dateobservation" ColumnName="Dateobservation" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdIntervention" ColumnName="IdIntervention" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="TypeOb" ColumnName="TypeOb" />
-                <ScalarProperty Name="Textobservation" ColumnName="Textobservation" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Produits">
             <EntityTypeMapping TypeName="ParcInformatiqueModel.Produit">
               <MappingFragment StoreEntitySet="Produit">
@@ -2150,6 +2162,30 @@
                 <ScalarProperty Name="Valeur" ColumnName="Valeur" />
                 <ScalarProperty Name="IdProduit" ColumnName="IdProduit" />
                 <ScalarProperty Name="IdPropriete" ColumnName="IdPropriete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ParcInformatiqueModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="observations">
+            <EntityTypeMapping TypeName="ParcInformatiqueModel.observation">
+              <MappingFragment StoreEntitySet="observation">
+                <ScalarProperty Name="Detailproduit" ColumnName="Detailproduit" />
+                <ScalarProperty Name="Dateobservation" ColumnName="Dateobservation" />
+                <ScalarProperty Name="Textobservation" ColumnName="Textobservation" />
+                <ScalarProperty Name="TypeOb" ColumnName="TypeOb" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdIntervention" ColumnName="IdIntervention" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

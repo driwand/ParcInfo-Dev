@@ -94,7 +94,7 @@ namespace ParcInfo.ucInterevntion
         }
         private void dgIntervention_DoubleClick(object sender, EventArgs e)
         {
-            if (dgIntervention.SelectedRows.Count > -1)
+            if (dgIntervention.SelectedRows.Count > 0)
             {
                 int index = dgIntervention.CurrentRow.Index;
                 
@@ -127,6 +127,11 @@ namespace ParcInfo.ucInterevntion
         private void chDelIntr_CheckedChanged(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void ListeIntervention_Load(object sender, EventArgs e)
+        {
 
         }
     }

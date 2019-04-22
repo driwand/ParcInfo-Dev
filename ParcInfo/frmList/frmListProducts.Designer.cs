@@ -62,6 +62,7 @@
             this.btn_select.TabIndex = 77;
             this.btn_select.Text = "Selectionner";
             this.btn_select.UseVisualStyleBackColor = false;
+            this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
             // 
             // dgProdcuts
             // 

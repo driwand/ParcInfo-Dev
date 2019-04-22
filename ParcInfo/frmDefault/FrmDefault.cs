@@ -25,18 +25,17 @@ namespace ParcInfo.frmDefault
     public partial class FrmDefault : Form
     {
         public bool isClicked = true;
-
         public FrmDefault()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
             GlobVars.frmindex = this;
             MenuLeft();
-
+            
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
 
             }
-
 
             ControlsClass.CursorChanger(pnlMenu);
             tmrReal.Start();
@@ -392,5 +391,12 @@ namespace ParcInfo.frmDefault
             lblInterventionRetard.Update();
             lblIntereventionCours.Update();
         }
+
+        private void FrmDefault_Load(object sender, EventArgs e)
+        {
+          //  this.ControlBox = false;
+          
+        }
+
     }
 }

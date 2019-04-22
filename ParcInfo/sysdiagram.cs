@@ -12,16 +12,12 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class observation
+    public partial class sysdiagram
     {
-        public int Id { get; set; }
-        public Nullable<int> IdIntervention { get; set; }
-        public string IdUser { get; set; }
-        public string TypeOb { get; set; }
-        public string Textobservation { get; set; }
-        public Nullable<System.DateTime> Dateobservation { get; set; }
-        public string Detailproduit { get; set; }
-    
-        public virtual Intervention Intervention { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

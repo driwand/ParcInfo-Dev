@@ -214,6 +214,7 @@
             this.Controls.Add(this.dgIntervention);
             this.Name = "ListeIntervention";
             this.Size = new System.Drawing.Size(890, 481);
+            this.Load += new System.EventHandler(this.ListeIntervention_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervention)).EndInit();

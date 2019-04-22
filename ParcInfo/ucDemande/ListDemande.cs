@@ -105,24 +105,62 @@ namespace ParcInfo.ucClient
 
         private void dgDemande_DoubleClick(object sender, EventArgs e)
         {
-            int index = dgDemande.CurrentRow.Index;
-            int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
-
-            GlobVars.frmindex.ShowControl(new FichDemande(selectedRequest));
+            DetailsRequest();
         }
 
         private void btnTraiter_Click(object sender, EventArgs e)
         {
-            int index = dgDemande.CurrentRow.Index;
-            int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
+            StartIntervention();
+        }
 
-            if (dgDemande.Rows[index].Cells["GetStatut"].Value.ToString() == "terminer")
-                MessageBox.Show("Youn cant start intervention for done request");
-            else
+        private void dgDemande_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
             {
-                int idcl = int.Parse(dgDemande.Rows[index].Cells["IdClient"].Value.ToString());
-                GlobVars.frmindex.ShowControl(new NewIntervention(idcl,selectedRequest));
+                // Get mouse position relative to the vehicles grid
+                var relativeMousePosition = dgDemande.PointToClient(Cursor.Position);
+
+                // Show the context menu
+                contextMenuStrip1.Show(dgDemande, relativeMousePosition);
             }
+        }
+
+        private void menuDetails_Click(object sender, EventArgs e)
+        {
+            DetailsRequest();
+        }
+
+        public void DetailsRequest()
+        {
+            if (dgDemande.SelectedRows.Count > 0)
+            {
+                int index = dgDemande.CurrentRow.Index;
+                int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
+
+                GlobVars.frmindex.ShowControl(new FichDemande(selectedRequest));
+            }
+        }
+
+        public void StartIntervention()
+        {
+            if (dgDemande.RowCount > -1)
+            {
+                int index = dgDemande.CurrentRow.Index;
+                int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
+
+                if (dgDemande.Rows[index].Cells["GetStatut"].Value.ToString() == "terminer")
+                    MessageBox.Show("Youn cant start intervention for done request");
+                else
+                {
+                    int idcl = int.Parse(dgDemande.Rows[index].Cells["IdClient"].Value.ToString());
+                    GlobVars.frmindex.ShowControl(new NewIntervention(idcl, selectedRequest));
+                }
+            }
+        }
+
+        private void menuStartIntervention_Click(object sender, EventArgs e)
+        {
+            StartIntervention();
         }
     }
 }
