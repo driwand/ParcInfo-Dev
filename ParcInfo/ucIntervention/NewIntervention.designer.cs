@@ -34,7 +34,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numHeur = new System.Windows.Forms.NumericUpDown();
             this.lblSource = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelInt = new System.Windows.Forms.Button();
             this.lblModifierPar = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -85,7 +85,7 @@
             // 
             this.groupBox1.Controls.Add(this.numHeur);
             this.groupBox1.Controls.Add(this.lblSource);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnDelInt);
             this.groupBox1.Controls.Add(this.lblModifierPar);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label12);
@@ -127,27 +127,28 @@
             this.lblSource.Text = "[Id source]";
             this.lblSource.Click += new System.EventHandler(this.lblSource_Click);
             // 
-            // button1
+            // btnDelInt
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ParcInfo.Properties.Resources.btndelete;
-            this.button1.Location = new System.Drawing.Point(14, 308);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 28);
-            this.button1.TabIndex = 130;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnDelInt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnDelInt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelInt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelInt.ForeColor = System.Drawing.Color.White;
+            this.btnDelInt.Image = global::ParcInfo.Properties.Resources.btndelete;
+            this.btnDelInt.Location = new System.Drawing.Point(14, 308);
+            this.btnDelInt.Name = "btnDelInt";
+            this.btnDelInt.Size = new System.Drawing.Size(32, 28);
+            this.btnDelInt.TabIndex = 130;
+            this.btnDelInt.UseVisualStyleBackColor = false;
+            this.btnDelInt.Click += new System.EventHandler(this.btnDelInt_Click);
             // 
             // lblModifierPar
             // 
             this.lblModifierPar.AutoSize = true;
             this.lblModifierPar.Location = new System.Drawing.Point(125, 267);
             this.lblModifierPar.Name = "lblModifierPar";
-            this.lblModifierPar.Size = new System.Drawing.Size(35, 13);
+            this.lblModifierPar.Size = new System.Drawing.Size(97, 13);
             this.lblModifierPar.TabIndex = 52;
-            this.lblModifierPar.Text = "User1";
+            this.lblModifierPar.Text = "Acune modification";
             // 
             // label9
             // 
@@ -172,9 +173,9 @@
             this.lblDateModification.AutoSize = true;
             this.lblDateModification.Location = new System.Drawing.Point(125, 237);
             this.lblDateModification.Name = "lblDateModification";
-            this.lblDateModification.Size = new System.Drawing.Size(65, 13);
+            this.lblDateModification.Size = new System.Drawing.Size(37, 13);
             this.lblDateModification.TabIndex = 50;
-            this.lblDateModification.Text = "[4/12/2019]";
+            this.lblDateModification.Text = "*/*/***";
             // 
             // cbPlace
             // 
@@ -392,7 +393,7 @@
             // 
             // pnlStatut
             // 
-            this.pnlStatut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(211)))), ((int)(((byte)(48)))));
+            this.pnlStatut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(130)))), ((int)(((byte)(49)))));
             this.pnlStatut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlStatut.Controls.Add(this.btnDone);
             this.pnlStatut.Controls.Add(this.lblStatut);
@@ -469,7 +470,7 @@
 
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelInt;
         public System.Windows.Forms.Label lblModifierPar;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.Label label12;

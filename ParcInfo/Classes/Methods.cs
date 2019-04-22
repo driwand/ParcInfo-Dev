@@ -198,19 +198,29 @@ namespace ParcInfo.Classes
             }
 
             var dv = defaultdataView;
-
+            
             foreach (var word in words)
             {
+                var tem = word.Replace("'", "''");
                 var values = dataTable.Columns
                     .OfType<DataColumn>()
                     .Select(c => "Convert([" + c.ColumnName + "], System.String)")
-                    .Select(c => c + " like '%" + word + "%'");
+                    .Select(c => c + $" like '%{tem}%'");
 
                 var filter = string.Join(" or ", values);
                 dv = new DataView(dv.ToTable());
+
                 dv.RowFilter = filter;
                 grid.DataSource = dv;
             }
+        }
+
+        public static string Replace(this string s, char[] separators, string newVal)
+        {
+            string[] temp;
+
+            temp = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            return String.Join(newVal, temp);
         }
 
         public static void Nice_grid(string[] columns, string[] columnstext, DataGridView grid)

@@ -11,6 +11,7 @@ using Microsoft.VisualBasic;
 using ParcInfo.ucControls;
 using ParcInfo.ucClient;
 using ParcInfo.ucDemande;
+using System.Text.RegularExpressions;
 
 namespace ParcInfo.ucInterevntion
 {
@@ -81,6 +82,8 @@ namespace ParcInfo.ucInterevntion
 
                 //to fill with first intervention informations
                 AddTxtDescription("Parc info", obs.Dateobservation.ToString(), obs.Textobservation, pnlObservetion);
+
+                lblSource.Text = intr.Demande.IdReq;
             }
         }
         public void StartInterClient()
@@ -112,6 +115,8 @@ namespace ParcInfo.ucInterevntion
                 var clt = context.Clients.Find(selectedClient);
 
                 AddTxtDescription("parc info", DateTime.Now.ToString(), obs.Textobservation, pnlObservetion);
+
+                lblSource.Text = intr.Client.IdCLient.ToString();
             }
         }
         private void btnDone_Click(object sender, EventArgs e)
@@ -120,15 +125,34 @@ namespace ParcInfo.ucInterevntion
             {
                 var currentIntervention = context.Interventions.Find(currentInterv);
 
-                string def;
-                def = "1";
+                int totHours = Convert.ToInt32(numHeur.Value);
+
+                bool verify = false;
+                string res = "";
+
+
                 DialogResult result = new DialogResult();
-                object dr = Interaction.InputBox("Autre information", "Enter les heurs", currentIntervention.Duree.ToString());
-                if (dr is "")
+                if (totHours == 0)
                 {
-                    dr = def;
+                    while (!verify)
+                    {
+                        res = Interaction.InputBox("Autre information", "Enter les heurs");
+                        if (res == "")
+                        {
+                            break;
+                        }
+                        if (Regex.IsMatch(res, @"\d"))
+                        {
+                            verify = true;
+                        }
+                        else
+                        {
+                            verify = false;
+                            MessageBox.Show("input should be a number");
+                        }
+                    }
                 }
-                else
+                if (verify || totHours != 0)
                 {
                     if (currentIntervention.Demande != null)
                     {
@@ -138,24 +162,29 @@ namespace ParcInfo.ucInterevntion
                             if (result == DialogResult.Yes)
                                 currentIntervention.Demande.Statut = "terminer";
 
-                            int toHours = int.Parse(dr.ToString());
-                            currentIntervention.Duree = toHours;
+                            if (res != "")
+                                totHours = int.Parse(res.ToString());
+                                
+                            currentIntervention.Duree = totHours;
                             currentIntervention.Statut = "terminer";
                         }
                     }
                     else
                     {
-                        int toHours = int.Parse(dr.ToString());
-                        currentIntervention.Duree = toHours;
+                        if(res != "")
+                            totHours = int.Parse(res.ToString());
+
+                        currentIntervention.Duree = totHours;
                         currentIntervention.Statut = "terminer";
                     }
+                    numHeur.Value = totHours;
                     context.SaveChanges();
                     tmrDone.Start();
                 }
-               
             }
-            
         }
+
+
 
         private void btnAddDexcription_Click(object sender, EventArgs e)
         {
@@ -244,8 +273,11 @@ namespace ParcInfo.ucInterevntion
                     context.SaveChanges();
                     AddTxtDescription("parc info", DateTime.Now.ToString(), obs.Textobservation,pnlObservetion);
                 }
-                lblStatut.Text = "terminer";
-                lblStatut.Location = new Point(103, 8);
+                if (intr.Statut == "terminer")
+                {
+                    lblStatut.Text = "terminer";
+                    lblStatut.Location = new Point(103, 8);
+                }
             }
             tmrDone.Stop();
         }
@@ -261,9 +293,9 @@ namespace ParcInfo.ucInterevntion
 
         public void Interventions(int selectedInre,int source)
         {
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            using (var db = new ParcInformatiqueEntities())
             {
-                Intervention currentintr = context.Interventions.Find(selectedInre); //the selected intervention from datagrid
+                Intervention currentintr = db.Interventions.Find(selectedInre); //the selected intervention from datagrid
                 if (source != 0)
                 {
                     try
@@ -277,12 +309,15 @@ namespace ParcInfo.ucInterevntion
                     
                 if (currentintr != null)
                 {
-                    
+
                     if (currentintr.Client != null)
                     {
                         lblDetails.Text = currentintr.Client.Nom;
+                        
+                        selectedClient = currentintr.Client.id;
                     }
-                    CheckStatut(currentintr.Statut);
+                    
+                    CheckStatut(currentintr.Getstatut);
                     if (currentintr.TypeIntervention != null &&
                         currentintr.Deplacement != null &&
                         currentintr.Debut != null &&
@@ -301,13 +336,14 @@ namespace ParcInfo.ucInterevntion
 
                     if (currentintr.IdDemande != null)
                     {
+                        selectedRequest = currentintr.Demande.Id;
                         AddTxtDescription(currentintr.Demande.Employee.Nom,
                             currentintr.Demande.Datedemande.ToString(),
                             currentintr.Demande.Description_d,
                             pnlObservetion);
                     }
 
-                    var activities = (from d in context.observations
+                    var activities = (from d in db.observations
                                where d.IdIntervention == currentInterv
                                select d).ToList(); //observetions of selected intervention
 
@@ -347,6 +383,19 @@ namespace ParcInfo.ucInterevntion
                     break;
             }
         }
+        private void btnDelInt_Click(object sender, EventArgs e)
+        {
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var res = MessageBox.Show("Are you sure ?", "Confiramtion", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
+                {
+                    db.Interventions.Find(currentInterv).IsDeleted = 1;
+                    db.SaveChanges();
+                }
+            }
+        }
+
         public void AddTxtDescription(string userInfo, string details, string description, Panel container)
         {
             MultiLineLabel ml = new MultiLineLabel();
@@ -368,6 +417,5 @@ namespace ParcInfo.ucInterevntion
             ml = new MultiLineLabel();
             container.Controls.Add(us);
         }
-
     }
 }
