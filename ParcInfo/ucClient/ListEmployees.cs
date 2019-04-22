@@ -99,7 +99,7 @@ namespace ParcInfo.ucClient
         // Create Employe 
         private void btnNewEmploye_Click(object sender, EventArgs e)
         {
-            frmCreateEmploye frm = new frmCreateEmploye(0,idC,"");
+            frmCreateEmploye frm = new frmCreateEmploye(0,idC,"",dgEmployees);
             frm.ShowDialog();
         }
         // Edit Employe
@@ -112,7 +112,7 @@ namespace ParcInfo.ucClient
                string code =myrow.Cells["IdEmploye"].Value.ToString();
                 //GlobVars.selectedEmploye = int.Parse(id);
                 //GlobVars.BtnName = "editEmploye";
-                frmCreateEmploye frm = new frmCreateEmploye(id,idC,code);
+                frmCreateEmploye frm = new frmCreateEmploye(id,idC,code,dgEmployees);
                 frm.Show();
 
 

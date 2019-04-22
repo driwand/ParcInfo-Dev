@@ -12,9 +12,22 @@ namespace ParcInfo.ucControls
 {
     public partial class loginPass : UserControl
     {
+        public string TxtLogin
+        {
+            get { return txtLogin.Text; }
+            set { txtLogin.Text = value; }
+        }
+        public string TxtPass
+        {
+            get { return txtPass.Text; }
+            set { txtPass.Text = value; }
+        }
+      
         public loginPass()
         {
             InitializeComponent();
         }
+
+
     }
 }

@@ -31,6 +31,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtValue = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -62,10 +63,21 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Nom :";
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(40, 19);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 11;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
+            // 
             // txtlblType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -81,5 +93,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtValue;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblID;
     }
 }

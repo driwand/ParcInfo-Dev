@@ -13,7 +13,8 @@ namespace ParcInfo.ucClient
 {
     public partial class ListProduitClient : UserControl
     {
-      
+
+        public int idEmp;
         public ListProduitClient(int idEmploye)
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace ParcInfo.ucClient
 
                 if (idEmploye > 0)
                 {
+                    idEmp = idEmploye;
                     var listProd = (from c in context.ProduitUtilisers
                                     where c.IdEmployee == idEmploye
                                     join p in context.ProduitClients on c.IdProduitClient equals p.Id
@@ -51,7 +53,6 @@ namespace ParcInfo.ucClient
 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-
                 if (idClient > 0)
                 {
                     lblClient.Text = $"[{code}]";
@@ -88,10 +89,21 @@ namespace ParcInfo.ucClient
             if (dgProduit.SelectedRows.Count > 0)
             {
                 var myrow = dgProduit.Rows[dgProduit.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                int idP = int.Parse(myrow.Cells["idP"].Value.ToString());
-                GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new DetailProduit(id, idP));
+                if (idEmp > 0)
+                {
+                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                    string idE = idEmp.ToString();
+                    GlobVars.frmindex.ShowControl(new DetailProduit(id,idE));
+                }
+                else
+                {
+                  
+                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                    int idP = int.Parse(myrow.Cells["idP"].Value.ToString());
+                    GlobVars.frmBack = this;
+                    GlobVars.frmindex.ShowControl(new DetailProduit(id, idP));
+                }
+
             }
         }
 

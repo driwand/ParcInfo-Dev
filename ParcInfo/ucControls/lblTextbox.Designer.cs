@@ -34,6 +34,8 @@
             this.btn_supprimer = new System.Windows.Forms.Button();
             this.lblid = new System.Windows.Forms.Label();
             this.lblAff = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblPass = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl
@@ -99,10 +101,32 @@
             this.lblAff.TabIndex = 4;
             this.lblAff.Visible = false;
             // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(261, 22);
+            this.lblUser.Margin = new System.Windows.Forms.Padding(0);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(35, 13);
+            this.lblUser.TabIndex = 5;
+            this.lblUser.Text = "label1";
+            // 
+            // lblPass
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.Location = new System.Drawing.Point(287, 23);
+            this.lblPass.Margin = new System.Windows.Forms.Padding(0);
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size(35, 13);
+            this.lblPass.TabIndex = 6;
+            this.lblPass.Text = "label1";
+            // 
             // lblTextbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblPass);
+            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblAff);
             this.Controls.Add(this.lblid);
             this.Controls.Add(this.btn_supprimer);
@@ -125,5 +149,7 @@
         private System.Windows.Forms.Button btn_supprimer;
         private System.Windows.Forms.Label lblid;
         private System.Windows.Forms.Label lblAff;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblPass;
     }
 }

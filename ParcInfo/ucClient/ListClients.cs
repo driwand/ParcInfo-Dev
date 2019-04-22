@@ -45,7 +45,6 @@ namespace ParcInfo.ucClient
                 string code = myrow.Cells["IdCLient"].Value.ToString();
                 GlobVars.frmindex.ShowControl(new CreateClient(id,code));
             }
-
         }
 
         private void gpEmployee_Click(object sender, EventArgs e)
@@ -54,15 +53,12 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-            
                 GlobVars.frmBack = this;
                 GlobVars.frmindex.ShowControl(new ListEmployees(id), true);
             }
         }
-      
         private void btnNewClient_Click(object sender, EventArgs e)
         {
-            
             GlobVars.frmindex.ShowControl(new CreateClient(0,""));
         }
 
@@ -92,11 +88,16 @@ namespace ParcInfo.ucClient
         
         private void gpDemande_Click(object sender, EventArgs e)
         {
-            var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
 
-            int id = int.Parse(myrow.Cells["id"].Value.ToString());
-            string nom = myrow.Cells["Nom"].Value.ToString();
-            GlobVars.frmindex.ShowControl(new ListDemande(id,nom));
+            if (dgClients.SelectedRows.Count > 0)
+            {
+                var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
+
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                string nom = myrow.Cells["Nom"].Value.ToString();
+                GlobVars.frmindex.ShowControl(new ListDemande(id, nom));
+            }
+           
 
         }
 
@@ -118,12 +119,14 @@ namespace ParcInfo.ucClient
         //start new intervention for seelcted request
         private void btnStartIntervention_Click(object sender, EventArgs e)
         {
-            int index = dgClients.CurrentRow.Index;
+            if (dgClients.SelectedRows.Count > 0)
+            {
+                int index = dgClients.CurrentRow.Index;
+                int id = int.Parse(dgClients.Rows[index].Cells["id"].Value.ToString());
+                //GlobVars.selectedClient = id;
 
-            int id = int.Parse(dgClients.Rows[index].Cells["id"].Value.ToString());
-            //GlobVars.selectedClient = id;
-
-            GlobVars.frmindex.ShowControl(new NewIntervention(id));
+                GlobVars.frmindex.ShowControl(new NewIntervention(id));
+            }
         }
 
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)

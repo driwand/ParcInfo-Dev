@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.isHardware = new System.Windows.Forms.CheckBox();
             this.txtQte = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblID);
             this.groupBox1.Controls.Add(this.isHardware);
             this.groupBox1.Controls.Add(this.txtQte);
             this.groupBox1.Controls.Add(this.label1);
@@ -70,6 +72,16 @@
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produit";
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(251, 21);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 49;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
             // 
             // isHardware
             // 
@@ -108,7 +120,7 @@
             this.DateProduit.Location = new System.Drawing.Point(96, 112);
             this.DateProduit.Name = "DateProduit";
             this.DateProduit.Size = new System.Drawing.Size(82, 20);
-            this.DateProduit.TabIndex = 44;
+            this.DateProduit.TabIndex = 3;
             // 
             // cbType
             // 
@@ -125,7 +137,7 @@
             this.txtPrix.Location = new System.Drawing.Point(96, 143);
             this.txtPrix.Name = "txtPrix";
             this.txtPrix.Size = new System.Drawing.Size(69, 20);
-            this.txtPrix.TabIndex = 3;
+            this.txtPrix.TabIndex = 4;
             this.txtPrix.Tag = "required";
             // 
             // txtMarque
@@ -205,7 +217,7 @@
             this.pnlProp.MaximumSize = new System.Drawing.Size(283, 124);
             this.pnlProp.Name = "pnlProp";
             this.pnlProp.Size = new System.Drawing.Size(283, 124);
-            this.pnlProp.TabIndex = 47;
+            this.pnlProp.TabIndex = 0;
             // 
             // ProduitInfo
             // 
@@ -244,5 +256,6 @@
         public System.Windows.Forms.GroupBox groupBox6;
         public System.Windows.Forms.FlowLayoutPanel pnlProp;
         public System.Windows.Forms.CheckBox isHardware;
+        public System.Windows.Forms.Label lblID;
     }
 }

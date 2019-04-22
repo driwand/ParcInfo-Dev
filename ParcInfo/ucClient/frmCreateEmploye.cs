@@ -16,10 +16,12 @@ namespace ParcInfo.ucClient
 
         public int idE = 0;
         public int idC = 0;
-        public frmCreateEmploye(int idEmploye, int idClient,string code)
+        DataGridView dgEmp;
+        public frmCreateEmploye(int idEmploye, int idClient,string code,DataGridView dg)
         {
             InitializeComponent();
             idC = idClient;
+            dgEmp = dg;
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 // Edit Employee
@@ -92,6 +94,7 @@ namespace ParcInfo.ucClient
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     Close();
+                    updateGrid();
                 }
                 else if (btnAjouter.Text == "Ajouter")
                 {
@@ -116,6 +119,7 @@ namespace ParcInfo.ucClient
                         // clear textbox 
                         Methods.Clear(this);
                         Close();
+                        updateGrid();
                     }
                 }
 
@@ -125,17 +129,17 @@ namespace ParcInfo.ucClient
 
         private void btnDelEmp_Click(object sender, EventArgs e)
         {
-            int id = GlobVars.selectedEmploye;
-
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                Employee c = context.Employees.Find(id);
+                Employee c = context.Employees.Find(idE);
 
                 DialogResult result = MessageBox.Show("Voulez-vous supprimer le Employé suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
 
                     c.IsDeleted = 1;
+                    c.Modifierpar = 1;
+                    c.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     MessageBox.Show("Employé supprimé");
                     Methods.Clear(this);
@@ -147,6 +151,25 @@ namespace ParcInfo.ucClient
                 }
 
 
+            }
+        }
+
+        public void updateGrid()
+        {
+
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var c = context.Clients.Find(idC);
+                var listEmp = (from emp in c.Employees
+                               join d in c.Departements on emp.IdDep equals d.id
+                               where emp.IsDeleted != 1
+                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
+                dgEmp.DataSource = listEmp;
+               Methods.Nice_grid(
+               new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },
+               new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
+               dgEmp
+               );
             }
         }
     }

@@ -181,7 +181,7 @@
             // lblPrix
             // 
             this.lblPrix.AutoSize = true;
-            this.lblPrix.Location = new System.Drawing.Point(419, 20);
+            this.lblPrix.Location = new System.Drawing.Point(392, 20);
             this.lblPrix.Name = "lblPrix";
             this.lblPrix.Size = new System.Drawing.Size(23, 13);
             this.lblPrix.TabIndex = 5;
@@ -192,9 +192,9 @@
             this.lblDateAff.AutoSize = true;
             this.lblDateAff.Location = new System.Drawing.Point(268, 20);
             this.lblDateAff.Name = "lblDateAff";
-            this.lblDateAff.Size = new System.Drawing.Size(28, 13);
+            this.lblDateAff.Size = new System.Drawing.Size(45, 13);
             this.lblDateAff.TabIndex = 4;
-            this.lblDateAff.Text = "date";
+            this.lblDateAff.Text = "**-**-****";
             // 
             // lblUser
             // 
@@ -217,7 +217,7 @@
             // lblPrixVente
             // 
             this.lblPrixVente.AutoSize = true;
-            this.lblPrixVente.Location = new System.Drawing.Point(355, 20);
+            this.lblPrixVente.Location = new System.Drawing.Point(328, 20);
             this.lblPrixVente.Name = "lblPrixVente";
             this.lblPrixVente.Size = new System.Drawing.Size(63, 13);
             this.lblPrixVente.TabIndex = 1;
