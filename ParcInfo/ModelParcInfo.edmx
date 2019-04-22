@@ -46,7 +46,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Datedemande" Type="date" StoreGeneratedPattern="Computed" />
           <Property Name="Description_d" Type="text" />
-          <Property Name="Statut" Type="varchar" MaxLength="30" StoreGeneratedPattern="None" />
+          <Property Name="Statut" Type="varchar" MaxLength="30" />
           <Property Name="IdEmployee" Type="int" />
           <Property Name="Datemodification" Type="date" />
           <Property Name="Modifierpar" Type="int" />
@@ -105,14 +105,14 @@
           <Property Name="Debut" Type="date" />
           <Property Name="Fin" Type="date" />
           <Property Name="Duree" Type="int" />
-          <Property Name="Statut" Type="varchar" MaxLength="20" StoreGeneratedPattern="None" />
+          <Property Name="Statut" Type="varchar" MaxLength="20" />
           <Property Name="IdDemande" Type="int" />
           <Property Name="Idutilisateur" Type="int" />
           <Property Name="Idclient" Type="int" />
           <Property Name="Datemodification" Type="date" />
           <Property Name="Modifierpar" Type="int" />
-          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
           <Property Name="TypeIntervention" Type="varchar" MaxLength="30" />
+          <Property Name="IsDeleted" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="observation">
           <Key>

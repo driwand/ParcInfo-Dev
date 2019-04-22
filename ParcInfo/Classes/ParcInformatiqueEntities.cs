@@ -16,7 +16,7 @@ namespace ParcInfo
         {
             get
             {
-                return Interventions.Where(x => x.IsDeleted ==0);
+                return Interventions.Where(x => x.IsDeleted == 0);
             }
         }
         public IQueryable<Intervention> GetIntervenretard
@@ -41,7 +41,8 @@ namespace ParcInfo
                 return GetInterventions.Where(x => x.Statut == "terminer");
             }
         }
-        public ICollection<Intervention> GetInterventionBystatut(Label lbl, string statut = "")
+
+        public ICollection<Intervention> GetInterventionBystatut(Label lbl=null, string statut = "")
         {
             IQueryable<Intervention> list =  GetInterventions;
             switch (statut)
@@ -57,6 +58,9 @@ namespace ParcInfo
                 case "terminer":
                     list = GetIntervtermine;
                     lbl.BackColor = Color.FromArgb(32, 191, 107);
+                    break;
+                case "":
+                    list = GetInterventions;
                     break;
                     
             }
@@ -106,23 +110,31 @@ namespace ParcInfo
                 return GetRequests.Where(x => x.Statut == "terminer");
             }
         }
-        public ICollection<Demande> GetRequestbyStatut(Label lbl, string statut = "",int idEmp= 0)
+        public ICollection<Demande> GetRequestbyStatut(Label[] lbl, string statut = "",int idEmp= 0)
         {
             IQueryable<Demande> list = GetRequests;
           
             switch (statut)
             {
+                case "en attente":
+                    list = GetRequestAttent;
+                    lbl[0].BackColor = Color.FromArgb(241, 196, 15);
+                    lbl[1].ForeColor = Color.FromArgb(241, 196, 15);
+                    break;
                 case "en cours":
                     list = GetRequestCours;
-                    lbl.BackColor = Color.FromArgb(250, 130, 49);
+                    lbl[0].BackColor = Color.FromArgb(250, 130, 49);
+                    lbl[1].ForeColor = Color.FromArgb(250, 130, 49);
                     break;
                 case "en retard":
                     list = GetRequestRetard;
-                    lbl.BackColor = Color.FromArgb(252, 92, 101);
+                    lbl[0].BackColor = Color.FromArgb(252, 92, 101);
+                    lbl[1].ForeColor = Color.FromArgb(252, 92, 101);
                     break;
                 case "terminer":
                     list = GetRequestTerminer;
-                    lbl.BackColor = Color.FromArgb(32, 191, 107);
+                    lbl[0].BackColor = Color.FromArgb(32, 191, 107);
+                    lbl[1].ForeColor = Color.FromArgb(32, 191, 107);
                     break;
 
             }
@@ -131,7 +143,7 @@ namespace ParcInfo
                 list = list.Where(c => c.IdEmployee == idEmp);
             }
             if (lbl != null)
-                lbl.Text = list.Count().ToString();
+                lbl[0].Text = list.Count().ToString();
             return list.ToList();
         }
     }

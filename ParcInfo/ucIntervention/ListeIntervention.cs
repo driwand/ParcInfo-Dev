@@ -124,8 +124,9 @@ namespace ParcInfo.ucInterevntion
             }
         }
 
-        private void ListeIntervention_Load(object sender, EventArgs e)
+        private void chDelIntr_CheckedChanged(object sender, EventArgs e)
         {
+
 
         }
     }

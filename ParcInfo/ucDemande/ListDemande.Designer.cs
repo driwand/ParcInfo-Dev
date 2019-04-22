@@ -34,7 +34,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btnTraiter = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblListRequest = new System.Windows.Forms.Label();
             this.dgDemande = new System.Windows.Forms.DataGridView();
             this.lblTotalRequest = new System.Windows.Forms.Label();
             this.lblEmployeClient = new System.Windows.Forms.Label();
@@ -112,16 +112,16 @@
             this.panel1.Size = new System.Drawing.Size(863, 2);
             this.panel1.TabIndex = 120;
             // 
-            // label1
+            // lblListRequest
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(55, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 15);
-            this.label1.TabIndex = 117;
-            this.label1.Text = "Liste des demande";
+            this.lblListRequest.AutoSize = true;
+            this.lblListRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListRequest.ForeColor = System.Drawing.Color.Black;
+            this.lblListRequest.Location = new System.Drawing.Point(55, 14);
+            this.lblListRequest.Name = "lblListRequest";
+            this.lblListRequest.Size = new System.Drawing.Size(129, 15);
+            this.lblListRequest.TabIndex = 117;
+            this.lblListRequest.Text = "Liste des demande";
             // 
             // dgDemande
             // 
@@ -227,7 +227,7 @@
             this.Controls.Add(this.gpFind);
             this.Controls.Add(this.lblEmployeClient);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblListRequest);
             this.Controls.Add(this.dgDemande);
             this.Name = "ListDemande";
             this.Size = new System.Drawing.Size(890, 481);
@@ -243,7 +243,7 @@
         #endregion
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblListRequest;
         private System.Windows.Forms.DataGridView dgDemande;
         public System.Windows.Forms.Label lblTotalRequest;
         private System.Windows.Forms.Label lblEmployeClient;

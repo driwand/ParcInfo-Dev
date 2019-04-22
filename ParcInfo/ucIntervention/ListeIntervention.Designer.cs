@@ -42,7 +42,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblEdited = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chDelIntr = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervention)).BeginInit();
             this.SuspendLayout();
@@ -184,15 +184,16 @@
             this.label8.TabIndex = 132;
             this.label8.Text = "Dernier modification par :";
             // 
-            // checkBox1
+            // chDelIntr
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 457);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(171, 17);
-            this.checkBox1.TabIndex = 131;
-            this.checkBox1.Text = "Afficher les elements supprimer";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chDelIntr.AutoSize = true;
+            this.chDelIntr.Location = new System.Drawing.Point(14, 457);
+            this.chDelIntr.Name = "chDelIntr";
+            this.chDelIntr.Size = new System.Drawing.Size(171, 17);
+            this.chDelIntr.TabIndex = 131;
+            this.chDelIntr.Text = "Afficher les elements supprimer";
+            this.chDelIntr.UseVisualStyleBackColor = true;
+            this.chDelIntr.CheckedChanged += new System.EventHandler(this.chDelIntr_CheckedChanged);
             // 
             // ListeIntervention
             // 
@@ -204,7 +205,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chDelIntr);
             this.Controls.Add(this.lblTotalIntervention);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblSource);
@@ -213,7 +214,6 @@
             this.Controls.Add(this.dgIntervention);
             this.Name = "ListeIntervention";
             this.Size = new System.Drawing.Size(890, 481);
-            this.Load += new System.EventHandler(this.ListeIntervention_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervention)).EndInit();
@@ -238,6 +238,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblEdited;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chDelIntr;
     }
 }

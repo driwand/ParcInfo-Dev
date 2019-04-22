@@ -83,6 +83,12 @@
     <Compile Include="Employee.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmList\frmListProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmList\frmListProducts.Designer.cs">
+      <DependentUpon>frmListProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmselectuser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,6 +320,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmList\frmListProducts.resx">
+      <DependentUpon>frmListProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmselectuser.resx">
       <DependentUpon>frmselectuser.cs</DependentUpon>

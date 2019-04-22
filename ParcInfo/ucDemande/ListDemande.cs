@@ -47,7 +47,7 @@ namespace ParcInfo.ucClient
                 {
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
-                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(lblTotalRequest)
+                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest,lblListRequest })
                                                 select new
                                                 {
                                                     d.Id,
@@ -62,7 +62,7 @@ namespace ParcInfo.ucClient
 
                     else
                     {
-                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(lblTotalRequest, statutReq, idEmploye)
+                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
                                                 select new {
                                                     d.Id,
                                                     d.IdReq,
