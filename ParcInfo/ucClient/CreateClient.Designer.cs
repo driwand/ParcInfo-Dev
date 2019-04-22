@@ -47,8 +47,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtSiteweb = new System.Windows.Forms.TextBox();
             this.txtFax = new System.Windows.Forms.TextBox();
+            this.txtSiteweb = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -273,8 +273,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtSiteweb);
             this.groupBox2.Controls.Add(this.txtFax);
+            this.groupBox2.Controls.Add(this.txtSiteweb);
             this.groupBox2.Controls.Add(this.txtTel);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label6);
@@ -286,21 +286,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Les information de contact";
             // 
+            // txtFax
+            // 
+            this.txtFax.Location = new System.Drawing.Point(94, 62);
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(276, 20);
+            this.txtFax.TabIndex = 1;
+            // 
             // txtSiteweb
             // 
             this.txtSiteweb.Location = new System.Drawing.Point(94, 99);
             this.txtSiteweb.Name = "txtSiteweb";
             this.txtSiteweb.Size = new System.Drawing.Size(276, 20);
             this.txtSiteweb.TabIndex = 2;
-            // 
-            // txtFax
-            // 
-            this.txtFax.Location = new System.Drawing.Point(94, 63);
-            this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(276, 20);
-            this.txtFax.TabIndex = 1;
-            this.txtFax.Tag = "";
-            this.txtFax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFax_KeyPress);
             // 
             // txtTel
             // 
@@ -489,7 +487,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSiteweb;
-        private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
@@ -504,5 +501,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Label lblClient;
+        private System.Windows.Forms.TextBox txtFax;
     }
 }

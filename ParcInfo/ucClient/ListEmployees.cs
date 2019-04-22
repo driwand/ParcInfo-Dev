@@ -85,8 +85,6 @@ namespace ParcInfo.ucClient
         // Employe Produits
         private void gpProduits_Click(object sender, EventArgs e)
         {
-
-
             if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
@@ -198,5 +196,7 @@ namespace ParcInfo.ucClient
                 );
             Methods.FilterDataGridViewIni(dgEmployees, txtFind, btnFind);
         }
+
+     
     }
 }

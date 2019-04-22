@@ -41,7 +41,7 @@ namespace ParcInfo.Classes
                     ((txtlblDepartement)c).TxtValue = "";
                 }
             }
-       
+
         }
         public static string Splitdate(string date)
         {
@@ -72,39 +72,49 @@ namespace ParcInfo.Classes
                                 ).LastOrDefault();
                     if (em != null)
                     {
+
                         em.Focus();
                         count++;
                     }
-                    Focus(c);
-                }
-                if (c is FlowLayoutPanel)
-                {
-                    var lblDep = (from x in c.Controls.OfType<txtlblDepartement>()
-                               where x.TxtValue == ""
-                               select x
-                           ).LastOrDefault();
 
-                    if (lblDep != null)
-                    {
-                        lblDep.Focus();
-                        count++;
-                    }
-                    var lblUser = (from x in c.Controls.OfType<lblTextbox>()
-                               where x.TxtValue == ""
-                               select x
-                          ).LastOrDefault();
-
-                    if (lblUser != null)
-                    {
-                        lblUser.Focus();
-                        count++;
-                    }
                 }
+
             }
             return count;
         }
 
-        
+        //public static int Focus2( Control control)
+        //{
+        //    int count = 0;
+        //    foreach (Control c in control.Controls)
+        //    {
+        //        if (c is FlowLayoutPanel)
+        //        {
+        //            var lblDep = (from x in c.Controls.OfType<txtlblDepartement>()
+        //                          where x.TxtValue == ""
+        //                          select x
+        //                   ).LastOrDefault();
+
+        //            if (lblDep != null)
+        //            {
+        //                lblDep.Focus();
+        //                count++;
+        //            }
+        //            var lblUser = (from x in c.Controls.OfType<lblTextbox>()
+        //                           where x.TxtValue == ""
+        //                           select x
+        //                  ).LastOrDefault();
+
+        //            if (lblUser != null)
+        //            {
+        //                lblUser.Focus();
+        //                count++;
+        //            }
+        //        }
+        //    }
+        //    return count;
+
+        //}
         public static List<LabelControl> GetidList(Control control)
         {
             List<LabelControl> list = new List<LabelControl>();
@@ -112,11 +122,15 @@ namespace ParcInfo.Classes
             {
                 if (c is lblTextbox lbl)
                 {
-                    list.Add(new LabelControl() { Id = int.Parse(lbl.Lblid), Value = lbl.TxtValue, IsDeleted = !lbl.Visible,Controlname=lbl.Name ,Idaffectation = int.Parse(lbl.LblAff)});
+                    list.Add(new LabelControl() { Id = int.Parse(lbl.Lblid), Value = lbl.TxtValue, IsDeleted = !lbl.Visible, Controlname = lbl.Name, Idaffectation = int.Parse(lbl.LblAff) });
                 }
                 else if (c is txtlblDepartement lbl2)
                 {
                     list.Add(new LabelControl() { Id = int.Parse(lbl2.Lblid), Value = lbl2.TxtValue, IsDeleted = !lbl2.Visible, Controlname = lbl2.Name });
+                }
+                else if (c is prixVente lbl3)
+                {
+                    list.Add(new LabelControl() { Id = int.Parse(lbl3.Lblid), Value = lbl3.TxtValue, Controlname = lbl3.Name });
                 }
             }
             return list;
@@ -131,8 +145,8 @@ namespace ParcInfo.Classes
             {
                 //if (!prop.PropertyType.IsClass)
                 //{
-                    var j = prop.GetType();
-                    table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                var j = prop.GetType();
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
                 //}
             }
 
@@ -142,8 +156,8 @@ namespace ParcInfo.Classes
                 foreach (PropertyDescriptor prop in properties)
                     //if (!prop.PropertyType.is)
                     //{
-                        row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
-                    //}
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                //}
                 table.Rows.Add(row);
             }
             return table;
@@ -156,7 +170,7 @@ namespace ParcInfo.Classes
 
             EventHandler textchanged = new EventHandler(delegate (Object o, EventArgs a)
             {
-                FilterDataGridView(grid, txt.Text);   
+                FilterDataGridView(grid, txt.Text);
             });
             EventHandler clear = new EventHandler(delegate (Object o, EventArgs a)
             {
@@ -222,7 +236,7 @@ namespace ParcInfo.Classes
             grid.ColumnHeadersHeight = 40;
             grid.RowHeadersVisible = false;
             grid.ScrollBars = ScrollBars.Both;
-            
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
 
@@ -248,6 +262,7 @@ namespace ParcInfo.Classes
             }
         }
     }
+
     public class LabelControl
     {
         public int Id { get; set; }

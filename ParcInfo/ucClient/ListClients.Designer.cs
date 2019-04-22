@@ -35,7 +35,7 @@
             this.CkDeletedClient = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblEdited = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblMod = new System.Windows.Forms.Label();
             this.lblEditedDate = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -141,19 +141,19 @@
             this.lblEdited.TabIndex = 60;
             this.lblEdited.Text = "user1";
             // 
-            // label13
+            // lblMod
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(389, 462);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 13);
-            this.label13.TabIndex = 61;
-            this.label13.Text = "Modifier le :";
+            this.lblMod.AutoSize = true;
+            this.lblMod.Location = new System.Drawing.Point(372, 461);
+            this.lblMod.Name = "lblMod";
+            this.lblMod.Size = new System.Drawing.Size(61, 13);
+            this.lblMod.TabIndex = 61;
+            this.lblMod.Text = "Modifier le :";
             // 
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(456, 462);
+            this.lblEditedDate.Location = new System.Drawing.Point(439, 461);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
             this.lblEditedDate.TabIndex = 61;
@@ -511,7 +511,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblMod);
             this.Controls.Add(this.gpDemande);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.label8);
@@ -580,7 +580,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblEdited;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblMod;
         private System.Windows.Forms.Label lblEditedDate;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;

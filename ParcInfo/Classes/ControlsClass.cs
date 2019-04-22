@@ -12,6 +12,9 @@ using ParcInfo.Properties;
 
 namespace ParcInfo.Classes
 {
+
+   
+
     public static class ControlsClass
     {
 

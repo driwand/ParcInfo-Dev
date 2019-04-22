@@ -14,19 +14,20 @@ namespace ParcInfo.ucClient
 {
     public partial class listProduits : UserControl
     {
+        ProduitInfo pd;
         public listProduits()
         {
+
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                var listType = context.Produits.Where(c => c.IsDeleted != 1).ToList();
+                var listType = context.Produits.Where(c => c.IsDeleted == 0).ToList();
+                var listProduitClient = context.ProduitClients.ToList();
                 var listProduit = (from p in listType
+                                   where !(listProduitClient.Any(it => it.Idproduit == p.id))
                                    select new { p.CodeP, p.id, p.TypeProduit.Nom, p.Marque, p.Model, p.Prix, p.Datefabrication }).ToList();
-                if (listType != null)
-                {
-                    dgProduits.DataSource = Methods.ToDataTable(listProduit);
-                }
 
+                    dgProduits.DataSource = Methods.ToDataTable(listProduit);
 
                 Methods.Nice_grid(
                     new string[] { "CodeP", "id", "Nom", "Marque", "Model", "Prix", "Datefabrication" },
@@ -37,23 +38,30 @@ namespace ParcInfo.ucClient
                 dgProduits.MultiSelect = true;
             }
         }
-
-
+        private void listProduits_Load(object sender, EventArgs e)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                pd = new ProduitInfo(context.TypeProduits.ToList());
+                pd.Location = new Point(18, 50);
+                this.Controls.Add(pd);
+            }
+        }
         private void btnAddProduit_Click(object sender, EventArgs e)
         {
             int txtEmpty = 0;
-            txtEmpty = Methods.Focus(produitInfo1);
+            txtEmpty = Methods.Focus(pd);
             if (txtEmpty == 0)
             {
                 //get values
-                int pType = int.Parse(produitInfo1.cbType.SelectedValue.ToString());
-                var pMarq = produitInfo1.txtMarque.Text;
-                var pModel = produitInfo1.txtModel.Text;
-                var pPrix = produitInfo1.txtPrix.Text;
-                DateTime pDate = produitInfo1.DateProduit.Value;
-                var pQte = produitInfo1.txtQte.Text;
+                int pType = int.Parse(pd.cbType.SelectedValue.ToString());
+                var pMarq = pd.txtMarque.Text;
+                var pModel = pd.txtModel.Text;
+                var pPrix = pd.txtPrix.Text;
+                DateTime pDate = pd.DateProduit.Value;
+                var pQte = pd.txtQte.Value;
                 int isHardware = 0;
-                if (produitInfo1.isHardware.Checked)
+                if (pd.isHardware.Checked)
                 {
                     isHardware = 1;
                 }
@@ -61,22 +69,29 @@ namespace ParcInfo.ucClient
 
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-                    var prod = new Produit
-                    {
-                        Marque = pMarq.ToUpper(),
-                        Model = pModel,
-                        Prix = float.Parse(pPrix),
-                        Datefabrication = pDate,
-                        IsHardware = isHardware,
-                        IdType = pType
-                    };
-                    context.Produits.Add(prod);
-                    foreach (Control c in produitInfo1.pnlProp.Controls)
+                   
+                    
+                   
+                        Produit prod = new Produit
+                        {
+                            Marque = pMarq.ToUpper(),
+                            Model = pModel,
+                            Prix = float.Parse(pPrix),
+                            Datefabrication = pDate,
+                            IsHardware = isHardware,
+                            IdType = pType,
+                            IsDeleted = 0
+
+                        };
+                        context.Produits.Add(prod);
+                   
+                    
+                    foreach (Control c in pd.pnlProp.Controls)
                     {
                         if (c is lblProduit)
                         {
                             lblProduit lb = (lblProduit)c;
-                            context.ValeurProps.Add(new ValeurProp { Valeur = lb.TxtValue, IdProduit = prod.id, IdPropriete = pType });
+                            context.ValeurProps.Add(new ValeurProp { Valeur = lb.TxtValue, IdProduit = prod.id, IdPropriete = int.Parse(lb.LblID) });
                         }
                     }
                     context.SaveChanges();
@@ -88,12 +103,54 @@ namespace ParcInfo.ucClient
         {
 
             int c = dgProduits.SelectedRows.Count;
-            if (e.RowIndex >= 0)
+            if (c> 0)
             {
                 nuAffecter.Value = c;
+
+                var myrow = dgProduits.Rows[e.RowIndex];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
+
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+                {
+                    var p = context.Produits.Find(id);
+                    if (p != null)
+                    {
+                        pd.txtMarque.Text = p.Marque;
+                        pd.txtModel.Text = p.Model;
+                        pd.txtPrix.Text = p.Prix.ToString();
+                        pd.DateProduit.Text = p.Datefabrication.ToString();
+                        if (p.IsHardware == 1)
+                        {
+                            pd.isHardware.Checked = true;
+                        }
+                        else
+                        {
+                            pd.isHardware.Checked = false;
+
+                        }
+                        GetValue(pd.pnlProp, p);
+                    }
+                }
             }
         }
-
+        // get Propriete Valeur
+        public void GetValue(Control pnl, Produit prod)
+        {
+            var lblDep = (from x in pnl.Controls.OfType<lblProduit>()
+                          select x
+                            ).ToList();
+            foreach (var item in prod.ValeurProps)
+            {
+                foreach (var lbl in lblDep)
+                {
+                    if (int.Parse(lbl.LblID) == item.IdPropriete)
+                    {
+                        lbl.TxtValue = item.Valeur;
+                    }
+                }
+            }
+        }
         private void button5_Click(object sender, EventArgs e)
         {
             //foreach (DataGridViewRow row in dgProduits.SelectedRows)
@@ -126,22 +183,44 @@ namespace ParcInfo.ucClient
 
         private void dgProduits_MultiSelectChanged(object sender, EventArgs e)
         {
-
-           
-            
         }
-
         private void btnAffecter_Click(object sender, EventArgs e)
         {
-            List<AffectC> afc = new List<AffectC>();
+
+            List<int> listAff = new List<int>();
+
             foreach (DataGridViewRow row in dgProduits.SelectedRows)
             {
                 int idprod = int.Parse(row.Cells["id"].Value.ToString());
-                float Prix = int.Parse(row.Cells["Prix"].Value.ToString());
-                afc.Add(new AffectC { IdProduit = idprod, Prix = Prix });
+                listAff.Add(idprod);
             }
-            frmselectuser frm = new frmselectuser(true,afc);
+            
+            frmselectuser frm = new frmselectuser(listAff);
             frm.ShowDialog();
+
+
+
+            //List<AffectC> afc = new List<AffectC>();
+            //foreach (DataGridViewRow row in dgProduits.SelectedRows)
+            //{
+            //    int idprod = int.Parse(row.Cells["id"].Value.ToString());
+            //    float Prix = int.Parse(row.Cells["Prix"].Value.ToString());
+            //    afc.Add(new AffectC { IdProduit = idprod, Prix = Prix });
+            //}
+            //frmselectuser frm = new frmselectuser(true,afc);
+            //frm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Controls.Remove(pd);
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                pd = new ProduitInfo(context.TypeProduits.ToList());
+                pd.Location = new Point(18, 50);
+                this.Controls.Add(pd);
+            }
+        
         }
     }
 }

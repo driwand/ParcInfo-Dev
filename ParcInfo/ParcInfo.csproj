@@ -83,6 +83,12 @@
     <Compile Include="Employee.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmAffecter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAffecter.Designer.cs">
+      <DependentUpon>frmAffecter.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmselectuser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +155,12 @@
     <Compile Include="ucClient\frmCreateEmploye.designer.cs">
       <DependentUpon>frmCreateEmploye.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucClient\frmLoginPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ucClient\frmLoginPass.Designer.cs">
+      <DependentUpon>frmLoginPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucClient\ListProduitClient.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -182,14 +194,32 @@
     <Compile Include="ucControls\lblTextbox.Designer.cs">
       <DependentUpon>lblTextbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucControls\loginPass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\loginPass.Designer.cs">
+      <DependentUpon>loginPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\MultiLineLabel.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ucControls\notification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\notification.Designer.cs">
+      <DependentUpon>notification.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControls\notifMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucControls\notifMenu.Designer.cs">
       <DependentUpon>notifMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucControls\prixVente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\prixVente.Designer.cs">
+      <DependentUpon>prixVente.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControls\ProduitInfo.cs">
       <SubType>UserControl</SubType>
@@ -315,6 +345,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAffecter.resx">
+      <DependentUpon>frmAffecter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmselectuser.resx">
       <DependentUpon>frmselectuser.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\frmCreateEmploye.resx">
       <DependentUpon>frmCreateEmploye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucClient\frmLoginPass.resx">
+      <DependentUpon>frmLoginPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\ListProduitClient.resx">
       <DependentUpon>ListProduitClient.cs</DependentUpon>
@@ -342,8 +378,17 @@
     <EmbeddedResource Include="ucControls\lblTextbox.resx">
       <DependentUpon>lblTextbox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\loginPass.resx">
+      <DependentUpon>loginPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\notification.resx">
+      <DependentUpon>notification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\notifMenu.resx">
       <DependentUpon>notifMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\prixVente.resx">
+      <DependentUpon>prixVente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\ProduitInfo.resx">
       <DependentUpon>ProduitInfo.cs</DependentUpon>
@@ -618,6 +663,7 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Password_20px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

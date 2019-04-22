@@ -208,7 +208,7 @@
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(199, 16);
+            this.lblClientName.Location = new System.Drawing.Point(197, 16);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(64, 13);
             this.lblClientName.TabIndex = 90;
@@ -220,7 +220,7 @@
             this.btnEditEmploye.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnEditEmploye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditEmploye.ForeColor = System.Drawing.Color.White;
-            this.btnEditEmploye.Image = global::ParcInfo.Properties.Resources.btnedit;
+            this.btnEditEmploye.Image = global::ParcInfo.Properties.Resources.details;
             this.btnEditEmploye.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditEmploye.Location = new System.Drawing.Point(736, 420);
             this.btnEditEmploye.Name = "btnEditEmploye";

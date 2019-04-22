@@ -13,22 +13,54 @@ namespace ParcInfo.ucControls
     public partial class ProduitInfo : UserControl
     {
         int nameProp = 1;
-        public ProduitInfo()
+        List<TypeProduit> listType;
+        Produit prd;
+        public ProduitInfo(List<TypeProduit> listT)
         {
             InitializeComponent();
-         
+            if (listT != null)
+            {
+                listType = listT;
+            }
         }
+        public ProduitInfo(Produit p, List<TypeProduit> listT)
+        {
+            InitializeComponent();
+            if (p != null)
+            {
+                prd = p;
+                listType = listT;
+                txtMarque.Text = p.Marque;
+                txtModel.Text = p.Model;
+                txtPrix.Text = p.Prix.ToString();
+                txtQte.Value = 1;
+                txtQte.Enabled = false;
+                cbType.Enabled = false;
+                DateProduit.Text = p.Datefabrication.ToString();
+                txtModel.Text = p.Model;
 
+                if (p.IsHardware == 1)
+                {
+                    isHardware.Checked = true;
+                }
+                else
+                {
+                    isHardware.Checked = false;
+                }
+             
+            }
+        }
         private void ProduitInfo_Load(object sender, EventArgs e)
         {
-
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            if (listType != null)
             {
-                var listType = context.TypeProduits.ToList();
-
                 cbType.DataSource = listType;
                 cbType.ValueMember = "Id";
                 cbType.DisplayMember = "Nom";
+            }
+            if (prd != null)
+            {
+                GetValue(pnlProp, prd);
             }
         }
 
@@ -46,7 +78,7 @@ namespace ParcInfo.ucControls
                     {
                         lblProduit prop = new lblProduit();
                         prop.Name = "propC" + nameProp;
-                        prop.Margin = new Padding(0, 0, 0, 12);
+                        //prop.Margin = new Padding(0, 0, 0, 12);
                         prop.lblName = item.Nom;
                         prop.LblID = item.Id.ToString(); ;
                         nameProp++;
@@ -61,6 +93,8 @@ namespace ParcInfo.ucControls
                 }
             }
         }
+
+        // clear lblproduit
         public void Clear(Control control)
         {
             var lblDep = (from x in control.Controls.OfType<lblProduit>()
@@ -71,6 +105,23 @@ namespace ParcInfo.ucControls
                 control.Controls.Remove(item);
             }
 
+        }
+        // get Propriete Valeur
+        public void GetValue(Control pnl, Produit prod)
+        {
+            var lblDep = (from x in pnl.Controls.OfType<lblProduit>()
+                          select x
+                            ).ToList();
+            foreach (var item in prod.ValeurProps)
+            {
+                foreach (var lbl in lblDep)
+                {
+                    if (int.Parse(lbl.LblID) == item.IdPropriete)
+                    {
+                        lbl.TxtValue = item.Valeur;
+                    }
+                }
+            }
         }
     }
 }

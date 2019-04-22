@@ -37,7 +37,12 @@
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
-            this.lineVertical = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblEditedDate = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblEdited = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.CkDeletedClient = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -80,8 +85,9 @@
             this.dgProduit.Location = new System.Drawing.Point(14, 103);
             this.dgProduit.Name = "dgProduit";
             this.dgProduit.ReadOnly = true;
-            this.dgProduit.Size = new System.Drawing.Size(863, 363);
+            this.dgProduit.Size = new System.Drawing.Size(863, 351);
             this.dgProduit.TabIndex = 118;
+            this.dgProduit.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduit_RowEnter);
             this.dgProduit.DoubleClick += new System.EventHandler(this.dgProduit_DoubleClick);
             // 
             // groupBox1
@@ -127,29 +133,78 @@
             // lblClient
             // 
             this.lblClient.AutoSize = true;
-            this.lblClient.Location = new System.Drawing.Point(195, 16);
+            this.lblClient.Location = new System.Drawing.Point(178, 16);
             this.lblClient.Name = "lblClient";
             this.lblClient.Size = new System.Drawing.Size(33, 13);
             this.lblClient.TabIndex = 124;
             this.lblClient.Text = "Client";
             this.lblClient.Visible = false;
             // 
-            // lineVertical
+            // panel2
             // 
-            this.lineVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.lineVertical.Location = new System.Drawing.Point(186, 12);
-            this.lineVertical.Name = "lineVertical";
-            this.lineVertical.Size = new System.Drawing.Size(1, 20);
-            this.lineVertical.TabIndex = 125;
-            this.lineVertical.UseWaitCursor = true;
-            this.lineVertical.Visible = false;
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Location = new System.Drawing.Point(194, 461);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 15);
+            this.panel2.TabIndex = 131;
+            // 
+            // lblEditedDate
+            // 
+            this.lblEditedDate.AutoSize = true;
+            this.lblEditedDate.Location = new System.Drawing.Point(459, 462);
+            this.lblEditedDate.Name = "lblEditedDate";
+            this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
+            this.lblEditedDate.TabIndex = 129;
+            this.lblEditedDate.Text = "2018/08/08";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(392, 462);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 13);
+            this.label13.TabIndex = 130;
+            this.label13.Text = "Modifier le :";
+            // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Location = new System.Drawing.Point(336, 462);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(33, 13);
+            this.lblEdited.TabIndex = 128;
+            this.lblEdited.Text = "user1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(206, 462);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 13);
+            this.label8.TabIndex = 127;
+            this.label8.Text = "Dernier modification par :";
+            // 
+            // CkDeletedClient
+            // 
+            this.CkDeletedClient.AutoSize = true;
+            this.CkDeletedClient.Location = new System.Drawing.Point(17, 460);
+            this.CkDeletedClient.Name = "CkDeletedClient";
+            this.CkDeletedClient.Size = new System.Drawing.Size(171, 17);
+            this.CkDeletedClient.TabIndex = 126;
+            this.CkDeletedClient.Text = "Afficher les elements supprimer";
+            this.CkDeletedClient.UseVisualStyleBackColor = true;
             // 
             // ListProduitClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lineVertical);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblEditedDate);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblEdited);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.CkDeletedClient);
             this.Controls.Add(this.lblClient);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgProduit);
@@ -179,6 +234,11 @@
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label lblClient;
-        public System.Windows.Forms.Panel lineVertical;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblEditedDate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblEdited;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox CkDeletedClient;
     }
 }

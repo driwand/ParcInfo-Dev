@@ -124,11 +124,8 @@
   <data name="icons8-checkmark-201" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-checkmark-201.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="productC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\productC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Demandes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Demandes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="addbtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addbtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="department" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\department.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,8 +139,8 @@
   <data name="User20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\User20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnedit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnedit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="department1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\department1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="addforbtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addforbtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +157,14 @@
   <data name="btndelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btndelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="deleteRec" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deleteRec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UserA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UserA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DeleteBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeleteBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="userProfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\userProfile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,17 +187,17 @@
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrowLeft1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowLeft1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="graphs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\graphs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Detail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Detail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AddUser1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddUser1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="users" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\users.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="graphs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\graphs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Detail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Detail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-checkmark-20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-checkmark-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,14 +214,14 @@
   <data name="Stocks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stocks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Find16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Find16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="createProduct" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\createProduct.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrowLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrowLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="request" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\request.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -232,14 +235,14 @@
   <data name="Employe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Employe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addbtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addbtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Back_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Back_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AddUser1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddUser1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Demandes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Demandes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="details" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\details.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,8 +253,8 @@
   <data name="userLogout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\userLogout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="deleteRec" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\deleteRec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrowLeft1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrowLeft1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrowDown1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrowDown1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,17 +277,17 @@
   <data name="Edit Property_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit Property_20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DeleteBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DeleteBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="productC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\productC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UserA" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UserA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Find16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Find16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="usersColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usersColor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="department1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\department1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnedit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnedit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit201" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit201.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,7 +295,7 @@
   <data name="DeleteBlack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DeleteBlack1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="start" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Password_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Password_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

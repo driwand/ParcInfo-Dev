@@ -76,7 +76,6 @@ namespace ParcInfo.ucClient
                 if (btnAjouter.Text == "Enregistrer")
                 {
                     // get values 
-
                     var idEmp = context.Employees.Find(idE);
                     idEmp.Nom = txtNom.Text;
                     idEmp.Prenom = txtPrenom.Text;
@@ -91,7 +90,6 @@ namespace ParcInfo.ucClient
                     idEmp.IsResponsable = Respo;
                     idEmp.Modifierpar = 1;
                     idEmp.Datemodification = DateTime.Now;
-                    
                     context.SaveChanges();
                     Close();
                 }

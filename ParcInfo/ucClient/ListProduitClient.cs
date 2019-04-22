@@ -14,7 +14,7 @@ namespace ParcInfo.ucClient
     public partial class ListProduitClient : UserControl
     {
       
-        public ListProduitClient( int idEmploye)
+        public ListProduitClient(int idEmploye)
         {
             InitializeComponent();
 
@@ -27,7 +27,20 @@ namespace ParcInfo.ucClient
                                     where c.IdEmployee == idEmploye
                                     join p in context.ProduitClients on c.IdProduitClient equals p.Id
                                     join pr in context.Produits on p.Idproduit equals pr.id
-                                    select new { pr.id, pr.CodeProduit, p.Prixvente, c.Login_u, c.Password_u, c.Dateaffectation }).ToList();
+                                    select new { pr,p,c }).ToList();
+
+                    var d = (from c in listProd
+                             
+                             select new { c.pr.CodeP, c.pr.id, c.pr.TypeProduit.Nom, c.pr.Marque, c.c.Login_u, c.c.Password_u,c.c.Dateaffectation }).ToList();
+               
+                    dgProduit.DataSource = Methods.ToDataTable(d);
+
+                    //dgProduit.Columns["idP"].Visible = false;
+                    Methods.Nice_grid(
+                                   new string[] { "CodeP", "id", "Nom", "Marque", "Login_u", "Password_u", "Dateaffectation" },
+                                   new string[] { "Code Produit", "id", "Type", "Marque", "Login", "Password", "Date d'affectation" },
+                                   dgProduit
+                                   );
                 }
               
             }
@@ -42,52 +55,50 @@ namespace ParcInfo.ucClient
                 if (idClient > 0)
                 {
                     lblClient.Text = $"[{code}]";
-                     var c =  context.Clients.Find(idClient);
-
-                    var listProduit = (from pc in c.ProduitClients
-                                       join p in context.Produits on pc.Idproduit equals p.id
-                                       join pu in context.ProduitUtilisers on pc.Id equals pu.IdProduitClient
-                                       select new { p.CodeP,idprodA = pc.Id,p.TypeProduit.Nom ,p.Marque,p.Model, employe = pu.Employee.Nom + pu.Employee.Prenom,pc.Dateaffectation }).ToList();
+                    lblClient.Visible = true;
+                    var c = context.Clients.Find(idClient);
+                    var listProduitC = context.ProduitClients.Where(d=> d.IsDeleted == 0 ).ToList();
+                    var listProduit = (from f in listProduitC
+                                       where idClient == f.Idclient
+                                       join d in context.Produits on f.Idproduit equals d.id
+                                       //join pu in context.ProduitUtilisers on f.Id equals pu.IdProduitClient
+                                       select new { d.CodeP, id= f.Idclient, idP = f.Idproduit, d.TypeProduit.Nom, d.Marque, d.Model, hardware = d.IsHardware == 1 ? "Oui" : "Non"
+/*                                           employe = pu.Employee.Nom + pu.Employee.Prenom*/  ,f.Dateaffectation
+                                       }).ToList();
 
                     dgProduit.DataSource = Methods.ToDataTable(listProduit);
+
+                    dgProduit.Columns["idP"].Visible = false;
+                    Methods.Nice_grid(
+                                   new string[] { "CodeP", "id","idP","Nom", "Adresse", "Marque", "Model", "hardware", "Dateaffectation"},
+                                   new string[] { "Code Produit", "id","idP", "Type", "Marque", "Model", "hardware", "Date d'affectation"},
+                                   dgProduit
+                                   );
                 }
 
             }
         }
         private void ListProduitClient_Load(object sender, EventArgs e)
         {
-            //ControlsClass.CreateRadiusBorder(this);
-            //DataTable mydt = new DataTable();
-            //mydt.Columns.Add("nom");
-            //mydt.Columns.Add("ville");
-            //mydt.Rows.Add(new object[] { "dps", "mohammedia" });
-            //mydt.Rows.Add(new object[] { "dps", "Bernoussi" });
-            //mydt.Rows.Add(new object[] { "It events", "Kech" });
-            //mydt.Rows.Add(new object[] { "tececo", "casa" });
-
-            //dgProduit.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //dgProduit.DataSource = mydt;
-            GlobVars.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
-            //if (!string.IsNullOrEmpty(GlobVars.NomClient))
-            //{
-            //    txtFind.Location = new Point(140, 19);
-            //    txtFind.Size = new Size(525, 20);
-            //    btnFind.Location = new Point(671, 14);
-            //    btnStartInterv.Visible = true;
-            //    GlobVars.NomClient = "";
-            //}
-            //else
-            //{
-            //    txtFind.Location = new Point(140, 19);
-            //    txtFind.Size = new Size(683, 20);
-            //    btnFind.Location = new Point(829, 14);
-            //    btnStartInterv.Visible = false;
-            //}
+         
         }
 
         private void dgProduit_DoubleClick(object sender, EventArgs e)
         {
-        
+            if (dgProduit.SelectedRows.Count > 0)
+            {
+                var myrow = dgProduit.Rows[dgProduit.CurrentRow.Index];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                int idP = int.Parse(myrow.Cells["idP"].Value.ToString());
+                GlobVars.frmBack = this;
+                GlobVars.frmindex.ShowControl(new DetailProduit(id, idP));
+            }
+        }
+
+        private void dgProduit_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+           
+
         }
     }
 }

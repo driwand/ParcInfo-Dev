@@ -61,7 +61,17 @@ namespace ParcInfo
         {
             get
             {
-                return $"{Marque}-{Model}-{id}";
+                return $"{Marque.ToUpper()}-{Model.ToUpper()}-{id}";
+            }
+        }
+    }
+    public partial class Utilisateur
+    {
+        public string IdUser
+        {
+            get
+            {
+                return "UTI-" + Methods.Splitdate(Datecreation.ToString()) + Id;
             }
         }
     }

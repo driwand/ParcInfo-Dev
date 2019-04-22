@@ -128,6 +128,7 @@
             this.Name = "frmselectuser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Utilisateurs";
+            this.Load += new System.EventHandler(this.frmselectuser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

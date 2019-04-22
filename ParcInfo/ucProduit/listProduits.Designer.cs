@@ -46,7 +46,6 @@
             this.btnAddProduit = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.produitInfo1 = new ParcInfo.ucControls.ProduitInfo();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -212,7 +211,7 @@
             this.btnAddProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnAddProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProduit.ForeColor = System.Drawing.Color.White;
-            this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.edit201;
+            this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.btnedit;
             this.btnAddProduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddProduit.Location = new System.Drawing.Point(217, 437);
             this.btnAddProduit.Name = "btnAddProduit";
@@ -244,15 +243,6 @@
             this.pictureBox1.TabIndex = 139;
             this.pictureBox1.TabStop = false;
             // 
-            // produitInfo1
-            // 
-            this.produitInfo1.BackColor = System.Drawing.Color.White;
-            this.produitInfo1.Location = new System.Drawing.Point(17, 50);
-            this.produitInfo1.Margin = new System.Windows.Forms.Padding(0);
-            this.produitInfo1.Name = "produitInfo1";
-            this.produitInfo1.Size = new System.Drawing.Size(309, 386);
-            this.produitInfo1.TabIndex = 152;
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -264,6 +254,7 @@
             this.button1.Size = new System.Drawing.Size(32, 32);
             this.button1.TabIndex = 153;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listProduits
             // 
@@ -271,7 +262,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.produitInfo1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAddProduit);
             this.Controls.Add(this.button2);
@@ -287,6 +277,7 @@
             this.Controls.Add(this.label1);
             this.Name = "listProduits";
             this.Size = new System.Drawing.Size(890, 481);
+            this.Load += new System.EventHandler(this.listProduits_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -318,7 +309,6 @@
         private System.Windows.Forms.DataGridView dgProduits;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private ucControls.ProduitInfo produitInfo1;
         private System.Windows.Forms.Button button1;
     }
 }

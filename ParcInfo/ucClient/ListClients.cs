@@ -31,14 +31,8 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var vr = context.Clients.Where(c=> c.IsDeleted == 0).ToList();
-
-                //var vr = context.Clients.Where(c => c.IsDeleted != 1).ToList();
-                //var s = (from c in vr
-                //         where c.IsDeleted != 1
-                //         select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
                 dgClients.DataSource = Methods.ToDataTable(vr.Select(c=>new
-                { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract, }).ToList());
-
+                { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract,  c.Debutcontract, }).ToList());
                 myGrid();
             }
         }
@@ -83,7 +77,6 @@ namespace ParcInfo.ucClient
                 GlobVars.frmindex.ShowControl(new CreateClient(id, code));
             }
         }
-
         private void gpIntervention_Click(object sender, EventArgs e)
         {
             if (dgClients.SelectedRows.Count > 0)
@@ -146,15 +139,15 @@ namespace ParcInfo.ucClient
                 {
                     var ClientsDeleted = (from c in vr
                                           where c.IsDeleted == 1
-                                          select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
+                                          select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
                     dgClients.DataSource = Methods.ToDataTable(ClientsDeleted);
                     myGrid();
                 }
                 else
                 {
                     var Clients = (from c in vr
-                                   where c.IsDeleted != 1
-                                   select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c = c.Debutcontract }).ToList();
+                                   where c.IsDeleted == 0
+                                   select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
                     dgClients.DataSource = Methods.ToDataTable(Clients);
                     myGrid();
                 }
@@ -179,7 +172,12 @@ namespace ParcInfo.ucClient
                                select new { u.Nom, c.Datemodification }).FirstOrDefault();
                     if (clt != null)
                     {
+                        int loc = 389;
                         lblEdited.Text = clt.Nom;
+                        loc += clt.Nom.Length;
+                        lblMod.Location = new Point(loc, 462);
+                        // MessageBox.Show(clt.Nom.Length.ToString());
+                        lblEditedDate.Location = new Point(439 + 20, 462);
                         lblEditedDate.Text = clt.Datemodification.ToString();
                     }
                     else
@@ -192,7 +190,8 @@ namespace ParcInfo.ucClient
                     lblInterC.Text = Cli.Interventions.Count.ToString();
 
                     var demC = (from c in Cli.Employees
-                                select new { c.Demandes }).ToList();
+                                from d in c.Demandes
+                                select d).ToList();
 
                     lblDemC.Text = demC.Count().ToString();
                     lblProdC.Text = Cli.ProduitClients.Count.ToString();
