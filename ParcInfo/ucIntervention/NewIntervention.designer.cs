@@ -394,7 +394,7 @@
             // 
             // pnlStatut
             // 
-            this.pnlStatut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(130)))), ((int)(((byte)(49)))));
+            this.pnlStatut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.pnlStatut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlStatut.Controls.Add(this.btnDone);
             this.pnlStatut.Controls.Add(this.lblStatut);

@@ -39,16 +39,19 @@ namespace ParcInfo.ucInterevntion
                 StartInterClient();
             }
         }
-        public int IdPeoduct;
-        public string CodeProduct;
 
+        public string codeproduct;
         public int selectedRequest;
         public int selectedClient;
         public int currentInterv;
+
+        Func<string, bool> condition = (line) => line.Length > 1;
+
         private void NewIntervention_Load(object sender, EventArgs e)
         {
 
         }
+
         public void StartInterRequest()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -66,6 +69,7 @@ namespace ParcInfo.ucInterevntion
                 //create first observetion that contain date and who started the intervention
                 observation obs = new observation()
                 {
+                    IdUser = "Parc Info",
                     IdIntervention = intr.Id,
                     Textobservation = "new intervention get started"
                 };
@@ -80,11 +84,16 @@ namespace ParcInfo.ucInterevntion
                 currentInterv = intr.Id;
 
                 //show request description and details
-                AddTxtDescription(getRequest.Employee.Nom,getRequest.Datedemande.ToString(),getRequest.Description_d,pnlObservetion);
+                AddTxtDescription(
+                    getRequest.Employee.Nom,
+                    getRequest.Datedemande.Value,
+                    getRequest.Description_d,
+                    0,
+                    pnlObservetion);
 
 
                 //to fill with first intervention informations
-                AddTxtDescription("Parc info", obs.Dateobservation.ToString(), obs.Textobservation, pnlObservetion);
+                AddTxtDescription("Parc Info", obs.Dateobservation, obs.Textobservation,obs.Id, pnlObservetion);
 
                 lblSource.Text = intr.Demande.IdReq;
             }
@@ -117,7 +126,7 @@ namespace ParcInfo.ucInterevntion
 
                 var clt = context.Clients.Find(selectedClient);
 
-                AddTxtDescription("parc info", DateTime.Now.ToString(), obs.Textobservation, pnlObservetion);
+                AddTxtDescription("Parc Info", DateTime.Now, obs.Textobservation,obs.Id, pnlObservetion);
 
                 lblSource.Text = intr.Client.IdCLient.ToString();
             }
@@ -187,13 +196,12 @@ namespace ParcInfo.ucInterevntion
             }
         }
 
-
-
         private void btnAddDexcription_Click(object sender, EventArgs e)
         {
             AddDescription();
         }
-        void AddDescription()
+
+        public void AddDescription(string codeid = null,int idaffecattion = 0)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
@@ -201,17 +209,22 @@ namespace ParcInfo.ucInterevntion
                               where it.Id == currentInterv
                               select it).FirstOrDefault();
 
-                //add new description to an exesiting intervention of selected client
                 observation obs = new observation()
                 {
-                    Textobservation = txtAddDescription.Text,
+                    
                     IdUser = GlobVars.currentUser.ToString(),
                     TypeOb = cbType.Text,
                     IdIntervention = interv.Id
                 };
+                if (codeid == null)
+                {
+                    //add new description to an exesiting intervention of selected client
+                    obs.Textobservation = txtAddDescription.Text;
+                }
+                else
+                    obs.Detailproduit = codeid;
 
-                if (IdPeoduct != 0)
-                    obs.Detailproduit = IdPeoduct + " " + CodeProduct;
+
 
                 context.observations.Add(obs);
 
@@ -219,11 +232,21 @@ namespace ParcInfo.ucInterevntion
 
                 interv.Idutilisateur.ToString();
                 
-                AddTxtDescription(interv.Idutilisateur.ToString(), DateTime.Now.ToString(), obs.Textobservation,pnlObservetion);
-                txtAddDescription.Clear();
-                pnlObservetion.VerticalScroll.Value = pnlObservetion.VerticalScroll.Maximum;
+
+                AddTxtDescription(
+                    interv.Idutilisateur.ToString(),
+                    DateTime.Now,
+                    obs.Textobservation,
+                    obs.Id,
+                    pnlObservetion,
+                    codeid ?? codeid,
+                    selectedClient);
+
+                if (codeid == null)
+                    txtAddDescription.Clear();
             }
         }
+
 
         private void txtAddDescription_KeyDown(object sender, KeyEventArgs e)
         {
@@ -277,7 +300,13 @@ namespace ParcInfo.ucInterevntion
                     };
                     context.observations.Add(obs);
                     context.SaveChanges();
-                    AddTxtDescription("parc info", DateTime.Now.ToString(), obs.Textobservation,pnlObservetion);
+
+                    AddTxtDescription(
+                        "Parc Info",
+                        DateTime.Now,
+                        obs.Textobservation,
+                        obs.Id,
+                        pnlObservetion);
                 }
                 if (intr.Statut == "terminer")
                 {
@@ -302,6 +331,8 @@ namespace ParcInfo.ucInterevntion
             using (var db = new ParcInformatiqueEntities())
             {
                 Intervention currentintr = db.Interventions.Find(selectedInre); //the selected intervention from datagrid
+
+                selectedClient = (int)currentintr.Idclient;
                 if (source != 0)
                 {
                     try
@@ -343,14 +374,17 @@ namespace ParcInfo.ucInterevntion
                     if (currentintr.IdDemande != null)
                     {
                         selectedRequest = currentintr.Demande.Id;
-                        AddTxtDescription(currentintr.Demande.Employee.Nom,
-                            currentintr.Demande.Datedemande.ToString(),
+
+                        AddTxtDescription(
+                            currentintr.Demande.Employee.Nom,
+                            currentintr.Demande.Datedemande.Value,
                             currentintr.Demande.Description_d,
+                            0,
                             pnlObservetion);
                     }
 
                     var activities = (from d in db.observations
-                               where d.IdIntervention == currentInterv
+                               where d.IdIntervention == currentInterv && d.IsDeleted == 0
                                select d).ToList(); //observetions of selected intervention
 
 
@@ -359,10 +393,12 @@ namespace ParcInfo.ucInterevntion
                         foreach (var v in activities) //fill pnlObservetion of each item in activities
                         {
                             AddTxtDescription(v.IdUser,
-                                v.Dateobservation.ToString(),
+                                v.Dateobservation,
                                 v.Textobservation,
+                                v.Id,
                                 pnlObservetion,
-                                v.Detailproduit);
+                                v.Detailproduit ?? v.Detailproduit,
+                                selectedClient);
                         }
                     }
                 }
@@ -386,7 +422,7 @@ namespace ParcInfo.ucInterevntion
                 case "en cours":
                     lblStatut.Text = "En cours";
                     lblStatut.Location = new Point(91, 8);
-                    pnlStatut.BackColor = Color.FromArgb(254, 211, 48);
+                    pnlStatut.BackColor = Color.FromArgb(241, 196, 15);
                     break;
             }
         }
@@ -412,31 +448,95 @@ namespace ParcInfo.ucInterevntion
             }
         }
 
-        public void AddTxtDescription(string userInfo, string date, string description, Panel container,string details = null)
+        int nametxt = 1;
+        public void AddTxtDescription(string userInfo, DateTime date, string description,int idobs, Panel container,string details = null,int IdCli=0)
         {
             MultiLineLabel ml = new MultiLineLabel();
 
             //adding description with more details to panel
-            TxtDescription us = new TxtDescription();
+            TxtDescription us = new TxtDescription
+            {
+                Name = "us" + nametxt
+            };
 
             ml.Parent = us.pnlText;
             ml.AutoSize = true;
             ml.MultiLine = true;
             us.lblUser.Text = userInfo; //show name of current user in description
-            us.lblDetails.Text = date; //datetime.now in description
+            us.lblDetails.Text = date.ToString(); //datetime.now in description
+
+
+            if (userInfo.ToLower() == "Parc Info".ToLower())
+            {
+                us.BackColor = Color.FromArgb(33, 150, 243);
+                us.lblDetails.ForeColor = Color.White;
+                us.lblIdAffecta.ForeColor = Color.White;
+                us.lblUser.ForeColor = Color.White;
+                us.pnlLine.BackColor = Color.White;
+
+                ml.ForeColor = Color.White;
+            }
+
+            if (description != null)
+                ml.Text = description; //show text of description
 
             if (details != null)
             {
-                us.lblProdut.Text = details.Split(' ').Take(2).Last();
+                int idaffec = Convert.ToInt32(details.Split(' ').Take(3).LastOrDefault());
+                us.lblIdAffecta.Text = idaffec.ToString();
+
+                us.lblidobs.Text = idobs.ToString();
+                us.BackColor = Color.FromArgb(33, 150, 243);
+                us.lblDetails.ForeColor = Color.White;
+                us.lblIdAffecta.ForeColor = Color.White;
+                us.lblUser.ForeColor = Color.White;
+                us.pnlLine.BackColor = Color.White;
+                us.btnDelProd.Show();
+
+                ml.Text = $"this product {details.Split(' ').Take(2).Last()} by {userInfo}";
+                ml.ForeColor = Color.White;
+                us.Click += new EventHandler((sender,e) => GetProduct(sender,e, IdCli, details.Split(' ').Take(1).Last()));
+                //us.btnDelProd.Click += new EventHandler((sender, e) => Del(sender,e,IdAffe,"us"+nametxt));
             }
 
-            ml.Text = description;//show text of description
             int o = ml.Height;
 
             us.pnlText.Size = new Size(300, o); //make size of panel as the height of text
 
             ml = new MultiLineLabel();
             container.Controls.Add(us);
+
+            nametxt++;
+
+            container.VerticalScroll.Value = container.VerticalScroll.Maximum;
+        }
+
+        private void Del(object sender, EventArgs e,int idaf,string namectr)
+        {
+            var result = MessageBox.Show("Are you sure", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                using (var db = new ParcInformatiqueEntities())
+                {
+                    //var faffc = db.ProduitClients.Find(idaf);
+                    //db.ProduitClients.Remove(faffc);
+
+                    MessageBox.Show(idaf.ToString());
+
+
+                    var ct = pnlObservetion.Controls.Find(namectr, true).FirstOrDefault();
+                    pnlObservetion.Parent.Controls.Remove(ct);
+                    MessageBox.Show("done");
+                }
+            }
+        }
+
+        private void GetProduct(object sender, EventArgs e,int idcli,string idprod)
+        {
+            TxtDescription lbl = (TxtDescription)sender;
+            lbl.Cursor = Cursors.Hand;
+
+            GlobVars.frmindex.ShowControl(new DetailProduit(idcli, Convert.ToInt32(idprod)));
         }
     }
 }

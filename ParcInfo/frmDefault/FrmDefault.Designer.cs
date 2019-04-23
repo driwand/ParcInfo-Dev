@@ -416,7 +416,7 @@ namespace ParcInfo.frmDefault
             // 
             // lblRequestAttente
             // 
-            this.lblRequestAttente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.lblRequestAttente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(130)))), ((int)(((byte)(49)))));
             this.lblRequestAttente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRequestAttente.ForeColor = System.Drawing.Color.White;
             this.lblRequestAttente.Location = new System.Drawing.Point(191, 94);
@@ -428,7 +428,7 @@ namespace ParcInfo.frmDefault
             // 
             // lblRequestCours
             // 
-            this.lblRequestCours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(130)))), ((int)(((byte)(49)))));
+            this.lblRequestCours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.lblRequestCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRequestCours.ForeColor = System.Drawing.Color.White;
             this.lblRequestCours.Location = new System.Drawing.Point(191, 135);
@@ -574,7 +574,7 @@ namespace ParcInfo.frmDefault
             // 
             // lblIntereventionCours
             // 
-            this.lblIntereventionCours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(130)))), ((int)(((byte)(49)))));
+            this.lblIntereventionCours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
             this.lblIntereventionCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIntereventionCours.ForeColor = System.Drawing.Color.White;
             this.lblIntereventionCours.Location = new System.Drawing.Point(193, 93);
