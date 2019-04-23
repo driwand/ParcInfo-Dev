@@ -29,6 +29,7 @@ namespace ParcInfo
         public static int idUtilisateur;
 
         public static UserControl frmBack;
+        public static UserControl frmBack2;
         public static FrmDefault frmindex;
         public static int countInterv;
         public static int countIntervDeInt;

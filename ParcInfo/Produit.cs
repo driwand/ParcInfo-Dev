@@ -22,6 +22,7 @@ namespace ParcInfo
         }
     
         public int id { get; set; }
+        public string CodeProduit { get; set; }
         public string Model { get; set; }
         public string Marque { get; set; }
         public Nullable<System.DateTime> Datefabrication { get; set; }
@@ -33,11 +34,10 @@ namespace ParcInfo
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
         public Nullable<int> IsDeleted { get; set; }
-        public string CodeProduit { get; set; }
     
         public virtual Utilisateur Utilisateur { get; set; }
         public virtual TypeProduit TypeProduit { get; set; }
-        public virtual Utilisateur UtilisateurEdit { get; set; }
+        public virtual Utilisateur Utilisateur1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProduitClient> ProduitClients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

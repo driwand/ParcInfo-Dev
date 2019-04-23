@@ -26,7 +26,7 @@ namespace ParcInfo
     
         public virtual Utilisateur Utilisateur { get; set; }
         public virtual ProduitClient ProduitClient { get; set; }
-        public virtual ProduitClient ProduitClientOther { get; set; }
-        public virtual Utilisateur UtilisateurEdit { get; set; }
+        public virtual ProduitClient ProduitClient1 { get; set; }
+        public virtual Utilisateur Utilisateur1 { get; set; }
     }
 }

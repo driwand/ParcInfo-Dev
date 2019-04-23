@@ -108,6 +108,12 @@
     <Compile Include="Intervention.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelParcInfo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,17 +147,8 @@
     <Compile Include="RoleUtilisateur.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="TypeProduit.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ucClient\CreateEmploye.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucClient\CreateEmploye.Designer.cs">
-      <DependentUpon>CreateEmploye.cs</DependentUpon>
     </Compile>
     <Compile Include="ucClient\DetailProduit.cs">
       <SubType>UserControl</SubType>
@@ -164,12 +161,6 @@
     </Compile>
     <Compile Include="ucClient\frmCreateEmploye.designer.cs">
       <DependentUpon>frmCreateEmploye.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ucClient\frmLoginPass.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ucClient\frmLoginPass.Designer.cs">
-      <DependentUpon>frmLoginPass.cs</DependentUpon>
     </Compile>
     <Compile Include="ucClient\ListProduitClient.cs">
       <SubType>UserControl</SubType>
@@ -364,17 +355,14 @@
     <EmbeddedResource Include="frmselectuser.resx">
       <DependentUpon>frmselectuser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucClient\CreateEmploye.resx">
-      <DependentUpon>CreateEmploye.cs</DependentUpon>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\DetailProduit.resx">
       <DependentUpon>DetailProduit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\frmCreateEmploye.resx">
       <DependentUpon>frmCreateEmploye.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucClient\frmLoginPass.resx">
-      <DependentUpon>frmLoginPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\ListProduitClient.resx">
       <DependentUpon>ListProduitClient.cs</DependentUpon>
@@ -667,6 +655,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Password_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closec.png" />
+    <None Include="Resources\Password_48px.png" />
+    <None Include="Resources\User_48px1.png" />
+    <None Include="Resources\User_48px.png" />
+    <None Include="Resources\EditEmp.png" />
+    <None Include="Resources\viewDetail.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ModelParcInfo.Context.tt">

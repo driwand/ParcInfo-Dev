@@ -233,6 +233,7 @@ namespace ParcInfo.frmDefault
             this.PicBack.TabIndex = 12;
             this.PicBack.TabStop = false;
             this.PicBack.Visible = false;
+            this.PicBack.Click += new System.EventHandler(this.PicBack_Click_1);
             // 
             // panel1
             // 

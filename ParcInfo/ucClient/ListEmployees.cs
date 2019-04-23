@@ -135,7 +135,14 @@ namespace ParcInfo.ucClient
                                select new { u.Nom, c.Datemodification }).FirstOrDefault();
                     if (clt != null)
                     {
+                   
+
+                        int loc = 382;
                         lblEdited.Text = clt.Nom;
+                        loc += clt.Nom.Length;
+                        lblMod.Location = new Point(loc, 462);
+                        // MessageBox.Show(clt.Nom.Length.ToString());
+                        lblEditedDate.Location = new Point(loc + lblMod.Size.Width, 462);
                         lblEditedDate.Text = clt.Datemodification.ToString();
                     }
                     else

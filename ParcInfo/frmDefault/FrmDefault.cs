@@ -25,13 +25,15 @@ namespace ParcInfo.frmDefault
     public partial class FrmDefault : Form
     {
         public bool isClicked = true;
+        public Button btnClicked;
         public FrmDefault()
         {
+        
             InitializeComponent();
+            ControlsClass.CreateRadiusBorder(PanelContainer);
             this.MaximizeBox = false;
             GlobVars.frmindex = this;
             MenuLeft();
-            
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
 
@@ -148,7 +150,6 @@ namespace ParcInfo.frmDefault
         }
         #endregion
 
-
         // Create Client 
         private void BtnCreateClient_Click(object sender, EventArgs e)
         {
@@ -156,6 +157,8 @@ namespace ParcInfo.frmDefault
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(frmcc);
             frmcc.BringToFront();
+         //  BtnCreateClient.BackColor = Color.FromArgb(93, 98, 132);
+            activeBtn(BtnCreateClient);
         }
         private void BtnListClient_Click(object sender, EventArgs e)
         {
@@ -163,6 +166,8 @@ namespace ParcInfo.frmDefault
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(frmcc);
             frmcc.BringToFront();
+            activeBtn(BtnListClient);
+
         }
 
         #region profileMenu
@@ -264,6 +269,7 @@ namespace ParcInfo.frmDefault
         {
             TypesProduits frmcc = new TypesProduits();
             ShowControl(frmcc);
+            activeBtn(BtnListClient);
         }
 
 
@@ -398,5 +404,42 @@ namespace ParcInfo.frmDefault
           
         }
 
+        private void PicBack_Click_1(object sender, EventArgs e)
+        {
+            if (GlobVars.frmBack != null && GlobVars.frmBack2 == null)
+            {
+                ShowControl(GlobVars.frmBack);
+            }
+            else if (GlobVars.frmBack != null && GlobVars.frmBack2 != null)
+            {
+                ShowControl(GlobVars.frmBack2);
+                
+            }
+         
+        }
+
+        public void activeBtn(Button btn )
+        {
+            btn.BackColor = Color.FromArgb(93, 98, 132);
+            foreach (Control item in pnlMenu.Controls)
+            {
+                if (item is Panel)
+                {
+                    foreach (Control c in item.Controls)
+                    {
+                        if (c is Button)
+                        {
+                            if (c.BackColor.Name == "ff5d6284")
+                            {
+                                c.BackColor = Color.FromArgb(44, 46, 62);
+                                btn.BackColor = Color.FromArgb(93, 98, 132);
+                            }
+                        }
+                    }
+                }
+           
+            }
+        }
+  
     }
 }

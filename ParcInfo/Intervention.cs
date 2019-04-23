@@ -17,8 +17,8 @@ namespace ParcInfo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Intervention()
         {
-            this.ProduitClients = new HashSet<ProduitClient>();
             this.observations = new HashSet<observation>();
+            this.ProduitClients = new HashSet<ProduitClient>();
         }
     
         public int Id { get; set; }
@@ -33,16 +33,16 @@ namespace ParcInfo
         public Nullable<int> Idclient { get; set; }
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Modifierpar { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
         public string TypeIntervention { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Demande Demande { get; set; }
         public virtual Utilisateur Utilisateur { get; set; }
-        public virtual Utilisateur UtilisateurEdit { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProduitClient> ProduitClients { get; set; }
+        public virtual Utilisateur Utilisateur1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<observation> observations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProduitClient> ProduitClients { get; set; }
     }
 }

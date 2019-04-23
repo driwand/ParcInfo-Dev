@@ -21,6 +21,7 @@ namespace ParcInfo
         public string Textobservation { get; set; }
         public Nullable<System.DateTime> Dateobservation { get; set; }
         public string Detailproduit { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
     
         public virtual Intervention Intervention { get; set; }
     }

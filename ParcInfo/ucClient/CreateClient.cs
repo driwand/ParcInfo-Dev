@@ -41,7 +41,6 @@ namespace ParcInfo.ucClient
             PnlDepart.Controls.Add(depr);
             if (idClient > 0)
             {
-
                 idC = idClient;
                 // Hide Button Ajouter
                 btnAddClient.Visible = false;
@@ -51,6 +50,7 @@ namespace ParcInfo.ucClient
                 btnDelClient.Visible = true;
                 lblClient.Text = "Fiche du client : ";
                 lblNameClient.Text =  Code;
+                picHeader.Image = Resources.viewDetail;
                 lblNameClient.Visible = true;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
@@ -177,46 +177,47 @@ namespace ParcInfo.ucClient
                     }
                     else if (item.Id >= 0 && item.IsDeleted)
                     {
-
                         var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
                         dep.IsDeleted = 1;
                         txtlblDepartement tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as txtlblDepartement;
                         PnlDepart.Controls.Remove(tbx);
                     }
                 }
-                // Utilisateur 
+                //Utilisateur 
                 var labelControlList2 = Methods.GetidList(PnlUsers);
                 foreach (var item in labelControlList2)
                 {
                     if (item.Idaffectation > 0 && !item.IsDeleted)
                     {
-                        var aff = cli.AffectationClients.Where(d => item.Id == d.Idutilisateur && d.IsDeleted == 0).FirstOrDefault();
+                        var aff = cli.AffectationClients.Where(d =>  item.Id == d.Idutilisateur && d.IsDeleted == 0).FirstOrDefault();
                         if (aff == null)
                         {
                             aff = cli.AffectationClients.Where(a => a.Id == item.Idaffectation).FirstOrDefault();
                             aff.IsDeleted = 1;
                             aff.Datemodification = DateTime.Now;
+                            // aff.Modifierpar = 0;
                             context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id,IsDeleted = 0});
                         }
                     }
                     else if (item.Idaffectation == 0)
                     {
                         var ac = cli.AffectationClients.Where(af => af.Idutilisateur == item.Id && af.IsDeleted == 0).FirstOrDefault();
+                      
                         // check if user already 
                         if (ac != null)
                         {
-                          
                         }
                         else
                         {
-                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, IsDeleted = 0 });
+                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id,Dateaffectation = DateTime.Now, IsDeleted = 0 });
                         }
                     }
                     else if (item.Idaffectation >= 0 && item.IsDeleted)
                     {
                         var affectation = cli.AffectationClients.Where(d => d.Id == item.Idaffectation).FirstOrDefault();
                         affectation.IsDeleted = 1;
-                        affectation.Dateaffectation = DateTime.Now;
+                        affectation.Datemodification = DateTime.Now;
+                        //affectation.Modifierpar = 1;
                         lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                         PnlUsers.Controls.Remove(tbx);
                     }
@@ -229,7 +230,7 @@ namespace ParcInfo.ucClient
                 cli.Fax = txtFax.Text;
                 cli.Siteweb = txtSiteweb.Text;
                 cli.Datemodification = DateTime.Now;
-                cli.Modifierpar = 1;
+                cli.Modifierpar = 11;
                 cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
                 cli.Prixheur = float.Parse(txtPrix.Text);
                 cli.Heurecontract = int.Parse(txtHeure.Text);
@@ -303,8 +304,14 @@ namespace ParcInfo.ucClient
                     {
                         if (item.Id > 0 && !item.IsDeleted && item.Value != "")
                         {
-                            user = new AffectationClient { Idclient = client.id, Idutilisateur = item.Id, Dateaffectation = DateTime.Now, IsDeleted = 0 };
-                            context.AffectationClients.Add(user);
+                            var d = context.AffectationClients.Any(dd => dd.Idutilisateur == item.Id && dd.Idclient == client.id);
+
+                            if (!d)
+                            {
+                                user = new AffectationClient { Idclient = client.id, Idutilisateur = item.Id, Dateaffectation = DateTime.Now, IsDeleted = 0 };
+                                context.AffectationClients.Add(user);
+                                context.SaveChanges();
+                            }
                         }
                         else if (item.Id == 0 && item.IsDeleted)
                         {
@@ -385,6 +392,16 @@ namespace ParcInfo.ucClient
         private void button1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            var labelControlList2 = Methods.GetidList(PnlUsers);
+
+            foreach (var item in labelControlList2)
+            {
+                MessageBox.Show($"{item.Id}, {item.Controlname},{item.Idaffectation}");
+            }
         }
     }
 }

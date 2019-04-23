@@ -21,9 +21,11 @@ namespace ParcInfo
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Modifierpar { get; set; }
         public Nullable<int> IsDeleted { get; set; }
+        public Nullable<int> Creepar { get; set; }
     
-        public virtual Client Client { get; set; }
         public virtual Utilisateur Utilisateur { get; set; }
+        public virtual Client Client { get; set; }
         public virtual Utilisateur Utilisateur1 { get; set; }
+        public virtual Utilisateur Utilisateur2 { get; set; }
     }
 }

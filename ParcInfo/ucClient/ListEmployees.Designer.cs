@@ -30,8 +30,7 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblEditedDate = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblEdited = new System.Windows.Forms.Label();
+            this.lblMod = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
@@ -65,6 +64,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lblEdited = new System.Windows.Forms.LinkLabel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,29 +89,20 @@
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(473, 462);
+            this.lblEditedDate.Location = new System.Drawing.Point(449, 462);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
             this.lblEditedDate.TabIndex = 83;
             this.lblEditedDate.Text = "2018/08/08";
             // 
-            // label13
+            // lblMod
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(406, 462);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 13);
-            this.label13.TabIndex = 82;
-            this.label13.Text = "Modifier le :";
-            // 
-            // lblEdited
-            // 
-            this.lblEdited.AutoSize = true;
-            this.lblEdited.Location = new System.Drawing.Point(333, 462);
-            this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(33, 13);
-            this.lblEdited.TabIndex = 81;
-            this.lblEdited.Text = "user1";
+            this.lblMod.AutoSize = true;
+            this.lblMod.Location = new System.Drawing.Point(382, 462);
+            this.lblMod.Name = "lblMod";
+            this.lblMod.Size = new System.Drawing.Size(61, 13);
+            this.lblMod.TabIndex = 82;
+            this.lblMod.Text = "Modifier le :";
             // 
             // label8
             // 
@@ -208,9 +199,12 @@
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
+            this.lblClientName.BackColor = System.Drawing.Color.White;
+            this.lblClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
             this.lblClientName.Location = new System.Drawing.Point(197, 16);
             this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(64, 13);
+            this.lblClientName.Size = new System.Drawing.Size(76, 13);
             this.lblClientName.TabIndex = 90;
             this.lblClientName.Text = "[Nom Client]";
             this.lblClientName.Visible = false;
@@ -493,11 +487,22 @@
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Location = new System.Drawing.Point(330, 462);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(43, 13);
+            this.lblEdited.TabIndex = 113;
+            this.lblEdited.TabStop = true;
+            this.lblEdited.Text = "aucune";
+            // 
             // ListEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.gpProduits);
             this.Controls.Add(this.gpDemandeRetard);
             this.Controls.Add(this.gpDemandeEnCours);
@@ -505,8 +510,7 @@
             this.Controls.Add(this.lblClientName);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.lblEdited);
+            this.Controls.Add(this.lblMod);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cbDeleted);
@@ -543,8 +547,7 @@
         #endregion
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblEditedDate;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lblEdited;
+        private System.Windows.Forms.Label lblMod;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnFind;
@@ -578,5 +581,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel lblEdited;
     }
 }

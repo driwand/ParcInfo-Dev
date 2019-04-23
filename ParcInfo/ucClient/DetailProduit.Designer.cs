@@ -264,9 +264,11 @@
             // lblClient
             // 
             this.lblClient.AutoSize = true;
+            this.lblClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
             this.lblClient.Location = new System.Drawing.Point(174, 21);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(47, 13);
+            this.lblClient.Size = new System.Drawing.Size(57, 13);
             this.lblClient.TabIndex = 10012;
             this.lblClient.Text = " [client1]";
             // 

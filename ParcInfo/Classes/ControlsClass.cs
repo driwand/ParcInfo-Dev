@@ -41,10 +41,10 @@ namespace ParcInfo.Classes
        );
 
 
-        public static void CreateRadiusBorder(UserControl panel)
+        public static void CreateRadiusBorder(Panel panel)
         {
             panel.BorderStyle = BorderStyle.None;
-            panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 15, 15));
+            panel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 5, 5));
         }
 
         public static void CreateRadiusBorder(Panel panel, int width, int height)

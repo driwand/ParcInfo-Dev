@@ -243,6 +243,16 @@ namespace ParcInfo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap closec {
+            get {
+                object obj = ResourceManager.GetObject("closec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap createProduct {
             get {
                 object obj = ResourceManager.GetObject("createProduct", resourceCulture);
@@ -413,6 +423,16 @@ namespace ParcInfo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EditEmp {
+            get {
+                object obj = ResourceManager.GetObject("EditEmp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Employe {
             get {
                 object obj = ResourceManager.GetObject("Employe", resourceCulture);
@@ -513,6 +533,16 @@ namespace ParcInfo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Password_48px {
+            get {
+                object obj = ResourceManager.GetObject("Password_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap productC {
             get {
                 object obj = ResourceManager.GetObject("productC", resourceCulture);
@@ -576,6 +606,26 @@ namespace ParcInfo.Properties {
         internal static System.Drawing.Bitmap User {
             get {
                 object obj = ResourceManager.GetObject("User", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap User_48px {
+            get {
+                object obj = ResourceManager.GetObject("User_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap User_48px1 {
+            get {
+                object obj = ResourceManager.GetObject("User_48px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -656,6 +706,16 @@ namespace ParcInfo.Properties {
         internal static System.Drawing.Bitmap usersColor {
             get {
                 object obj = ResourceManager.GetObject("usersColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap viewDetail {
+            get {
+                object obj = ResourceManager.GetObject("viewDetail", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

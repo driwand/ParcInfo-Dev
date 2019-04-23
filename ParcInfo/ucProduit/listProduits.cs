@@ -146,17 +146,15 @@ namespace ParcInfo.ucClient
                             pd.isHardware.Checked = false;
 
                         }
-                        if (p.UtilisateurEdit != null)
-                        {
-                            int loc = 514;
-                            lblUser.Text = p.UtilisateurEdit.Nom;
-                            loc += p.UtilisateurEdit.Nom.Length;
-                            lblM.Location = new Point(loc + 10, 454);
-                            lblDateMod.Text = p.Datemodification.ToString();
-                            lblDateMod.Location = new Point(600, 454);
-
-
-                        }
+                        //if (p.Utilisateur1.Nom != null)
+                        //{
+                        //    //int loc = 514;
+                        //    //lblUser.Text = p.Utilisateur1.Nom;
+                        //    //loc += p.Utilisateur1.Nom.Length;
+                        //    //lblM.Location = new Point(loc + 10, 454);
+                        //    //lblDateMod.Text = p.Datemodification.ToString();
+                        //    //lblDateMod.Location = new Point(600, 454);
+                        //}
 
                         GetValue(pd.pnlProp, p);
                     }

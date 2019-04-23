@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnDelClient = new System.Windows.Forms.Button();
-            this.btnEditClient = new System.Windows.Forms.Button();
             this.lblNameClient = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnAddDepartement = new System.Windows.Forms.Button();
             this.PnlDepart = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAddClient = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.PnlUsers = new System.Windows.Forms.FlowLayoutPanel();
             this.BtnAddUser = new System.Windows.Forms.Button();
@@ -61,59 +57,27 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblClient = new System.Windows.Forms.Label();
+            this.btnDelClient = new System.Windows.Forms.Button();
+            this.btnEditClient = new System.Windows.Forms.Button();
+            this.btnAddClient = new System.Windows.Forms.Button();
+            this.picHeader = new System.Windows.Forms.PictureBox();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHeader)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(907, 72);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(589, 370);
-            this.panel2.TabIndex = 9999;
-            // 
-            // btnDelClient
-            // 
-            this.btnDelClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.btnDelClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelClient.ForeColor = System.Drawing.Color.White;
-            this.btnDelClient.Image = global::ParcInfo.Properties.Resources.btndelete;
-            this.btnDelClient.Location = new System.Drawing.Point(18, 443);
-            this.btnDelClient.Name = "btnDelClient";
-            this.btnDelClient.Size = new System.Drawing.Size(28, 28);
-            this.btnDelClient.TabIndex = 10015;
-            this.btnDelClient.UseVisualStyleBackColor = false;
-            this.btnDelClient.Visible = false;
-            this.btnDelClient.Click += new System.EventHandler(this.btnDelClient_Click);
-            // 
-            // btnEditClient
-            // 
-            this.btnEditClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditClient.ForeColor = System.Drawing.Color.White;
-            this.btnEditClient.Image = global::ParcInfo.Properties.Resources.edit;
-            this.btnEditClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditClient.Location = new System.Drawing.Point(619, 443);
-            this.btnEditClient.Name = "btnEditClient";
-            this.btnEditClient.Size = new System.Drawing.Size(113, 28);
-            this.btnEditClient.TabIndex = 10014;
-            this.btnEditClient.Text = "   Enregister";
-            this.btnEditClient.UseVisualStyleBackColor = false;
-            this.btnEditClient.Visible = false;
-            this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
             // 
             // lblNameClient
             // 
             this.lblNameClient.AutoSize = true;
+            this.lblNameClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
             this.lblNameClient.Location = new System.Drawing.Point(164, 19);
             this.lblNameClient.Name = "lblNameClient";
-            this.lblNameClient.Size = new System.Drawing.Size(35, 13);
+            this.lblNameClient.Size = new System.Drawing.Size(41, 13);
             this.lblNameClient.TabIndex = 10013;
             this.lblNameClient.Text = "label1";
             this.lblNameClient.Visible = false;
@@ -150,21 +114,6 @@
             this.PnlDepart.Name = "PnlDepart";
             this.PnlDepart.Size = new System.Drawing.Size(339, 100);
             this.PnlDepart.TabIndex = 0;
-            // 
-            // btnAddClient
-            // 
-            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddClient.ForeColor = System.Drawing.Color.White;
-            this.btnAddClient.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.btnAddClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddClient.Location = new System.Drawing.Point(738, 443);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(113, 28);
-            this.btnAddClient.TabIndex = 10011;
-            this.btnAddClient.Text = "  Ajouter";
-            this.btnAddClient.UseVisualStyleBackColor = false;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // groupBox4
             // 
@@ -220,7 +169,7 @@
             // 
             // txtPrix
             // 
-            this.txtPrix.Location = new System.Drawing.Point(246, 25);
+            this.txtPrix.Location = new System.Drawing.Point(246, 23);
             this.txtPrix.Name = "txtPrix";
             this.txtPrix.Size = new System.Drawing.Size(124, 20);
             this.txtPrix.TabIndex = 1;
@@ -230,7 +179,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(210, 29);
+            this.label8.Location = new System.Drawing.Point(210, 27);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 43;
@@ -410,16 +359,6 @@
             this.panel1.Size = new System.Drawing.Size(854, 2);
             this.panel1.TabIndex = 10006;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.addForms;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 10005;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblClient
             // 
             this.lblClient.AutoSize = true;
@@ -430,6 +369,61 @@
             this.lblClient.Size = new System.Drawing.Size(102, 15);
             this.lblClient.TabIndex = 10004;
             this.lblClient.Text = "Nouveau client";
+            // 
+            // btnDelClient
+            // 
+            this.btnDelClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnDelClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelClient.ForeColor = System.Drawing.Color.White;
+            this.btnDelClient.Image = global::ParcInfo.Properties.Resources.btndelete;
+            this.btnDelClient.Location = new System.Drawing.Point(18, 443);
+            this.btnDelClient.Name = "btnDelClient";
+            this.btnDelClient.Size = new System.Drawing.Size(28, 28);
+            this.btnDelClient.TabIndex = 10015;
+            this.btnDelClient.UseVisualStyleBackColor = false;
+            this.btnDelClient.Visible = false;
+            this.btnDelClient.Click += new System.EventHandler(this.btnDelClient_Click);
+            // 
+            // btnEditClient
+            // 
+            this.btnEditClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditClient.ForeColor = System.Drawing.Color.White;
+            this.btnEditClient.Image = global::ParcInfo.Properties.Resources.edit;
+            this.btnEditClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditClient.Location = new System.Drawing.Point(619, 443);
+            this.btnEditClient.Name = "btnEditClient";
+            this.btnEditClient.Size = new System.Drawing.Size(113, 28);
+            this.btnEditClient.TabIndex = 10014;
+            this.btnEditClient.Text = "   Enregister";
+            this.btnEditClient.UseVisualStyleBackColor = false;
+            this.btnEditClient.Visible = false;
+            this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddClient.ForeColor = System.Drawing.Color.White;
+            this.btnAddClient.Image = global::ParcInfo.Properties.Resources.btnadd;
+            this.btnAddClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddClient.Location = new System.Drawing.Point(738, 443);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(113, 28);
+            this.btnAddClient.TabIndex = 10011;
+            this.btnAddClient.Text = "  Ajouter";
+            this.btnAddClient.UseVisualStyleBackColor = false;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
+            // picHeader
+            // 
+            this.picHeader.Image = global::ParcInfo.Properties.Resources.addForms;
+            this.picHeader.Location = new System.Drawing.Point(18, 9);
+            this.picHeader.Name = "picHeader";
+            this.picHeader.Size = new System.Drawing.Size(32, 32);
+            this.picHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHeader.TabIndex = 10005;
+            this.picHeader.TabStop = false;
             // 
             // CreateClient
             // 
@@ -446,9 +440,8 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picHeader);
             this.Controls.Add(this.lblClient);
-            this.Controls.Add(this.panel2);
             this.Name = "CreateClient";
             this.Size = new System.Drawing.Size(890, 481);
             this.Load += new System.EventHandler(this.CreateClient_Load);
@@ -460,14 +453,13 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHeader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnDelClient;
         private System.Windows.Forms.Button btnEditClient;
         public System.Windows.Forms.Label lblNameClient;
@@ -499,7 +491,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picHeader;
         public System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.TextBox txtFax;
     }

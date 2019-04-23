@@ -18,7 +18,7 @@ namespace ParcInfo
         public ProduitClient()
         {
             this.Installers = new HashSet<Installer>();
-            this.InstallersOther = new HashSet<Installer>();
+            this.Installers1 = new HashSet<Installer>();
             this.ProduitUtilisers = new HashSet<ProduitUtiliser>();
         }
     
@@ -37,11 +37,11 @@ namespace ParcInfo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Installer> Installers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Installer> InstallersOther { get; set; }
+        public virtual ICollection<Installer> Installers1 { get; set; }
         public virtual Intervention Intervention { get; set; }
         public virtual Produit Produit { get; set; }
         public virtual Utilisateur Utilisateur { get; set; }
-        public virtual Utilisateur UtilisateurEdit { get; set; }
+        public virtual Utilisateur Utilisateur1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProduitUtiliser> ProduitUtilisers { get; set; }
     }

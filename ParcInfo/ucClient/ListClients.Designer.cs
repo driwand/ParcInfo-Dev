@@ -34,7 +34,6 @@
             this.dgClients = new System.Windows.Forms.DataGridView();
             this.CkDeletedClient = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.lblEdited = new System.Windows.Forms.Label();
             this.lblMod = new System.Windows.Forms.Label();
             this.lblEditedDate = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,6 +41,7 @@
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.lblEdited = new System.Windows.Forms.LinkLabel();
             this.btnNewClient = new System.Windows.Forms.Button();
             this.btnCons = new System.Windows.Forms.Button();
             this.btnStartIntervention = new System.Windows.Forms.Button();
@@ -132,19 +132,10 @@
             this.label8.TabIndex = 59;
             this.label8.Text = "Dernier modification par :";
             // 
-            // lblEdited
-            // 
-            this.lblEdited.AutoSize = true;
-            this.lblEdited.Location = new System.Drawing.Point(333, 462);
-            this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(33, 13);
-            this.lblEdited.TabIndex = 60;
-            this.lblEdited.Text = "user1";
-            // 
             // lblMod
             // 
             this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(372, 461);
+            this.lblMod.Location = new System.Drawing.Point(372, 462);
             this.lblMod.Name = "lblMod";
             this.lblMod.Size = new System.Drawing.Size(61, 13);
             this.lblMod.TabIndex = 61;
@@ -153,7 +144,7 @@
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(439, 461);
+            this.lblEditedDate.Location = new System.Drawing.Point(430, 462);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
             this.lblEditedDate.TabIndex = 61;
@@ -206,6 +197,16 @@
             this.label15.Size = new System.Drawing.Size(76, 13);
             this.label15.TabIndex = 41;
             this.label15.Text = "Filtrer les client";
+            // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Location = new System.Drawing.Point(325, 462);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(43, 13);
+            this.lblEdited.TabIndex = 88;
+            this.lblEdited.TabStop = true;
+            this.lblEdited.Text = "aucune";
             // 
             // btnNewClient
             // 
@@ -507,13 +508,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.btnNewClient);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
             this.Controls.Add(this.lblMod);
             this.Controls.Add(this.gpDemande);
-            this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.gpEmployee);
             this.Controls.Add(this.gpProduit);
@@ -579,7 +580,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblEdited;
         private System.Windows.Forms.Label lblMod;
         private System.Windows.Forms.Label lblEditedDate;
         private System.Windows.Forms.Panel panel2;
@@ -588,5 +588,6 @@
         private System.Windows.Forms.Label label15;
         public System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Button btnNewClient;
+        private System.Windows.Forms.LinkLabel lblEdited;
     }
 }

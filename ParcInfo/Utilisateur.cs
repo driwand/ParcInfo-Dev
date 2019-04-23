@@ -19,6 +19,7 @@ namespace ParcInfo
         {
             this.AffectationClients = new HashSet<AffectationClient>();
             this.AffectationClients1 = new HashSet<AffectationClient>();
+            this.AffectationClients2 = new HashSet<AffectationClient>();
             this.Clients = new HashSet<Client>();
             this.Clients1 = new HashSet<Client>();
             this.Demandes = new HashSet<Demande>();
@@ -62,6 +63,8 @@ namespace ParcInfo
         public virtual ICollection<AffectationClient> AffectationClients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AffectationClient> AffectationClients1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AffectationClient> AffectationClients2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client> Clients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

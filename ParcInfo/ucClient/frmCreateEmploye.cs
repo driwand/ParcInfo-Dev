@@ -1,4 +1,5 @@
 ﻿using ParcInfo.Classes;
+using ParcInfo.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,10 +29,24 @@ namespace ParcInfo.ucClient
                 if (idEmploye > 0)
                 {
                     idE = idEmploye;
-                    lblHeading.Text = $"Edit employee [{code}]" ;
+                    lblHeading.Text = "Modifier employee";
+                    lblEMP.Text = $"[{code}]";
+                    picEmp.Image = Resources.EditEmp;
+
+                    txtDeaprt.Location = new Point(89, 201);
+                    lblDepart.Location = new Point(9, 206);
+                    txtPass.Location = new Point(89, 166);
+                    lblPassword.Location = new Point(9, 170);
+                    cbRespo.Location = new Point(92, 239);
+                    lblPassword.Visible = true;
+                    txtPass.Visible = true;
+
+
+                    //lblEMP.Location = new Point(195, 21);
+                    lblEMP.Visible = true;
+                    lblEMP.ForeColor = Color.FromArgb(0, 168, 255);
                     btnAjouter.Text = "Enregistrer";
                     btnDelEmp.Visible = true;
-
                     var emp = context.Employees.Find(idEmploye);
                     if (emp != null)
                     {
@@ -70,19 +85,21 @@ namespace ParcInfo.ucClient
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 int txtEmpty = 0;
               //  txtEmpty += Methods.Foucs(gbEmploye);
                 if (btnAjouter.Text == "Enregistrer")
                 {
+                    this.Text = "Modifier employee";
                     // get values 
                     var idEmp = context.Employees.Find(idE);
                     idEmp.Nom = txtNom.Text;
                     idEmp.Prenom = txtPrenom.Text;
                     idEmp.Tel = txtTel.Text;
                     idEmp.Email = txtEmail.Text;
+                    idEmp.Login_e = txtPass.Text;
+                    idEmp.Password_e = txtPass.Text;
                     idEmp.IdDep = int.Parse(txtDeaprt.SelectedValue.ToString());
                     int Respo = 0;
                     if (cbRespo.Checked)
@@ -90,7 +107,7 @@ namespace ParcInfo.ucClient
                         Respo = 1;
                     }
                     idEmp.IsResponsable = Respo;
-                    idEmp.Modifierpar = 1;
+                    idEmp.Modifierpar = 11;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     Close();
@@ -100,26 +117,53 @@ namespace ParcInfo.ucClient
                 {
                     if (txtEmpty == 0)
                     {
+                        
                         // get values 
                         string Nom = txtNom.Text;
                         string Prenom = txtPrenom.Text;
                         string Tel = txtTel.Text;
                         string Email = txtEmail.Text;
                         int Departement = int.Parse(txtDeaprt.SelectedValue.ToString());
+                        string login = txtPass.Text;
+                       
                         int Respo = 0;
                         if (cbRespo.Checked)
                         {
                             Respo = 1;
                         }
 
-                        Employee emp = new Employee { Nom = Nom, Prenom = Prenom, Tel = Tel, Email = Email, IdDep = Departement, Idclient = idC, IsResponsable = Respo };
-                        context.Employees.Add(emp);
-                        context.SaveChanges();
-                        MessageBox.Show("L'Employé a été ajouté");
-                        // clear textbox 
-                        Methods.Clear(this);
-                        Close();
-                        updateGrid();
+                        string pass = Methods.CreatePassword(8);
+                        string msg = Methods.stringMsg(Nom, Prenom, Email, pass);
+                       // pass = Methods.MD5Hash(pass);
+                        var d = context.Employees.Any(t => t.Email == Email);
+                        if (!d)
+                        {
+                            Employee emp = new Employee
+                            {
+                                Nom = Nom,
+                                Prenom = Prenom,
+                                Tel = Tel,
+                                Email = Email,
+                                IdDep = Departement,
+                                Idclient = idC,
+                                IsResponsable = Respo,
+                                Datecreation = DateTime.Now,
+                                Password_e = pass
+                            };
+                            context.Employees.Add(emp);
+                            context.SaveChanges();
+                            Methods.sendEmail(Email, msg);
+                            MessageBox.Show("L'Employé a été ajouté");
+                            // clear textbox 
+                            Methods.Clear(this);
+                            Close();
+                            updateGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("email already exists");
+                        }
+                  
                     }
                 }
 
@@ -172,5 +216,7 @@ namespace ParcInfo.ucClient
                );
             }
         }
+
+       
     }
 }

@@ -39,10 +39,10 @@
             this.lblClient = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblEditedDate = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblEdited = new System.Windows.Forms.Label();
+            this.lblMod = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.CkDeletedClient = new System.Windows.Forms.CheckBox();
+            this.lblEdited = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -108,7 +108,7 @@
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
             this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(719, 15);
+            this.btnFind.Location = new System.Drawing.Point(829, 15);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
             this.btnFind.TabIndex = 51;
@@ -118,7 +118,7 @@
             // 
             this.txtFind.Location = new System.Drawing.Point(122, 19);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(591, 20);
+            this.txtFind.Size = new System.Drawing.Size(701, 20);
             this.txtFind.TabIndex = 42;
             // 
             // label2
@@ -133,9 +133,11 @@
             // lblClient
             // 
             this.lblClient.AutoSize = true;
+            this.lblClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
             this.lblClient.Location = new System.Drawing.Point(178, 16);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(33, 13);
+            this.lblClient.Size = new System.Drawing.Size(39, 13);
             this.lblClient.TabIndex = 124;
             this.lblClient.Text = "Client";
             this.lblClient.Visible = false;
@@ -157,23 +159,14 @@
             this.lblEditedDate.TabIndex = 129;
             this.lblEditedDate.Text = "2018/08/08";
             // 
-            // label13
+            // lblMod
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(392, 462);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 13);
-            this.label13.TabIndex = 130;
-            this.label13.Text = "Modifier le :";
-            // 
-            // lblEdited
-            // 
-            this.lblEdited.AutoSize = true;
-            this.lblEdited.Location = new System.Drawing.Point(336, 462);
-            this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(33, 13);
-            this.lblEdited.TabIndex = 128;
-            this.lblEdited.Text = "user1";
+            this.lblMod.AutoSize = true;
+            this.lblMod.Location = new System.Drawing.Point(392, 462);
+            this.lblMod.Name = "lblMod";
+            this.lblMod.Size = new System.Drawing.Size(61, 13);
+            this.lblMod.TabIndex = 130;
+            this.lblMod.Text = "Modifier le :";
             // 
             // label8
             // 
@@ -194,15 +187,25 @@
             this.CkDeletedClient.Text = "Afficher les elements supprimer";
             this.CkDeletedClient.UseVisualStyleBackColor = true;
             // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Location = new System.Drawing.Point(331, 462);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(43, 13);
+            this.lblEdited.TabIndex = 132;
+            this.lblEdited.TabStop = true;
+            this.lblEdited.Text = "aucune";
+            // 
             // ListProduitClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.lblEdited);
+            this.Controls.Add(this.lblMod);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.CkDeletedClient);
             this.Controls.Add(this.lblClient);
@@ -236,9 +239,9 @@
         public System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblEditedDate;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lblEdited;
+        private System.Windows.Forms.Label lblMod;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox CkDeletedClient;
+        private System.Windows.Forms.LinkLabel lblEdited;
     }
 }

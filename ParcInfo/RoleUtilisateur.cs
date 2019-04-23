@@ -23,8 +23,8 @@ namespace ParcInfo
         public Nullable<int> Modifierpar { get; set; }
         public Nullable<int> IsDeleted { get; set; }
     
-        public virtual Utilisateur UtilisateurCreate { get; set; }
         public virtual Utilisateur Utilisateur { get; set; }
-        public virtual Utilisateur UtilisateurEdit { get; set; }
+        public virtual Utilisateur Utilisateur1 { get; set; }
+        public virtual Utilisateur Utilisateur2 { get; set; }
     }
 }

@@ -137,13 +137,22 @@ namespace ParcInfo.ucClient
                     var em = context.Employees.Find(idEmploye);
                     var p = (from c in em.ProduitUtilisers
                              join pr in context.ProduitClients on c.IdProduitClient equals pr.Id
-                             where idProd == pr.Idproduit && idEmploye == idEmploye
+                             where idProd == pr.Idproduit && c.IdEmployee == idEmploye
                              select new { c, pr.Prixvente, c.Utilisateur }).FirstOrDefault();
                     loginPass lg = new loginPass();
                     //lg.LblEmp = em.Nom + " " + em.Prenom;
                     lg.TxtLogin = p.c.Login_u;
                     lg.TxtPass = p.c.Password_u;
                     FpEmployee.Controls.Add(lg);
+                    // Size
+                    groupBox2.Size = new Size(520, 132);
+                    groupBox2.Location = new Point(352, 112);
+                    FpEmployee.Size = new Size(473, 101);
+                    gpMaterielLogiciel.Size = new Size(520, 177);
+                    gpMaterielLogiciel.Location = new Point(352, 250);
+
+                    FpEmployee.Size = new Size(473, 126);
+                    btnAddProduit.Location = new Point(478, 132);
                 }
               
 
@@ -192,7 +201,8 @@ namespace ParcInfo.ucClient
                         if (d != null)
                         {
                             d.IsDeleted = 1;
-                            d.Dateaffectation = DateTime.Now;
+                            d.Datemodification = DateTime.Now;
+
                             lblTextbox lbltxt = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                             FpEmployee.Controls.Remove(lbltxt);
                         }
@@ -215,6 +225,7 @@ namespace ParcInfo.ucClient
                         }
                     }
                 }
+                
                 context.SaveChanges();
             }
 

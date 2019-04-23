@@ -27,7 +27,7 @@ namespace ParcInfo
                 var userList = context.Utilisateurs.ToList();
                 dgUsers.DataSource = Methods.ToDataTable(userList.Select(c => new { c.IdUser,c.Id,c.Nom,c.Prenom,c.Adresse,c.Tel}).ToList());
                 Methods.Nice_grid(
-                       new string[] { "IdUser", "id", "Nom", "Prenom", "Adresse", "Adresse", "Tel" },
+                       new string[] { "IdUser", "Id", "Nom", "Prenom", "Adresse", "Adresse", "Tel" },
                        new string[] { "ID Utilisateur", "id", "Nom", "Prenom", "Adresse", "Tel" },
                        dgUsers
                        );

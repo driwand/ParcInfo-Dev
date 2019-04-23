@@ -19,15 +19,15 @@ namespace ParcInfo
         public int IdEmployee { get; set; }
         public string Login_u { get; set; }
         public string Password_u { get; set; }
+        public Nullable<System.DateTime> Dateaffectation { get; set; }
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
         public Nullable<int> IsDeleted { get; set; }
-        public Nullable<System.DateTime> Dateaffectation { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual ProduitClient ProduitClient { get; set; }
         public virtual Utilisateur Utilisateur { get; set; }
-        public virtual Utilisateur UtilisateurEdit { get; set; }
+        public virtual Utilisateur Utilisateur1 { get; set; }
     }
 }

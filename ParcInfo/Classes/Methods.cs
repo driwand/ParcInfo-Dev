@@ -6,7 +6,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -274,6 +276,7 @@ namespace ParcInfo.Classes
             DataGridViewCellStyle1.FormatProvider = new System.Globalization.CultureInfo("fr-FR");
             DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            
             DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grid.BackgroundColor = Color.WhiteSmoke;
             grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1;
@@ -305,6 +308,66 @@ namespace ParcInfo.Classes
                     r.HeaderText = columnstext[index - 1];
                 }
             }
+        }
+
+
+
+
+
+        //methods for Password
+
+        public static  string stringMsg(string nom, string prenom, string email, string password)
+        {
+            string msg = $"<p>Hello <b>{nom} {prenom}</b></p><br>" +
+                $"you have been registered successfully <br>" +
+                $"Here Your Login credentials <br> " +
+                $"<b>Email : {email}</b> <br>" +
+                $"<b>Password : {password} </b>";
+            return msg;
+        }
+        public static void sendEmail(string email, string msg)
+        {
+            MailMessage mail = new MailMessage("parcinfoit@gmail.com", email);
+            mail.Subject = "subj";
+            mail.Body = msg;
+            mail.IsBodyHtml = true;
+            using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
+            {
+                client.EnableSsl = true;
+
+                client.Credentials = new System.Net.NetworkCredential("parcinfoit@gmail.com", "parc123456");
+                client.Send(mail);
+            }
+        }
+
+        public static string MD5Hash(string text)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            //compute hash from the bytes of text  
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+
+            //get hash result after compute it  
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits  
+                //for each byte  
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+            return strBuilder.ToString();
+        }
+        public static string CreatePassword(int length)
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < length--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
         }
     }
 

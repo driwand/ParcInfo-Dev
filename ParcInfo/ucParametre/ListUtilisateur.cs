@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ParcInfo.Classes;
 
 namespace ParcInfo.ucParametre
 {
@@ -21,18 +22,19 @@ namespace ParcInfo.ucParametre
 
         private void ListUtilisateur_Load(object sender, EventArgs e)
         {
-           // ControlsClass.CreateRadiusBorder(this);
-            DataTable mydt = new DataTable();
-            mydt.Columns.Add("nom");
-            mydt.Columns.Add("ville");
-            mydt.Rows.Add(new object[] { "dps", "mohammedia" });
-            mydt.Rows.Add(new object[] { "dps", "Bernoussi" });
-            mydt.Rows.Add(new object[] { "It events", "Kech" });
-            mydt.Rows.Add(new object[] { "tececo", "casa" });
 
-            dgUtilisateur.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgUtilisateur.DataSource = mydt;
-            GlobVars.FilterDataGridViewIni(dgUtilisateur, txtFind, btnFind);
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var u = context.Utilisateurs.Where(d => d.IsDeleted == 0).ToList();
+
+                dgUtilisateur.DataSource = Methods.ToDataTable(u.Select(s => new { s.IdUser, s.Id, s.Nom, s.Prenom, s.Adresse, s.Ville, s.Tel, s.Email }).ToList());
+            }
+            Methods.Nice_grid(
+                            new string[] { "IdUser", "Id", "Nom", "Prenom","Adresse", "Ville", "Tel", "Email" },
+                            new string[] { "ID Utilisateur", "id", "Nom", "Prenom", "Adresse", "Ville", "Tel", "Email" },
+                            dgUtilisateur
+                            );
+            Methods.FilterDataGridViewIni(dgUtilisateur, txtFind, btnFind);
         }
 
         private void dgUtilisateur_DoubleClick(object sender, EventArgs e)
