@@ -47,8 +47,22 @@ namespace ParcInfo.frmList
                 int index = dgProdcuts.CurrentRow.Index;
                 int Id = Convert.ToInt32(dgProdcuts.Rows[index].Cells["id"].Value);
                 string code = dgProdcuts.Rows[index].Cells[0].Value.ToString();
-                clt.IdPeoduct = Id;
-                clt.CodeProduct = code;
+
+                
+
+                using (var db = new ParcInformatiqueEntities())
+                {
+                    ProduitClient prd = new ProduitClient()
+                    {
+                        Idclient = clt.selectedClient,
+                        Idproduit = Id
+                    };
+                    db.ProduitClients.Add(prd);
+                    db.SaveChanges();
+
+                    string codeid = Id + " " + code + " " + prd.Id;
+                    clt.AddDescription(codeid);
+                }
             }
         }
     }

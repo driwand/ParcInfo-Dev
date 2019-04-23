@@ -60,8 +60,8 @@
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__Modif__1920BF5C" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Creep__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Modif__1367E606" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.observation" Width="1.5" PointX="14.25" PointY="12.625" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__Affectati__Creep__22751F6C" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.observation" Width="1.5" PointX="14.25" PointY="12.5" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__observati__IdInt__208CD6FA" />
       </Diagram>
     </edmx:Diagrams>

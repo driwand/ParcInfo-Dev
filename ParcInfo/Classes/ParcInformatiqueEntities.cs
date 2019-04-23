@@ -49,7 +49,7 @@ namespace ParcInfo
             {
                 case "en cours":
                     list = GetIntervEncours;
-                    lbl.BackColor = Color.FromArgb(250, 130, 49); 
+                    lbl.BackColor = Color.FromArgb(241, 196, 15); 
                     break;
                 case "en retard":
                     list = GetIntervenretard;
@@ -120,13 +120,13 @@ namespace ParcInfo
             {
                 case "en attente":
                     list = GetRequestAttent;
-                    lbl[0].BackColor = Color.FromArgb(241, 196, 15);
-                    lbl[1].ForeColor = Color.FromArgb(241, 196, 15);
+                    lbl[0].BackColor = Color.FromArgb(250, 130, 49);
+                    lbl[1].ForeColor = Color.FromArgb(250, 130, 49);
                     break;
                 case "en cours":
                     list = GetRequestCours;
-                    lbl[0].BackColor = Color.FromArgb(250, 130, 49);
-                    lbl[1].ForeColor = Color.FromArgb(250, 130, 49);
+                    lbl[0].BackColor = Color.FromArgb(241, 196, 15);
+                    lbl[1].ForeColor = Color.FromArgb(241, 196, 15);
                     break;
                 case "en retard":
                     list = GetRequestRetard;

@@ -523,6 +523,16 @@ namespace ParcInfo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap redclose {
+            get {
+                object obj = ResourceManager.GetObject("redclose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap request {
             get {
                 object obj = ResourceManager.GetObject("request", resourceCulture);
@@ -656,6 +666,16 @@ namespace ParcInfo.Properties {
         internal static System.Drawing.Bitmap usersColor {
             get {
                 object obj = ResourceManager.GetObject("usersColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wtclose {
+            get {
+                object obj = ResourceManager.GetObject("wtclose", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

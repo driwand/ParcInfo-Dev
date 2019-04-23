@@ -40,7 +40,6 @@ namespace ParcInfo
         public virtual DbSet<TypeProduit> TypeProduits { get; set; }
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
         public virtual DbSet<ValeurProp> ValeurProps { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<observation> observations { get; set; }
     }
 }

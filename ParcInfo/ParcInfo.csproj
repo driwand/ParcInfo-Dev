@@ -141,9 +141,6 @@
     <Compile Include="RoleUtilisateur.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="TypeProduit.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
@@ -679,6 +676,8 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\redclose.png" />
+    <None Include="Resources\wtclose.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -140,7 +140,6 @@
             this.dgDemande.TabIndex = 118;
             this.dgDemande.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDemande_CellMouseDown);
             this.dgDemande.DoubleClick += new System.EventHandler(this.dgDemande_DoubleClick);
-           
             // 
             // lblTotalRequest
             // 

@@ -40,7 +40,22 @@ namespace ParcInfo.frmDefault
             ControlsClass.CursorChanger(pnlMenu);
             tmrReal.Start();
 
+            //MailMessage mail = new MailMessage("myogyt2@gmail.com", "abdelhakim.kssiba@gmail.com");
+            //mail.Subject = "subj";
+            //mail.Body = "hello";
+
+            //using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
+            //{
+            //    client.EnableSsl = true;
+            //    #region hhhh
+            //    client.Credentials = new System.Net.NetworkCredential("myogyt2@gmail.com", "ZXCVBNM123");
+
+            //    #endregion
+
+            //    client.Send(mail);
+            //}
         }
+
         public int countIntervTerminer;
         public int countIntervCours;
         public int countIntervRetard;
@@ -147,7 +162,6 @@ namespace ParcInfo.frmDefault
             TmrParms.Start();
         }
         #endregion
-
 
         // Create Client 
         private void BtnCreateClient_Click(object sender, EventArgs e)
