@@ -33,8 +33,8 @@
             this.pnlLine = new System.Windows.Forms.Panel();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblIdAffecta = new System.Windows.Forms.Label();
-            this.btnDelProd = new System.Windows.Forms.Button();
             this.lblidobs = new System.Windows.Forms.Label();
+            this.btnDelProd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblDetails
@@ -83,6 +83,16 @@
             this.lblIdAffecta.Text = "lbl";
             this.lblIdAffecta.Visible = false;
             // 
+            // lblidobs
+            // 
+            this.lblidobs.AutoSize = true;
+            this.lblidobs.Location = new System.Drawing.Point(318, 8);
+            this.lblidobs.Name = "lblidobs";
+            this.lblidobs.Size = new System.Drawing.Size(35, 13);
+            this.lblidobs.TabIndex = 132;
+            this.lblidobs.Text = "label1";
+            this.lblidobs.Visible = false;
+            // 
             // btnDelProd
             // 
             this.btnDelProd.BackColor = System.Drawing.Color.Transparent;
@@ -100,16 +110,6 @@
             this.btnDelProd.Click += new System.EventHandler(this.btnDelProd_Click);
             this.btnDelProd.MouseEnter += new System.EventHandler(this.btnDelProd_MouseEnter);
             this.btnDelProd.MouseLeave += new System.EventHandler(this.btnDelProd_MouseLeave);
-            // 
-            // lblidobs
-            // 
-            this.lblidobs.AutoSize = true;
-            this.lblidobs.Location = new System.Drawing.Point(318, 8);
-            this.lblidobs.Name = "lblidobs";
-            this.lblidobs.Size = new System.Drawing.Size(35, 13);
-            this.lblidobs.TabIndex = 132;
-            this.lblidobs.Text = "label1";
-            this.lblidobs.Visible = false;
             // 
             // TxtDescription
             // 

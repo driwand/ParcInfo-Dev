@@ -294,7 +294,7 @@ namespace ParcInfo.ucInterevntion
 
                     observation obs = new observation()
                     {
-                        TypeOb = "Parc Info",
+                        IdUser = "Parc Info",
                         IdIntervention = currentInterv,
                         Textobservation = "Intervention terminer"
                     };

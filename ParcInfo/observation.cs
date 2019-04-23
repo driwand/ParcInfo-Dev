@@ -19,7 +19,7 @@ namespace ParcInfo
         public string IdUser { get; set; }
         public string TypeOb { get; set; }
         public string Textobservation { get; set; }
-        public Nullable<System.DateTime> Dateobservation { get; set; }
+        public System.DateTime Dateobservation { get; set; }
         public string Detailproduit { get; set; }
         public int IsDeleted { get; set; }
     

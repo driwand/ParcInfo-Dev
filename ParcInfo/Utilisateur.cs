@@ -40,7 +40,6 @@ namespace ParcInfo
             this.RoleUtilisateurs2 = new HashSet<RoleUtilisateur>();
             this.Utilisateur1 = new HashSet<Utilisateur>();
             this.Utilisateur11 = new HashSet<Utilisateur>();
-            this.AffectationClients2 = new HashSet<AffectationClient>();
         }
     
         public int Id { get; set; }
@@ -108,7 +107,5 @@ namespace ParcInfo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Utilisateur> Utilisateur11 { get; set; }
         public virtual Utilisateur Utilisateur3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AffectationClient> AffectationClients2 { get; set; }
     }
 }

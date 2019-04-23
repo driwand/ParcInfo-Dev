@@ -665,6 +665,10 @@
     <None Include="Resources\viewDetail.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\redclose.png" />
+    <None Include="Resources\wtclose.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelParcInfo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
@@ -675,8 +679,8 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\redclose.png" />
-    <None Include="Resources\wtclose.png" />
+    <None Include="Resources\redclose1.png" />
+    <None Include="Resources\wtclose1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
