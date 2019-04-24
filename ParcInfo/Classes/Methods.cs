@@ -112,38 +112,6 @@ namespace ParcInfo.Classes
             return count;
         }
 
-        //public static int Focus2( Control control)
-        //{
-        //    int count = 0;
-        //    foreach (Control c in control.Controls)
-        //    {
-        //        if (c is FlowLayoutPanel)
-        //        {
-        //            var lblDep = (from x in c.Controls.OfType<txtlblDepartement>()
-        //                          where x.TxtValue == ""
-        //                          select x
-        //                   ).LastOrDefault();
-
-        //            if (lblDep != null)
-        //            {
-        //                lblDep.Focus();
-        //                count++;
-        //            }
-        //            var lblUser = (from x in c.Controls.OfType<lblTextbox>()
-        //                           where x.TxtValue == ""
-        //                           select x
-        //                  ).LastOrDefault();
-
-        //            if (lblUser != null)
-        //            {
-        //                lblUser.Focus();
-        //                count++;
-        //            }
-        //        }
-        //    }
-        //    return count;
-
-        //}
         public static List<LabelControl> GetidList(Control control)
         {
             List<LabelControl> list = new List<LabelControl>();

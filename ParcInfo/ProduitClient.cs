@@ -12,25 +12,22 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class ProduitClient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public ProduitClient()
         {
-            this.Demandes = new HashSet<Demande>();
+            this.Installers = new HashSet<Installer>();
+            this.Installers1 = new HashSet<Installer>();
             this.ProduitUtilisers = new HashSet<ProduitUtiliser>();
         }
     
         public int Id { get; set; }
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-        public string Tel { get; set; }
-        public string Email { get; set; }
-        public string Password_e { get; set; }
-        public Nullable<int> IsResponsable { get; set; }
-        public Nullable<int> IdDep { get; set; }
+        public Nullable<System.DateTime> Dateaffectation { get; set; }
+        public Nullable<double> Prixvente { get; set; }
         public Nullable<int> Idclient { get; set; }
-        public Nullable<System.DateTime> Datecreation { get; set; }
+        public Nullable<int> Idproduit { get; set; }
+        public Nullable<int> ParIntervention { get; set; }
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
@@ -38,8 +35,11 @@ namespace ParcInfo
     
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Demande> Demandes { get; set; }
-        public virtual Departement Departement { get; set; }
+        public virtual ICollection<Installer> Installers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Installer> Installers1 { get; set; }
+        public virtual Intervention Intervention { get; set; }
+        public virtual Produit Produit { get; set; }
         public virtual Utilisateur Utilisateur { get; set; }
         public virtual Utilisateur Utilisateur1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AffectationClient.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\ParcInformatiqueEntities.cs" />
     <Compile Include="Classes\ControlsClass.cs" />
@@ -70,12 +73,24 @@
     <Compile Include="Classes\GradientPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\Intervention.cs" />
+    <Compile Include="Classes\Innerclass.cs" />
     <Compile Include="Classes\Methods.cs" />
-    <Compile Include="frmAffecter.cs">
+    <Compile Include="Client.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Demande.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Departement.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="frmList\frmAffecter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAffecter.Designer.cs">
+    <Compile Include="frmList\frmAffecter.Designer.cs">
       <DependentUpon>frmAffecter.cs</DependentUpon>
     </Compile>
     <Compile Include="frmList\frmAffectLogMater.cs">
@@ -90,17 +105,59 @@
     <Compile Include="frmList\frmListProducts.Designer.cs">
       <DependentUpon>frmListProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmselectuser.cs">
+    <Compile Include="frmList\frmselectuser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmselectuser.Designer.cs">
+    <Compile Include="frmList\frmselectuser.Designer.cs">
       <DependentUpon>frmselectuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Installer.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Intervention.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelParcInfo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelParcInfo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelParcInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelParcInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="observation.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Produit.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProduitClient.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProduitUtiliser.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProprietesProduit.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleUtilisateur.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeProduit.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="ucClient\DetailProduit.cs">
       <SubType>UserControl</SubType>
@@ -268,10 +325,10 @@
       <DependentUpon>ListDemande.cs</DependentUpon>
     </Compile>
     <Compile Include="ucClient\selectedUsers.cs" />
-    <Compile Include="frmDefault\FrmDefault.cs">
+    <Compile Include="FrmDefault.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDefault\FrmDefault.Designer.cs">
+    <Compile Include="FrmDefault.Designer.cs">
       <DependentUpon>FrmDefault.cs</DependentUpon>
     </Compile>
     <Compile Include="globVars.cs" />
@@ -289,10 +346,16 @@
     <Compile Include="ucProduit\listProduits.Designer.cs">
       <DependentUpon>listProduits.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilisateur.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ValeurProp.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAffecter.resx">
+    <EmbeddedResource Include="frmList\frmAffecter.resx">
       <DependentUpon>frmAffecter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmList\frmAffectLogMater.resx">
@@ -301,7 +364,7 @@
     <EmbeddedResource Include="frmList\frmListProducts.resx">
       <DependentUpon>frmListProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmselectuser.resx">
+    <EmbeddedResource Include="frmList\frmselectuser.resx">
       <DependentUpon>frmselectuser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
@@ -382,7 +445,7 @@
     <EmbeddedResource Include="ucDemande\ListDemande.resx">
       <DependentUpon>ListDemande.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDefault\FrmDefault.resx">
+    <EmbeddedResource Include="FrmDefault.resx">
       <DependentUpon>FrmDefault.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucParametre\TypesProduits.resx">
@@ -401,6 +464,13 @@
     <EmbeddedResource Include="ucProduit\listProduits.resx">
       <DependentUpon>listProduits.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="ModelParcInfo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelParcInfo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelParcInfo.edmx.diagram">
+      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -614,5 +684,18 @@
     <None Include="Resources\redclose1.png" />
     <None Include="Resources\wtclose1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelParcInfo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
+      <LastGenOutput>ModelParcInfo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelParcInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
+      <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

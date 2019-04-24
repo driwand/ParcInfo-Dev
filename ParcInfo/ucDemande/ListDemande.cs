@@ -143,7 +143,7 @@ namespace ParcInfo.ucClient
 
         public void StartIntervention()
         {
-            if (dgDemande.RowCount > -1)
+            if (dgDemande.SelectedRows.Count > 0)
             {
                 int index = dgDemande.CurrentRow.Index;
                 int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());

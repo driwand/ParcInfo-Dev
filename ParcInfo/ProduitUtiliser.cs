@@ -12,21 +12,22 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class Installer
+    public partial class ProduitUtiliser
     {
-        public int id { get; set; }
-        public Nullable<System.DateTime> Dateexpiration { get; set; }
-        public Nullable<int> Idhardsoft { get; set; }
-        public Nullable<int> Idproduitclient { get; set; }
-        public Nullable<System.DateTime> Datecreation { get; set; }
+        public int Id { get; set; }
+        public int IdProduitClient { get; set; }
+        public int IdEmployee { get; set; }
+        public string Login_u { get; set; }
+        public string Password_u { get; set; }
+        public Nullable<System.DateTime> Dateaffectation { get; set; }
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
         public int IsDeleted { get; set; }
     
-        public virtual Utilisateur Utilisateur { get; set; }
+        public virtual Employee Employee { get; set; }
         public virtual ProduitClient ProduitClient { get; set; }
-        public virtual ProduitClient ProduitClient1 { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
         public virtual Utilisateur Utilisateur1 { get; set; }
     }
 }

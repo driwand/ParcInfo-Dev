@@ -34,7 +34,7 @@ namespace ParcInfo
         public Nullable<int> Idclient { get; set; }
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Modifierpar { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
+        public int IsDeleted { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Demande Demande { get; set; }

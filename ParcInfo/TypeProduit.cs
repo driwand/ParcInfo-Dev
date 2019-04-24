@@ -12,21 +12,24 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class Departement
+    public partial class TypeProduit
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Departement()
+        public TypeProduit()
         {
-            this.Employees = new HashSet<Employee>();
+            this.Produits = new HashSet<Produit>();
+            this.ProprietesProduits = new HashSet<ProprietesProduit>();
         }
     
         public int id { get; set; }
         public string Nom { get; set; }
+        public Nullable<int> SupportingSoftware { get; set; }
+        public Nullable<int> SupportingUser { get; set; }
         public int IsDeleted { get; set; }
-        public Nullable<int> IdCLient { get; set; }
     
-        public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Produit> Produits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProprietesProduit> ProprietesProduits { get; set; }
     }
 }
