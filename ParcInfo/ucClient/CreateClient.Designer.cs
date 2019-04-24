@@ -109,10 +109,11 @@
             // PnlDepart
             // 
             this.PnlDepart.AutoScroll = true;
-            this.PnlDepart.Location = new System.Drawing.Point(38, 19);
+            this.PnlDepart.Location = new System.Drawing.Point(17, 19);
             this.PnlDepart.MaximumSize = new System.Drawing.Size(375, 100);
             this.PnlDepart.Name = "PnlDepart";
-            this.PnlDepart.Size = new System.Drawing.Size(339, 100);
+            this.PnlDepart.Padding = new System.Windows.Forms.Padding(20, 10, 0, 10);
+            this.PnlDepart.Size = new System.Drawing.Size(375, 100);
             this.PnlDepart.TabIndex = 0;
             // 
             // groupBox4

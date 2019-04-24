@@ -33,13 +33,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlLogin = new ParcInfo.Classes.GradientPanel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.btnCons = new System.Windows.Forms.Button();
+            this.lblForget = new System.Windows.Forms.LinkLabel();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlLogin.SuspendLayout();
@@ -100,41 +100,42 @@
             this.pnlLogin.Angle = 0F;
             this.pnlLogin.ColorBottom = System.Drawing.Color.Empty;
             this.pnlLogin.ColorTop = System.Drawing.Color.Empty;
-            this.pnlLogin.Controls.Add(this.linkLabel1);
-            this.pnlLogin.Controls.Add(this.btnCons);
+            this.pnlLogin.Controls.Add(this.lblForget);
+            this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.label2);
             this.pnlLogin.Controls.Add(this.pictureBox3);
             this.pnlLogin.Controls.Add(this.pictureBox7);
-            this.pnlLogin.Controls.Add(this.textBox2);
-            this.pnlLogin.Controls.Add(this.textBox1);
+            this.pnlLogin.Controls.Add(this.txtPassword);
+            this.pnlLogin.Controls.Add(this.txtEmail);
             this.pnlLogin.Location = new System.Drawing.Point(52, 82);
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(464, 251);
             this.pnlLogin.TabIndex = 0;
             // 
-            // linkLabel1
+            // lblForget
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(194, 228);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(95, 13);
-            this.linkLabel1.TabIndex = 107;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Forget Password ?";
+            this.lblForget.AutoSize = true;
+            this.lblForget.Location = new System.Drawing.Point(194, 228);
+            this.lblForget.Name = "lblForget";
+            this.lblForget.Size = new System.Drawing.Size(95, 13);
+            this.lblForget.TabIndex = 107;
+            this.lblForget.TabStop = true;
+            this.lblForget.Text = "Forget Password ?";
             // 
-            // btnCons
+            // btnLogin
             // 
-            this.btnCons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnCons.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCons.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCons.ForeColor = System.Drawing.Color.White;
-            this.btnCons.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCons.Location = new System.Drawing.Point(133, 177);
-            this.btnCons.Name = "btnCons";
-            this.btnCons.Size = new System.Drawing.Size(210, 39);
-            this.btnCons.TabIndex = 106;
-            this.btnCons.Text = "Login";
-            this.btnCons.UseVisualStyleBackColor = false;
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogin.Location = new System.Drawing.Point(133, 177);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(210, 39);
+            this.btnLogin.TabIndex = 106;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label2
             // 
@@ -167,21 +168,22 @@
             this.pictureBox7.TabIndex = 103;
             this.pictureBox7.TabStop = false;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(67, 122);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(360, 28);
-            this.textBox2.TabIndex = 102;
+            this.txtPassword.Location = new System.Drawing.Point(67, 122);
+            this.txtPassword.Multiline = true;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(360, 28);
+            this.txtPassword.TabIndex = 102;
             // 
-            // textBox1
+            // txtEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 67);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(360, 28);
-            this.textBox1.TabIndex = 101;
+            this.txtEmail.Location = new System.Drawing.Point(67, 67);
+            this.txtEmail.Multiline = true;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(360, 28);
+            this.txtEmail.TabIndex = 101;
             // 
             // Login
             // 
@@ -212,13 +214,13 @@
         private Classes.GradientPanel pnlLogin;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnCons;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.LinkLabel lblForget;
     }
 }

@@ -61,7 +61,7 @@ namespace ParcInfo
         {
             get
             {
-                return $"{Marque.ToUpper()}-{Model.ToUpper()}-{id}";
+                return $"{Marque.ToUpper()}-{Model.ToUpper()}{id}";
             }
         }
     }

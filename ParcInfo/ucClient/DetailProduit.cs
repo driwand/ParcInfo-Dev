@@ -32,11 +32,19 @@ namespace ParcInfo.ucClient
                     var p = c.ProduitClients.Where(d => d.Idproduit == idP).Select(s => s).FirstOrDefault();
                     lblClient.Text = $"[{c.IdCLient}]";
                     if (p.Utilisateur != null)
-                    {  lblUser.Text = p.Utilisateur.Nom;
+                    {
+                        int loc = 87;
+                        lblUser.Text = p.Utilisateur.Nom;
+                        loc += lblUser.Width;
+                        lblDateAffectation.Location = new Point(loc, 20);
+                        lblDateAff.Text = p.Dateaffectation.Value.ToShortDateString();
+                        lblDateAff.Location = new Point(lblDateAffectation.Location.X + lblDateAffectation.Width, 20);
+                        lblPrixVente.Location = new Point(lblDateAff.Location.X + lblDateAff.Width, 20);
+                        lblPrix.Text = p.Prixvente.ToString();
+                        lblPrix.Location = new Point(lblPrixVente.Location.X + lblPrixVente.Width, 20);
                     }
-                  
-                    lblDateAff.Text = p.Dateaffectation.Value.ToShortDateString();
-                    lblPrix.Text = p.Prixvente.ToString();
+                    
+                   
                 }            
             }
         }
@@ -56,12 +64,12 @@ namespace ParcInfo.ucClient
                              where idP == pr.Idproduit
                              select new { c, pr.Prixvente,c.Utilisateur}).FirstOrDefault();
                     lblClient.Text = $"[{e.IdEmploye}]";
-                    if (p.Utilisateur != null)
-                    {
-                        lblUser.Text = p.Utilisateur.Nom;
-                    }
+                    //if (p.Utilisateur != null)
+                    //{
+                    //    lblUser.Text = p.Utilisateur.Nom;
+                    //}
 
-                    lblDateAff.Text = p.c.Dateaffectation.Value.ToShortDateString();
+                 //   lblDateAff.Text = p.c.Dateaffectation.Value.ToShortDateString();
                     lblPrix.Text = p.Prixvente.ToString();
                 }
             }
@@ -106,7 +114,6 @@ namespace ParcInfo.ucClient
                               select x).ToList();
 
                     lblTextbox tbx = this.Controls.Find("userC1", true).FirstOrDefault() as lblTextbox;
-
                     if (pu != null && pu.Count > 0)
                     {
                         var user = pu.FirstOrDefault();
@@ -158,8 +165,6 @@ namespace ParcInfo.ucClient
 
             }
         }
-
-        
         private void btnEdit_Click(object sender, EventArgs e)
         {
             List<LabelControl> listEmploye = new List<LabelControl>();
@@ -167,48 +172,52 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var idprodClient = context.ProduitClients.Where(d => d.Idproduit == idProd).FirstOrDefault();
-                foreach (var item in listEmploye)
+                if (listEmploye.Count > 0)
                 {
-                    if (item.Idaffectation > 0 && !item.IsDeleted)
+                    foreach (var item in listEmploye)
                     {
-                        var d = idprodClient.ProduitUtilisers.Where(pu => item.Id == pu.IdEmployee && idprodClient.Id == pu.IdProduitClient).FirstOrDefault();
-                        if (d == null)
+                        if (item.Idaffectation > 0 && !item.IsDeleted)
                         {
-                            d = idprodClient.ProduitUtilisers.Where(pu => pu.Id == item.Idaffectation).FirstOrDefault();
-                            d.IsDeleted = 1;
-                            d.Datemodification = DateTime.Now;
-                            context.ProduitUtilisers.Add(new ProduitUtiliser { IdProduitClient = idprodClient.Id, IdEmployee = item.Id,Login_u = item.Login,Password_u = item.Pass, IsDeleted = 0 });
+                            var d = idprodClient.ProduitUtilisers.Where(pu => item.Id == pu.IdEmployee && idprodClient.Id == pu.IdProduitClient).FirstOrDefault();
+                            if (d == null)
+                            {
+                                d = idprodClient.ProduitUtilisers.Where(pu => pu.Id == item.Idaffectation).FirstOrDefault();
+                                d.IsDeleted = 1;
+                                d.Datemodification = DateTime.Now;
+                                context.ProduitUtilisers.Add(new ProduitUtiliser { IdProduitClient = idprodClient.Id, IdEmployee = item.Id, Login_u = item.Login, Password_u = item.Pass, IsDeleted = 0 });
+                            }
                         }
-                    }
-                    else if (item.Idaffectation == 0 && !item.IsDeleted)
-                    {
-                        // add Employe if not exists
-                        var d = idprodClient.ProduitUtilisers.Where(pu => item.Id == pu.IdEmployee && idprodClient.Id == pu.IdProduitClient && pu.IsDeleted == 0).FirstOrDefault();
-                        if (d != null)
+                        else if (item.Idaffectation == 0 && !item.IsDeleted && item.Id > 0)
                         {
+                            // add Employe if not exists
+                            var d = idprodClient.ProduitUtilisers.Where(pu => item.Id == pu.IdEmployee && idprodClient.Id == pu.IdProduitClient && pu.IsDeleted == 0).FirstOrDefault();
+                            if (d != null)
+                            {
+
+                            }
+                            else
+                            {
+                                context.ProduitUtilisers.Add(new ProduitUtiliser { IdProduitClient = idprodClient.Id, IdEmployee = item.Id, Login_u = item.Login, Password_u = item.Pass, IsDeleted = 0 });
+                            }
 
                         }
-                        else
+                        else if (item.Idaffectation > 0 && item.IsDeleted)
                         {
-                            context.ProduitUtilisers.Add(new ProduitUtiliser { IdProduitClient = idprodClient.Id, IdEmployee = item.Id, Login_u = item.Login, Password_u = item.Pass, IsDeleted = 0 });
+                            // Find  ProduitUtiliser and delete
+                            var d = idprodClient.ProduitUtilisers.Where(pu => item.Idaffectation == pu.Id).FirstOrDefault();
+                            if (d != null)
+                            {
+                                d.IsDeleted = 1;
+                                d.Datemodification = DateTime.Now;
+
+                                lblTextbox lbltxt = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
+                                FpEmployee.Controls.Remove(lbltxt);
+                            }
+
                         }
-
-                    }
-                    else if (item.Idaffectation > 0 && item.IsDeleted)
-                    {
-                        // Find  ProduitUtiliser and delete
-                        var d = idprodClient.ProduitUtilisers.Where(pu => item.Idaffectation == pu.Id).FirstOrDefault();
-                        if (d != null)
-                        {
-                            d.IsDeleted = 1;
-                            d.Datemodification = DateTime.Now;
-
-                            lblTextbox lbltxt = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
-                            FpEmployee.Controls.Remove(lbltxt);
-                        }
-
                     }
                 }
+               
                 ProduitInfo tbx = this.Controls.Find("pd", true).FirstOrDefault() as ProduitInfo;
                 var lblDep = (from x in tbx.pnlProp.Controls.OfType<lblProduit>()
                               select x
@@ -266,6 +275,14 @@ namespace ParcInfo.ucClient
             }
         }
 
-      
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var listEmploye = Methods.GetidList(FpEmployee);
+
+            foreach (var item in listEmploye)
+            {
+                MessageBox.Show(item.Id.ToString());
+            }
+        }
     }
 }

@@ -29,14 +29,15 @@ namespace ParcInfo.ucClient
                                     join pr in context.Produits on p.Idproduit equals pr.id
                                     select new { pr, p, c }).ToList();
                     var d = (from c in listProd
-                             select new { c.pr.CodeP,c.c.Id,idP= c.pr.id, c.pr.TypeProduit.Nom, c.pr.Marque, c.c.Login_u, c.c.Password_u, c.c.Dateaffectation }).ToList();
+                             select new { c.pr.CodeP,c.pr.id, c.pr.TypeProduit.Nom, c.pr.Marque, c.c.Login_u, c.c.Password_u, c.c.Dateaffectation }).ToList();
                     dgProduit.DataSource = Methods.ToDataTable(d);
-                    //dgProduit.Columns["idP"].Visible = false;
+                   
                     Methods.Nice_grid(
-                                   new string[] { "CodeP", "id", "idP", "Nom", "Marque", "Login_u", "Password_u", "Dateaffectation" },
-                                   new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Login", "Password", "Date d'affectation" },
+                                   new string[] { "CodeP", "id", "Nom", "Marque", "Login_u", "Password_u", "Dateaffectation" },
+                                   new string[] { "Code Produit", "id","Type", "Marque", "Login", "Password", "Date d'affectation" },
                                    dgProduit
                                    );
+            //        dgProduit.Columns["idP"].Visible = false;
                     Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
                 }
             }
@@ -72,13 +73,14 @@ namespace ParcInfo.ucClient
 
                     dgProduit.DataSource = Methods.ToDataTable(listProduit);
 
-                    dgProduit.Columns["idP"].Visible = false;
+                   
                     Methods.Nice_grid(
                                    new string[] { "CodeP", "id", "idP", "Nom", "Adresse", "Marque", "Model", "hardware", "Dateaffectation" },
                                    new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Model", "hardware", "Date d'affectation" },
                                    dgProduit
                                    );
                     Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
+                    dgProduit.Columns["idP"].Visible = false;
                 }
 
             }
@@ -116,7 +118,7 @@ namespace ParcInfo.ucClient
             if (e.RowIndex > -1)
             {
                 var myrow = dgProduit.Rows[e.RowIndex];
-                int id = int.Parse(myrow.Cells["idP"].Value.ToString());
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
 
 
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())

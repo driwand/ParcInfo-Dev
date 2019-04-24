@@ -64,9 +64,7 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.btnEditUser = new System.Windows.Forms.Button();
             this.btnDelUser = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -81,6 +79,7 @@
             this.txtTel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEditUser = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -471,20 +470,6 @@
             this.checkBox2.Text = "Ajouter";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // btnEditUser
-            // 
-            this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditUser.ForeColor = System.Drawing.Color.White;
-            this.btnEditUser.Image = global::ParcInfo.Properties.Resources.edit201;
-            this.btnEditUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditUser.Location = new System.Drawing.Point(667, 435);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(100, 32);
-            this.btnEditUser.TabIndex = 163;
-            this.btnEditUser.Text = "Modifier";
-            this.btnEditUser.UseVisualStyleBackColor = false;
-            // 
             // btnDelUser
             // 
             this.btnDelUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
@@ -496,21 +481,6 @@
             this.btnDelUser.Size = new System.Drawing.Size(32, 32);
             this.btnDelUser.TabIndex = 162;
             this.btnDelUser.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ParcInfo.Properties.Resources.edit201;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(367, 435);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 32);
-            this.button1.TabIndex = 167;
-            this.button1.Text = "Modifier";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -644,12 +614,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Utilisateur";
             // 
+            // btnEditUser
+            // 
+            this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditUser.ForeColor = System.Drawing.Color.White;
+            this.btnEditUser.Image = global::ParcInfo.Properties.Resources.edit201;
+            this.btnEditUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditUser.Location = new System.Drawing.Point(667, 435);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(100, 32);
+            this.btnEditUser.TabIndex = 163;
+            this.btnEditUser.Text = "Modifier";
+            this.btnEditUser.UseVisualStyleBackColor = false;
+            // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.gpRoles);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnEditUser);
@@ -698,7 +681,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dgClient;
         private System.Windows.Forms.GroupBox gpRoles;
-        private System.Windows.Forms.Button btnEditUser;
         private System.Windows.Forms.Button btnDelUser;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox checkBox14;
@@ -721,7 +703,6 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label label2;
@@ -736,5 +717,6 @@
         private System.Windows.Forms.Label txtTel;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnEditUser;
     }
 }

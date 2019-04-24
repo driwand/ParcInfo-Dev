@@ -136,6 +136,7 @@
             // 
             this.lblMod.AutoSize = true;
             this.lblMod.Location = new System.Drawing.Point(372, 462);
+            this.lblMod.Margin = new System.Windows.Forms.Padding(0);
             this.lblMod.Name = "lblMod";
             this.lblMod.Size = new System.Drawing.Size(61, 13);
             this.lblMod.TabIndex = 61;
@@ -145,6 +146,7 @@
             // 
             this.lblEditedDate.AutoSize = true;
             this.lblEditedDate.Location = new System.Drawing.Point(430, 462);
+            this.lblEditedDate.Margin = new System.Windows.Forms.Padding(0);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
             this.lblEditedDate.TabIndex = 61;

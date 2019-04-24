@@ -195,7 +195,7 @@ namespace ParcInfo.ucClient
                             aff = cli.AffectationClients.Where(a => a.Id == item.Idaffectation).FirstOrDefault();
                             aff.IsDeleted = 1;
                             aff.Datemodification = DateTime.Now;
-                            // aff.Modifierpar = 0;
+                           aff.Modifierpar = GlobVars.currentUser;
                             context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id,IsDeleted = 0});
                         }
                     }
@@ -217,7 +217,7 @@ namespace ParcInfo.ucClient
                         var affectation = cli.AffectationClients.Where(d => d.Id == item.Idaffectation).FirstOrDefault();
                         affectation.IsDeleted = 1;
                         affectation.Datemodification = DateTime.Now;
-                        //affectation.Modifierpar = 1;
+                        affectation.Modifierpar = GlobVars.currentUser;
                         lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                         PnlUsers.Controls.Remove(tbx);
                     }
@@ -230,7 +230,7 @@ namespace ParcInfo.ucClient
                 cli.Fax = txtFax.Text;
                 cli.Siteweb = txtSiteweb.Text;
                 cli.Datemodification = DateTime.Now;
-                cli.Modifierpar = 11;
+                cli.Modifierpar = GlobVars.currentUser;
                 cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
                 cli.Prixheur = float.Parse(txtPrix.Text);
                 cli.Heurecontract = int.Parse(txtHeure.Text);
@@ -238,7 +238,6 @@ namespace ParcInfo.ucClient
                 MessageBox.Show("Client modifié");
             }
         }
-        
         private void btnAddClient_Click(object sender, EventArgs e)
         {
             Departement dt;
@@ -280,7 +279,9 @@ namespace ParcInfo.ucClient
                         Heurecontract = Heure,
                         Prixheur = Prix,
                         Datecreation = DateTime.Now,
-                        IsDeleted = 0
+                        IsDeleted = 0,
+                        Datemodification = DateTime.Now,
+                        Creepar = GlobVars.currentUser
                     };
                     context.Clients.Add(client);
                     // ADD Departement To Client 
@@ -291,8 +292,6 @@ namespace ParcInfo.ucClient
                             dt = new Departement { IdCLient = client.id, Nom = item.Value ,IsDeleted = 0 };
                             context.Departements.Add(dt);
                             //    MessageBox.Show("Nom du Département existant");
-                      
-                            
                         }
                         else if (item.Id == 0 && item.IsDeleted)
                         {
@@ -308,7 +307,12 @@ namespace ParcInfo.ucClient
 
                             if (!d)
                             {
-                                user = new AffectationClient { Idclient = client.id, Idutilisateur = item.Id, Dateaffectation = DateTime.Now, IsDeleted = 0 };
+                                user = new AffectationClient { Idclient = client.id,
+                                    Idutilisateur = item.Id,
+                                    Dateaffectation = DateTime.Now,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.currentUser
+                                };
                                 context.AffectationClients.Add(user);
                                 context.SaveChanges();
                             }
@@ -384,24 +388,5 @@ namespace ParcInfo.ucClient
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            var labelControlList2 = Methods.GetidList(PnlUsers);
-
-            foreach (var item in labelControlList2)
-            {
-                MessageBox.Show($"{item.Id}, {item.Controlname},{item.Idaffectation}");
-            }
-        }
     }
 }
