@@ -137,12 +137,12 @@ namespace ParcInfo.ucClient
                     {
                    
 
-                        int loc = 382;
+                        int loc = 333;
                         lblEdited.Text = clt.Nom;
-                        loc += clt.Nom.Length;
+                        loc += lblEdited.Width;
                         lblMod.Location = new Point(loc, 462);
                         // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(loc + lblMod.Size.Width, 462);
+                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
                         lblEditedDate.Text = clt.Datemodification.ToString();
                     }
                     else

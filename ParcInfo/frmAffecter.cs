@@ -35,7 +35,6 @@ namespace ParcInfo
                 this.Size = new Size(385, 180);
                 btnSave.Location = new Point(239, 105);
                 pnlCntrl.Size = new Size(344, 81);
-             
                 //   prop.Margin = new Padding(0, 0, 0, 12);
                 prixName++;
                 pnlCntrl.Controls.Add(lg);
@@ -96,7 +95,11 @@ namespace ParcInfo
                 {
                     foreach (var item in list)
                     {
-                        context.ProduitClients.Add(new ProduitClient { Idproduit = item.Id, Idclient = idC, Prixvente = float.Parse(item.Value), Dateaffectation = DateTime.Now, IsDeleted = 0 });
+                        context.ProduitClients.Add(new ProduitClient { Idproduit = item.Id,
+                            Idclient = idC, Prixvente = float.Parse(item.Value),
+                            Dateaffectation = DateTime.Now,
+                            Creepar = GlobVars.currentUser,
+                            IsDeleted = 0 });
                     }
                     context.SaveChanges();
                     this.Close();

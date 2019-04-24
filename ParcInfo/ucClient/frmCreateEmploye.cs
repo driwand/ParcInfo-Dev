@@ -107,7 +107,7 @@ namespace ParcInfo.ucClient
                         Respo = 1;
                     }
                     idEmp.IsResponsable = Respo;
-                    idEmp.Modifierpar = 11;
+                    idEmp.Modifierpar = GlobVars.currentUser;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     Close();

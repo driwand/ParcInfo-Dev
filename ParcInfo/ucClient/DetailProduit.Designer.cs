@@ -148,7 +148,7 @@
             this.btnAddEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddEmployee.ForeColor = System.Drawing.Color.White;
             this.btnAddEmployee.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.btnAddEmployee.Location = new System.Drawing.Point(478, 126);
+            this.btnAddEmployee.Location = new System.Drawing.Point(478, 125);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(32, 32);
             this.btnAddEmployee.TabIndex = 131;
@@ -160,7 +160,7 @@
             this.FpEmployee.Location = new System.Drawing.Point(22, 19);
             this.FpEmployee.MaximumSize = new System.Drawing.Size(473, 101);
             this.FpEmployee.Name = "FpEmployee";
-            this.FpEmployee.Size = new System.Drawing.Size(473, 101);
+            this.FpEmployee.Size = new System.Drawing.Size(473, 100);
             this.FpEmployee.TabIndex = 0;
             // 
             // groupBox1
@@ -181,7 +181,7 @@
             // lblPrix
             // 
             this.lblPrix.AutoSize = true;
-            this.lblPrix.Location = new System.Drawing.Point(392, 20);
+            this.lblPrix.Location = new System.Drawing.Point(340, 20);
             this.lblPrix.Name = "lblPrix";
             this.lblPrix.Size = new System.Drawing.Size(23, 13);
             this.lblPrix.TabIndex = 5;
@@ -190,7 +190,7 @@
             // lblDateAff
             // 
             this.lblDateAff.AutoSize = true;
-            this.lblDateAff.Location = new System.Drawing.Point(268, 20);
+            this.lblDateAff.Location = new System.Drawing.Point(220, 20);
             this.lblDateAff.Name = "lblDateAff";
             this.lblDateAff.Size = new System.Drawing.Size(45, 13);
             this.lblDateAff.TabIndex = 4;
@@ -217,7 +217,7 @@
             // lblPrixVente
             // 
             this.lblPrixVente.AutoSize = true;
-            this.lblPrixVente.Location = new System.Drawing.Point(328, 20);
+            this.lblPrixVente.Location = new System.Drawing.Point(271, 20);
             this.lblPrixVente.Name = "lblPrixVente";
             this.lblPrixVente.Size = new System.Drawing.Size(63, 13);
             this.lblPrixVente.TabIndex = 1;
@@ -226,7 +226,7 @@
             // lblDateAffectation
             // 
             this.lblDateAffectation.AutoSize = true;
-            this.lblDateAffectation.Location = new System.Drawing.Point(170, 20);
+            this.lblDateAffectation.Location = new System.Drawing.Point(117, 20);
             this.lblDateAffectation.Name = "lblDateAffectation";
             this.lblDateAffectation.Size = new System.Drawing.Size(97, 13);
             this.lblDateAffectation.TabIndex = 0;

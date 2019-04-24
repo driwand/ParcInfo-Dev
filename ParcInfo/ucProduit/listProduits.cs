@@ -20,8 +20,6 @@ namespace ParcInfo.ucClient
             InitializeComponent();
             displayData();
         }
-
-
         private void listProduits_Load(object sender, EventArgs e)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -65,7 +63,9 @@ namespace ParcInfo.ucClient
                                 Datefabrication = pDate,
                                 IsHardware = isHardware,
                                 IdType = pType,
-                                IsDeleted = 0
+                                IsDeleted = 0,
+                                Datecreation = DateTime.Now,
+                                Creepar = GlobVars.currentUser
 
                             };
                             context.Produits.Add(prod);
@@ -80,9 +80,7 @@ namespace ParcInfo.ucClient
                             context.SaveChanges();
                             displayData();
                         }
-
                     }
-
                 }
                 // Edit Produit
                 else
@@ -94,7 +92,7 @@ namespace ParcInfo.ucClient
                     p.Model = pd.txtModel.Text;
                     p.Prix = float.Parse(pd.txtPrix.Text);
                     p.Datefabrication = pd.DateProduit.Value;
-                    p.Modifierpar = 1;
+                    p.Modifierpar = GlobVars.currentUser ;
                     p.Datemodification = DateTime.Now;
                     var lblDep = (from x in pd.pnlProp.Controls.OfType<lblProduit>()
                                   select x
@@ -121,7 +119,7 @@ namespace ParcInfo.ucClient
             int c = dgProduits.SelectedRows.Count;
             if (c > 0)
             {
-                nuAffecter.Value = c;
+                //nuAffecter.Value = c;
 
                 var myrow = dgProduits.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
@@ -146,16 +144,15 @@ namespace ParcInfo.ucClient
                             pd.isHardware.Checked = false;
 
                         }
-                        //if (p.Utilisateur1.Nom != null)
-                        //{
-                        //    //int loc = 514;
-                        //    //lblUser.Text = p.Utilisateur1.Nom;
-                        //    //loc += p.Utilisateur1.Nom.Length;
-                        //    //lblM.Location = new Point(loc + 10, 454);
-                        //    //lblDateMod.Text = p.Datemodification.ToString();
-                        //    //lblDateMod.Location = new Point(600, 454);
-                        //}
-
+                        if (p.Utilisateur1.Nom != null)
+                        {
+                            int loc = 516;
+                            lblUser.Text = p.Utilisateur1.Nom;
+                            loc += p.Utilisateur1.Nom.Length;
+                            lblM.Location = new Point(loc, 454);
+                            lblDateMod.Text = p.Datemodification.ToString();
+                            lblDateMod.Location = new Point(loc + lblM.Size.Width, 454);
+                        }
                         GetValue(pd.pnlProp, p);
                     }
                 }
@@ -177,12 +174,9 @@ namespace ParcInfo.ucClient
                     }
                 }
             }
-
         }
 
-        private void dgProduits_MultiSelectChanged(object sender, EventArgs e)
-        {
-        }
+     
         private void btnAffecter_Click(object sender, EventArgs e)
         {
             List<int> listAff = new List<int>();
@@ -204,31 +198,25 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
 
-                var vr = (from c in context.Produits
-                          select c).ToList();
                 //dgClients.DataSource = vr;
 
                 if (cbDelete.Checked)
                 {
-                    var ClientsDeleted = (from p in vr
-                                          where p.IsDeleted == 1
-                                          select new { p.CodeP, p.id, p.TypeProduit.Nom, p.Marque, p.Model, p.Prix, p.Datefabrication }).ToList();
-                    dgProduits.DataSource = Methods.ToDataTable(ClientsDeleted);
+                    displayData(1);
+                    if (dgProduits.Rows.Count > 0)
+                    {
+                        dgProduits.Rows[0].Selected = true;
+                    }
                 }
                 else
                 {
-                    var Clients = (from p in vr
-                                   where p.IsDeleted == 0
-                                   select new { p.CodeP, p.id, p.TypeProduit.Nom, p.Marque, p.Model, p.Prix, p.Datefabrication }).ToList();
-                    dgProduits.DataSource = Methods.ToDataTable(Clients);
+                    displayData();
+                    if (dgProduits.Rows.Count > 0)
+                    {
+                        dgProduits.Rows[0].Selected = true;
+                    }
 
                 }
-                Methods.Nice_grid(
-                    new string[] { "CodeP", "id", "Nom", "Marque", "Model", "Prix", "Datefabrication" },
-                    new string[] { "Code Produit", "id", "Type", "Marque", "Model", "Prix", "Date de fabrication" },
-                    dgProduits
-                    );
-                Methods.FilterDataGridViewIni(dgProduits, txtFind, btnFind);
             }
         }
 
@@ -244,7 +232,7 @@ namespace ParcInfo.ucClient
                 {
                     c.IsDeleted = 1;
                     c.Datemodification = DateTime.Now;
-                    c.Modifierpar = 1;
+                    c.Modifierpar = GlobVars.currentUser;
                     context.SaveChanges();
                     MessageBox.Show("produit supprimé");
                     Clear();
@@ -260,12 +248,11 @@ namespace ParcInfo.ucClient
         }
 
         /// Methoods
-
-        public void displayData()
+        public void displayData(int deleted = 0)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                var listType = context.Produits.Where(c => c.IsDeleted == 0).ToList();
+                var listType = context.Produits.Where(c => c.IsDeleted == deleted).ToList();
                 var listProduitClient = context.ProduitClients.ToList();
                 var listProduit = (from p in listType
                                    where !(listProduitClient.Any(it => it.Idproduit == p.id))
@@ -318,6 +305,11 @@ namespace ParcInfo.ucClient
                 item.TxtValue = "";
                 // item.LblID = "0";
             }
+        }
+
+        private void dgProduits_DoubleClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

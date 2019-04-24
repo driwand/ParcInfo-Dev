@@ -44,6 +44,7 @@
             this.btnEditEmploye = new System.Windows.Forms.Button();
             this.btnNewEmployee = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEdited = new System.Windows.Forms.LinkLabel();
             this.gpProduits = new ParcInfo.Classes.GradientPanel();
             this.produitCount = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -64,7 +65,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.lblEdited = new System.Windows.Forms.LinkLabel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,7 +89,7 @@
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(449, 462);
+            this.lblEditedDate.Location = new System.Drawing.Point(437, 462);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
             this.lblEditedDate.TabIndex = 83;
@@ -98,7 +98,7 @@
             // lblMod
             // 
             this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(382, 462);
+            this.lblMod.Location = new System.Drawing.Point(379, 462);
             this.lblMod.Name = "lblMod";
             this.lblMod.Size = new System.Drawing.Size(61, 13);
             this.lblMod.TabIndex = 82;
@@ -249,6 +249,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 70;
             this.pictureBox1.TabStop = false;
+            // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Location = new System.Drawing.Point(330, 462);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(43, 13);
+            this.lblEdited.TabIndex = 113;
+            this.lblEdited.TabStop = true;
+            this.lblEdited.Text = "aucune";
             // 
             // gpProduits
             // 
@@ -486,16 +496,6 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
-            // 
-            // lblEdited
-            // 
-            this.lblEdited.AutoSize = true;
-            this.lblEdited.Location = new System.Drawing.Point(330, 462);
-            this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(43, 13);
-            this.lblEdited.TabIndex = 113;
-            this.lblEdited.TabStop = true;
-            this.lblEdited.Text = "aucune";
             // 
             // ListEmployees
             // 

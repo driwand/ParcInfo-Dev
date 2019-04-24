@@ -175,12 +175,12 @@ namespace ParcInfo.ucClient
                                select new { u.Nom, c.Datemodification }).FirstOrDefault();
                     if (clt != null)
                     {
-                        int loc = 372;
+                        int loc = 325;
                         lblEdited.Text = clt.Nom;
-                        loc += clt.Nom.Length;
+                        loc += lblEdited.Width;
                         lblMod.Location = new Point(loc, 462);
                         // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(loc + lblMod.Size.Width, 462);
+                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
                         lblEditedDate.Text = clt.Datemodification.ToString();
                     }
                     else

@@ -327,7 +327,7 @@ namespace ParcInfo.frmDefault
         private void PicBack_Click(object sender, EventArgs e)
         {
             ListClients frmcc = new ListClients();
-            frmcc.txtFind.Text = GlobVars.SearchValue;
+            
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(frmcc);
             frmcc.BringToFront();

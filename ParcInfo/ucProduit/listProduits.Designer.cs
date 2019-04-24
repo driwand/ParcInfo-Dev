@@ -38,7 +38,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblDateMod = new System.Windows.Forms.Label();
             this.lblM = new System.Windows.Forms.Label();
-            this.lblUser = new System.Windows.Forms.Label();
             this.cbDelete = new System.Windows.Forms.CheckBox();
             this.dgProduits = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,6 +46,7 @@
             this.btnDelP = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.lblUser = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -144,7 +144,7 @@
             // lblDateMod
             // 
             this.lblDateMod.AutoSize = true;
-            this.lblDateMod.Location = new System.Drawing.Point(580, 454);
+            this.lblDateMod.Location = new System.Drawing.Point(579, 454);
             this.lblDateMod.Name = "lblDateMod";
             this.lblDateMod.Size = new System.Drawing.Size(45, 13);
             this.lblDateMod.TabIndex = 148;
@@ -153,20 +153,11 @@
             // lblM
             // 
             this.lblM.AutoSize = true;
-            this.lblM.Location = new System.Drawing.Point(513, 454);
+            this.lblM.Location = new System.Drawing.Point(512, 454);
             this.lblM.Name = "lblM";
             this.lblM.Size = new System.Drawing.Size(61, 13);
             this.lblM.TabIndex = 149;
             this.lblM.Text = "Modifier le :";
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(475, 454);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(35, 13);
-            this.lblUser.TabIndex = 146;
-            this.lblUser.Text = "*******";
             // 
             // cbDelete
             // 
@@ -259,11 +250,22 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(467, 454);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(43, 13);
+            this.lblUser.TabIndex = 154;
+            this.lblUser.TabStop = true;
+            this.lblUser.Text = "aucune";
+            // 
             // listProduits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAddProduit);
@@ -273,7 +275,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblDateMod);
             this.Controls.Add(this.lblM);
-            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.cbDelete);
             this.Controls.Add(this.dgProduits);
             this.Controls.Add(this.panel1);
@@ -307,11 +308,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblDateMod;
         private System.Windows.Forms.Label lblM;
-        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.CheckBox cbDelete;
         private System.Windows.Forms.DataGridView dgProduits;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.LinkLabel lblUser;
     }
 }

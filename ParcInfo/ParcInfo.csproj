@@ -60,9 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AffectationClient.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\ParcInformatiqueEntities.cs" />
     <Compile Include="Classes\ControlsClass.cs" />
@@ -72,18 +69,6 @@
     </Compile>
     <Compile Include="Classes\Intervention.cs" />
     <Compile Include="Classes\Methods.cs" />
-    <Compile Include="Client.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Demande.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Departement.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="frmAffecter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,53 +87,11 @@
     <Compile Include="frmselectuser.Designer.cs">
       <DependentUpon>frmselectuser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Installer.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Intervention.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelParcInfo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelParcInfo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelParcInfo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelParcInfo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="observation.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Produit.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProduitClient.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProduitUtiliser.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProprietesProduit.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RoleUtilisateur.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TypeProduit.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="ucClient\DetailProduit.cs">
       <SubType>UserControl</SubType>
@@ -337,12 +280,6 @@
     <Compile Include="ucProduit\listProduits.Designer.cs">
       <DependentUpon>listProduits.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilisateur.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ValeurProp.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -452,13 +389,6 @@
     <EmbeddedResource Include="ucProduit\listProduits.resx">
       <DependentUpon>listProduits.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="ModelParcInfo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelParcInfo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ModelParcInfo.edmx.diagram">
-      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -669,16 +599,6 @@
     <None Include="Resources\wtclose.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelParcInfo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
-      <LastGenOutput>ModelParcInfo.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelParcInfo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
-      <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\redclose1.png" />
     <None Include="Resources\wtclose1.png" />
   </ItemGroup>
