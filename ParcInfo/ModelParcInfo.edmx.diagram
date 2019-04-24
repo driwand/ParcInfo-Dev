@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitClient" Width="1.5" PointX="17.25" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitUtiliser" Width="1.5" PointX="22.5" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ProprietesProduit" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.RoleUtilisateur" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.RoleUtilisateur" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.TypeProduit" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Utilisateur" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ValeurProp" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
