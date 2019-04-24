@@ -81,7 +81,6 @@ namespace ParcInfo.ucParametre
                     {
                         MessageBox.Show("email already exists");
                     }
-                 
                 }
                     
             }

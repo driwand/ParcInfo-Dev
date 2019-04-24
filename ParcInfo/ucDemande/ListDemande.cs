@@ -33,7 +33,6 @@ namespace ParcInfo.ucClient
             InitializeComponent();
             using (var db = new ParcInformatiqueEntities())
             {
-
                 var res = db.Demandes.Where(x => x.Employee.Client.id == idClient).ToList();
                 dgDemande.DataSource = res;
             }

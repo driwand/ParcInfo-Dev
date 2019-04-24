@@ -76,8 +76,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.ckAdmin = new System.Windows.Forms.CheckBox();
-            this.txtTel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.txtTel = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEditUser = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
@@ -575,27 +575,27 @@
             this.ckAdmin.Text = "C\'est un administrateur";
             this.ckAdmin.UseVisualStyleBackColor = true;
             // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(7, 136);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(28, 13);
+            this.lblTel.TabIndex = 16;
+            this.lblTel.Text = "Tel :";
+            // 
             // txtTel
             // 
-            this.txtTel.AutoSize = true;
-            this.txtTel.Location = new System.Drawing.Point(7, 136);
+            this.txtTel.Location = new System.Drawing.Point(72, 132);
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(28, 13);
-            this.txtTel.TabIndex = 16;
-            this.txtTel.Text = "Tel :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(72, 132);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 20);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.Tag = "required";
+            this.txtTel.Size = new System.Drawing.Size(177, 20);
+            this.txtTel.TabIndex = 15;
+            this.txtTel.Tag = "required";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.txtTel);
+            this.groupBox2.Controls.Add(this.lblTel);
             this.groupBox2.Controls.Add(this.ckAdmin);
             this.groupBox2.Controls.Add(this.txtEmail);
             this.groupBox2.Controls.Add(this.label8);
@@ -714,8 +714,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.CheckBox ckAdmin;
-        private System.Windows.Forms.Label txtTel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblTel;
+        private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnEditUser;
     }

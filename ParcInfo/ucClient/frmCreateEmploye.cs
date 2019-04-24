@@ -94,12 +94,14 @@ namespace ParcInfo.ucClient
                     this.Text = "Modifier employee";
                     // get values 
                     var idEmp = context.Employees.Find(idE);
+                    string pass = txtPass.Text;
+
                     idEmp.Nom = txtNom.Text;
                     idEmp.Prenom = txtPrenom.Text;
                     idEmp.Tel = txtTel.Text;
-                    idEmp.Email = txtEmail.Text;
                     
-                    idEmp.Password_e = txtPass.Text;
+
+                    idEmp.Password_e = Methods.MD5Hash(pass);
                     idEmp.IdDep = int.Parse(txtDeaprt.SelectedValue.ToString());
                     int Respo = 0;
                     if (cbRespo.Checked)
@@ -110,6 +112,8 @@ namespace ParcInfo.ucClient
                     idEmp.Modifierpar = GlobVars.currentUser;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
+                    var msg = Methods.stringMsg(idEmp.Nom, idEmp.Prenom, idEmp.Email, pass);
+                    Methods.sendEmail(idEmp.Email, msg);
                     Close();
                     updateGrid();
                 }
@@ -134,9 +138,10 @@ namespace ParcInfo.ucClient
 
                         string pass = Methods.CreatePassword(8);
                         string msg = Methods.stringMsg(Nom, Prenom, Email, pass);
-                       // pass = Methods.MD5Hash(pass);
-                        var d = context.Employees.Any(t => t.Email == Email);
-                        if (!d)
+                         pass = Methods.MD5Hash(pass);
+                        var emailE = context.Employees.Any(t => t.Email == Email);
+                        var emailU = context.Utilisateurs.Any(t => t.Email == Email);
+                        if (!emailE && !emailU)
                         {
                             Employee emp = new Employee
                             {
@@ -152,7 +157,7 @@ namespace ParcInfo.ucClient
                             };
                             context.Employees.Add(emp);
                             context.SaveChanges();
-                            Methods.sendEmail(Email, msg);
+                           // Methods.sendEmail(Email, msg);
                             MessageBox.Show("L'Employé a été ajouté");
                             // clear textbox 
                             Methods.Clear(this);

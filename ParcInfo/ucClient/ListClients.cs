@@ -189,15 +189,15 @@ namespace ParcInfo.ucClient
                         lblEditedDate.Text = "****-**-**";
                     }
                     // Count
-                    lblEmpC.Text = Cli.Employees.Count.ToString();
-                    lblInterC.Text = Cli.Interventions.Count.ToString();
+                    lblEmpC.Text = Cli.Employees.Where(d=> d.IsDeleted == 0).Count().ToString();
+                    lblInterC.Text = Cli.Interventions.Where(d=> d.IsDeleted == 0).Count().ToString();
 
                     var demC = (from c in Cli.Employees
                                 from d in c.Demandes
                                 select d).ToList();
 
-                    lblDemC.Text = demC.Count().ToString();
-                    lblProdC.Text = Cli.ProduitClients.Count.ToString();
+                    lblDemC.Text = demC.Where(d=> d.IsDeleted == 0).Count().ToString();
+                    lblProdC.Text = Cli.ProduitClients.Where(d=> d.IsDeleted == 0).Count().ToString();
                 }
             }
 

@@ -39,7 +39,7 @@
             this.dgDemande = new System.Windows.Forms.DataGridView();
             this.lblTotalRequest = new System.Windows.Forms.Label();
             this.lblEmployeClient = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbDelete = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblEdited = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -163,15 +163,15 @@
             this.lblEmployeClient.Text = "[ text ]";
             this.lblEmployeClient.Visible = false;
             // 
-            // checkBox1
+            // cbDelete
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 457);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(171, 17);
-            this.checkBox1.TabIndex = 125;
-            this.checkBox1.Text = "Afficher les elements supprimer";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbDelete.AutoSize = true;
+            this.cbDelete.Location = new System.Drawing.Point(14, 457);
+            this.cbDelete.Name = "cbDelete";
+            this.cbDelete.Size = new System.Drawing.Size(171, 17);
+            this.cbDelete.TabIndex = 125;
+            this.cbDelete.Text = "Afficher les elements supprimer";
+            this.cbDelete.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -223,7 +223,7 @@
             this.menuDetails,
             this.menuStartIntervention});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 48);
             // 
             // menuDetails
             // 
@@ -249,7 +249,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cbDelete);
             this.Controls.Add(this.btnTraiter);
             this.Controls.Add(this.lblTotalRequest);
             this.Controls.Add(this.gpFind);
@@ -280,7 +280,7 @@
         public System.Windows.Forms.Button btnFind;
         public System.Windows.Forms.TextBox txtFind;
         public System.Windows.Forms.Button btnTraiter;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbDelete;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblEdited;
         private System.Windows.Forms.Label label13;

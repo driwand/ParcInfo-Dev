@@ -16,6 +16,6 @@ namespace ParcInfo
         public static UserControl frmBack;
         public static UserControl frmBack2;
         public static FrmDefault frmindex;
-        public static int currentUser = 13;
+        public static int currentUser = 1;
     }
 }
