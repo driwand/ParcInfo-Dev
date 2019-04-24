@@ -49,7 +49,6 @@ namespace ParcInfo
         public string Adresse { get; set; }
         public string Ville { get; set; }
         public string Email { get; set; }
-        public string Login_u { get; set; }
         public string Password_u { get; set; }
         public Nullable<int> Codepin { get; set; }
         public Nullable<int> isAdmin { get; set; }

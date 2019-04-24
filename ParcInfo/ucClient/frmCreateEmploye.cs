@@ -98,7 +98,7 @@ namespace ParcInfo.ucClient
                     idEmp.Prenom = txtPrenom.Text;
                     idEmp.Tel = txtTel.Text;
                     idEmp.Email = txtEmail.Text;
-                    idEmp.Login_e = txtPass.Text;
+                    
                     idEmp.Password_e = txtPass.Text;
                     idEmp.IdDep = int.Parse(txtDeaprt.SelectedValue.ToString());
                     int Respo = 0;
@@ -207,7 +207,7 @@ namespace ParcInfo.ucClient
                 var listEmp = (from emp in c.Employees
                                join d in c.Departements on emp.IdDep equals d.id
                                where emp.IsDeleted != 1
-                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
+                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email , emp.Password_e, departement = d.Nom }).ToList();
                 dgEmp.DataSource = listEmp;
                Methods.Nice_grid(
                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },

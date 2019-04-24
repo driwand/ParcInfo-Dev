@@ -34,7 +34,7 @@ namespace ParcInfo.ucClient
                     var listEmp = (from emp in c.Employees
                                    join d in c.Departements on emp.IdDep equals d.id
                                    where emp.IsDeleted != 1
-                                   select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom }).ToList();
+                                   select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Password_e, departement = d.Nom }).ToList();
                     dgEmployees.DataSource = Methods.ToDataTable(listEmp);
                     myGrid();
                    
@@ -176,7 +176,7 @@ namespace ParcInfo.ucClient
 
                 var listEmp = (from emp in c.Employees
                                join d in c.Departements on emp.IdDep equals d.id
-                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Login_e, emp.Password_e, departement = d.Nom, emp.IsDeleted }).ToList();
+                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email , emp.Password_e, departement = d.Nom, emp.IsDeleted }).ToList();
                 if (cbDeleted.Checked)
                 {
 

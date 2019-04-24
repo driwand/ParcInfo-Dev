@@ -39,7 +39,7 @@ namespace ParcInfo.frmList
                 dgProdcuts.MultiSelect = true;
             }
         }
-
+        public int idassignedproduct;
         private void btn_select_Click(object sender, EventArgs e)
         {
             if (dgProdcuts.SelectedRows.Count > 0)
@@ -55,12 +55,18 @@ namespace ParcInfo.frmList
                     ProduitClient prd = new ProduitClient()
                     {
                         Idclient = clt.selectedClient,
-                        Idproduit = Id
+                        Idproduit = Id,
+                        ParIntervention = clt.currentInterv
                     };
+                    //if (prd.Produit.TypeProduit.SupportingSoftware == 1)
+                    //{
+                    //    frmAffectLogMater rm = new frmAffectLogMater(this);
+                    //}
+
                     db.ProduitClients.Add(prd);
                     db.SaveChanges();
 
-                    string codeid = Id + " " + code + " " + prd.Id;
+                    string codeid = Id + " " + code + " " + prd.Id; //id selected product, code of selected product and id of assingment
                     clt.AddDescription(codeid);
                 }
             }

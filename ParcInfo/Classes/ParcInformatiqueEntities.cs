@@ -42,29 +42,32 @@ namespace ParcInfo
             }
         }
 
-        public ICollection<Intervention> GetInterventionBystatut(Label lbl=null, string statut = "")
+        public ICollection<Intervention> GetInterventionBystatut(Label[] lbl=null, string statut = "")
         {
             IQueryable<Intervention> list =  GetInterventions;
             switch (statut)
             {
                 case "en cours":
                     list = GetIntervEncours;
-                    lbl.BackColor = Color.FromArgb(241, 196, 15); 
+                    lbl[0].BackColor = Color.FromArgb(241, 196, 15);
+                    lbl[1].ForeColor = Color.FromArgb(241, 196, 15);
                     break;
                 case "en retard":
                     list = GetIntervenretard;
-                    lbl.BackColor = Color.FromArgb(252, 92, 101);
+                    lbl[0].BackColor = Color.FromArgb(252, 92, 101);
+                    lbl[1].ForeColor = Color.FromArgb(252, 92, 101);
                     break;
                 case "terminer":
                     list = GetIntervtermine;
-                    lbl.BackColor = Color.FromArgb(32, 191, 107);
+                    lbl[0].BackColor = Color.FromArgb(32, 191, 107);
+                    lbl[1].ForeColor = Color.FromArgb(32, 191, 107);
                     break;
                 case "":
                     list = GetInterventions;
                     break;
                     
             }
-            lbl.Text = list.Count().ToString();
+            lbl[0].Text = list.Count().ToString();
             return list.ToList();
         }
 

@@ -26,7 +26,6 @@ namespace ParcInfo
         public string Prenom { get; set; }
         public string Tel { get; set; }
         public string Email { get; set; }
-        public string Login_e { get; set; }
         public string Password_e { get; set; }
         public Nullable<int> IsResponsable { get; set; }
         public Nullable<int> IdDep { get; set; }

@@ -277,8 +277,18 @@ namespace ParcInfo.ucInterevntion
 
                 intrv.Datemodification = DateTime.Now;
                 intrv.Modifierpar = GlobVars.currentUser;
-                context.SaveChanges();
-                MessageBox.Show("Done");
+
+
+                if (dtFin.Value < dtDebut.Value)
+                    MessageBox.Show("starting date could not be less than end date");
+                else
+                {
+                    context.SaveChanges();
+
+                    lblDateModification.Text = intrv.Datemodification.ToString();
+                    lblModifierPar.Text = intrv.UtilisateurEdit.Nom;
+                    MessageBox.Show("Done");
+                }                
             }
         }
 

@@ -16,8 +16,8 @@ namespace ParcInfo
     {
         public int id { get; set; }
         public Nullable<System.DateTime> Dateexpiration { get; set; }
-        public Nullable<int> Idlogiciel { get; set; }
-        public Nullable<int> Idsoftware { get; set; }
+        public Nullable<int> Idhardsoft { get; set; }
+        public Nullable<int> Idproduitclient { get; set; }
         public Nullable<System.DateTime> Datecreation { get; set; }
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Creepar { get; set; }

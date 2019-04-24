@@ -22,9 +22,8 @@ namespace ParcInfo
         }
     
         public int id { get; set; }
-        public string CodeProduit { get; set; }
-        public string Model { get; set; }
         public string Marque { get; set; }
+        public string Model { get; set; }
         public Nullable<System.DateTime> Datefabrication { get; set; }
         public Nullable<double> Prix { get; set; }
         public Nullable<int> IsHardware { get; set; }

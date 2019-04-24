@@ -34,7 +34,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.lblSource = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitleIntervention = new System.Windows.Forms.Label();
             this.dgIntervention = new System.Windows.Forms.DataGridView();
             this.lblTotalIntervention = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -105,16 +105,16 @@
             this.panel1.Size = new System.Drawing.Size(863, 2);
             this.panel1.TabIndex = 114;
             // 
-            // label1
+            // lblTitleIntervention
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(55, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 15);
-            this.label1.TabIndex = 111;
-            this.label1.Text = "Liste des interventions";
+            this.lblTitleIntervention.AutoSize = true;
+            this.lblTitleIntervention.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleIntervention.ForeColor = System.Drawing.Color.Black;
+            this.lblTitleIntervention.Location = new System.Drawing.Point(55, 14);
+            this.lblTitleIntervention.Name = "lblTitleIntervention";
+            this.lblTitleIntervention.Size = new System.Drawing.Size(151, 15);
+            this.lblTitleIntervention.TabIndex = 111;
+            this.lblTitleIntervention.Text = "Liste des interventions";
             // 
             // dgIntervention
             // 
@@ -210,7 +210,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblSource);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTitleIntervention);
             this.Controls.Add(this.dgIntervention);
             this.Name = "ListeIntervention";
             this.Size = new System.Drawing.Size(890, 481);
@@ -228,7 +228,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitleIntervention;
         public System.Windows.Forms.Label lblSource;
         public System.Windows.Forms.Label lblTotalIntervention;
         public System.Windows.Forms.DataGridView dgIntervention;

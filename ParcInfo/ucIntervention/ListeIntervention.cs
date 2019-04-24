@@ -24,7 +24,7 @@ namespace ParcInfo.ucInterevntion
                 if (countInterv == 0 && statutInterv == "")
                 {
 
-                    var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
+                    var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention })
                              select new {
                                  ir.IdIntrv,
                                  ir.Id,
@@ -40,7 +40,7 @@ namespace ParcInfo.ucInterevntion
                 }
                 else
                 {
-                    var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention, statutInterv)
+                    var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention }, statutInterv)
                               select new {
                                   ir.IdIntrv,
                                   ir.Id,
@@ -71,7 +71,7 @@ namespace ParcInfo.ucInterevntion
                 {
                     lblSource.Text = $"[{Code}]";
                     lblSource.Visible = true;
-                    var ls = (from ir in context.GetInterventionBystatut(lblTotalIntervention)
+                    var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention })
                               where ir.Idclient == idClient
                               select new
                               {

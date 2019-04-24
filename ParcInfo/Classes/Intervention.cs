@@ -75,4 +75,15 @@ namespace ParcInfo
             }
         }
     }
+
+    public partial class ProduitClient
+    {
+        public string CodeProduit
+        {
+            get
+            {
+                return $"PRT { Idclient.ToString() + Id + Methods.Splitdate(Dateaffectation.ToString()) }";
+            }
+        }
+    }
 }
