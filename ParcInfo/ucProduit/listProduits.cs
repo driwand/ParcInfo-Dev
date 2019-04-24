@@ -77,9 +77,9 @@ namespace ParcInfo.ucClient
                                     context.ValeurProps.Add(new ValeurProp { Valeur = lb.TxtValue, IdProduit = prod.id, IdPropriete = int.Parse(lb.LblID) });
                                 }
                             }
-                            context.SaveChanges();
-                            displayData();
                         }
+                        context.SaveChanges();
+                        displayData();
                     }
                 }
                 // Edit Produit
@@ -144,7 +144,7 @@ namespace ParcInfo.ucClient
                             pd.isHardware.Checked = false;
 
                         }
-                        if (p.Utilisateur1.Nom != null)
+                        if (p.Utilisateur1 != null)
                         {
                             int loc = 516;
                             lblUser.Text = p.Utilisateur1.Nom;
