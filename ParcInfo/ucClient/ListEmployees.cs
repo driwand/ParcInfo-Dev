@@ -135,8 +135,6 @@ namespace ParcInfo.ucClient
                                select new { u.Nom, c.Datemodification }).FirstOrDefault();
                     if (clt != null)
                     {
-                   
-
                         int loc = 333;
                         lblEdited.Text = clt.Nom;
                         loc += lblEdited.Width;
@@ -151,13 +149,10 @@ namespace ParcInfo.ucClient
                         lblEditedDate.Text = "****-**-**";
                     }
                     // Employe Count
-
-
-                   
                     encoursCount.Text = context.GetRequestCours.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
                     enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
-                   allCount.Text = Cli.Demandes.Count().ToString();
-                   produitCount.Text = Cli.ProduitUtilisers.Count.ToString();
+                    allCount.Text = Cli.Demandes.Where(d => d.IsDeleted == 0).Count().ToString();
+                    produitCount.Text = Cli.ProduitUtilisers.Where(d=> d.IsDeleted == 0).Count().ToString();
 
 
                 }

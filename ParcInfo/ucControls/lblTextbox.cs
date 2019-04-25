@@ -54,23 +54,25 @@ namespace ParcInfo.ucControls
         }
         string cod;
         int idC;
-        public lblTextbox(int id,string code)
+        int idProd;
+       
+        public lblTextbox(int id,int idP, string code)
         {
             InitializeComponent();
-                idC = id;
-                cod = code;
+            idC = id;
+            cod = code;
+            idProd = idP;
         }
-
         private void btn_nouveau_Click(object sender, EventArgs e)
         {
             if (cod == "emp")
             {
-                frmselectuser frm = new frmselectuser(this, cod,idC);
+                frmselectuser frm = new frmselectuser(this, cod,idC,0);
                 frm.ShowDialog();
             }
             else if (cod == "log")
             {
-                frmselectuser frm = new frmselectuser(this, cod, idC);
+                frmselectuser frm = new frmselectuser(this, cod, idC,idProd);
                 frm.ShowDialog();
             }
             else

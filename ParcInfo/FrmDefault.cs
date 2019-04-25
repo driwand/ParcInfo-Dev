@@ -238,28 +238,33 @@ namespace ParcInfo.frmDefault
         {
             ListDemande req = new ListDemande("", 0, 0);
             ShowControl(req);
+            activeBtn(btnListDemande);
         }
         private void btnDemandeAttent_Click(object sender, EventArgs e)
         {
             ListDemande req = new ListDemande("en attente", 0, 0);
             ShowControl(req);
+            activeBtn(btnDemandeAttent);
         }
 
         private void btnDemandeCours_Click(object sender, EventArgs e)
         {
             ListDemande req = new ListDemande("en cours", countRequestCours, 0);
             ShowControl(req);
+            activeBtn(btnDemandeCours);
         }
 
         private void btnDemandeRetard_Click(object sender, EventArgs e)
         {
             ListDemande req = new ListDemande("en retard", countRequestRetard, 0);
             ShowControl(req);
+            activeBtn(btnDemandeRetard);
         }
         private void btnDemandeTerminer_Click(object sender, EventArgs e)
         {
             ListDemande req = new ListDemande("terminer", countRequestTerminer, 0);
             ShowControl(req);
+            activeBtn(btnDemandeTerminer);
         }
         #endregion
 
@@ -300,27 +305,30 @@ namespace ParcInfo.frmDefault
         {
                 ListeIntervention intervention = new ListeIntervention("",0);
             ShowControl(intervention);
+            activeBtn(btnListIntervention);
         }
         //intervention 'en cours'
         private void btnInterventionCours_Click(object sender, EventArgs e)
         {
             ListeIntervention intervention = new ListeIntervention("en cours", countIntervCours);
             ShowControl(intervention);
+            activeBtn(btnInterventionCours);
         }
         //intervention 'en retard'
         private void btnInterventionRetard_Click(object sender, EventArgs e)
         {
             ListeIntervention intervention = new ListeIntervention("en retard", countIntervRetard);
             ShowControl(intervention);
+            activeBtn(btnInterventionRetard);
         }
         //intervention 'terminer'
         private void btnInterventionTerminer_Click(object sender, EventArgs e)
         {
             ListeIntervention intervention = new ListeIntervention("terminer",countIntervTerminer);
             ShowControl(intervention);
+            activeBtn(btnInterventionTerminer);
         }
         #endregion
-
 
         #region Buttonsmenu
 
@@ -338,6 +346,7 @@ namespace ParcInfo.frmDefault
         {
             listProduits product = new listProduits();
             ShowControl(product);
+            activeBtn(btnListProduct);
         }
 
 
@@ -345,12 +354,14 @@ namespace ParcInfo.frmDefault
         {
             CreateUser ceateUser = new CreateUser();
             ShowControl(ceateUser);
+            activeBtn(btnNewUser);
         }
 
         private void btnListUsers_Click(object sender, EventArgs e)
         {
             ListUtilisateur listUsers = new ListUtilisateur();
             ShowControl(listUsers);
+            activeBtn(btnListUsers);
         }
 
         private void tmrReal_Tick(object sender, EventArgs e)
@@ -430,12 +441,10 @@ namespace ParcInfo.frmDefault
                 ShowControl(GlobVars.frmBack2);
                 
             }
-         
         }
-
         public void activeBtn(Button btn )
         {
-            btn.BackColor = Color.FromArgb(93, 98, 132);
+            btn.BackColor = Color.FromArgb(58, 61, 82);
             foreach (Control item in pnlMenu.Controls)
             {
                 if (item is Panel)
@@ -444,10 +453,10 @@ namespace ParcInfo.frmDefault
                     {
                         if (c is Button)
                         {
-                            if (c.BackColor.Name == "ff5d6284")
+                            if (c.BackColor.Name == "ff3a3d52")
                             {
                                 c.BackColor = Color.FromArgb(44, 46, 62);
-                                btn.BackColor = Color.FromArgb(93, 98, 132);
+                                btn.BackColor = Color.FromArgb(58, 61, 82);
                             }
                         }
                     }

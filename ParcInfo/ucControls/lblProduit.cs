@@ -16,7 +16,6 @@ namespace ParcInfo.ucControls
         {
             InitializeComponent();
         }
-
         public string TxtValue
         {
             get { return txtValue.Text; }

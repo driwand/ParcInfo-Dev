@@ -107,11 +107,29 @@ namespace ParcInfo.Classes
                     }
 
                 }
-
             }
             return count;
         }
+        public static bool Focus2(Control control)
+        {
+            bool isFoucsed = false;
+            foreach (Control c in control.Controls)
+            {
+                
+                    var em = (from x in c.Controls.OfType<lblTextbox>()
+                              where x.TxtValue == ""
+                              select x
+                               ).FirstOrDefault();
+                    if (em != null)
+                    {
+                        em.Focus();
+                    isFoucsed = true;
+                    }
 
+                
+            }
+            return isFoucsed;
+        }
         public static List<LabelControl> GetidList(Control control)
         {
             List<LabelControl> list = new List<LabelControl>();

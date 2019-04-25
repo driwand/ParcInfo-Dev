@@ -29,6 +29,7 @@ namespace ParcInfo.ucClient
                                     join pr in context.Produits on p.Idproduit equals pr.id
                                     select new { pr, p, c }).ToList();
                     var d = (from c in listProd
+                             where c.c.IsDeleted == 0
                              select new { c.pr.CodeP,c.pr.id, c.pr.TypeProduit.Nom, c.pr.Marque, c.c.Login_u, c.c.Password_u, c.c.Dateaffectation }).ToList();
                     dgProduit.DataSource = Methods.ToDataTable(d);
                    
@@ -130,12 +131,12 @@ namespace ParcInfo.ucClient
                                select new { u.Nom, c.Datemodification }).FirstOrDefault();
                     if (clt != null)
                     {
-                        int loc = 389;
+                        int loc = 331;
                         lblEdited.Text = clt.Nom;
-                        loc += clt.Nom.Length;
+                        loc += lblEdited.Width ;
                         lblMod.Location = new Point(loc, 462);
                         // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(439 + 20, 462);
+                        lblEditedDate.Location = new Point(lblMod.Location.X + loc, 462);
                         lblEditedDate.Text = clt.Datemodification.ToString();
                     }
                     else

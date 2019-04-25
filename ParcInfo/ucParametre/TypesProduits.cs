@@ -70,62 +70,134 @@ namespace ParcInfo.settings
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
 
                 int idType = int.Parse(lblID.Text);
                 if (idType == 0)
                 {
-                    // get Type Nom
-                    var TypeP = txtType.Text;
-                    int supportLog = 0;
-                    int supportUser = 0;
-                    if (cbUser.Checked)
+                    if (txtType.Text == "")
                     {
-                        supportUser = 1;
+                        txtType.Focus();
                     }
-                    if (cbLog.Checked)
+                    else
                     {
-                        supportLog = 1;
+                        // get Type Nom
+                        var TypeP = txtType.Text;
+                        int supportLog = 0;
+                        int supportUser = 0;
+                        if (cbUser.Checked)
+                        {
+                            supportUser = 1;
+                        }
+                        if (cbLog.Checked)
+                        {
+                            supportLog = 1;
+                        }
+                        TypeProduit tp = new TypeProduit
+                        {
+                            Nom = TypeP,
+                            SupportingSoftware = supportLog,
+                            SupportingUser = supportUser,
+                            IsDeleted = 0
+                        };
+                        context.TypeProduits.Add(tp);
+
+                        var lblType = (from x in pnlProp.Controls.OfType<txtlblType>()
+                                       select x
+                                  ).ToList();
+                        foreach (var item in lblType)
+                        {
+                            if (item.TxtValue != "")
+                            {
+                                context.ProprietesProduits.Add(new ProprietesProduit { Nom = item.TxtValue, idType = tp.id, IsDeleted = 0 });
+
+                            }
+                        }
+
+                        context.SaveChanges();
+                        MessageBox.Show("Insertion effectuée");
+                        Clear();
+                        Methods.Clear(this);
                     }
-                    TypeProduit tp = new TypeProduit
+                }
+                else
+                {
+                    var id = int.Parse(lblID.Text);
+                    var t = context.TypeProduits.Find(id);
+                    var lblDep = (from x in pnlProp.Controls.OfType<txtlblType>()
+                                  select x
+                   ).ToList();
+                    foreach (var item in lblDep)
                     {
-                        Nom = TypeP,
-                        SupportingSoftware = supportLog,
-                        SupportingUser = supportUser,
-                        IsDeleted = 0
-                    };
-                    context.TypeProduits.Add(tp);
-                    var lblType = (from x in pnlProp.Controls.OfType<txtlblType>()
-                                   select x
-                              ).ToList();
-                    foreach (var item in lblType)
-                    {
-                        context.ProprietesProduits.Add(new ProprietesProduit { Nom = item.TxtValue, idType = tp.id, IsDeleted = 0 });
+                        if (!item.Visible && int.Parse(item.LblID) > 0)
+                        {
+                            var tprop = t.ProprietesProduits.Where(d => d.Id == int.Parse(item.LblID)).FirstOrDefault();
+                            if (tprop != null)
+                            {
+                                tprop.IsDeleted = 1;
+                                txtlblType tbx = this.Controls.Find(item.Name, true).FirstOrDefault() as txtlblType;
+                                pnlProp.Controls.Remove(tbx);
+                            }
+                        }
+                        else if (item.Visible && int.Parse(item.LblID) == 0 && item.TxtValue != "" )
+                        {
+                            context.ProprietesProduits.Add(new ProprietesProduit { Nom = item.TxtValue, idType = t.id, IsDeleted = 0 });
+                        }
+                        else if(item.Visible && int.Parse(item.LblID) > 0)
+                        {
+                            var tprop = t.ProprietesProduits.Where(d => d.Id == int.Parse(item.LblID)).FirstOrDefault();
+                            tprop.Nom = item.TxtValue;
+                        }
                     }
+        
                     context.SaveChanges();
-                    MessageBox.Show("Insertion effectuée");
-                    Methods.Clear(this);
                 }
                 
             }
+        }
+        public void Clear()
+        {
+            typeName = 1;
+            var lblDep = (from x in pnlProp.Controls.OfType<txtlblType>()
+                          select x
+                     ).ToList();
 
+            foreach (var item in lblDep)
+            {
+                pnlProp.Controls.Remove(item);
+            }
+            txtType.Text = "";
+            cbLog.Checked = false;
+            cbUser.Checked = false;
+            lblID.Text = "0";
+            txtlblType type = new txtlblType();
+            type.Name = "type" + typeName;
+            type.Margin = new Padding(0, 0, 0, 12);
+            pnlProp.Controls.Add(type);
         }
 
-        private void dgType_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void btnNewType_Click(object sender, EventArgs e)
+        {
+            Clear();
+            btnNewType.Visible = false;
+            btnDelType.Visible = false;
+        }
+
+        private void dgType_DoubleClick(object sender, EventArgs e)
         {
             if (dgType.SelectedRows.Count > 0)
             {
+                Clear();
                 var myrow = dgType.Rows[dgType.CurrentRow.Index];
-
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var t = context.TypeProduits.Find(id);
                     if (t != null)
                     {
+                        btnNewType.Visible = true;
+                        btnDelType.Visible = true;
                         txtType.Text = t.Nom;
                         if (t.SupportingSoftware == 1)
                         {
@@ -137,10 +209,18 @@ namespace ParcInfo.settings
                         }
                         lblID.Text = t.id.ToString();
                         txtlblType tbx = this.Controls.Find("type1", true).FirstOrDefault() as txtlblType;
+                        if (tbx != null)
+                        {
+                            var frs = t.ProprietesProduits.Where(d=> d.IsDeleted == 0).FirstOrDefault();
+                            if (frs != null)
+                            {
+                                tbx.TxtValue = frs.Nom;
+                                tbx.LblID = frs.Id.ToString();
+                            }
+                           
+                        }
 
-                        tbx.TxtValue = t.ProprietesProduits.FirstOrDefault().Nom;
-                        tbx.LblID = t.ProprietesProduits.FirstOrDefault().Id.ToString();
-                        foreach (var item in t.ProprietesProduits.Skip(1))
+                        foreach (var item in t.ProprietesProduits.Where(d=> d.IsDeleted == 0).Skip(1))
                         {
                             txtlblType type = new txtlblType();
                             type.Name = "type" + typeName;
@@ -155,32 +235,34 @@ namespace ParcInfo.settings
                                 pnlProp.AutoScroll = true;
                             }
                         }
-                      
-
                     }
                 }
-
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDelType_Click(object sender, EventArgs e)
         {
-            var lblDep = (from x in pnlProp.Controls.OfType<txtlblType>()
-                          select x
-                        ).ToList();
 
-            foreach (var item in lblDep)
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                pnlProp.Controls.Remove(item);
+                var myrow = dgType.Rows[dgType.CurrentRow.Index];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                TypeProduit c = context.TypeProduits.Find(id);
+
+                DialogResult result = MessageBox.Show("Voulez-vous supprimer le type suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    c.IsDeleted = 1;
+                   
+                    context.SaveChanges();
+                    MessageBox.Show("type supprimé");
+                    Clear();
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
             }
-            txtType.Text = "";
-            cbLog.Checked = false;
-            cbUser.Checked = false;
-            lblID.Text = "0";
-            txtlblType type = new txtlblType();
-            type.Name = "type" + typeName;
-            type.Margin = new Padding(0, 0, 0, 12);
-            pnlProp.Controls.Add(type);
         }
     }
 }

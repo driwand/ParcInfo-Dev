@@ -70,6 +70,7 @@ namespace ParcInfo.ucInterevntion
                 if (idClient > 0 && Code != "")
                 {
                     lblSource.Text = $"[{Code}]";
+                    lblSource.ForeColor = Color.FromArgb(0, 168, 255);
                     lblSource.Visible = true;
                     var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention })
                               where ir.Idclient == idClient
@@ -133,6 +134,38 @@ namespace ParcInfo.ucInterevntion
         private void ListeIntervention_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgIntervention_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgIntervention.SelectedRows.Count > 0)
+            {
+                var myrow = dgIntervention.Rows[e.RowIndex];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+                {
+                    var interv = (from c in context.Interventions
+                               where c.Id == id && c.Modifierpar != null
+                               join u in context.Utilisateurs on c.Modifierpar equals u.Id
+                               select new { u.Nom, c.Datemodification }).FirstOrDefault();
+                    if (interv != null)
+                    {
+                        int loc = 325;
+                        lblEdited.Text = interv.Nom;
+                        loc += lblEdited.Width;
+                        lblMod.Location = new Point(loc, 459);
+                        // MessageBox.Show(clt.Nom.Length.ToString());
+                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
+                        lblEditedDate.Text = interv.Datemodification.ToString();
+                    }
+                    else
+                    {
+                        lblEdited.Text = "aucune";
+                        lblEditedDate.Text = "****-**-**";
+                    }
+                }
+            }
         }
     }
 }

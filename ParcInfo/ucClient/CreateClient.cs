@@ -246,13 +246,15 @@ namespace ParcInfo.ucClient
             List<LabelControl> DepartementList = new List<LabelControl>();
             List<LabelControl> UtilisateursList = new List<LabelControl>();
             int txtEmpty = 0;
+            bool checkErr = false;
             // Get Users && departement
             UtilisateursList = Methods.GetidList(PnlUsers);
             DepartementList = Methods.GetidList(PnlDepart);
             // check if user empty
             //txtEmpty = Methods.Focus2(PnlDepart);
-            txtEmpty = Methods.Focus(this);
-            // Fil list UtilisateurID
+          //  checkErr = Methods.Focus2(PnlUsers);
+           txtEmpty = Methods.Focus(this);
+            //Fil list UtilisateurID
             if (txtEmpty == 0)
             { // get Values From Textbox
                 string Nom = txtNom.Text;
@@ -388,5 +390,18 @@ namespace ParcInfo.ucClient
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var em = (from x in PnlUsers.Controls.OfType<lblTextbox>()
+                      where x.TxtValue == ""
+                      select x
+                                ).LastOrDefault();
+
+            if (em != null)
+            {
+                em.Focus();
+              
+            }
+        }
     }
 }

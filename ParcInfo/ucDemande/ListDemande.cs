@@ -33,8 +33,26 @@ namespace ParcInfo.ucClient
             InitializeComponent();
             using (var db = new ParcInformatiqueEntities())
             {
-                var res = db.Demandes.Where(x => x.Employee.Client.id == idClient).ToList();
-                dgDemande.DataSource = res;
+                //  var res = db.Demandes.Where(x => x.Employee.Client.id == idClient).ToList();
+                lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
+                lblEmployeClient.Visible = true;
+                lblEmployeClient.Text = $"[{nom}]";
+                dgDemande.DataSource = (from d in db.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest })
+                                        select new
+                                        {
+                                            d.Id,
+                                            d.IdReq,
+                                            d.Employee.Nom,
+                                            
+                                            Desc = Methods.GetDesc(d.Description_d, 4),
+                                            d.Datedemande,
+                                            d.Getstatut,
+                                            IdClient = d.Employee.Client.id
+                                        }).ToList();
+                Methods.Nice_grid(
+                      new string[] { "IdReq", "Nom", "Desc", "Datedemande",  "Getstatut" },
+                      new string[] { "ID Demande", "Employee", "Description", "Date Demande", "Statut" },
+                      dgDemande);
             }
         }
 
@@ -74,9 +92,12 @@ namespace ParcInfo.ucClient
 
                         if (idEmploye > 0)
                         {
+
                             Employee em = context.Employees.Find(idEmploye);
                             lblEmployeClient.Text = $"[{em.Nom} {em.Prenom}]";
                             lblEmployeClient.Visible = true;
+                            dgDemande.Columns["Nom"].Visible = false;
+                            lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
                         }
                     }
                     HideColumns(new string[] { "id", "IdClient" }, dgDemande);
@@ -160,6 +181,38 @@ namespace ParcInfo.ucClient
         private void menuStartIntervention_Click(object sender, EventArgs e)
         {
             StartIntervention();
+        }
+
+        private void dgDemande_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgDemande.SelectedRows.Count > 0)
+            {
+                var myrow = dgDemande.Rows[e.RowIndex];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+                {
+                    var dem = (from c in context.Demandes
+                                  where c.Id == id && c.Modifierpar != null
+                                  join u in context.Utilisateurs on c.Modifierpar equals u.Id
+                                  select new { u.Nom, c.Datemodification }).FirstOrDefault();
+                    if (dem != null)
+                    {
+                        int loc = 325;
+                        lblEdited.Text = dem.Nom;
+                        loc += lblEdited.Width;
+                        lblMod.Location = new Point(loc, 459);
+                        // MessageBox.Show(clt.Nom.Length.ToString());
+                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
+                        lblEditedDate.Text = dem.Datemodification.ToString();
+                    }
+                    else
+                    {
+                        lblEdited.Text = "aucune";
+                        lblEditedDate.Text = "****-**-**";
+                    }
+                }
+            }
         }
     }
 }

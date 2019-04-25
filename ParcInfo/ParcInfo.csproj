@@ -186,6 +186,12 @@
     <Compile Include="ucControls\DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ucControls\ForgetPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\ForgetPassword.Designer.cs">
+      <DependentUpon>ForgetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\infoIntervention.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -300,6 +306,12 @@
     <Compile Include="ucIntervention\NewIntervention.designer.cs">
       <DependentUpon>NewIntervention.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucParametre\AppSettingcs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucParametre\AppSettingcs.Designer.cs">
+      <DependentUpon>AppSettingcs.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucParametre\ListUtilisateur.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -382,6 +394,9 @@
     <EmbeddedResource Include="ucControls\AffectEmloyee.resx">
       <DependentUpon>AffectEmloyee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\ForgetPassword.resx">
+      <DependentUpon>ForgetPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\infoIntervention.resx">
       <DependentUpon>infoIntervention.cs</DependentUpon>
     </EmbeddedResource>
@@ -432,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucIntervention\NewIntervention.resx">
       <DependentUpon>NewIntervention.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucParametre\AppSettingcs.resx">
+      <DependentUpon>AppSettingcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucParametre\ListUtilisateur.resx">
       <DependentUpon>ListUtilisateur.cs</DependentUpon>

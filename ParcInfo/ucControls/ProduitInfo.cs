@@ -20,7 +20,7 @@ namespace ParcInfo.ucControls
             InitializeComponent();
             if (listT != null)
             {
-                listType = listT;
+                listType = listT.Where(d=> d.IsDeleted == 0).ToList();
             }
         }
         public ProduitInfo(Produit p, List<TypeProduit> listT)
@@ -29,7 +29,7 @@ namespace ParcInfo.ucControls
             if (p != null)
             {
                 prd = p;
-                listType = listT;
+                listType = listT.Where(d => d.IsDeleted == 0).ToList() ;
                 txtMarque.Text = p.Marque;
                 txtModel.Text = p.Model;
                 txtPrix.Text = p.Prix.ToString();
@@ -49,6 +49,11 @@ namespace ParcInfo.ucControls
                 }
              
             }
+        }
+        public ProduitInfo()
+        {
+            InitializeComponent();
+          
         }
         private void ProduitInfo_Load(object sender, EventArgs e)
         {

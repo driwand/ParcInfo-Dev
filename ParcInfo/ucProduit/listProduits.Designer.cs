@@ -96,10 +96,10 @@
             this.groupBox2.Controls.Add(this.btnFind);
             this.groupBox2.Controls.Add(this.txtFind);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Location = new System.Drawing.Point(348, 48);
+            this.groupBox2.Location = new System.Drawing.Point(392, 48);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Size = new System.Drawing.Size(418, 50);
+            this.groupBox2.Size = new System.Drawing.Size(374, 50);
             this.groupBox2.TabIndex = 150;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recherche";
@@ -110,7 +110,7 @@
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
             this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(375, 14);
+            this.btnFind.Location = new System.Drawing.Point(347, 14);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
             this.btnFind.TabIndex = 51;
@@ -118,24 +118,24 @@
             // 
             // txtFind
             // 
-            this.txtFind.Location = new System.Drawing.Point(101, 18);
+            this.txtFind.Location = new System.Drawing.Point(103, 18);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(268, 20);
+            this.txtFind.Size = new System.Drawing.Size(238, 20);
             this.txtFind.TabIndex = 42;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 22);
+            this.label15.Location = new System.Drawing.Point(14, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(83, 13);
+            this.label15.Size = new System.Drawing.Size(89, 13);
             this.label15.TabIndex = 41;
-            this.label15.Text = "Filtrer les produit";
+            this.label15.Text = "Filtrer les produit :";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(345, 454);
+            this.label8.Location = new System.Drawing.Point(392, 454);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 13);
             this.label8.TabIndex = 144;
@@ -144,7 +144,7 @@
             // lblDateMod
             // 
             this.lblDateMod.AutoSize = true;
-            this.lblDateMod.Location = new System.Drawing.Point(579, 454);
+            this.lblDateMod.Location = new System.Drawing.Point(629, 454);
             this.lblDateMod.Name = "lblDateMod";
             this.lblDateMod.Size = new System.Drawing.Size(45, 13);
             this.lblDateMod.TabIndex = 148;
@@ -153,7 +153,7 @@
             // lblM
             // 
             this.lblM.AutoSize = true;
-            this.lblM.Location = new System.Drawing.Point(512, 454);
+            this.lblM.Location = new System.Drawing.Point(562, 454);
             this.lblM.Name = "lblM";
             this.lblM.Size = new System.Drawing.Size(61, 13);
             this.lblM.TabIndex = 149;
@@ -162,7 +162,7 @@
             // cbDelete
             // 
             this.cbDelete.AutoSize = true;
-            this.cbDelete.Location = new System.Drawing.Point(347, 429);
+            this.cbDelete.Location = new System.Drawing.Point(392, 429);
             this.cbDelete.Name = "cbDelete";
             this.cbDelete.Size = new System.Drawing.Size(171, 17);
             this.cbDelete.TabIndex = 143;
@@ -173,9 +173,9 @@
             // dgProduits
             // 
             this.dgProduits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProduits.Location = new System.Drawing.Point(347, 113);
+            this.dgProduits.Location = new System.Drawing.Point(392, 113);
             this.dgProduits.Name = "dgProduits";
-            this.dgProduits.Size = new System.Drawing.Size(527, 310);
+            this.dgProduits.Size = new System.Drawing.Size(482, 310);
             this.dgProduits.TabIndex = 142;
             this.dgProduits.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduits_RowEnter);
             // 
@@ -205,7 +205,7 @@
             this.btnAddProduit.ForeColor = System.Drawing.Color.White;
             this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.btnedit;
             this.btnAddProduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddProduit.Location = new System.Drawing.Point(217, 437);
+            this.btnAddProduit.Location = new System.Drawing.Point(282, 435);
             this.btnAddProduit.Name = "btnAddProduit";
             this.btnAddProduit.Size = new System.Drawing.Size(107, 32);
             this.btnAddProduit.TabIndex = 147;
@@ -219,7 +219,7 @@
             this.btnDelP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelP.ForeColor = System.Drawing.Color.White;
             this.btnDelP.Image = global::ParcInfo.Properties.Resources.btndelete;
-            this.btnDelP.Location = new System.Drawing.Point(20, 437);
+            this.btnDelP.Location = new System.Drawing.Point(16, 435);
             this.btnDelP.Name = "btnDelP";
             this.btnDelP.Size = new System.Drawing.Size(32, 32);
             this.btnDelP.TabIndex = 141;
@@ -243,7 +243,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.btnClear.Location = new System.Drawing.Point(172, 437);
+            this.btnClear.Location = new System.Drawing.Point(244, 435);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(32, 32);
             this.btnClear.TabIndex = 153;
@@ -253,7 +253,7 @@
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(467, 454);
+            this.lblUser.Location = new System.Drawing.Point(517, 454);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(43, 13);
             this.lblUser.TabIndex = 154;

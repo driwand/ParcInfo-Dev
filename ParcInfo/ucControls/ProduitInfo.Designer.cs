@@ -68,7 +68,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 199);
+            this.groupBox1.Size = new System.Drawing.Size(369, 199);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produit";
@@ -76,7 +76,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(251, 21);
+            this.lblID.Location = new System.Drawing.Point(327, 21);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(13, 13);
             this.lblID.TabIndex = 49;
@@ -95,7 +95,7 @@
             // 
             // txtQte
             // 
-            this.txtQte.Location = new System.Drawing.Point(223, 146);
+            this.txtQte.Location = new System.Drawing.Point(226, 143);
             this.txtQte.Name = "txtQte";
             this.txtQte.Size = new System.Drawing.Size(48, 20);
             this.txtQte.TabIndex = 4;
@@ -108,11 +108,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 150);
+            this.label1.Location = new System.Drawing.Point(171, 147);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 45;
-            this.label1.Text = "Quantity";
+            this.label1.Text = "Quantity :";
             // 
             // DateProduit
             // 
@@ -144,15 +144,15 @@
             // 
             this.txtMarque.Location = new System.Drawing.Point(96, 50);
             this.txtMarque.Name = "txtMarque";
-            this.txtMarque.Size = new System.Drawing.Size(175, 20);
+            this.txtMarque.Size = new System.Drawing.Size(244, 20);
             this.txtMarque.TabIndex = 1;
             this.txtMarque.Tag = "required";
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(96, 81);
+            this.txtModel.Location = new System.Drawing.Point(96, 82);
             this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(175, 20);
+            this.txtModel.Size = new System.Drawing.Size(244, 20);
             this.txtModel.TabIndex = 2;
             this.txtModel.Tag = "required";
             // 
@@ -206,7 +206,7 @@
             this.groupBox6.Controls.Add(this.pnlProp);
             this.groupBox6.Location = new System.Drawing.Point(3, 212);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(304, 164);
+            this.groupBox6.Size = new System.Drawing.Size(369, 164);
             this.groupBox6.TabIndex = 60;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Les proprietes du produit";
@@ -214,9 +214,9 @@
             // pnlProp
             // 
             this.pnlProp.Location = new System.Drawing.Point(5, 19);
-            this.pnlProp.MaximumSize = new System.Drawing.Size(283, 124);
+            this.pnlProp.MaximumSize = new System.Drawing.Size(358, 124);
             this.pnlProp.Name = "pnlProp";
-            this.pnlProp.Size = new System.Drawing.Size(283, 124);
+            this.pnlProp.Size = new System.Drawing.Size(358, 124);
             this.pnlProp.TabIndex = 0;
             // 
             // ProduitInfo
@@ -228,7 +228,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ProduitInfo";
-            this.Size = new System.Drawing.Size(309, 386);
+            this.Size = new System.Drawing.Size(375, 386);
             this.Load += new System.EventHandler(this.ProduitInfo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

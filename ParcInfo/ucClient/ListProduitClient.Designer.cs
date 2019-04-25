@@ -153,7 +153,7 @@
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(459, 462);
+            this.lblEditedDate.Location = new System.Drawing.Point(442, 463);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
             this.lblEditedDate.TabIndex = 129;
@@ -162,7 +162,7 @@
             // lblMod
             // 
             this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(392, 462);
+            this.lblMod.Location = new System.Drawing.Point(375, 464);
             this.lblMod.Name = "lblMod";
             this.lblMod.Size = new System.Drawing.Size(61, 13);
             this.lblMod.TabIndex = 130;

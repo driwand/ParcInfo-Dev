@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.cbUser = new System.Windows.Forms.CheckBox();
             this.cbLog = new System.Windows.Forms.CheckBox();
             this.txtType = new System.Windows.Forms.TextBox();
@@ -45,8 +46,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNewType = new System.Windows.Forms.Button();
+            this.btnDelType = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -86,6 +87,16 @@
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(338, 14);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 4;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
             // 
             // cbUser
             // 
@@ -185,7 +196,7 @@
             this.dgType.Name = "dgType";
             this.dgType.Size = new System.Drawing.Size(468, 319);
             this.dgType.TabIndex = 0;
-            this.dgType.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgType_RowEnter);
+            this.dgType.DoubleClick += new System.EventHandler(this.dgType_DoubleClick);
             // 
             // groupBox4
             // 
@@ -228,35 +239,41 @@
             this.label2.TabIndex = 41;
             this.label2.Text = "Filtrer les produit";
             // 
-            // lblID
+            // btnNewType
             // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(338, 14);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(13, 13);
-            this.lblID.TabIndex = 4;
-            this.lblID.Text = "0";
-            this.lblID.Visible = false;
+            this.btnNewType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnNewType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewType.ForeColor = System.Drawing.Color.White;
+            this.btnNewType.Location = new System.Drawing.Point(640, 436);
+            this.btnNewType.Name = "btnNewType";
+            this.btnNewType.Size = new System.Drawing.Size(113, 28);
+            this.btnNewType.TabIndex = 171;
+            this.btnNewType.Text = "Nouveau";
+            this.btnNewType.UseVisualStyleBackColor = false;
+            this.btnNewType.Visible = false;
+            this.btnNewType.Click += new System.EventHandler(this.btnNewType_Click);
             // 
-            // button1
+            // btnDelType
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(640, 436);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 28);
-            this.button1.TabIndex = 171;
-            this.button1.Text = "Nouveau";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDelType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnDelType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelType.ForeColor = System.Drawing.Color.White;
+            this.btnDelType.Image = global::ParcInfo.Properties.Resources.btndelete;
+            this.btnDelType.Location = new System.Drawing.Point(18, 436);
+            this.btnDelType.Name = "btnDelType";
+            this.btnDelType.Size = new System.Drawing.Size(28, 28);
+            this.btnDelType.TabIndex = 10016;
+            this.btnDelType.UseVisualStyleBackColor = false;
+            this.btnDelType.Visible = false;
+            this.btnDelType.Click += new System.EventHandler(this.btnDelType_Click);
             // 
             // TypesProduits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelType);
+            this.Controls.Add(this.btnNewType);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
@@ -299,6 +316,7 @@
         public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNewType;
+        private System.Windows.Forms.Button btnDelType;
     }
 }

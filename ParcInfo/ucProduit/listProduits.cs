@@ -25,7 +25,7 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 pd = new ProduitInfo(context.TypeProduits.ToList());
-                pd.Location = new Point(18, 50);
+                pd.Location = new Point(14, 45);
                 this.Controls.Add(pd);
             }
         }
@@ -66,7 +66,6 @@ namespace ParcInfo.ucClient
                                 IsDeleted = 0,
                                 Datecreation = DateTime.Now,
                                 Creepar = GlobVars.currentUser
-
                             };
                             context.Produits.Add(prod);
                             foreach (Control c in pd.pnlProp.Controls)
@@ -146,12 +145,13 @@ namespace ParcInfo.ucClient
                         }
                         if (p.Utilisateur1 != null)
                         {
-                            int loc = 516;
+                            int loc = 522;
                             lblUser.Text = p.Utilisateur1.Nom;
-                            loc += p.Utilisateur1.Nom.Length;
+                            loc += lblUser.Width;
                             lblM.Location = new Point(loc, 454);
                             lblDateMod.Text = p.Datemodification.ToString();
-                            lblDateMod.Location = new Point(loc + lblM.Size.Width, 454);
+                            
+                            lblDateMod.Location = new Point(lblM.Location.X + lblM.Width, 454);
                         }
                         GetValue(pd.pnlProp, p);
                     }

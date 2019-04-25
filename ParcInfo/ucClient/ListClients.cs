@@ -85,22 +85,16 @@ namespace ParcInfo.ucClient
             }
           
         }
-        
         private void gpDemande_Click(object sender, EventArgs e)
         {
-
             if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                string nom = myrow.Cells["Nom"].Value.ToString();
+                string nom = myrow.Cells["IdCLient"].Value.ToString();
                 GlobVars.frmindex.ShowControl(new ListDemande(id, nom));
             }
-           
-
         }
-
         private void gpProduit_Click(object sender, EventArgs e)
         {
             if (dgClients.SelectedRows.Count > 0)
@@ -111,9 +105,6 @@ namespace ParcInfo.ucClient
                 GlobVars.frmBack = this;
                 GlobVars.frmindex.ShowControl(new ListProduitClient(id, code));
             }
-
-           
-
         }
 
         //start new intervention for seelcted request
@@ -128,7 +119,6 @@ namespace ParcInfo.ucClient
                 GlobVars.frmindex.ShowControl(new NewIntervention(id));
             }
         }
-
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())

@@ -29,19 +29,11 @@ namespace ParcInfo.ucControls
         }
 
 
-        public static event EventHandler DelType;
 
-        protected virtual void OnClickedDel(EventArgs e)
-        {
-            EventHandler eh = DelType;
-            if (eh != null)
-            {
-                eh(this, e);
-            }
-        }
+     
         private void button2_Click(object sender, EventArgs e)
         {
-            OnClickedDel(e);
+            this.Visible = false;
         }
     }
 }

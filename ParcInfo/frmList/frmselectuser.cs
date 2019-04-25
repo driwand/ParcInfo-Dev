@@ -18,6 +18,7 @@ namespace ParcInfo
         public bool isClient = false;
         public int idClient;
         public List<int> listProdid = new List<int>();
+        public string pC;
         public frmselectuser(lblTextbox txtbx)
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace ParcInfo
                        );
             }
         }
-        public frmselectuser(lblTextbox txtbx, string cod, int id)
+        public frmselectuser(lblTextbox txtbx, string cod, int id,int idProd)
         {
             InitializeComponent();
             tbx = txtbx;
@@ -52,13 +53,27 @@ namespace ParcInfo
                           dgUsers
                   );
                 }
-                else if (cod == "log")
+                else if (cod == "log" && idProd > 0)
                 {
+                    pC = "log";
                     this.Text = "Liste des produits";
                     lblText.Text = "Les produits : ";
-                    var userList = (from p in context.Produits
-                                    select new { p.id, p.TypeProduit.Nom, p.Marque, p.Model, p.Prix, p.Datefabrication }).ToList();
-                    dgUsers.DataSource = userList;
+                    var listProd = (from c in context.ProduitClients
+                                    join p in context.Produits on c.Idproduit equals p.id
+                                    where c.Idclient == id && idProd != c.Idproduit
+                                    select new { c,p }).ToList();
+
+                    dgUsers.DataSource = Methods.ToDataTable(listProd.Select(s => new { s.p.CodeP, s.c.Id,
+                        idP = s.p.id,
+                        s.p.TypeProduit.Nom,
+                        s.p.Marque, s.p.Model,
+                        Datefabrication = s.p.Datefabrication.Value.ToShortDateString() }).ToList());
+                    Methods.Nice_grid(
+                         new string[] { "CodeP", "Id", "idP", "Nom", "Marque", "Model", "Datefabrication" },
+                         new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Model", "Date de fabrication" },
+                         dgUsers
+                 );
+                    dgUsers.Columns["idP"].Visible = false;
                 }
             }
         }
@@ -85,6 +100,19 @@ namespace ParcInfo
                 }
             }
         }
+        public frmselectuser()
+        {
+            InitializeComponent();
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+               
+            }
+        }
+
+
+
+
+
         private void btn_annuler_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -114,6 +142,14 @@ namespace ParcInfo
                     tbx.Lblid = id.ToString();
                     frmAffecter frm = new frmAffecter(tbx,id);
                     frm.ShowDialog();
+                }
+                else if (pC == "log")
+                {
+                    var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
+                    string id = myrow.Cells["id"].Value.ToString();
+                    string Nom = myrow.Cells["codeP"].Value.ToString();
+                    tbx.TxtValue = Nom;
+                    tbx.Lblid = id;
                 }
                 else
                 {

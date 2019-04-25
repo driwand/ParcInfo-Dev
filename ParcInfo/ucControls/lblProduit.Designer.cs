@@ -35,9 +35,9 @@
             // 
             // txtValue
             // 
-            this.txtValue.Location = new System.Drawing.Point(91, 1);
+            this.txtValue.Location = new System.Drawing.Point(89, 1);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(167, 20);
+            this.txtValue.Size = new System.Drawing.Size(244, 20);
             this.txtValue.TabIndex = 42;
             // 
             // lblname
@@ -67,7 +67,7 @@
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.lblname);
             this.Name = "lblProduit";
-            this.Size = new System.Drawing.Size(264, 22);
+            this.Size = new System.Drawing.Size(349, 22);
             this.ResumeLayout(false);
             this.PerformLayout();
 
