@@ -204,12 +204,9 @@ namespace ParcInfo.ucClient
                         var ac = cli.AffectationClients.Where(af => af.Idutilisateur == item.Id && af.IsDeleted == 0).FirstOrDefault();
                       
                         // check if user already 
-                        if (ac != null)
+                        if (ac == null)
                         {
-                        }
-                        else
-                        {
-                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id,Dateaffectation = DateTime.Now, IsDeleted = 0 });
+                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, Dateaffectation = DateTime.Now, IsDeleted = 0 });
                         }
                     }
                     else if (item.Idaffectation >= 0 && item.IsDeleted)
@@ -246,7 +243,6 @@ namespace ParcInfo.ucClient
             List<LabelControl> DepartementList = new List<LabelControl>();
             List<LabelControl> UtilisateursList = new List<LabelControl>();
             int txtEmpty = 0;
-            bool checkErr = false;
             // Get Users && departement
             UtilisateursList = Methods.GetidList(PnlUsers);
             DepartementList = Methods.GetidList(PnlDepart);

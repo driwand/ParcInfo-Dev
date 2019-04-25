@@ -54,7 +54,7 @@
             this.multiLineLabel1.Name = "multiLineLabel1";
             this.multiLineLabel1.Size = new System.Drawing.Size(303, 44);
             this.multiLineLabel1.TabIndex = 107;
-            this.multiLineLabel1.Text = "TextTextTextTextTextTextTextTextTextTextTextTexTextTextText";
+            this.multiLineLabel1.Text = "Pour réinitialiser votre mot de passe, saisissez votre adresse email";
             // 
             // pictureBox7
             // 

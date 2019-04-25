@@ -42,7 +42,8 @@ namespace ParcInfo.ucParametre
             if (dgUtilisateur.SelectedRows.Count > 0)
             {
                 int iduser = Convert.ToInt32(dgUtilisateur.Rows[dgUtilisateur.CurrentRow.Index].Cells["id"].Value);
-                GlobVars.frmindex.ShowControl(new CardUsers(iduser));
+                GlobVars.frmindex.ShowControl(new CreateUser(iduser));
+                //GlobVars.frmindex.ShowControl(new CardUsers(iduser));
             }
         }
     }
