@@ -11,6 +11,7 @@ using ParcInfo.Classes;
 using ParcInfo.ucControls;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
+using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucInterevntion
 {
@@ -18,6 +19,7 @@ namespace ParcInfo.ucInterevntion
     {
         int idclient;
         string statutit;
+        int idUser;
         public ListeIntervention(string statutInterv,int countInterv)
         {
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace ParcInfo.ucInterevntion
                                  ir.Getstatut,
                                  ir.Idclient,
                                  Edited = ir.UtilisateurEdit.Nom,
+                                 ir.Modifierpar,
                                  ir.Datemodification
                              }).ToList();
 
@@ -55,6 +58,7 @@ namespace ParcInfo.ucInterevntion
                                   ir.Getstatut,
                                   ir.Idclient,
                                   Edited = ir.UtilisateurEdit.Nom,
+                                  ir.Modifierpar,
                                   ir.Datemodification
                               }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
@@ -92,6 +96,7 @@ namespace ParcInfo.ucInterevntion
                                   ir.Getstatut,
                                   ir.Idclient,
                                   Edited = ir.UtilisateurEdit.Nom,
+                                  ir.Modifierpar,
                                   ir.Datemodification
                               }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
@@ -177,6 +182,7 @@ namespace ParcInfo.ucInterevntion
                               ir.Getstatut,
                               ir.Idclient,
                               Edited = ir.UtilisateurEdit.Nom,
+                              ir.Modifierpar,
                               ir.Datemodification
                           }).ToList();
 
@@ -211,7 +217,13 @@ namespace ParcInfo.ucInterevntion
                 int index = dgIntervention.CurrentRow.Index;
                 lblEdited.Text = dgIntervention.Rows[index].Cells["Edited"].Value.ToString();
                 lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
+                idUser = Convert.ToInt32(dgIntervention.Rows[index].Cells["Modifierpar"].Value);
             }
+        }
+
+        private void lblEdited_Click(object sender, EventArgs e)
+        {
+            GlobVars.frmindex.ShowControl(new CardUsers(idUser));
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ParcInfo.Classes;
 using ParcInfo.ucInterevntion;
 using ParcInfo.ucDemande;
+using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucClient
 {
@@ -31,6 +32,7 @@ namespace ParcInfo.ucClient
         public int Idcli;
         public string statut;
         public int employee;
+        public int iduser;
 
         //listdemande of selected client
         public ListDemande(int idClient, string nom)
@@ -50,7 +52,10 @@ namespace ParcInfo.ucClient
                                             Desc = Methods.GetDesc(d.Description_d, 4),
                                             d.Employee.Nom,
                                             d.Getstatut,
-                                            IdClient = d.Employee.Client.id
+                                            IdClient = d.Employee.Client.id,
+                                            d.Modifierpar,
+                                            Edited = d.Utilisateur.Nom,
+                                            d.Datemodification
                                         }).ToList();
 
 
@@ -83,7 +88,10 @@ namespace ParcInfo.ucClient
                                                     Desc = Methods.GetDesc(d.Description_d, 4),
                                                     d.Employee.Nom,
                                                     d.Getstatut,
-                                                    IdClient = d.Employee.Client.id
+                                                    IdClient = d.Employee.Client.id,
+                                                    d.Modifierpar,
+                                                    Edited = d.Utilisateur.Nom,
+                                                    d.Datemodification
                                                 }).ToList();
 
                         Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
@@ -101,7 +109,10 @@ namespace ParcInfo.ucClient
                                                     Desc = Methods.GetDesc(d.Description_d, 4),
                                                     d.Employee.Nom,
                                                     d.Getstatut,
-                                                    IdClient = d.Employee.Client.id
+                                                    IdClient = d.Employee.Client.id,
+                                                    d.Modifierpar,
+                                                    Edited = d.Utilisateur.Nom,
+                                                    d.Datemodification
                                                 }).ToList();
 
                         if (idEmploye > 0)
@@ -234,7 +245,10 @@ namespace ParcInfo.ucClient
                                             Desc = Methods.GetDesc(d.Description_d, 4),
                                             d.Employee.Nom,
                                             d.Getstatut,
-                                            IdClient = d.Employee.Client.id
+                                            IdClient = d.Employee.Client.id,
+                                            d.Modifierpar,
+                                            Edited = d.Utilisateur.Nom,
+                                            d.Datemodification
                                         }).ToList();
 
                 if (idclt != 0)
@@ -244,6 +258,32 @@ namespace ParcInfo.ucClient
                     ls = ls.Where(i => i.Getstatut == statut).ToList();
 
                 Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+            }
+        }
+
+        private void lblEdited_Click(object sender, EventArgs e)
+        {
+            GlobVars.frmindex.ShowControl(new CardUsers(iduser));
+        }
+
+        private void dgDemande_Paint(object sender, PaintEventArgs e)
+        {
+            GetDetails();
+        }
+
+        private void dgDemande_Click(object sender, EventArgs e)
+        {
+            GetDetails();
+        }
+
+        public void GetDetails()
+        {
+            if (dgDemande.SelectedRows.Count > 0)
+            {
+                int index = dgDemande.CurrentRow.Index;
+                lblEdited.Text = dgDemande.Rows[index].Cells["Edited"].Value.ToString();
+                lblEditedDate.Text = dgDemande.Rows[index].Cells["Datemodification"].Value.ToString();
+                iduser = Convert.ToInt32(dgDemande.Rows[index].Cells["Modifierpar"].Value);
             }
         }
     }

@@ -107,8 +107,7 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                int delayDays = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultDelay"]);
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delayDays) < retarddate);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) < retarddate);
             }
         }
         public IQueryable<Demande> GetRequestCours
@@ -116,8 +115,7 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                int delayDays = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultDelay"]);
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut!="en attente" && DbFunctions.AddDays(x.Datedemande, delayDays) > retarddate);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut!="en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate);
             }
         }
 

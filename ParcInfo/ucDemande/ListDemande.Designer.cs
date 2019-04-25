@@ -139,6 +139,8 @@
             this.dgDemande.Size = new System.Drawing.Size(863, 347);
             this.dgDemande.TabIndex = 118;
             this.dgDemande.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDemande_CellMouseDown);
+            this.dgDemande.Click += new System.EventHandler(this.dgDemande_Click);
+            this.dgDemande.Paint += new System.Windows.Forms.PaintEventHandler(this.dgDemande_Paint);
             this.dgDemande.DoubleClick += new System.EventHandler(this.dgDemande_DoubleClick);
             // 
             // lblTotalRequest
@@ -186,11 +188,14 @@
             // lblEdited
             // 
             this.lblEdited.AutoSize = true;
+            this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblEdited.ForeColor = System.Drawing.Color.Blue;
             this.lblEdited.Location = new System.Drawing.Point(333, 459);
             this.lblEdited.Name = "lblEdited";
             this.lblEdited.Size = new System.Drawing.Size(37, 13);
             this.lblEdited.TabIndex = 127;
             this.lblEdited.Text = "aucun";
+            this.lblEdited.Click += new System.EventHandler(this.lblEdited_Click);
             // 
             // label13
             // 
