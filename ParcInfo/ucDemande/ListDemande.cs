@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ParcInfo.Classes;
 using ParcInfo.ucInterevntion;
 using ParcInfo.ucDemande;
+using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucClient
 {
@@ -28,31 +29,44 @@ namespace ParcInfo.ucClient
             set { lblEmployeClient.Visible = value; }
         }
 
+        public int Idcli;
+        public string statut;
+        public int employee;
+        public int iduser;
+
+        //listdemande of selected client
         public ListDemande(int idClient, string nom)
         {
             InitializeComponent();
             using (var db = new ParcInformatiqueEntities())
             {
-                //  var res = db.Demandes.Where(x => x.Employee.Client.id == idClient).ToList();
-                lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
-                lblEmployeClient.Visible = true;
-                lblEmployeClient.Text = $"[{nom}]";
-                dgDemande.DataSource = (from d in db.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest })
+                Idcli = idClient;
+
+                var lsreq = (from d in db.GetRequestbyStatut()
+                                        where d.Employee.Client.id == idClient
                                         select new
                                         {
                                             d.Id,
                                             d.IdReq,
-                                            d.Employee.Nom,
-                                            
-                                            Desc = Methods.GetDesc(d.Description_d, 4),
                                             d.Datedemande,
+                                            Desc = Methods.GetDesc(d.Description_d, 4),
+                                            d.Employee.Nom,
                                             d.Getstatut,
-                                            IdClient = d.Employee.Client.id
+                                            IdClient = d.Employee.Client.id,
+                                            d.Modifierpar,
+                                            Edited = d.Utilisateur.Nom,
+                                            d.Datemodification
                                         }).ToList();
+
+
+                dgDemande.DataSource = Methods.ToDataTable(lsreq);
+
                 Methods.Nice_grid(
-                      new string[] { "IdReq", "Nom", "Desc", "Datedemande",  "Getstatut" },
-                      new string[] { "ID Demande", "Employee", "Description", "Date Demande", "Statut" },
-                      dgDemande);
+                    new string[] { "IdReq", "Datedemande", "Desc", "Nom", "Getstatut" },
+                    new string[] { "ID Demande", "Date Demande", "Description", "Employee", "Statut" },
+                    dgDemande);
+
+                Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind);
             }
         }
 
@@ -62,9 +76,10 @@ namespace ParcInfo.ucClient
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
+                    employee = idEmploye;
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
-                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest,lblListRequest })
+                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest,lblListRequest })
                                                 select new
                                                 {
                                                     d.Id,
@@ -73,13 +88,20 @@ namespace ParcInfo.ucClient
                                                     Desc = Methods.GetDesc(d.Description_d, 4),
                                                     d.Employee.Nom,
                                                     d.Getstatut,
-                                                    IdClient = d.Employee.Client.id
+                                                    IdClient = d.Employee.Client.id,
+                                                    d.Modifierpar,
+                                                    Edited = d.Utilisateur.Nom,
+                                                    d.Datemodification
                                                 }).ToList();
+
+                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                     }
 
                     else
                     {
-                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
+                        statut = statutReq;
+                        
+                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
                                                 select new {
                                                     d.Id,
                                                     d.IdReq,
@@ -87,7 +109,10 @@ namespace ParcInfo.ucClient
                                                     Desc = Methods.GetDesc(d.Description_d, 4),
                                                     d.Employee.Nom,
                                                     d.Getstatut,
-                                                    IdClient = d.Employee.Client.id
+                                                    IdClient = d.Employee.Client.id,
+                                                    d.Modifierpar,
+                                                    Edited = d.Utilisateur.Nom,
+                                                    d.Datemodification
                                                 }).ToList();
 
                         if (idEmploye > 0)
@@ -99,7 +124,10 @@ namespace ParcInfo.ucClient
                             dgDemande.Columns["Nom"].Visible = false;
                             lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
                         }
+
+                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind,lsreq);
                     }
+
                     HideColumns(new string[] { "id", "IdClient" }, dgDemande);
                     
                     Methods.Nice_grid(
@@ -183,35 +211,82 @@ namespace ParcInfo.ucClient
             StartIntervention();
         }
 
-        private void dgDemande_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void cbDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDelete.Checked && Idcli == 0)
+                ShowRequest(0, 0, true);
+            else if (!cbDelete.Checked && Idcli == 0)
+                ShowRequest(0, 0, false);
+
+            if (cbDelete.Checked && Idcli != 0)
+                ShowRequest(Idcli, 0, true);
+            else if (!cbDelete.Checked && Idcli != 0)
+                ShowRequest(Idcli, 0, false);
+
+
+            if (cbDelete.Checked && statut != null)
+                ShowRequest(0, 0, true, statut);
+            else if (!cbDelete.Checked && statut != null)
+                ShowRequest(0, 0, false, statut);
+
+            if (cbDelete.Checked && employee != 0)
+                ShowRequest(0, employee, true);
+            else if (!cbDelete.Checked && employee != 0)
+                ShowRequest(0, employee, false);
+        }
+
+        public void ShowRequest(int idclt = 0,int idemployee = 0, bool isdeleted = false, string statut = null)
+        {
+            using (var context = new ParcInformatiqueEntities())
+            {
+                var ls = (from d in context.GetRequestbyStatut(null,null,idemployee,isdeleted)
+                                        select new
+                                        {
+                                            d.Id,
+                                            d.IdReq,
+                                            d.Datedemande,
+                                            Desc = Methods.GetDesc(d.Description_d, 4),
+                                            d.Employee.Nom,
+                                            d.Getstatut,
+                                            IdClient = d.Employee.Client.id,
+                                            d.Modifierpar,
+                                            Edited = d.Utilisateur.Nom,
+                                            d.Datemodification
+                                        }).ToList();
+
+                if (idclt != 0)
+                    ls = ls.Where(i => i.IdClient == idclt).ToList();
+
+                if (statut != null)
+                    ls = ls.Where(i => i.Getstatut == statut).ToList();
+
+                Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+            }
+        }
+
+        private void lblEdited_Click(object sender, EventArgs e)
+        {
+            GlobVars.frmindex.ShowControl(new CardUsers(iduser));
+        }
+
+        private void dgDemande_Paint(object sender, PaintEventArgs e)
+        {
+            GetDetails();
+        }
+
+        private void dgDemande_Click(object sender, EventArgs e)
+        {
+            GetDetails();
+        }
+
+        public void GetDetails()
         {
             if (dgDemande.SelectedRows.Count > 0)
             {
-                var myrow = dgDemande.Rows[e.RowIndex];
-                int id = int.Parse(myrow.Cells["id"].Value.ToString());
-
-                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-                {
-                    var dem = (from c in context.Demandes
-                                  where c.Id == id && c.Modifierpar != null
-                                  join u in context.Utilisateurs on c.Modifierpar equals u.Id
-                                  select new { u.Nom, c.Datemodification }).FirstOrDefault();
-                    if (dem != null)
-                    {
-                        int loc = 325;
-                        lblEdited.Text = dem.Nom;
-                        loc += lblEdited.Width;
-                        lblMod.Location = new Point(loc, 459);
-                        // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
-                        lblEditedDate.Text = dem.Datemodification.ToString();
-                    }
-                    else
-                    {
-                        lblEdited.Text = "aucune";
-                        lblEditedDate.Text = "****-**-**";
-                    }
-                }
+                int index = dgDemande.CurrentRow.Index;
+                lblEdited.Text = dgDemande.Rows[index].Cells["Edited"].Value.ToString();
+                lblEditedDate.Text = dgDemande.Rows[index].Cells["Datemodification"].Value.ToString();
+                iduser = Convert.ToInt32(dgDemande.Rows[index].Cells["Modifierpar"].Value);
             }
         }
     }

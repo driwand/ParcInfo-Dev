@@ -39,10 +39,15 @@
             this.lblTotalIntervention = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblEditedDate = new System.Windows.Forms.Label();
-            this.lblMod = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblEdited = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.chDelIntr = new System.Windows.Forms.CheckBox();
-            this.lblEdited = new System.Windows.Forms.LinkLabel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblEdited = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblEditedDate = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIntervention)).BeginInit();
             this.SuspendLayout();
@@ -127,7 +132,8 @@
             this.dgIntervention.ReadOnly = true;
             this.dgIntervention.Size = new System.Drawing.Size(863, 347);
             this.dgIntervention.TabIndex = 112;
-            this.dgIntervention.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgIntervention_RowEnter);
+            this.dgIntervention.Click += new System.EventHandler(this.dgIntervention_Click);
+            this.dgIntervention.Paint += new System.Windows.Forms.PaintEventHandler(this.dgIntervention_Paint);
             this.dgIntervention.DoubleClick += new System.EventHandler(this.dgIntervention_DoubleClick);
             // 
             // lblTotalIntervention
@@ -142,41 +148,6 @@
             this.lblTotalIntervention.Text = "41";
             this.lblTotalIntervention.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(191, 458);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 15);
-            this.panel2.TabIndex = 136;
-            // 
-            // lblEditedDate
-            // 
-            this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(435, 459);
-            this.lblEditedDate.Name = "lblEditedDate";
-            this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
-            this.lblEditedDate.TabIndex = 134;
-            this.lblEditedDate.Text = "2018/08/08";
-            // 
-            // lblMod
-            // 
-            this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(373, 459);
-            this.lblMod.Name = "lblMod";
-            this.lblMod.Size = new System.Drawing.Size(61, 13);
-            this.lblMod.TabIndex = 135;
-            this.lblMod.Text = "Modifier le :";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(203, 459);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 13);
-            this.label8.TabIndex = 132;
-            this.label8.Text = "Dernier modification par :";
-            // 
             // chDelIntr
             // 
             this.chDelIntr.AutoSize = true;
@@ -187,6 +158,53 @@
             this.chDelIntr.Text = "Afficher les elements supprimer";
             this.chDelIntr.UseVisualStyleBackColor = true;
             this.chDelIntr.CheckedChanged += new System.EventHandler(this.chDelIntr_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(203, 459);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 13);
+            this.label8.TabIndex = 132;
+            this.label8.Text = "Dernier modification par :";
+            // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblEdited.ForeColor = System.Drawing.Color.Blue;
+            this.lblEdited.Location = new System.Drawing.Point(333, 459);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(37, 13);
+            this.lblEdited.TabIndex = 133;
+            this.lblEdited.Text = "aucun";
+            this.lblEdited.Click += new System.EventHandler(this.lblEdited_Click);
+            // 
+            // lblMod
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(389, 459);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 13);
+            this.label13.TabIndex = 135;
+            this.label13.Text = "Modifier le :";
+            // 
+            // lblEditedDate
+            // 
+            this.lblEditedDate.AutoSize = true;
+            this.lblEditedDate.Location = new System.Drawing.Point(456, 459);
+            this.lblEditedDate.Name = "lblEditedDate";
+            this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
+            this.lblEditedDate.TabIndex = 134;
+            this.lblEditedDate.Text = "****/**/**";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Location = new System.Drawing.Point(191, 458);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 15);
+            this.panel2.TabIndex = 136;
             // 
             // lblEdited
             // 
@@ -237,11 +255,11 @@
         public System.Windows.Forms.DataGridView dgIntervention;
         public System.Windows.Forms.Button btnFind;
         public System.Windows.Forms.TextBox txtFind;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblEditedDate;
-        private System.Windows.Forms.Label lblMod;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chDelIntr;
-        private System.Windows.Forms.LinkLabel lblEdited;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblEdited;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblEditedDate;
+        private System.Windows.Forms.Panel panel2;
     }
 }

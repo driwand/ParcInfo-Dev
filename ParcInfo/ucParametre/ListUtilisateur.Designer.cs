@@ -33,12 +33,18 @@
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgUtilisateur = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblEditedDate = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblEdited = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.chDelIntr = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -46,7 +52,7 @@
             this.groupBox2.Controls.Add(this.btnFind);
             this.groupBox2.Controls.Add(this.txtFind);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Location = new System.Drawing.Point(16, 47);
+            this.groupBox2.Location = new System.Drawing.Point(15, 52);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(863, 50);
             this.groupBox2.TabIndex = 90;
@@ -59,7 +65,7 @@
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
             this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(828, 13);
+            this.btnFind.Location = new System.Drawing.Point(827, 18);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
             this.btnFind.TabIndex = 51;
@@ -67,7 +73,7 @@
             // 
             // txtFind
             // 
-            this.txtFind.Location = new System.Drawing.Point(120, 19);
+            this.txtFind.Location = new System.Drawing.Point(119, 24);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(702, 20);
             this.txtFind.TabIndex = 42;
@@ -75,7 +81,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(19, 23);
+            this.label15.Location = new System.Drawing.Point(18, 28);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(101, 13);
             this.label15.TabIndex = 41;
@@ -84,27 +90,17 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.panel1.Location = new System.Drawing.Point(14, 40);
+            this.panel1.Location = new System.Drawing.Point(13, 45);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(863, 2);
             this.panel1.TabIndex = 89;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 88;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(55, 14);
+            this.label1.Location = new System.Drawing.Point(54, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 15);
             this.label1.TabIndex = 87;
@@ -113,17 +109,89 @@
             // dgUtilisateur
             // 
             this.dgUtilisateur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgUtilisateur.Location = new System.Drawing.Point(16, 103);
+            this.dgUtilisateur.Location = new System.Drawing.Point(15, 108);
             this.dgUtilisateur.Name = "dgUtilisateur";
-            this.dgUtilisateur.Size = new System.Drawing.Size(863, 363);
+            this.dgUtilisateur.Size = new System.Drawing.Size(863, 344);
             this.dgUtilisateur.TabIndex = 91;
             this.dgUtilisateur.DoubleClick += new System.EventHandler(this.dgUtilisateur_DoubleClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 88;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Location = new System.Drawing.Point(192, 458);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 15);
+            this.panel2.TabIndex = 142;
+            // 
+            // lblEditedDate
+            // 
+            this.lblEditedDate.AutoSize = true;
+            this.lblEditedDate.Location = new System.Drawing.Point(457, 459);
+            this.lblEditedDate.Name = "lblEditedDate";
+            this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
+            this.lblEditedDate.TabIndex = 140;
+            this.lblEditedDate.Text = "****/**/**";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(390, 459);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 13);
+            this.label13.TabIndex = 141;
+            this.label13.Text = "Modifier le :";
+            // 
+            // lblEdited
+            // 
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblEdited.ForeColor = System.Drawing.Color.Blue;
+            this.lblEdited.Location = new System.Drawing.Point(334, 459);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(37, 13);
+            this.lblEdited.TabIndex = 139;
+            this.lblEdited.Text = "aucun";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(204, 459);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 13);
+            this.label8.TabIndex = 138;
+            this.label8.Text = "Dernier modification par :";
+            // 
+            // chDelIntr
+            // 
+            this.chDelIntr.AutoSize = true;
+            this.chDelIntr.Location = new System.Drawing.Point(15, 457);
+            this.chDelIntr.Name = "chDelIntr";
+            this.chDelIntr.Size = new System.Drawing.Size(171, 17);
+            this.chDelIntr.TabIndex = 137;
+            this.chDelIntr.Text = "Afficher les elements supprimer";
+            this.chDelIntr.UseVisualStyleBackColor = true;
             // 
             // ListUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblEditedDate);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblEdited);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.chDelIntr);
             this.Controls.Add(this.dgUtilisateur);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
@@ -134,8 +202,8 @@
             this.Load += new System.EventHandler(this.ListUtilisateur_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +219,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgUtilisateur;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblEditedDate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblEdited;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chDelIntr;
     }
 }

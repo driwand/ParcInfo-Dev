@@ -139,7 +139,8 @@
             this.dgDemande.Size = new System.Drawing.Size(863, 347);
             this.dgDemande.TabIndex = 118;
             this.dgDemande.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDemande_CellMouseDown);
-            this.dgDemande.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDemande_RowEnter);
+            this.dgDemande.Click += new System.EventHandler(this.dgDemande_Click);
+            this.dgDemande.Paint += new System.Windows.Forms.PaintEventHandler(this.dgDemande_Paint);
             this.dgDemande.DoubleClick += new System.EventHandler(this.dgDemande_DoubleClick);
             // 
             // lblTotalRequest
@@ -174,6 +175,7 @@
             this.cbDelete.TabIndex = 125;
             this.cbDelete.Text = "Afficher les elements supprimer";
             this.cbDelete.UseVisualStyleBackColor = true;
+            this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
             // 
             // label8
             // 
@@ -186,21 +188,26 @@
             // 
             // lblMod
             // 
-            this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(373, 461);
-            this.lblMod.Name = "lblMod";
-            this.lblMod.Size = new System.Drawing.Size(61, 13);
-            this.lblMod.TabIndex = 129;
-            this.lblMod.Text = "Modifier le :";
+            this.lblEdited.AutoSize = true;
+            this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblEdited.ForeColor = System.Drawing.Color.Blue;
+            this.lblEdited.Location = new System.Drawing.Point(333, 459);
+            this.lblEdited.Name = "lblEdited";
+            this.lblEdited.Size = new System.Drawing.Size(37, 13);
+            this.lblEdited.TabIndex = 127;
+            this.lblEdited.Text = "aucun";
+            this.lblEdited.Click += new System.EventHandler(this.lblEdited_Click);
+            // 
+            // label13
             // 
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
             this.lblEditedDate.Location = new System.Drawing.Point(440, 461);
             this.lblEditedDate.Name = "lblEditedDate";
-            this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
+            this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
             this.lblEditedDate.TabIndex = 128;
-            this.lblEditedDate.Text = "2018/08/08";
+            this.lblEditedDate.Text = "****/**/**";
             // 
             // panel2
             // 

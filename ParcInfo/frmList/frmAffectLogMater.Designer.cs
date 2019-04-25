@@ -36,12 +36,12 @@
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblproduct = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblmodel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lbltype = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblmodel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblproduct = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdcuts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -127,50 +127,14 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.lblmodel);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.lblproduct);
+            this.groupBox2.Controls.Add(this.lbl1);
             this.groupBox2.Location = new System.Drawing.Point(15, 11);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(563, 55);
             this.groupBox2.TabIndex = 83;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "You want to assign to this product";
-            // 
-            // lblproduct
-            // 
-            this.lblproduct.AutoSize = true;
-            this.lblproduct.Location = new System.Drawing.Point(15, 24);
-            this.lblproduct.Name = "lblproduct";
-            this.lblproduct.Size = new System.Drawing.Size(46, 13);
-            this.lblproduct.TabIndex = 53;
-            this.lblproduct.Text = "Produit :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "PRD";
-            // 
-            // lblmodel
-            // 
-            this.lblmodel.AutoSize = true;
-            this.lblmodel.Location = new System.Drawing.Point(220, 24);
-            this.lblmodel.Name = "lblmodel";
-            this.lblmodel.Size = new System.Drawing.Size(17, 13);
-            this.lblmodel.TabIndex = 56;
-            this.lblmodel.Text = "ml";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(168, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "Model :";
             // 
             // lbltype
             // 
@@ -190,6 +154,42 @@
             this.label7.TabIndex = 57;
             this.label7.Text = "Type :";
             // 
+            // lblmodel
+            // 
+            this.lblmodel.AutoSize = true;
+            this.lblmodel.Location = new System.Drawing.Point(220, 24);
+            this.lblmodel.Name = "lblmodel";
+            this.lblmodel.Size = new System.Drawing.Size(17, 13);
+            this.lblmodel.TabIndex = 56;
+            this.lblmodel.Text = "ml";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(168, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 55;
+            this.label5.Text = "Model :";
+            // 
+            // lblproduct
+            // 
+            this.lblproduct.AutoSize = true;
+            this.lblproduct.Location = new System.Drawing.Point(67, 24);
+            this.lblproduct.Name = "lblproduct";
+            this.lblproduct.Size = new System.Drawing.Size(30, 13);
+            this.lblproduct.TabIndex = 54;
+            this.lblproduct.Text = "PRD";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(15, 24);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(46, 13);
+            this.lbl1.TabIndex = 53;
+            this.lbl1.Text = "Produit :";
+            // 
             // frmAffectLogMater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +202,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAffectLogMater";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Product";
             this.Load += new System.EventHandler(this.frmAffectLogMater_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgProdcuts)).EndInit();
@@ -227,7 +228,7 @@
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label lblmodel;
         public System.Windows.Forms.Label label5;
-        public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label lblproduct;
+        public System.Windows.Forms.Label lbl1;
     }
 }

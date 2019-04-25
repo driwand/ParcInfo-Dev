@@ -306,6 +306,12 @@
     <Compile Include="ucIntervention\NewIntervention.designer.cs">
       <DependentUpon>NewIntervention.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucParametre\CardUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucParametre\CardUsers.Designer.cs">
+      <DependentUpon>CardUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucParametre\AppSettingcs.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -447,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucIntervention\NewIntervention.resx">
       <DependentUpon>NewIntervention.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucParametre\CardUsers.resx">
+      <DependentUpon>CardUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucParametre\AppSettingcs.resx">
       <DependentUpon>AppSettingcs.cs</DependentUpon>

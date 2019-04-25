@@ -19,6 +19,8 @@ namespace ParcInfo
         int idC;
         lblTextbox lblx;
         loginPass lg;
+        int idprd = 0;
+        
         public frmAffecter()
         {
             InitializeComponent();
@@ -70,6 +72,23 @@ namespace ParcInfo
                 }
             }
         }
+        public frmAffecter(int Idproduct)
+        {
+            InitializeComponent();
+            using (var context = new ParcInformatiqueEntities())
+            {
+                var prodinfo = context.ProduitClients.Find(Idproduct);
+                prixVente prop = new prixVente();
+                prop.LblCode = prodinfo.CodeProduit;
+                prop.Lblid = Idproduct.ToString();
+                prop.Name = "txtproductid";
+                pnlCntrl.Controls.Add(prop);
+
+                prixVente tx = pnlCntrl.Controls.Find("txtproductid", true).FirstOrDefault() as prixVente;
+                tx.TxtValue = prodinfo.Produit.Prix.ToString();
+                idprd = Idproduct;
+            }
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -86,6 +105,14 @@ namespace ParcInfo
                     lg.Focus();
                 }
             
+            }else if(idprd > 0){
+                using (var context = new ParcInformatiqueEntities())
+                {
+                    var produicli = context.ProduitClients.Find(idprd);
+                    prixVente tx = pnlCntrl.Controls.Find("txtproductid", true).FirstOrDefault() as prixVente;
+                    produicli.Prixvente = float.Parse(tx.TxtValue);
+                    context.SaveChanges();
+                }
             }
             else
             {

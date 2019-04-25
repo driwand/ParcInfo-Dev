@@ -11,11 +11,15 @@ using ParcInfo.Classes;
 using ParcInfo.ucControls;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
+using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucInterevntion
 {
     public partial class ListeIntervention : UserControl
     {
+        int idclient;
+        string statutit;
+        int idUser;
         public ListeIntervention(string statutInterv,int countInterv)
         {
             InitializeComponent();
@@ -33,7 +37,10 @@ namespace ParcInfo.ucInterevntion
                                  ir.Fin,
                                  ir.IdDemande,
                                  ir.Getstatut,
-                                 IdClient = ir.Client.id
+                                 ir.Idclient,
+                                 Edited = ir.UtilisateurEdit.Nom,
+                                 ir.Modifierpar,
+                                 ir.Datemodification
                              }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
@@ -49,14 +56,18 @@ namespace ParcInfo.ucInterevntion
                                   ir.Fin,
                                   ir.IdDemande,
                                   ir.Getstatut,
-                                  IdClient = ir.Client.id
+                                  ir.Idclient,
+                                  Edited = ir.UtilisateurEdit.Nom,
+                                  ir.Modifierpar,
+                                  ir.Datemodification
                               }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
+                    statutit = statutInterv;
                 }
               
                 Methods.Nice_grid(
-                    new string[] { "IdIntrv", "Nom" ,"Debut", "Fin", "Idclient", "IdDemande","Getstatut"},
-                    new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention",  "Demande", "Statut" },
+                    new string[] { "IdIntrv", "Nom" ,"Debut", "Fin", "IdDemande","Getstatut", "IdClient" },
+                    new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut", "Idclient" },
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
@@ -69,6 +80,7 @@ namespace ParcInfo.ucInterevntion
             {
                 if (idClient > 0 && Code != "")
                 {
+                    idclient = idClient;
                     lblSource.Text = $"[{Code}]";
                     lblSource.ForeColor = Color.FromArgb(0, 168, 255);
                     lblSource.Visible = true;
@@ -82,13 +94,18 @@ namespace ParcInfo.ucInterevntion
                                   ir.Debut,
                                   ir.Fin,
                                   ir.IdDemande,
-                                  ir.Getstatut
+                                  ir.Getstatut,
+                                  ir.Idclient,
+                                  Edited = ir.UtilisateurEdit.Nom,
+                                  ir.Modifierpar,
+                                  ir.Datemodification
                               }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
+                    lblTotalIntervention.Text = ls.Count().ToString();
                     Methods.Nice_grid(
-                       new string[] { "IdIntrv", "Nom", "Debut", "Fin", "Idclient", "IdDemande", "Getstatut" },
-                       new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut" },
-                       dgIntervention);
+                        new string[] { "IdIntrv", "Nom", "Debut", "Fin", "IdDemande", "Getstatut", "IdClient" },
+                        new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut", "Idclient" },
+                        dgIntervention);
                     Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
                 }
             }
@@ -107,7 +124,7 @@ namespace ParcInfo.ucInterevntion
                         new NewIntervention(
                             0,
                             0, 
-                            selectedInt, 
+                            selectedInt,
                             int.Parse(dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString()))
                             );
                 }
@@ -118,17 +135,67 @@ namespace ParcInfo.ucInterevntion
                             0,
                             0,
                             selectedInt,
-                            int.Parse(dgIntervention.Rows[index].Cells["IdClient"].Value.ToString()))
+                            int.Parse(dgIntervention.Rows[index].Cells["Idclient"].Value.ToString()))
                             );
                 }
 
             }
         }
+        private void dgIntervention_Click(object sender, EventArgs e)
+        {
+            GetDetails();
+        }
 
         private void chDelIntr_CheckedChanged(object sender, EventArgs e)
-        {
+        {            
+            if (chDelIntr.Checked && idclient == 0)
+                Showintervention(0, true);
+            else if (!chDelIntr.Checked && idclient == 0)
+                Showintervention(0, false);
+            
+
+            if (chDelIntr.Checked && idclient != 0)
+                Showintervention(idclient, true);
+            else if(!chDelIntr.Checked && idclient != 0)
+                Showintervention(idclient, false);
 
 
+            if (chDelIntr.Checked && statutit != null)
+                Showintervention(0, true, statutit);
+            else if (!chDelIntr.Checked && statutit != null)
+                Showintervention(0, false, statutit);
+
+        }
+
+        public void Showintervention(int id = 0,bool isdeleted = false, string statut = null)
+        { 
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var ls = (from ir in db.GetInterventionBystatut(null,null,isdeleted)
+                          select new
+                          {
+                              ir.IdIntrv,
+                              ir.Id,
+                              ir.Client.Nom,
+                              ir.Debut,
+                              ir.Fin,
+                              ir.IdDemande,
+                              ir.Getstatut,
+                              ir.Idclient,
+                              Edited = ir.UtilisateurEdit.Nom,
+                              ir.Modifierpar,
+                              ir.Datemodification
+                          }).ToList();
+
+                if (id != 0)
+                    ls = ls.Where(i => i.Idclient == id).ToList();
+
+                if (statut != null)
+                    ls = ls.Where(i => i.Getstatut == statut).ToList();
+
+                dgIntervention.DataSource = Methods.ToDataTable(ls);
+                lblTotalIntervention.Text = ls.Count().ToString();
+            }
         }
 
         private void ListeIntervention_Load(object sender, EventArgs e)
@@ -136,36 +203,28 @@ namespace ParcInfo.ucInterevntion
 
         }
 
-        private void dgIntervention_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void dgIntervention_Paint(object sender, PaintEventArgs e)
         {
             if (dgIntervention.SelectedRows.Count > 0)
             {
-                var myrow = dgIntervention.Rows[e.RowIndex];
-                int id = int.Parse(myrow.Cells["id"].Value.ToString());
-
-                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-                {
-                    var interv = (from c in context.Interventions
-                               where c.Id == id && c.Modifierpar != null
-                               join u in context.Utilisateurs on c.Modifierpar equals u.Id
-                               select new { u.Nom, c.Datemodification }).FirstOrDefault();
-                    if (interv != null)
-                    {
-                        int loc = 325;
-                        lblEdited.Text = interv.Nom;
-                        loc += lblEdited.Width;
-                        lblMod.Location = new Point(loc, 459);
-                        // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
-                        lblEditedDate.Text = interv.Datemodification.ToString();
-                    }
-                    else
-                    {
-                        lblEdited.Text = "aucune";
-                        lblEditedDate.Text = "****-**-**";
-                    }
-                }
+                GetDetails();
             }
+        }
+
+        public void GetDetails()
+        {
+            if (dgIntervention.SelectedRows.Count > 0)
+            {
+                int index = dgIntervention.CurrentRow.Index;
+                lblEdited.Text = dgIntervention.Rows[index].Cells["Edited"].Value.ToString();
+                lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
+                idUser = Convert.ToInt32(dgIntervention.Rows[index].Cells["Modifierpar"].Value);
+            }
+        }
+
+        private void lblEdited_Click(object sender, EventArgs e)
+        {
+            GlobVars.frmindex.ShowControl(new CardUsers(idUser));
         }
     }
 }
