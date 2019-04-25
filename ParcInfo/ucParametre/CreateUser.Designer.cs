@@ -30,9 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblDateMod = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblUserMod = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -82,8 +82,8 @@
             this.lblTel = new System.Windows.Forms.Label();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnEditUser = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.btnEditUser = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -117,37 +117,37 @@
             this.label1.TabIndex = 154;
             this.label1.Text = "List Utilisateur";
             // 
-            // label11
+            // lblDateMod
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(120, 28);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 13);
-            this.label11.TabIndex = 54;
-            this.label11.Text = "[4/12/2019]";
+            this.lblDateMod.AutoSize = true;
+            this.lblDateMod.Location = new System.Drawing.Point(120, 54);
+            this.lblDateMod.Name = "lblDateMod";
+            this.lblDateMod.Size = new System.Drawing.Size(65, 13);
+            this.lblDateMod.TabIndex = 54;
+            this.lblDateMod.Text = "[4/12/2019]";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 28);
+            this.label10.Location = new System.Drawing.Point(7, 54);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(107, 13);
             this.label10.TabIndex = 53;
             this.label10.Text = "Date de modification:";
             // 
-            // label13
+            // lblUserMod
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(120, 58);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 13);
-            this.label13.TabIndex = 56;
-            this.label13.Text = "User1";
+            this.lblUserMod.AutoSize = true;
+            this.lblUserMod.Location = new System.Drawing.Point(120, 29);
+            this.lblUserMod.Name = "lblUserMod";
+            this.lblUserMod.Size = new System.Drawing.Size(35, 13);
+            this.lblUserMod.TabIndex = 56;
+            this.lblUserMod.Text = "User1";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 56);
+            this.label12.Location = new System.Drawing.Point(7, 27);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 55;
@@ -155,9 +155,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.lblUserMod);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.lblDateMod);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Location = new System.Drawing.Point(16, 340);
             this.groupBox3.Name = "groupBox3";
@@ -539,6 +539,7 @@
             this.btnDelUser.Size = new System.Drawing.Size(32, 32);
             this.btnDelUser.TabIndex = 162;
             this.btnDelUser.UseVisualStyleBackColor = false;
+            this.btnDelUser.Visible = false;
             // 
             // label3
             // 
@@ -664,20 +665,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Utilisateur";
             // 
-            // btnEditUser
-            // 
-            this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditUser.ForeColor = System.Drawing.Color.White;
-            this.btnEditUser.Image = global::ParcInfo.Properties.Resources.edit201;
-            this.btnEditUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditUser.Location = new System.Drawing.Point(667, 435);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(100, 32);
-            this.btnEditUser.TabIndex = 163;
-            this.btnEditUser.Text = "Modifier";
-            this.btnEditUser.UseVisualStyleBackColor = false;
-            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(72, 161);
@@ -685,6 +672,22 @@
             this.txtEmail.Size = new System.Drawing.Size(159, 20);
             this.txtEmail.TabIndex = 5;
             this.txtEmail.Tag = "required";
+            // 
+            // btnEditUser
+            // 
+            this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditUser.ForeColor = System.Drawing.Color.White;
+            this.btnEditUser.Image = global::ParcInfo.Properties.Resources.edit;
+            this.btnEditUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditUser.Location = new System.Drawing.Point(667, 435);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(100, 32);
+            this.btnEditUser.TabIndex = 163;
+            this.btnEditUser.Text = "Modifier";
+            this.btnEditUser.UseVisualStyleBackColor = false;
+            this.btnEditUser.Visible = false;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // button1
             // 
@@ -743,9 +746,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.Label lblDateMod;
         public System.Windows.Forms.Label label10;
-        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label lblUserMod;
         public System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;

@@ -36,7 +36,6 @@ namespace ParcInfo.ucParametre
                             );
             Methods.FilterDataGridViewIni(dgUtilisateur, txtFind, btnFind);
         }
-
         private void dgUtilisateur_DoubleClick(object sender, EventArgs e)
         {
             if (dgUtilisateur.SelectedRows.Count > 0)

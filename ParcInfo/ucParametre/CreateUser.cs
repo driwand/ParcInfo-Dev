@@ -37,14 +37,18 @@ namespace ParcInfo.ucParametre
         {
             InitializeComponent();
             idU = idUser;
+            btnEditUser.Visible = true;
+            btnDelUser.Visible = true;
+            btnAdd.Visible = false;
+            btnEditUser.Location = new Point(770, 435);
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-
+                var user = context.Utilisateurs.Find(idUser);
                 var listC = (from cx in context.AffectationClients
-                         where cx.Idutilisateur == idUser && cx.IsDeleted == 0
-                         join x in context.Clients on cx.Idclient equals x.id
-                         select x).ToList();
-              //  var c = context.Clients.Where(d => d.IsDeleted == 0).ToList();
+                             where cx.Idutilisateur == idUser && cx.IsDeleted == 0
+                             join x in context.Clients on cx.Idclient equals x.id
+                             select x).ToList();
+                
                 dgClient.DataSource = Methods.ToDataTable(listC.Where(d=> d.IsDeleted == 0).Select(
                     cl => new {
                     cl.IdCLient,
@@ -57,6 +61,24 @@ namespace ParcInfo.ucParametre
                                  );
                 dgClient.MultiSelect = true;
                 Methods.FilterDataGridViewIni(dgClient, txtFind, btnFind);
+
+                txtNom.Text = user.Nom;
+                txtPrenom.Text = user.Prenom;
+                txtAdresse.Text = user.Adresse;
+                txtVille.Text = user.Ville;
+                txtTel.Text = user.Tel;
+                txtEmail.Text = user.Email;
+                if (user.isAdmin == 1)
+                {
+                    ckAdmin.Checked = true;
+                }
+                if (user.Utilisateur3 != null)
+                {
+                    lblDateMod.Text = user.Datemodification.ToString();
+                    lblUserMod.Text = user.Utilisateur3.Nom;
+                }
+              
+                GetAllCheckbox(pnlRoles);
             }
         }
 
@@ -128,6 +150,7 @@ namespace ParcInfo.ucParametre
                                     Idclient = item,
                                     Idutilisateur = user.Id,
                                     Creepar = GlobVars.currentUser,
+                                    
                                     IsDeleted = 0
                                 });
                             }
@@ -142,74 +165,44 @@ namespace ParcInfo.ucParametre
                 }       
             }
         }
- 
 
-        public void GetValues()
+
+        // get checkbox value
+        public void GetAllCheckbox(Control ctrl )
         {
-            using (var context = new ParcInformatiqueEntities())
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                List<CheckBox> lstr = new List<CheckBox>();
-               GetAllCheckbox(pnlRoles, lstr);
-                if (idU > 0)
+                   var listR = context.GetListRoles(idU);
+                foreach (Control item in ctrl.Controls)
                 {
-                    var listR = context.GetListRoles(idU);
-                    //foreach (var item in listR)
-                    //{
-                    //    foreach (var c in lstr)
-                    //    {
-                    //        if (item.Nom == c.Text)
-                    //        {
-                    //            c.Checked = true;
-                    //        }
-                    //        else if (item.Nom == c.Text + " " + c.Parent.Text)
-                    //        {
-                    //            c.Checked = true;
-                    //        }
-                    //    }
-                    //}
-                    foreach (var c in lstr)
+                    if (item is GroupBox)
                     {
-                        foreach (var item in listR)
+                        GetAllCheckbox(item);
+                    }
+                    foreach (var r in listR)
+                    {
+                        if (item is CheckBox cv)
                         {
-                            if (item.Nom == c.Text)
+                            if (cv.Text == r.Nom)
                             {
-                                c.Checked = true;
+                                cv.Checked = true;
                             }
-                            else if (item.Nom == c.Text + " " + c.Parent.Text)
+                            else if (cv.Text + " " + cv.Parent.Text == r.Nom)
                             {
-                                c.Checked = true;
+                                cv.Checked = true;
+                            }
+                        }
+                        else if (item is RadioButton rb)
+                        {
+                            if (rb.Text == r.Nom)
+                            {
+                                rb.Checked = true;
                             }
                         }
                     }
                 }
             }
         }
-      
-        public void GetAllCheckbox(Control ctrl , List<CheckBox> ls)
-        {
-            //foreach (Control item in ctrl.Controls)
-            //{
-            //    if (item is CheckBox c)
-            //    {
-            //        ls.Add(c);
-            //    }
-            //}
-
-
-            foreach (Control item in ctrl.Controls)
-            {
-                if (item is GroupBox)
-                {
-                    GetAllCheckbox(item, ls);
-                }
-                else if (item is CheckBox cv)
-                {
-                    ls.Add(cv);
-
-                }
-            }
-        }
-
         // get Selected Client
         public  List<int> getSelectedClient()
         {
@@ -246,7 +239,6 @@ namespace ParcInfo.ucParametre
 
                         ls.Add(t);
                     }
-              
                 }
                 else if (item is RadioButton rb)
                 {
@@ -261,27 +253,58 @@ namespace ParcInfo.ucParametre
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //List<string> lst = new List<string>();
-            //CheckBoxC(pnlRoles, lst);
-            //foreach (var item in lst)
-            //{
-            //    MessageBox.Show(item);
-            //}
-            //var listt = getSelectedClient();
-            //foreach (var item in listt)
-            //{
-            //    MessageBox.Show(item.ToString());
-            //}
-            GetValues();
-            //foreach (Control item in pnlRoles.Controls)
-            //{
-            //    foreach (Control c in item.Controls)
-            //    {
-            //        MessageBox.Show(c.Name);
-            //    }
-            //}
+           
+            GetAllCheckbox(pnlRoles);
+            
         }
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                List<string> lst = new List<string>();
+                var listRoles = context.GetListRoles(idU);
+                CheckBoxC(pnlRoles, lst);
+                var deleteList = listRoles.Select(cs => cs.Nom).ToList().Except(lst);
+                var insertList = lst.Except(listRoles.Select(c => c.Nom).ToList());
+                var user = context.Utilisateurs.Find(idU);
+                foreach (var r in deleteList)
+                {
+                    var c = listRoles.Where(ro => ro.Nom == r).FirstOrDefault();
+                    if (c != null)
+                    {
+                        c.IsDeleted = 1;
+                        c.Datemodification = DateTime.Now;
+                        c.Modifierpar = GlobVars.currentUser;
+                    }
+                }
+                foreach (var item in insertList)
+                {
+                    context.RoleUtilisateurs.Add(new RoleUtilisateur
+                    {
+                        Nom = item,
+                        IdUtilisateur = idU,
+                        IsDeleted = 0,
+                        Creepar = GlobVars.currentUser,
+                        Datecreation = DateTime.Now
+                    });
+                }
+                user.Nom = txtNom.Text;
+                user.Prenom = txtPrenom.Text;
+                user.Adresse = txtAdresse.Text;
+                user.Ville = txtVille.Text;
+                user.Tel = txtTel.Text;
+                txtEmail.Text = txtEmail.Text;
+                int isAdmin = 0;
+                if (ckAdmin.Checked)
+                {
+                    isAdmin = 1;
+                }
+                user.isAdmin = isAdmin;
+                user.Datemodification = DateTime.Now;
+                user.Modifierpar = GlobVars.currentUser;
+                context.SaveChanges();
 
-       
+            }
+        }
     }
 }
