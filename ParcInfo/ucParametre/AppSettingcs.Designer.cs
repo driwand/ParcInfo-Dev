@@ -51,6 +51,7 @@
             this.btnFullback = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRestore = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.gpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.applogo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -294,11 +295,26 @@
             this.btnRestore.UseVisualStyleBackColor = false;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(482, 236);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 35);
+            this.button1.TabIndex = 163;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // AppSettingcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDifferentialBackup);
             this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.btnFullback);
@@ -343,5 +359,6 @@
         public System.Windows.Forms.Button btnFullback;
         public System.Windows.Forms.Button btnDifferentialBackup;
         public System.Windows.Forms.Button btnRestore;
+        public System.Windows.Forms.Button button1;
     }
 }

@@ -162,6 +162,12 @@
     <Compile Include="RoleUtilisateur.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
     <Compile Include="TypeProduit.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
