@@ -16,6 +16,8 @@ namespace ParcInfo.ucInterevntion
 {
     public partial class ListeIntervention : UserControl
     {
+        int idclient;
+        string statutit;
         public ListeIntervention(string statutInterv,int countInterv)
         {
             InitializeComponent();
@@ -33,7 +35,9 @@ namespace ParcInfo.ucInterevntion
                                  ir.Fin,
                                  ir.IdDemande,
                                  ir.Getstatut,
-                                 IdClient = ir.Client.id
+                                 ir.Idclient,
+                                 Edited = ir.UtilisateurEdit.Nom,
+                                 ir.Datemodification
                              }).ToList();
 
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
@@ -49,14 +53,17 @@ namespace ParcInfo.ucInterevntion
                                   ir.Fin,
                                   ir.IdDemande,
                                   ir.Getstatut,
-                                  IdClient = ir.Client.id
+                                  ir.Idclient,
+                                  Edited = ir.UtilisateurEdit.Nom,
+                                  ir.Datemodification
                               }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
+                    statutit = statutInterv;
                 }
               
                 Methods.Nice_grid(
-                    new string[] { "IdIntrv", "Nom" ,"Debut", "Fin", "Idclient", "IdDemande","Getstatut"},
-                    new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention",  "Demande", "Statut" },
+                    new string[] { "IdIntrv", "Nom" ,"Debut", "Fin", "IdDemande","Getstatut", "IdClient" },
+                    new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut", "Idclient" },
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
@@ -69,6 +76,7 @@ namespace ParcInfo.ucInterevntion
             {
                 if (idClient > 0 && Code != "")
                 {
+                    idclient = idClient;
                     lblSource.Text = $"[{Code}]";
                     lblSource.Visible = true;
                     var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention })
@@ -81,13 +89,17 @@ namespace ParcInfo.ucInterevntion
                                   ir.Debut,
                                   ir.Fin,
                                   ir.IdDemande,
-                                  ir.Getstatut
+                                  ir.Getstatut,
+                                  ir.Idclient,
+                                  Edited = ir.UtilisateurEdit.Nom,
+                                  ir.Datemodification
                               }).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
+                    lblTotalIntervention.Text = ls.Count().ToString();
                     Methods.Nice_grid(
-                       new string[] { "IdIntrv", "Nom", "Debut", "Fin", "Idclient", "IdDemande", "Getstatut" },
-                       new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut" },
-                       dgIntervention);
+                        new string[] { "IdIntrv", "Nom", "Debut", "Fin", "IdDemande", "Getstatut", "IdClient" },
+                        new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut", "Idclient" },
+                        dgIntervention);
                     Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
                 }
             }
@@ -106,7 +118,7 @@ namespace ParcInfo.ucInterevntion
                         new NewIntervention(
                             0,
                             0, 
-                            selectedInt, 
+                            selectedInt,
                             int.Parse(dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString()))
                             );
                 }
@@ -117,22 +129,89 @@ namespace ParcInfo.ucInterevntion
                             0,
                             0,
                             selectedInt,
-                            int.Parse(dgIntervention.Rows[index].Cells["IdClient"].Value.ToString()))
+                            int.Parse(dgIntervention.Rows[index].Cells["Idclient"].Value.ToString()))
                             );
                 }
 
             }
         }
+        private void dgIntervention_Click(object sender, EventArgs e)
+        {
+            GetDetails();
+        }
 
         private void chDelIntr_CheckedChanged(object sender, EventArgs e)
-        {
+        {            
+            if (chDelIntr.Checked && idclient == 0)
+                Showintervention(0, true);
+            else if (!chDelIntr.Checked && idclient == 0)
+                Showintervention(0, false);
+            
+
+            if (chDelIntr.Checked && idclient != 0)
+                Showintervention(idclient, true);
+            else if(!chDelIntr.Checked && idclient != 0)
+                Showintervention(idclient, false);
 
 
+            if (chDelIntr.Checked && statutit != null)
+                Showintervention(0, true, statutit);
+            else if (!chDelIntr.Checked && statutit != null)
+                Showintervention(0, false, statutit);
+
+        }
+
+        public void Showintervention(int id = 0,bool isdeleted = false, string statut = null)
+        { 
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var ls = (from ir in db.GetInterventionBystatut(null,null,isdeleted)
+                          select new
+                          {
+                              ir.IdIntrv,
+                              ir.Id,
+                              ir.Client.Nom,
+                              ir.Debut,
+                              ir.Fin,
+                              ir.IdDemande,
+                              ir.Getstatut,
+                              ir.Idclient,
+                              Edited = ir.UtilisateurEdit.Nom,
+                              ir.Datemodification
+                          }).ToList();
+
+                if (id != 0)
+                    ls = ls.Where(i => i.Idclient == id).ToList();
+
+                if (statut != null)
+                    ls = ls.Where(i => i.Getstatut == statut).ToList();
+
+                dgIntervention.DataSource = Methods.ToDataTable(ls);
+                lblTotalIntervention.Text = ls.Count().ToString();
+            }
         }
 
         private void ListeIntervention_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgIntervention_Paint(object sender, PaintEventArgs e)
+        {
+            if (dgIntervention.SelectedRows.Count > 0)
+            {
+                GetDetails();
+            }
+        }
+
+        public void GetDetails()
+        {
+            if (dgIntervention.SelectedRows.Count > 0)
+            {
+                int index = dgIntervention.CurrentRow.Index;
+                lblEdited.Text = dgIntervention.Rows[index].Cells["Edited"].Value.ToString();
+                lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
+            }
         }
     }
 }

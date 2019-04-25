@@ -279,8 +279,8 @@ namespace ParcInfo.ucInterevntion
                 intrv.Modifierpar = GlobVars.currentUser;
 
 
-                if (dtFin.Value < dtDebut.Value)
-                    MessageBox.Show("starting date could not be less than end date");
+                if (dtFin.Value.Date < dtDebut.Value.Date)
+                    MessageBox.Show("end date could not be less than starting date");
                 else
                 {
                     context.SaveChanges();

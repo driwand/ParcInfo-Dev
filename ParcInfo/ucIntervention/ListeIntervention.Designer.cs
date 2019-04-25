@@ -126,6 +126,8 @@
             this.dgIntervention.ReadOnly = true;
             this.dgIntervention.Size = new System.Drawing.Size(863, 347);
             this.dgIntervention.TabIndex = 112;
+            this.dgIntervention.Click += new System.EventHandler(this.dgIntervention_Click);
+            this.dgIntervention.Paint += new System.Windows.Forms.PaintEventHandler(this.dgIntervention_Paint);
             this.dgIntervention.DoubleClick += new System.EventHandler(this.dgIntervention_DoubleClick);
             // 
             // lblTotalIntervention
@@ -153,9 +155,9 @@
             this.lblEditedDate.AutoSize = true;
             this.lblEditedDate.Location = new System.Drawing.Point(456, 459);
             this.lblEditedDate.Name = "lblEditedDate";
-            this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
+            this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
             this.lblEditedDate.TabIndex = 134;
-            this.lblEditedDate.Text = "2018/08/08";
+            this.lblEditedDate.Text = "****/**/**";
             // 
             // label13
             // 
@@ -171,9 +173,9 @@
             this.lblEdited.AutoSize = true;
             this.lblEdited.Location = new System.Drawing.Point(333, 459);
             this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(33, 13);
+            this.lblEdited.Size = new System.Drawing.Size(37, 13);
             this.lblEdited.TabIndex = 133;
-            this.lblEdited.Text = "user1";
+            this.lblEdited.Text = "aucun";
             // 
             // label8
             // 

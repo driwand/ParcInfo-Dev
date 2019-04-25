@@ -28,13 +28,40 @@ namespace ParcInfo.ucClient
             set { lblEmployeClient.Visible = value; }
         }
 
+        public int Idcli;
+        public string statut;
+        public int employee;
+
+        //listdemande of selected client
         public ListDemande(int idClient, string nom)
         {
             InitializeComponent();
             using (var db = new ParcInformatiqueEntities())
             {
-                var res = db.Demandes.Where(x => x.Employee.Client.id == idClient).ToList();
-                dgDemande.DataSource = res;
+                Idcli = idClient;
+
+                var lsreq = (from d in db.GetRequestbyStatut()
+                                        where d.Employee.Client.id == idClient
+                                        select new
+                                        {
+                                            d.Id,
+                                            d.IdReq,
+                                            d.Datedemande,
+                                            Desc = Methods.GetDesc(d.Description_d, 4),
+                                            d.Employee.Nom,
+                                            d.Getstatut,
+                                            IdClient = d.Employee.Client.id
+                                        }).ToList();
+
+
+                dgDemande.DataSource = Methods.ToDataTable(lsreq);
+
+                Methods.Nice_grid(
+                    new string[] { "IdReq", "Datedemande", "Desc", "Nom", "Getstatut" },
+                    new string[] { "ID Demande", "Date Demande", "Description", "Employee", "Statut" },
+                    dgDemande);
+
+                Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind);
             }
         }
 
@@ -44,9 +71,10 @@ namespace ParcInfo.ucClient
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
+                    employee = idEmploye;
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
-                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest,lblListRequest })
+                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest,lblListRequest })
                                                 select new
                                                 {
                                                     d.Id,
@@ -57,11 +85,15 @@ namespace ParcInfo.ucClient
                                                     d.Getstatut,
                                                     IdClient = d.Employee.Client.id
                                                 }).ToList();
+
+                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                     }
 
                     else
                     {
-                        dgDemande.DataSource = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
+                        statut = statutReq;
+                        
+                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
                                                 select new {
                                                     d.Id,
                                                     d.IdReq,
@@ -78,7 +110,10 @@ namespace ParcInfo.ucClient
                             lblEmployeClient.Text = $"[{em.Nom} {em.Prenom}]";
                             lblEmployeClient.Visible = true;
                         }
+
+                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind,lsreq);
                     }
+
                     HideColumns(new string[] { "id", "IdClient" }, dgDemande);
                     
                     Methods.Nice_grid(
@@ -160,6 +195,56 @@ namespace ParcInfo.ucClient
         private void menuStartIntervention_Click(object sender, EventArgs e)
         {
             StartIntervention();
+        }
+
+        private void cbDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDelete.Checked && Idcli == 0)
+                ShowRequest(0, 0, true);
+            else if (!cbDelete.Checked && Idcli == 0)
+                ShowRequest(0, 0, false);
+
+            if (cbDelete.Checked && Idcli != 0)
+                ShowRequest(Idcli, 0, true);
+            else if (!cbDelete.Checked && Idcli != 0)
+                ShowRequest(Idcli, 0, false);
+
+
+            if (cbDelete.Checked && statut != null)
+                ShowRequest(0, 0, true, statut);
+            else if (!cbDelete.Checked && statut != null)
+                ShowRequest(0, 0, false, statut);
+
+            if (cbDelete.Checked && employee != 0)
+                ShowRequest(0, employee, true);
+            else if (!cbDelete.Checked && employee != 0)
+                ShowRequest(0, employee, false);
+        }
+
+        public void ShowRequest(int idclt = 0,int idemployee = 0, bool isdeleted = false, string statut = null)
+        {
+            using (var context = new ParcInformatiqueEntities())
+            {
+                var ls = (from d in context.GetRequestbyStatut(null,null,idemployee,isdeleted)
+                                        select new
+                                        {
+                                            d.Id,
+                                            d.IdReq,
+                                            d.Datedemande,
+                                            Desc = Methods.GetDesc(d.Description_d, 4),
+                                            d.Employee.Nom,
+                                            d.Getstatut,
+                                            IdClient = d.Employee.Client.id
+                                        }).ToList();
+
+                if (idclt != 0)
+                    ls = ls.Where(i => i.IdClient == idclt).ToList();
+
+                if (statut != null)
+                    ls = ls.Where(i => i.Getstatut == statut).ToList();
+
+                Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+            }
         }
     }
 }

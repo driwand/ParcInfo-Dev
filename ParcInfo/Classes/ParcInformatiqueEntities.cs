@@ -19,6 +19,13 @@ namespace ParcInfo
                 return Interventions.Where(x => x.IsDeleted == 0);
             }
         }
+        public IQueryable<Intervention> GetInterventionsDeleted
+        {
+            get
+            {
+                return Interventions.Where(x => x.IsDeleted == 1);
+            }
+        }
         public IQueryable<Intervention> GetIntervenretard
         {
             get {
@@ -42,9 +49,13 @@ namespace ParcInfo
             }
         }
 
-        public ICollection<Intervention> GetInterventionBystatut(Label[] lbl=null, string statut = "")
+        public ICollection<Intervention> GetInterventionBystatut(Label[] lbl=null, string statut = "",bool isdeleted=false)
         {
             IQueryable<Intervention> list =  GetInterventions;
+
+            if (isdeleted == true)
+                list = GetInterventionsDeleted;
+
             switch (statut)
             {
                 case "en cours":
@@ -67,7 +78,9 @@ namespace ParcInfo
                     break;
                     
             }
-            lbl[0].Text = list.Count().ToString();
+            if (lbl != null)
+                lbl[0].Text = list.Count().ToString();
+
             return list.ToList();
         }
 
@@ -78,6 +91,14 @@ namespace ParcInfo
             get
             {
                 return Demandes.Where(x => x.IsDeleted == 0);
+            }
+        }
+
+        public IQueryable<Demande> GetRequestsDeleted
+        {
+            get
+            {
+                return Demandes.Where(x => x.IsDeleted == 1);
             }
         }
 
@@ -115,10 +136,13 @@ namespace ParcInfo
                 return GetRequests.Where(x => x.Statut == "terminer");
             }
         }
-        public ICollection<Demande> GetRequestbyStatut(Label[] lbl, string statut = "",int idEmp= 0)
+        public ICollection<Demande> GetRequestbyStatut(Label[] lbl=null, string statut = "",int idEmp= 0,bool isdeleted = false)
         {
             IQueryable<Demande> list = GetRequests;
-          
+
+            if (isdeleted == true)
+                list = GetRequestsDeleted;
+
             switch (statut)
             {
                 case "en attente":
@@ -141,14 +165,17 @@ namespace ParcInfo
                     lbl[0].BackColor = Color.FromArgb(32, 191, 107);
                     lbl[1].ForeColor = Color.FromArgb(32, 191, 107);
                     break;
+                case "":
+                    list = GetRequests;
+                    break;
 
             }
             if (idEmp > 0)
-            {
                 list = list.Where(c => c.IdEmployee == idEmp);
-            }
+            
             if (lbl != null)
                 lbl[0].Text = list.Count().ToString();
+
             return list.ToList();
         }
     }

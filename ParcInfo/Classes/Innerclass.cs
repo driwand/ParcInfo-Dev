@@ -61,7 +61,7 @@ namespace ParcInfo
         {
             get
             {
-                return $"{Marque.ToUpper()}-{Model.ToUpper()}{id}";
+                return $"PRT{Methods.Splitdate(Datefabrication.ToString()) + id}";
             }
         }
     }
@@ -82,7 +82,7 @@ namespace ParcInfo
         {
             get
             {
-                return $"PRT { Idclient.ToString() + Id + Methods.Splitdate(Dateaffectation.ToString()) }";
+                return $"PRT{Methods.Splitdate(Produit.Datecreation.ToString()) + Produit.id}";
             }
         }
     }

@@ -14,7 +14,7 @@ namespace ParcInfo.frmList
 {
     public partial class frmListProducts : Form
     {
-        NewIntervention clt;
+        public NewIntervention clt;
         public frmListProducts(NewIntervention ctr)
         {
             InitializeComponent();
@@ -39,18 +39,23 @@ namespace ParcInfo.frmList
                 dgProdcuts.MultiSelect = true;
             }
         }
+
+        public string code;
+        public string modele;
+        public string type;
         public int idassignedproduct;
+        public int idprd;
+
         private void btn_select_Click(object sender, EventArgs e)
         {
             if (dgProdcuts.SelectedRows.Count > 0)
             {
                 int index = dgProdcuts.CurrentRow.Index;
                 int Id = Convert.ToInt32(dgProdcuts.Rows[index].Cells["id"].Value);
-                string code = dgProdcuts.Rows[index].Cells[0].Value.ToString();
+                code = dgProdcuts.Rows[index].Cells[0].Value.ToString();
 
                 
-
-                using (var db = new ParcInformatiqueEntities())
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     ProduitClient prd = new ProduitClient()
                     {
@@ -58,15 +63,32 @@ namespace ParcInfo.frmList
                         Idproduit = Id,
                         ParIntervention = clt.currentInterv
                     };
-                    //if (prd.Produit.TypeProduit.SupportingSoftware == 1)
-                    //{
-                    //    frmAffectLogMater rm = new frmAffectLogMater(this);
-                    //}
 
-                    db.ProduitClients.Add(prd);
-                    db.SaveChanges();
+                    context.ProduitClients.Add(prd);
+                    context.SaveChanges();
 
-                    string codeid = Id + " " + code + " " + prd.Id; //id selected product, code of selected product and id of assingment
+                    idprd = prd.Id;
+
+                    modele = dgProdcuts.Rows[index].Cells["Model"].Value.ToString();
+                    type = dgProdcuts.Rows[index].Cells["Nom"].Value.ToString();
+
+                    string codeid = Id + " " + code + " " + prd.Id; //id selected product, code of selected product and id of assingment in ProduitClient
+
+                    var typeprd = context.Produits.Find(prd.Idproduit);
+
+                    if (typeprd.IsHardware == 0)
+                    {
+                        frmAffectLogMater rm = new frmAffectLogMater(this, (int)prd.Idclient, prd.Id);
+                        rm.Show();
+                    }
+                    else
+                    {
+                        frmAffecter assign = new frmAffecter(prd.Id);
+                        assign.Show();
+                    }
+                        
+
+                    this.Hide();
                     clt.AddDescription(codeid);
                 }
             }

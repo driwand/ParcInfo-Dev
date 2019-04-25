@@ -127,6 +127,7 @@
             this.Name = "frmListProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select product";
+            
             ((System.ComponentModel.ISupportInitialize)(this.dgProdcuts)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

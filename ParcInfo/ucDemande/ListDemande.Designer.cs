@@ -172,6 +172,7 @@
             this.cbDelete.TabIndex = 125;
             this.cbDelete.Text = "Afficher les elements supprimer";
             this.cbDelete.UseVisualStyleBackColor = true;
+            this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
             // 
             // label8
             // 
@@ -187,9 +188,9 @@
             this.lblEdited.AutoSize = true;
             this.lblEdited.Location = new System.Drawing.Point(333, 459);
             this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(33, 13);
+            this.lblEdited.Size = new System.Drawing.Size(37, 13);
             this.lblEdited.TabIndex = 127;
-            this.lblEdited.Text = "user1";
+            this.lblEdited.Text = "aucun";
             // 
             // label13
             // 
@@ -205,9 +206,9 @@
             this.lblEditedDate.AutoSize = true;
             this.lblEditedDate.Location = new System.Drawing.Point(456, 459);
             this.lblEditedDate.Name = "lblEditedDate";
-            this.lblEditedDate.Size = new System.Drawing.Size(65, 13);
+            this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
             this.lblEditedDate.TabIndex = 128;
-            this.lblEditedDate.Text = "2018/08/08";
+            this.lblEditedDate.Text = "****/**/**";
             // 
             // panel2
             // 

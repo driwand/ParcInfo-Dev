@@ -167,9 +167,10 @@ namespace ParcInfo.Classes
             }
             return table;
         }
-        public static DataTable FilterDataGridViewIni(DataGridView grid, TextBox txt, Button btnclear)
+        public static DataTable FilterDataGridViewIni(DataGridView grid, TextBox txt, Button btnclear,dynamic ls = null)
         {
-
+            if (ls != null)
+                grid.DataSource = ToDataTable(ls);
             grid.DataSource = new DataView(grid.DataSource as DataTable);
             grid.Tag = grid.DataSource;
 
@@ -234,7 +235,12 @@ namespace ParcInfo.Classes
             grid.AllowUserToDeleteRows = false;
             grid.AllowUserToResizeColumns = true;
             grid.AllowUserToResizeRows = false;
-            grid.Columns["id"].Visible = false;
+            foreach (var c in columns)
+            {
+                if (c == "id")
+                    grid.Columns["id"].Visible = false;
+            }
+            
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             DataGridViewCellStyle DataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
