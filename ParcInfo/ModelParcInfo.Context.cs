@@ -39,7 +39,9 @@ namespace ParcInfo
         public virtual DbSet<ProprietesProduit> ProprietesProduits { get; set; }
         public virtual DbSet<RoleUtilisateur> RoleUtilisateurs { get; set; }
         public virtual DbSet<TypeProduit> TypeProduits { get; set; }
+        public virtual DbSet<UserActivity> UserActivities { get; set; }
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
         public virtual DbSet<ValeurProp> ValeurProps { get; set; }
+        public virtual DbSet<ParametreParcinfo> ParametreParcinfoes { get; set; }
     }
 }

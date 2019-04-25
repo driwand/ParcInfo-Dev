@@ -464,6 +464,10 @@ namespace ParcInfo.frmDefault
            
             }
         }
-  
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            ShowControl(new AppSettingcs());
+        }
     }
 }

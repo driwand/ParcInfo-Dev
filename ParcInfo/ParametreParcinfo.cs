@@ -12,17 +12,11 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class observation
+    public partial class ParametreParcinfo
     {
-        public int Id { get; set; }
-        public Nullable<int> IdIntervention { get; set; }
-        public string IdUser { get; set; }
-        public string TypeOb { get; set; }
-        public string Textobservation { get; set; }
-        public System.DateTime Dateobservation { get; set; }
-        public string Detailproduit { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
-    
-        public virtual Intervention Intervention { get; set; }
+        public string Nomapp { get; set; }
+        public byte[] Logoapp { get; set; }
+        public Nullable<int> Reatrddemande { get; set; }
+        public byte[] Iconapp { get; set; }
     }
 }

@@ -41,13 +41,13 @@
             this.lblEmployeClient = new System.Windows.Forms.Label();
             this.cbDelete = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.lblMod = new System.Windows.Forms.Label();
             this.lblEditedDate = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStartIntervention = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblEdited = new System.Windows.Forms.LinkLabel();
+            this.lblMod = new System.Windows.Forms.Label();
+            this.lblEdited = new System.Windows.Forms.Label();
             this.gpFind.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDemande)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -186,24 +186,10 @@
             this.label8.TabIndex = 126;
             this.label8.Text = "Dernier modification par :";
             // 
-            // lblMod
-            // 
-            this.lblEdited.AutoSize = true;
-            this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblEdited.ForeColor = System.Drawing.Color.Blue;
-            this.lblEdited.Location = new System.Drawing.Point(333, 459);
-            this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(37, 13);
-            this.lblEdited.TabIndex = 127;
-            this.lblEdited.Text = "aucun";
-            this.lblEdited.Click += new System.EventHandler(this.lblEdited_Click);
-            // 
-            // label13
-            // 
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(440, 461);
+            this.lblEditedDate.Location = new System.Drawing.Point(464, 459);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
             this.lblEditedDate.TabIndex = 128;
@@ -239,24 +225,36 @@
             this.menuStartIntervention.Text = "Demarer Intervention";
             this.menuStartIntervention.Click += new System.EventHandler(this.menuStartIntervention_Click);
             // 
+            // lblMod
+            // 
+            this.lblMod.AutoSize = true;
+            this.lblMod.Location = new System.Drawing.Point(386, 459);
+            this.lblMod.Name = "lblMod";
+            this.lblMod.Size = new System.Drawing.Size(61, 13);
+            this.lblMod.TabIndex = 126;
+            this.lblMod.Text = "Modifier le :";
+            // 
             // lblEdited
             // 
             this.lblEdited.AutoSize = true;
-            this.lblEdited.Location = new System.Drawing.Point(324, 460);
+            this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblEdited.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lblEdited.ForeColor = System.Drawing.Color.Blue;
+            this.lblEdited.Location = new System.Drawing.Point(333, 459);
             this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(43, 13);
-            this.lblEdited.TabIndex = 131;
-            this.lblEdited.TabStop = true;
-            this.lblEdited.Text = "aucune";
+            this.lblEdited.Size = new System.Drawing.Size(37, 13);
+            this.lblEdited.TabIndex = 126;
+            this.lblEdited.Text = "aucun";
+            this.lblEdited.Click += new System.EventHandler(this.lblEdited_Click);
             // 
             // ListDemande
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
+            this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.lblMod);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cbDelete);
@@ -292,12 +290,12 @@
         public System.Windows.Forms.Button btnTraiter;
         private System.Windows.Forms.CheckBox cbDelete;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblMod;
         private System.Windows.Forms.Label lblEditedDate;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuDetails;
         private System.Windows.Forms.ToolStripMenuItem menuStartIntervention;
-        private System.Windows.Forms.LinkLabel lblEdited;
+        private System.Windows.Forms.Label lblMod;
+        private System.Windows.Forms.Label lblEdited;
     }
 }

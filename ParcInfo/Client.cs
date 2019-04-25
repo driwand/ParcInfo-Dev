@@ -38,7 +38,7 @@ namespace ParcInfo
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
-        public int IsDeleted { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AffectationClient> AffectationClients { get; set; }

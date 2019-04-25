@@ -39,6 +39,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -139,6 +142,9 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
     </Compile>
     <Compile Include="observation.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParametreParcinfo.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="Produit.cs">
@@ -363,6 +369,9 @@
     </Compile>
     <Compile Include="ucProduit\listProduits.Designer.cs">
       <DependentUpon>listProduits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserActivity.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilisateur.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
@@ -712,6 +721,11 @@
     <None Include="Resources\wtclose1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\deffBackup.png" />
+    <None Include="Resources\logoplace.png" />
+    <None Include="Resources\dd %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelParcInfo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
@@ -723,6 +737,5 @@
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

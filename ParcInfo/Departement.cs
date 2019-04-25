@@ -22,7 +22,7 @@ namespace ParcInfo
     
         public int id { get; set; }
         public string Nom { get; set; }
-        public int IsDeleted { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
         public Nullable<int> IdCLient { get; set; }
     
         public virtual Client Client { get; set; }

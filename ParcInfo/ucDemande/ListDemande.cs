@@ -115,16 +115,6 @@ namespace ParcInfo.ucClient
                                                     d.Datemodification
                                                 }).ToList();
 
-                        if (idEmploye > 0)
-                        {
-
-                            Employee em = context.Employees.Find(idEmploye);
-                            lblEmployeClient.Text = $"[{em.Nom} {em.Prenom}]";
-                            lblEmployeClient.Visible = true;
-                            dgDemande.Columns["Nom"].Visible = false;
-                            lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
-                        }
-
                         Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind,lsreq);
                     }
 
@@ -134,6 +124,17 @@ namespace ParcInfo.ucClient
                         new string[] { "IdReq", "Datedemande", "Desc", "Nom", "Getstatut" },
                         new string[] { "ID Demande", "Date Demande", "Description", "Employee", "Statut" },
                         dgDemande);
+
+                    if (idEmploye > 0)
+                    {
+
+                        Employee em = context.Employees.Find(idEmploye);
+                        lblEmployeClient.Text = $"[{em.Nom} {em.Prenom}]";
+                        lblEmployeClient.Visible = true;
+                        dgDemande.Columns["Nom"].Visible = false;
+                        lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
+                    }
+
                 }
             }
         }
@@ -285,8 +286,14 @@ namespace ParcInfo.ucClient
             {
                 int index = dgDemande.CurrentRow.Index;
                 lblEdited.Text = dgDemande.Rows[index].Cells["Edited"].Value.ToString();
-                lblEditedDate.Text = dgDemande.Rows[index].Cells["Datemodification"].Value.ToString();
                 iduser = Convert.ToInt32(dgDemande.Rows[index].Cells["Modifierpar"].Value);
+
+                int loc = 333;
+                loc += lblEdited.Width;
+                lblMod.Location = new Point(loc, 459);
+
+                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
+                lblEditedDate.Text = dgDemande.Rows[index].Cells["Datemodification"].Value.ToString();
             }
         }
     }

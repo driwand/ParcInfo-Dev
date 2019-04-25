@@ -4,23 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e3c6777bb32745518eb02f0969d7335d" Name="Diagram1" ZoomLevel="97">
+      <Diagram DiagramId="53d960674a7b42b39648bffc391f50cc" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="ParcInformatiqueModel.AffectationClient" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Client" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Demande" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Departement" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Employee" Width="1.5" PointX="7.5" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Installer" Width="1.5" PointX="19.5" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Intervention" Width="1.5" PointX="12" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.observation" Width="1.5" PointX="14.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Produit" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitClient" Width="1.5" PointX="17.25" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitUtiliser" Width="1.5" PointX="22.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.ProprietesProduit" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.RoleUtilisateur" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.TypeProduit" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Utilisateur" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.ValeurProp" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Client" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Demande" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Departement" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Employee" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Installer" Width="1.5" PointX="16.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Intervention" Width="1.5" PointX="12" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.observation" Width="1.5" PointX="14.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Produit" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitClient" Width="1.5" PointX="14.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitUtiliser" Width="1.5" PointX="19.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.ProprietesProduit" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.RoleUtilisateur" Width="1.5" PointX="3" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.TypeProduit" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.UserActivity" Width="1.5" PointX="3" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Utilisateur" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.ValeurProp" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.ParametreParcinfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Affectati__Creep__276EDEB3" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Affectati__Idcli__239E4DCF" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Affectati__Iduti__24927208" ManuallyRouted="false" />
@@ -61,6 +63,7 @@
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__Creep__1920BF5C" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__IdUti__173876EA" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__Modif__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__UserActiv__Iduse__07C12930" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Creep__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Modif__1367E606" ManuallyRouted="false" />
       </Diagram>

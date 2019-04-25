@@ -263,6 +263,26 @@ namespace ParcInfo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dd__2_ {
+            get {
+                object obj = ResourceManager.GetObject("dd (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap deffBackup {
+            get {
+                object obj = ResourceManager.GetObject("deffBackup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
@@ -506,6 +526,16 @@ namespace ParcInfo.Properties {
         internal static System.Drawing.Bitmap listForms {
             get {
                 object obj = ResourceManager.GetObject("listForms", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoplace {
+            get {
+                object obj = ResourceManager.GetObject("logoplace", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

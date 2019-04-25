@@ -217,8 +217,15 @@ namespace ParcInfo.ucInterevntion
             {
                 int index = dgIntervention.CurrentRow.Index;
                 lblEdited.Text = dgIntervention.Rows[index].Cells["Edited"].Value.ToString();
-                lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
+                
                 idUser = Convert.ToInt32(dgIntervention.Rows[index].Cells["Modifierpar"].Value);
+
+                int loc = 333;
+                loc += lblEdited.Width;
+                lblMod.Location = new Point(loc, 459);
+                
+                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
+                lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
             }
         }
 

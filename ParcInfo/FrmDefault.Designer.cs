@@ -38,6 +38,12 @@ namespace ParcInfo.frmDefault
             this.line3 = new System.Windows.Forms.Panel();
             this.btnProfile = new System.Windows.Forms.Button();
             this.PanelContainer = new System.Windows.Forms.Panel();
+            this.DropParametre = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnTypeProduct = new System.Windows.Forms.Button();
+            this.btnListUsers = new System.Windows.Forms.Button();
+            this.btnNewUser = new System.Windows.Forms.Button();
+            this.btnParam = new System.Windows.Forms.Button();
             this.PanelHeader = new System.Windows.Forms.Panel();
             this.PicBack = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -71,11 +77,6 @@ namespace ParcInfo.frmDefault
             this.btnInterventionCours = new System.Windows.Forms.Button();
             this.btnListIntervention = new System.Windows.Forms.Button();
             this.btnIntervention = new System.Windows.Forms.Button();
-            this.DropParametre = new System.Windows.Forms.Panel();
-            this.btnTypeProduct = new System.Windows.Forms.Button();
-            this.btnListUsers = new System.Windows.Forms.Button();
-            this.btnNewUser = new System.Windows.Forms.Button();
-            this.btnParam = new System.Windows.Forms.Button();
             this.DropProduit = new System.Windows.Forms.Panel();
             this.btnListProduct = new System.Windows.Forms.Button();
             this.BtnProduct = new System.Windows.Forms.Button();
@@ -101,6 +102,7 @@ namespace ParcInfo.frmDefault
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
+            this.DropParametre.SuspendLayout();
             this.PanelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).BeginInit();
             this.panel1.SuspendLayout();
@@ -111,7 +113,6 @@ namespace ParcInfo.frmDefault
             this.pnlMenu.SuspendLayout();
             this.DropDemande.SuspendLayout();
             this.DropIntervention.SuspendLayout();
-            this.DropParametre.SuspendLayout();
             this.DropProduit.SuspendLayout();
             this.DropClient.SuspendLayout();
             this.PanelLogo.SuspendLayout();
@@ -206,6 +207,112 @@ namespace ParcInfo.frmDefault
             this.PanelContainer.Name = "PanelContainer";
             this.PanelContainer.Size = new System.Drawing.Size(892, 483);
             this.PanelContainer.TabIndex = 0;
+            // 
+            // DropParametre
+            // 
+            this.DropParametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.DropParametre.Controls.Add(this.btnSettings);
+            this.DropParametre.Controls.Add(this.btnTypeProduct);
+            this.DropParametre.Controls.Add(this.btnListUsers);
+            this.DropParametre.Controls.Add(this.btnNewUser);
+            this.DropParametre.Controls.Add(this.btnParam);
+            this.DropParametre.Location = new System.Drawing.Point(0, 365);
+            this.DropParametre.MaximumSize = new System.Drawing.Size(224, 205);
+            this.DropParametre.MinimumSize = new System.Drawing.Size(224, 41);
+            this.DropParametre.Name = "DropParametre";
+            this.DropParametre.Size = new System.Drawing.Size(224, 41);
+            this.DropParametre.TabIndex = 7;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSettings.Location = new System.Drawing.Point(0, 164);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnSettings.Size = new System.Drawing.Size(224, 41);
+            this.btnSettings.TabIndex = 8;
+            this.btnSettings.Text = "Reglage application";
+            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnTypeProduct
+            // 
+            this.btnTypeProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTypeProduct.FlatAppearance.BorderSize = 0;
+            this.btnTypeProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTypeProduct.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTypeProduct.ForeColor = System.Drawing.Color.White;
+            this.btnTypeProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTypeProduct.Location = new System.Drawing.Point(0, 123);
+            this.btnTypeProduct.Name = "btnTypeProduct";
+            this.btnTypeProduct.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnTypeProduct.Size = new System.Drawing.Size(224, 41);
+            this.btnTypeProduct.TabIndex = 7;
+            this.btnTypeProduct.Text = "Type des produits";
+            this.btnTypeProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTypeProduct.UseVisualStyleBackColor = true;
+            this.btnTypeProduct.Click += new System.EventHandler(this.btnTypeProduct_Click);
+            // 
+            // btnListUsers
+            // 
+            this.btnListUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnListUsers.FlatAppearance.BorderSize = 0;
+            this.btnListUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListUsers.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListUsers.ForeColor = System.Drawing.Color.White;
+            this.btnListUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnListUsers.Location = new System.Drawing.Point(0, 82);
+            this.btnListUsers.Name = "btnListUsers";
+            this.btnListUsers.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnListUsers.Size = new System.Drawing.Size(224, 41);
+            this.btnListUsers.TabIndex = 6;
+            this.btnListUsers.Text = "Liste des utilisateurs";
+            this.btnListUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListUsers.UseVisualStyleBackColor = true;
+            this.btnListUsers.Click += new System.EventHandler(this.btnListUsers_Click);
+            // 
+            // btnNewUser
+            // 
+            this.btnNewUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNewUser.FlatAppearance.BorderSize = 0;
+            this.btnNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewUser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewUser.ForeColor = System.Drawing.Color.White;
+            this.btnNewUser.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNewUser.Location = new System.Drawing.Point(0, 41);
+            this.btnNewUser.Name = "btnNewUser";
+            this.btnNewUser.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnNewUser.Size = new System.Drawing.Size(224, 41);
+            this.btnNewUser.TabIndex = 4;
+            this.btnNewUser.Text = "Nouveu utilisateur";
+            this.btnNewUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewUser.UseVisualStyleBackColor = true;
+            this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
+            // 
+            // btnParam
+            // 
+            this.btnParam.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnParam.FlatAppearance.BorderSize = 0;
+            this.btnParam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnParam.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParam.ForeColor = System.Drawing.Color.White;
+            this.btnParam.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.btnParam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnParam.Location = new System.Drawing.Point(0, 0);
+            this.btnParam.Name = "btnParam";
+            this.btnParam.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnParam.Size = new System.Drawing.Size(224, 41);
+            this.btnParam.TabIndex = 3;
+            this.btnParam.Text = "paramétre";
+            this.btnParam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnParam.UseVisualStyleBackColor = true;
+            this.btnParam.Click += new System.EventHandler(this.btnParam_Click);
             // 
             // PanelHeader
             // 
@@ -321,9 +428,9 @@ namespace ParcInfo.frmDefault
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.DropParametre);
             this.pnlMenu.Controls.Add(this.DropDemande);
             this.pnlMenu.Controls.Add(this.DropIntervention);
-            this.pnlMenu.Controls.Add(this.DropParametre);
             this.pnlMenu.Controls.Add(this.DropProduit);
             this.pnlMenu.Controls.Add(this.DropClient);
             this.pnlMenu.Controls.Add(this.BtnHome);
@@ -681,93 +788,6 @@ namespace ParcInfo.frmDefault
             this.btnIntervention.UseVisualStyleBackColor = true;
             this.btnIntervention.Click += new System.EventHandler(this.btnIntervention_Click);
             // 
-            // DropParametre
-            // 
-            this.DropParametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.DropParametre.Controls.Add(this.btnTypeProduct);
-            this.DropParametre.Controls.Add(this.btnListUsers);
-            this.DropParametre.Controls.Add(this.btnNewUser);
-            this.DropParametre.Controls.Add(this.btnParam);
-            this.DropParametre.Location = new System.Drawing.Point(3, 440);
-            this.DropParametre.MaximumSize = new System.Drawing.Size(224, 164);
-            this.DropParametre.MinimumSize = new System.Drawing.Size(224, 41);
-            this.DropParametre.Name = "DropParametre";
-            this.DropParametre.Size = new System.Drawing.Size(224, 41);
-            this.DropParametre.TabIndex = 7;
-            // 
-            // btnTypeProduct
-            // 
-            this.btnTypeProduct.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTypeProduct.FlatAppearance.BorderSize = 0;
-            this.btnTypeProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTypeProduct.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTypeProduct.ForeColor = System.Drawing.Color.White;
-            this.btnTypeProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTypeProduct.Location = new System.Drawing.Point(0, 123);
-            this.btnTypeProduct.Name = "btnTypeProduct";
-            this.btnTypeProduct.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnTypeProduct.Size = new System.Drawing.Size(224, 41);
-            this.btnTypeProduct.TabIndex = 7;
-            this.btnTypeProduct.Text = "Type des produits";
-            this.btnTypeProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTypeProduct.UseVisualStyleBackColor = true;
-            this.btnTypeProduct.Click += new System.EventHandler(this.btnTypeProduct_Click);
-            // 
-            // btnListUsers
-            // 
-            this.btnListUsers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnListUsers.FlatAppearance.BorderSize = 0;
-            this.btnListUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListUsers.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListUsers.ForeColor = System.Drawing.Color.White;
-            this.btnListUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnListUsers.Location = new System.Drawing.Point(0, 82);
-            this.btnListUsers.Name = "btnListUsers";
-            this.btnListUsers.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnListUsers.Size = new System.Drawing.Size(224, 41);
-            this.btnListUsers.TabIndex = 6;
-            this.btnListUsers.Text = "Liste des utilisateurs";
-            this.btnListUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListUsers.UseVisualStyleBackColor = true;
-            this.btnListUsers.Click += new System.EventHandler(this.btnListUsers_Click);
-            // 
-            // btnNewUser
-            // 
-            this.btnNewUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNewUser.FlatAppearance.BorderSize = 0;
-            this.btnNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewUser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewUser.ForeColor = System.Drawing.Color.White;
-            this.btnNewUser.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNewUser.Location = new System.Drawing.Point(0, 41);
-            this.btnNewUser.Name = "btnNewUser";
-            this.btnNewUser.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnNewUser.Size = new System.Drawing.Size(224, 41);
-            this.btnNewUser.TabIndex = 4;
-            this.btnNewUser.Text = "Nouveu utilisateur";
-            this.btnNewUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewUser.UseVisualStyleBackColor = true;
-            this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
-            // 
-            // btnParam
-            // 
-            this.btnParam.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnParam.FlatAppearance.BorderSize = 0;
-            this.btnParam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParam.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParam.ForeColor = System.Drawing.Color.White;
-            this.btnParam.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
-            this.btnParam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnParam.Location = new System.Drawing.Point(0, 0);
-            this.btnParam.Name = "btnParam";
-            this.btnParam.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnParam.Size = new System.Drawing.Size(224, 41);
-            this.btnParam.TabIndex = 3;
-            this.btnParam.Text = "paramétre";
-            this.btnParam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParam.UseVisualStyleBackColor = true;
-            this.btnParam.Click += new System.EventHandler(this.btnParam_Click);
-            // 
             // DropProduit
             // 
             this.DropProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -998,6 +1018,7 @@ namespace ParcInfo.frmDefault
             this.panel2.ResumeLayout(false);
             this.PanelMain.ResumeLayout(false);
             this.DropdownUserMenu.ResumeLayout(false);
+            this.DropParametre.ResumeLayout(false);
             this.PanelHeader.ResumeLayout(false);
             this.PanelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).EndInit();
@@ -1010,7 +1031,6 @@ namespace ParcInfo.frmDefault
             this.pnlMenu.ResumeLayout(false);
             this.DropDemande.ResumeLayout(false);
             this.DropIntervention.ResumeLayout(false);
-            this.DropParametre.ResumeLayout(false);
             this.DropProduit.ResumeLayout(false);
             this.DropClient.ResumeLayout(false);
             this.PanelLogo.ResumeLayout(false);
@@ -1090,5 +1110,6 @@ namespace ParcInfo.frmDefault
         private System.ComponentModel.BackgroundWorker getRealdata;
         private System.Windows.Forms.Button btnDemandeTerminer;
         private System.Windows.Forms.Label lblRequestAttente;
+        private System.Windows.Forms.Button btnSettings;
     }
 }

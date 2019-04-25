@@ -38,6 +38,7 @@ namespace ParcInfo
             this.RoleUtilisateurs = new HashSet<RoleUtilisateur>();
             this.RoleUtilisateurs1 = new HashSet<RoleUtilisateur>();
             this.RoleUtilisateurs2 = new HashSet<RoleUtilisateur>();
+            this.UserActivities = new HashSet<UserActivity>();
             this.Utilisateur1 = new HashSet<Utilisateur>();
             this.Utilisateur11 = new HashSet<Utilisateur>();
         }
@@ -56,7 +57,7 @@ namespace ParcInfo
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
-        public int IsDeleted { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AffectationClient> AffectationClients { get; set; }
@@ -100,6 +101,8 @@ namespace ParcInfo
         public virtual ICollection<RoleUtilisateur> RoleUtilisateurs1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoleUtilisateur> RoleUtilisateurs2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserActivity> UserActivities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Utilisateur> Utilisateur1 { get; set; }
         public virtual Utilisateur Utilisateur2 { get; set; }

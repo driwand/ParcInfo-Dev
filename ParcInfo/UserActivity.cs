@@ -12,20 +12,11 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class AffectationClient
+    public partial class UserActivity
     {
         public int Id { get; set; }
-        public int Idclient { get; set; }
-        public int Idutilisateur { get; set; }
-        public Nullable<System.DateTime> Dateaffectation { get; set; }
-        public Nullable<System.DateTime> Datemodification { get; set; }
-        public Nullable<int> Modifierpar { get; set; }
-        public Nullable<int> Creepar { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
+        public Nullable<int> Iduser { get; set; }
     
         public virtual Utilisateur Utilisateur { get; set; }
-        public virtual Client Client { get; set; }
-        public virtual Utilisateur Utilisateur1 { get; set; }
-        public virtual Utilisateur Utilisateur2 { get; set; }
     }
 }

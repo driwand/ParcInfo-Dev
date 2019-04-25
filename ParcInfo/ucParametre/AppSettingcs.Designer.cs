@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppSettingcs));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.gpGeneral = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.applogo = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,20 +47,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnDifferentialBackup = new System.Windows.Forms.Button();
+            this.btnFullback = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnRestore = new System.Windows.Forms.Button();
             this.gpGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.applogo)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.addForms;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 158;
-            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -83,43 +78,60 @@
             // 
             // gpGeneral
             // 
+            this.gpGeneral.Controls.Add(this.applogo);
             this.gpGeneral.Controls.Add(this.comboBox1);
             this.gpGeneral.Controls.Add(this.label4);
             this.gpGeneral.Controls.Add(this.gradientPanel1);
-            this.gpGeneral.Controls.Add(this.textBox2);
             this.gpGeneral.Controls.Add(this.label3);
             this.gpGeneral.Controls.Add(this.textBox1);
             this.gpGeneral.Controls.Add(this.label2);
             this.gpGeneral.Location = new System.Drawing.Point(16, 62);
             this.gpGeneral.Name = "gpGeneral";
             this.gpGeneral.Padding = new System.Windows.Forms.Padding(0);
-            this.gpGeneral.Size = new System.Drawing.Size(401, 159);
+            this.gpGeneral.Size = new System.Drawing.Size(401, 209);
             this.gpGeneral.TabIndex = 160;
             this.gpGeneral.TabStop = false;
             this.gpGeneral.Text = "General";
             // 
-            // label2
+            // applogo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Nom :";
+            this.applogo.Image = global::ParcInfo.Properties.Resources.logoplace;
+            this.applogo.Location = new System.Drawing.Point(77, 63);
+            this.applogo.Name = "applogo";
+            this.applogo.Size = new System.Drawing.Size(226, 67);
+            this.applogo.TabIndex = 162;
+            this.applogo.TabStop = false;
+            this.applogo.DragDrop += new System.Windows.Forms.DragEventHandler(this.applogo_DragDrop);
+            this.applogo.DragEnter += new System.Windows.Forms.DragEventHandler(this.applogo_DragEnter);
             // 
-            // textBox1
+            // comboBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 20);
-            this.textBox1.TabIndex = 1;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(77, 166);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(181, 21);
+            this.comboBox1.TabIndex = 7;
             // 
-            // textBox2
+            // label4
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(279, 20);
-            this.textBox2.TabIndex = 3;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Theme :";
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(185)))), ((int)(((byte)(244)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 206);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(401, 3);
+            this.gradientPanel1.TabIndex = 5;
             // 
             // label3
             // 
@@ -130,34 +142,21 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Logo";
             // 
-            // gradientPanel1
+            // textBox1
             // 
-            this.gradientPanel1.Angle = 0F;
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(185)))), ((int)(((byte)(244)))));
-            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
-            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 156);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(401, 3);
-            this.gradientPanel1.TabIndex = 5;
+            this.textBox1.Location = new System.Drawing.Point(77, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(279, 20);
+            this.textBox1.TabIndex = 1;
             // 
-            // label4
+            // label2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 101);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Theme :";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(77, 97);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(181, 21);
-            this.comboBox1.TabIndex = 7;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Nom :";
             // 
             // groupBox1
             // 
@@ -168,7 +167,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(16, 236);
+            this.groupBox1.Location = new System.Drawing.Point(16, 294);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox1.Size = new System.Drawing.Size(401, 159);
@@ -237,11 +236,72 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Nom :";
             // 
+            // btnDifferentialBackup
+            // 
+            this.btnDifferentialBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnDifferentialBackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDifferentialBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDifferentialBackup.ForeColor = System.Drawing.Color.White;
+            this.btnDifferentialBackup.Image = global::ParcInfo.Properties.Resources.deffBackup;
+            this.btnDifferentialBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDifferentialBackup.Location = new System.Drawing.Point(482, 297);
+            this.btnDifferentialBackup.Name = "btnDifferentialBackup";
+            this.btnDifferentialBackup.Size = new System.Drawing.Size(141, 35);
+            this.btnDifferentialBackup.TabIndex = 162;
+            this.btnDifferentialBackup.Text = "     Differential Backup";
+            this.btnDifferentialBackup.UseVisualStyleBackColor = false;
+            this.btnDifferentialBackup.Click += new System.EventHandler(this.btnDifferentialBackup_Click);
+            // 
+            // btnFullback
+            // 
+            this.btnFullback.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFullback.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFullback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFullback.ForeColor = System.Drawing.Color.White;
+            this.btnFullback.Image = ((System.Drawing.Image)(resources.GetObject("btnFullback.Image")));
+            this.btnFullback.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFullback.Location = new System.Drawing.Point(483, 340);
+            this.btnFullback.Name = "btnFullback";
+            this.btnFullback.Size = new System.Drawing.Size(141, 35);
+            this.btnFullback.TabIndex = 162;
+            this.btnFullback.Text = "  Full Backup";
+            this.btnFullback.UseVisualStyleBackColor = false;
+            this.btnFullback.Click += new System.EventHandler(this.btnFullBack_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.addForms;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 158;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnRestore
+            // 
+            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestore.ForeColor = System.Drawing.Color.White;
+            this.btnRestore.Image = ((System.Drawing.Image)(resources.GetObject("btnRestore.Image")));
+            this.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRestore.Location = new System.Drawing.Point(483, 391);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(141, 35);
+            this.btnRestore.TabIndex = 162;
+            this.btnRestore.Text = "  Restore";
+            this.btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            // 
             // AppSettingcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnDifferentialBackup);
+            this.Controls.Add(this.btnRestore);
+            this.Controls.Add(this.btnFullback);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpGeneral);
             this.Controls.Add(this.pictureBox1);
@@ -249,26 +309,24 @@
             this.Controls.Add(this.label1);
             this.Name = "AppSettingcs";
             this.Size = new System.Drawing.Size(890, 481);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gpGeneral.ResumeLayout(false);
             this.gpGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.applogo)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gpGeneral;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private Classes.GradientPanel gradientPanel1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
@@ -280,5 +338,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox applogo;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Button btnFullback;
+        public System.Windows.Forms.Button btnDifferentialBackup;
+        public System.Windows.Forms.Button btnRestore;
     }
 }
