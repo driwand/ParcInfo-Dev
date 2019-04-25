@@ -34,7 +34,13 @@ namespace ParcInfo.ucClient
                     var listEmp = (from emp in c.Employees
                                    join d in c.Departements on emp.IdDep equals d.id
                                    where emp.IsDeleted != 1
-                                   select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email, emp.Password_e, departement = d.Nom }).ToList();
+                                   select new { emp.IdEmploye, emp.Id,
+                                       emp.Nom, emp.Prenom,
+                                       emp.Email, emp.Password_e,
+                                       departement = d.Nom,
+                                       userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                                       dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                                   }).ToList();
                     dgEmployees.DataSource = Methods.ToDataTable(listEmp);
                     myGrid();
                    
@@ -129,25 +135,13 @@ namespace ParcInfo.ucClient
                 {
 
                     var Cli = context.Employees.Where(c => c.Id == id).FirstOrDefault();
-                    var clt = (from c in context.Employees
-                               where c.Id == id && c.Modifierpar != null
-                               join u in context.Utilisateurs on c.Modifierpar equals u.Id
-                               select new { u.Nom, c.Datemodification }).FirstOrDefault();
-                    if (clt != null)
-                    {
-                        int loc = 333;
-                        lblEdited.Text = clt.Nom;
-                        loc += lblEdited.Width;
-                        lblMod.Location = new Point(loc, 462);
-                        // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
-                        lblEditedDate.Text = clt.Datemodification.ToString();
-                    }
-                    else
-                    {
-                        lblEdited.Text = "aucune";
-                        lblEditedDate.Text = "****-**-**";
-                    }
+                    string nomUser = myrow.Cells["userMod"].Value.ToString();
+                    string date = myrow.Cells["dateMod"].Value.ToString();
+                    int loc = 333;
+                    lblEdited.Text = nomUser;
+                    loc += lblEdited.Width;
+                    lblMod.Location = new Point(loc, 462);
+                
                     // Employe Count
                     encoursCount.Text = context.GetRequestCours.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
                     enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
@@ -171,7 +165,13 @@ namespace ParcInfo.ucClient
 
                 var listEmp = (from emp in c.Employees
                                join d in c.Departements on emp.IdDep equals d.id
-                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email , emp.Password_e, departement = d.Nom, emp.IsDeleted }).ToList();
+                               select new { emp.IdEmploye, emp.Id,
+                                   emp.Nom, emp.Prenom,
+                                   emp.Email , emp.Password_e,
+                                   departement = d.Nom, emp.IsDeleted,
+                                   userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                                   dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                               }).ToList();
                 if (cbDeleted.Checked)
                 {
 
@@ -196,6 +196,8 @@ namespace ParcInfo.ucClient
                 new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
                 dgEmployees
                 );
+            dgEmployees.Columns["userMod"].Visible = false;
+            dgEmployees.Columns["dateMod"].Visible = false;
             Methods.FilterDataGridViewIni(dgEmployees, txtFind, btnFind);
         }
 

@@ -32,7 +32,13 @@ namespace ParcInfo.ucClient
             {
                 var vr = context.Clients.Where(c=> c.IsDeleted == 0).ToList();
                 dgClients.DataSource = Methods.ToDataTable(vr.Select(c=>new
-                { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract,  c.Debutcontract, }).ToList());
+                { c.IdCLient, c.id, c.Nom,
+                    c.Adresse, c.Tel, c.Fax,
+                    c.Siteweb, c.Prixheur, c.Heurecontract,
+                    c.Debutcontract,
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                }).ToList());
                 myGrid();
             }
         }
@@ -132,7 +138,12 @@ namespace ParcInfo.ucClient
                 {
                     var ClientsDeleted = (from c in vr
                                           where c.IsDeleted == 1
-                                          select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
+                                          select new { c.IdCLient, c.id, c.Nom, c.Adresse,
+                                              c.Tel, c.Fax, c.Siteweb, c.Prixheur,
+                                              c.Heurecontract, c.Debutcontract,
+                                              userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                                              dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                                          }).ToList();
                     dgClients.DataSource = Methods.ToDataTable(ClientsDeleted);
                     myGrid();
                 }
@@ -140,7 +151,12 @@ namespace ParcInfo.ucClient
                 {
                     var Clients = (from c in vr
                                    where c.IsDeleted == 0
-                                   select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Fax, c.Siteweb, c.Prixheur, c.Heurecontract, c.Debutcontract }).ToList();
+                                   select new { c.IdCLient, c.id, c.Nom, c.Adresse,
+                                       c.Tel, c.Fax, c.Siteweb, c.Prixheur,
+                                       c.Heurecontract, c.Debutcontract,
+                                       userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                                       dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                                   }).ToList();
                     dgClients.DataSource = Methods.ToDataTable(Clients);
                     myGrid();
                 }
@@ -156,36 +172,23 @@ namespace ParcInfo.ucClient
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
+
+                    // Modifier par / date modification
+                    string nomUser = myrow.Cells["userMod"].Value.ToString();
+                    string date = myrow.Cells["dateMod"].Value.ToString();
+                    int loc = 325;
+                    lblEdited.Text = nomUser;
+                    loc += lblEdited.Width;
+                    lblMod.Location = new Point(loc, 462);
+                  
+                    lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+                    lblEditedDate.Text = date;
                     var Cli = context.Clients.Where(c => c.id == id).FirstOrDefault();
-
-
-                    var clt = (from c in context.Clients
-                               where c.id == id && c.Modifierpar != null
-                               join u in context.Utilisateurs on c.Modifierpar equals u.Id
-                               select new { u.Nom, c.Datemodification }).FirstOrDefault();
-                    if (clt != null)
-                    {
-                        int loc = 325;
-                        lblEdited.Text = clt.Nom;
-                        loc += lblEdited.Width;
-                        lblMod.Location = new Point(loc, 462);
-                        // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
-                        lblEditedDate.Text = clt.Datemodification.ToString();
-                    }
-                    else
-                    {
-                        lblEdited.Text = "aucune";
-                        lblEditedDate.Text = "****-**-**";
-                    }
-                    // Count
                     lblEmpC.Text = Cli.Employees.Where(d=> d.IsDeleted == 0).Count().ToString();
-                    lblInterC.Text = Cli.Interventions.Where(d=> d.IsDeleted == 0).Count().ToString();
-
+                    lblInterC.Text = Cli.Interventions.Where(d => d.IsDeleted == 0).Count().ToString();
                     var demC = (from c in Cli.Employees
                                 from d in c.Demandes
                                 select d).ToList();
-
                     lblDemC.Text = demC.Where(d=> d.IsDeleted == 0).Count().ToString();
                     lblProdC.Text = Cli.ProduitClients.Where(d=> d.IsDeleted == 0).Count().ToString();
                 }
@@ -195,11 +198,15 @@ namespace ParcInfo.ucClient
 
         public void myGrid()
         {
+
+
             Methods.Nice_grid(
-                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract" },
-                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract" },
+                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract","userMod","dateMod" },
+                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract","user","datemod" },
                 dgClients
                 );
+            dgClients.Columns["userMod"].Visible = false;
+            dgClients.Columns["dateMod"].Visible = false;
             Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
 
         }

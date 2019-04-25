@@ -43,24 +43,11 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dgClient = new System.Windows.Forms.DataGridView();
             this.gpRoles = new System.Windows.Forms.GroupBox();
-            this.btnDelUser = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPrenom = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtAdresse = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtVille = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.ckAdmin = new System.Windows.Forms.CheckBox();
-            this.lblTel = new System.Windows.Forms.Label();
-            this.txtTel = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnEditUser = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.gpCient = new System.Windows.Forms.GroupBox();
+            this.pnlRoles = new System.Windows.Forms.FlowLayoutPanel();
+            this.gpClient = new System.Windows.Forms.GroupBox();
+            this.chClientSupAffectation = new System.Windows.Forms.CheckBox();
+            this.chkClientAffectation = new System.Windows.Forms.CheckBox();
+            this.chClientConsulterEmployee = new System.Windows.Forms.CheckBox();
             this.chClientAdd = new System.Windows.Forms.CheckBox();
             this.rbConsulterClient2 = new System.Windows.Forms.RadioButton();
             this.rbConsulterClient1 = new System.Windows.Forms.RadioButton();
@@ -81,20 +68,34 @@
             this.rbConsulterProduit = new System.Windows.Forms.RadioButton();
             this.chProduitEdit = new System.Windows.Forms.CheckBox();
             this.chProduitDel = new System.Windows.Forms.CheckBox();
-            this.chClientConsulterEmployee = new System.Windows.Forms.CheckBox();
-            this.chkClientAffectation = new System.Windows.Forms.CheckBox();
-            this.chClientSupAffectation = new System.Windows.Forms.CheckBox();
+            this.btnDelUser = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtAdresse = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtVille = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ckAdmin = new System.Windows.Forms.CheckBox();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.txtTel = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEditUser = new System.Windows.Forms.Button();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgClient)).BeginInit();
             this.gpRoles.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.gpCient.SuspendLayout();
+            this.pnlRoles.SuspendLayout();
+            this.gpClient.SuspendLayout();
             this.gpIntervention.SuspendLayout();
             this.gpDemande.SuspendLayout();
             this.gpProduit.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -236,18 +237,296 @@
             this.dgClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgClient.Location = new System.Drawing.Point(20, 74);
             this.dgClient.Name = "dgClient";
-            this.dgClient.Size = new System.Drawing.Size(279, 266);
+            this.dgClient.Size = new System.Drawing.Size(279, 273);
             this.dgClient.TabIndex = 160;
             // 
             // gpRoles
             // 
-            this.gpRoles.Controls.Add(this.flowLayoutPanel1);
+            this.gpRoles.Controls.Add(this.pnlRoles);
             this.gpRoles.Location = new System.Drawing.Point(598, 60);
             this.gpRoles.Name = "gpRoles";
             this.gpRoles.Size = new System.Drawing.Size(272, 369);
             this.gpRoles.TabIndex = 166;
             this.gpRoles.TabStop = false;
             this.gpRoles.Text = "Les roles";
+            // 
+            // pnlRoles
+            // 
+            this.pnlRoles.AutoScroll = true;
+            this.pnlRoles.Controls.Add(this.gpClient);
+            this.pnlRoles.Controls.Add(this.gpIntervention);
+            this.pnlRoles.Controls.Add(this.gpDemande);
+            this.pnlRoles.Controls.Add(this.gpProduit);
+            this.pnlRoles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRoles.Location = new System.Drawing.Point(3, 16);
+            this.pnlRoles.Name = "pnlRoles";
+            this.pnlRoles.Padding = new System.Windows.Forms.Padding(10, 5, 5, 10);
+            this.pnlRoles.Size = new System.Drawing.Size(266, 350);
+            this.pnlRoles.TabIndex = 0;
+            // 
+            // gpClient
+            // 
+            this.gpClient.Controls.Add(this.chClientSupAffectation);
+            this.gpClient.Controls.Add(this.chkClientAffectation);
+            this.gpClient.Controls.Add(this.chClientConsulterEmployee);
+            this.gpClient.Controls.Add(this.chClientAdd);
+            this.gpClient.Controls.Add(this.rbConsulterClient2);
+            this.gpClient.Controls.Add(this.rbConsulterClient1);
+            this.gpClient.Controls.Add(this.chClientEdit);
+            this.gpClient.Controls.Add(this.chClientDel);
+            this.gpClient.Location = new System.Drawing.Point(13, 8);
+            this.gpClient.Name = "gpClient";
+            this.gpClient.Size = new System.Drawing.Size(221, 168);
+            this.gpClient.TabIndex = 33;
+            this.gpClient.TabStop = false;
+            this.gpClient.Text = "Client";
+            // 
+            // chClientSupAffectation
+            // 
+            this.chClientSupAffectation.AutoSize = true;
+            this.chClientSupAffectation.Location = new System.Drawing.Point(6, 144);
+            this.chClientSupAffectation.Name = "chClientSupAffectation";
+            this.chClientSupAffectation.Size = new System.Drawing.Size(123, 17);
+            this.chClientSupAffectation.TabIndex = 0;
+            this.chClientSupAffectation.Text = "Supprimer affectaion";
+            this.chClientSupAffectation.UseVisualStyleBackColor = true;
+            // 
+            // chkClientAffectation
+            // 
+            this.chkClientAffectation.AutoSize = true;
+            this.chkClientAffectation.Location = new System.Drawing.Point(6, 121);
+            this.chkClientAffectation.Name = "chkClientAffectation";
+            this.chkClientAffectation.Size = new System.Drawing.Size(188, 17);
+            this.chkClientAffectation.TabIndex = 7;
+            this.chkClientAffectation.Text = "Affecter les employees et meteriels";
+            this.chkClientAffectation.UseVisualStyleBackColor = true;
+            // 
+            // chClientConsulterEmployee
+            // 
+            this.chClientConsulterEmployee.AutoSize = true;
+            this.chClientConsulterEmployee.Location = new System.Drawing.Point(6, 98);
+            this.chClientConsulterEmployee.Name = "chClientConsulterEmployee";
+            this.chClientConsulterEmployee.Size = new System.Drawing.Size(139, 17);
+            this.chClientConsulterEmployee.TabIndex = 6;
+            this.chClientConsulterEmployee.Text = "Consulter les employees";
+            this.chClientConsulterEmployee.UseVisualStyleBackColor = true;
+            // 
+            // chClientAdd
+            // 
+            this.chClientAdd.AutoSize = true;
+            this.chClientAdd.Location = new System.Drawing.Point(6, 63);
+            this.chClientAdd.Name = "chClientAdd";
+            this.chClientAdd.Size = new System.Drawing.Size(59, 17);
+            this.chClientAdd.TabIndex = 2;
+            this.chClientAdd.Text = "Ajouter";
+            this.chClientAdd.UseVisualStyleBackColor = true;
+            // 
+            // rbConsulterClient2
+            // 
+            this.rbConsulterClient2.AutoSize = true;
+            this.rbConsulterClient2.Location = new System.Drawing.Point(6, 40);
+            this.rbConsulterClient2.Name = "rbConsulterClient2";
+            this.rbConsulterClient2.Size = new System.Drawing.Size(136, 17);
+            this.rbConsulterClient2.TabIndex = 1;
+            this.rbConsulterClient2.TabStop = true;
+            this.rbConsulterClient2.Text = "Consulter tous les client";
+            this.rbConsulterClient2.UseVisualStyleBackColor = true;
+            // 
+            // rbConsulterClient1
+            // 
+            this.rbConsulterClient1.AutoSize = true;
+            this.rbConsulterClient1.Location = new System.Drawing.Point(6, 17);
+            this.rbConsulterClient1.Name = "rbConsulterClient1";
+            this.rbConsulterClient1.Size = new System.Drawing.Size(164, 17);
+            this.rbConsulterClient1.TabIndex = 0;
+            this.rbConsulterClient1.TabStop = true;
+            this.rbConsulterClient1.Text = "Consulter les client concerner";
+            this.rbConsulterClient1.UseVisualStyleBackColor = true;
+            // 
+            // chClientEdit
+            // 
+            this.chClientEdit.AutoSize = true;
+            this.chClientEdit.Location = new System.Drawing.Point(68, 63);
+            this.chClientEdit.Name = "chClientEdit";
+            this.chClientEdit.Size = new System.Drawing.Size(63, 17);
+            this.chClientEdit.TabIndex = 3;
+            this.chClientEdit.Text = "Modifier";
+            this.chClientEdit.UseVisualStyleBackColor = true;
+            // 
+            // chClientDel
+            // 
+            this.chClientDel.AutoSize = true;
+            this.chClientDel.Location = new System.Drawing.Point(140, 63);
+            this.chClientDel.Name = "chClientDel";
+            this.chClientDel.Size = new System.Drawing.Size(73, 17);
+            this.chClientDel.TabIndex = 4;
+            this.chClientDel.Text = "Supprimer";
+            this.chClientDel.UseVisualStyleBackColor = true;
+            // 
+            // gpIntervention
+            // 
+            this.gpIntervention.Controls.Add(this.chInterventionAdd);
+            this.gpIntervention.Controls.Add(this.rbConsulterIntervention2);
+            this.gpIntervention.Controls.Add(this.rbConsulterIntervention1);
+            this.gpIntervention.Controls.Add(this.chInterventionEdit);
+            this.gpIntervention.Controls.Add(this.chInterventionDel);
+            this.gpIntervention.Location = new System.Drawing.Point(13, 182);
+            this.gpIntervention.Name = "gpIntervention";
+            this.gpIntervention.Size = new System.Drawing.Size(221, 86);
+            this.gpIntervention.TabIndex = 32;
+            this.gpIntervention.TabStop = false;
+            this.gpIntervention.Text = "Inervention";
+            // 
+            // chInterventionAdd
+            // 
+            this.chInterventionAdd.AutoSize = true;
+            this.chInterventionAdd.Location = new System.Drawing.Point(6, 63);
+            this.chInterventionAdd.Name = "chInterventionAdd";
+            this.chInterventionAdd.Size = new System.Drawing.Size(59, 17);
+            this.chInterventionAdd.TabIndex = 2;
+            this.chInterventionAdd.Text = "Ajouter";
+            this.chInterventionAdd.UseVisualStyleBackColor = true;
+            // 
+            // rbConsulterIntervention2
+            // 
+            this.rbConsulterIntervention2.AutoSize = true;
+            this.rbConsulterIntervention2.Location = new System.Drawing.Point(6, 40);
+            this.rbConsulterIntervention2.Name = "rbConsulterIntervention2";
+            this.rbConsulterIntervention2.Size = new System.Drawing.Size(162, 17);
+            this.rbConsulterIntervention2.TabIndex = 1;
+            this.rbConsulterIntervention2.TabStop = true;
+            this.rbConsulterIntervention2.Text = "afficher tous les interventions";
+            this.rbConsulterIntervention2.UseVisualStyleBackColor = true;
+            // 
+            // rbConsulterIntervention1
+            // 
+            this.rbConsulterIntervention1.AutoSize = true;
+            this.rbConsulterIntervention1.Location = new System.Drawing.Point(6, 17);
+            this.rbConsulterIntervention1.Name = "rbConsulterIntervention1";
+            this.rbConsulterIntervention1.Size = new System.Drawing.Size(185, 17);
+            this.rbConsulterIntervention1.TabIndex = 0;
+            this.rbConsulterIntervention1.TabStop = true;
+            this.rbConsulterIntervention1.Text = "afficher les intervention concerner";
+            this.rbConsulterIntervention1.UseVisualStyleBackColor = true;
+            // 
+            // chInterventionEdit
+            // 
+            this.chInterventionEdit.AutoSize = true;
+            this.chInterventionEdit.Location = new System.Drawing.Point(68, 63);
+            this.chInterventionEdit.Name = "chInterventionEdit";
+            this.chInterventionEdit.Size = new System.Drawing.Size(63, 17);
+            this.chInterventionEdit.TabIndex = 3;
+            this.chInterventionEdit.Text = "Modifier";
+            this.chInterventionEdit.UseVisualStyleBackColor = true;
+            // 
+            // chInterventionDel
+            // 
+            this.chInterventionDel.AutoSize = true;
+            this.chInterventionDel.Location = new System.Drawing.Point(140, 63);
+            this.chInterventionDel.Name = "chInterventionDel";
+            this.chInterventionDel.Size = new System.Drawing.Size(73, 17);
+            this.chInterventionDel.TabIndex = 4;
+            this.chInterventionDel.Text = "Supprimer";
+            this.chInterventionDel.UseVisualStyleBackColor = true;
+            // 
+            // gpDemande
+            // 
+            this.gpDemande.Controls.Add(this.rbConsulterDemande2);
+            this.gpDemande.Controls.Add(this.rbConsulterDemande1);
+            this.gpDemande.Controls.Add(this.chDemandeDel);
+            this.gpDemande.Location = new System.Drawing.Point(13, 274);
+            this.gpDemande.Name = "gpDemande";
+            this.gpDemande.Size = new System.Drawing.Size(221, 86);
+            this.gpDemande.TabIndex = 31;
+            this.gpDemande.TabStop = false;
+            this.gpDemande.Text = "Demande";
+            // 
+            // rbConsulterDemande2
+            // 
+            this.rbConsulterDemande2.AutoSize = true;
+            this.rbConsulterDemande2.Location = new System.Drawing.Point(6, 40);
+            this.rbConsulterDemande2.Name = "rbConsulterDemande2";
+            this.rbConsulterDemande2.Size = new System.Drawing.Size(151, 17);
+            this.rbConsulterDemande2.TabIndex = 1;
+            this.rbConsulterDemande2.TabStop = true;
+            this.rbConsulterDemande2.Text = "afficher tous les demandes";
+            this.rbConsulterDemande2.UseVisualStyleBackColor = true;
+            // 
+            // rbConsulterDemande1
+            // 
+            this.rbConsulterDemande1.AutoSize = true;
+            this.rbConsulterDemande1.Location = new System.Drawing.Point(6, 21);
+            this.rbConsulterDemande1.Name = "rbConsulterDemande1";
+            this.rbConsulterDemande1.Size = new System.Drawing.Size(174, 17);
+            this.rbConsulterDemande1.TabIndex = 0;
+            this.rbConsulterDemande1.TabStop = true;
+            this.rbConsulterDemande1.Text = "afficher les demande concerner";
+            this.rbConsulterDemande1.UseVisualStyleBackColor = true;
+            // 
+            // chDemandeDel
+            // 
+            this.chDemandeDel.AutoSize = true;
+            this.chDemandeDel.Location = new System.Drawing.Point(6, 63);
+            this.chDemandeDel.Name = "chDemandeDel";
+            this.chDemandeDel.Size = new System.Drawing.Size(73, 17);
+            this.chDemandeDel.TabIndex = 2;
+            this.chDemandeDel.Text = "Supprimer";
+            this.chDemandeDel.UseVisualStyleBackColor = true;
+            // 
+            // gpProduit
+            // 
+            this.gpProduit.Controls.Add(this.chProduitAdd);
+            this.gpProduit.Controls.Add(this.rbConsulterProduit);
+            this.gpProduit.Controls.Add(this.chProduitEdit);
+            this.gpProduit.Controls.Add(this.chProduitDel);
+            this.gpProduit.Location = new System.Drawing.Point(13, 366);
+            this.gpProduit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.gpProduit.Name = "gpProduit";
+            this.gpProduit.Size = new System.Drawing.Size(221, 65);
+            this.gpProduit.TabIndex = 34;
+            this.gpProduit.TabStop = false;
+            this.gpProduit.Text = "Produit";
+            // 
+            // chProduitAdd
+            // 
+            this.chProduitAdd.AutoSize = true;
+            this.chProduitAdd.Location = new System.Drawing.Point(6, 42);
+            this.chProduitAdd.Name = "chProduitAdd";
+            this.chProduitAdd.Size = new System.Drawing.Size(59, 17);
+            this.chProduitAdd.TabIndex = 27;
+            this.chProduitAdd.Text = "Ajouter";
+            this.chProduitAdd.UseVisualStyleBackColor = true;
+            // 
+            // rbConsulterProduit
+            // 
+            this.rbConsulterProduit.AutoSize = true;
+            this.rbConsulterProduit.Location = new System.Drawing.Point(6, 19);
+            this.rbConsulterProduit.Name = "rbConsulterProduit";
+            this.rbConsulterProduit.Size = new System.Drawing.Size(139, 17);
+            this.rbConsulterProduit.TabIndex = 26;
+            this.rbConsulterProduit.TabStop = true;
+            this.rbConsulterProduit.Text = "afficher tous les produits";
+            this.rbConsulterProduit.UseVisualStyleBackColor = true;
+            // 
+            // chProduitEdit
+            // 
+            this.chProduitEdit.AutoSize = true;
+            this.chProduitEdit.Location = new System.Drawing.Point(68, 42);
+            this.chProduitEdit.Name = "chProduitEdit";
+            this.chProduitEdit.Size = new System.Drawing.Size(63, 17);
+            this.chProduitEdit.TabIndex = 22;
+            this.chProduitEdit.Text = "Modifier";
+            this.chProduitEdit.UseVisualStyleBackColor = true;
+            // 
+            // chProduitDel
+            // 
+            this.chProduitDel.AutoSize = true;
+            this.chProduitDel.Location = new System.Drawing.Point(140, 42);
+            this.chProduitDel.Name = "chProduitDel";
+            this.chProduitDel.Size = new System.Drawing.Size(73, 17);
+            this.chProduitDel.TabIndex = 21;
+            this.chProduitDel.Text = "Supprimer";
+            this.chProduitDel.UseVisualStyleBackColor = true;
             // 
             // btnDelUser
             // 
@@ -336,21 +615,13 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Email :";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(72, 161);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(159, 20);
-            this.txtEmail.TabIndex = 4;
-            this.txtEmail.Tag = "required";
-            // 
             // ckAdmin
             // 
             this.ckAdmin.AutoSize = true;
             this.ckAdmin.Location = new System.Drawing.Point(10, 204);
             this.ckAdmin.Name = "ckAdmin";
             this.ckAdmin.Size = new System.Drawing.Size(132, 17);
-            this.ckAdmin.TabIndex = 7;
+            this.ckAdmin.TabIndex = 6;
             this.ckAdmin.Text = "C\'est un administrateur";
             this.ckAdmin.UseVisualStyleBackColor = true;
             // 
@@ -368,7 +639,7 @@
             this.txtTel.Location = new System.Drawing.Point(72, 132);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(159, 20);
-            this.txtTel.TabIndex = 15;
+            this.txtTel.TabIndex = 4;
             this.txtTel.Tag = "required";
             // 
             // groupBox2
@@ -407,289 +678,30 @@
             this.btnEditUser.Text = "Modifier";
             this.btnEditUser.UseVisualStyleBackColor = false;
             // 
-            // flowLayoutPanel1
+            // txtEmail
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.gpCient);
-            this.flowLayoutPanel1.Controls.Add(this.gpIntervention);
-            this.flowLayoutPanel1.Controls.Add(this.gpDemande);
-            this.flowLayoutPanel1.Controls.Add(this.gpProduit);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 5, 5, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(266, 350);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.txtEmail.Location = new System.Drawing.Point(72, 161);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(159, 20);
+            this.txtEmail.TabIndex = 5;
+            this.txtEmail.Tag = "required";
             // 
-            // gpCient
+            // button1
             // 
-            this.gpCient.Controls.Add(this.chClientSupAffectation);
-            this.gpCient.Controls.Add(this.chkClientAffectation);
-            this.gpCient.Controls.Add(this.chClientConsulterEmployee);
-            this.gpCient.Controls.Add(this.chClientAdd);
-            this.gpCient.Controls.Add(this.rbConsulterClient2);
-            this.gpCient.Controls.Add(this.rbConsulterClient1);
-            this.gpCient.Controls.Add(this.chClientEdit);
-            this.gpCient.Controls.Add(this.chClientDel);
-            this.gpCient.Location = new System.Drawing.Point(13, 8);
-            this.gpCient.Name = "gpCient";
-            this.gpCient.Size = new System.Drawing.Size(221, 168);
-            this.gpCient.TabIndex = 33;
-            this.gpCient.TabStop = false;
-            this.gpCient.Text = "Client";
-            // 
-            // chClientAdd
-            // 
-            this.chClientAdd.AutoSize = true;
-            this.chClientAdd.Location = new System.Drawing.Point(6, 63);
-            this.chClientAdd.Name = "chClientAdd";
-            this.chClientAdd.Size = new System.Drawing.Size(59, 17);
-            this.chClientAdd.TabIndex = 27;
-            this.chClientAdd.Text = "Ajouter";
-            this.chClientAdd.UseVisualStyleBackColor = true;
-            // 
-            // rbConsulterClient2
-            // 
-            this.rbConsulterClient2.AutoSize = true;
-            this.rbConsulterClient2.Location = new System.Drawing.Point(6, 40);
-            this.rbConsulterClient2.Name = "rbConsulterClient2";
-            this.rbConsulterClient2.Size = new System.Drawing.Size(171, 17);
-            this.rbConsulterClient2.TabIndex = 26;
-            this.rbConsulterClient2.TabStop = true;
-            this.rbConsulterClient2.Text = "Consulter tous les interventions";
-            this.rbConsulterClient2.UseVisualStyleBackColor = true;
-            // 
-            // rbConsulterClient1
-            // 
-            this.rbConsulterClient1.AutoSize = true;
-            this.rbConsulterClient1.Location = new System.Drawing.Point(6, 17);
-            this.rbConsulterClient1.Name = "rbConsulterClient1";
-            this.rbConsulterClient1.Size = new System.Drawing.Size(194, 17);
-            this.rbConsulterClient1.TabIndex = 25;
-            this.rbConsulterClient1.TabStop = true;
-            this.rbConsulterClient1.Text = "Consulter les intervention concerner";
-            this.rbConsulterClient1.UseVisualStyleBackColor = true;
-            // 
-            // chClientEdit
-            // 
-            this.chClientEdit.AutoSize = true;
-            this.chClientEdit.Location = new System.Drawing.Point(68, 63);
-            this.chClientEdit.Name = "chClientEdit";
-            this.chClientEdit.Size = new System.Drawing.Size(63, 17);
-            this.chClientEdit.TabIndex = 22;
-            this.chClientEdit.Text = "Modifier";
-            this.chClientEdit.UseVisualStyleBackColor = true;
-            // 
-            // chClientDel
-            // 
-            this.chClientDel.AutoSize = true;
-            this.chClientDel.Location = new System.Drawing.Point(140, 63);
-            this.chClientDel.Name = "chClientDel";
-            this.chClientDel.Size = new System.Drawing.Size(73, 17);
-            this.chClientDel.TabIndex = 21;
-            this.chClientDel.Text = "Supprimer";
-            this.chClientDel.UseVisualStyleBackColor = true;
-            // 
-            // gpIntervention
-            // 
-            this.gpIntervention.Controls.Add(this.chInterventionAdd);
-            this.gpIntervention.Controls.Add(this.rbConsulterIntervention2);
-            this.gpIntervention.Controls.Add(this.rbConsulterIntervention1);
-            this.gpIntervention.Controls.Add(this.chInterventionEdit);
-            this.gpIntervention.Controls.Add(this.chInterventionDel);
-            this.gpIntervention.Location = new System.Drawing.Point(13, 182);
-            this.gpIntervention.Name = "gpIntervention";
-            this.gpIntervention.Size = new System.Drawing.Size(221, 86);
-            this.gpIntervention.TabIndex = 32;
-            this.gpIntervention.TabStop = false;
-            this.gpIntervention.Text = "Inervention";
-            // 
-            // chInterventionAdd
-            // 
-            this.chInterventionAdd.AutoSize = true;
-            this.chInterventionAdd.Location = new System.Drawing.Point(6, 63);
-            this.chInterventionAdd.Name = "chInterventionAdd";
-            this.chInterventionAdd.Size = new System.Drawing.Size(59, 17);
-            this.chInterventionAdd.TabIndex = 27;
-            this.chInterventionAdd.Text = "Ajouter";
-            this.chInterventionAdd.UseVisualStyleBackColor = true;
-            // 
-            // rbConsulterIntervention2
-            // 
-            this.rbConsulterIntervention2.AutoSize = true;
-            this.rbConsulterIntervention2.Location = new System.Drawing.Point(6, 40);
-            this.rbConsulterIntervention2.Name = "rbConsulterIntervention2";
-            this.rbConsulterIntervention2.Size = new System.Drawing.Size(162, 17);
-            this.rbConsulterIntervention2.TabIndex = 26;
-            this.rbConsulterIntervention2.TabStop = true;
-            this.rbConsulterIntervention2.Text = "afficher tous les interventions";
-            this.rbConsulterIntervention2.UseVisualStyleBackColor = true;
-            // 
-            // rbConsulterIntervention1
-            // 
-            this.rbConsulterIntervention1.AutoSize = true;
-            this.rbConsulterIntervention1.Location = new System.Drawing.Point(6, 17);
-            this.rbConsulterIntervention1.Name = "rbConsulterIntervention1";
-            this.rbConsulterIntervention1.Size = new System.Drawing.Size(185, 17);
-            this.rbConsulterIntervention1.TabIndex = 25;
-            this.rbConsulterIntervention1.TabStop = true;
-            this.rbConsulterIntervention1.Text = "afficher les intervention concerner";
-            this.rbConsulterIntervention1.UseVisualStyleBackColor = true;
-            // 
-            // chInterventionEdit
-            // 
-            this.chInterventionEdit.AutoSize = true;
-            this.chInterventionEdit.Location = new System.Drawing.Point(68, 63);
-            this.chInterventionEdit.Name = "chInterventionEdit";
-            this.chInterventionEdit.Size = new System.Drawing.Size(63, 17);
-            this.chInterventionEdit.TabIndex = 22;
-            this.chInterventionEdit.Text = "Modifier";
-            this.chInterventionEdit.UseVisualStyleBackColor = true;
-            // 
-            // chInterventionDel
-            // 
-            this.chInterventionDel.AutoSize = true;
-            this.chInterventionDel.Location = new System.Drawing.Point(140, 63);
-            this.chInterventionDel.Name = "chInterventionDel";
-            this.chInterventionDel.Size = new System.Drawing.Size(73, 17);
-            this.chInterventionDel.TabIndex = 21;
-            this.chInterventionDel.Text = "Supprimer";
-            this.chInterventionDel.UseVisualStyleBackColor = true;
-            // 
-            // gpDemande
-            // 
-            this.gpDemande.Controls.Add(this.rbConsulterDemande2);
-            this.gpDemande.Controls.Add(this.rbConsulterDemande1);
-            this.gpDemande.Controls.Add(this.chDemandeDel);
-            this.gpDemande.Location = new System.Drawing.Point(13, 274);
-            this.gpDemande.Name = "gpDemande";
-            this.gpDemande.Size = new System.Drawing.Size(221, 86);
-            this.gpDemande.TabIndex = 31;
-            this.gpDemande.TabStop = false;
-            this.gpDemande.Text = "Demande";
-            // 
-            // rbConsulterDemande2
-            // 
-            this.rbConsulterDemande2.AutoSize = true;
-            this.rbConsulterDemande2.Location = new System.Drawing.Point(6, 40);
-            this.rbConsulterDemande2.Name = "rbConsulterDemande2";
-            this.rbConsulterDemande2.Size = new System.Drawing.Size(151, 17);
-            this.rbConsulterDemande2.TabIndex = 26;
-            this.rbConsulterDemande2.TabStop = true;
-            this.rbConsulterDemande2.Text = "afficher tous les demandes";
-            this.rbConsulterDemande2.UseVisualStyleBackColor = true;
-            // 
-            // rbConsulterDemande1
-            // 
-            this.rbConsulterDemande1.AutoSize = true;
-            this.rbConsulterDemande1.Location = new System.Drawing.Point(6, 21);
-            this.rbConsulterDemande1.Name = "rbConsulterDemande1";
-            this.rbConsulterDemande1.Size = new System.Drawing.Size(174, 17);
-            this.rbConsulterDemande1.TabIndex = 25;
-            this.rbConsulterDemande1.TabStop = true;
-            this.rbConsulterDemande1.Text = "afficher les demande concerner";
-            this.rbConsulterDemande1.UseVisualStyleBackColor = true;
-            // 
-            // chDemandeDel
-            // 
-            this.chDemandeDel.AutoSize = true;
-            this.chDemandeDel.Location = new System.Drawing.Point(6, 63);
-            this.chDemandeDel.Name = "chDemandeDel";
-            this.chDemandeDel.Size = new System.Drawing.Size(73, 17);
-            this.chDemandeDel.TabIndex = 21;
-            this.chDemandeDel.Text = "Supprimer";
-            this.chDemandeDel.UseVisualStyleBackColor = true;
-            // 
-            // gpProduit
-            // 
-            this.gpProduit.Controls.Add(this.chProduitAdd);
-            this.gpProduit.Controls.Add(this.rbConsulterProduit);
-            this.gpProduit.Controls.Add(this.chProduitEdit);
-            this.gpProduit.Controls.Add(this.chProduitDel);
-            this.gpProduit.Location = new System.Drawing.Point(13, 366);
-            this.gpProduit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.gpProduit.Name = "gpProduit";
-            this.gpProduit.Size = new System.Drawing.Size(221, 65);
-            this.gpProduit.TabIndex = 34;
-            this.gpProduit.TabStop = false;
-            this.gpProduit.Text = "Produit";
-            // 
-            // chProduitAdd
-            // 
-            this.chProduitAdd.AutoSize = true;
-            this.chProduitAdd.Location = new System.Drawing.Point(6, 42);
-            this.chProduitAdd.Name = "chProduitAdd";
-            this.chProduitAdd.Size = new System.Drawing.Size(59, 17);
-            this.chProduitAdd.TabIndex = 27;
-            this.chProduitAdd.Text = "Ajouter";
-            this.chProduitAdd.UseVisualStyleBackColor = true;
-            // 
-            // rbConsulterProduit
-            // 
-            this.rbConsulterProduit.AutoSize = true;
-            this.rbConsulterProduit.Location = new System.Drawing.Point(6, 19);
-            this.rbConsulterProduit.Name = "rbConsulterProduit";
-            this.rbConsulterProduit.Size = new System.Drawing.Size(139, 17);
-            this.rbConsulterProduit.TabIndex = 26;
-            this.rbConsulterProduit.TabStop = true;
-            this.rbConsulterProduit.Text = "afficher tous les produits";
-            this.rbConsulterProduit.UseVisualStyleBackColor = true;
-            // 
-            // chProduitEdit
-            // 
-            this.chProduitEdit.AutoSize = true;
-            this.chProduitEdit.Location = new System.Drawing.Point(68, 42);
-            this.chProduitEdit.Name = "chProduitEdit";
-            this.chProduitEdit.Size = new System.Drawing.Size(63, 17);
-            this.chProduitEdit.TabIndex = 22;
-            this.chProduitEdit.Text = "Modifier";
-            this.chProduitEdit.UseVisualStyleBackColor = true;
-            // 
-            // chProduitDel
-            // 
-            this.chProduitDel.AutoSize = true;
-            this.chProduitDel.Location = new System.Drawing.Point(140, 42);
-            this.chProduitDel.Name = "chProduitDel";
-            this.chProduitDel.Size = new System.Drawing.Size(73, 17);
-            this.chProduitDel.TabIndex = 21;
-            this.chProduitDel.Text = "Supprimer";
-            this.chProduitDel.UseVisualStyleBackColor = true;
-            // 
-            // chClientConsulterEmployee
-            // 
-            this.chClientConsulterEmployee.AutoSize = true;
-            this.chClientConsulterEmployee.Location = new System.Drawing.Point(6, 98);
-            this.chClientConsulterEmployee.Name = "chClientConsulterEmployee";
-            this.chClientConsulterEmployee.Size = new System.Drawing.Size(139, 17);
-            this.chClientConsulterEmployee.TabIndex = 28;
-            this.chClientConsulterEmployee.Text = "Consulter les employees";
-            this.chClientConsulterEmployee.UseVisualStyleBackColor = true;
-            // 
-            // chkClientAffectation
-            // 
-            this.chkClientAffectation.AutoSize = true;
-            this.chkClientAffectation.Location = new System.Drawing.Point(6, 121);
-            this.chkClientAffectation.Name = "chkClientAffectation";
-            this.chkClientAffectation.Size = new System.Drawing.Size(188, 17);
-            this.chkClientAffectation.TabIndex = 29;
-            this.chkClientAffectation.Text = "Affecter les employees et meteriels";
-            this.chkClientAffectation.UseVisualStyleBackColor = true;
-            // 
-            // chClientSupAffectation
-            // 
-            this.chClientSupAffectation.AutoSize = true;
-            this.chClientSupAffectation.Location = new System.Drawing.Point(6, 144);
-            this.chClientSupAffectation.Name = "chClientSupAffectation";
-            this.chClientSupAffectation.Size = new System.Drawing.Size(123, 17);
-            this.chClientSupAffectation.TabIndex = 30;
-            this.chClientSupAffectation.Text = "Supprimer affectaion";
-            this.chClientSupAffectation.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(403, 434);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 167;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.gpRoles);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnEditUser);
@@ -702,6 +714,7 @@
             this.Controls.Add(this.groupBox3);
             this.Name = "CreateUser";
             this.Size = new System.Drawing.Size(890, 481);
+            this.Load += new System.EventHandler(this.CreateUser_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -709,17 +722,17 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgClient)).EndInit();
             this.gpRoles.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.gpCient.ResumeLayout(false);
-            this.gpCient.PerformLayout();
+            this.pnlRoles.ResumeLayout(false);
+            this.gpClient.ResumeLayout(false);
+            this.gpClient.PerformLayout();
             this.gpIntervention.ResumeLayout(false);
             this.gpIntervention.PerformLayout();
             this.gpDemande.ResumeLayout(false);
             this.gpDemande.PerformLayout();
             this.gpProduit.ResumeLayout(false);
             this.gpProduit.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -751,14 +764,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtVille;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.CheckBox ckAdmin;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnEditUser;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.GroupBox gpCient;
+        private System.Windows.Forms.FlowLayoutPanel pnlRoles;
+        private System.Windows.Forms.GroupBox gpClient;
         private System.Windows.Forms.CheckBox chClientAdd;
         private System.Windows.Forms.RadioButton rbConsulterClient2;
         private System.Windows.Forms.RadioButton rbConsulterClient1;
@@ -782,5 +794,7 @@
         private System.Windows.Forms.CheckBox chClientSupAffectation;
         private System.Windows.Forms.CheckBox chkClientAffectation;
         private System.Windows.Forms.CheckBox chClientConsulterEmployee;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Button button1;
     }
 }

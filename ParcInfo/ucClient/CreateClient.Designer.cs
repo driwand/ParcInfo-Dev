@@ -62,7 +62,6 @@
             this.btnEditClient = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
             this.picHeader = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -427,25 +426,11 @@
             this.picHeader.TabIndex = 10005;
             this.picHeader.TabStop = false;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(350, 443);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 28);
-            this.button1.TabIndex = 46;
-            this.button1.Text = "Ajouter";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // CreateClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDelClient);
             this.Controls.Add(this.btnEditClient);
             this.Controls.Add(this.lblNameClient);
@@ -510,6 +495,5 @@
         private System.Windows.Forms.PictureBox picHeader;
         public System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.TextBox txtFax;
-        private System.Windows.Forms.Button button1;
     }
 }

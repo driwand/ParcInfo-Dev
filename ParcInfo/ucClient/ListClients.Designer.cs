@@ -290,11 +290,11 @@
             this.lblDemC.BackColor = System.Drawing.Color.Transparent;
             this.lblDemC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDemC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDemC.Location = new System.Drawing.Point(72, 39);
+            this.lblDemC.Location = new System.Drawing.Point(76, 39);
             this.lblDemC.Name = "lblDemC";
-            this.lblDemC.Size = new System.Drawing.Size(24, 16);
+            this.lblDemC.Size = new System.Drawing.Size(16, 16);
             this.lblDemC.TabIndex = 9;
-            this.lblDemC.Text = "30";
+            this.lblDemC.Text = "0";
             // 
             // panel6
             // 
@@ -349,11 +349,11 @@
             this.lblEmpC.BackColor = System.Drawing.Color.Transparent;
             this.lblEmpC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmpC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblEmpC.Location = new System.Drawing.Point(74, 39);
+            this.lblEmpC.Location = new System.Drawing.Point(76, 39);
             this.lblEmpC.Name = "lblEmpC";
-            this.lblEmpC.Size = new System.Drawing.Size(24, 16);
+            this.lblEmpC.Size = new System.Drawing.Size(16, 16);
             this.lblEmpC.TabIndex = 9;
-            this.lblEmpC.Text = "30";
+            this.lblEmpC.Text = "0";
             // 
             // panel5
             // 
@@ -408,11 +408,11 @@
             this.lblProdC.BackColor = System.Drawing.Color.Transparent;
             this.lblProdC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblProdC.Location = new System.Drawing.Point(74, 39);
+            this.lblProdC.Location = new System.Drawing.Point(76, 39);
             this.lblProdC.Name = "lblProdC";
-            this.lblProdC.Size = new System.Drawing.Size(24, 16);
+            this.lblProdC.Size = new System.Drawing.Size(16, 16);
             this.lblProdC.TabIndex = 9;
-            this.lblProdC.Text = "30";
+            this.lblProdC.Text = "0";
             // 
             // panel3
             // 
@@ -467,11 +467,11 @@
             this.lblInterC.BackColor = System.Drawing.Color.Transparent;
             this.lblInterC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInterC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblInterC.Location = new System.Drawing.Point(73, 39);
+            this.lblInterC.Location = new System.Drawing.Point(76, 39);
             this.lblInterC.Name = "lblInterC";
-            this.lblInterC.Size = new System.Drawing.Size(24, 16);
+            this.lblInterC.Size = new System.Drawing.Size(16, 16);
             this.lblInterC.TabIndex = 9;
-            this.lblInterC.Text = "30";
+            this.lblInterC.Text = "0";
             // 
             // panel4
             // 

@@ -224,7 +224,7 @@
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
-            this.Controls.Add(this.lblMod);
+ 
             this.Controls.Add(this.label8);
             this.Controls.Add(this.chDelIntr);
             this.Controls.Add(this.lblTotalIntervention);

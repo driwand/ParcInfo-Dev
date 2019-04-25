@@ -205,7 +205,7 @@
             this.btnAddProduit.ForeColor = System.Drawing.Color.White;
             this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.btnedit;
             this.btnAddProduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddProduit.Location = new System.Drawing.Point(282, 435);
+            this.btnAddProduit.Location = new System.Drawing.Point(278, 435);
             this.btnAddProduit.Name = "btnAddProduit";
             this.btnAddProduit.Size = new System.Drawing.Size(107, 32);
             this.btnAddProduit.TabIndex = 147;
@@ -243,7 +243,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.btnClear.Location = new System.Drawing.Point(244, 435);
+            this.btnClear.Location = new System.Drawing.Point(241, 435);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(32, 32);
             this.btnClear.TabIndex = 153;
