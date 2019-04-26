@@ -36,7 +36,27 @@ namespace ParcInfo.frmDefault
             MenuLeft();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
+                if (GlobVars.currentUser > 0)
+                {
+                    //var u = context.Utilisateurs.Find(GlobVars.currentUser);
+                    //lblUser.Text = $"{u.Nom} {u.Prenom}";
+                    //int ix = lblUser.Size.Width;
 
+                    //ix += pnlUserName.Size.Width;
+                    //pnlUserName.Size = new Size(ix, 32);
+                    var u = context.Utilisateurs.Find(GlobVars.currentUser);
+                    if (u != null)
+                    {
+                      
+                        lblUser.Text = $"{u.Nom} {u.Prenom}";
+                        //pnlUserName.Size = new Size(label1.Width + pnlUserName.Size, 32);
+                        if (u.PassChanged == 1)
+                        {
+                            ShowControl(new userProfile());
+                        }
+                    }
+
+                }
             }
 
             ControlsClass.CursorChanger(pnlMenu);
@@ -468,6 +488,12 @@ namespace ParcInfo.frmDefault
         private void btnSettings_Click(object sender, EventArgs e)
         {
             ShowControl(new AppSettingcs());
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            DropdownUserMenu.Visible = false;
+            ShowControl(new userProfile());
         }
     }
 }

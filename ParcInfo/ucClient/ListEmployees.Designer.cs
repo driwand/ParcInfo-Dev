@@ -282,11 +282,11 @@
             this.produitCount.BackColor = System.Drawing.Color.Transparent;
             this.produitCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.produitCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.produitCount.Location = new System.Drawing.Point(73, 41);
+            this.produitCount.Location = new System.Drawing.Point(77, 41);
             this.produitCount.Name = "produitCount";
-            this.produitCount.Size = new System.Drawing.Size(24, 16);
+            this.produitCount.Size = new System.Drawing.Size(16, 16);
             this.produitCount.TabIndex = 9;
-            this.produitCount.Text = "30";
+            this.produitCount.Text = "0";
             // 
             // panel6
             // 
@@ -353,11 +353,11 @@
             this.enretardCount.BackColor = System.Drawing.Color.Transparent;
             this.enretardCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enretardCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.enretardCount.Location = new System.Drawing.Point(73, 42);
+            this.enretardCount.Location = new System.Drawing.Point(77, 42);
             this.enretardCount.Name = "enretardCount";
-            this.enretardCount.Size = new System.Drawing.Size(24, 16);
+            this.enretardCount.Size = new System.Drawing.Size(16, 16);
             this.enretardCount.TabIndex = 9;
-            this.enretardCount.Text = "30";
+            this.enretardCount.Text = "0";
             // 
             // panel3
             // 
@@ -400,11 +400,11 @@
             this.encoursCount.BackColor = System.Drawing.Color.Transparent;
             this.encoursCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.encoursCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.encoursCount.Location = new System.Drawing.Point(74, 38);
+            this.encoursCount.Location = new System.Drawing.Point(77, 38);
             this.encoursCount.Name = "encoursCount";
-            this.encoursCount.Size = new System.Drawing.Size(24, 16);
+            this.encoursCount.Size = new System.Drawing.Size(16, 16);
             this.encoursCount.TabIndex = 9;
-            this.encoursCount.Text = "30";
+            this.encoursCount.Text = "0";
             // 
             // panel4
             // 
@@ -460,11 +460,11 @@
             this.allCount.BackColor = System.Drawing.Color.Transparent;
             this.allCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.allCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.allCount.Location = new System.Drawing.Point(73, 44);
+            this.allCount.Location = new System.Drawing.Point(77, 44);
             this.allCount.Name = "allCount";
-            this.allCount.Size = new System.Drawing.Size(24, 16);
+            this.allCount.Size = new System.Drawing.Size(16, 16);
             this.allCount.TabIndex = 9;
-            this.allCount.Text = "30";
+            this.allCount.Text = "0";
             // 
             // panel5
             // 

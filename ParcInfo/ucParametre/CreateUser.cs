@@ -156,7 +156,7 @@ namespace ParcInfo.ucParametre
                             }
                         }
                         context.SaveChanges();
-                        //Methods.sendEmail(Email, body);
+                       Methods.sendEmail(Email, body);
                     }
                     else
                     {

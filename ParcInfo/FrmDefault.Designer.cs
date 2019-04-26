@@ -40,9 +40,9 @@ namespace ParcInfo.frmDefault
             this.PanelContainer = new System.Windows.Forms.Panel();
             this.PanelHeader = new System.Windows.Forms.Panel();
             this.PicBack = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlUserName = new System.Windows.Forms.Panel();
             this.PicShowMenu = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNotif = new System.Windows.Forms.Label();
             this.lineVertical = new System.Windows.Forms.Panel();
@@ -88,6 +88,7 @@ namespace ParcInfo.frmDefault
             this.PanelLogo = new System.Windows.Forms.Panel();
             this.lblLogoName = new System.Windows.Forms.Label();
             this.line1 = new System.Windows.Forms.Panel();
+            this.pnlLogo = new System.Windows.Forms.Panel();
             this.FrmPanel = new System.Windows.Forms.Panel();
             this.tmrIntervention = new System.Windows.Forms.Timer(this.components);
             this.TmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
@@ -99,13 +100,12 @@ namespace ParcInfo.frmDefault
             this.tmrRetard = new System.Windows.Forms.Timer(this.components);
             this.getRealdata = new System.ComponentModel.BackgroundWorker();
             this.dragControl1 = new ParcInfo.ucControls.DragControl();
-            this.pnlLogo = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
             this.PanelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlUserName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicShowMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PickBell)).BeginInit();
@@ -199,6 +199,7 @@ namespace ParcInfo.frmDefault
             this.btnProfile.TabIndex = 99;
             this.btnProfile.Text = "My Profile";
             this.btnProfile.UseVisualStyleBackColor = true;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // PanelContainer
             // 
@@ -213,7 +214,7 @@ namespace ParcInfo.frmDefault
             // 
             this.PanelHeader.BackColor = System.Drawing.Color.White;
             this.PanelHeader.Controls.Add(this.PicBack);
-            this.PanelHeader.Controls.Add(this.panel1);
+            this.PanelHeader.Controls.Add(this.pnlUserName);
             this.PanelHeader.Controls.Add(this.lblNotif);
             this.PanelHeader.Controls.Add(this.lineVertical);
             this.PanelHeader.Controls.Add(this.PickBell);
@@ -237,21 +238,21 @@ namespace ParcInfo.frmDefault
             this.PicBack.Visible = false;
             this.PicBack.Click += new System.EventHandler(this.PicBack_Click_1);
             // 
-            // panel1
+            // pnlUserName
             // 
-            this.panel1.Controls.Add(this.PicShowMenu);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(768, 18);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(142, 32);
-            this.panel1.TabIndex = 11;
-            this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            this.pnlUserName.Controls.Add(this.PicShowMenu);
+            this.pnlUserName.Controls.Add(this.lblUser);
+            this.pnlUserName.Controls.Add(this.pictureBox1);
+            this.pnlUserName.Location = new System.Drawing.Point(734, 18);
+            this.pnlUserName.Name = "pnlUserName";
+            this.pnlUserName.Size = new System.Drawing.Size(176, 32);
+            this.pnlUserName.TabIndex = 11;
+            this.pnlUserName.Click += new System.EventHandler(this.panel1_Click);
             // 
             // PicShowMenu
             // 
             this.PicShowMenu.Image = global::ParcInfo.Properties.Resources.arrowDown1;
-            this.PicShowMenu.Location = new System.Drawing.Point(119, 5);
+            this.PicShowMenu.Location = new System.Drawing.Point(150, 5);
             this.PicShowMenu.Name = "PicShowMenu";
             this.PicShowMenu.Size = new System.Drawing.Size(20, 20);
             this.PicShowMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -259,21 +260,21 @@ namespace ParcInfo.frmDefault
             this.PicShowMenu.TabStop = false;
             this.PicShowMenu.Click += new System.EventHandler(this.PicShowMenu_Click);
             // 
-            // label1
+            // lblUser
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 17);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Username";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(4, 8);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(71, 17);
+            this.lblUser.TabIndex = 11;
+            this.lblUser.Text = "Username";
+            this.lblUser.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ParcInfo.Properties.Resources.User;
-            this.pictureBox1.Location = new System.Drawing.Point(81, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(116, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -286,7 +287,7 @@ namespace ParcInfo.frmDefault
             this.lblNotif.AutoSize = true;
             this.lblNotif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(92)))), ((int)(((byte)(101)))));
             this.lblNotif.ForeColor = System.Drawing.Color.White;
-            this.lblNotif.Location = new System.Drawing.Point(733, 15);
+            this.lblNotif.Location = new System.Drawing.Point(705, 15);
             this.lblNotif.Name = "lblNotif";
             this.lblNotif.Size = new System.Drawing.Size(13, 13);
             this.lblNotif.TabIndex = 6;
@@ -295,7 +296,7 @@ namespace ParcInfo.frmDefault
             // lineVertical
             // 
             this.lineVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.lineVertical.Location = new System.Drawing.Point(760, 18);
+            this.lineVertical.Location = new System.Drawing.Point(727, 18);
             this.lineVertical.Name = "lineVertical";
             this.lineVertical.Size = new System.Drawing.Size(1, 32);
             this.lineVertical.TabIndex = 2;
@@ -303,7 +304,7 @@ namespace ParcInfo.frmDefault
             // PickBell
             // 
             this.PickBell.Image = global::ParcInfo.Properties.Resources.Notification;
-            this.PickBell.Location = new System.Drawing.Point(712, 18);
+            this.PickBell.Location = new System.Drawing.Point(684, 18);
             this.PickBell.Name = "PickBell";
             this.PickBell.Size = new System.Drawing.Size(32, 32);
             this.PickBell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -952,6 +953,13 @@ namespace ParcInfo.frmDefault
             this.line1.Size = new System.Drawing.Size(212, 1);
             this.line1.TabIndex = 1;
             // 
+            // pnlLogo
+            // 
+            this.pnlLogo.Location = new System.Drawing.Point(1, 1);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(223, 66);
+            this.pnlLogo.TabIndex = 1;
+            // 
             // FrmPanel
             // 
             this.FrmPanel.Controls.Add(this.panel2);
@@ -1005,13 +1013,6 @@ namespace ParcInfo.frmDefault
             // 
             this.dragControl1.SelectControl = this.PanelHeader;
             // 
-            // pnlLogo
-            // 
-            this.pnlLogo.Location = new System.Drawing.Point(1, 1);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(223, 66);
-            this.pnlLogo.TabIndex = 1;
-            // 
             // FrmDefault
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1030,8 +1031,8 @@ namespace ParcInfo.frmDefault
             this.PanelHeader.ResumeLayout(false);
             this.PanelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlUserName.ResumeLayout(false);
+            this.pnlUserName.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicShowMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PickBell)).EndInit();
@@ -1083,9 +1084,8 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Timer TmrClient;
         private System.Windows.Forms.Timer tmrRequest;
         private ucControls.DragControl dragControl1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlUserName;
         private System.Windows.Forms.PictureBox PicShowMenu;
-        public System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel DropDemande;
         private System.Windows.Forms.Button btnDemandeAttent;
@@ -1121,5 +1121,6 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Label lblRequestAttente;
         private System.Windows.Forms.Button btnSettings;
         public System.Windows.Forms.Panel pnlLogo;
+        public System.Windows.Forms.Label lblUser;
     }
 }

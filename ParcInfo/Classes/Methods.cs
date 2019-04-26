@@ -108,6 +108,7 @@ namespace ParcInfo.Classes
                     }
 
                 }
+              
             }
             return count;
         }
@@ -256,10 +257,10 @@ namespace ParcInfo.Classes
             grid.AllowUserToResizeRows = false;
             foreach (var c in columns)
             {
-                if (c == "id")
+                if (c.ToLower() == "id")
                     grid.Columns["id"].Visible = false;
             }
-            
+           
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             DataGridViewCellStyle DataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -318,6 +319,13 @@ namespace ParcInfo.Classes
                 $"<b>Password : {password} </b>";
             return msg;
         }
+        public static string StringForget(string nom, string prenom,string password)
+        {
+            string msg = $"<p>Hello <b>{nom} {prenom}</b></p><br>" +
+                $" Here is Your New Password : <b> {password}</b><br>" +
+                $"";
+            return msg;
+        }
         public static void sendEmail(string email, string msg)
         {
             MailMessage mail = new MailMessage("parcinfoit@gmail.com", email);
@@ -327,7 +335,6 @@ namespace ParcInfo.Classes
             using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
             {
                 client.EnableSsl = true;
-
                 client.Credentials = new System.Net.NetworkCredential("parcinfoit@gmail.com", "parc123456");
                 client.Send(mail);
             }

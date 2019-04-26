@@ -50,7 +50,6 @@ namespace ParcInfo.ucClient
                     var emp = context.Employees.Find(idEmploye);
                     if (emp != null)
                     {
-
                         txtNom.Text = emp.Nom;
                         txtPrenom.Text = emp.Prenom;
                         txtTel.Text = emp.Tel;
@@ -66,7 +65,6 @@ namespace ParcInfo.ucClient
                         }
                     }
                 }
-
                 else
                 {
                     btnAjouter.Text = "Ajouter";
@@ -76,8 +74,6 @@ namespace ParcInfo.ucClient
                 txtDeaprt.DisplayMember = "Nom";
             }
         }
-
-
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -95,13 +91,13 @@ namespace ParcInfo.ucClient
                     // get values 
                     var idEmp = context.Employees.Find(idE);
                     string pass = txtPass.Text;
-
                     idEmp.Nom = txtNom.Text;
                     idEmp.Prenom = txtPrenom.Text;
                     idEmp.Tel = txtTel.Text;
-                    
-
-                    idEmp.Password_e = Methods.MD5Hash(pass);
+                    if (txtPass.Text != "")
+                    {
+                        idEmp.Password_e = Methods.MD5Hash(pass);
+                    }
                     idEmp.IdDep = int.Parse(txtDeaprt.SelectedValue.ToString());
                     int Respo = 0;
                     if (cbRespo.Checked)
@@ -109,11 +105,11 @@ namespace ParcInfo.ucClient
                         Respo = 1;
                     }
                     idEmp.IsResponsable = Respo;
-                    idEmp.Modifierpar = GlobVars.currentUser;
+                   idEmp.Modifierpar = GlobVars.currentUser;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
-                    var msg = Methods.stringMsg(idEmp.Nom, idEmp.Prenom, idEmp.Email, pass);
-                    Methods.sendEmail(idEmp.Email, msg);
+                    var msg = Methods.StringForget(idEmp.Nom, idEmp.Prenom,pass);
+                    Methods.sendEmail(txtEmail.Text, msg);
                     Close();
                     updateGrid();
                 }
@@ -121,7 +117,6 @@ namespace ParcInfo.ucClient
                 {
                     if (txtEmpty == 0)
                     {
-                        
                         // get values 
                         string Nom = txtNom.Text;
                         string Prenom = txtPrenom.Text;
@@ -153,11 +148,13 @@ namespace ParcInfo.ucClient
                                 Idclient = idC,
                                 IsResponsable = Respo,
                                 Datecreation = DateTime.Now,
-                                Password_e = pass
+                                Password_e = pass,
+                                IsDeleted = 0,
+                                Creepar = GlobVars.currentUser,
                             };
                             context.Employees.Add(emp);
                             context.SaveChanges();
-                           // Methods.sendEmail(Email, msg);
+                            Methods.sendEmail(Email, msg);
                             MessageBox.Show("L'Employé a été ajouté");
                             // clear textbox 
                             Methods.Clear(this);
@@ -168,10 +165,8 @@ namespace ParcInfo.ucClient
                         {
                             MessageBox.Show("email already exists");
                         }
-                  
                     }
                 }
-
 
             }
         }
@@ -185,9 +180,8 @@ namespace ParcInfo.ucClient
                 DialogResult result = MessageBox.Show("Voulez-vous supprimer le Employé suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-
                     c.IsDeleted = 1;
-                    c.Modifierpar = 1;
+                    c.Modifierpar = GlobVars.currentUser;
                     c.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     MessageBox.Show("Employé supprimé");
@@ -212,7 +206,17 @@ namespace ParcInfo.ucClient
                 var listEmp = (from emp in c.Employees
                                join d in c.Departements on emp.IdDep equals d.id
                                where emp.IsDeleted != 1
-                               select new { emp.IdEmploye, emp.Id, emp.Nom, emp.Prenom, emp.Email , emp.Password_e, departement = d.Nom }).ToList();
+                               select new {
+                                   emp.IdEmploye,
+                                   emp.Id,
+                                   emp.Nom,
+                                   emp.Prenom,
+                                   emp.Email,
+                                   emp.Password_e,
+                                   departement = d.Nom,
+                                   userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                                   dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****"
+                               }).ToList();
                 dgEmp.DataSource = listEmp;
                Methods.Nice_grid(
                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },

@@ -127,7 +127,7 @@ namespace ParcInfo.ucClient
 
         private void dgEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (dgEmployees.SelectedRows.Count > 0)
             {
                 var myrow = dgEmployees.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
@@ -192,12 +192,12 @@ namespace ParcInfo.ucClient
         {
            
             Methods.Nice_grid(
-                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },
+                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement"},
                 new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
                 dgEmployees
                 );
-            dgEmployees.Columns["userMod"].Visible = false;
-            dgEmployees.Columns["dateMod"].Visible = false;
+            //dgEmployees.Columns["userMod"].Visible = false;
+            //dgEmployees.Columns["dateMod"].Visible = false;
             Methods.FilterDataGridViewIni(dgEmployees, txtFind, btnFind);
         }
 

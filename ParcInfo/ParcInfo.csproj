@@ -162,12 +162,6 @@
     <Compile Include="RoleUtilisateur.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="TypeProduit.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
@@ -221,6 +215,12 @@
     </Compile>
     <Compile Include="ucControls\lblTextbox.Designer.cs">
       <DependentUpon>lblTextbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucControls\loginCntrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\loginCntrl.Designer.cs">
+      <DependentUpon>loginCntrl.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControls\loginPass.cs">
       <SubType>UserControl</SubType>
@@ -370,6 +370,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucParametre\userProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucParametre\userProfile.Designer.cs">
+      <DependentUpon>userProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucProduit\listProduits.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -426,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\lblTextbox.resx">
       <DependentUpon>lblTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\loginCntrl.resx">
+      <DependentUpon>loginCntrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\loginPass.resx">
       <DependentUpon>loginPass.cs</DependentUpon>
@@ -503,6 +512,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ucParametre\userProfile.resx">
+      <DependentUpon>userProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucProduit\listProduits.resx">
       <DependentUpon>listProduits.cs</DependentUpon>
     </EmbeddedResource>

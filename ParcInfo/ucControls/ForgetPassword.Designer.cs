@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.multiLineLabel1 = new ParcInfo.MultiLineLabel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.lblForget = new System.Windows.Forms.LinkLabel();
+            this.btnForgetPass = new System.Windows.Forms.Button();
+            this.lblBack = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblErr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,20 +48,11 @@
             this.label2.TabIndex = 106;
             this.label2.Text = "vous avez oublie votre mot de passe ?";
             // 
-            // multiLineLabel1
-            // 
-            this.multiLineLabel1.Location = new System.Drawing.Point(82, 56);
-            this.multiLineLabel1.MultiLine = false;
-            this.multiLineLabel1.Name = "multiLineLabel1";
-            this.multiLineLabel1.Size = new System.Drawing.Size(303, 44);
-            this.multiLineLabel1.TabIndex = 107;
-            this.multiLineLabel1.Text = "Pour réinitialiser votre mot de passe, saisissez votre adresse email";
-            // 
             // pictureBox7
             // 
             this.pictureBox7.Image = global::ParcInfo.Properties.Resources.User_48px;
             this.pictureBox7.InitialImage = global::ParcInfo.Properties.Resources.User_48px;
-            this.pictureBox7.Location = new System.Drawing.Point(41, 128);
+            this.pictureBox7.Location = new System.Drawing.Point(41, 106);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(28, 28);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -69,47 +61,67 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(85, 128);
+            this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(85, 106);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(328, 28);
             this.txtEmail.TabIndex = 108;
             // 
-            // btnLogin
+            // btnForgetPass
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogin.Location = new System.Drawing.Point(137, 167);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(210, 39);
-            this.btnLogin.TabIndex = 110;
-            this.btnLogin.Text = "retrouver mon mot de passe";
-            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnForgetPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnForgetPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnForgetPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnForgetPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnForgetPass.ForeColor = System.Drawing.Color.White;
+            this.btnForgetPass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnForgetPass.Location = new System.Drawing.Point(137, 176);
+            this.btnForgetPass.Name = "btnForgetPass";
+            this.btnForgetPass.Size = new System.Drawing.Size(210, 39);
+            this.btnForgetPass.TabIndex = 110;
+            this.btnForgetPass.Text = "retrouver mon mot de passe";
+            this.btnForgetPass.UseVisualStyleBackColor = false;
+            this.btnForgetPass.Click += new System.EventHandler(this.btnForgetPass_Click);
             // 
-            // lblForget
+            // lblBack
             // 
-            this.lblForget.AutoSize = true;
-            this.lblForget.Location = new System.Drawing.Point(226, 214);
-            this.lblForget.Name = "lblForget";
-            this.lblForget.Size = new System.Drawing.Size(32, 13);
-            this.lblForget.TabIndex = 111;
-            this.lblForget.TabStop = true;
-            this.lblForget.Text = "Back";
+            this.lblBack.AutoSize = true;
+            this.lblBack.Location = new System.Drawing.Point(223, 225);
+            this.lblBack.Name = "lblBack";
+            this.lblBack.Size = new System.Drawing.Size(39, 13);
+            this.lblBack.TabIndex = 111;
+            this.lblBack.TabStop = true;
+            this.lblBack.Text = "Retour";
+            this.lblBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBack_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(82, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(303, 47);
+            this.label1.TabIndex = 112;
+            this.label1.Text = "Pour réinitialiser votre mot de passe, saisissez votre adresse email";
+            // 
+            // lblErr
+            // 
+            this.lblErr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(59)))), ((int)(((byte)(90)))));
+            this.lblErr.Location = new System.Drawing.Point(84, 139);
+            this.lblErr.Name = "lblErr";
+            this.lblErr.Size = new System.Drawing.Size(329, 34);
+            this.lblErr.TabIndex = 113;
             // 
             // ForgetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lblForget);
-            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.lblErr);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblBack);
+            this.Controls.Add(this.btnForgetPass);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.multiLineLabel1);
             this.Controls.Add(this.label2);
             this.Name = "ForgetPassword";
             this.Size = new System.Drawing.Size(464, 251);
@@ -122,10 +134,11 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private MultiLineLabel multiLineLabel1;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.LinkLabel lblForget;
+        private System.Windows.Forms.Button btnForgetPass;
+        private System.Windows.Forms.LinkLabel lblBack;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblErr;
     }
 }

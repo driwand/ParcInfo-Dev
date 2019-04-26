@@ -51,7 +51,7 @@ namespace ParcInfo
         public string Ville { get; set; }
         public string Email { get; set; }
         public string Password_u { get; set; }
-        public Nullable<int> Codepin { get; set; }
+        public Nullable<int> PassChanged { get; set; }
         public Nullable<int> isAdmin { get; set; }
         public Nullable<System.DateTime> Datecreation { get; set; }
         public Nullable<System.DateTime> Datemodification { get; set; }

@@ -27,7 +27,6 @@ namespace ParcInfo.ucClient
         }
         private void ListClients_Load(object sender, EventArgs e)
         {
-            
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var vr = context.Clients.Where(c=> c.IsDeleted == 0).ToList();
@@ -36,7 +35,7 @@ namespace ParcInfo.ucClient
                     c.Adresse, c.Tel, c.Fax,
                     c.Siteweb, c.Prixheur, c.Heurecontract,
                     c.Debutcontract,
-                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                     userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
                      dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
@@ -166,7 +165,7 @@ namespace ParcInfo.ucClient
 
         private void dgClients_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (dgClients.SelectedRows.Count > 0)
             {
                 var myrow = dgClients.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
@@ -201,12 +200,11 @@ namespace ParcInfo.ucClient
 
 
             Methods.Nice_grid(
-                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract","userMod","dateMod" },
-                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract","user","datemod" },
+                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract" },
+                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract"},
                 dgClients
                 );
-            dgClients.Columns["userMod"].Visible = false;
-            dgClients.Columns["dateMod"].Visible = false;
+          
             Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
 
         }

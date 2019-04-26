@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListClients));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgClients = new System.Windows.Forms.DataGridView();
             this.CkDeletedClient = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -45,7 +43,6 @@
             this.btnNewClient = new System.Windows.Forms.Button();
             this.btnCons = new System.Windows.Forms.Button();
             this.btnStartIntervention = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gpDemande = new ParcInfo.Classes.GradientPanel();
             this.lblDemC = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -66,9 +63,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgClients)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gpDemande.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.gpEmployee.SuspendLayout();
@@ -77,26 +76,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.gpIntervention.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.panel1.Location = new System.Drawing.Point(14, 40);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(863, 2);
-            this.panel1.TabIndex = 34;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(55, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Liste des Clients";
             // 
             // dgClients
             // 
@@ -257,16 +238,6 @@
             this.btnStartIntervention.Text = "      Demarer Intervention";
             this.btnStartIntervention.UseVisualStyleBackColor = false;
             this.btnStartIntervention.Click += new System.EventHandler(this.btnStartIntervention_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
             // 
             // gpDemande
             // 
@@ -505,6 +476,35 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(55, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Liste des Clients";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.panel1.Location = new System.Drawing.Point(14, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(863, 2);
+            this.panel1.TabIndex = 34;
+            // 
             // ListClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,7 +534,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgClients)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gpDemande.ResumeLayout(false);
             this.gpDemande.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -547,16 +546,13 @@
             this.gpIntervention.ResumeLayout(false);
             this.gpIntervention.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgClients;
         private System.Windows.Forms.Button btnCons;
         private System.Windows.Forms.Button btnStartIntervention;
@@ -591,5 +587,8 @@
         public System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Button btnNewClient;
         private System.Windows.Forms.LinkLabel lblEdited;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
