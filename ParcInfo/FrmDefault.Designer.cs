@@ -88,6 +88,7 @@ namespace ParcInfo.frmDefault
             this.PanelLogo = new System.Windows.Forms.Panel();
             this.lblLogoName = new System.Windows.Forms.Label();
             this.line1 = new System.Windows.Forms.Panel();
+            this.pnlLogo = new System.Windows.Forms.Panel();
             this.FrmPanel = new System.Windows.Forms.Panel();
             this.tmrIntervention = new System.Windows.Forms.Timer(this.components);
             this.TmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
@@ -99,7 +100,6 @@ namespace ParcInfo.frmDefault
             this.tmrRetard = new System.Windows.Forms.Timer(this.components);
             this.getRealdata = new System.ComponentModel.BackgroundWorker();
             this.dragControl1 = new ParcInfo.ucControls.DragControl();
-            this.pnlLogo = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
@@ -952,6 +952,13 @@ namespace ParcInfo.frmDefault
             this.line1.Size = new System.Drawing.Size(212, 1);
             this.line1.TabIndex = 1;
             // 
+            // pnlLogo
+            // 
+            this.pnlLogo.Location = new System.Drawing.Point(1, 1);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(223, 66);
+            this.pnlLogo.TabIndex = 1;
+            // 
             // FrmPanel
             // 
             this.FrmPanel.Controls.Add(this.panel2);
@@ -1004,13 +1011,6 @@ namespace ParcInfo.frmDefault
             // dragControl1
             // 
             this.dragControl1.SelectControl = this.PanelHeader;
-            // 
-            // pnlLogo
-            // 
-            this.pnlLogo.Location = new System.Drawing.Point(1, 1);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(223, 66);
-            this.pnlLogo.TabIndex = 1;
             // 
             // FrmDefault
             // 
