@@ -62,6 +62,7 @@ namespace ParcInfo.ucClient
                         else
                         {
                             cbRespo.Checked = false;
+
                         }
                     }
                 }
