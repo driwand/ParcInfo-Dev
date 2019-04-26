@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ParcInformatiqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ParcInformatiqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AffectationClient">
           <Key>
             <PropertyRef Name="Id" />
@@ -127,16 +127,15 @@
           <Property Name="Detailproduit" Type="text" />
           <Property Name="IsDeleted" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ParametreParcinfo">
           <Key>
-            <PropertyRef Name="Nomapp" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="Nomapp" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Logoapp" Type="varbinary(max)" />
           <Property Name="Reatrddemande" Type="int" />
           <Property Name="Iconapp" Type="varbinary(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Produit">
           <Key>
@@ -811,6 +810,7 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <EntitySet Name="Installer" EntityType="Self.Installer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Intervention" EntityType="Self.Intervention" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="observation" EntityType="Self.observation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParametreParcinfo" EntityType="Self.ParametreParcinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produit" EntityType="Self.Produit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProduitClient" EntityType="Self.ProduitClient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProduitUtiliser" EntityType="Self.ProduitUtiliser" Schema="dbo" store:Type="Tables" />
@@ -820,14 +820,6 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <EntitySet Name="UserActivities" EntityType="Self.UserActivities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ValeurProp" EntityType="Self.ValeurProp" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ParametreParcinfo" EntityType="Self.ParametreParcinfo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ParametreParcinfo].[Nomapp] AS [Nomapp], 
-    [ParametreParcinfo].[Logoapp] AS [Logoapp], 
-    [ParametreParcinfo].[Reatrddemande] AS [Reatrddemande], 
-    [ParametreParcinfo].[Iconapp] AS [Iconapp]
-    FROM [dbo].[ParametreParcinfo] AS [ParametreParcinfo]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Affectati__Creep__276EDEB3" Association="Self.FK__Affectati__Creep__276EDEB3">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="AffectationClient" EntitySet="AffectationClient" />
@@ -1001,8 +993,7 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
             <End Role="ValeurProp" EntitySet="ValeurProp" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ParcInformatiqueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1063,7 +1054,7 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <Property Name="IdEmployee" Type="Int32" />
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Demande__IdEmplo__4BAC3F29" FromRole="Demande" ToRole="Employee" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Demande__Modifie__4CA06362" FromRole="Demande" ToRole="Utilisateur" />
           <NavigationProperty Name="Interventions" Relationship="Self.FK__Intervent__IdDem__52593CB8" FromRole="Demande" ToRole="Intervention" />
@@ -1156,7 +1147,7 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <Property Name="IdUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TypeOb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Textobservation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Dateobservation" Type="DateTime" Precision="3" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Dateobservation" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="Detailproduit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Intervention" Relationship="Self.FK__observati__IdInt__59063A47" FromRole="observation" ToRole="Intervention" />
@@ -1221,7 +1212,7 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__ProduitUt__IdEmp__6E01572D" FromRole="ProduitUtiliser" ToRole="Employee" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__ProduitUt__IdPro__6D0D32F4" FromRole="ProduitUtiliser" ToRole="ProduitClient" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__ProduitUt__Creep__6FE99F9F" FromRole="ProduitUtiliser" ToRole="Utilisateur" />
@@ -1330,15 +1321,6 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <Property Name="IdPropriete" Type="Int32" />
           <NavigationProperty Name="Produit" Relationship="Self.FK__ValeurPro__IdPro__45F365D3" FromRole="ValeurProp" ToRole="Produit" />
           <NavigationProperty Name="ProprietesProduit" Relationship="Self.FK__ValeurPro__IdPro__46E78A0C" FromRole="ValeurProp" ToRole="ProprietesProduit" />
-        </EntityType>
-        <EntityType Name="ParametreParcinfo">
-          <Key>
-            <PropertyRef Name="Nomapp" />
-          </Key>
-          <Property Name="Nomapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Logoapp" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Reatrddemande" Type="Int32" />
-          <Property Name="Iconapp" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK__Affectati__Creep__276EDEB3">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
@@ -1874,7 +1856,6 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <EntitySet Name="UserActivities" EntityType="Self.UserActivity" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
           <EntitySet Name="ValeurProps" EntityType="Self.ValeurProp" />
-          <EntitySet Name="ParametreParcinfoes" EntityType="Self.ParametreParcinfo" />
           <AssociationSet Name="FK__Affectati__Creep__276EDEB3" Association="Self.FK__Affectati__Creep__276EDEB3">
             <End Role="Utilisateur" EntitySet="Utilisateurs" />
             <End Role="AffectationClient" EntitySet="AffectationClients" />
@@ -2077,6 +2058,7 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="ParametreParcinfoes" EntityType="ParcInformatiqueModel.ParametreParcinfo" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2089,6 +2071,16 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="ParametreParcinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Nomapp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Logoapp" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Reatrddemande" Type="Int32" />
+          <Property Name="Iconapp" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2347,16 +2339,6 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ParametreParcinfoes">
-            <EntityTypeMapping TypeName="ParcInformatiqueModel.ParametreParcinfo">
-              <MappingFragment StoreEntitySet="ParametreParcinfo">
-                <ScalarProperty Name="Nomapp" ColumnName="Nomapp" />
-                <ScalarProperty Name="Logoapp" ColumnName="Logoapp" />
-                <ScalarProperty Name="Reatrddemande" ColumnName="Reatrddemande" />
-                <ScalarProperty Name="Iconapp" ColumnName="Iconapp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ParcInformatiqueModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ParcInformatiqueModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ParcInformatiqueModel.Store.sp_dropdiagram" />
@@ -2381,6 +2363,17 @@ warning 6002: The table/view 'ParcInformatique.dbo.ParametreParcinfo' does not h
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ParcInformatiqueModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ParcInformatiqueModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="ParametreParcinfoes">
+            <EntityTypeMapping TypeName="ParcInformatiqueModel.ParametreParcinfo">
+              <MappingFragment StoreEntitySet="ParametreParcinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Iconapp" ColumnName="Iconapp" />
+                <ScalarProperty Name="Reatrddemande" ColumnName="Reatrddemande" />
+                <ScalarProperty Name="Logoapp" ColumnName="Logoapp" />
+                <ScalarProperty Name="Nomapp" ColumnName="Nomapp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

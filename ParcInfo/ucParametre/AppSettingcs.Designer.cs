@@ -40,6 +40,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPickIcon = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
@@ -51,11 +52,13 @@
             this.btnFullback = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRestore = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.picIcon = new System.Windows.Forms.PictureBox();
             this.gpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.applogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -176,6 +179,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Backup";
             // 
+            // btnPickIcon
+            // 
+            this.btnPickIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnPickIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPickIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPickIcon.ForeColor = System.Drawing.Color.White;
+            this.btnPickIcon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPickIcon.Location = new System.Drawing.Point(578, 140);
+            this.btnPickIcon.Name = "btnPickIcon";
+            this.btnPickIcon.Size = new System.Drawing.Size(76, 35);
+            this.btnPickIcon.TabIndex = 164;
+            this.btnPickIcon.Text = "pick icon";
+            this.btnPickIcon.UseVisualStyleBackColor = false;
+            this.btnPickIcon.Click += new System.EventHandler(this.btnPickIcon_Click);
+            // 
             // comboBox2
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -295,26 +313,37 @@
             this.btnRestore.UseVisualStyleBackColor = false;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(482, 236);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 35);
-            this.button1.TabIndex = 163;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(482, 236);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(141, 35);
+            this.btnSave.TabIndex = 163;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // picIcon
+            // 
+            this.picIcon.Location = new System.Drawing.Point(463, 125);
+            this.picIcon.Name = "picIcon";
+            this.picIcon.Size = new System.Drawing.Size(100, 50);
+            this.picIcon.TabIndex = 164;
+            this.picIcon.TabStop = false;
             // 
             // AppSettingcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPickIcon);
+            this.Controls.Add(this.picIcon);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDifferentialBackup);
             this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.btnFullback);
@@ -331,6 +360,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,6 +389,8 @@
         public System.Windows.Forms.Button btnFullback;
         public System.Windows.Forms.Button btnDifferentialBackup;
         public System.Windows.Forms.Button btnRestore;
-        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button btnSave;
+        public System.Windows.Forms.Button btnPickIcon;
+        private System.Windows.Forms.PictureBox picIcon;
     }
 }

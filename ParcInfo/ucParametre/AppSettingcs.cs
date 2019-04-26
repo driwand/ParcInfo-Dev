@@ -12,6 +12,8 @@ using System.Data.Entity;
 using Microsoft.SqlServer.Management.Common;
 using System.Configuration;
 using System.Data.SqlClient;
+using ParcInfo.Classes;
+using System.Diagnostics;
 
 namespace ParcInfo.ucParametre
 {
@@ -52,6 +54,30 @@ namespace ParcInfo.ucParametre
         private void btnRestore_Click(object sender, EventArgs e)
         {
             RestoreDatabase();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (var db = new ParcInformatiqueEntities())
+            {
+                ParametreParcinfo pr = new ParametreParcinfo
+                {
+                    Nomapp = "Parc Info",
+                    Logoapp = Methods.ImageToByteArray(applogo.Image),
+                    Iconapp = Methods.ImageToByteArray(picIcon.Image),
+                };
+                db.ParametreParcinfoes.FirstOrDefault().Iconapp = pr.Iconapp;
+                db.ParametreParcinfoes.FirstOrDefault().Logoapp = pr.Logoapp;
+                db.SaveChanges();
+
+
+                var result = MessageBox.Show("do you wannt to restart", ".", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+            }
         }
 
         public void Fullbackup()
@@ -116,6 +142,22 @@ namespace ParcInfo.ucParametre
 
             Server myserver = new Server(".");
             restoreDB.SqlRestore(myserver);
+        }
+
+        private void btnPickIcon_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "Png files (*.png)|*.png";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    PictureBox PictureBox1 = new PictureBox();
+
+                    picIcon.Image = new Bitmap(dlg.FileName);
+                }
+            }
         }
     }
 }
