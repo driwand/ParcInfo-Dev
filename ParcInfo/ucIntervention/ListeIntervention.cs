@@ -71,6 +71,7 @@ namespace ParcInfo.ucInterevntion
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
+                
             }
         }
         public ListeIntervention(int idClient,string Code)
@@ -81,6 +82,7 @@ namespace ParcInfo.ucInterevntion
                 if (idClient > 0 && Code != "")
                 {
                     idclient = idClient;
+                    lblTitleIntervention.Text = "Les intervention du";
                     lblSource.Text = $"[{Code}]";
                     lblSource.ForeColor = Color.FromArgb(0, 168, 255);
                     lblSource.Visible = true;

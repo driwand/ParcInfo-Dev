@@ -395,7 +395,9 @@ namespace ParcInfo.ucInterevntion
                     }
                     
                     CheckStatut(currentintr.Getstatut);
-
+                    lblIntervention.Text = currentintr.IdIntrv;
+                    lblIntervention.ForeColor = Color.FromArgb(0, 168, 255);
+                    lblIntervention.Show();
 
                     if (currentintr.TypeIntervention != null &&
                         currentintr.Deplacement != null &&

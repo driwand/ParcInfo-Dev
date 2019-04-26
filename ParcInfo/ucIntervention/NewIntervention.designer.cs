@@ -296,6 +296,7 @@
             this.lblIntervention.Size = new System.Drawing.Size(62, 13);
             this.lblIntervention.TabIndex = 45;
             this.lblIntervention.Text = "[INTV0001]";
+            this.lblIntervention.Visible = false;
             // 
             // groupBox3
             // 
@@ -391,6 +392,7 @@
             this.lblDetails.Size = new System.Drawing.Size(122, 13);
             this.lblDetails.TabIndex = 79;
             this.lblDetails.Text = "[Client,employee,produit]";
+            this.lblDetails.Visible = false;
             // 
             // pnlStatut
             // 
