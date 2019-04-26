@@ -34,7 +34,6 @@
             this.PnlDepart = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.PnlUsers = new System.Windows.Forms.FlowLayoutPanel();
-            this.BtnAddUser = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtPrix = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -62,6 +61,11 @@
             this.btnEditClient = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
             this.picHeader = new System.Windows.Forms.PictureBox();
+            this.BtnAddUser = new System.Windows.Forms.Button();
+            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,10 +89,12 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnAddDepartement);
+            this.groupBox6.Controls.Add(this.gradientPanel2);
             this.groupBox6.Controls.Add(this.PnlDepart);
             this.groupBox6.Location = new System.Drawing.Point(442, 55);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(409, 167);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox6.Size = new System.Drawing.Size(409, 149);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Les departements";
@@ -98,9 +104,9 @@
             this.btnAddDepartement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnAddDepartement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDepartement.ForeColor = System.Drawing.Color.White;
-            this.btnAddDepartement.Location = new System.Drawing.Point(315, 124);
+            this.btnAddDepartement.Location = new System.Drawing.Point(367, 118);
             this.btnAddDepartement.Name = "btnAddDepartement";
-            this.btnAddDepartement.Size = new System.Drawing.Size(77, 28);
+            this.btnAddDepartement.Size = new System.Drawing.Size(25, 25);
             this.btnAddDepartement.TabIndex = 46;
             this.btnAddDepartement.Text = "Ajouter";
             this.btnAddDepartement.UseVisualStyleBackColor = false;
@@ -113,19 +119,20 @@
             this.PnlDepart.MaximumSize = new System.Drawing.Size(375, 100);
             this.PnlDepart.Name = "PnlDepart";
             this.PnlDepart.Padding = new System.Windows.Forms.Padding(20, 10, 0, 10);
-            this.PnlDepart.Size = new System.Drawing.Size(375, 100);
+            this.PnlDepart.Size = new System.Drawing.Size(375, 94);
             this.PnlDepart.TabIndex = 0;
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.gradientPanel4);
             this.groupBox4.Controls.Add(this.PnlUsers);
             this.groupBox4.Controls.Add(this.BtnAddUser);
-            this.groupBox4.Location = new System.Drawing.Point(442, 228);
+            this.groupBox4.Location = new System.Drawing.Point(442, 210);
             this.groupBox4.MaximumSize = new System.Drawing.Size(409, 367);
             this.groupBox4.MinimumSize = new System.Drawing.Size(409, 154);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox4.Size = new System.Drawing.Size(409, 207);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox4.Size = new System.Drawing.Size(409, 225);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Les utilisateurs";
@@ -133,44 +140,33 @@
             // PnlUsers
             // 
             this.PnlUsers.Location = new System.Drawing.Point(17, 22);
-            this.PnlUsers.MaximumSize = new System.Drawing.Size(375, 128);
+            this.PnlUsers.MaximumSize = new System.Drawing.Size(375, 156);
             this.PnlUsers.MinimumSize = new System.Drawing.Size(375, 94);
             this.PnlUsers.Name = "PnlUsers";
             this.PnlUsers.Padding = new System.Windows.Forms.Padding(20, 10, 0, 10);
-            this.PnlUsers.Size = new System.Drawing.Size(375, 128);
+            this.PnlUsers.Size = new System.Drawing.Size(375, 156);
             this.PnlUsers.TabIndex = 0;
-            // 
-            // BtnAddUser
-            // 
-            this.BtnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAddUser.ForeColor = System.Drawing.Color.White;
-            this.BtnAddUser.Location = new System.Drawing.Point(315, 163);
-            this.BtnAddUser.Name = "BtnAddUser";
-            this.BtnAddUser.Size = new System.Drawing.Size(77, 28);
-            this.BtnAddUser.TabIndex = 45;
-            this.BtnAddUser.Text = "Ajouter";
-            this.BtnAddUser.UseVisualStyleBackColor = false;
-            this.BtnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.gradientPanel3);
             this.groupBox3.Controls.Add(this.txtPrix);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.dtDebutcontract);
             this.groupBox3.Controls.Add(this.txtHeure);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Location = new System.Drawing.Point(18, 339);
+            this.groupBox3.Location = new System.Drawing.Point(18, 349);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(409, 96);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox3.Size = new System.Drawing.Size(409, 86);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contract";
             // 
             // txtPrix
             // 
-            this.txtPrix.Location = new System.Drawing.Point(246, 23);
+            this.txtPrix.Location = new System.Drawing.Point(246, 22);
             this.txtPrix.Name = "txtPrix";
             this.txtPrix.Size = new System.Drawing.Size(124, 20);
             this.txtPrix.TabIndex = 1;
@@ -180,7 +176,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(210, 27);
+            this.label8.Location = new System.Drawing.Point(207, 26);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 43;
@@ -189,14 +185,14 @@
             // dtDebutcontract
             // 
             this.dtDebutcontract.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDebutcontract.Location = new System.Drawing.Point(94, 23);
+            this.dtDebutcontract.Location = new System.Drawing.Point(94, 21);
             this.dtDebutcontract.Name = "dtDebutcontract";
             this.dtDebutcontract.Size = new System.Drawing.Size(108, 20);
             this.dtDebutcontract.TabIndex = 0;
             // 
             // txtHeure
             // 
-            this.txtHeure.Location = new System.Drawing.Point(94, 63);
+            this.txtHeure.Location = new System.Drawing.Point(94, 52);
             this.txtHeure.Name = "txtHeure";
             this.txtHeure.Size = new System.Drawing.Size(108, 20);
             this.txtHeure.TabIndex = 2;
@@ -206,7 +202,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 66);
+            this.label9.Location = new System.Drawing.Point(6, 54);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 13);
             this.label9.TabIndex = 38;
@@ -215,7 +211,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 29);
+            this.label10.Location = new System.Drawing.Point(6, 24);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 13);
             this.label10.TabIndex = 37;
@@ -229,7 +225,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(18, 197);
+            this.groupBox2.Location = new System.Drawing.Point(18, 210);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(409, 136);
             this.groupBox2.TabIndex = 1;
@@ -289,6 +285,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.gradientPanel1);
             this.groupBox1.Controls.Add(this.txtVille);
             this.groupBox1.Controls.Add(this.txtAdr);
             this.groupBox1.Controls.Add(this.txtNom);
@@ -297,7 +294,8 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(18, 55);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(409, 136);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox1.Size = new System.Drawing.Size(409, 149);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -328,7 +326,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 103);
+            this.label5.Location = new System.Drawing.Point(6, 100);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 39;
@@ -337,7 +335,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 66);
+            this.label4.Location = new System.Drawing.Point(6, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 38;
@@ -346,7 +344,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 29);
+            this.label3.Location = new System.Drawing.Point(6, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 37;
@@ -426,6 +424,63 @@
             this.picHeader.TabIndex = 10005;
             this.picHeader.TabStop = false;
             // 
+            // BtnAddUser
+            // 
+            this.BtnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAddUser.ForeColor = System.Drawing.Color.White;
+            this.BtnAddUser.Location = new System.Drawing.Point(367, 192);
+            this.BtnAddUser.Name = "BtnAddUser";
+            this.BtnAddUser.Size = new System.Drawing.Size(25, 25);
+            this.BtnAddUser.TabIndex = 45;
+            this.BtnAddUser.Text = "Ajouter";
+            this.BtnAddUser.UseVisualStyleBackColor = false;
+            this.BtnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 146);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel2.TabIndex = 47;
+            // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.Angle = 0F;
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel4.Location = new System.Drawing.Point(0, 222);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel4.TabIndex = 46;
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.Angle = 0F;
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel3.Location = new System.Drawing.Point(0, 83);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel3.TabIndex = 44;
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 146);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel1.TabIndex = 40;
+            // 
             // CreateClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,7 +525,6 @@
         private System.Windows.Forms.Button btnAddClient;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.FlowLayoutPanel PnlUsers;
-        private System.Windows.Forms.Button BtnAddUser;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtPrix;
         private System.Windows.Forms.Label label8;
@@ -495,5 +549,10 @@
         private System.Windows.Forms.PictureBox picHeader;
         public System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.TextBox txtFax;
+        private Classes.GradientPanel gradientPanel1;
+        private Classes.GradientPanel gradientPanel2;
+        private Classes.GradientPanel gradientPanel3;
+        private System.Windows.Forms.Button BtnAddUser;
+        private Classes.GradientPanel gradientPanel4;
     }
 }
