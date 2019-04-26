@@ -10,14 +10,10 @@
 namespace ParcInfo
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ParametreParcinfo
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public string Nomapp { get; set; }
-        public byte[] Logoapp { get; set; }
-        public Nullable<int> Reatrddemande { get; set; }
-        public byte[] Iconapp { get; set; }
-        public int Id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

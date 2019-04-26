@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.Control;
 
 namespace ParcInfo.Classes
 {
@@ -50,7 +51,7 @@ namespace ParcInfo.Classes
         {
             foreach (Control c in control.Controls)
             {
-                if ( c is GroupBox )
+                if (c is GroupBox)
                 {
                     ClearControls(c);
                 }
@@ -60,11 +61,11 @@ namespace ParcInfo.Classes
                                   select x
                                  ).ToList();
                     foreach (var item in lblDep.Skip(1))
-                    {   
+                    {
                         c.Controls.Remove(item);
                     }
                     var lblDep2 = (from x in c.Controls.OfType<lblTextbox>()
-                               select x
+                                   select x
                                ).ToList();
                     foreach (var item in lblDep2.Skip(1))
                     {
@@ -108,7 +109,7 @@ namespace ParcInfo.Classes
                     }
 
                 }
-              
+
             }
             return count;
         }
@@ -117,18 +118,18 @@ namespace ParcInfo.Classes
             bool isFoucsed = false;
             foreach (Control c in control.Controls)
             {
-                
-                    var em = (from x in c.Controls.OfType<lblTextbox>()
-                              where x.TxtValue == ""
-                              select x
-                               ).FirstOrDefault();
-                    if (em != null)
-                    {
-                        em.Focus();
-                    isFoucsed = true;
-                    }
 
-                
+                var em = (from x in c.Controls.OfType<lblTextbox>()
+                          where x.TxtValue == ""
+                          select x
+                           ).FirstOrDefault();
+                if (em != null)
+                {
+                    em.Focus();
+                    isFoucsed = true;
+                }
+
+
             }
             return isFoucsed;
         }
@@ -139,7 +140,8 @@ namespace ParcInfo.Classes
             {
                 if (c is lblTextbox lbl)
                 {
-                    list.Add(new LabelControl() {
+                    list.Add(new LabelControl()
+                    {
                         Id = int.Parse(lbl.Lblid),
                         Value = lbl.TxtValue,
                         IsDeleted = !lbl.Visible,
@@ -187,7 +189,7 @@ namespace ParcInfo.Classes
             }
             return table;
         }
-        public static DataTable FilterDataGridViewIni(DataGridView grid, TextBox txt, Button btnclear,dynamic ls = null)
+        public static DataTable FilterDataGridViewIni(DataGridView grid, TextBox txt, Button btnclear, dynamic ls = null)
         {
             if (ls != null)
                 grid.DataSource = ToDataTable(ls);
@@ -224,7 +226,7 @@ namespace ParcInfo.Classes
             }
 
             var dv = defaultdataView;
-            
+
             foreach (var word in words)
             {
                 var tem = word.Replace("'", "''");
@@ -260,7 +262,7 @@ namespace ParcInfo.Classes
                 if (c.ToLower() == "id")
                     grid.Columns["id"].Visible = false;
             }
-           
+
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             DataGridViewCellStyle DataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -270,7 +272,7 @@ namespace ParcInfo.Classes
             DataGridViewCellStyle1.FormatProvider = new System.Globalization.CultureInfo("fr-FR");
             DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            
+
             DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grid.BackgroundColor = Color.WhiteSmoke;
             grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1;
@@ -310,7 +312,7 @@ namespace ParcInfo.Classes
 
         //methods for Password
 
-        public static  string stringMsg(string nom, string prenom, string email, string password)
+        public static string stringMsg(string nom, string prenom, string email, string password)
         {
             string msg = $"<p>Hello <b>{nom} {prenom}</b></p><br>" +
                 $"you have been registered successfully <br>" +
@@ -319,7 +321,7 @@ namespace ParcInfo.Classes
                 $"<b>Password : {password} </b>";
             return msg;
         }
-        public static string StringForget(string nom, string prenom,string password)
+        public static string StringForget(string nom, string prenom, string password)
         {
             string msg = $"<p>Hello <b>{nom} {prenom}</b></p><br>" +
                 $" Here is Your New Password : <b> {password}</b><br>" +
@@ -383,13 +385,54 @@ namespace ParcInfo.Classes
             Image returnImage = Image.FromStream(ms);
             return returnImage;
         }
+
+        public static void CheckRoles(ControlCollection controlcol)
+        {
+
+            Dictionary<string, string> AllRoles = new Dictionary<string, string>
+            {
+                { "Consulter les client concerner", "BtnListClient" },
+                { "Ajouter Client", "BtnCreateClient" },
+                { "Consulter les employees", "gpEmployee" }
+            };
+
+            Dictionary<string, Control> cs = new Dictionary<string, Control>();
+            var rolesuser = GlobVars.cuUser.GetRoles.ToList();
+            if (GlobVars.cuUser.isAdmin == 0)
+                foreach (var r in AllRoles)
+                {
+                    Control c = controlcol.Find(r.Value, true).FirstOrDefault();
+                    if (c != null)
+                    {
+                        c.Visible = rolesuser.Contains(r.Key);
+                    }
+                }
+            var plmenu = controlcol.Find("pnlMenu", true).FirstOrDefault();
+            if (plmenu != null)
+            foreach (Control v in plmenu.Controls)
+            {
+                var allbtnsvisible = v.Controls.OfType<Button>().Where(x => x.Visible).Count();
+                if (allbtnsvisible == 1)
+                    v.Visible = false;
+            }
+        }
+
+        public static void HideP(ControlCollection collection)
+        {
+            foreach (Control v in collection)
+            {
+
+                if (v.Controls.Count == 1)
+                    v.Visible = false;
+            }
+        }
     }
 
     public class LabelControl
     {
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
-        public string Value  { get; set; }
+        public string Value { get; set; }
         public string Controlname { get; set; }
         public int Idaffectation { get; set; }
         public string Login { get; set; }

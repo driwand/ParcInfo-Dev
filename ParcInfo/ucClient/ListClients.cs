@@ -22,6 +22,7 @@ namespace ParcInfo.ucClient
         public ListClients()
         {
             InitializeComponent();
+            Methods.CheckRoles(Controls);
 
             // ControlsClass.CreateRadiusBorder(this);
         }
@@ -209,5 +210,9 @@ namespace ParcInfo.ucClient
 
         }
 
+        private void gpIntervention_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

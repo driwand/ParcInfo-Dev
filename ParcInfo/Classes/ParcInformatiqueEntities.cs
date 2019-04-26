@@ -12,16 +12,8 @@ namespace ParcInfo
 {
     public partial class ParcInformatiqueEntities
     {
-
-        //public IQueryable<RoleUtilisateur> GetRoles
-        //{
-        //    get
-        //    {
-        //        return RoleUtilisateurs.Where(x => x.IsDeleted == 0);
-        //    }
-        //}
-
-
+        #region Interven
+        
         public IQueryable<Intervention> GetInterventions
         {
             get
@@ -59,13 +51,6 @@ namespace ParcInfo
             }
         }
 
-        public ICollection<RoleUtilisateur> GetListRoles(int idUser)
-        {
-            IQueryable<RoleUtilisateur> listR = RoleUtilisateurs.Where(d=> d.IsDeleted == 0);
-
-            return listR.Where(id => id.IdUtilisateur == idUser).ToList();
-        }
-
 
         public ICollection<Intervention> GetInterventionBystatut(Label[] lbl=null, string statut = "",bool isdeleted=false)
         {
@@ -101,9 +86,9 @@ namespace ParcInfo
 
             return list.ToList();
         }
+        #endregion
 
-
-        //Demandes
+        #region Request
         public IQueryable<Demande> GetRequests
         {
             get
@@ -194,5 +179,18 @@ namespace ParcInfo
 
             return list.ToList();
         }
+
+        #endregion
+
+        #region Roles
+
+        public ICollection<RoleUtilisateur> GetListRoles(int idUser)
+        {
+            IQueryable<RoleUtilisateur> listR = RoleUtilisateurs.Where(d => d.IsDeleted == 0);
+
+            return listR.Where(id => id.IdUtilisateur == idUser).ToList();
+        }
+
+        #endregion
     }
 }

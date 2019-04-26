@@ -22,6 +22,7 @@ namespace ParcInfo.ucClient
             InitializeComponent();
             if (idClient > 0)
             {
+                Methods.CheckRoles(Controls);
                 idC = idClient;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {

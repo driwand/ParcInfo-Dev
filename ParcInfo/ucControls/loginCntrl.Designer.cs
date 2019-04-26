@@ -138,6 +138,7 @@
             this.txtPassword.Size = new System.Drawing.Size(360, 28);
             this.txtPassword.TabIndex = 110;
             this.txtPassword.Tag = "required";
+            this.txtPassword.Text = "ifwxswIc";
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // txtEmail
@@ -149,6 +150,7 @@
             this.txtEmail.Size = new System.Drawing.Size(360, 28);
             this.txtEmail.TabIndex = 109;
             this.txtEmail.Tag = "required";
+            this.txtEmail.Text = "p";
             // 
             // lblForget
             // 

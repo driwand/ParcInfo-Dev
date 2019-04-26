@@ -78,6 +78,8 @@
     </Compile>
     <Compile Include="Classes\Innerclass.cs" />
     <Compile Include="Classes\Methods.cs" />
+    <Compile Include="Classes\UserRoles.cs" />
+    <Compile Include="Classes\Users.cs" />
     <Compile Include="Client.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
@@ -160,6 +162,12 @@
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleUtilisateur.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="TypeProduit.cs">
