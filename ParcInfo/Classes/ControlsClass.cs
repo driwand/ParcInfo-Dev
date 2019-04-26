@@ -63,22 +63,32 @@ namespace ParcInfo.Classes
         /// <param name="panel"></param>
         public static void OpenMenu(Timer timer, Button btn, Panel panel)
         {
-            btn.Image = Resources.arrowDown1;
-            panel.Height += 10;
-            if (panel.Size == panel.MaximumSize)
+            var allbtnsvisible = panel.Controls.OfType<Button>().Where(x => x.Visible);
+            if(allbtnsvisible.Count() > 1)
+            {
+                var pheight = allbtnsvisible.Sum(y => y.Height);
+                btn.Image = Resources.arrowDown1;
+                panel.Height += 10;
+                if (panel.Height >= pheight)
+                {
+                    timer.Stop();
+                    IsOpen = true;
+                    isPanel = panel;
+                    isTimer = timer;
+                    isbtn = btn;
+                }
+            }
+            else
             {
                 timer.Stop();
-                IsOpen = true;
-                isPanel = panel;
-                isTimer = timer;
-                isbtn = btn;
             }
         }
         public static void CloseMenu(Timer timer, Button btn, Panel panel)
         {
             btn.Image = Resources.arrowLeft1;
             panel.Height -= 10;
-            if (panel.Size == panel.MinimumSize)
+            var mheight = panel.Controls.OfType<Button>().FirstOrDefault().Height;
+            if (panel.Height <= mheight)
             {
                 timer.Stop();
                 IsOpen = false;

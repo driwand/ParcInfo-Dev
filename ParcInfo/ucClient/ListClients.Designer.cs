@@ -431,6 +431,7 @@
             this.gpIntervention.Size = new System.Drawing.Size(141, 73);
             this.gpIntervention.TabIndex = 56;
             this.gpIntervention.Click += new System.EventHandler(this.gpIntervention_Click);
+            this.gpIntervention.Paint += new System.Windows.Forms.PaintEventHandler(this.gpIntervention_Paint);
             // 
             // lblInterC
             // 

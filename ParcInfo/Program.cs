@@ -22,7 +22,7 @@ namespace ParcInfo
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-          // frmDefault.FrmDefault deffrm = new frmDefault.FrmDefault();
+            //frmDefault.FrmDefault deffrm = new frmDefault.FrmDefault();
             Login deffrm = new Login();
             //using (var db = new ParcInformatiqueEntities())
             //{

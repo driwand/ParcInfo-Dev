@@ -28,8 +28,12 @@ namespace ParcInfo.frmDefault
         public Button btnClicked;
         public FrmDefault()
         {
+            
+
         
             InitializeComponent();
+          
+          
             ControlsClass.CreateRadiusBorder(PanelContainer);
             this.MaximizeBox = false;
             GlobVars.frmindex = this;
@@ -38,18 +42,10 @@ namespace ParcInfo.frmDefault
             {
                 if (GlobVars.currentUser > 0)
                 {
-                    //var u = context.Utilisateurs.Find(GlobVars.currentUser);
-                    //lblUser.Text = $"{u.Nom} {u.Prenom}";
-                    //int ix = lblUser.Size.Width;
-
-                    //ix += pnlUserName.Size.Width;
-                    //pnlUserName.Size = new Size(ix, 32);
-                    var u = context.Utilisateurs.Find(GlobVars.currentUser);
+                    var u = GlobVars.cuUser;
                     if (u != null)
                     {
-                      
                         lblUser.Text = $"{u.Nom} {u.Prenom}";
-                        //pnlUserName.Size = new Size(label1.Width + pnlUserName.Size, 32);
                         if (u.PassChanged == 1)
                         {
                             ShowControl(new userProfile());
@@ -62,20 +58,6 @@ namespace ParcInfo.frmDefault
             ControlsClass.CursorChanger(pnlMenu);
             tmrReal.Start();
 
-            //MailMessage mail = new MailMessage("myogyt2@gmail.com", "abdelhakim.kssiba@gmail.com");
-            //mail.Subject = "subj";
-            //mail.Body = "hello";
-
-            //using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
-            //{
-            //    client.EnableSsl = true;
-            //    #region hhhh
-            //    client.Credentials = new System.Net.NetworkCredential("myogyt2@gmail.com", "ZXCVBNM123");
-
-            //    #endregion
-
-            //    client.Send(mail);
-            //}
         }
 
         public int countIntervTerminer;
@@ -91,12 +73,23 @@ namespace ParcInfo.frmDefault
 
         public void ShowControl(Control mycontrol, bool hideback = false)
         {
+            if (PanelContainer.Controls.Count > 0)
+            {
+                GlobVars.OldControl = (UserControl)PanelContainer.Controls[0];
+                PicBack.Visible = true;
+            }
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(mycontrol);
             mycontrol.BringToFront();
-            PicBack.Visible = hideback;
+            
         }
-
+        public void ShowOldControl()
+        {
+            PanelContainer.Controls.Clear();
+            PanelContainer.Controls.Add(GlobVars.OldControl);
+            //mycontrol.BringToFront();
+           // PicBack.Visible = hideback;
+        }
         MultiLineLabel ml = new MultiLineLabel();
 
         #region Timers
@@ -446,21 +439,22 @@ namespace ParcInfo.frmDefault
 
         private void FrmDefault_Load(object sender, EventArgs e)
         {
-          //  this.ControlBox = false;
-          
+            //  this.ControlBox = false;
+            Methods.CheckRoles(Controls);
         }
 
         private void PicBack_Click_1(object sender, EventArgs e)
         {
-            if (GlobVars.frmBack != null && GlobVars.frmBack2 == null)
-            {
-                ShowControl(GlobVars.frmBack);
-            }
-            else if (GlobVars.frmBack != null && GlobVars.frmBack2 != null)
-            {
-                ShowControl(GlobVars.frmBack2);
-                
-            }
+            //if (GlobVars.frmBack != null && GlobVars.frmBack2 == null)
+            //{
+            //    ShowControl(GlobVars.frmBack);
+            //}
+            //else if (GlobVars.frmBack != null && GlobVars.frmBack2 != null)
+            //{
+            //    ShowControl(GlobVars.frmBack2);
+
+            //}
+            ShowOldControl();
         }
         public void activeBtn(Button btn )
         {

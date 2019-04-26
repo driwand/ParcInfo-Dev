@@ -35,8 +35,8 @@ namespace ParcInfo.ucControls
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var email = txtEmail.Text;
-            var pass = txtPassword.Text;
+            var email = "p";
+            var pass = "ifwxswIc";
 
             var hasPass = Methods.MD5Hash(pass);
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -52,6 +52,7 @@ namespace ParcInfo.ucControls
                     {
                         pnlError.Visible = false;
                         GlobVars.currentUser = user.Id;
+                        GlobVars.cuUser = user;
                         this.Hide();
                         FrmDefault frm = new FrmDefault();
                         frm.ShowDialog();

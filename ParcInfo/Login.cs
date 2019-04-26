@@ -18,10 +18,12 @@ namespace ParcInfo
         public Login()
         {
             InitializeComponent();
-            GlobVars.frmLogin = this;
+           // GlobVars.frmLogin = this;
+
         }
         private void Login_Load(object sender, EventArgs e)
         {
+            
             ControlsClass.CreateRadiusBorder(pnlLogin,14,14);
              ShowControl(new loginCntrl());
         }
