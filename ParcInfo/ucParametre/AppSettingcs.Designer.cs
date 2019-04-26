@@ -35,30 +35,33 @@
             this.applogo = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtappname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPickIcon = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnPickIcon = new System.Windows.Forms.Button();
             this.btnDifferentialBackup = new System.Windows.Forms.Button();
             this.btnFullback = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRestore = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.picIcon = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numDays = new System.Windows.Forms.NumericUpDown();
+            this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.gpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.applogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDays)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -82,12 +85,13 @@
             // 
             // gpGeneral
             // 
+            this.gpGeneral.Controls.Add(this.label5);
+            this.gpGeneral.Controls.Add(this.btnPickIcon);
             this.gpGeneral.Controls.Add(this.applogo);
-            this.gpGeneral.Controls.Add(this.comboBox1);
-            this.gpGeneral.Controls.Add(this.label4);
             this.gpGeneral.Controls.Add(this.gradientPanel1);
             this.gpGeneral.Controls.Add(this.label3);
-            this.gpGeneral.Controls.Add(this.textBox1);
+            this.gpGeneral.Controls.Add(this.picIcon);
+            this.gpGeneral.Controls.Add(this.txtappname);
             this.gpGeneral.Controls.Add(this.label2);
             this.gpGeneral.Location = new System.Drawing.Point(16, 62);
             this.gpGeneral.Name = "gpGeneral";
@@ -100,7 +104,7 @@
             // applogo
             // 
             this.applogo.Image = global::ParcInfo.Properties.Resources.logoplace;
-            this.applogo.Location = new System.Drawing.Point(77, 63);
+            this.applogo.Location = new System.Drawing.Point(111, 63);
             this.applogo.Name = "applogo";
             this.applogo.Size = new System.Drawing.Size(226, 67);
             this.applogo.TabIndex = 162;
@@ -112,7 +116,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(77, 166);
+            this.comboBox1.Location = new System.Drawing.Point(119, 59);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(181, 21);
             this.comboBox1.TabIndex = 7;
@@ -120,124 +124,52 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 169);
+            this.label4.Location = new System.Drawing.Point(23, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Theme :";
             // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.Angle = 0F;
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(185)))), ((int)(((byte)(244)))));
-            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
-            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 206);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(401, 3);
-            this.gradientPanel1.TabIndex = 5;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 63);
+            this.label3.Location = new System.Drawing.Point(18, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Logo";
+            this.label3.Text = "Logo :";
             // 
-            // textBox1
+            // txtappname
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtappname.Location = new System.Drawing.Point(111, 25);
+            this.txtappname.Name = "txtappname";
+            this.txtappname.Size = new System.Drawing.Size(245, 20);
+            this.txtappname.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 25);
+            this.label2.Location = new System.Drawing.Point(15, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Nom :";
+            this.label2.Text = "Nom Application :";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.gradientPanel2);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.btnRestore);
+            this.groupBox1.Controls.Add(this.btnDifferentialBackup);
+            this.groupBox1.Controls.Add(this.btnFullback);
             this.groupBox1.Location = new System.Drawing.Point(16, 294);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox1.Size = new System.Drawing.Size(401, 159);
             this.groupBox1.TabIndex = 161;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Backup";
-            // 
-            // btnPickIcon
-            // 
-            this.btnPickIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnPickIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPickIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPickIcon.ForeColor = System.Drawing.Color.White;
-            this.btnPickIcon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPickIcon.Location = new System.Drawing.Point(578, 140);
-            this.btnPickIcon.Name = "btnPickIcon";
-            this.btnPickIcon.Size = new System.Drawing.Size(76, 35);
-            this.btnPickIcon.TabIndex = 164;
-            this.btnPickIcon.Text = "pick icon";
-            this.btnPickIcon.UseVisualStyleBackColor = false;
-            this.btnPickIcon.Click += new System.EventHandler(this.btnPickIcon_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(77, 97);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(181, 21);
-            this.comboBox2.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 101);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Theme :";
-            // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.Angle = 0F;
-            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(185)))), ((int)(((byte)(244)))));
-            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
-            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel2.Location = new System.Drawing.Point(0, 156);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(401, 3);
-            this.gradientPanel2.TabIndex = 5;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(77, 61);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(279, 20);
-            this.textBox3.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 63);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Logo";
+            this.groupBox1.Text = "Backup and Restore";
             // 
             // textBox4
             // 
@@ -255,6 +187,21 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Nom :";
             // 
+            // btnPickIcon
+            // 
+            this.btnPickIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnPickIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPickIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPickIcon.ForeColor = System.Drawing.Color.White;
+            this.btnPickIcon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPickIcon.Location = new System.Drawing.Point(165, 154);
+            this.btnPickIcon.Name = "btnPickIcon";
+            this.btnPickIcon.Size = new System.Drawing.Size(76, 35);
+            this.btnPickIcon.TabIndex = 164;
+            this.btnPickIcon.Text = "pick icon";
+            this.btnPickIcon.UseVisualStyleBackColor = false;
+            this.btnPickIcon.Click += new System.EventHandler(this.btnPickIcon_Click);
+            // 
             // btnDifferentialBackup
             // 
             this.btnDifferentialBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -263,7 +210,7 @@
             this.btnDifferentialBackup.ForeColor = System.Drawing.Color.White;
             this.btnDifferentialBackup.Image = global::ParcInfo.Properties.Resources.deffBackup;
             this.btnDifferentialBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDifferentialBackup.Location = new System.Drawing.Point(482, 297);
+            this.btnDifferentialBackup.Location = new System.Drawing.Point(18, 70);
             this.btnDifferentialBackup.Name = "btnDifferentialBackup";
             this.btnDifferentialBackup.Size = new System.Drawing.Size(141, 35);
             this.btnDifferentialBackup.TabIndex = 162;
@@ -279,7 +226,7 @@
             this.btnFullback.ForeColor = System.Drawing.Color.White;
             this.btnFullback.Image = ((System.Drawing.Image)(resources.GetObject("btnFullback.Image")));
             this.btnFullback.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFullback.Location = new System.Drawing.Point(483, 340);
+            this.btnFullback.Location = new System.Drawing.Point(165, 70);
             this.btnFullback.Name = "btnFullback";
             this.btnFullback.Size = new System.Drawing.Size(141, 35);
             this.btnFullback.TabIndex = 162;
@@ -305,7 +252,7 @@
             this.btnRestore.ForeColor = System.Drawing.Color.White;
             this.btnRestore.Image = ((System.Drawing.Image)(resources.GetObject("btnRestore.Image")));
             this.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRestore.Location = new System.Drawing.Point(483, 391);
+            this.btnRestore.Location = new System.Drawing.Point(18, 111);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(141, 35);
             this.btnRestore.TabIndex = 162;
@@ -320,9 +267,9 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(482, 236);
+            this.btnSave.Location = new System.Drawing.Point(761, 418);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(141, 35);
+            this.btnSave.Size = new System.Drawing.Size(109, 35);
             this.btnSave.TabIndex = 163;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -330,23 +277,92 @@
             // 
             // picIcon
             // 
-            this.picIcon.Location = new System.Drawing.Point(463, 125);
+            this.picIcon.Location = new System.Drawing.Point(111, 148);
             this.picIcon.Name = "picIcon";
-            this.picIcon.Size = new System.Drawing.Size(100, 50);
+            this.picIcon.Size = new System.Drawing.Size(47, 41);
             this.picIcon.TabIndex = 164;
             this.picIcon.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 148);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.TabIndex = 165;
+            this.label5.Text = "Icon :";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.numDays);
+            this.groupBox2.Controls.Add(this.gradientPanel3);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(469, 62);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Size = new System.Drawing.Size(401, 209);
+            this.groupBox2.TabIndex = 164;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Autre";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(273, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Nombre des jours pour definire le retard d\'une demande :";
+            // 
+            // numDays
+            // 
+            this.numDays.Location = new System.Drawing.Point(302, 26);
+            this.numDays.Name = "numDays";
+            this.numDays.Size = new System.Drawing.Size(72, 20);
+            this.numDays.TabIndex = 8;
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.Angle = 0F;
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(185)))), ((int)(((byte)(244)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
+            this.gradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel3.Location = new System.Drawing.Point(0, 206);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(401, 3);
+            this.gradientPanel3.TabIndex = 5;
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(185)))), ((int)(((byte)(244)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 156);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(401, 3);
+            this.gradientPanel2.TabIndex = 5;
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(185)))), ((int)(((byte)(244)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 206);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(401, 3);
+            this.gradientPanel1.TabIndex = 5;
             // 
             // AppSettingcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.btnPickIcon);
-            this.Controls.Add(this.picIcon);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnDifferentialBackup);
-            this.Controls.Add(this.btnRestore);
-            this.Controls.Add(this.btnFullback);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpGeneral);
             this.Controls.Add(this.pictureBox1);
@@ -361,6 +377,9 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,18 +389,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gpGeneral;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtappname;
         private System.Windows.Forms.Label label2;
         private Classes.GradientPanel gradientPanel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label5;
         private Classes.GradientPanel gradientPanel2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox applogo;
@@ -392,5 +407,10 @@
         public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Button btnPickIcon;
         private System.Windows.Forms.PictureBox picIcon;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.NumericUpDown numDays;
+        private Classes.GradientPanel gradientPanel3;
+        private System.Windows.Forms.Label label6;
     }
 }

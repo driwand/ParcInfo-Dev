@@ -86,12 +86,12 @@ namespace ParcInfo.ucClient
                                                     d.IdReq,
                                                     d.Datedemande,
                                                     Desc = Methods.GetDesc(d.Description_d, 4),
-                                                    d.Employee.Nom,
+                                                    Nom = d.Employee.Nom != null ? d.Employee.Nom : "ef",
                                                     d.Getstatut,
-                                                    IdClient = d.Employee.Client.id,
-                                                    d.Modifierpar,
-                                                    Edited = d.Utilisateur.Nom,
-                                                    d.Datemodification
+                                                    IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "fr",
+                                                    Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "er",
+                                                    Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "zf",
+                                                    Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : "fz"
                                                 }).ToList();
 
                         Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);

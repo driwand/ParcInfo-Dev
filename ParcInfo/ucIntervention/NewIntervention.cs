@@ -62,7 +62,9 @@ namespace ParcInfo.ucInterevntion
                     IdDemande = selectedRequest,
                     Idutilisateur = GlobVars.currentUser,
                     Idclient = selectedClient,
-                    Statut = "en cours"
+                    Statut = "en cours",
+                    Modifierpar = GlobVars.currentUser,
+                    Datemodification = DateTime.Now
                 };
                 context.Interventions.Add(intr);
 
@@ -107,7 +109,9 @@ namespace ParcInfo.ucInterevntion
                 {
                     Idclient = selectedClient,
                     Idutilisateur = GlobVars.currentUser,
-                    Statut = "en cours"
+                    Statut = "en cours",
+                    Modifierpar = GlobVars.currentUser,
+                    Datemodification = DateTime.Now
                 };
                 context.Interventions.Add(intr);
 
@@ -131,67 +135,83 @@ namespace ParcInfo.ucInterevntion
                 lblSource.Text = intr.Client.IdCLient.ToString();
             }
         }
+
         private void btnDone_Click(object sender, EventArgs e)
         {
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            if (cbType.Text == "" || cbPlace.Text == "")
+                MessageBox.Show("Required fields");
+            else
             {
-                var currentIntervention = context.Interventions.Find(currentInterv);
-
-                int totHours = Convert.ToInt32(numHeur.Value);
-
-                bool verify = false;
-                string res = "";
-
-
-                DialogResult result = new DialogResult();
-                if (totHours == 0)
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-                    while (!verify)
+                    var currentIntervention = context.Interventions.Find(currentInterv);
+
+                    int totHours = Convert.ToInt32(numHeur.Value);
+
+                    bool verify = false;
+                    string res = "";
+
+                    bool done = false;
+
+                    DialogResult result = new DialogResult();
+                    if (totHours == 0)
                     {
-                        res = Interaction.InputBox("Autre information", "Enter les heurs");
-                        if (res == "")
+                        while (!verify)
                         {
-                            break;
+                            res = Interaction.InputBox("Autre information", "Enter les heurs");
+                            if (res == "")
+                            {
+                                break;
+                            }
+                            if (Regex.IsMatch(res, @"\d"))
+                            {
+                                verify = true;
+                            }
+                            else
+                            {
+                                verify = false;
+                                MessageBox.Show("input should be a number");
+                            }
                         }
-                        if (Regex.IsMatch(res, @"\d"))
+                    }
+                    if (verify || totHours != 0)
+                    {
+                        if (currentIntervention.Demande != null)
                         {
-                            verify = true;
+                            result = MessageBox.Show("Do you want to confirm both of intervention nand revelent request ?", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                            if (result != DialogResult.Cancel)
+                            {
+                                if (result == DialogResult.Yes)
+                                    currentIntervention.Demande.Statut = "terminer";
+
+                                if (res != "")
+                                    totHours = int.Parse(res.ToString());
+
+                                done = true;
+                            }
                         }
                         else
                         {
-                            verify = false;
-                            MessageBox.Show("input should be a number");
-                        }
-                    }
-                }
-                if (verify || totHours != 0)
-                {
-                    if (currentIntervention.Demande != null)
-                    {
-                        result = MessageBox.Show("Do you want to confirm both of intervention nand revelent request ?", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        if (result != DialogResult.Cancel)
-                        {
-                            if (result == DialogResult.Yes)
-                                currentIntervention.Demande.Statut = "terminer";
+                            var rst = MessageBox.Show("Are you sure", "Confirmation", MessageBoxButtons.YesNo);
 
-                            if (res != "")
-                                totHours = int.Parse(res.ToString());
-                                
+                            if (rst == DialogResult.Yes)
+                            {
+                                if (res != "")
+                                    totHours = int.Parse(res.ToString());
+
+                                done = true;
+                            }
+                        }
+                        if (done)
+                        {
                             currentIntervention.Duree = totHours;
                             currentIntervention.Statut = "terminer";
+                            numHeur.Value = totHours;
+
+                            context.SaveChanges();
+                            tmrDone.Start();
                         }
                     }
-                    else
-                    {
-                        if(res != "")
-                            totHours = int.Parse(res.ToString());
-
-                        currentIntervention.Duree = totHours;
-                        currentIntervention.Statut = "terminer";
-                    }
-                    numHeur.Value = totHours;
-                    context.SaveChanges();
-                    tmrDone.Start();
                 }
             }
         }
@@ -259,6 +279,12 @@ namespace ParcInfo.ucInterevntion
         
         private void btnSave_Click(object sender, EventArgs e)
         {
+            SaveDetails();
+            MessageBox.Show("done");
+        }
+
+        public void SaveDetails()
+        {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 string typeInter = cbType.Text;
@@ -280,15 +306,16 @@ namespace ParcInfo.ucInterevntion
 
 
                 if (dtFin.Value.Date < dtDebut.Value.Date)
+                {
                     MessageBox.Show("end date could not be less than starting date");
+                }
                 else
                 {
                     context.SaveChanges();
 
                     lblDateModification.Text = intrv.Datemodification.ToString();
                     lblModifierPar.Text = intrv.UtilisateurEdit.Nom;
-                    MessageBox.Show("Done");
-                }                
+                }
             }
         }
 
@@ -296,11 +323,14 @@ namespace ParcInfo.ucInterevntion
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
+                SaveDetails();
+
                 var intr = context.Interventions.Find(currentInterv);
                 if (intr.Statut == "terminer")
                 {
                     pnlStatut.BackColor = Color.FromArgb(32, 191, 107);
                     btnDone.Hide();
+                    btnAddProduct.Enabled = false;
 
                     observation obs = new observation()
                     {
@@ -365,6 +395,10 @@ namespace ParcInfo.ucInterevntion
                     }
                     
                     CheckStatut(currentintr.Getstatut);
+                    lblIntervention.Text = currentintr.IdIntrv;
+                    lblIntervention.ForeColor = Color.FromArgb(0, 168, 255);
+                    lblIntervention.Show();
+
                     if (currentintr.TypeIntervention != null &&
                         currentintr.Deplacement != null &&
                         currentintr.Debut != null &&
@@ -414,6 +448,7 @@ namespace ParcInfo.ucInterevntion
                 }
             }
         }
+
         public void CheckStatut(string stt)
         {
             switch (stt)
@@ -422,6 +457,7 @@ namespace ParcInfo.ucInterevntion
                     lblStatut.Text = "terminer";
                     lblStatut.Location = new Point(103, 8);
                     pnlStatut.BackColor = Color.FromArgb(32, 191, 107);
+                    btnAddProduct.Enabled = false;
                     btnDone.Hide();
                     break;
                 case "en retard":
@@ -454,6 +490,8 @@ namespace ParcInfo.ucInterevntion
                 {
                     db.Interventions.Find(currentInterv).IsDeleted = 1;
                     db.SaveChanges();
+
+                    GlobVars.frmindex.ShowControl(GlobVars.frmBack);
                 }
             }
         }

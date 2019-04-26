@@ -19,6 +19,8 @@ namespace ParcInfo.ucParametre
 {
     public partial class AppSettingcs : UserControl
     {
+        Image imglogo = null;
+        Image imgicon = null;
         public AppSettingcs()
         {
             InitializeComponent();
@@ -31,12 +33,13 @@ namespace ParcInfo.ucParametre
             e.Effect = DragDropEffects.Copy;
         }
 
+
         private void applogo_DragDrop(object sender, DragEventArgs e)
         {
             foreach (string pic in ((string[])e.Data.GetData(DataFormats.FileDrop)))
             {
-                Image img = Image.FromFile(pic);
-                applogo.Image = img;
+                imglogo = Image.FromFile(pic);
+                applogo.Image = imglogo;
             }
 
         }
@@ -60,22 +63,31 @@ namespace ParcInfo.ucParametre
         {
             using (var db = new ParcInformatiqueEntities())
             {
+                var defpara = db.ParametreParcinfoes.FirstOrDefault();
+
+                int dayvalue = Convert.ToInt32(numDays.Value);
                 ParametreParcinfo pr = new ParametreParcinfo
                 {
-                    Nomapp = "Parc Info",
-                    Logoapp = Methods.ImageToByteArray(applogo.Image),
-                    Iconapp = Methods.ImageToByteArray(picIcon.Image),
+                    Nomapp = txtappname.Text != "" ? txtappname.Text : defpara.Nomapp,
+                    Reatrddemande = dayvalue != defpara.Reatrddemande ? dayvalue : defpara.Reatrddemande,
+                    Logoapp = imglogo != null ? Methods.ImageToByteArray(imglogo) : defpara.Logoapp,
+                    Iconapp = imgicon != null ? Methods.ImageToByteArray(imgicon) : defpara.Iconapp,
                 };
-                db.ParametreParcinfoes.FirstOrDefault().Iconapp = pr.Iconapp;
-                db.ParametreParcinfoes.FirstOrDefault().Logoapp = pr.Logoapp;
+
+                defpara.Iconapp = pr.Iconapp;
+                defpara.Logoapp = pr.Logoapp;
+                defpara.Nomapp = pr.Nomapp;
+                defpara.Reatrddemande = pr.Reatrddemande;
+                
                 db.SaveChanges();
 
-
-                var result = MessageBox.Show("do you wannt to restart", ".", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                if (imglogo != null || imgicon != null)
                 {
-                    Application.Restart();
-                    Environment.Exit(0);
+                    var result = MessageBox.Show("do you wannt to restart", ".", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        Application.Restart();
+                    }
                 }
             }
         }
@@ -155,7 +167,8 @@ namespace ParcInfo.ucParametre
                 {
                     PictureBox PictureBox1 = new PictureBox();
 
-                    picIcon.Image = new Bitmap(dlg.FileName);
+                    imgicon = new Bitmap(dlg.FileName);
+                    picIcon.Image = imgicon;
                 }
             }
         }
