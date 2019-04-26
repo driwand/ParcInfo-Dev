@@ -236,8 +236,8 @@
           <Property Name="Adresse" Type="varchar" MaxLength="100" />
           <Property Name="Ville" Type="varchar" MaxLength="30" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="Password_u" Type="text" />
-          <Property Name="Codepin" Type="int" />
+          <Property Name="Password_u" Type="varchar(max)" />
+          <Property Name="PassChanged" Type="int" />
           <Property Name="isAdmin" Type="int" />
           <Property Name="Datecreation" Type="datetime" />
           <Property Name="Datemodification" Type="datetime" />
@@ -1277,7 +1277,6 @@
           <Property Name="Ville" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password_u" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Codepin" Type="Int32" />
           <Property Name="isAdmin" Type="Int32" />
           <Property Name="Datecreation" Type="DateTime" Precision="3" />
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
@@ -1310,6 +1309,7 @@
           <NavigationProperty Name="Utilisateur2" Relationship="Self.FK__Utilisate__Creep__1273C1CD" FromRole="Utilisateur1" ToRole="Utilisateur" />
           <NavigationProperty Name="Utilisateur11" Relationship="Self.FK__Utilisate__Modif__1367E606" FromRole="Utilisateur" ToRole="Utilisateur1" />
           <NavigationProperty Name="Utilisateur3" Relationship="Self.FK__Utilisate__Modif__1367E606" FromRole="Utilisateur1" ToRole="Utilisateur" />
+          <Property Name="PassChanged" Type="Int32" />
         </EntityType>
         <EntityType Name="ValeurProp">
           <Key>
@@ -2311,6 +2311,7 @@
           <EntitySetMapping Name="Utilisateurs">
             <EntityTypeMapping TypeName="ParcInformatiqueModel.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="PassChanged" ColumnName="PassChanged" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />
@@ -2319,7 +2320,6 @@
                 <ScalarProperty Name="Ville" ColumnName="Ville" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password_u" ColumnName="Password_u" />
-                <ScalarProperty Name="Codepin" ColumnName="Codepin" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
                 <ScalarProperty Name="Datecreation" ColumnName="Datecreation" />
                 <ScalarProperty Name="Datemodification" ColumnName="Datemodification" />

@@ -448,6 +448,7 @@ namespace ParcInfo.ucInterevntion
                 }
             }
         }
+
         public void CheckStatut(string stt)
         {
             switch (stt)
