@@ -405,11 +405,10 @@ namespace ParcInfo.Classes
                 { new string []{ "Ajouter un employee" }, new string []{ "btnNewEmployee", "btnAjouter" } }, //errr
                 { new string []{ "Modifier un employee" }, new string []{ "btnEditEmployee", "btnAnnuler" } }, //errr
                 { new string []{ "Supprimer un employee" }, new string []{ "btnDelEmp" } },
-                //{ new string []{ "Modifier un employee" }, new string []{ "" } },
-                
 
-                //{ new string []{ "" }, new string []{ "" } },
-                //{ new string []{ "" }, new string []{ "" } }
+                //Interevntion
+                { new string []{ "Consulter les intervention concerner", "Consulter tous les interventions" },
+                  new string []{ "DropIntervention" } },
             };
 
             Dictionary<string, Control> cs = new Dictionary<string, Control>();

@@ -395,21 +395,40 @@ namespace ParcInfo.frmDefault
         {
             using (var db = new ParcInformatiqueEntities())
             {
+                if (GlobVars.cuUser.isAdmin == 1)
+                {
+                    countIntervTerminer = db.GetIntervtermine.Count();
+                    countIntervCours = db.GetIntervEncours.Count();
+                    countIntervRetard = db.GetIntervenretard.Count();
 
-                countIntervTerminer = db.GetIntervtermine.Count();
-                countIntervCours = db.GetIntervEncours.Count();
-                countIntervRetard = db.GetIntervenretard.Count();
-
-                countIntervDeInt = countIntervRetard + countIntervCours;
+                    countIntervDeInt = countIntervRetard + countIntervCours;
 
 
-                countRequestTerminer = db.GetRequestTerminer.Count();
-                countRequestCours = db.GetRequestCours.Count();
-                countRequestRetard = db.GetRequestRetard.Count();
-                countRequestAttente = db.GetRequestAttent.Count();
-                
+                    countRequestTerminer = db.GetRequestTerminer.Count();
+                    countRequestCours = db.GetRequestCours.Count();
+                    countRequestRetard = db.GetRequestRetard.Count();
+                    countRequestAttente = db.GetRequestAttent.Count();
 
-                countRequestDeInt = countRequestRetard + countRequestCours;
+
+                    countRequestDeInt = countRequestRetard + countRequestCours;
+                }
+                else
+                {
+                    countIntervTerminer = db.GetAssignedIntervenretard.Count();
+                    countIntervCours = db.GeAssignedtIntervEncours.Count();
+                    countIntervRetard = db.GetAssignedIntervenretard.Count();
+
+                    countIntervDeInt = countIntervRetard + countIntervCours;
+
+
+                    countRequestTerminer = db.GetAssignedRequestTerminer.Count();
+                    countRequestCours = db.GetAssignedRequestCours.Count();
+                    countRequestRetard = db.GetAssignedRequestRetard.Count();
+                    countRequestAttente = db.GetAssignedRequestAttent.Count();
+
+
+                    countRequestDeInt = countRequestRetard + countRequestCours;
+                }
             }
         }
 

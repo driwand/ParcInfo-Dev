@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.pnlContainer = new System.Windows.Forms.Panel();
+            this.pnlError = new ParcInfo.Classes.GradientPanel();
+            this.closeError = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblHead = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.pnlError = new ParcInfo.Classes.GradientPanel();
-            this.closeError = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.lblForget = new System.Windows.Forms.LinkLabel();
             this.pnlContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnlError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,43 @@
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(512, 247);
             this.pnlContainer.TabIndex = 126;
+            // 
+            // pnlError
+            // 
+            this.pnlError.Angle = 0F;
+            this.pnlError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlError.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(159)))), ((int)(((byte)(164)))));
+            this.pnlError.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(92)))), ((int)(((byte)(101)))));
+            this.pnlError.Controls.Add(this.closeError);
+            this.pnlError.Controls.Add(this.label3);
+            this.pnlError.Location = new System.Drawing.Point(492, 42);
+            this.pnlError.Name = "pnlError";
+            this.pnlError.Size = new System.Drawing.Size(396, 44);
+            this.pnlError.TabIndex = 131;
+            this.pnlError.Visible = false;
+            // 
+            // closeError
+            // 
+            this.closeError.BackColor = System.Drawing.Color.Transparent;
+            this.closeError.Image = global::ParcInfo.Properties.Resources.closec;
+            this.closeError.Location = new System.Drawing.Point(372, 12);
+            this.closeError.Name = "closeError";
+            this.closeError.Size = new System.Drawing.Size(20, 20);
+            this.closeError.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.closeError.TabIndex = 1;
+            this.closeError.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(16, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(302, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Inccorect email or password. Please try again.";
             // 
             // btnLogin
             // 
@@ -120,7 +157,7 @@
             this.txtPassword.Size = new System.Drawing.Size(360, 28);
             this.txtPassword.TabIndex = 126;
             this.txtPassword.Tag = "required";
-            this.txtPassword.Text = "U4OJl7RC";
+            this.txtPassword.Text = "0lJDPvez";
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // txtEmail
@@ -132,44 +169,7 @@
             this.txtEmail.Size = new System.Drawing.Size(360, 28);
             this.txtEmail.TabIndex = 125;
             this.txtEmail.Tag = "required";
-            this.txtEmail.Text = "parcinfoit@gmail.com";
-            // 
-            // pnlError
-            // 
-            this.pnlError.Angle = 0F;
-            this.pnlError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlError.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(159)))), ((int)(((byte)(164)))));
-            this.pnlError.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(92)))), ((int)(((byte)(101)))));
-            this.pnlError.Controls.Add(this.closeError);
-            this.pnlError.Controls.Add(this.label3);
-            this.pnlError.Location = new System.Drawing.Point(492, 42);
-            this.pnlError.Name = "pnlError";
-            this.pnlError.Size = new System.Drawing.Size(396, 44);
-            this.pnlError.TabIndex = 131;
-            this.pnlError.Visible = false;
-            // 
-            // closeError
-            // 
-            this.closeError.BackColor = System.Drawing.Color.Transparent;
-            this.closeError.Image = global::ParcInfo.Properties.Resources.closec;
-            this.closeError.Location = new System.Drawing.Point(372, 12);
-            this.closeError.Name = "closeError";
-            this.closeError.Size = new System.Drawing.Size(20, 20);
-            this.closeError.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.closeError.TabIndex = 1;
-            this.closeError.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(16, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(302, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Inccorect email or password. Please try again.";
+            this.txtEmail.Text = "p";
             // 
             // gradientPanel1
             // 
@@ -209,11 +209,11 @@
             this.Text = "frmLogin";
             this.pnlContainer.ResumeLayout(false);
             this.pnlContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.pnlError.ResumeLayout(false);
             this.pnlError.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
             this.ResumeLayout(false);

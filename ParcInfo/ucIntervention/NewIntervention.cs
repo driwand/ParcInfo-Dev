@@ -19,7 +19,7 @@ namespace ParcInfo.ucInterevntion
 
     public partial class NewIntervention : UserControl
     {
-        public NewIntervention(int selCli = 0,int selReq = 0,int curInter = 0,int source = 0)
+        public NewIntervention(int selCli = 0, int selReq = 0, int curInter = 0, int source = 0)
         {
             InitializeComponent();
             if (curInter != 0)
@@ -33,7 +33,8 @@ namespace ParcInfo.ucInterevntion
                 selectedRequest = selReq;
                 selectedClient = selCli;
                 StartInterRequest();
-            }else if (selCli != 0)
+            }
+            else if (selCli != 0)
             {
                 selectedClient = selCli;
                 StartInterClient();
@@ -60,10 +61,10 @@ namespace ParcInfo.ucInterevntion
                 Intervention intr = new Intervention()
                 {
                     IdDemande = selectedRequest,
-                    Idutilisateur = GlobVars.currentUser,
+                    Idutilisateur = GlobVars.cuUser.Id,
                     Idclient = selectedClient,
                     Statut = "en cours",
-                    Modifierpar = GlobVars.currentUser,
+                    Modifierpar = GlobVars.cuUser.Id,
                     Datemodification = DateTime.Now
                 };
                 context.Interventions.Add(intr);
@@ -76,12 +77,12 @@ namespace ParcInfo.ucInterevntion
                     Textobservation = "une nouvelle intervention démarre"
                 };
                 context.observations.Add(obs);
-                
+
 
                 var getRequest = context.Demandes.Find(selectedRequest); //current request
                 if (getRequest.Statut == "en attente")
                     getRequest.Statut = "en cours";
-              
+
                 context.SaveChanges();
                 currentInterv = intr.Id;
 
@@ -95,7 +96,7 @@ namespace ParcInfo.ucInterevntion
 
 
                 //to fill with first intervention informations
-                AddTxtDescription("Parc Info", obs.Dateobservation, obs.Textobservation,obs.Id, pnlObservetion);
+                AddTxtDescription("Parc Info", obs.Dateobservation, obs.Textobservation, obs.Id, pnlObservetion);
 
                 lblSource.Text = intr.Demande.IdReq;
             }
@@ -108,9 +109,9 @@ namespace ParcInfo.ucInterevntion
                 Intervention intr = new Intervention
                 {
                     Idclient = selectedClient,
-                    Idutilisateur = GlobVars.currentUser,
+                    Idutilisateur = GlobVars.cuUser.Id,
                     Statut = "en cours",
-                    Modifierpar = GlobVars.currentUser,
+                    Modifierpar = GlobVars.cuUser.Id,
                     Datemodification = DateTime.Now
                 };
                 context.Interventions.Add(intr);
@@ -130,7 +131,7 @@ namespace ParcInfo.ucInterevntion
 
                 var clt = context.Clients.Find(selectedClient);
 
-                AddTxtDescription("Parc Info", DateTime.Now, obs.Textobservation,obs.Id, pnlObservetion);
+                AddTxtDescription("Parc Info", DateTime.Now, obs.Textobservation, obs.Id, pnlObservetion);
 
                 lblSource.Text = intr.Client.IdCLient.ToString();
             }
@@ -221,7 +222,7 @@ namespace ParcInfo.ucInterevntion
             AddDescription();
         }
 
-        public void AddDescription(string codeid = null,int idaffecattion = 0)
+        public void AddDescription(string codeid = null, int idaffecattion = 0)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
@@ -231,8 +232,8 @@ namespace ParcInfo.ucInterevntion
 
                 observation obs = new observation()
                 {
-                    
-                    IdUser = GlobVars.currentUser.ToString(),
+
+                    IdUser = GlobVars.cuUser.Nom.ToString(),
                     TypeOb = cbType.Text,
                     IdIntervention = interv.Id
                 };
@@ -250,11 +251,8 @@ namespace ParcInfo.ucInterevntion
 
                 context.SaveChanges();
 
-                interv.Idutilisateur.ToString();
-                
-
                 AddTxtDescription(
-                    interv.Idutilisateur.ToString(),
+                    interv.Utilisateur.Nom.ToString(),
                     DateTime.Now,
                     obs.Textobservation,
                     obs.Id,
@@ -276,7 +274,7 @@ namespace ParcInfo.ucInterevntion
                 e.SuppressKeyPress = true;
             }
         }
-        
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveDetails();
@@ -302,7 +300,7 @@ namespace ParcInfo.ucInterevntion
                 intrv.Duree = numberHours;
 
                 intrv.Datemodification = DateTime.Now;
-                intrv.Modifierpar = GlobVars.currentUser;
+                intrv.Modifierpar = GlobVars.cuUser.Id;
 
 
                 if (dtFin.Value.Date < dtDebut.Value.Date)
@@ -363,37 +361,36 @@ namespace ParcInfo.ucInterevntion
             if (selectedRequest != 0)
                 GlobVars.frmindex.ShowControl(new FichDemande(selectedRequest));
             else
-                GlobVars.frmindex.ShowControl(new CreateClient(selectedClient,""));
+                GlobVars.frmindex.ShowControl(new CreateClient(selectedClient, ""));
         }
 
-        public void Interventions(int selectedInre,int source)
+        public void Interventions(int selectedInre, int source)
         {
             using (var db = new ParcInformatiqueEntities())
             {
                 Intervention currentintr = db.Interventions.Find(selectedInre); //the selected intervention from datagrid
 
                 selectedClient = (int)currentintr.Idclient;
-                if (source != 0)
+                try
                 {
-                    try
-                    {
-                        lblSource.Text = currentintr.Demande.IdReq;
-                    }catch
-                    {
-                        lblSource.Text = currentintr.Client.IdCLient.ToString();
-                    }
+                    lblSource.Text = currentintr.Demande.IdReq;
                 }
-                    
+                catch
+                {
+                    lblSource.Text = currentintr.Client.IdCLient.ToString();
+                }
+
+
                 if (currentintr != null)
                 {
 
                     if (currentintr.Client != null)
                     {
                         lblDetails.Text = currentintr.Client.Nom;
-                        
+
                         selectedClient = currentintr.Client.id;
                     }
-                    
+
                     CheckStatut(currentintr.Getstatut);
                     lblIntervention.Text = currentintr.IdIntrv;
                     lblIntervention.ForeColor = Color.FromArgb(0, 168, 255);
@@ -411,7 +408,7 @@ namespace ParcInfo.ucInterevntion
                         dtDebut.Value = (DateTime)currentintr.Debut;
                         dtFin.Value = Convert.ToDateTime(currentintr.Fin.Value);
                         numHeur.Value = Convert.ToDecimal(currentintr.Duree.Value);
-                        lblModifierPar.Text = currentintr.Modifierpar.ToString();
+                        lblModifierPar.Text = currentintr.UtilisateurEdit.Nom.ToString();
                         lblDateModification.Text = currentintr.Datemodification.ToString();
                     }
 
@@ -428,8 +425,8 @@ namespace ParcInfo.ucInterevntion
                     }
 
                     var activities = (from d in db.observations
-                               where d.IdIntervention == currentInterv && d.IsDeleted == 0
-                               select d).ToList(); //observetions of selected intervention
+                                      where d.IdIntervention == currentInterv && d.IsDeleted == 0
+                                      select d).ToList(); //observetions of selected intervention
 
 
                     if (activities != null)
@@ -497,7 +494,7 @@ namespace ParcInfo.ucInterevntion
         }
 
         int nametxt = 1;
-        public void AddTxtDescription(string userInfo, DateTime date, string description,int idobs, Panel container,string details = null,int IdCli=0)
+        public void AddTxtDescription(string userInfo, DateTime date, string description, int idobs, Panel container, string details = null, int IdCli = 0)
         {
             MultiLineLabel ml = new MultiLineLabel();
 
@@ -543,7 +540,7 @@ namespace ParcInfo.ucInterevntion
 
                 ml.Text = $"this product {details.Split(' ').Take(2).Last()} by {userInfo}";
                 ml.ForeColor = Color.White;
-                us.Click += new EventHandler((sender,e) => GetProduct(sender,e, IdCli, details.Split(' ').Take(1).Last()));
+                us.Click += new EventHandler((sender, e) => GetProduct(sender, e, IdCli, details.Split(' ').Take(1).Last()));
                 //us.btnDelProd.Click += new EventHandler((sender, e) => Del(sender,e,IdAffe,"us"+nametxt));
             }
 
@@ -559,7 +556,7 @@ namespace ParcInfo.ucInterevntion
             container.VerticalScroll.Value = container.VerticalScroll.Maximum;
         }
 
-        private void Del(object sender, EventArgs e,int idaf,string namectr)
+        private void Del(object sender, EventArgs e, int idaf, string namectr)
         {
             var result = MessageBox.Show("Are you sure", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -579,7 +576,7 @@ namespace ParcInfo.ucInterevntion
             }
         }
 
-        private void GetProduct(object sender, EventArgs e,int idcli,string idprod)
+        private void GetProduct(object sender, EventArgs e, int idcli, string idprod)
         {
             TxtDescription lbl = (TxtDescription)sender;
             lbl.Cursor = Cursors.Hand;

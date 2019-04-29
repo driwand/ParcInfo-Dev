@@ -141,7 +141,7 @@
             this.lblTotalIntervention.Name = "lblTotalIntervention";
             this.lblTotalIntervention.Size = new System.Drawing.Size(21, 18);
             this.lblTotalIntervention.TabIndex = 52;
-            this.lblTotalIntervention.Text = "41";
+            this.lblTotalIntervention.Text = "0";
             this.lblTotalIntervention.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel2
@@ -217,7 +217,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lblMod);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);

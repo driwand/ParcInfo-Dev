@@ -30,6 +30,7 @@ namespace ParcInfo.ucClient
         public string statut;
         public int employee;
         public int iduser;
+        string RoleName;
         List<string> toorderby = new List<string>() { "en retard", "en attente", "en cours", "terminer" };
 
         //listdemande of selected client
@@ -76,44 +77,19 @@ namespace ParcInfo.ucClient
                     employee = idEmploye;
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
-                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest })
-                                     select new
-                                     {
-                                         d.Id,
-                                         d.IdReq,
-                                         d.Datedemande,
-                                         Desc = Methods.GetDesc(d.Description_d, 4),
-                                         Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
-                                         d.Getstatut,
-                                         IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
-                                         Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "",
-                                         Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "",
-                                         Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : ""
-                                     }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
-
-                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
+                        if (GlobVars.cuUser.isAdmin == 1)
+                            GetAllRequest();
+                        else
+                            GetAllRequest(true);
                     }
 
                     else
                     {
                         statut = statutReq;
-
-                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
-                                     select new
-                                     {
-                                         d.Id,
-                                         d.IdReq,
-                                         d.Datedemande,
-                                         Desc = Methods.GetDesc(d.Description_d, 4),
-                                         d.Employee.Nom,
-                                         d.Getstatut,
-                                         IdClient = d.Employee.Client.id,
-                                         d.Modifierpar,
-                                         Edited = d.Utilisateur.Nom,
-                                         d.Datemodification
-                                     }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
-
-                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
+                        if (GlobVars.cuUser.isAdmin == 1)
+                            GetRequestByStatut(statut, idEmploye);
+                        else
+                            GetRequestByStatut(statut, idEmploye,true);
                     }
 
                     HideColumns(new string[] { "id", "IdClient" }, dgDemande);
@@ -136,6 +112,13 @@ namespace ParcInfo.ucClient
                 }
             }
         }
+        public void GetRoleName()
+        {
+            var t = GlobVars.cuUser.RoleUtilisateurs1.Where(x => x.IsDeleted == 0);
+            foreach (var v in t)
+                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("intervention".ToLower()) && v.IsDeleted != 1)
+                    RoleName = v.Nom.ToLower();
+        }
 
         public void HideColumns(string[] clms, DataGridView grid)
         {
@@ -145,10 +128,102 @@ namespace ParcInfo.ucClient
             }
         }
 
+        public void GetAllRequest(bool assigned = false)
+        {
+            using (var context = new ParcInformatiqueEntities())
+            {
+                if (assigned == false)
+                {
+                    var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest })
+                                 select new
+                                 {
+                                     d.Id,
+                                     d.IdReq,
+                                     d.Datedemande,
+                                     Desc = Methods.GetDesc(d.Description_d, 4),
+                                     Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
+                                     d.Getstatut,
+                                     IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
+                                     Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "",
+                                     Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "",
+                                     Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : ""
+                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+
+                    Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
+                }
+                else
+                {
+                    var lsreq = (from d in context.GetAssignedRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest })
+                                 select new
+                                 {
+                                     d.Id,
+                                     d.IdReq,
+                                     d.Datedemande,
+                                     Desc = Methods.GetDesc(d.Description_d, 4),
+                                     Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
+                                     d.Getstatut,
+                                     IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
+                                     Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "",
+                                     Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "",
+                                     Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : ""
+                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+
+                    Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
+                }
+            }
+        }
+
+        public void GetRequestByStatut(string statutReq,int idEmploye, bool assigned = false)
+        {
+            using (var context = new ParcInformatiqueEntities())
+            {
+                if (assigned == false)
+                {
+
+                    var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
+                                 select new
+                                 {
+                                     d.Id,
+                                     d.IdReq,
+                                     d.Datedemande,
+                                     Desc = Methods.GetDesc(d.Description_d, 4),
+                                     d.Employee.Nom,
+                                     d.Getstatut,
+                                     IdClient = d.Employee.Client.id,
+                                     d.Modifierpar,
+                                     Edited = d.Utilisateur.Nom,
+                                     d.Datemodification
+                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+
+                    Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
+                }
+                else
+                {
+
+                    var lsreq = (from d in context.GetAssignedRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
+                                 select new
+                                 {
+                                     d.Id,
+                                     d.IdReq,
+                                     d.Datedemande,
+                                     Desc = Methods.GetDesc(d.Description_d, 4),
+                                     d.Employee.Nom,
+                                     d.Getstatut,
+                                     IdClient = d.Employee.Client.id,
+                                     d.Modifierpar,
+                                     Edited = d.Utilisateur.Nom,
+                                     d.Datemodification
+                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+
+                    Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
+                }
+            }
+        }
+
+
         private void ListRequest_Load(object sender, EventArgs e)
         {
             //ControlsClass.CreateRadiusBorder(this);
-            Methods.CheckRoles(Controls);
         }
 
         private void dgDemande_DoubleClick(object sender, EventArgs e)
@@ -239,28 +314,56 @@ namespace ParcInfo.ucClient
         {
             using (var context = new ParcInformatiqueEntities())
             {
-                var ls = (from d in context.GetRequestbyStatut(null, null, idemployee, isdeleted)
-                          select new
-                          {
-                              d.Id,
-                              d.IdReq,
-                              d.Datedemande,
-                              Desc = Methods.GetDesc(d.Description_d, 4),
-                              d.Employee.Nom,
-                              d.Getstatut,
-                              IdClient = d.Employee.Client.id,
-                              d.Modifierpar,
-                              Edited = d.Utilisateur.Nom,
-                              d.Datemodification
-                          }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                if (GlobVars.cuUser.isAdmin == 0)
+                {
+                    var ls = (from d in context.GetAssignedRequestbyStatut(null, null, idemployee, isdeleted)
+                              select new
+                              {
+                                  d.Id,
+                                  d.IdReq,
+                                  d.Datedemande,
+                                  Desc = Methods.GetDesc(d.Description_d, 4),
+                                  d.Employee.Nom,
+                                  d.Getstatut,
+                                  IdClient = d.Employee.Client.id,
+                                  d.Modifierpar,
+                                  Edited = d.Utilisateur.Nom,
+                                  d.Datemodification
+                              }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
-                if (idclt != 0)
-                    ls = ls.Where(i => i.IdClient == idclt).ToList();
+                    if (idclt != 0)
+                        ls = ls.Where(i => i.IdClient == idclt).ToList();
 
-                if (statut != null)
-                    ls = ls.Where(i => i.Getstatut == statut).ToList();
+                    if (statut != null)
+                        ls = ls.Where(i => i.Getstatut == statut).ToList();
 
-                Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+                    Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+                }
+                else
+                {
+                    var ls = (from d in context.GetRequestbyStatut(null, null, idemployee, isdeleted)
+                              select new
+                              {
+                                  d.Id,
+                                  d.IdReq,
+                                  d.Datedemande,
+                                  Desc = Methods.GetDesc(d.Description_d, 4),
+                                  d.Employee.Nom,
+                                  d.Getstatut,
+                                  IdClient = d.Employee.Client.id,
+                                  d.Modifierpar,
+                                  Edited = d.Utilisateur.Nom,
+                                  d.Datemodification
+                              }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+
+                    if (idclt != 0)
+                        ls = ls.Where(i => i.IdClient == idclt).ToList();
+
+                    if (statut != null)
+                        ls = ls.Where(i => i.Getstatut == statut).ToList();
+
+                    Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+                }
             }
         }
 
