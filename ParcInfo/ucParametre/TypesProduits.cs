@@ -110,7 +110,11 @@ namespace ParcInfo.settings
                         {
                             if (item.TxtValue != "")
                             {
-                                context.ProprietesProduits.Add(new ProprietesProduit { Nom = item.TxtValue, idType = tp.id, IsDeleted = 0 });
+                                context.ProprietesProduits.Add(new ProprietesProduit {
+                                    Nom = item.TxtValue,
+                                    idType = tp.id,
+                                    IsDeleted = 0
+                                });
 
                             }
                         }

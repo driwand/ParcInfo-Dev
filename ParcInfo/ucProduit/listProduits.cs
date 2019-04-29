@@ -118,7 +118,7 @@ namespace ParcInfo.ucClient
             int c = dgProduits.SelectedRows.Count;
             if (c > 0)
             {
-                //nuAffecter.Value = c;
+                nuAffecter.Value = c;
 
                 var myrow = dgProduits.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
@@ -129,6 +129,7 @@ namespace ParcInfo.ucClient
                     var p = context.Produits.Find(id);
                     if (p != null)
                     {
+                        pd.cbType.SelectedValue = p.IdType;
                         pd.txtMarque.Text = p.Marque;
                         pd.txtModel.Text = p.Model;
                         pd.txtPrix.Text = p.Prix.ToString();
@@ -166,7 +167,7 @@ namespace ParcInfo.ucClient
             {
                 int index = dgProduits.CurrentRow.Index;
                 int count = dgProduits.Rows.Count;
-                for (int i = index; i < d; i++)
+                for (int i = index; i < d+index; i++)
                 {
                     if (i < count)
                     {

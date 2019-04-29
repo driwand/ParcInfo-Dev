@@ -30,7 +30,6 @@
         {
             this.lblNameClient = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnAddDepartement = new System.Windows.Forms.Button();
             this.PnlDepart = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.PnlUsers = new System.Windows.Forms.FlowLayoutPanel();
@@ -59,9 +58,10 @@
             this.lblClient = new System.Windows.Forms.Label();
             this.btnDelClient = new System.Windows.Forms.Button();
             this.btnEditClient = new System.Windows.Forms.Button();
+            this.btnAddDepartement = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
-            this.picHeader = new System.Windows.Forms.PictureBox();
             this.BtnAddUser = new System.Windows.Forms.Button();
+            this.picHeader = new System.Windows.Forms.PictureBox();
             this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
             this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
             this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
@@ -98,19 +98,6 @@
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Les departements";
-            // 
-            // btnAddDepartement
-            // 
-            this.btnAddDepartement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnAddDepartement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDepartement.ForeColor = System.Drawing.Color.White;
-            this.btnAddDepartement.Location = new System.Drawing.Point(367, 118);
-            this.btnAddDepartement.Name = "btnAddDepartement";
-            this.btnAddDepartement.Size = new System.Drawing.Size(25, 25);
-            this.btnAddDepartement.TabIndex = 46;
-            this.btnAddDepartement.Text = "Ajouter";
-            this.btnAddDepartement.UseVisualStyleBackColor = false;
-            this.btnAddDepartement.Click += new System.EventHandler(this.btnAddDepartement_Click);
             // 
             // PnlDepart
             // 
@@ -399,6 +386,19 @@
             this.btnEditClient.Visible = false;
             this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
             // 
+            // btnAddDepartement
+            // 
+            this.btnAddDepartement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnAddDepartement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDepartement.ForeColor = System.Drawing.Color.White;
+            this.btnAddDepartement.Image = global::ParcInfo.Properties.Resources.px16;
+            this.btnAddDepartement.Location = new System.Drawing.Point(367, 119);
+            this.btnAddDepartement.Name = "btnAddDepartement";
+            this.btnAddDepartement.Size = new System.Drawing.Size(25, 25);
+            this.btnAddDepartement.TabIndex = 46;
+            this.btnAddDepartement.UseVisualStyleBackColor = false;
+            this.btnAddDepartement.Click += new System.EventHandler(this.btnAddDepartement_Click);
+            // 
             // btnAddClient
             // 
             this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -410,9 +410,22 @@
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(113, 28);
             this.btnAddClient.TabIndex = 10011;
-            this.btnAddClient.Text = "  Ajouter";
+            this.btnAddClient.Text = "uuu";
             this.btnAddClient.UseVisualStyleBackColor = false;
             this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
+            // BtnAddUser
+            // 
+            this.BtnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAddUser.ForeColor = System.Drawing.Color.White;
+            this.BtnAddUser.Image = global::ParcInfo.Properties.Resources.px161;
+            this.BtnAddUser.Location = new System.Drawing.Point(367, 192);
+            this.BtnAddUser.Name = "BtnAddUser";
+            this.BtnAddUser.Size = new System.Drawing.Size(25, 25);
+            this.BtnAddUser.TabIndex = 45;
+            this.BtnAddUser.UseVisualStyleBackColor = false;
+            this.BtnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // picHeader
             // 
@@ -423,19 +436,6 @@
             this.picHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picHeader.TabIndex = 10005;
             this.picHeader.TabStop = false;
-            // 
-            // BtnAddUser
-            // 
-            this.BtnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAddUser.ForeColor = System.Drawing.Color.White;
-            this.BtnAddUser.Location = new System.Drawing.Point(367, 192);
-            this.BtnAddUser.Name = "BtnAddUser";
-            this.BtnAddUser.Size = new System.Drawing.Size(25, 25);
-            this.BtnAddUser.TabIndex = 45;
-            this.BtnAddUser.Text = "Ajouter";
-            this.BtnAddUser.UseVisualStyleBackColor = false;
-            this.BtnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // gradientPanel2
             // 

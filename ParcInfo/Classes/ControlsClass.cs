@@ -68,7 +68,7 @@ namespace ParcInfo.Classes
             {
                 var pheight = allbtnsvisible.Sum(y => y.Height);
                 btn.Image = Resources.arrowDown1;
-                panel.Height += 10;
+                panel.Height += 5;
                 if (panel.Height >= pheight)
                 {
                     timer.Stop();

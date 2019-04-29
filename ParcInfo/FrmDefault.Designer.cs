@@ -324,9 +324,9 @@ namespace ParcInfo.frmDefault
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Controls.Add(this.DropClient);
-            this.pnlMenu.Controls.Add(this.DropProduit);
             this.pnlMenu.Controls.Add(this.DropParametre);
+            this.pnlMenu.Controls.Add(this.DropProduit);
+            this.pnlMenu.Controls.Add(this.DropClient);
             this.pnlMenu.Controls.Add(this.DropDemande);
             this.pnlMenu.Controls.Add(this.BtnHome);
             this.pnlMenu.Controls.Add(this.DropIntervention);
@@ -344,7 +344,7 @@ namespace ParcInfo.frmDefault
             this.DropClient.Location = new System.Drawing.Point(1, 63);
             this.DropClient.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropClient.Name = "DropClient";
-            this.DropClient.Size = new System.Drawing.Size(224, 146);
+            this.DropClient.Size = new System.Drawing.Size(224, 41);
             this.DropClient.TabIndex = 4;
             // 
             // BtnListClient
@@ -407,7 +407,7 @@ namespace ParcInfo.frmDefault
             this.DropProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.DropProduit.Controls.Add(this.btnListProduct);
             this.DropProduit.Controls.Add(this.BtnProduct);
-            this.DropProduit.Location = new System.Drawing.Point(2, 127);
+            this.DropProduit.Location = new System.Drawing.Point(14, 120);
             this.DropProduit.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropProduit.Name = "DropProduit";
             this.DropProduit.Size = new System.Drawing.Size(224, 41);
@@ -458,8 +458,7 @@ namespace ParcInfo.frmDefault
             this.DropParametre.Controls.Add(this.btnListUsers);
             this.DropParametre.Controls.Add(this.btnNewUser);
             this.DropParametre.Controls.Add(this.btnParam);
-            this.DropParametre.Location = new System.Drawing.Point(0, 365);
-            this.DropParametre.MaximumSize = new System.Drawing.Size(224, 205);
+            this.DropParametre.Location = new System.Drawing.Point(0, 313);
             this.DropParametre.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropParametre.Name = "DropParametre";
             this.DropParametre.Size = new System.Drawing.Size(224, 41);
@@ -760,6 +759,7 @@ namespace ParcInfo.frmDefault
             this.BtnHome.Text = "Accueil";
             this.BtnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnHome.UseVisualStyleBackColor = true;
+            this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
             // 
             // DropIntervention
             // 
@@ -1016,6 +1016,7 @@ namespace ParcInfo.frmDefault
             this.ClientSize = new System.Drawing.Size(1156, 590);
             this.Controls.Add(this.FrmPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmDefault";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDefault";

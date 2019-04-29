@@ -23,7 +23,7 @@ namespace ParcInfo
 
 
             //frmDefault.FrmDefault deffrm = new frmDefault.FrmDefault();
-            Login deffrm = new Login();
+            frmLogin deffrm = new frmLogin();
             //using (var db = new ParcInformatiqueEntities())
             //{
             //    var par = db.ParametreParcinfoes.FirstOrDefault();

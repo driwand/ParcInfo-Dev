@@ -16,12 +16,12 @@ namespace ParcInfo.ucParametre
         public userProfile()
         {
             InitializeComponent();
-            if (GlobVars.currentUser > 0)
+            if (GlobVars.cuUser.Id > 0)
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-                    var id = GlobVars.currentUser;
-                    var u = context.Utilisateurs.Find(id);
+                    var u = GlobVars.cuUser;
+                  
                     if (u != null)
                     {
                         txtNom.Text = u.Nom;
@@ -30,6 +30,7 @@ namespace ParcInfo.ucParametre
                         txtVille.Text = u.Ville;
                         txtTel.Text = u.Tel;
                         txtEmail.Text = u.Email;
+                       // lblCountInterv.Text = u.Interventions1.Where(d => (d.DateIntervention.Value - DateTime.Now).TotalDays <= 30).Count().ToString();
                     }
                 }
             }
@@ -41,8 +42,8 @@ namespace ParcInfo.ucParametre
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
 
-                var id = GlobVars.currentUser;
-                var u = context.Utilisateurs.Find(id);
+
+                var u = GlobVars.cuUser;
 
                 u.Nom = txtNom.Text;
                 u.Prenom = txtPrenom.Text;
@@ -70,5 +71,6 @@ namespace ParcInfo.ucParametre
 
             }
         }
+
     }
 }

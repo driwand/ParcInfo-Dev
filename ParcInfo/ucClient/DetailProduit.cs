@@ -85,7 +85,7 @@ namespace ParcInfo.ucClient
             userName++;
             CreateControl("log", logName, FpProduit, 0, 0, idProd);
             logName++;
-
+            
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var d = context.Produits.Find(idProd);
@@ -111,7 +111,6 @@ namespace ParcInfo.ucClient
                                where x.IsDeleted == 0
                                select x).ToList();
                     lblTextbox tbx = this.Controls.Find("userC1", true).FirstOrDefault() as lblTextbox;
-
                     if (pu != null && pu.Count > 0)
                     {
                         var user = pu.FirstOrDefault();
@@ -120,7 +119,6 @@ namespace ParcInfo.ucClient
                         tbx.LblAff = user.Id.ToString();
                         foreach (var item in pu.Skip(1))
                         {
-                           
                             //first lblTexbox to fill user
                             lblTextbox user2 = new lblTextbox(idC,0, "emp");
                             user2.TxtValue = item.Employee.Nom + " " + item.Employee.Prenom;
@@ -394,6 +392,11 @@ namespace ParcInfo.ucClient
                     MessageBox.Show(item.Controlname);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

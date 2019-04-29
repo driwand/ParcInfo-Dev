@@ -125,7 +125,7 @@ namespace ParcInfo
                         context.ProduitClients.Add(new ProduitClient { Idproduit = item.Id,
                             Idclient = idC, Prixvente = float.Parse(item.Value),
                             Dateaffectation = DateTime.Now,
-                            Creepar = GlobVars.currentUser,
+                            Creepar = GlobVars.cuUser.Id,
                             IsDeleted = 0 });
                     }
                     context.SaveChanges();

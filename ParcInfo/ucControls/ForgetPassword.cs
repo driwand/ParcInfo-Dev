@@ -17,12 +17,6 @@ namespace ParcInfo.ucControls
         {
             InitializeComponent();
         }
-
-        private void lblBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            GlobVars.frmLogin.ShowControl(new loginCntrl());
-        }
-
         private void btnForgetPass_Click(object sender, EventArgs e)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())

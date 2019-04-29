@@ -84,7 +84,6 @@ namespace ParcInfo.ucParametre
 
         private void CreateUser_Load(object sender, EventArgs e)
         {
-
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -120,7 +119,9 @@ namespace ParcInfo.ucParametre
                         Email = Email,
                         isAdmin = isAdmin,
                         Datecreation = DateTime.Now,
-                       Password_u = haspass
+                       Password_u = haspass,
+                       IsDeleted = 0,
+                       Creepar = GlobVars.cuUser.Id
                     };
                     context.Utilisateurs.Add(user);
                     var emailEmp = context.Employees.Any(i => i.Email == Email);
@@ -274,7 +275,7 @@ namespace ParcInfo.ucParametre
                     {
                         c.IsDeleted = 1;
                         c.Datemodification = DateTime.Now;
-                        c.Modifierpar = GlobVars.currentUser;
+                        c.Modifierpar = GlobVars.cuUser.Id;
                     }
                 }
                 foreach (var item in insertList)
@@ -284,8 +285,8 @@ namespace ParcInfo.ucParametre
                         Nom = item,
                         IdUtilisateur = idU,
                         IsDeleted = 0,
-                        Creepar = GlobVars.currentUser,
-                        Datecreation = DateTime.Now
+                        Creepar = GlobVars.cuUser.Id,
+                    Datecreation = DateTime.Now
                     });
                 }
                 user.Nom = txtNom.Text;
@@ -301,7 +302,7 @@ namespace ParcInfo.ucParametre
                 }
                 user.isAdmin = isAdmin;
                 user.Datemodification = DateTime.Now;
-                user.Modifierpar = GlobVars.currentUser;
+                user.Modifierpar = GlobVars.cuUser.Id;
                 context.SaveChanges();
 
             }

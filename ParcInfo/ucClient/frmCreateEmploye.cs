@@ -14,7 +14,6 @@ namespace ParcInfo.ucClient
 {
     public partial class frmCreateEmploye : Form
     {
-
         public int idE = 0;
         public int idC = 0;
         DataGridView dgEmp;
@@ -40,7 +39,6 @@ namespace ParcInfo.ucClient
                     cbRespo.Location = new Point(92, 239);
                     lblPassword.Visible = true;
                     txtPass.Visible = true;
-
 
                     //lblEMP.Location = new Point(195, 21);
                     lblEMP.Visible = true;
@@ -106,7 +104,7 @@ namespace ParcInfo.ucClient
                         Respo = 1;
                     }
                     idEmp.IsResponsable = Respo;
-                   idEmp.Modifierpar = GlobVars.currentUser;
+                    idEmp.Modifierpar = GlobVars.cuUser.Id;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     var msg = Methods.StringForget(idEmp.Nom, idEmp.Prenom,pass);
@@ -151,8 +149,8 @@ namespace ParcInfo.ucClient
                                 Datecreation = DateTime.Now,
                                 Password_e = pass,
                                 IsDeleted = 0,
-                                Creepar = GlobVars.currentUser,
-                            };
+                                Creepar = GlobVars.cuUser.Id
+                        };
                             context.Employees.Add(emp);
                             context.SaveChanges();
                             Methods.sendEmail(Email, msg);
