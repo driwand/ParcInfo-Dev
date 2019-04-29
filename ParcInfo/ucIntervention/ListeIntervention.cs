@@ -81,7 +81,7 @@ namespace ParcInfo.ucInterevntion
                                   ir.Modifierpar,
                                   ir.Datemodification,
                                   ir.DateIntervention
-                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                              }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                     lblTotalIntervention.Text = ls.Count().ToString();
                     Methods.Nice_grid(
@@ -102,7 +102,7 @@ namespace ParcInfo.ucInterevntion
         {
             var t = GlobVars.cuUser.RoleUtilisateurs1.Where(x => x.IsDeleted == 0);
             foreach (var v in t)
-                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("intervention".ToLower()) && v.IsDeleted != 1)
+                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("interventions".ToLower()) && v.IsDeleted != 1)
                     RoleName = v.Nom.ToLower();
         }
 
@@ -110,26 +110,35 @@ namespace ParcInfo.ucInterevntion
         {
             if (assigned == true)
             {
-                using (var context = new ParcInformatiqueEntities())
+                if (RoleName == "Consulter tous les interventions".ToLower())
                 {
-                    var ls = (from ir in context.GetAssignedInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention })
-                              select new
-                              {
-                                  ir.IdIntrv,
-                                  ir.Id,
-                                  ir.Client.Nom,
-                                  ir.Debut,
-                                  ir.Fin,
-                                  ir.IdDemande,
-                                  ir.Getstatut,
-                                  ir.Idclient,
-                                  Edited = ir.UtilisateurEdit.Nom,
-                                  ir.Modifierpar,
-                                  ir.Datemodification,
-                                  ir.DateIntervention
-                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                    assigned = false;
+                    GetALlInterevntions();
+                }
+                else
+                {
 
-                    Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind, ls);
+                    using (var context = new ParcInformatiqueEntities())
+                    {
+                        var ls = (from ir in context.GetAssignedInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention })
+                                  select new
+                                  {
+                                      ir.IdIntrv,
+                                      ir.Id,
+                                      ir.Client.Nom,
+                                      ir.Debut,
+                                      ir.Fin,
+                                      ir.IdDemande,
+                                      ir.Getstatut,
+                                      ir.Idclient,
+                                      Edited = ir.UtilisateurEdit.Nom,
+                                      ir.Modifierpar,
+                                      ir.Datemodification,
+                                      ir.DateIntervention
+                                  }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).ToList();
+
+                        Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind, ls);
+                    }
                 }
             }
             else
@@ -150,7 +159,7 @@ namespace ParcInfo.ucInterevntion
                                   ir.Modifierpar,
                                   ir.Datemodification,
                                   ir.DateIntervention
-                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                              }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).ToList();
 
                     Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind, ls);
                 }
@@ -160,27 +169,35 @@ namespace ParcInfo.ucInterevntion
         {
             if (assigned == true)
             {
-                using (var context = new ParcInformatiqueEntities())
+                if (RoleName == "Consulter tous les interventions".ToLower())
                 {
-                    var ls = (from ir in context.GetAssignedInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention }, statutInterv)
-                              select new
-                              {
-                                  ir.IdIntrv,
-                                  ir.Id,
-                                  ir.Client.Nom,
-                                  ir.Debut,
-                                  ir.Fin,
-                                  ir.IdDemande,
-                                  ir.Getstatut,
-                                  ir.Idclient,
-                                  Edited = ir.UtilisateurEdit.Nom,
-                                  ir.Modifierpar,
-                                  ir.Datemodification,
-                                  ir.DateIntervention
-                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
-                    statutit = statutInterv;
+                    assigned = false;
+                    GetALlInterevntions();
+                }
+                else
+                {
+                    using (var context = new ParcInformatiqueEntities())
+                    {
+                        var ls = (from ir in context.GetAssignedInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention }, statutInterv)
+                                  select new
+                                  {
+                                      ir.IdIntrv,
+                                      ir.Id,
+                                      ir.Client.Nom,
+                                      ir.Debut,
+                                      ir.Fin,
+                                      ir.IdDemande,
+                                      ir.Getstatut,
+                                      ir.Idclient,
+                                      Edited = ir.UtilisateurEdit.Nom,
+                                      ir.Modifierpar,
+                                      ir.Datemodification,
+                                      ir.DateIntervention
+                                  }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).ToList();
+                        statutit = statutInterv;
 
-                    Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind, ls);
+                        Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind, ls);
+                    }
                 }
             }
             else
@@ -201,7 +218,7 @@ namespace ParcInfo.ucInterevntion
                                   ir.Modifierpar,
                                   ir.Datemodification,
                                   ir.DateIntervention
-                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                              }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).ToList();
                     statutit = statutInterv;
 
                     Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind, ls);
@@ -270,34 +287,42 @@ namespace ParcInfo.ucInterevntion
         {
             using (var db = new ParcInformatiqueEntities())
             {
-                if (RoleName == "Consulter les intervention concerner".ToLower())
+                int hasall = 0;
+                if (GlobVars.cuUser.isAdmin == 0)
                 {
-                    var ls = (from ir in db.GetAssignedInterventionBystatut(null, null, isdeleted)
-                              select new
-                              {
-                                  ir.IdIntrv,
-                                  ir.Id,
-                                  ir.Client.Nom,
-                                  ir.Debut,
-                                  ir.Fin,
-                                  ir.IdDemande,
-                                  ir.Getstatut,
-                                  ir.Idclient,
-                                  Edited = ir.UtilisateurEdit.Nom,
-                                  ir.Modifierpar,
-                                  ir.Datemodification,
-                                  ir.DateIntervention
-                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
-                    if (id != 0)
-                        ls = ls.Where(i => i.Idclient == id).ToList();
+                    if (RoleName == "Consulter tous les interventions".ToLower())
+                    {
+                        hasall = 1;
+                    }
+                    if (hasall == 0)
+                    {
+                        var ls = (from ir in db.GetAssignedInterventionBystatut(null, null, isdeleted)
+                                  select new
+                                  {
+                                      ir.IdIntrv,
+                                      ir.Id,
+                                      ir.Client.Nom,
+                                      ir.Debut,
+                                      ir.Fin,
+                                      ir.IdDemande,
+                                      ir.Getstatut,
+                                      ir.Idclient,
+                                      Edited = ir.UtilisateurEdit.Nom,
+                                      ir.Modifierpar,
+                                      ir.Datemodification,
+                                      ir.DateIntervention
+                                  }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).ToList();
+                        if (id != 0)
+                            ls = ls.Where(i => i.Idclient == id).ToList();
 
-                    if (statut != null)
-                        ls = ls.Where(i => i.Getstatut == statut).ToList();
+                        if (statut != null)
+                            ls = ls.Where(i => i.Getstatut == statut).ToList();
 
-                    dgIntervention.DataSource = Methods.ToDataTable(ls);
-                    lblTotalIntervention.Text = ls.Count().ToString();
+                        dgIntervention.DataSource = Methods.ToDataTable(ls);
+                        lblTotalIntervention.Text = ls.Count().ToString();
+                    }
                 }
-                else if (RoleName == "consulter tous les interventions".ToLower())
+                if (GlobVars.cuUser.isAdmin == 1 || hasall == 1)
                 {
                     var ls = (from ir in db.GetInterventionBystatut(null, null, isdeleted)
                               select new
@@ -314,7 +339,7 @@ namespace ParcInfo.ucInterevntion
                                   ir.Modifierpar,
                                   ir.Datemodification,
                                   ir.DateIntervention
-                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                              }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).ToList();
                     if (id != 0)
                         ls = ls.Where(i => i.Idclient == id).ToList();
 

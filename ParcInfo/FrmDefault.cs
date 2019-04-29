@@ -40,7 +40,7 @@ namespace ParcInfo.frmDefault
         public FrmDefault()
         {
             InitializeComponent();
-
+            GetRolesName();
             ControlsClass.CreateRadiusBorder(PanelContainer);
            // this.MaximizeBox = false;
             GlobVars.frmindex = this;
@@ -395,15 +395,66 @@ namespace ParcInfo.frmDefault
         {
             using (var db = new ParcInformatiqueEntities())
             {
-                if (GlobVars.cuUser.isAdmin == 1)
+                int hasallr = 0;
+                int hasalli = 0;
+                if (GlobVars.cuUser.isAdmin == 0)
                 {
+                    if (RoleInterv == "Consulter tous les interventions".ToLower())
+                        hasalli = 1;
+                    if (RoleRequest == "Consulter tous les demandes".ToLower())
+                        hasallr = 1;
+
+                    if (hasalli == 0)
+                    {
+                        //count interventions
+                        countIntervTerminer = db.GetAssignedIntervenretard.Count();
+                        countIntervCours = db.GeAssignedtIntervEncours.Count();
+                        countIntervRetard = db.GetAssignedIntervenretard.Count();
+
+                        countIntervDeInt = countIntervRetard + countIntervCours;
+                    }
+                    else
+                    {
+                        countIntervTerminer = db.GetIntervtermine.Count();
+                        countIntervCours = db.GetIntervEncours.Count();
+                        countIntervRetard = db.GetIntervenretard.Count();
+
+                        countIntervDeInt = countIntervRetard + countIntervCours;
+                    }
+
+                    if (hasallr == 0)
+                    {
+                        //count request
+                        countRequestTerminer = db.GetAssignedRequestTerminer.Count();
+                        countRequestCours = db.GetAssignedRequestCours.Count();
+                        countRequestRetard = db.GetAssignedRequestRetard.Count();
+                        countRequestAttente = db.GetAssignedRequestAttent.Count();
+
+                        countRequestDeInt = countRequestRetard + countRequestCours;
+                    }
+                    else
+                    {
+                        countRequestTerminer = db.GetRequestTerminer.Count();
+                        countRequestCours = db.GetRequestCours.Count();
+                        countRequestRetard = db.GetRequestRetard.Count();
+                        countRequestAttente = db.GetRequestAttent.Count();
+
+
+                        countRequestDeInt = countRequestRetard + countRequestCours;
+
+                    }
+
+                }
+                else 
+                {
+                    //count interventions
                     countIntervTerminer = db.GetIntervtermine.Count();
                     countIntervCours = db.GetIntervEncours.Count();
                     countIntervRetard = db.GetIntervenretard.Count();
 
                     countIntervDeInt = countIntervRetard + countIntervCours;
 
-
+                    //count request
                     countRequestTerminer = db.GetRequestTerminer.Count();
                     countRequestCours = db.GetRequestCours.Count();
                     countRequestRetard = db.GetRequestRetard.Count();
@@ -412,24 +463,21 @@ namespace ParcInfo.frmDefault
 
                     countRequestDeInt = countRequestRetard + countRequestCours;
                 }
-                else
-                {
-                    countIntervTerminer = db.GetAssignedIntervenretard.Count();
-                    countIntervCours = db.GeAssignedtIntervEncours.Count();
-                    countIntervRetard = db.GetAssignedIntervenretard.Count();
-
-                    countIntervDeInt = countIntervRetard + countIntervCours;
-
-
-                    countRequestTerminer = db.GetAssignedRequestTerminer.Count();
-                    countRequestCours = db.GetAssignedRequestCours.Count();
-                    countRequestRetard = db.GetAssignedRequestRetard.Count();
-                    countRequestAttente = db.GetAssignedRequestAttent.Count();
-
-
-                    countRequestDeInt = countRequestRetard + countRequestCours;
-                }
             }
+        }
+        public string RoleInterv;
+        public string RoleRequest;
+
+        public void GetRolesName()
+        {
+            
+            var t = GlobVars.cuUser.RoleUtilisateurs1.Where(x => x.IdUtilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0);
+            foreach (var v in t)
+                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("demandes".ToLower()) && v.IsDeleted != 1)
+                    RoleRequest = v.Nom.ToLower();
+            foreach (var v in t)
+                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("interventions".ToLower()) && v.IsDeleted != 1)
+                    RoleInterv = v.Nom.ToLower();
         }
 
         private void getRealdata_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
