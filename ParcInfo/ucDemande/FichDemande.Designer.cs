@@ -30,29 +30,29 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDemande = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDepart = new System.Windows.Forms.Label();
+            this.lblPrenom = new System.Windows.Forms.Label();
+            this.lbltel = new System.Windows.Forms.Label();
+            this.lblNom = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pnlDesc = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblDateDemande = new System.Windows.Forms.Label();
+            this.lblStatut = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblNom = new System.Windows.Forms.Label();
-            this.lbltel = new System.Windows.Forms.Label();
-            this.lblPrenom = new System.Windows.Forms.Label();
-            this.lblDepart = new System.Windows.Forms.Label();
-            this.lblStatut = new System.Windows.Forms.Label();
-            this.lblDateDemande = new System.Windows.Forms.Label();
-            this.pnlDesc = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,16 +74,6 @@
             this.lblDemande.TabIndex = 68;
             this.lblDemande.Text = "Demande N° 15";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 69;
-            this.pictureBox1.TabStop = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblDepart);
@@ -100,6 +90,42 @@
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employée ";
+            // 
+            // lblDepart
+            // 
+            this.lblDepart.AutoSize = true;
+            this.lblDepart.Location = new System.Drawing.Point(121, 93);
+            this.lblDepart.Name = "lblDepart";
+            this.lblDepart.Size = new System.Drawing.Size(41, 13);
+            this.lblDepart.TabIndex = 7;
+            this.lblDepart.Text = "label12";
+            // 
+            // lblPrenom
+            // 
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(240, 29);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(41, 13);
+            this.lblPrenom.TabIndex = 6;
+            this.lblPrenom.Text = "label11";
+            // 
+            // lbltel
+            // 
+            this.lbltel.AutoSize = true;
+            this.lbltel.Location = new System.Drawing.Point(74, 61);
+            this.lbltel.Name = "lbltel";
+            this.lbltel.Size = new System.Drawing.Size(41, 13);
+            this.lbltel.TabIndex = 5;
+            this.lbltel.Text = "label10";
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(74, 29);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(35, 13);
+            this.lblNom.TabIndex = 4;
+            this.lblNom.Text = "label9";
             // 
             // label4
             // 
@@ -154,7 +180,32 @@
             this.groupBox2.Size = new System.Drawing.Size(420, 289);
             this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Demande";
+            this.groupBox2.Text = "7";
+            // 
+            // pnlDesc
+            // 
+            this.pnlDesc.Location = new System.Drawing.Point(31, 101);
+            this.pnlDesc.Name = "pnlDesc";
+            this.pnlDesc.Size = new System.Drawing.Size(354, 164);
+            this.pnlDesc.TabIndex = 10;
+            // 
+            // lblDateDemande
+            // 
+            this.lblDateDemande.AutoSize = true;
+            this.lblDateDemande.Location = new System.Drawing.Point(163, 48);
+            this.lblDateDemande.Name = "lblDateDemande";
+            this.lblDateDemande.Size = new System.Drawing.Size(41, 13);
+            this.lblDateDemande.TabIndex = 9;
+            this.lblDateDemande.Text = "label14";
+            // 
+            // lblStatut
+            // 
+            this.lblStatut.AutoSize = true;
+            this.lblStatut.Location = new System.Drawing.Point(83, 26);
+            this.lblStatut.Name = "lblStatut";
+            this.lblStatut.Size = new System.Drawing.Size(41, 13);
+            this.lblStatut.TabIndex = 8;
+            this.lblStatut.Text = "label13";
             // 
             // label8
             // 
@@ -205,66 +256,15 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(408, 391);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // lblNom
+            // pictureBox1
             // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(74, 29);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(35, 13);
-            this.lblNom.TabIndex = 4;
-            this.lblNom.Text = "label9";
-            // 
-            // lbltel
-            // 
-            this.lbltel.AutoSize = true;
-            this.lbltel.Location = new System.Drawing.Point(74, 61);
-            this.lbltel.Name = "lbltel";
-            this.lbltel.Size = new System.Drawing.Size(41, 13);
-            this.lbltel.TabIndex = 5;
-            this.lbltel.Text = "label10";
-            // 
-            // lblPrenom
-            // 
-            this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(240, 29);
-            this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(41, 13);
-            this.lblPrenom.TabIndex = 6;
-            this.lblPrenom.Text = "label11";
-            // 
-            // lblDepart
-            // 
-            this.lblDepart.AutoSize = true;
-            this.lblDepart.Location = new System.Drawing.Point(121, 93);
-            this.lblDepart.Name = "lblDepart";
-            this.lblDepart.Size = new System.Drawing.Size(41, 13);
-            this.lblDepart.TabIndex = 7;
-            this.lblDepart.Text = "label12";
-            // 
-            // lblStatut
-            // 
-            this.lblStatut.AutoSize = true;
-            this.lblStatut.Location = new System.Drawing.Point(83, 26);
-            this.lblStatut.Name = "lblStatut";
-            this.lblStatut.Size = new System.Drawing.Size(41, 13);
-            this.lblStatut.TabIndex = 8;
-            this.lblStatut.Text = "label13";
-            // 
-            // lblDateDemande
-            // 
-            this.lblDateDemande.AutoSize = true;
-            this.lblDateDemande.Location = new System.Drawing.Point(163, 48);
-            this.lblDateDemande.Name = "lblDateDemande";
-            this.lblDateDemande.Size = new System.Drawing.Size(41, 13);
-            this.lblDateDemande.TabIndex = 9;
-            this.lblDateDemande.Text = "label14";
-            // 
-            // pnlDesc
-            // 
-            this.pnlDesc.Location = new System.Drawing.Point(31, 101);
-            this.pnlDesc.Name = "pnlDesc";
-            this.pnlDesc.Size = new System.Drawing.Size(354, 164);
-            this.pnlDesc.TabIndex = 10;
+            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 69;
+            this.pictureBox1.TabStop = false;
             // 
             // FichDemande
             // 
@@ -280,12 +280,12 @@
             this.Name = "FichDemande";
             this.Size = new System.Drawing.Size(890, 481);
             this.Load += new System.EventHandler(this.FichDemande_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

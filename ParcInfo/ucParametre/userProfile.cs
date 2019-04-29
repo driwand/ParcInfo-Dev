@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.Classes;
+using System.Data.Entity;
 
 namespace ParcInfo.ucParametre
 {
@@ -30,7 +31,11 @@ namespace ParcInfo.ucParametre
                         txtVille.Text = u.Ville;
                         txtTel.Text = u.Tel;
                         txtEmail.Text = u.Email;
-                       // lblCountInterv.Text = u.Interventions1.Where(d => (d.DateIntervention.Value - DateTime.Now).TotalDays <= 30).Count().ToString();
+                        var dat =DateTime.Now.AddDays(-30);
+                        lblCountInterv.Text = u.Interventions.Where(d => d.DateIntervention >= dat).Count().ToString();
+                        lblCountDemande.Text = context.GetAssignedRequestbyStatut().Where(d=> d.Datedemande >= dat).Count().ToString();
+                        lblCountClient.Text = u.Clients.Count.ToString();
+                      
                     }
                 }
             }
@@ -72,5 +77,12 @@ namespace ParcInfo.ucParametre
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+            
+            }
+        }
     }
 }

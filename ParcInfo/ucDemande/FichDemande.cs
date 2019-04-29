@@ -30,18 +30,19 @@ namespace ParcInfo.ucDemande
                 lblStatut.Text = currentReq.Statut;
                 lblDateDemande.Text = currentReq.Datedemande.ToString();
 
-                MultiLineLabel ml = new MultiLineLabel();
+                //MultiLineLabel ml = new MultiLineLabel();
+                //ml.Margin = new Padding(0, 10, 0, 0);
 
-                ml.Parent = pnlDesc;
-                ml.AutoSize = true;
-                ml.MultiLine = true;
-                ml.Text = currentReq.Description_d;//show text of description
-                int o = ml.Height;
+                //ml.Parent = pnlDesc;
+                //ml.AutoSize = true;
+                //ml.MultiLine = true;
+                //ml.Text = currentReq.Description_d;//show text of description
+                //int o = ml.Height;
 
-                pnlDesc.Size = new Size(300, o); //make size of panel as the height of text
+                //pnlDesc.Size = new Size(300, o); //make size of panel as the height of text
 
-                ml = new MultiLineLabel();
-                pnlDesc.Controls.Add(ml);
+                //ml = new MultiLineLabel();
+                //pnlDesc.Controls.Add(ml);
 
                 foreach (var inter in currentReq.Interventions)
                 {

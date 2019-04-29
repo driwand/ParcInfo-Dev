@@ -260,7 +260,7 @@ namespace ParcInfo.ucClient
                 int index = dgDemande.CurrentRow.Index;
                 int selectedRequest = int.Parse(dgDemande.Rows[index].Cells["Id"].Value.ToString());
 
-                GlobVars.frmindex.ShowControl(new FichDemande(selectedRequest));
+                GlobVars.frmindex.ShowControl(new FicheDemande1(selectedRequest));
             }
         }
 
@@ -309,7 +309,6 @@ namespace ParcInfo.ucClient
             else if (!cbDelete.Checked && employee != 0)
                 ShowRequest(0, employee, false);
         }
-
         public void ShowRequest(int idclt = 0, int idemployee = 0, bool isdeleted = false, string statut = null)
         {
             using (var context = new ParcInformatiqueEntities())

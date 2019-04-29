@@ -72,7 +72,6 @@ namespace ParcInfo.frmList
             lbl.lblStatutColor = color;
             c.Controls.Add(lbl);
         }
-
         public void GetDashAdmin()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -93,7 +92,7 @@ namespace ParcInfo.frmList
                               c.Datedemande,
                               c.Getstatut,
                               color = GetColor(c.Getstatut)
-                          }).OrderBy(d => d.Datedemande).ThenBy(i => listOrder.IndexOf(i.Getstatut)).Take(5).ToList();
+                          }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).Take(5).ToList();
                 foreach (var item in ls)
                 {
                     CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
@@ -107,34 +106,53 @@ namespace ParcInfo.frmList
                                c.DateIntervention,
                                c.Getstatut,
                                color = GetColor(c.Getstatut)
-                           }).OrderBy(d => d.DateIntervention).ThenBy(i => listOrder.IndexOf(i.Getstatut)).Take(5).ToList();
+                           }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).Take(5).ToList();
                 foreach (var item in lsx)
                 {
                     CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
                 }
-
-               
-
-
-
-
-
-
-
-
             }
-
         }
-
         public void GetDashUser()
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                //var u = GlobVars.cuUser;
-                //lblDemEncours.Text = (from c in context.GetRequestbyStatut()
-                //                      join e in context.Employees on c.IdEmployee equals e.Idclient
-                //                      join af in context.AffectationClients on c.s
+                lblDemEncours.Text = context.GetAssignedRequestCours.Count().ToString();
+                lblDemEnRetard.Text = context.GetAssignedRequestRetard.Count().ToString();
+                lblIntEnCours.Text = context.GeAssignedtIntervEncours.Count().ToString();
+                lblIntEnCours.Text = context.GetAssignedIntervenretard.Count().ToString();
+                lblTotalDem.Text = context.GetAssignedRequestbyStatut().Count.ToString();
+                lblTotalInterv.Text = context.GetAssignedInterventionBystatut().Count.ToString();
+                var listOrder = new List<string> { "en retard", "en attente", "en cours", "terminer" };
 
+                var ls = (from c in context.GetAssignedRequestbyStatut()
+                          select new
+                          {
+                              c.IdReq,
+                              c.Id,
+                              c.Employee.Client.Nom,
+                              c.Datedemande,
+                              c.Getstatut,
+                              color = GetColor(c.Getstatut)
+                          }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).Take(5).ToList();
+                foreach (var item in ls)
+                {
+                    CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
+                }
+                var lsx = (from c in context.GetAssignedInterventionBystatut()
+                           select new
+                           {
+                               c.IdIntrv,
+                               c.Id,
+                               c.Client.Nom,
+                               c.DateIntervention,
+                               c.Getstatut,
+                               color = GetColor(c.Getstatut)
+                           }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).Take(5).ToList();
+                foreach (var item in lsx)
+                {
+                    CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
+                }
             }
         }
 

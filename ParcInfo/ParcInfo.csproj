@@ -211,6 +211,12 @@
     <Compile Include="ucControls\ForgetPassword.Designer.cs">
       <DependentUpon>ForgetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucControls\InfoInterv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\InfoInterv.Designer.cs">
+      <DependentUpon>InfoInterv.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\infoIntervention.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -330,6 +336,12 @@
     </Compile>
     <Compile Include="ucClient\ListEmployees.Designer.cs">
       <DependentUpon>ListEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDemande\FicheDemande1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDemande\FicheDemande1.Designer.cs">
+      <DependentUpon>FicheDemande1.cs</DependentUpon>
     </Compile>
     <Compile Include="ucIntervention\ListeIntervention.cs">
       <SubType>UserControl</SubType>
@@ -452,6 +464,9 @@
     <EmbeddedResource Include="ucControls\ForgetPassword.resx">
       <DependentUpon>ForgetPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\InfoInterv.resx">
+      <DependentUpon>InfoInterv.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\infoIntervention.resx">
       <DependentUpon>infoIntervention.cs</DependentUpon>
     </EmbeddedResource>
@@ -505,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\ListEmployees.resx">
       <DependentUpon>ListEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDemande\FicheDemande1.resx">
+      <DependentUpon>FicheDemande1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucIntervention\ListeIntervention.resx">
       <DependentUpon>ListeIntervention.cs</DependentUpon>
@@ -788,6 +806,7 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\detailx.png" />
     <None Include="Resources\px161.png" />
     <None Include="Resources\px16.png" />
     <None Include="Resources\Plus_2x0zpx1.png" />

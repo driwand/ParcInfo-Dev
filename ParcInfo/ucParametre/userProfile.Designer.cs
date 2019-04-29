@@ -68,6 +68,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.gradientPanel5 = new ParcInfo.Classes.GradientPanel();
             this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gpInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -490,11 +491,22 @@
             this.gradientPanel3.Size = new System.Drawing.Size(450, 3);
             this.gradientPanel3.TabIndex = 51;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(324, 450);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10016;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // userProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.groupBox1);
@@ -563,5 +575,6 @@
         private System.Windows.Forms.Label lblCountInterv;
         private System.Windows.Forms.Label label14;
         private Classes.GradientPanel gradientPanel7;
+        private System.Windows.Forms.Button button1;
     }
 }
