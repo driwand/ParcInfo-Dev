@@ -30,7 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnDelAffeProduct = new System.Windows.Forms.Button();
             this.gpMaterielLogiciel = new System.Windows.Forms.GroupBox();
             this.btnAddProduit = new System.Windows.Forms.Button();
             this.FpProduit = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,7 +49,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gpMaterielLogiciel.SuspendLayout();
             this.gpEmploye.SuspendLayout();
@@ -74,17 +73,17 @@
             this.panel2.Size = new System.Drawing.Size(600, 468);
             this.panel2.TabIndex = 10000;
             // 
-            // button1
+            // BtnDelAffeProduct
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ParcInfo.Properties.Resources.btndelete;
-            this.button1.Location = new System.Drawing.Point(18, 439);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 32);
-            this.button1.TabIndex = 10011;
-            this.button1.UseVisualStyleBackColor = false;
+            this.BtnDelAffeProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.BtnDelAffeProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDelAffeProduct.ForeColor = System.Drawing.Color.White;
+            this.BtnDelAffeProduct.Image = global::ParcInfo.Properties.Resources.btndelete;
+            this.BtnDelAffeProduct.Location = new System.Drawing.Point(18, 439);
+            this.BtnDelAffeProduct.Name = "BtnDelAffeProduct";
+            this.BtnDelAffeProduct.Size = new System.Drawing.Size(32, 32);
+            this.BtnDelAffeProduct.TabIndex = 10011;
+            this.BtnDelAffeProduct.UseVisualStyleBackColor = false;
             // 
             // gpMaterielLogiciel
             // 
@@ -273,29 +272,13 @@
             this.lblClient.TabIndex = 10012;
             this.lblClient.Text = " [client1]";
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::ParcInfo.Properties.Resources.btnedit;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(472, 439);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 32);
-            this.button2.TabIndex = 10013;
-            this.button2.Text = "    Enregistrer";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // DetailProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.lblClient);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnDelAffeProduct);
             this.Controls.Add(this.gpMaterielLogiciel);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.gpEmploye);
@@ -323,7 +306,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnDelAffeProduct;
         private System.Windows.Forms.GroupBox gpMaterielLogiciel;
         private System.Windows.Forms.Button btnAddProduit;
         private System.Windows.Forms.FlowLayoutPanel FpProduit;
@@ -342,6 +325,5 @@
         private System.Windows.Forms.Label lblPrix;
         private System.Windows.Forms.Label lblDateAff;
         private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.Button button2;
     }
 }

@@ -52,7 +52,7 @@ namespace ParcInfo.ucClient
 
         private void ListEmployees_Load(object sender, EventArgs e)
         {
-
+            Methods.CheckRoles(Controls);
         }
         // Employe demande en cours
         private void gpDemandeEnCours_Click(object sender, EventArgs e)

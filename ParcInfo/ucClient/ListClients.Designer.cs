@@ -66,6 +66,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgClients)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.gpDemande.SuspendLayout();
@@ -77,6 +78,7 @@
             this.gpIntervention.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgClients
@@ -249,7 +251,7 @@
             this.gpDemande.Controls.Add(this.label12);
             this.gpDemande.Controls.Add(this.pictureBox6);
             this.gpDemande.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpDemande.Location = new System.Drawing.Point(736, 262);
+            this.gpDemande.Location = new System.Drawing.Point(3, 161);
             this.gpDemande.Name = "gpDemande";
             this.gpDemande.Size = new System.Drawing.Size(141, 73);
             this.gpDemande.TabIndex = 58;
@@ -308,7 +310,7 @@
             this.gpEmployee.Controls.Add(this.label7);
             this.gpEmployee.Controls.Add(this.pictureBox5);
             this.gpEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpEmployee.Location = new System.Drawing.Point(736, 104);
+            this.gpEmployee.Location = new System.Drawing.Point(3, 3);
             this.gpEmployee.Name = "gpEmployee";
             this.gpEmployee.Size = new System.Drawing.Size(141, 73);
             this.gpEmployee.TabIndex = 58;
@@ -367,7 +369,7 @@
             this.gpProduit.Controls.Add(this.label5);
             this.gpProduit.Controls.Add(this.pictureBox4);
             this.gpProduit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpProduit.Location = new System.Drawing.Point(736, 341);
+            this.gpProduit.Location = new System.Drawing.Point(3, 240);
             this.gpProduit.Name = "gpProduit";
             this.gpProduit.Size = new System.Drawing.Size(141, 73);
             this.gpProduit.TabIndex = 57;
@@ -426,7 +428,7 @@
             this.gpIntervention.Controls.Add(this.label9);
             this.gpIntervention.Controls.Add(this.pictureBox2);
             this.gpIntervention.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpIntervention.Location = new System.Drawing.Point(736, 183);
+            this.gpIntervention.Location = new System.Drawing.Point(3, 82);
             this.gpIntervention.Name = "gpIntervention";
             this.gpIntervention.Size = new System.Drawing.Size(141, 73);
             this.gpIntervention.TabIndex = 56;
@@ -506,22 +508,31 @@
             this.panel1.Size = new System.Drawing.Size(863, 2);
             this.panel1.TabIndex = 34;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.gpEmployee);
+            this.flowLayoutPanel1.Controls.Add(this.gpIntervention);
+            this.flowLayoutPanel1.Controls.Add(this.gpDemande);
+            this.flowLayoutPanel1.Controls.Add(this.gpProduit);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(735, 101);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(141, 316);
+            this.flowLayoutPanel1.TabIndex = 89;
+            // 
             // ListClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.btnNewClient);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
             this.Controls.Add(this.lblMod);
-            this.Controls.Add(this.gpDemande);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.gpEmployee);
-            this.Controls.Add(this.gpProduit);
-            this.Controls.Add(this.gpIntervention);
             this.Controls.Add(this.CkDeletedClient);
             this.Controls.Add(this.btnCons);
             this.Controls.Add(this.btnStartIntervention);
@@ -548,6 +559,7 @@
             this.gpIntervention.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,5 +603,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

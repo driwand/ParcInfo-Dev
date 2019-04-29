@@ -81,6 +81,8 @@ namespace ParcInfo.ucClient
       
         private void ListProduitClient_Load(object sender, EventArgs e)
         {
+            Methods.CheckRoles(Controls);
+
             CreateControl("userC", userName, FpEmployee, 0, 0, 0);
             userName++;
             CreateControl("log", logName, FpProduit, 0, 0, idProd);
@@ -371,29 +373,5 @@ namespace ParcInfo.ucClient
             pnl.Controls.Add(user1);
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var listEmploye = Methods.GetidList(FpEmployee);
-
-            foreach (var item in listEmploye)
-            {
-                MessageBox.Show(item.Id.ToString());
-            }
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            List<LabelControl> listProduit = new List<LabelControl>();
-            listProduit = Methods.GetidList(FpEmployee);
-
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-            {
-                foreach (var item in listProduit)
-                {
-                    MessageBox.Show(item.Controlname);
-                }
-            }
-        }
     }
 }

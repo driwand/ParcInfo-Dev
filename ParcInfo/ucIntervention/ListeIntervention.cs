@@ -20,7 +20,8 @@ namespace ParcInfo.ucInterevntion
         int idclient;
         string statutit;
         int idUser;
-        public ListeIntervention(string statutInterv,int countInterv)
+        List<string> toorderby = new List<string> { "en retard", "en cours", "terminer" };
+        public ListeIntervention(string statutInterv, int countInterv)
         {
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -29,26 +30,8 @@ namespace ParcInfo.ucInterevntion
                 {
 
                     var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention })
-                             select new {
-                                 ir.IdIntrv,
-                                 ir.Id,
-                                 ir.Client.Nom,
-                                 ir.Debut,
-                                 ir.Fin,
-                                 ir.IdDemande,
-                                 ir.Getstatut,
-                                 ir.Idclient,
-                                 Edited = ir.UtilisateurEdit.Nom,
-                                 ir.Modifierpar,
-                                 ir.Datemodification
-                             }).ToList();
-
-                    dgIntervention.DataSource = Methods.ToDataTable(ls);
-                }
-                else
-                {
-                    var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention }, statutInterv)
-                              select new {
+                              select new
+                              {
                                   ir.IdIntrv,
                                   ir.Id,
                                   ir.Client.Nom,
@@ -59,22 +42,44 @@ namespace ParcInfo.ucInterevntion
                                   ir.Idclient,
                                   Edited = ir.UtilisateurEdit.Nom,
                                   ir.Modifierpar,
-                                  ir.Datemodification
-                              }).ToList();
+                                  ir.Datemodification,
+                                  ir.DateIntervention
+                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+
+                    dgIntervention.DataSource = Methods.ToDataTable(ls);
+                }
+                else
+                {
+                    var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention }, statutInterv)
+                              select new
+                              {
+                                  ir.IdIntrv,
+                                  ir.Id,
+                                  ir.Client.Nom,
+                                  ir.Debut,
+                                  ir.Fin,
+                                  ir.IdDemande,
+                                  ir.Getstatut,
+                                  ir.Idclient,
+                                  Edited = ir.UtilisateurEdit.Nom,
+                                  ir.Modifierpar,
+                                  ir.Datemodification,
+                                  ir.DateIntervention
+                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                     statutit = statutInterv;
                 }
-              
+
                 Methods.Nice_grid(
-                    new string[] { "IdIntrv", "Nom" ,"Debut", "Fin", "IdDemande","Getstatut", "IdClient" },
+                    new string[] { "IdIntrv", "Nom", "Debut", "Fin", "IdDemande", "Getstatut", "IdClient" },
                     new string[] { "ID Intervention", "Client", "Debut Intervention", "Fin Intervention", "Demande", "Statut", "Idclient" },
                     dgIntervention);
 
                 Methods.FilterDataGridViewIni(dgIntervention, txtFind, btnFind);
-                
+
             }
         }
-        public ListeIntervention(int idClient,string Code)
+        public ListeIntervention(int idClient, string Code)
         {
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -100,8 +105,9 @@ namespace ParcInfo.ucInterevntion
                                   ir.Idclient,
                                   Edited = ir.UtilisateurEdit.Nom,
                                   ir.Modifierpar,
-                                  ir.Datemodification
-                              }).ToList();
+                                  ir.Datemodification,
+                                  ir.DateIntervention
+                              }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
                     dgIntervention.DataSource = Methods.ToDataTable(ls);
                     lblTotalIntervention.Text = ls.Count().ToString();
                     Methods.Nice_grid(
@@ -117,9 +123,9 @@ namespace ParcInfo.ucInterevntion
             if (dgIntervention.SelectedRows.Count > 0)
             {
                 int index = dgIntervention.CurrentRow.Index;
-                
+
                 int selectedInt = int.Parse(dgIntervention.Rows[index].Cells["id"].Value.ToString());
-                
+
                 if (dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString() != "")
                 {
                     GlobVars.frmBack = this;
@@ -127,7 +133,7 @@ namespace ParcInfo.ucInterevntion
                     GlobVars.frmindex.ShowControl(
                         new NewIntervention(
                             0,
-                            0, 
+                            0,
                             selectedInt,
                             int.Parse(dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString()))
                             );
@@ -153,16 +159,16 @@ namespace ParcInfo.ucInterevntion
         }
 
         private void chDelIntr_CheckedChanged(object sender, EventArgs e)
-        {            
+        {
             if (chDelIntr.Checked && idclient == 0)
                 Showintervention(0, true);
             else if (!chDelIntr.Checked && idclient == 0)
                 Showintervention(0, false);
-            
+
 
             if (chDelIntr.Checked && idclient != 0)
                 Showintervention(idclient, true);
-            else if(!chDelIntr.Checked && idclient != 0)
+            else if (!chDelIntr.Checked && idclient != 0)
                 Showintervention(idclient, false);
 
 
@@ -173,11 +179,11 @@ namespace ParcInfo.ucInterevntion
 
         }
 
-        public void Showintervention(int id = 0,bool isdeleted = false, string statut = null)
-        { 
+        public void Showintervention(int id = 0, bool isdeleted = false, string statut = null)
+        {
             using (var db = new ParcInformatiqueEntities())
             {
-                var ls = (from ir in db.GetInterventionBystatut(null,null,isdeleted)
+                var ls = (from ir in db.GetInterventionBystatut(null, null, isdeleted)
                           select new
                           {
                               ir.IdIntrv,
@@ -190,8 +196,9 @@ namespace ParcInfo.ucInterevntion
                               ir.Idclient,
                               Edited = ir.UtilisateurEdit.Nom,
                               ir.Modifierpar,
-                              ir.Datemodification
-                          }).ToList();
+                              ir.Datemodification,
+                              ir.DateIntervention
+                          }).OrderBy(d => d.DateIntervention).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                 if (id != 0)
                     ls = ls.Where(i => i.Idclient == id).ToList();
@@ -223,13 +230,13 @@ namespace ParcInfo.ucInterevntion
             {
                 int index = dgIntervention.CurrentRow.Index;
                 lblEdited.Text = dgIntervention.Rows[index].Cells["Edited"].Value.ToString();
-                
+
                 idUser = Convert.ToInt32(dgIntervention.Rows[index].Cells["Modifierpar"].Value);
 
                 int loc = 333;
                 loc += lblEdited.Width;
                 lblMod.Location = new Point(loc, 459);
-                
+
                 lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
                 lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
             }

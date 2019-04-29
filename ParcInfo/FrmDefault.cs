@@ -24,16 +24,27 @@ namespace ParcInfo.frmDefault
 {
     public partial class FrmDefault : Form
     {
+
         public bool isClicked = true;
         public Button btnClicked;
+
+        public int countIntervTerminer;
+        public int countIntervCours;
+        public int countIntervRetard;
+        public int countIntervDeInt;
+
+        public int countRequestTerminer;
+        public int countRequestAttente;
+        public int countRequestCours;
+        public int countRequestRetard;
+        public int countRequestDeInt;
+
+
         public FrmDefault()
         {
-            
 
-        
             InitializeComponent();
-          
-          
+
             ControlsClass.CreateRadiusBorder(PanelContainer);
             this.MaximizeBox = false;
             GlobVars.frmindex = this;
@@ -57,19 +68,14 @@ namespace ParcInfo.frmDefault
 
             ControlsClass.CursorChanger(pnlMenu);
             tmrReal.Start();
-
         }
 
-        public int countIntervTerminer;
-        public int countIntervCours;
-        public int countIntervRetard;
-        public int countIntervDeInt;
+        private void FrmDefault_Load(object sender, EventArgs e)
+        {
 
-        public int countRequestTerminer;
-        public int countRequestAttente;
-        public int countRequestCours;
-        public int countRequestRetard;
-        public int countRequestDeInt;
+            Methods.CheckRoles(Controls);
+            
+        }
 
         public void ShowControl(Control mycontrol, bool hideback = false)
         {
@@ -435,12 +441,6 @@ namespace ParcInfo.frmDefault
             lblTotalIntervention.Update();
             lblInterventionRetard.Update();
             lblIntereventionCours.Update();
-        }
-
-        private void FrmDefault_Load(object sender, EventArgs e)
-        {
-            //  this.ControlBox = false;
-            Methods.CheckRoles(Controls);
         }
 
         private void PicBack_Click_1(object sender, EventArgs e)

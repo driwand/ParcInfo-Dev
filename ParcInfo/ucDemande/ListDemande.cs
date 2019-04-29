@@ -16,8 +16,6 @@ namespace ParcInfo.ucClient
 {
     public partial class ListDemande : UserControl
     {
-
-
         public string LblText
         {
             get { return lblEmployeClient.Text; }
@@ -33,6 +31,7 @@ namespace ParcInfo.ucClient
         public string statut;
         public int employee;
         public int iduser;
+        List<string> toorderby = new List<string>() { "en retard", "en attente", "en cours", "terminer" };
 
         //listdemande of selected client
         public ListDemande(int idClient, string nom)
@@ -43,20 +42,20 @@ namespace ParcInfo.ucClient
                 Idcli = idClient;
 
                 var lsreq = (from d in db.GetRequestbyStatut()
-                                        where d.Employee.Client.id == idClient
-                                        select new
-                                        {
-                                            d.Id,
-                                            d.IdReq,
-                                            d.Datedemande,
-                                            Desc = Methods.GetDesc(d.Description_d, 4),
-                                            d.Employee.Nom,
-                                            d.Getstatut,
-                                            IdClient = d.Employee.Client.id,
-                                            d.Modifierpar,
-                                            Edited = d.Utilisateur.Nom,
-                                            d.Datemodification
-                                        }).ToList();
+                             where d.Employee.Client.id == idClient
+                             select new
+                             {
+                                 d.Id,
+                                 d.IdReq,
+                                 d.Datedemande,
+                                 Desc = Methods.GetDesc(d.Description_d, 4),
+                                 d.Employee.Nom,
+                                 d.Getstatut,
+                                 IdClient = d.Employee.Client.id,
+                                 d.Modifierpar,
+                                 Edited = d.Utilisateur.Nom,
+                                 d.Datemodification
+                             }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
 
                 dgDemande.DataSource = Methods.ToDataTable(lsreq);
@@ -79,20 +78,20 @@ namespace ParcInfo.ucClient
                     employee = idEmploye;
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
-                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest,lblListRequest })
-                                                select new
-                                                {
-                                                    d.Id,
-                                                    d.IdReq,
-                                                    d.Datedemande,
-                                                    Desc = Methods.GetDesc(d.Description_d, 4),
-                                                    Nom = d.Employee.Nom != null ? d.Employee.Nom : "ef",
-                                                    d.Getstatut,
-                                                    IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "fr",
-                                                    Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "er",
-                                                    Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "zf",
-                                                    Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : "fz"
-                                                }).ToList();
+                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest })
+                                     select new
+                                     {
+                                         d.Id,
+                                         d.IdReq,
+                                         d.Datedemande,
+                                         Desc = Methods.GetDesc(d.Description_d, 4),
+                                         Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
+                                         d.Getstatut,
+                                         IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
+                                         Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "",
+                                         Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "",
+                                         Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : ""
+                                     }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                         Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                     }
@@ -100,26 +99,27 @@ namespace ParcInfo.ucClient
                     else
                     {
                         statut = statutReq;
-                        
-                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
-                                                select new {
-                                                    d.Id,
-                                                    d.IdReq,
-                                                    d.Datedemande,
-                                                    Desc = Methods.GetDesc(d.Description_d, 4),
-                                                    d.Employee.Nom,
-                                                    d.Getstatut,
-                                                    IdClient = d.Employee.Client.id,
-                                                    d.Modifierpar,
-                                                    Edited = d.Utilisateur.Nom,
-                                                    d.Datemodification
-                                                }).ToList();
 
-                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind,lsreq);
+                        var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
+                                     select new
+                                     {
+                                         d.Id,
+                                         d.IdReq,
+                                         d.Datedemande,
+                                         Desc = Methods.GetDesc(d.Description_d, 4),
+                                         d.Employee.Nom,
+                                         d.Getstatut,
+                                         IdClient = d.Employee.Client.id,
+                                         d.Modifierpar,
+                                         Edited = d.Utilisateur.Nom,
+                                         d.Datemodification
+                                     }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+
+                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                     }
 
                     HideColumns(new string[] { "id", "IdClient" }, dgDemande);
-                    
+
                     Methods.Nice_grid(
                         new string[] { "IdReq", "Datedemande", "Desc", "Nom", "Getstatut" },
                         new string[] { "ID Demande", "Date Demande", "Description", "Employee", "Statut" },
@@ -139,7 +139,7 @@ namespace ParcInfo.ucClient
             }
         }
 
-        public void HideColumns(string[] clms,DataGridView grid)
+        public void HideColumns(string[] clms, DataGridView grid)
         {
             foreach (var s in clms)
             {
@@ -150,6 +150,7 @@ namespace ParcInfo.ucClient
         private void ListRequest_Load(object sender, EventArgs e)
         {
             //ControlsClass.CreateRadiusBorder(this);
+            Methods.CheckRoles(Controls);
         }
 
         private void dgDemande_DoubleClick(object sender, EventArgs e)
@@ -236,24 +237,24 @@ namespace ParcInfo.ucClient
                 ShowRequest(0, employee, false);
         }
 
-        public void ShowRequest(int idclt = 0,int idemployee = 0, bool isdeleted = false, string statut = null)
+        public void ShowRequest(int idclt = 0, int idemployee = 0, bool isdeleted = false, string statut = null)
         {
             using (var context = new ParcInformatiqueEntities())
             {
-                var ls = (from d in context.GetRequestbyStatut(null,null,idemployee,isdeleted)
-                                        select new
-                                        {
-                                            d.Id,
-                                            d.IdReq,
-                                            d.Datedemande,
-                                            Desc = Methods.GetDesc(d.Description_d, 4),
-                                            d.Employee.Nom,
-                                            d.Getstatut,
-                                            IdClient = d.Employee.Client.id,
-                                            d.Modifierpar,
-                                            Edited = d.Utilisateur.Nom,
-                                            d.Datemodification
-                                        }).ToList();
+                var ls = (from d in context.GetRequestbyStatut(null, null, idemployee, isdeleted)
+                          select new
+                          {
+                              d.Id,
+                              d.IdReq,
+                              d.Datedemande,
+                              Desc = Methods.GetDesc(d.Description_d, 4),
+                              d.Employee.Nom,
+                              d.Getstatut,
+                              IdClient = d.Employee.Client.id,
+                              d.Modifierpar,
+                              Edited = d.Utilisateur.Nom,
+                              d.Datemodification
+                          }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                 if (idclt != 0)
                     ls = ls.Where(i => i.IdClient == idclt).ToList();

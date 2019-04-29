@@ -388,12 +388,28 @@ namespace ParcInfo.Classes
 
         public static void CheckRoles(ControlCollection controlcol)
         {
-
-            Dictionary<string, string> AllRoles = new Dictionary<string, string>
+            Dictionary<string[], string[]> AllRoles = new Dictionary<string[], string[]>
             {
-                { "Consulter les client concerner", "BtnListClient" },
-                { "Ajouter Client", "BtnCreateClient" },
-                { "Consulter les employees", "gpEmployee" }
+                //client
+                { new string []{ "Consulter les client concerner","Consulter tous les client"},  new string []{ "BtnListClient" } },
+
+                { new string []{ "Ajouter Client"}, new string []{ "BtnCreateClient", "btnNewClient" } },
+                { new string []{ "Modifier Client"}, new string []{ "btnEditClient" } },
+                { new string []{ "Supprimer Client"},  new string []{ "btnDelClient" } },
+
+                { new string []{ "Consulter les produits"},  new string []{ "gpProduit" } },
+                { new string []{ "Modifier produit affecter" },  new string []{ "btnEdit", "btnAddEmployee", "btnAddProduit" } },
+                { new string []{ "Supprimer affectation d'un produit" },  new string []{ "BtnDelAffeProduct" } },
+
+                { new string []{ "Consulter les employees" }, new string []{ "gpEmployee" } },
+                { new string []{ "Ajouter un employee" }, new string []{ "btnNewEmployee", "btnAjouter" } }, //errr
+                { new string []{ "Modifier un employee" }, new string []{ "btnEditEmployee", "btnAnnuler" } }, //errr
+                { new string []{ "Supprimer un employee" }, new string []{ "btnDelEmp" } },
+                //{ new string []{ "Modifier un employee" }, new string []{ "" } },
+                
+
+                //{ new string []{ "" }, new string []{ "" } },
+                //{ new string []{ "" }, new string []{ "" } }
             };
 
             Dictionary<string, Control> cs = new Dictionary<string, Control>();
@@ -401,30 +417,28 @@ namespace ParcInfo.Classes
             if (GlobVars.cuUser.isAdmin == 0)
                 foreach (var r in AllRoles)
                 {
-                    Control c = controlcol.Find(r.Value, true).FirstOrDefault();
-                    if (c != null)
+                    foreach (var b in r.Value)
                     {
-                        c.Visible = rolesuser.Contains(r.Key);
+                        Control c = controlcol.Find(b, true).FirstOrDefault();
+                        if (c != null)
+                        {
+                            foreach (var k in r.Key)
+                            {
+                                c.Visible = rolesuser.Contains(k);
+                                if (c.Visible == true)
+                                    break;
+                            }
+                        }
                     }
                 }
             var plmenu = controlcol.Find("pnlMenu", true).FirstOrDefault();
             if (plmenu != null)
-            foreach (Control v in plmenu.Controls)
-            {
-                var allbtnsvisible = v.Controls.OfType<Button>().Where(x => x.Visible).Count();
-                if (allbtnsvisible == 1)
-                    v.Visible = false;
-            }
-        }
-
-        public static void HideP(ControlCollection collection)
-        {
-            foreach (Control v in collection)
-            {
-
-                if (v.Controls.Count == 1)
-                    v.Visible = false;
-            }
+                foreach (Control v in plmenu.Controls)
+                {
+                    var allbtnsvisible = v.Controls.OfType<Button>().Where(x => x.Visible).Count();
+                    if (allbtnsvisible == 1)
+                        v.Visible = false;
+                }
         }
     }
 

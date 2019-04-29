@@ -35,8 +35,8 @@ namespace ParcInfo.ucControls
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var email = "p";
-            var pass = "ifwxswIc";
+            var email = txtEmail.Text;
+            var pass = txtPassword.Text;
 
             var hasPass = Methods.MD5Hash(pass);
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -78,7 +78,7 @@ namespace ParcInfo.ucControls
 
         private void lblForget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            GlobVars.frmLogin.ShowControl(new ForgetPassword());
+            //GlobVars.frmLogin.ShowControl(new ForgetPassword());
         }
     }
 }

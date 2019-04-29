@@ -19,29 +19,130 @@ namespace ParcInfo.ucClient
 {
     public partial class ListClients : UserControl
     {
+        string GetRoleName;
         public ListClients()
         {
             InitializeComponent();
             Methods.CheckRoles(Controls);
+            var t = GlobVars.cuUser.RoleUtilisateurs1;
+            foreach (var v in t)
+                if (v.Nom.Contains("Consulter") && v.Nom.Contains("client") && v.IsDeleted != 1)
+                    GetRoleName = v.Nom;
 
             // ControlsClass.CreateRadiusBorder(this);
         }
         private void ListClients_Load(object sender, EventArgs e)
         {
+
+            if (GlobVars.cuUser.isAdmin == 0)
+                if (GetRoleName == "Consulter tous les client")
+                    GetAllClients();
+                else
+                    GetAssignedClients();
+            else
+                GetAllClients();
+
+        }
+
+        public void GetAllClients()
+        {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                var vr = context.Clients.Where(c=> c.IsDeleted == 0).ToList();
-                dgClients.DataSource = Methods.ToDataTable(vr.Select(c=>new
-                { c.IdCLient, c.id, c.Nom,
-                    c.Adresse, c.Tel, c.Fax,
-                    c.Siteweb, c.Prixheur, c.Heurecontract,
+                var vr = context.Clients.Where(c => c.IsDeleted == 0).ToList();
+                dgClients.DataSource = Methods.ToDataTable(vr.Select(c => new
+                {
+                    c.IdCLient,
+                    c.id,
+                    c.Nom,
+                    c.Adresse,
+                    c.Tel,
+                    c.Fax,
+                    c.Siteweb,
+                    c.Prixheur,
+                    c.Heurecontract,
                     c.Debutcontract,
-                     userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
-                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                    dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
             }
         }
+        public void GetAllDeletedClients()
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var vr = context.Clients.Where(c => c.IsDeleted == 1).ToList();
+                dgClients.DataSource = Methods.ToDataTable(vr.Select(c => new
+                {
+                    c.IdCLient,
+                    c.id,
+                    c.Nom,
+                    c.Adresse,
+                    c.Tel,
+                    c.Fax,
+                    c.Siteweb,
+                    c.Prixheur,
+                    c.Heurecontract,
+                    c.Debutcontract,
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                    dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                }).ToList());
+                myGrid();
+            }
+        }
+
+        public void GetAssignedClients()
+        {
+            var vr = GlobVars.cuUser.AffectationClients1;
+            var cl = new List<Client>();
+            foreach (var c in vr)
+            {
+                cl.Add(c.Client);
+            }
+            dgClients.DataSource = Methods.ToDataTable(cl.Where(c => c.IsDeleted == 0).Select(c => new
+            {
+                c.IdCLient,
+                c.id,
+                c.Nom,
+                c.Adresse,
+                c.Tel,
+                c.Fax,
+                c.Siteweb,
+                c.Prixheur,
+                c.Heurecontract,
+                c.Debutcontract,
+                userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+            }).ToList());
+            myGrid();
+        }
+
+        public void GetAssigneDeletedClients()
+        {
+            var vr = GlobVars.cuUser.AffectationClients;
+            var cl = new List<Client>();
+            foreach (var c in vr)
+            {
+                cl.Add(c.Client);
+            }
+            dgClients.DataSource = Methods.ToDataTable(cl.Where(c => c.IsDeleted == 1).Select(c => new
+            {
+                c.IdCLient,
+                c.id,
+                c.Nom,
+                c.Adresse,
+                c.Tel,
+                c.Fax,
+                c.Siteweb,
+                c.Prixheur,
+                c.Heurecontract,
+                c.Debutcontract,
+                userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+            }).ToList());
+            myGrid();
+        }
+
         private void GridListClient_DoubleClick(object sender, EventArgs e)
         {
             if (dgClients.SelectedRows.Count > 0)
@@ -49,7 +150,7 @@ namespace ParcInfo.ucClient
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 string code = myrow.Cells["IdCLient"].Value.ToString();
-                GlobVars.frmindex.ShowControl(new CreateClient(id,code));
+                GlobVars.frmindex.ShowControl(new CreateClient(id, code));
             }
         }
 
@@ -65,7 +166,7 @@ namespace ParcInfo.ucClient
         }
         private void btnNewClient_Click(object sender, EventArgs e)
         {
-            GlobVars.frmindex.ShowControl(new CreateClient(0,""));
+            GlobVars.frmindex.ShowControl(new CreateClient(0, ""));
         }
 
         private void btnCons_Click(object sender, EventArgs e)
@@ -87,9 +188,9 @@ namespace ParcInfo.ucClient
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 string code = myrow.Cells["IdCLient"].Value.ToString();
                 GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListeIntervention(id,code));
+                GlobVars.frmindex.ShowControl(new ListeIntervention(id, code));
             }
-          
+
         }
         private void gpDemande_Click(object sender, EventArgs e)
         {
@@ -130,37 +231,22 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
 
-                var vr = (from c in context.Clients
-                          select c).ToList();
-                //dgClients.DataSource = vr;
-
-                if (CkDeletedClient.Checked)
-                {
-                    var ClientsDeleted = (from c in vr
-                                          where c.IsDeleted == 1
-                                          select new { c.IdCLient, c.id, c.Nom, c.Adresse,
-                                              c.Tel, c.Fax, c.Siteweb, c.Prixheur,
-                                              c.Heurecontract, c.Debutcontract,
-                                              userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
-                                              dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
-                                          }).ToList();
-                    dgClients.DataSource = Methods.ToDataTable(ClientsDeleted);
-                    myGrid();
-                }
+                if (GlobVars.cuUser.isAdmin == 0)
+                    if (GetRoleName == "Consulter tous les client")
+                        if (CkDeletedClient.Checked)
+                            GetAllDeletedClients();
+                        else
+                            GetAllClients();
+                    else
+                        if (CkDeletedClient.Checked)
+                            GetAssigneDeletedClients();
+                        else
+                            GetAssignedClients();
                 else
-                {
-                    var Clients = (from c in vr
-                                   where c.IsDeleted == 0
-                                   select new { c.IdCLient, c.id, c.Nom, c.Adresse,
-                                       c.Tel, c.Fax, c.Siteweb, c.Prixheur,
-                                       c.Heurecontract, c.Debutcontract,
-                                       userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
-                                       dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
-                                   }).ToList();
-                    dgClients.DataSource = Methods.ToDataTable(Clients);
-                    myGrid();
-                }
-              
+                    if (CkDeletedClient.Checked)
+                    GetAllDeletedClients();
+                else
+                    GetAllClients();
             }
         }
 
@@ -180,17 +266,17 @@ namespace ParcInfo.ucClient
                     lblEdited.Text = nomUser;
                     loc += lblEdited.Width;
                     lblMod.Location = new Point(loc, 462);
-                  
+
                     lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
                     lblEditedDate.Text = date;
                     var Cli = context.Clients.Where(c => c.id == id).FirstOrDefault();
-                    lblEmpC.Text = Cli.Employees.Where(d=> d.IsDeleted == 0).Count().ToString();
+                    lblEmpC.Text = Cli.Employees.Where(d => d.IsDeleted == 0).Count().ToString();
                     lblInterC.Text = Cli.Interventions.Where(d => d.IsDeleted == 0).Count().ToString();
                     var demC = (from c in Cli.Employees
                                 from d in c.Demandes
                                 select d).ToList();
-                    lblDemC.Text = demC.Where(d=> d.IsDeleted == 0).Count().ToString();
-                    lblProdC.Text = Cli.ProduitClients.Where(d=> d.IsDeleted == 0).Count().ToString();
+                    lblDemC.Text = demC.Where(d => d.IsDeleted == 0).Count().ToString();
+                    lblProdC.Text = Cli.ProduitClients.Where(d => d.IsDeleted == 0).Count().ToString();
                 }
             }
 
@@ -202,10 +288,10 @@ namespace ParcInfo.ucClient
 
             Methods.Nice_grid(
                 new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract" },
-                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract"},
+                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract" },
                 dgClients
                 );
-          
+
             Methods.FilterDataGridViewIni(dgClients, txtFind, btnFind);
 
         }

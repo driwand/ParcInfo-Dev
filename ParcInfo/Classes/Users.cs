@@ -12,6 +12,5 @@ namespace ParcInfo
         {
             get { return RoleUtilisateurs1.Where(i => i.IsDeleted == 0).Select(t => t.Nom).ToList(); }
         }
-
     }
 }

@@ -85,6 +85,12 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnEditUser = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -266,7 +272,13 @@
             // 
             // gpClient
             // 
+            this.gpClient.Controls.Add(this.panel3);
+            this.gpClient.Controls.Add(this.panel2);
+            this.gpClient.Controls.Add(this.checkBox3);
+            this.gpClient.Controls.Add(this.checkBox2);
             this.gpClient.Controls.Add(this.chClientSupAffectation);
+            this.gpClient.Controls.Add(this.checkBox4);
+            this.gpClient.Controls.Add(this.checkBox1);
             this.gpClient.Controls.Add(this.chkClientAffectation);
             this.gpClient.Controls.Add(this.chClientConsulterEmployee);
             this.gpClient.Controls.Add(this.chClientAdd);
@@ -276,7 +288,7 @@
             this.gpClient.Controls.Add(this.chClientDel);
             this.gpClient.Location = new System.Drawing.Point(13, 8);
             this.gpClient.Name = "gpClient";
-            this.gpClient.Size = new System.Drawing.Size(221, 168);
+            this.gpClient.Size = new System.Drawing.Size(221, 260);
             this.gpClient.TabIndex = 33;
             this.gpClient.TabStop = false;
             this.gpClient.Text = "Client";
@@ -284,27 +296,27 @@
             // chClientSupAffectation
             // 
             this.chClientSupAffectation.AutoSize = true;
-            this.chClientSupAffectation.Location = new System.Drawing.Point(6, 144);
+            this.chClientSupAffectation.Location = new System.Drawing.Point(6, 192);
             this.chClientSupAffectation.Name = "chClientSupAffectation";
-            this.chClientSupAffectation.Size = new System.Drawing.Size(123, 17);
+            this.chClientSupAffectation.Size = new System.Drawing.Size(122, 17);
             this.chClientSupAffectation.TabIndex = 0;
-            this.chClientSupAffectation.Text = "Supprimer affectaion";
+            this.chClientSupAffectation.Text = "Ajouter un employee";
             this.chClientSupAffectation.UseVisualStyleBackColor = true;
             // 
             // chkClientAffectation
             // 
             this.chkClientAffectation.AutoSize = true;
-            this.chkClientAffectation.Location = new System.Drawing.Point(6, 121);
+            this.chkClientAffectation.Location = new System.Drawing.Point(6, 94);
             this.chkClientAffectation.Name = "chkClientAffectation";
-            this.chkClientAffectation.Size = new System.Drawing.Size(188, 17);
+            this.chkClientAffectation.Size = new System.Drawing.Size(126, 17);
             this.chkClientAffectation.TabIndex = 7;
-            this.chkClientAffectation.Text = "Affecter les employees et meteriels";
+            this.chkClientAffectation.Text = "Consulter les produits";
             this.chkClientAffectation.UseVisualStyleBackColor = true;
             // 
             // chClientConsulterEmployee
             // 
             this.chClientConsulterEmployee.AutoSize = true;
-            this.chClientConsulterEmployee.Location = new System.Drawing.Point(6, 98);
+            this.chClientConsulterEmployee.Location = new System.Drawing.Point(6, 169);
             this.chClientConsulterEmployee.Name = "chClientConsulterEmployee";
             this.chClientConsulterEmployee.Size = new System.Drawing.Size(139, 17);
             this.chClientConsulterEmployee.TabIndex = 6;
@@ -370,12 +382,12 @@
             this.gpIntervention.Controls.Add(this.rbConsulterIntervention1);
             this.gpIntervention.Controls.Add(this.chInterventionEdit);
             this.gpIntervention.Controls.Add(this.chInterventionDel);
-            this.gpIntervention.Location = new System.Drawing.Point(13, 182);
+            this.gpIntervention.Location = new System.Drawing.Point(13, 274);
             this.gpIntervention.Name = "gpIntervention";
             this.gpIntervention.Size = new System.Drawing.Size(221, 86);
             this.gpIntervention.TabIndex = 32;
             this.gpIntervention.TabStop = false;
-            this.gpIntervention.Text = "Inervention";
+            this.gpIntervention.Text = "Intervention";
             // 
             // chInterventionAdd
             // 
@@ -434,7 +446,7 @@
             this.gpDemande.Controls.Add(this.rbConsulterDemande2);
             this.gpDemande.Controls.Add(this.rbConsulterDemande1);
             this.gpDemande.Controls.Add(this.chDemandeDel);
-            this.gpDemande.Location = new System.Drawing.Point(13, 274);
+            this.gpDemande.Location = new System.Drawing.Point(13, 366);
             this.gpDemande.Name = "gpDemande";
             this.gpDemande.Size = new System.Drawing.Size(221, 86);
             this.gpDemande.TabIndex = 31;
@@ -479,7 +491,7 @@
             this.gpProduit.Controls.Add(this.rbConsulterProduit);
             this.gpProduit.Controls.Add(this.chProduitEdit);
             this.gpProduit.Controls.Add(this.chProduitDel);
-            this.gpProduit.Location = new System.Drawing.Point(13, 366);
+            this.gpProduit.Location = new System.Drawing.Point(13, 458);
             this.gpProduit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.gpProduit.Name = "gpProduit";
             this.gpProduit.Size = new System.Drawing.Size(221, 65);
@@ -699,6 +711,62 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 117);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(137, 17);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Modifier produit affecter";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 215);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(126, 17);
+            this.checkBox2.TabIndex = 0;
+            this.checkBox2.Text = "Modifier un employee";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 238);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(136, 17);
+            this.checkBox3.TabIndex = 0;
+            this.checkBox3.Text = "Supprimer un employee";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Location = new System.Drawing.Point(6, 163);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(207, 1);
+            this.panel2.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.Location = new System.Drawing.Point(6, 86);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(207, 1);
+            this.panel3.TabIndex = 9;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(6, 141);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(184, 17);
+            this.checkBox4.TabIndex = 7;
+            this.checkBox4.Text = "Supprimer affectation d\'un produit";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,5 +867,11 @@
         private System.Windows.Forms.CheckBox chClientConsulterEmployee;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }

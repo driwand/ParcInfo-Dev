@@ -18,6 +18,7 @@ namespace ParcInfo.ucClient
         int userName = 1;
         int deparName = 1;
         int idC = 0;
+
         public CreateClient(int idClient,string Code)
         {
             InitializeComponent();
@@ -118,7 +119,7 @@ namespace ParcInfo.ucClient
         }
         private void CreateClient_Load(object sender, EventArgs e)
         {
-
+            Methods.CheckRoles(Controls);
         }
         // ADD lblTextbox Control
         private void BtnAddUser_Click(object sender, EventArgs e)

@@ -18,9 +18,12 @@ namespace ParcInfo.ucClient
         public int idE = 0;
         public int idC = 0;
         DataGridView dgEmp;
-        public frmCreateEmploye(int idEmploye, int idClient,string code,DataGridView dg)
+        string GetRoleName;
+        public frmCreateEmploye(int idEmploye, int idClient, string code, DataGridView dg)
         {
             InitializeComponent();
+            
+
             idC = idClient;
             dgEmp = dg;
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -28,6 +31,8 @@ namespace ParcInfo.ucClient
                 // Edit Employee
                 if (idEmploye > 0)
                 {
+                    btnAjouter.Visible = false;
+
                     idE = idEmploye;
                     lblHeading.Text = "Modifier employee";
                     lblEMP.Text = $"[{code}]";
@@ -45,7 +50,8 @@ namespace ParcInfo.ucClient
                     //lblEMP.Location = new Point(195, 21);
                     lblEMP.Visible = true;
                     lblEMP.ForeColor = Color.FromArgb(0, 168, 255);
-                    btnAjouter.Text = "Enregistrer";
+                    
+                    
                     btnDelEmp.Visible = true;
                     var emp = context.Employees.Find(idEmploye);
                     if (emp != null)
@@ -68,13 +74,20 @@ namespace ParcInfo.ucClient
                 }
                 else
                 {
-                    btnAjouter.Text = "Ajouter";
+                    
                 }
                 txtDeaprt.DataSource = context.Departements.Where(c => c.IdCLient == idClient).ToList();
                 txtDeaprt.ValueMember = "id";
                 txtDeaprt.DisplayMember = "Nom";
             }
         }
+
+        private void frmCreateEmploye_Load(object sender, EventArgs e)
+        {
+            Methods.CheckRoles(Controls);
+            btnAjouter.Visible = false;
+        }
+
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -85,93 +98,94 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 int txtEmpty = 0;
-              //  txtEmpty += Methods.Foucs(gbEmploye);
-                if (btnAjouter.Text == "Enregistrer")
+                //  txtEmpty += Methods.Foucs(gbEmploye);
+                if (txtEmpty == 0)
                 {
-                    this.Text = "Modifier employee";
                     // get values 
-                    var idEmp = context.Employees.Find(idE);
-                    string pass = txtPass.Text;
-                    idEmp.Nom = txtNom.Text;
-                    idEmp.Prenom = txtPrenom.Text;
-                    idEmp.Tel = txtTel.Text;
-                    if (txtPass.Text != "")
-                    {
-                        idEmp.Password_e = Methods.MD5Hash(pass);
-                    }
-                    idEmp.IdDep = int.Parse(txtDeaprt.SelectedValue.ToString());
+                    string Nom = txtNom.Text;
+                    string Prenom = txtPrenom.Text;
+                    string Tel = txtTel.Text;
+                    string Email = txtEmail.Text;
+                    int Departement = int.Parse(txtDeaprt.SelectedValue.ToString());
+                    string login = txtPass.Text;
+
                     int Respo = 0;
                     if (cbRespo.Checked)
                     {
                         Respo = 1;
                     }
-                    idEmp.IsResponsable = Respo;
-                   idEmp.Modifierpar = GlobVars.currentUser;
-                    idEmp.Datemodification = DateTime.Now;
-                    context.SaveChanges();
-                    var msg = Methods.StringForget(idEmp.Nom, idEmp.Prenom,pass);
-                    Methods.sendEmail(txtEmail.Text, msg);
-                    Close();
-                    updateGrid();
-                }
-                else if (btnAjouter.Text == "Ajouter")
-                {
-                    if (txtEmpty == 0)
-                    {
-                        // get values 
-                        string Nom = txtNom.Text;
-                        string Prenom = txtPrenom.Text;
-                        string Tel = txtTel.Text;
-                        string Email = txtEmail.Text;
-                        int Departement = int.Parse(txtDeaprt.SelectedValue.ToString());
-                        string login = txtPass.Text;
-                       
-                        int Respo = 0;
-                        if (cbRespo.Checked)
-                        {
-                            Respo = 1;
-                        }
 
-                        string pass = Methods.CreatePassword(8);
-                        string msg = Methods.stringMsg(Nom, Prenom, Email, pass);
-                         pass = Methods.MD5Hash(pass);
-                        var emailE = context.Employees.Any(t => t.Email == Email);
-                        var emailU = context.Utilisateurs.Any(t => t.Email == Email);
-                        if (!emailE && !emailU)
+                    string pass = Methods.CreatePassword(8);
+                    string msg = Methods.stringMsg(Nom, Prenom, Email, pass);
+                    pass = Methods.MD5Hash(pass);
+                    var emailE = context.Employees.Any(t => t.Email == Email);
+                    var emailU = context.Utilisateurs.Any(t => t.Email == Email);
+                    if (!emailE && !emailU)
+                    {
+                        Employee emp = new Employee
                         {
-                            Employee emp = new Employee
-                            {
-                                Nom = Nom,
-                                Prenom = Prenom,
-                                Tel = Tel,
-                                Email = Email,
-                                IdDep = Departement,
-                                Idclient = idC,
-                                IsResponsable = Respo,
-                                Datecreation = DateTime.Now,
-                                Password_e = pass,
-                                IsDeleted = 0,
-                                Creepar = GlobVars.currentUser,
-                            };
-                            context.Employees.Add(emp);
-                            context.SaveChanges();
-                            Methods.sendEmail(Email, msg);
-                            MessageBox.Show("L'Employé a été ajouté");
-                            // clear textbox 
-                            Methods.Clear(this);
-                            Close();
-                            updateGrid();
-                        }
-                        else
-                        {
-                            MessageBox.Show("email already exists");
-                        }
+                            Nom = Nom,
+                            Prenom = Prenom,
+                            Tel = Tel,
+                            Email = Email,
+                            IdDep = Departement,
+                            Idclient = idC,
+                            IsResponsable = Respo,
+                            Datecreation = DateTime.Now,
+                            Password_e = pass,
+                            IsDeleted = 0,
+                            Creepar = GlobVars.currentUser,
+                        };
+                        context.Employees.Add(emp);
+                        context.SaveChanges();
+                        Methods.sendEmail(Email, msg);
+                        MessageBox.Show("L'Employé a été ajouté");
+                        // clear textbox 
+                        Methods.Clear(this);
+                        Close();
+                        updateGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("email already exists");
                     }
                 }
 
+
             }
         }
+        private void btnEditEmployee_Click(object sender, EventArgs e)
+        {
+            using (var context = new ParcInformatiqueEntities())
+            {
+                this.Text = "Modifier employee";
+                // get values 
+                var idEmp = context.Employees.Find(idE);
+                string pass = txtPass.Text;
+                idEmp.Nom = txtNom.Text;
+                idEmp.Prenom = txtPrenom.Text;
+                idEmp.Tel = txtTel.Text;
+                if (txtPass.Text != "")
+                {
+                    idEmp.Password_e = Methods.MD5Hash(pass);
+                }
+                idEmp.IdDep = int.Parse(txtDeaprt.SelectedValue.ToString());
+                int Respo = 0;
+                if (cbRespo.Checked)
+                {
+                    Respo = 1;
+                }
+                idEmp.IsResponsable = Respo;
+                idEmp.Modifierpar = GlobVars.currentUser;
+                idEmp.Datemodification = DateTime.Now;
+                context.SaveChanges();
+                var msg = Methods.StringForget(idEmp.Nom, idEmp.Prenom, pass);
+                Methods.sendEmail(txtEmail.Text, msg);
+                Close();
+                updateGrid();
+            }
 
+        }
         private void btnDelEmp_Click(object sender, EventArgs e)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -207,7 +221,8 @@ namespace ParcInfo.ucClient
                 var listEmp = (from emp in c.Employees
                                join d in c.Departements on emp.IdDep equals d.id
                                where emp.IsDeleted != 1
-                               select new {
+                               select new
+                               {
                                    emp.IdEmploye,
                                    emp.Id,
                                    emp.Nom,
@@ -219,14 +234,12 @@ namespace ParcInfo.ucClient
                                    dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****"
                                }).ToList();
                 dgEmp.DataSource = listEmp;
-               Methods.Nice_grid(
-               new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },
-               new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
-               dgEmp
-               );
+                Methods.Nice_grid(
+                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },
+                new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
+                dgEmp
+                );
             }
         }
-
-       
     }
 }

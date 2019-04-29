@@ -73,7 +73,7 @@ namespace ParcInfo.ucInterevntion
                 {
                     IdUser = "Parc Info",
                     IdIntervention = intr.Id,
-                    Textobservation = "new intervention get started"
+                    Textobservation = "une nouvelle intervention démarre"
                 };
                 context.observations.Add(obs);
                 
@@ -120,7 +120,7 @@ namespace ParcInfo.ucInterevntion
                 {
                     IdUser = "Parc Info",
                     IdIntervention = intr.Id,
-                    Textobservation = "new intervention get started"
+                    Textobservation = "une nouvelle intervention démarre"
                 };
                 context.observations.Add(obs);
 
@@ -139,7 +139,7 @@ namespace ParcInfo.ucInterevntion
         private void btnDone_Click(object sender, EventArgs e)
         {
             if (cbType.Text == "" || cbPlace.Text == "")
-                MessageBox.Show("Required fields");
+                MessageBox.Show("les champs obligatoires doivent être remplient ?");
             else
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -170,7 +170,7 @@ namespace ParcInfo.ucInterevntion
                             else
                             {
                                 verify = false;
-                                MessageBox.Show("input should be a number");
+                                MessageBox.Show("l'entrée doit être un chiffre");
                             }
                         }
                     }
@@ -178,7 +178,7 @@ namespace ParcInfo.ucInterevntion
                     {
                         if (currentIntervention.Demande != null)
                         {
-                            result = MessageBox.Show("Do you want to confirm both of intervention nand revelent request ?", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                            result = MessageBox.Show("voulez-vous confirmer l'intervention et la demande aussi? ", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                             if (result != DialogResult.Cancel)
                             {
                                 if (result == DialogResult.Yes)
@@ -192,7 +192,7 @@ namespace ParcInfo.ucInterevntion
                         }
                         else
                         {
-                            var rst = MessageBox.Show("Are you sure", "Confirmation", MessageBoxButtons.YesNo);
+                            var rst = MessageBox.Show("Êtes-vous sûr?", "Confirmation", MessageBoxButtons.YesNo);
 
                             if (rst == DialogResult.Yes)
                             {
