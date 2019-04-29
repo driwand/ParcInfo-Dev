@@ -19,15 +19,49 @@ using System.Net.Mail;
 using System.Net;
 using System.Diagnostics;
 using System.Threading;
+using ParcInfo.frmList;
 
 namespace ParcInfo.frmDefault
 {
     public partial class FrmDefault : Form
     {
-
         public bool isClicked = true;
         public Button btnClicked;
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+        
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+           
+            
+        }
+        public FrmDefault()
+        {
+            InitializeComponent();
 
+            ControlsClass.CreateRadiusBorder(PanelContainer);
+           // this.MaximizeBox = false;
+            GlobVars.frmindex = this;
+            MenuLeft();
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                if (GlobVars.cuUser != null)
+                {
+                    var u = GlobVars.cuUser;
+                        lblUser.Text = $"{u.Nom} {u.Prenom}";
+                        if (u.PassChanged == 1)
+                        {
+                            ShowControl(new userProfile());
+                        }
+                       
+                }
+            }
+            ControlsClass.CursorChanger(pnlMenu);
+            tmrReal.Start();
+            ShowControl(new Dashboard());
+        }
         public int countIntervTerminer;
         public int countIntervCours;
         public int countIntervRetard;
@@ -39,44 +73,6 @@ namespace ParcInfo.frmDefault
         public int countRequestRetard;
         public int countRequestDeInt;
 
-
-        public FrmDefault()
-        {
-
-            InitializeComponent();
-
-            ControlsClass.CreateRadiusBorder(PanelContainer);
-            this.MaximizeBox = false;
-            GlobVars.frmindex = this;
-            MenuLeft();
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-            {
-                if (GlobVars.currentUser > 0)
-                {
-                    var u = GlobVars.cuUser;
-                    if (u != null)
-                    {
-                        lblUser.Text = $"{u.Nom} {u.Prenom}";
-                        if (u.PassChanged == 1)
-                        {
-                            ShowControl(new userProfile());
-                        }
-                    }
-
-                }
-            }
-
-            ControlsClass.CursorChanger(pnlMenu);
-            tmrReal.Start();
-        }
-
-        private void FrmDefault_Load(object sender, EventArgs e)
-        {
-
-            Methods.CheckRoles(Controls);
-            
-        }
-
         public void ShowControl(Control mycontrol, bool hideback = false)
         {
             if (PanelContainer.Controls.Count > 0)
@@ -87,7 +83,6 @@ namespace ParcInfo.frmDefault
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(mycontrol);
             mycontrol.BringToFront();
-            
         }
         public void ShowOldControl()
         {
@@ -443,17 +438,15 @@ namespace ParcInfo.frmDefault
             lblIntereventionCours.Update();
         }
 
+        private void FrmDefault_Load(object sender, EventArgs e)
+        {
+            //  this.ControlBox = false;
+            Methods.CheckRoles(Controls);
+        }
+
         private void PicBack_Click_1(object sender, EventArgs e)
         {
-            //if (GlobVars.frmBack != null && GlobVars.frmBack2 == null)
-            //{
-            //    ShowControl(GlobVars.frmBack);
-            //}
-            //else if (GlobVars.frmBack != null && GlobVars.frmBack2 != null)
-            //{
-            //    ShowControl(GlobVars.frmBack2);
-
-            //}
+        
             ShowOldControl();
         }
         public void activeBtn(Button btn )
@@ -488,6 +481,11 @@ namespace ParcInfo.frmDefault
         {
             DropdownUserMenu.Visible = false;
             ShowControl(new userProfile());
+        }
+
+        private void BtnHome_Click(object sender, EventArgs e)
+        {
+            ShowControl(new Dashboard());
         }
     }
 }

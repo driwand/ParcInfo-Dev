@@ -91,6 +91,12 @@
     <Compile Include="Employee.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmList\Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmList\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmList\frmAffecter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,17 +121,17 @@
     <Compile Include="frmList\frmselectuser.Designer.cs">
       <DependentUpon>frmselectuser.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Installer.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="Intervention.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelParcInfo.Context.cs">
       <AutoGen>True</AutoGen>
@@ -211,6 +217,18 @@
     <Compile Include="ucControls\infoIntervention.Designer.cs">
       <DependentUpon>infoIntervention.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucControls\lblDashTablecs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\lblDashTablecs.Designer.cs">
+      <DependentUpon>lblDashTablecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucControls\lblDemInt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\lblDemInt.Designer.cs">
+      <DependentUpon>lblDemInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\lblProduit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,12 +240,6 @@
     </Compile>
     <Compile Include="ucControls\lblTextbox.Designer.cs">
       <DependentUpon>lblTextbox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ucControls\loginCntrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucControls\loginCntrl.Designer.cs">
-      <DependentUpon>loginCntrl.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControls\loginPass.cs">
       <SubType>UserControl</SubType>
@@ -282,6 +294,12 @@
     </Compile>
     <Compile Include="ucControls\txtlblType.designer.cs">
       <DependentUpon>txtlblType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucControls\userHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\userHistory.Designer.cs">
+      <DependentUpon>userHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="ucDemande\FichDemande.cs">
       <SubType>UserControl</SubType>
@@ -401,6 +419,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmList\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmList\frmAffecter.resx">
       <DependentUpon>frmAffecter.cs</DependentUpon>
     </EmbeddedResource>
@@ -413,8 +434,8 @@
     <EmbeddedResource Include="frmList\frmselectuser.resx">
       <DependentUpon>frmselectuser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\DetailProduit.resx">
       <DependentUpon>DetailProduit.cs</DependentUpon>
@@ -434,14 +455,17 @@
     <EmbeddedResource Include="ucControls\infoIntervention.resx">
       <DependentUpon>infoIntervention.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\lblDashTablecs.resx">
+      <DependentUpon>lblDashTablecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\lblDemInt.resx">
+      <DependentUpon>lblDemInt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\lblProduit.resx">
       <DependentUpon>lblProduit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\lblTextbox.resx">
       <DependentUpon>lblTextbox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucControls\loginCntrl.resx">
-      <DependentUpon>loginCntrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\loginPass.resx">
       <DependentUpon>loginPass.cs</DependentUpon>
@@ -466,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\txtlblType.resx">
       <DependentUpon>txtlblType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\userHistory.resx">
+      <DependentUpon>userHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucDemande\FichDemande.resx">
       <DependentUpon>FichDemande.cs</DependentUpon>
@@ -761,6 +788,12 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\px161.png" />
+    <None Include="Resources\px16.png" />
+    <None Include="Resources\Plus_2x0zpx1.png" />
+    <None Include="Resources\Plus_2x0zpx.png" />
+    <None Include="Resources\Plus_20zpx.png" />
+    <None Include="Resources\Plus_20px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

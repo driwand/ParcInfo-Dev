@@ -146,9 +146,9 @@
             this.lblUserMod.AutoSize = true;
             this.lblUserMod.Location = new System.Drawing.Point(120, 29);
             this.lblUserMod.Name = "lblUserMod";
-            this.lblUserMod.Size = new System.Drawing.Size(35, 13);
+            this.lblUserMod.Size = new System.Drawing.Size(43, 13);
             this.lblUserMod.TabIndex = 56;
-            this.lblUserMod.Text = "User1";
+            this.lblUserMod.Text = "aucune";
             // 
             // label12
             // 

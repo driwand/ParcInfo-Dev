@@ -55,11 +55,26 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnEditProfile = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gradientPanel6 = new ParcInfo.Classes.GradientPanel();
+            this.lblCountInterv = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.gradientPanel7 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel8 = new ParcInfo.Classes.GradientPanel();
+            this.lblCountDemande = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.gradientPanel9 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
+            this.lblCountClient = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.gradientPanel5 = new ParcInfo.Classes.GradientPanel();
             this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gpInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gradientPanel6.SuspendLayout();
+            this.gradientPanel8.SuspendLayout();
+            this.gradientPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -317,6 +332,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.gradientPanel6);
+            this.groupBox2.Controls.Add(this.gradientPanel8);
+            this.groupBox2.Controls.Add(this.gradientPanel4);
             this.groupBox2.Controls.Add(this.gradientPanel3);
             this.groupBox2.Location = new System.Drawing.Point(427, 49);
             this.groupBox2.Name = "groupBox2";
@@ -325,6 +343,141 @@
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "personal information";
+            // 
+            // gradientPanel6
+            // 
+            this.gradientPanel6.Angle = 0F;
+            this.gradientPanel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel6.ColorBottom = System.Drawing.Color.Empty;
+            this.gradientPanel6.ColorTop = System.Drawing.Color.Empty;
+            this.gradientPanel6.Controls.Add(this.lblCountInterv);
+            this.gradientPanel6.Controls.Add(this.label14);
+            this.gradientPanel6.Controls.Add(this.gradientPanel7);
+            this.gradientPanel6.Location = new System.Drawing.Point(6, 101);
+            this.gradientPanel6.Name = "gradientPanel6";
+            this.gradientPanel6.Size = new System.Drawing.Size(425, 74);
+            this.gradientPanel6.TabIndex = 54;
+            // 
+            // lblCountInterv
+            // 
+            this.lblCountInterv.AutoSize = true;
+            this.lblCountInterv.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountInterv.Location = new System.Drawing.Point(11, 34);
+            this.lblCountInterv.Name = "lblCountInterv";
+            this.lblCountInterv.Size = new System.Drawing.Size(36, 19);
+            this.lblCountInterv.TabIndex = 2;
+            this.lblCountInterv.Text = "175";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(10, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(285, 16);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Intervention effectuée au cours des 30 derniers jours";
+            // 
+            // gradientPanel7
+            // 
+            this.gradientPanel7.Angle = 0F;
+            this.gradientPanel7.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(77)))), ((int)(((byte)(75)))));
+            this.gradientPanel7.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(77)))), ((int)(((byte)(75)))));
+            this.gradientPanel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gradientPanel7.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel7.Name = "gradientPanel7";
+            this.gradientPanel7.Size = new System.Drawing.Size(4, 72);
+            this.gradientPanel7.TabIndex = 0;
+            // 
+            // gradientPanel8
+            // 
+            this.gradientPanel8.Angle = 0F;
+            this.gradientPanel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel8.ColorBottom = System.Drawing.Color.Empty;
+            this.gradientPanel8.ColorTop = System.Drawing.Color.Empty;
+            this.gradientPanel8.Controls.Add(this.lblCountDemande);
+            this.gradientPanel8.Controls.Add(this.label16);
+            this.gradientPanel8.Controls.Add(this.gradientPanel9);
+            this.gradientPanel8.Location = new System.Drawing.Point(5, 21);
+            this.gradientPanel8.Name = "gradientPanel8";
+            this.gradientPanel8.Size = new System.Drawing.Size(269, 74);
+            this.gradientPanel8.TabIndex = 53;
+            // 
+            // lblCountDemande
+            // 
+            this.lblCountDemande.AutoSize = true;
+            this.lblCountDemande.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountDemande.Location = new System.Drawing.Point(11, 41);
+            this.lblCountDemande.Name = "lblCountDemande";
+            this.lblCountDemande.Size = new System.Drawing.Size(36, 19);
+            this.lblCountDemande.TabIndex = 2;
+            this.lblCountDemande.Text = "175";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(10, 9);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(257, 16);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Demande traitée au cours des 30 derniers jours";
+            // 
+            // gradientPanel9
+            // 
+            this.gradientPanel9.Angle = 0F;
+            this.gradientPanel9.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.gradientPanel9.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.gradientPanel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gradientPanel9.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel9.Name = "gradientPanel9";
+            this.gradientPanel9.Size = new System.Drawing.Size(4, 72);
+            this.gradientPanel9.TabIndex = 0;
+            // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.Angle = 0F;
+            this.gradientPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.Empty;
+            this.gradientPanel4.ColorTop = System.Drawing.Color.Empty;
+            this.gradientPanel4.Controls.Add(this.lblCountClient);
+            this.gradientPanel4.Controls.Add(this.label11);
+            this.gradientPanel4.Controls.Add(this.gradientPanel5);
+            this.gradientPanel4.Location = new System.Drawing.Point(280, 21);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(151, 74);
+            this.gradientPanel4.TabIndex = 52;
+            // 
+            // lblCountClient
+            // 
+            this.lblCountClient.AutoSize = true;
+            this.lblCountClient.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountClient.Location = new System.Drawing.Point(11, 34);
+            this.lblCountClient.Name = "lblCountClient";
+            this.lblCountClient.Size = new System.Drawing.Size(36, 19);
+            this.lblCountClient.TabIndex = 2;
+            this.lblCountClient.Text = "175";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(10, 5);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 16);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Totale des clients";
+            // 
+            // gradientPanel5
+            // 
+            this.gradientPanel5.Angle = 0F;
+            this.gradientPanel5.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.gradientPanel5.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.gradientPanel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gradientPanel5.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel5.Name = "gradientPanel5";
+            this.gradientPanel5.Size = new System.Drawing.Size(4, 72);
+            this.gradientPanel5.TabIndex = 0;
             // 
             // gradientPanel3
             // 
@@ -357,6 +510,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.gradientPanel6.ResumeLayout(false);
+            this.gradientPanel6.PerformLayout();
+            this.gradientPanel8.ResumeLayout(false);
+            this.gradientPanel8.PerformLayout();
+            this.gradientPanel4.ResumeLayout(false);
+            this.gradientPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,5 +551,17 @@
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label label10;
+        private Classes.GradientPanel gradientPanel4;
+        private System.Windows.Forms.Label lblCountClient;
+        private System.Windows.Forms.Label label11;
+        private Classes.GradientPanel gradientPanel5;
+        private Classes.GradientPanel gradientPanel8;
+        private System.Windows.Forms.Label lblCountDemande;
+        private System.Windows.Forms.Label label16;
+        private Classes.GradientPanel gradientPanel9;
+        private Classes.GradientPanel gradientPanel6;
+        private System.Windows.Forms.Label lblCountInterv;
+        private System.Windows.Forms.Label label14;
+        private Classes.GradientPanel gradientPanel7;
     }
 }
