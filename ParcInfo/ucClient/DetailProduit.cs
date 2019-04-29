@@ -155,7 +155,6 @@ namespace ParcInfo.ucClient
                             FpProduit.Controls.Add(logx);
                         }
                     }
-
                 }
                 else
                 {

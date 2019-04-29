@@ -29,18 +29,6 @@
         private void InitializeComponent()
         {
             this.lblClient = new System.Windows.Forms.Label();
-            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
-            this.lblDemEnRetard = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.gpDemandeEnCours = new ParcInfo.Classes.GradientPanel();
-            this.lblDemEncours = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
-            this.lblIntEnCours = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
-            this.lblIntEnRetard = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlDemande = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -55,22 +43,38 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.gradientPanel5 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel7 = new ParcInfo.Classes.GradientPanel();
+            this.lbltest = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.gradientPanel6 = new ParcInfo.Classes.GradientPanel();
+            this.lblTotalInterv = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.gradientPanel8 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel5 = new ParcInfo.Classes.GradientPanel();
+            this.lblTotalDem = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.gradientPanel1.SuspendLayout();
-            this.gpDemandeEnCours.SuspendLayout();
-            this.gradientPanel3.SuspendLayout();
-            this.gradientPanel4.SuspendLayout();
+            this.gradientPanel7 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
+            this.lblIntEnRetard = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
+            this.lblIntEnCours = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.gpDemandeEnCours = new ParcInfo.Classes.GradientPanel();
+            this.lblDemEncours = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
+            this.lblDemEnRetard = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlDemande.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlIntervention.SuspendLayout();
-            this.gradientPanel5.SuspendLayout();
             this.gradientPanel6.SuspendLayout();
+            this.gradientPanel5.SuspendLayout();
+            this.gradientPanel4.SuspendLayout();
+            this.gradientPanel3.SuspendLayout();
+            this.gpDemandeEnCours.SuspendLayout();
+            this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblClient
@@ -83,154 +87,6 @@
             this.lblClient.Size = new System.Drawing.Size(95, 19);
             this.lblClient.TabIndex = 10005;
             this.lblClient.Text = "Dashboard";
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.Angle = 0F;
-            this.gradientPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(107)))), ((int)(((byte)(107)))));
-            this.gradientPanel1.Controls.Add(this.lblDemEnRetard);
-            this.gradientPanel1.Controls.Add(this.label1);
-            this.gradientPanel1.Location = new System.Drawing.Point(241, 48);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(198, 80);
-            this.gradientPanel1.TabIndex = 10006;
-            // 
-            // lblDemEnRetard
-            // 
-            this.lblDemEnRetard.AutoSize = true;
-            this.lblDemEnRetard.BackColor = System.Drawing.Color.Transparent;
-            this.lblDemEnRetard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDemEnRetard.ForeColor = System.Drawing.Color.White;
-            this.lblDemEnRetard.Location = new System.Drawing.Point(89, 38);
-            this.lblDemEnRetard.Name = "lblDemEnRetard";
-            this.lblDemEnRetard.Size = new System.Drawing.Size(18, 19);
-            this.lblDemEnRetard.TabIndex = 3;
-            this.lblDemEnRetard.Text = "0";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(30, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Demande en retard";
-            // 
-            // gpDemandeEnCours
-            // 
-            this.gpDemandeEnCours.Angle = 0F;
-            this.gpDemandeEnCours.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gpDemandeEnCours.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(113)))), ((int)(((byte)(250)))));
-            this.gpDemandeEnCours.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(47)))), ((int)(((byte)(248)))));
-            this.gpDemandeEnCours.Controls.Add(this.lblDemEncours);
-            this.gpDemandeEnCours.Controls.Add(this.label2);
-            this.gpDemandeEnCours.Location = new System.Drawing.Point(35, 48);
-            this.gpDemandeEnCours.Name = "gpDemandeEnCours";
-            this.gpDemandeEnCours.Size = new System.Drawing.Size(198, 80);
-            this.gpDemandeEnCours.TabIndex = 10007;
-            // 
-            // lblDemEncours
-            // 
-            this.lblDemEncours.AutoSize = true;
-            this.lblDemEncours.BackColor = System.Drawing.Color.Transparent;
-            this.lblDemEncours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDemEncours.ForeColor = System.Drawing.Color.White;
-            this.lblDemEncours.Location = new System.Drawing.Point(89, 38);
-            this.lblDemEncours.Name = "lblDemEncours";
-            this.lblDemEncours.Size = new System.Drawing.Size(18, 19);
-            this.lblDemEncours.TabIndex = 2;
-            this.lblDemEncours.Text = "0";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(33, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Demande en cours";
-            // 
-            // gradientPanel3
-            // 
-            this.gradientPanel3.Angle = 0F;
-            this.gradientPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(231)))), ((int)(((byte)(163)))));
-            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(222)))), ((int)(((byte)(129)))));
-            this.gradientPanel3.Controls.Add(this.lblIntEnCours);
-            this.gradientPanel3.Controls.Add(this.label3);
-            this.gradientPanel3.Location = new System.Drawing.Point(447, 48);
-            this.gradientPanel3.Name = "gradientPanel3";
-            this.gradientPanel3.Size = new System.Drawing.Size(198, 80);
-            this.gradientPanel3.TabIndex = 10008;
-            // 
-            // lblIntEnCours
-            // 
-            this.lblIntEnCours.AutoSize = true;
-            this.lblIntEnCours.BackColor = System.Drawing.Color.Transparent;
-            this.lblIntEnCours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntEnCours.ForeColor = System.Drawing.Color.White;
-            this.lblIntEnCours.Location = new System.Drawing.Point(89, 38);
-            this.lblIntEnCours.Name = "lblIntEnCours";
-            this.lblIntEnCours.Size = new System.Drawing.Size(18, 19);
-            this.lblIntEnCours.TabIndex = 4;
-            this.lblIntEnCours.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(27, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Intervention en cours";
-            // 
-            // gradientPanel4
-            // 
-            this.gradientPanel4.Angle = 0F;
-            this.gradientPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(199)))), ((int)(((byte)(246)))));
-            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
-            this.gradientPanel4.Controls.Add(this.lblIntEnRetard);
-            this.gradientPanel4.Controls.Add(this.label4);
-            this.gradientPanel4.Location = new System.Drawing.Point(653, 48);
-            this.gradientPanel4.Name = "gradientPanel4";
-            this.gradientPanel4.Size = new System.Drawing.Size(198, 80);
-            this.gradientPanel4.TabIndex = 10009;
-            // 
-            // lblIntEnRetard
-            // 
-            this.lblIntEnRetard.AutoSize = true;
-            this.lblIntEnRetard.BackColor = System.Drawing.Color.Transparent;
-            this.lblIntEnRetard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntEnRetard.ForeColor = System.Drawing.Color.White;
-            this.lblIntEnRetard.Location = new System.Drawing.Point(89, 38);
-            this.lblIntEnRetard.Name = "lblIntEnRetard";
-            this.lblIntEnRetard.Size = new System.Drawing.Size(18, 19);
-            this.lblIntEnRetard.TabIndex = 5;
-            this.lblIntEnRetard.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(22, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 17);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Interventions en retard";
             // 
             // panel1
             // 
@@ -360,9 +216,9 @@
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(45, 407);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(136, 17);
+            this.label11.Size = new System.Drawing.Size(120, 17);
             this.label11.TabIndex = 3;
-            this.label11.Text = "Demande en retard";
+            this.label11.Text = "Debit Demande :";
             // 
             // label12
             // 
@@ -376,30 +232,24 @@
             this.label12.TabIndex = 10014;
             this.label12.Text = "Demande en retard";
             // 
-            // gradientPanel5
+            // lbltest
             // 
-            this.gradientPanel5.Angle = 0F;
-            this.gradientPanel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gradientPanel5.ColorBottom = System.Drawing.Color.White;
-            this.gradientPanel5.ColorTop = System.Drawing.Color.White;
-            this.gradientPanel5.Controls.Add(this.label13);
-            this.gradientPanel5.Controls.Add(this.gradientPanel7);
-            this.gradientPanel5.Location = new System.Drawing.Point(447, 395);
-            this.gradientPanel5.Name = "gradientPanel5";
-            this.gradientPanel5.Size = new System.Drawing.Size(202, 69);
-            this.gradientPanel5.TabIndex = 10009;
+            this.lbltest.AutoSize = true;
+            this.lbltest.Location = new System.Drawing.Point(181, 409);
+            this.lbltest.Name = "lbltest";
+            this.lbltest.Size = new System.Drawing.Size(35, 13);
+            this.lbltest.TabIndex = 10015;
+            this.lbltest.Text = "label5";
             // 
-            // gradientPanel7
+            // button1
             // 
-            this.gradientPanel7.Angle = 0F;
-            this.gradientPanel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(211)))), ((int)(((byte)(230)))));
-            this.gradientPanel7.ColorBottom = System.Drawing.Color.Empty;
-            this.gradientPanel7.ColorTop = System.Drawing.Color.Empty;
-            this.gradientPanel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gradientPanel7.Location = new System.Drawing.Point(0, 0);
-            this.gradientPanel7.Name = "gradientPanel7";
-            this.gradientPanel7.Size = new System.Drawing.Size(4, 67);
-            this.gradientPanel7.TabIndex = 0;
+            this.button1.Location = new System.Drawing.Point(275, 428);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10016;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gradientPanel6
             // 
@@ -407,12 +257,37 @@
             this.gradientPanel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gradientPanel6.ColorBottom = System.Drawing.Color.White;
             this.gradientPanel6.ColorTop = System.Drawing.Color.White;
-            this.gradientPanel6.Controls.Add(this.label14);
+            this.gradientPanel6.Controls.Add(this.lblTotalInterv);
+            this.gradientPanel6.Controls.Add(this.label5);
             this.gradientPanel6.Controls.Add(this.gradientPanel8);
             this.gradientPanel6.Location = new System.Drawing.Point(649, 395);
             this.gradientPanel6.Name = "gradientPanel6";
             this.gradientPanel6.Size = new System.Drawing.Size(202, 69);
             this.gradientPanel6.TabIndex = 10010;
+            // 
+            // lblTotalInterv
+            // 
+            this.lblTotalInterv.AutoSize = true;
+            this.lblTotalInterv.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalInterv.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalInterv.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalInterv.Location = new System.Drawing.Point(91, 36);
+            this.lblTotalInterv.Name = "lblTotalInterv";
+            this.lblTotalInterv.Size = new System.Drawing.Size(18, 19);
+            this.lblTotalInterv.TabIndex = 10016;
+            this.lblTotalInterv.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(27, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 17);
+            this.label5.TabIndex = 10016;
+            this.label5.Text = "Totale des intervention";
             // 
             // gradientPanel8
             // 
@@ -426,6 +301,32 @@
             this.gradientPanel8.Size = new System.Drawing.Size(4, 67);
             this.gradientPanel8.TabIndex = 1;
             // 
+            // gradientPanel5
+            // 
+            this.gradientPanel5.Angle = 0F;
+            this.gradientPanel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel5.ColorBottom = System.Drawing.Color.White;
+            this.gradientPanel5.ColorTop = System.Drawing.Color.White;
+            this.gradientPanel5.Controls.Add(this.lblTotalDem);
+            this.gradientPanel5.Controls.Add(this.label13);
+            this.gradientPanel5.Controls.Add(this.gradientPanel7);
+            this.gradientPanel5.Location = new System.Drawing.Point(447, 395);
+            this.gradientPanel5.Name = "gradientPanel5";
+            this.gradientPanel5.Size = new System.Drawing.Size(202, 69);
+            this.gradientPanel5.TabIndex = 10009;
+            // 
+            // lblTotalDem
+            // 
+            this.lblTotalDem.AutoSize = true;
+            this.lblTotalDem.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalDem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDem.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalDem.Location = new System.Drawing.Point(91, 36);
+            this.lblTotalDem.Name = "lblTotalDem";
+            this.lblTotalDem.Size = new System.Drawing.Size(18, 19);
+            this.lblTotalDem.TabIndex = 5;
+            this.lblTotalDem.Text = "0";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -434,27 +335,177 @@
             this.label13.ForeColor = System.Drawing.Color.Black;
             this.label13.Location = new System.Drawing.Point(32, 11);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(136, 17);
+            this.label13.Size = new System.Drawing.Size(146, 17);
             this.label13.TabIndex = 10015;
-            this.label13.Text = "Demande en retard";
+            this.label13.Text = "Totale des demandes";
             // 
-            // label14
+            // gradientPanel7
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(32, 11);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(136, 17);
-            this.label14.TabIndex = 10016;
-            this.label14.Text = "Demande en retard";
+            this.gradientPanel7.Angle = 0F;
+            this.gradientPanel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(211)))), ((int)(((byte)(230)))));
+            this.gradientPanel7.ColorBottom = System.Drawing.Color.Empty;
+            this.gradientPanel7.ColorTop = System.Drawing.Color.Empty;
+            this.gradientPanel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gradientPanel7.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanel7.Name = "gradientPanel7";
+            this.gradientPanel7.Size = new System.Drawing.Size(4, 67);
+            this.gradientPanel7.TabIndex = 0;
+            // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.Angle = 0F;
+            this.gradientPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(199)))), ((int)(((byte)(246)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
+            this.gradientPanel4.Controls.Add(this.lblIntEnRetard);
+            this.gradientPanel4.Controls.Add(this.label4);
+            this.gradientPanel4.Location = new System.Drawing.Point(653, 48);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(198, 80);
+            this.gradientPanel4.TabIndex = 10009;
+            // 
+            // lblIntEnRetard
+            // 
+            this.lblIntEnRetard.AutoSize = true;
+            this.lblIntEnRetard.BackColor = System.Drawing.Color.Transparent;
+            this.lblIntEnRetard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntEnRetard.ForeColor = System.Drawing.Color.White;
+            this.lblIntEnRetard.Location = new System.Drawing.Point(89, 38);
+            this.lblIntEnRetard.Name = "lblIntEnRetard";
+            this.lblIntEnRetard.Size = new System.Drawing.Size(18, 19);
+            this.lblIntEnRetard.TabIndex = 5;
+            this.lblIntEnRetard.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(22, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(153, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Interventions en retard";
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.Angle = 0F;
+            this.gradientPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(231)))), ((int)(((byte)(163)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(222)))), ((int)(((byte)(129)))));
+            this.gradientPanel3.Controls.Add(this.lblIntEnCours);
+            this.gradientPanel3.Controls.Add(this.label3);
+            this.gradientPanel3.Location = new System.Drawing.Point(447, 48);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(198, 80);
+            this.gradientPanel3.TabIndex = 10008;
+            // 
+            // lblIntEnCours
+            // 
+            this.lblIntEnCours.AutoSize = true;
+            this.lblIntEnCours.BackColor = System.Drawing.Color.Transparent;
+            this.lblIntEnCours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntEnCours.ForeColor = System.Drawing.Color.White;
+            this.lblIntEnCours.Location = new System.Drawing.Point(89, 38);
+            this.lblIntEnCours.Name = "lblIntEnCours";
+            this.lblIntEnCours.Size = new System.Drawing.Size(18, 19);
+            this.lblIntEnCours.TabIndex = 4;
+            this.lblIntEnCours.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(27, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(143, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Intervention en cours";
+            // 
+            // gpDemandeEnCours
+            // 
+            this.gpDemandeEnCours.Angle = 0F;
+            this.gpDemandeEnCours.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gpDemandeEnCours.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(113)))), ((int)(((byte)(250)))));
+            this.gpDemandeEnCours.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(47)))), ((int)(((byte)(248)))));
+            this.gpDemandeEnCours.Controls.Add(this.lblDemEncours);
+            this.gpDemandeEnCours.Controls.Add(this.label2);
+            this.gpDemandeEnCours.Location = new System.Drawing.Point(35, 48);
+            this.gpDemandeEnCours.Name = "gpDemandeEnCours";
+            this.gpDemandeEnCours.Size = new System.Drawing.Size(198, 80);
+            this.gpDemandeEnCours.TabIndex = 10007;
+            // 
+            // lblDemEncours
+            // 
+            this.lblDemEncours.AutoSize = true;
+            this.lblDemEncours.BackColor = System.Drawing.Color.Transparent;
+            this.lblDemEncours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDemEncours.ForeColor = System.Drawing.Color.White;
+            this.lblDemEncours.Location = new System.Drawing.Point(89, 38);
+            this.lblDemEncours.Name = "lblDemEncours";
+            this.lblDemEncours.Size = new System.Drawing.Size(18, 19);
+            this.lblDemEncours.TabIndex = 2;
+            this.lblDemEncours.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(33, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Demande en cours";
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(107)))), ((int)(((byte)(107)))));
+            this.gradientPanel1.Controls.Add(this.lblDemEnRetard);
+            this.gradientPanel1.Controls.Add(this.label1);
+            this.gradientPanel1.Location = new System.Drawing.Point(241, 48);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(198, 80);
+            this.gradientPanel1.TabIndex = 10006;
+            // 
+            // lblDemEnRetard
+            // 
+            this.lblDemEnRetard.AutoSize = true;
+            this.lblDemEnRetard.BackColor = System.Drawing.Color.Transparent;
+            this.lblDemEnRetard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDemEnRetard.ForeColor = System.Drawing.Color.White;
+            this.lblDemEnRetard.Location = new System.Drawing.Point(89, 38);
+            this.lblDemEnRetard.Name = "lblDemEnRetard";
+            this.lblDemEnRetard.Size = new System.Drawing.Size(18, 19);
+            this.lblDemEnRetard.TabIndex = 3;
+            this.lblDemEnRetard.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(30, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Demande en retard";
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbltest);
             this.Controls.Add(this.gradientPanel6);
             this.Controls.Add(this.gradientPanel5);
             this.Controls.Add(this.label12);
@@ -468,24 +519,24 @@
             this.Controls.Add(this.lblClient);
             this.Name = "Dashboard";
             this.Size = new System.Drawing.Size(890, 481);
-            this.gradientPanel1.ResumeLayout(false);
-            this.gradientPanel1.PerformLayout();
-            this.gpDemandeEnCours.ResumeLayout(false);
-            this.gpDemandeEnCours.PerformLayout();
-            this.gradientPanel3.ResumeLayout(false);
-            this.gradientPanel3.PerformLayout();
-            this.gradientPanel4.ResumeLayout(false);
-            this.gradientPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.pnlDemande.ResumeLayout(false);
             this.pnlDemande.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.pnlIntervention.ResumeLayout(false);
             this.pnlIntervention.PerformLayout();
-            this.gradientPanel5.ResumeLayout(false);
-            this.gradientPanel5.PerformLayout();
             this.gradientPanel6.ResumeLayout(false);
             this.gradientPanel6.PerformLayout();
+            this.gradientPanel5.ResumeLayout(false);
+            this.gradientPanel5.PerformLayout();
+            this.gradientPanel4.ResumeLayout(false);
+            this.gradientPanel4.PerformLayout();
+            this.gradientPanel3.ResumeLayout(false);
+            this.gradientPanel3.PerformLayout();
+            this.gpDemandeEnCours.ResumeLayout(false);
+            this.gpDemandeEnCours.PerformLayout();
+            this.gradientPanel1.ResumeLayout(false);
+            this.gradientPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -525,6 +576,10 @@
         private Classes.GradientPanel gradientPanel6;
         private Classes.GradientPanel gradientPanel8;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbltest;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTotalInterv;
+        private System.Windows.Forms.Label lblTotalDem;
     }
 }

@@ -30,10 +30,15 @@
         {
             this.lblNameClient = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnAddDepartement = new System.Windows.Forms.Button();
+            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
             this.PnlDepart = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
             this.PnlUsers = new System.Windows.Forms.FlowLayoutPanel();
+            this.BtnAddUser = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
             this.txtPrix = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dtDebutcontract = new System.Windows.Forms.DateTimePicker();
@@ -48,6 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.txtVille = new System.Windows.Forms.TextBox();
             this.txtAdr = new System.Windows.Forms.TextBox();
             this.txtNom = new System.Windows.Forms.TextBox();
@@ -58,14 +64,8 @@
             this.lblClient = new System.Windows.Forms.Label();
             this.btnDelClient = new System.Windows.Forms.Button();
             this.btnEditClient = new System.Windows.Forms.Button();
-            this.btnAddDepartement = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
-            this.BtnAddUser = new System.Windows.Forms.Button();
             this.picHeader = new System.Windows.Forms.PictureBox();
-            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -99,6 +99,30 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Les departements";
             // 
+            // btnAddDepartement
+            // 
+            this.btnAddDepartement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnAddDepartement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDepartement.ForeColor = System.Drawing.Color.White;
+            this.btnAddDepartement.Image = global::ParcInfo.Properties.Resources.px16;
+            this.btnAddDepartement.Location = new System.Drawing.Point(367, 119);
+            this.btnAddDepartement.Name = "btnAddDepartement";
+            this.btnAddDepartement.Size = new System.Drawing.Size(25, 25);
+            this.btnAddDepartement.TabIndex = 46;
+            this.btnAddDepartement.UseVisualStyleBackColor = false;
+            this.btnAddDepartement.Click += new System.EventHandler(this.btnAddDepartement_Click);
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 146);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel2.TabIndex = 47;
+            // 
             // PnlDepart
             // 
             this.PnlDepart.AutoScroll = true;
@@ -124,6 +148,17 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Les utilisateurs";
             // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.Angle = 0F;
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel4.Location = new System.Drawing.Point(0, 222);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel4.TabIndex = 46;
+            // 
             // PnlUsers
             // 
             this.PnlUsers.Location = new System.Drawing.Point(17, 22);
@@ -133,6 +168,19 @@
             this.PnlUsers.Padding = new System.Windows.Forms.Padding(20, 10, 0, 10);
             this.PnlUsers.Size = new System.Drawing.Size(375, 156);
             this.PnlUsers.TabIndex = 0;
+            // 
+            // BtnAddUser
+            // 
+            this.BtnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAddUser.ForeColor = System.Drawing.Color.White;
+            this.BtnAddUser.Image = global::ParcInfo.Properties.Resources.px161;
+            this.BtnAddUser.Location = new System.Drawing.Point(367, 192);
+            this.BtnAddUser.Name = "BtnAddUser";
+            this.BtnAddUser.Size = new System.Drawing.Size(25, 25);
+            this.BtnAddUser.TabIndex = 45;
+            this.BtnAddUser.UseVisualStyleBackColor = false;
+            this.BtnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // groupBox3
             // 
@@ -150,6 +198,17 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contract";
+            // 
+            // gradientPanel3
+            // 
+            this.gradientPanel3.Angle = 0F;
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel3.Location = new System.Drawing.Point(0, 83);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel3.TabIndex = 44;
             // 
             // txtPrix
             // 
@@ -286,6 +345,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 146);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(409, 3);
+            this.gradientPanel1.TabIndex = 40;
+            // 
             // txtVille
             // 
             this.txtVille.Location = new System.Drawing.Point(94, 96);
@@ -386,19 +456,6 @@
             this.btnEditClient.Visible = false;
             this.btnEditClient.Click += new System.EventHandler(this.btnEditClient_Click);
             // 
-            // btnAddDepartement
-            // 
-            this.btnAddDepartement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnAddDepartement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDepartement.ForeColor = System.Drawing.Color.White;
-            this.btnAddDepartement.Image = global::ParcInfo.Properties.Resources.px16;
-            this.btnAddDepartement.Location = new System.Drawing.Point(367, 119);
-            this.btnAddDepartement.Name = "btnAddDepartement";
-            this.btnAddDepartement.Size = new System.Drawing.Size(25, 25);
-            this.btnAddDepartement.TabIndex = 46;
-            this.btnAddDepartement.UseVisualStyleBackColor = false;
-            this.btnAddDepartement.Click += new System.EventHandler(this.btnAddDepartement_Click);
-            // 
             // btnAddClient
             // 
             this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -410,22 +467,9 @@
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(113, 28);
             this.btnAddClient.TabIndex = 10011;
-            this.btnAddClient.Text = "uuu";
+            this.btnAddClient.Text = "Ajouter";
             this.btnAddClient.UseVisualStyleBackColor = false;
             this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
-            // 
-            // BtnAddUser
-            // 
-            this.BtnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.BtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAddUser.ForeColor = System.Drawing.Color.White;
-            this.BtnAddUser.Image = global::ParcInfo.Properties.Resources.px161;
-            this.BtnAddUser.Location = new System.Drawing.Point(367, 192);
-            this.BtnAddUser.Name = "BtnAddUser";
-            this.BtnAddUser.Size = new System.Drawing.Size(25, 25);
-            this.BtnAddUser.TabIndex = 45;
-            this.BtnAddUser.UseVisualStyleBackColor = false;
-            this.BtnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // picHeader
             // 
@@ -436,50 +480,6 @@
             this.picHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picHeader.TabIndex = 10005;
             this.picHeader.TabStop = false;
-            // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.Angle = 0F;
-            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
-            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel2.Location = new System.Drawing.Point(0, 146);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(409, 3);
-            this.gradientPanel2.TabIndex = 47;
-            // 
-            // gradientPanel4
-            // 
-            this.gradientPanel4.Angle = 0F;
-            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
-            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel4.Location = new System.Drawing.Point(0, 222);
-            this.gradientPanel4.Name = "gradientPanel4";
-            this.gradientPanel4.Size = new System.Drawing.Size(409, 3);
-            this.gradientPanel4.TabIndex = 46;
-            // 
-            // gradientPanel3
-            // 
-            this.gradientPanel3.Angle = 0F;
-            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
-            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel3.Location = new System.Drawing.Point(0, 83);
-            this.gradientPanel3.Name = "gradientPanel3";
-            this.gradientPanel3.Size = new System.Drawing.Size(409, 3);
-            this.gradientPanel3.TabIndex = 44;
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.Angle = 0F;
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
-            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 146);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(409, 3);
-            this.gradientPanel1.TabIndex = 40;
             // 
             // CreateClient
             // 

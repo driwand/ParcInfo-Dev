@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.ucControls;
+using System.Data.Entity;
 
 namespace ParcInfo.frmList
 {
@@ -19,7 +20,6 @@ namespace ParcInfo.frmList
             Color color = Color.Transparent;
             switch (statut)
             {
-
                 case "en attente":
                     color = Color.FromArgb(255, 192, 0);
                     break;
@@ -32,7 +32,6 @@ namespace ParcInfo.frmList
                 case "terminer":
                     color = Color.FromArgb(46, 204, 113);
                     break;
-
                 default:
                     break;
             }
@@ -51,45 +50,17 @@ namespace ParcInfo.frmList
                 {
                     if (u.isAdmin == 1)
                     {
-                        lblDemEncours.Text = context.GetRequestCours.Count().ToString();
-                        lblDemEnRetard.Text = context.GetRequestRetard.Count().ToString();
-                        lblIntEnCours.Text = context.GetIntervEncours.Count().ToString();
-                        lblIntEnCours.Text = context.GetIntervenretard.Count().ToString();
-                        var listOrder = new List<string> { "en retard", "en attente", "en cours", "terminer" };
-                        var ls = (from c in context.GetRequestbyStatut()
-                                  select new
-                                  {
-                                      c.IdReq,
-                                      c.Id,
-                                      c.Employee.Client.Nom,
-                                      c.Datedemande,
-                                      c.Getstatut,
-                                      color = GetColor(c.Getstatut)
-                                  }).OrderBy(d => d.Datedemande).ThenBy(i => listOrder.IndexOf(i.Getstatut)).Take(5).ToList();
-                        foreach (var item in ls)
-                        {
-                            CreateLblDash("dem",item.Id,item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
-                        }
-                        var lsx = (from c in context.GetInterventionBystatut()
-                                  select new
-                                  {
-                                      c.IdIntrv,
-                                      c.Id,
-                                      c.Client.Nom,
-                                      c.DateIntervention,
-                                      c.Getstatut,
-                                      color = GetColor(c.Getstatut)
-                                  }).OrderBy(d => d.DateIntervention).ThenBy(i => listOrder.IndexOf(i.Getstatut)).Take(5).ToList();
-                        foreach (var item in lsx)
-                        {
-                            CreateLblDash("int",item.Id,item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
-                        }
+                        GetDashAdmin();
+                    }
+                    else
+                    {
+                        GetDashUser();
                     }
                 }
             }
         }
 
-        public void CreateLblDash(string t,int id,string Code, string client, string date, string statut, Color color, Control c)
+        public void CreateLblDash(string t, int id, string Code, string client, string date, string statut, Color color, Control c)
         {
             lblDashTablecs lbl = new lblDashTablecs();
             lbl.Name = t;
@@ -100,6 +71,85 @@ namespace ParcInfo.frmList
             lbl.LblStatut = statut;
             lbl.lblStatutColor = color;
             c.Controls.Add(lbl);
+        }
+
+        public void GetDashAdmin()
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                lblDemEncours.Text = context.GetRequestCours.Count().ToString();
+                lblDemEnRetard.Text = context.GetRequestRetard.Count().ToString();
+                lblIntEnCours.Text = context.GetIntervEncours.Count().ToString();
+                lblIntEnCours.Text = context.GetIntervenretard.Count().ToString();
+                lblTotalDem.Text = context.GetRequestbyStatut().Count.ToString();
+                lblTotalInterv.Text = context.GetInterventionBystatut().Count.ToString();
+                var listOrder = new List<string> { "en retard", "en attente", "en cours", "terminer" };
+                var ls = (from c in context.GetRequestbyStatut()
+                          select new
+                          {
+                              c.IdReq,
+                              c.Id,
+                              c.Employee.Client.Nom,
+                              c.Datedemande,
+                              c.Getstatut,
+                              color = GetColor(c.Getstatut)
+                          }).OrderBy(d => d.Datedemande).ThenBy(i => listOrder.IndexOf(i.Getstatut)).Take(5).ToList();
+                foreach (var item in ls)
+                {
+                    CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
+                }
+                var lsx = (from c in context.GetInterventionBystatut()
+                           select new
+                           {
+                               c.IdIntrv,
+                               c.Id,
+                               c.Client.Nom,
+                               c.DateIntervention,
+                               c.Getstatut,
+                               color = GetColor(c.Getstatut)
+                           }).OrderBy(d => d.DateIntervention).ThenBy(i => listOrder.IndexOf(i.Getstatut)).Take(5).ToList();
+                foreach (var item in lsx)
+                {
+                    CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
+                }
+
+               
+
+
+
+
+
+
+
+
+            }
+
+        }
+
+        public void GetDashUser()
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                //var u = GlobVars.cuUser;
+                //lblDemEncours.Text = (from c in context.GetRequestbyStatut()
+                //                      join e in context.Employees on c.IdEmployee equals e.Idclient
+                //                      join af in context.AffectationClients on c.s
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var dc = (from c in context.Demandes
+                          join i in context.Interventions on c.Id equals i.IdDemande
+                          select new {ad =  DbFunctions.DiffMinutes(c.Datedemande, i.DateIntervention) }).ToList();
+                var d = dc.Sum(dx => dx.ad) / dc.Count;
+                string varx = string.Format("{0}:{1}", (d / 60), (d % 60));
+                MessageBox.Show(varx);
+            }
+          
         }
     }
 }

@@ -17,11 +17,8 @@ namespace ParcInfo
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-
             //frmDefault.FrmDefault deffrm = new frmDefault.FrmDefault();
             frmLogin deffrm = new frmLogin();
             //using (var db = new ParcInformatiqueEntities())

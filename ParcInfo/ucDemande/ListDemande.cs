@@ -26,7 +26,6 @@ namespace ParcInfo.ucClient
             get { return lblEmployeClient.Visible; }
             set { lblEmployeClient.Visible = value; }
         }
-
         public int Idcli;
         public string statut;
         public int employee;
@@ -68,7 +67,6 @@ namespace ParcInfo.ucClient
                 Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind);
             }
         }
-
         public ListDemande(string statutReq, int countReq, int idEmploye)
         {
             InitializeComponent();

@@ -41,7 +41,7 @@
             // 
             this.lblClient.AutoSize = true;
             this.lblClient.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.lblClient.Location = new System.Drawing.Point(101, 6);
+            this.lblClient.Location = new System.Drawing.Point(117, 6);
             this.lblClient.Name = "lblClient";
             this.lblClient.Size = new System.Drawing.Size(29, 16);
             this.lblClient.TabIndex = 7;
