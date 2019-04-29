@@ -93,28 +93,30 @@ namespace ParcInfo.ucClient
 
         public void GetAssignedClients()
         {
-            var vr = GlobVars.cuUser.AffectationClients1;
-            var cl = new List<Client>();
-            foreach (var c in vr)
+            using (var context = new ParcInformatiqueEntities())
             {
-                cl.Add(c.Client);
+                var clt = (from c in context.Clients
+                          join af in context.AffectationClients on c.id equals af.Idclient
+                          where af.Idutilisateur == GlobVars.cuUser.Id
+                          select c).ToList();
+                
+                dgClients.DataSource = Methods.ToDataTable(clt.Where(c => c.IsDeleted == 0).Select(c => new
+                {
+                    c.IdCLient,
+                    c.id,
+                    c.Nom,
+                    c.Adresse,
+                    c.Tel,
+                    c.Fax,
+                    c.Siteweb,
+                    c.Prixheur,
+                    c.Heurecontract,
+                    c.Debutcontract,
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                    dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                }).ToList());
+                myGrid();
             }
-            dgClients.DataSource = Methods.ToDataTable(cl.Where(c => c.IsDeleted == 0).Select(c => new
-            {
-                c.IdCLient,
-                c.id,
-                c.Nom,
-                c.Adresse,
-                c.Tel,
-                c.Fax,
-                c.Siteweb,
-                c.Prixheur,
-                c.Heurecontract,
-                c.Debutcontract,
-                userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
-                dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
-            }).ToList());
-            myGrid();
         }
 
         public void GetAssigneDeletedClients()

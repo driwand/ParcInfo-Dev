@@ -60,7 +60,7 @@ namespace ParcInfo.ucControls
                 }
                 else
                 {
-                    GlobVars.frmindex.ShowControl(new NewIntervention(0,int.Parse(ID),0,0));
+                    GlobVars.frmindex.ShowControl(new NewIntervention(0,0, int.Parse(ID), 0));
                 }
             }
         }

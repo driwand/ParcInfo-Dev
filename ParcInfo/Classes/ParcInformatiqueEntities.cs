@@ -12,8 +12,9 @@ namespace ParcInfo
 {
     public partial class ParcInformatiqueEntities
     {
-        #region Interven
-        
+
+        #region All Interventions
+
         public IQueryable<Intervention> GetInterventions
         {
             get
@@ -30,9 +31,10 @@ namespace ParcInfo
         }
         public IQueryable<Intervention> GetIntervenretard
         {
-            get {
+            get
+            {
                 var retarddate = DateTime.Now;
-                return GetInterventions.Where(x => x.Statut == "en cours"  && DbFunctions.AddDays(x.DateIntervention,2) < retarddate);
+                return GetInterventions.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
             }
         }
         public IQueryable<Intervention> GetIntervEncours
@@ -51,10 +53,9 @@ namespace ParcInfo
             }
         }
 
-
-        public ICollection<Intervention> GetInterventionBystatut(Label[] lbl=null, string statut = "",bool isdeleted=false)
+        public ICollection<Intervention> GetInterventionBystatut(Label[] lbl = null, string statut = "", bool isdeleted = false)
         {
-            IQueryable<Intervention> list =  GetInterventions;
+            IQueryable<Intervention> list = GetInterventions;
 
             if (isdeleted == true)
                 list = GetInterventionsDeleted;
@@ -79,7 +80,7 @@ namespace ParcInfo
                 case "":
                     list = GetInterventions;
                     break;
-                    
+
             }
             if (lbl != null)
                 lbl[0].Text = list.Count().ToString();
@@ -88,7 +89,83 @@ namespace ParcInfo
         }
         #endregion
 
-        #region Request
+        #region Assigned Interevetions
+        public IQueryable<Intervention> GetAssignedInterventions
+        {
+            get
+            {
+                return Interventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0);
+            }
+        }
+        public IQueryable<Intervention> GetAssignedInterventionsDeleted
+        {
+            get
+            {
+                return Interventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 1);
+            }
+        }
+        public IQueryable<Intervention> GetAssignedIntervenretard
+        {
+            get
+            {
+                var retarddate = DateTime.Now;
+                return GetInterventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
+            }
+        }
+        public IQueryable<Intervention> GeAssignedtIntervEncours
+        {
+            get
+            {
+                var retarddate = DateTime.Now;
+                return GetInterventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
+            }
+        }
+        public IQueryable<Intervention> GetAssignedIntervtermine
+        {
+            get
+            {
+                return GetInterventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "terminer");
+            }
+        }
+
+        public ICollection<Intervention> GetAssignedInterventionBystatut(Label[] lbl = null, string statut = "", bool isdeleted = false)
+        {
+            IQueryable<Intervention> list = GetAssignedInterventions;
+
+            if (isdeleted == true)
+                list = GetAssignedInterventionsDeleted;
+
+            switch (statut)
+            {
+                case "en cours":
+                    list = GeAssignedtIntervEncours;
+                    lbl[0].BackColor = Color.FromArgb(241, 196, 15);
+                    lbl[1].ForeColor = Color.FromArgb(241, 196, 15);
+                    break;
+                case "en retard":
+                    list = GetAssignedIntervenretard;
+                    lbl[0].BackColor = Color.FromArgb(252, 92, 101);
+                    lbl[1].ForeColor = Color.FromArgb(252, 92, 101);
+                    break;
+                case "terminer":
+                    list = GetAssignedIntervtermine;
+                    lbl[0].BackColor = Color.FromArgb(32, 191, 107);
+                    lbl[1].ForeColor = Color.FromArgb(32, 191, 107);
+                    break;
+                case "":
+                    list = GetAssignedInterventions;
+                    break;
+
+            }
+            if (lbl != null)
+                lbl[0].Text = list.Count().ToString();
+
+            return list.ToList();
+        }
+
+        #endregion
+
+        #region All Request
         public IQueryable<Demande> GetRequests
         {
             get
@@ -118,7 +195,7 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut!="en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate);
             }
         }
 
@@ -137,7 +214,7 @@ namespace ParcInfo
                 return GetRequests.Where(x => x.Statut == "terminer");
             }
         }
-        public ICollection<Demande> GetRequestbyStatut(Label[] lbl=null, string statut = "",int idEmp= 0,bool isdeleted = false)
+        public ICollection<Demande> GetRequestbyStatut(Label[] lbl = null, string statut = "", int idEmp = 0, bool isdeleted = false)
         {
             IQueryable<Demande> list = GetRequests;
 
@@ -173,7 +250,143 @@ namespace ParcInfo
             }
             if (idEmp > 0)
                 list = list.Where(c => c.IdEmployee == idEmp);
-            
+
+            if (lbl != null)
+                lbl[0].Text = list.Count().ToString();
+
+            return list.ToList();
+        }
+
+        #endregion
+
+        #region Assigned Request
+
+        public IQueryable<Demande> GetAssignedRequests
+        {
+            get
+            {
+                var v = (from d in Demandes
+                         join em in Employees on d.IdEmployee equals em.Id
+                         join c in Clients on em.Idclient equals c.id
+                         join af in AffectationClients on c.id equals af.Idclient
+                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         select d);
+
+                return v.Where(x => x.IsDeleted == 0);
+            }
+        }
+
+        public IQueryable<Demande> GetAssignedRequestsDeleted
+        {
+            get
+            {
+                var v = (from d in Demandes
+                         join em in Employees on d.IdEmployee equals em.Id
+                         join c in Clients on em.Idclient equals c.id
+                         join af in AffectationClients on c.id equals af.Idclient
+                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         select d);
+                return Demandes.Where(x => x.IsDeleted == 1);
+            }
+        }
+
+        public IQueryable<Demande> GetAssignedRequestRetard
+        {
+            get
+            {
+                var v = (from d in Demandes
+                         join em in Employees on d.IdEmployee equals em.Id
+                         join c in Clients on em.Idclient equals c.id
+                         join af in AffectationClients on c.id equals af.Idclient
+                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         select d);
+
+                var retarddate = DateTime.Now;
+                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) < retarddate);
+            }
+        }
+        public IQueryable<Demande> GetAssignedRequestCours
+        {
+            get
+            {
+                var v = (from d in Demandes
+                         join em in Employees on d.IdEmployee equals em.Id
+                         join c in Clients on em.Idclient equals c.id
+                         join af in AffectationClients on c.id equals af.Idclient
+                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         select d);
+
+                var retarddate = DateTime.Now;
+                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate);
+            }
+        }
+
+        public IQueryable<Demande> GetAssignedRequestAttent
+        {
+            get
+            {
+                var v = (from d in Demandes
+                         join em in Employees on d.IdEmployee equals em.Id
+                         join c in Clients on em.Idclient equals c.id
+                         join af in AffectationClients on c.id equals af.Idclient
+                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         select d);
+
+                return v.Where(x => x.Statut == "en attente");
+            }
+        }
+
+        public IQueryable<Demande> GetAssignedRequestTerminer
+        {
+            get
+            {
+                var v = (from d in Demandes
+                         join em in Employees on d.IdEmployee equals em.Id
+                         join c in Clients on em.Idclient equals c.id
+                         join af in AffectationClients on c.id equals af.Idclient
+                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         select d);
+
+                return v.Where(x => x.Statut == "terminer");
+            }
+        }
+        public ICollection<Demande> GetAssignedRequestbyStatut(Label[] lbl = null, string statut = "", int idEmp = 0, bool isdeleted = false)
+        {
+            IQueryable<Demande> list = GetAssignedRequests;
+
+            if (isdeleted == true)
+                list = GetAssignedRequestsDeleted;
+
+            switch (statut)
+            {
+                case "en attente":
+                    list = GetAssignedRequestAttent;
+                    lbl[0].BackColor = Color.FromArgb(250, 130, 49);
+                    lbl[1].ForeColor = Color.FromArgb(250, 130, 49);
+                    break;
+                case "en cours":
+                    list = GetAssignedRequestCours;
+                    lbl[0].BackColor = Color.FromArgb(241, 196, 15);
+                    lbl[1].ForeColor = Color.FromArgb(241, 196, 15);
+                    break;
+                case "en retard":
+                    list = GetAssignedRequestRetard;
+                    lbl[0].BackColor = Color.FromArgb(252, 92, 101);
+                    lbl[1].ForeColor = Color.FromArgb(252, 92, 101);
+                    break;
+                case "terminer":
+                    list = GetAssignedRequestTerminer;
+                    lbl[0].BackColor = Color.FromArgb(32, 191, 107);
+                    lbl[1].ForeColor = Color.FromArgb(32, 191, 107);
+                    break;
+                case "":
+                    list = GetAssignedRequests;
+                    break;
+
+            }
+            if (idEmp > 0)
+                list = list.Where(c => c.IdEmployee == idEmp);
+
             if (lbl != null)
                 lbl[0].Text = list.Count().ToString();
 
@@ -192,5 +405,6 @@ namespace ParcInfo
         }
 
         #endregion
+
     }
 }

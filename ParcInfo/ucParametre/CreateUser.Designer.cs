@@ -45,7 +45,13 @@
             this.gpRoles = new System.Windows.Forms.GroupBox();
             this.pnlRoles = new System.Windows.Forms.FlowLayoutPanel();
             this.gpClient = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.chClientSupAffectation = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chkClientAffectation = new System.Windows.Forms.CheckBox();
             this.chClientConsulterEmployee = new System.Windows.Forms.CheckBox();
             this.chClientAdd = new System.Windows.Forms.CheckBox();
@@ -85,12 +91,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnEditUser = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -293,6 +293,42 @@
             this.gpClient.TabStop = false;
             this.gpClient.Text = "Client";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.Location = new System.Drawing.Point(6, 86);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(207, 1);
+            this.panel3.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Location = new System.Drawing.Point(6, 163);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(207, 1);
+            this.panel2.TabIndex = 8;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 238);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(136, 17);
+            this.checkBox3.TabIndex = 0;
+            this.checkBox3.Text = "Supprimer un employee";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 215);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(126, 17);
+            this.checkBox2.TabIndex = 0;
+            this.checkBox2.Text = "Modifier un employee";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // chClientSupAffectation
             // 
             this.chClientSupAffectation.AutoSize = true;
@@ -302,6 +338,26 @@
             this.chClientSupAffectation.TabIndex = 0;
             this.chClientSupAffectation.Text = "Ajouter un employee";
             this.chClientSupAffectation.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(6, 141);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(184, 17);
+            this.checkBox4.TabIndex = 7;
+            this.checkBox4.Text = "Supprimer affectation d\'un produit";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 117);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(137, 17);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Modifier produit affecter";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // chkClientAffectation
             // 
@@ -404,10 +460,10 @@
             this.rbConsulterIntervention2.AutoSize = true;
             this.rbConsulterIntervention2.Location = new System.Drawing.Point(6, 40);
             this.rbConsulterIntervention2.Name = "rbConsulterIntervention2";
-            this.rbConsulterIntervention2.Size = new System.Drawing.Size(162, 17);
+            this.rbConsulterIntervention2.Size = new System.Drawing.Size(171, 17);
             this.rbConsulterIntervention2.TabIndex = 1;
             this.rbConsulterIntervention2.TabStop = true;
-            this.rbConsulterIntervention2.Text = "afficher tous les interventions";
+            this.rbConsulterIntervention2.Text = "Consulter tous les interventions";
             this.rbConsulterIntervention2.UseVisualStyleBackColor = true;
             // 
             // rbConsulterIntervention1
@@ -415,10 +471,10 @@
             this.rbConsulterIntervention1.AutoSize = true;
             this.rbConsulterIntervention1.Location = new System.Drawing.Point(6, 17);
             this.rbConsulterIntervention1.Name = "rbConsulterIntervention1";
-            this.rbConsulterIntervention1.Size = new System.Drawing.Size(185, 17);
+            this.rbConsulterIntervention1.Size = new System.Drawing.Size(194, 17);
             this.rbConsulterIntervention1.TabIndex = 0;
             this.rbConsulterIntervention1.TabStop = true;
-            this.rbConsulterIntervention1.Text = "afficher les intervention concerner";
+            this.rbConsulterIntervention1.Text = "Consulter les intervention concerner";
             this.rbConsulterIntervention1.UseVisualStyleBackColor = true;
             // 
             // chInterventionEdit
@@ -458,10 +514,10 @@
             this.rbConsulterDemande2.AutoSize = true;
             this.rbConsulterDemande2.Location = new System.Drawing.Point(6, 40);
             this.rbConsulterDemande2.Name = "rbConsulterDemande2";
-            this.rbConsulterDemande2.Size = new System.Drawing.Size(151, 17);
+            this.rbConsulterDemande2.Size = new System.Drawing.Size(160, 17);
             this.rbConsulterDemande2.TabIndex = 1;
             this.rbConsulterDemande2.TabStop = true;
-            this.rbConsulterDemande2.Text = "afficher tous les demandes";
+            this.rbConsulterDemande2.Text = "Consulter tous les demandes";
             this.rbConsulterDemande2.UseVisualStyleBackColor = true;
             // 
             // rbConsulterDemande1
@@ -469,10 +525,10 @@
             this.rbConsulterDemande1.AutoSize = true;
             this.rbConsulterDemande1.Location = new System.Drawing.Point(6, 21);
             this.rbConsulterDemande1.Name = "rbConsulterDemande1";
-            this.rbConsulterDemande1.Size = new System.Drawing.Size(174, 17);
+            this.rbConsulterDemande1.Size = new System.Drawing.Size(183, 17);
             this.rbConsulterDemande1.TabIndex = 0;
             this.rbConsulterDemande1.TabStop = true;
-            this.rbConsulterDemande1.Text = "afficher les demande concerner";
+            this.rbConsulterDemande1.Text = "Consulter les demande concerner";
             this.rbConsulterDemande1.UseVisualStyleBackColor = true;
             // 
             // chDemandeDel
@@ -514,10 +570,10 @@
             this.rbConsulterProduit.AutoSize = true;
             this.rbConsulterProduit.Location = new System.Drawing.Point(6, 19);
             this.rbConsulterProduit.Name = "rbConsulterProduit";
-            this.rbConsulterProduit.Size = new System.Drawing.Size(139, 17);
+            this.rbConsulterProduit.Size = new System.Drawing.Size(148, 17);
             this.rbConsulterProduit.TabIndex = 26;
             this.rbConsulterProduit.TabStop = true;
-            this.rbConsulterProduit.Text = "afficher tous les produits";
+            this.rbConsulterProduit.Text = "Consulter tous les produits";
             this.rbConsulterProduit.UseVisualStyleBackColor = true;
             // 
             // chProduitEdit
@@ -710,62 +766,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 117);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(137, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Modifier produit affecter";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 215);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(126, 17);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "Modifier un employee";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(6, 238);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(136, 17);
-            this.checkBox3.TabIndex = 0;
-            this.checkBox3.Text = "Supprimer un employee";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(6, 163);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(207, 1);
-            this.panel2.TabIndex = 8;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Silver;
-            this.panel3.Location = new System.Drawing.Point(6, 86);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(207, 1);
-            this.panel3.TabIndex = 9;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 141);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(184, 17);
-            this.checkBox4.TabIndex = 7;
-            this.checkBox4.Text = "Supprimer affectation d\'un produit";
-            this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // CreateUser
             // 
