@@ -407,8 +407,8 @@ namespace ParcInfo.Classes
                 { new string []{ "Supprimer un employee" }, new string []{ "btnDelEmp" } },
 
                 //Interevntion
-                { new string []{ "Consulter les intervention concerner", "Consulter tous les interventions" },
-                  new string []{ "DropIntervention" } },
+                //{ new string []{ "Consulter les intervention concerner", "Consulter tous les interventions" },
+                //  new string []{ "DropIntervention" } },
             };
 
             Dictionary<string, Control> cs = new Dictionary<string, Control>();

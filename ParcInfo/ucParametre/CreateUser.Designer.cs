@@ -525,10 +525,10 @@
             this.rbConsulterDemande1.AutoSize = true;
             this.rbConsulterDemande1.Location = new System.Drawing.Point(6, 21);
             this.rbConsulterDemande1.Name = "rbConsulterDemande1";
-            this.rbConsulterDemande1.Size = new System.Drawing.Size(183, 17);
+            this.rbConsulterDemande1.Size = new System.Drawing.Size(188, 17);
             this.rbConsulterDemande1.TabIndex = 0;
             this.rbConsulterDemande1.TabStop = true;
-            this.rbConsulterDemande1.Text = "Consulter les demande concerner";
+            this.rbConsulterDemande1.Text = "Consulter les demandes concerner";
             this.rbConsulterDemande1.UseVisualStyleBackColor = true;
             // 
             // chDemandeDel

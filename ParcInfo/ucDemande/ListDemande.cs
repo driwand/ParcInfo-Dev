@@ -75,9 +75,13 @@ namespace ParcInfo.ucClient
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     employee = idEmploye;
+                    GetRoleName();
                     if (countReq == 0 && statutReq == "" && idEmploye == 0)
                     {
                         if (GlobVars.cuUser.isAdmin == 1)
+                            GetAllRequest();
+                        else
+                            if (RoleName == "Consulter tous les demandes".ToLower())
                             GetAllRequest();
                         else
                             GetAllRequest(true);
@@ -89,7 +93,10 @@ namespace ParcInfo.ucClient
                         if (GlobVars.cuUser.isAdmin == 1)
                             GetRequestByStatut(statut, idEmploye);
                         else
-                            GetRequestByStatut(statut, idEmploye,true);
+                            if (RoleName == "Consulter tous les demandes".ToLower())
+                            GetRequestByStatut(statut, idEmploye);
+                        else
+                            GetRequestByStatut(statut, idEmploye, true);
                     }
 
                     HideColumns(new string[] { "id", "IdClient" }, dgDemande);
@@ -116,7 +123,7 @@ namespace ParcInfo.ucClient
         {
             var t = GlobVars.cuUser.RoleUtilisateurs1.Where(x => x.IsDeleted == 0);
             foreach (var v in t)
-                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("intervention".ToLower()) && v.IsDeleted != 1)
+                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("demande".ToLower()) && v.IsDeleted != 1)
                     RoleName = v.Nom.ToLower();
         }
 
@@ -173,13 +180,12 @@ namespace ParcInfo.ucClient
             }
         }
 
-        public void GetRequestByStatut(string statutReq,int idEmploye, bool assigned = false)
+        public void GetRequestByStatut(string statutReq, int idEmploye, bool assigned = false)
         {
             using (var context = new ParcInformatiqueEntities())
             {
                 if (assigned == false)
                 {
-
                     var lsreq = (from d in context.GetRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
                                  select new
                                  {
@@ -199,7 +205,6 @@ namespace ParcInfo.ucClient
                 }
                 else
                 {
-
                     var lsreq = (from d in context.GetAssignedRequestbyStatut(new Label[] { lblTotalRequest, lblListRequest }, statutReq, idEmploye)
                                  select new
                                  {
@@ -313,32 +318,40 @@ namespace ParcInfo.ucClient
         {
             using (var context = new ParcInformatiqueEntities())
             {
+                int hasall = 0;
                 if (GlobVars.cuUser.isAdmin == 0)
                 {
-                    var ls = (from d in context.GetAssignedRequestbyStatut(null, null, idemployee, isdeleted)
-                              select new
-                              {
-                                  d.Id,
-                                  d.IdReq,
-                                  d.Datedemande,
-                                  Desc = Methods.GetDesc(d.Description_d, 4),
-                                  d.Employee.Nom,
-                                  d.Getstatut,
-                                  IdClient = d.Employee.Client.id,
-                                  d.Modifierpar,
-                                  Edited = d.Utilisateur.Nom,
-                                  d.Datemodification
-                              }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                    if (RoleName == "Consulter tous les demandes".ToLower())
+                    {
+                        hasall = 1;
+                    }
+                    if (hasall == 0)
+                    {
+                        var ls = (from d in context.GetAssignedRequestbyStatut(null, null, idemployee, isdeleted)
+                                  select new
+                                  {
+                                      d.Id,
+                                      d.IdReq,
+                                      d.Datedemande,
+                                      Desc = Methods.GetDesc(d.Description_d, 4),
+                                      d.Employee.Nom,
+                                      d.Getstatut,
+                                      IdClient = d.Employee.Client.id,
+                                      d.Modifierpar,
+                                      Edited = d.Utilisateur.Nom,
+                                      d.Datemodification
+                                  }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
-                    if (idclt != 0)
-                        ls = ls.Where(i => i.IdClient == idclt).ToList();
+                        if (idclt != 0)
+                            ls = ls.Where(i => i.IdClient == idclt).ToList();
 
-                    if (statut != null)
-                        ls = ls.Where(i => i.Getstatut == statut).ToList();
+                        if (statut != null)
+                            ls = ls.Where(i => i.Getstatut == statut).ToList();
 
-                    Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+                        Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, ls);
+                    }
                 }
-                else
+                if (GlobVars.cuUser.isAdmin == 1 || hasall == 1)
                 {
                     var ls = (from d in context.GetRequestbyStatut(null, null, idemployee, isdeleted)
                               select new
