@@ -21,6 +21,6 @@ namespace ParcInfo
         public static Utilisateur cuUser;
         public static UserControl OldControl;
 
-
+        public static List<Control> lsback = new List<Control>();
     }
 }

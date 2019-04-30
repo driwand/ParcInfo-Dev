@@ -225,38 +225,7 @@ namespace ParcInfo.ucInterevntion
 
         private void dgIntervention_DoubleClick(object sender, EventArgs e)
         {
-            if (dgIntervention.SelectedRows.Count > 0)
-            {
-                int index = dgIntervention.CurrentRow.Index;
 
-                int selectedInt = int.Parse(dgIntervention.Rows[index].Cells["id"].Value.ToString());
-
-                if (dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString() != "")
-                {
-                    GlobVars.frmBack = this;
-
-                    GlobVars.frmindex.ShowControl(
-                        new NewIntervention(
-                            0,
-                            0,
-                            selectedInt,
-                            int.Parse(dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString()))
-                            );
-                }
-                else
-                {
-                    GlobVars.frmBack = this;
-
-                    GlobVars.frmindex.ShowControl(
-                        new NewIntervention(
-                            0,
-                            0,
-                            selectedInt,
-                            int.Parse(dgIntervention.Rows[index].Cells["Idclient"].Value.ToString()))
-                            );
-                }
-
-            }
         }
         private void dgIntervention_Click(object sender, EventArgs e)
         {
@@ -379,6 +348,51 @@ namespace ParcInfo.ucInterevntion
         private void lblEdited_Click(object sender, EventArgs e)
         {
             GlobVars.frmindex.ShowControl(new CardUsers(idUser));
+        }
+
+        private void dgIntervention_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                int index = dgIntervention.CurrentRow.Index;
+
+                int selectedInt = int.Parse(dgIntervention.Rows[index].Cells["id"].Value.ToString());
+
+                if (dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString() != "")
+                {
+                    GlobVars.frmBack = this;
+
+                    GlobVars.frmindex.ShowControl(
+                        new NewIntervention(
+                            0,
+                            0,
+                            selectedInt,
+                            int.Parse(dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString()))
+                            );
+                }
+                else
+                {
+                    GlobVars.frmBack = this;
+
+                    GlobVars.frmindex.ShowControl(
+                        new NewIntervention(
+                            0,
+                            0,
+                            selectedInt,
+                            int.Parse(dgIntervention.Rows[index].Cells["Idclient"].Value.ToString()))
+                            );
+                }
+
+            }
+        }
+
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            if (dgIntervention.Rows.Count == 0)
+            {
+                lblEditedDate.Text = "aucun";
+                lblEditedDate.Text = "**/**/****";
+            }
         }
     }
 }

@@ -51,10 +51,7 @@ namespace ParcInfo.ucClient
                                  Desc = Methods.GetDesc(d.Description_d, 4),
                                  d.Employee.Nom,
                                  d.Getstatut,
-                                 IdClient = d.Employee.Client.id,
-                                 d.Modifierpar,
-                                 Edited = d.Utilisateur.Nom,
-                                 d.Datemodification
+                                 IdClient = d.Employee.Client.id
                              }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
 
@@ -150,10 +147,7 @@ namespace ParcInfo.ucClient
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
                                      d.Getstatut,
-                                     IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
-                                     Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "",
-                                     Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "",
-                                     Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : ""
+                                     IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : ""
                                  }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
@@ -169,10 +163,7 @@ namespace ParcInfo.ucClient
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
                                      d.Getstatut,
-                                     IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
-                                     Modifierpar = d.Modifierpar != null ? d.Modifierpar.ToString() : "",
-                                     Edited = d.Utilisateur.Nom != null ? d.Utilisateur.Nom.ToString() : "",
-                                     Datemodification = d.Datemodification != null ? d.Datemodification.ToString() : ""
+                                     IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : ""
                                  }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
@@ -195,10 +186,7 @@ namespace ParcInfo.ucClient
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      d.Employee.Nom,
                                      d.Getstatut,
-                                     IdClient = d.Employee.Client.id,
-                                     d.Modifierpar,
-                                     Edited = d.Utilisateur.Nom,
-                                     d.Datemodification
+                                     IdClient = d.Employee.Client.id
                                  }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
@@ -214,10 +202,7 @@ namespace ParcInfo.ucClient
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      d.Employee.Nom,
                                      d.Getstatut,
-                                     IdClient = d.Employee.Client.id,
-                                     d.Modifierpar,
-                                     Edited = d.Utilisateur.Nom,
-                                     d.Datemodification
+                                     IdClient = d.Employee.Client.id
                                  }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
@@ -229,11 +214,6 @@ namespace ParcInfo.ucClient
         private void ListRequest_Load(object sender, EventArgs e)
         {
             //ControlsClass.CreateRadiusBorder(this);
-        }
-
-        private void dgDemande_DoubleClick(object sender, EventArgs e)
-        {
-            DetailsRequest();
         }
 
         private void btnTraiter_Click(object sender, EventArgs e)
@@ -319,6 +299,16 @@ namespace ParcInfo.ucClient
             using (var context = new ParcInformatiqueEntities())
             {
                 int hasall = 0;
+                if (isdeleted == true)
+                {
+                    btnTraiter.Enabled = false;
+                    btnTraiter.ForeColor = Color.White;
+                }
+                else
+                {
+                    btnTraiter.Enabled = true;
+                }
+                    
                 if (GlobVars.cuUser.isAdmin == 0)
                 {
                     if (RoleName == "Consulter tous les demandes".ToLower())
@@ -336,10 +326,7 @@ namespace ParcInfo.ucClient
                                       Desc = Methods.GetDesc(d.Description_d, 4),
                                       d.Employee.Nom,
                                       d.Getstatut,
-                                      IdClient = d.Employee.Client.id,
-                                      d.Modifierpar,
-                                      Edited = d.Utilisateur.Nom,
-                                      d.Datemodification
+                                      IdClient = d.Employee.Client.id
                                   }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                         if (idclt != 0)
@@ -362,10 +349,7 @@ namespace ParcInfo.ucClient
                                   Desc = Methods.GetDesc(d.Description_d, 4),
                                   d.Employee.Nom,
                                   d.Getstatut,
-                                  IdClient = d.Employee.Client.id,
-                                  d.Modifierpar,
-                                  Edited = d.Utilisateur.Nom,
-                                  d.Datemodification
+                                  IdClient = d.Employee.Client.id
                               }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
 
                     if (idclt != 0)
@@ -384,31 +368,10 @@ namespace ParcInfo.ucClient
             GlobVars.frmindex.ShowControl(new CardUsers(iduser));
         }
 
-        private void dgDemande_Paint(object sender, PaintEventArgs e)
+        private void dgDemande_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            GetDetails();
-        }
-
-        private void dgDemande_Click(object sender, EventArgs e)
-        {
-            GetDetails();
-        }
-
-        public void GetDetails()
-        {
-            if (dgDemande.SelectedRows.Count > 0)
-            {
-                int index = dgDemande.CurrentRow.Index;
-                lblEdited.Text = dgDemande.Rows[index].Cells["Edited"].Value.ToString();
-                iduser = Convert.ToInt32(dgDemande.Rows[index].Cells["Modifierpar"].Value);
-
-                int loc = 333;
-                loc += lblEdited.Width;
-                lblMod.Location = new Point(loc, 459);
-
-                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
-                lblEditedDate.Text = dgDemande.Rows[index].Cells["Datemodification"].Value.ToString();
-            }
+            if (e.RowIndex > -1)
+                DetailsRequest();
         }
     }
 }

@@ -4,15 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a8c9efdaaacf4450bd47be52dfaeb4c7" Name="Diagram1" ZoomLevel="93">
+      <Diagram DiagramId="45c23b79df05494bb42b37608454cb28" Name="Diagram1" ZoomLevel="85">
         <EntityTypeShape EntityType="ParcInformatiqueModel.AffectationClient" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Client" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Demande" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Demande" Width="1.5" PointX="9.75" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Departement" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Employee" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Installer" Width="1.5" PointX="16.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Installer" Width="1.5" PointX="16.5" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Intervention" Width="1.5" PointX="12" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.observation" Width="1.5" PointX="14.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.ParametreParcinfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Produit" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitClient" Width="1.5" PointX="14.25" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ProduitUtiliser" Width="1.5" PointX="19.5" PointY="12.625" IsExpanded="true" />
@@ -20,9 +21,8 @@
         <EntityTypeShape EntityType="ParcInformatiqueModel.RoleUtilisateur" Width="1.5" PointX="3" PointY="25" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.TypeProduit" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.UserActivity" Width="1.5" PointX="3" PointY="28.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.Utilisateur" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Utilisateur" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.ValeurProp" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParcInformatiqueModel.ParametreParcinfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Affectati__Creep__276EDEB3" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Affectati__Idcli__239E4DCF" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Affectati__Iduti__24927208" ManuallyRouted="false" />
@@ -32,38 +32,37 @@
         <AssociationConnector Association="ParcInformatiqueModel.FK__Departeme__IdCLi__2C3393D0" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Employee__Idclie__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Intervent__Idcli__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Idcli__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Idcli__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Demande__IdEmplo__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__Demande__Modifie__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Intervent__IdDem__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Employee__IdDep__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Employee__Creepa__33D4B598" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Employee__Modifi__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__IdEmp__6EF57B66" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Creep__693CA210" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Idhar__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Idpro__6754599E" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Modif__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__IdEmp__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Creep__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Idhar__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Idpro__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__Installer__Modif__693CA210" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Intervent__Iduti__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Intervent__Modif__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__observati__IdInt__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__ParIn__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__ParIn__5FB337D6" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Produit__Creepar__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Produit__IdType__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Produit__Modifie__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Idpro__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Idpro__5EBF139D" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__ValeurPro__IdPro__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Creep__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Modif__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__IdPro__6E01572D" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__Creep__70DDC3D8" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__Modif__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Creep__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitCl__Modif__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__IdPro__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__Creep__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__ProduitUt__Modif__70DDC3D8" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Propriete__idTyp__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__ValeurPro__IdPro__46E78A0C" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__Creep__1920BF5C" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__IdUti__173876EA" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__RoleUtili__Modif__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="ParcInformatiqueModel.FK__UserActiv__Iduse__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="ParcInformatiqueModel.FK__UserActiv__Iduse__07C12930" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Creep__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Modif__1367E606" ManuallyRouted="false" />
       </Diagram>

@@ -172,12 +172,6 @@
     <Compile Include="RoleUtilisateur.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModelParcInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="TypeProduit.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
@@ -799,6 +793,15 @@
     <None Include="Resources\dd %282%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\detailx.png" />
+    <None Include="Resources\px161.png" />
+    <None Include="Resources\px16.png" />
+    <None Include="Resources\Plus_2x0zpx1.png" />
+    <None Include="Resources\Plus_2x0zpx.png" />
+    <None Include="Resources\Plus_20zpx.png" />
+    <None Include="Resources\Plus_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelParcInfo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
@@ -809,13 +812,6 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\detailx.png" />
-    <None Include="Resources\px161.png" />
-    <None Include="Resources\px16.png" />
-    <None Include="Resources\Plus_2x0zpx1.png" />
-    <None Include="Resources\Plus_2x0zpx.png" />
-    <None Include="Resources\Plus_20zpx.png" />
-    <None Include="Resources\Plus_20px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

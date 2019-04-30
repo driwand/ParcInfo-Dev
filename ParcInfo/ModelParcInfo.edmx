@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ParcInformatiqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ParcInformatiqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AffectationClient">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,12 +45,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Datedemande" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="Datedemande" Type="datetime" />
           <Property Name="Description_d" Type="text" />
           <Property Name="Statut" Type="varchar" MaxLength="30" />
           <Property Name="IdEmployee" Type="int" />
-          <Property Name="Datemodification" Type="datetime" />
-          <Property Name="Modifierpar" Type="int" />
           <Property Name="IsDeleted" Type="int" />
         </EntityType>
         <EntityType Name="Departement">
@@ -71,7 +69,7 @@
           <Property Name="Prenom" Type="varchar" MaxLength="30" />
           <Property Name="Tel" Type="varchar" MaxLength="30" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="Password_e" Type="text" />
+          <Property Name="Password_e" Type="varchar(max)" />
           <Property Name="IsResponsable" Type="int" />
           <Property Name="IdDep" Type="int" />
           <Property Name="Idclient" Type="int" />
@@ -335,18 +333,6 @@
             </Principal>
             <Dependent Role="Demande">
               <PropertyRef Name="IdEmployee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Demande__Modifie__4CA06362">
-          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
-          <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Utilisateur">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Demande">
-              <PropertyRef Name="Modifierpar" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -770,37 +756,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ParcInformatiqueModelStoreContainer">
           <EntitySet Name="AffectationClient" EntityType="Self.AffectationClient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
@@ -846,10 +801,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__Demande__IdEmplo__4BAC3F29" Association="Self.FK__Demande__IdEmplo__4BAC3F29">
             <End Role="Employee" EntitySet="Employee" />
-            <End Role="Demande" EntitySet="Demande" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Demande__Modifie__4CA06362" Association="Self.FK__Demande__Modifie__4CA06362">
-            <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Demande" EntitySet="Demande" />
           </AssociationSet>
           <AssociationSet Name="FK__Departeme__IdCLi__2C3393D0" Association="Self.FK__Departeme__IdCLi__2C3393D0">
@@ -993,7 +944,8 @@
             <End Role="ValeurProp" EntitySet="ValeurProp" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ParcInformatiqueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1048,15 +1000,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Datedemande" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Datedemande" Type="DateTime" Precision="3" />
           <Property Name="Description_d" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Statut" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="IdEmployee" Type="Int32" />
-          <Property Name="Datemodification" Type="DateTime" Precision="3" />
-          <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Demande__IdEmplo__4BAC3F29" FromRole="Demande" ToRole="Employee" />
-          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Demande__Modifie__4CA06362" FromRole="Demande" ToRole="Utilisateur" />
           <NavigationProperty Name="Interventions" Relationship="Self.FK__Intervent__IdDem__52593CB8" FromRole="Demande" ToRole="Intervention" />
         </EntityType>
         <EntityType Name="Departement">
@@ -1107,7 +1056,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Installer__Creep__68487DD7" FromRole="Installer" ToRole="Utilisateur" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__Installer__Idhar__656C112C" FromRole="Installer" ToRole="ProduitClient" />
           <NavigationProperty Name="ProduitClient1" Relationship="Self.FK__Installer__Idpro__66603565" FromRole="Installer" ToRole="ProduitClient" />
@@ -1130,7 +1079,7 @@
           <Property Name="Idclient" Type="Int32" />
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Intervent__Idcli__5441852A" FromRole="Intervention" ToRole="Client" />
           <NavigationProperty Name="Demande" Relationship="Self.FK__Intervent__IdDem__52593CB8" FromRole="Intervention" ToRole="Demande" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Intervent__Iduti__534D60F1" FromRole="Intervention" ToRole="Utilisateur" />
@@ -1147,10 +1096,20 @@
           <Property Name="IdUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TypeOb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Textobservation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Dateobservation" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Dateobservation" Type="DateTime" Precision="3" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Detailproduit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Intervention" Relationship="Self.FK__observati__IdInt__59063A47" FromRole="observation" ToRole="Intervention" />
+        </EntityType>
+        <EntityType Name="ParametreParcinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Nomapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Logoapp" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Reatrddemande" Type="Int32" />
+          <Property Name="Iconapp" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="Produit">
           <Key>
@@ -1187,7 +1146,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK__ProduitCl__Idcli__5DCAEF64" FromRole="ProduitClient" ToRole="Client" />
           <NavigationProperty Name="Installers" Relationship="Self.FK__Installer__Idhar__656C112C" FromRole="ProduitClient" ToRole="Installer" />
           <NavigationProperty Name="Installers1" Relationship="Self.FK__Installer__Idpro__66603565" FromRole="ProduitClient" ToRole="Installer" />
@@ -1212,7 +1171,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__ProduitUt__IdEmp__6E01572D" FromRole="ProduitUtiliser" ToRole="Employee" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__ProduitUt__IdPro__6D0D32F4" FromRole="ProduitUtiliser" ToRole="ProduitClient" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__ProduitUt__Creep__6FE99F9F" FromRole="ProduitUtiliser" ToRole="Utilisateur" />
@@ -1277,6 +1236,7 @@
           <Property Name="Ville" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password_u" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PassChanged" Type="Int32" />
           <Property Name="isAdmin" Type="Int32" />
           <Property Name="Datecreation" Type="DateTime" Precision="3" />
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
@@ -1288,7 +1248,6 @@
           <NavigationProperty Name="AffectationClients2" Relationship="Self.FK__Affectati__Modif__267ABA7A" FromRole="Utilisateur" ToRole="AffectationClient" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__Client__Creepar__1ED998B2" FromRole="Utilisateur" ToRole="Client" />
           <NavigationProperty Name="Clients1" Relationship="Self.FK__Client__Modifier__1FCDBCEB" FromRole="Utilisateur" ToRole="Client" />
-          <NavigationProperty Name="Demandes" Relationship="Self.FK__Demande__Modifie__4CA06362" FromRole="Utilisateur" ToRole="Demande" />
           <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Creepa__33D4B598" FromRole="Utilisateur" ToRole="Employee" />
           <NavigationProperty Name="Employees1" Relationship="Self.FK__Employee__Modifi__34C8D9D1" FromRole="Utilisateur" ToRole="Employee" />
           <NavigationProperty Name="Installers" Relationship="Self.FK__Installer__Creep__68487DD7" FromRole="Utilisateur" ToRole="Installer" />
@@ -1309,7 +1268,6 @@
           <NavigationProperty Name="Utilisateur2" Relationship="Self.FK__Utilisate__Creep__1273C1CD" FromRole="Utilisateur1" ToRole="Utilisateur" />
           <NavigationProperty Name="Utilisateur11" Relationship="Self.FK__Utilisate__Modif__1367E606" FromRole="Utilisateur" ToRole="Utilisateur1" />
           <NavigationProperty Name="Utilisateur3" Relationship="Self.FK__Utilisate__Modif__1367E606" FromRole="Utilisateur1" ToRole="Utilisateur" />
-          <Property Name="PassChanged" Type="Int32" />
         </EntityType>
         <EntityType Name="ValeurProp">
           <Key>
@@ -1451,18 +1409,6 @@
             </Principal>
             <Dependent Role="Demande">
               <PropertyRef Name="IdEmployee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Demande__Modifie__4CA06362">
-          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
-          <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Utilisateur">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Demande">
-              <PropertyRef Name="Modifierpar" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1847,6 +1793,7 @@
           <EntitySet Name="Installers" EntityType="Self.Installer" />
           <EntitySet Name="Interventions" EntityType="Self.Intervention" />
           <EntitySet Name="observations" EntityType="Self.observation" />
+          <EntitySet Name="ParametreParcinfoes" EntityType="Self.ParametreParcinfo" />
           <EntitySet Name="Produits" EntityType="Self.Produit" />
           <EntitySet Name="ProduitClients" EntityType="Self.ProduitClient" />
           <EntitySet Name="ProduitUtilisers" EntityType="Self.ProduitUtiliser" />
@@ -1898,10 +1845,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__Demande__IdEmplo__4BAC3F29" Association="Self.FK__Demande__IdEmplo__4BAC3F29">
             <End Role="Employee" EntitySet="Employees" />
-            <End Role="Demande" EntitySet="Demandes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Demande__Modifie__4CA06362" Association="Self.FK__Demande__Modifie__4CA06362">
-            <End Role="Utilisateur" EntitySet="Utilisateurs" />
             <End Role="Demande" EntitySet="Demandes" />
           </AssociationSet>
           <AssociationSet Name="FK__Intervent__IdDem__52593CB8" Association="Self.FK__Intervent__IdDem__52593CB8">
@@ -2028,59 +1971,7 @@
             <End Role="Utilisateur" EntitySet="Utilisateurs" />
             <End Role="Utilisateur1" EntitySet="Utilisateurs" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ParcInformatiqueModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ParcInformatiqueModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="ParametreParcinfoes" EntityType="ParcInformatiqueModel.ParametreParcinfo" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="ParametreParcinfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Nomapp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Logoapp" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Reatrddemande" Type="Int32" />
-          <Property Name="Iconapp" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2130,8 +2021,6 @@
                 <ScalarProperty Name="Description_d" ColumnName="Description_d" />
                 <ScalarProperty Name="Statut" ColumnName="Statut" />
                 <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
-                <ScalarProperty Name="Datemodification" ColumnName="Datemodification" />
-                <ScalarProperty Name="Modifierpar" ColumnName="Modifierpar" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2212,6 +2101,17 @@
                 <ScalarProperty Name="Dateobservation" ColumnName="Dateobservation" />
                 <ScalarProperty Name="Detailproduit" ColumnName="Detailproduit" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParametreParcinfoes">
+            <EntityTypeMapping TypeName="ParcInformatiqueModel.ParametreParcinfo">
+              <MappingFragment StoreEntitySet="ParametreParcinfo">
+                <ScalarProperty Name="Nomapp" ColumnName="Nomapp" />
+                <ScalarProperty Name="Logoapp" ColumnName="Logoapp" />
+                <ScalarProperty Name="Reatrddemande" ColumnName="Reatrddemande" />
+                <ScalarProperty Name="Iconapp" ColumnName="Iconapp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2311,7 +2211,6 @@
           <EntitySetMapping Name="Utilisateurs">
             <EntityTypeMapping TypeName="ParcInformatiqueModel.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
-                <ScalarProperty Name="PassChanged" ColumnName="PassChanged" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />
@@ -2320,6 +2219,7 @@
                 <ScalarProperty Name="Ville" ColumnName="Ville" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password_u" ColumnName="Password_u" />
+                <ScalarProperty Name="PassChanged" ColumnName="PassChanged" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
                 <ScalarProperty Name="Datecreation" ColumnName="Datecreation" />
                 <ScalarProperty Name="Datemodification" ColumnName="Datemodification" />
@@ -2336,41 +2236,6 @@
                 <ScalarProperty Name="Valeur" ColumnName="Valeur" />
                 <ScalarProperty Name="IdProduit" ColumnName="IdProduit" />
                 <ScalarProperty Name="IdPropriete" ColumnName="IdPropriete" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ParcInformatiqueModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ParcInformatiqueModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ParcInformatiqueModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ParcInformatiqueModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ParcInformatiqueModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ParcInformatiqueModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ParcInformatiqueModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ParcInformatiqueModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ParcInformatiqueModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="ParametreParcinfoes">
-            <EntityTypeMapping TypeName="ParcInformatiqueModel.ParametreParcinfo">
-              <MappingFragment StoreEntitySet="ParametreParcinfo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Iconapp" ColumnName="Iconapp" />
-                <ScalarProperty Name="Reatrddemande" ColumnName="Reatrddemande" />
-                <ScalarProperty Name="Logoapp" ColumnName="Logoapp" />
-                <ScalarProperty Name="Nomapp" ColumnName="Nomapp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

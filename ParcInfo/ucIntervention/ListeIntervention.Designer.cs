@@ -53,7 +53,7 @@
             this.groupBox2.Controls.Add(this.btnFind);
             this.groupBox2.Controls.Add(this.txtFind);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Location = new System.Drawing.Point(14, 48);
+            this.groupBox2.Location = new System.Drawing.Point(14, 45);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(863, 50);
             this.groupBox2.TabIndex = 116;
@@ -78,6 +78,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(683, 20);
             this.txtFind.TabIndex = 42;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // label15
             // 
@@ -92,7 +93,7 @@
             // 
             this.lblSource.AutoSize = true;
             this.lblSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSource.Location = new System.Drawing.Point(209, 15);
+            this.lblSource.Location = new System.Drawing.Point(209, 12);
             this.lblSource.Name = "lblSource";
             this.lblSource.Size = new System.Drawing.Size(44, 13);
             this.lblSource.TabIndex = 115;
@@ -102,7 +103,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.panel1.Location = new System.Drawing.Point(14, 40);
+            this.panel1.Location = new System.Drawing.Point(14, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(863, 2);
             this.panel1.TabIndex = 114;
@@ -112,7 +113,7 @@
             this.lblTitleIntervention.AutoSize = true;
             this.lblTitleIntervention.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleIntervention.ForeColor = System.Drawing.Color.Black;
-            this.lblTitleIntervention.Location = new System.Drawing.Point(55, 14);
+            this.lblTitleIntervention.Location = new System.Drawing.Point(55, 11);
             this.lblTitleIntervention.Name = "lblTitleIntervention";
             this.lblTitleIntervention.Size = new System.Drawing.Size(151, 15);
             this.lblTitleIntervention.TabIndex = 111;
@@ -123,11 +124,12 @@
             this.dgIntervention.AllowUserToAddRows = false;
             this.dgIntervention.AllowUserToDeleteRows = false;
             this.dgIntervention.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgIntervention.Location = new System.Drawing.Point(14, 104);
+            this.dgIntervention.Location = new System.Drawing.Point(14, 101);
             this.dgIntervention.Name = "dgIntervention";
             this.dgIntervention.ReadOnly = true;
             this.dgIntervention.Size = new System.Drawing.Size(863, 347);
             this.dgIntervention.TabIndex = 112;
+            this.dgIntervention.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgIntervention_CellDoubleClick);
             this.dgIntervention.Click += new System.EventHandler(this.dgIntervention_Click);
             this.dgIntervention.Paint += new System.Windows.Forms.PaintEventHandler(this.dgIntervention_Paint);
             this.dgIntervention.DoubleClick += new System.EventHandler(this.dgIntervention_DoubleClick);
@@ -137,7 +139,7 @@
             this.lblTotalIntervention.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.lblTotalIntervention.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalIntervention.ForeColor = System.Drawing.Color.White;
-            this.lblTotalIntervention.Location = new System.Drawing.Point(22, 13);
+            this.lblTotalIntervention.Location = new System.Drawing.Point(22, 10);
             this.lblTotalIntervention.Name = "lblTotalIntervention";
             this.lblTotalIntervention.Size = new System.Drawing.Size(21, 18);
             this.lblTotalIntervention.TabIndex = 52;
@@ -147,7 +149,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(191, 458);
+            this.panel2.Location = new System.Drawing.Point(191, 455);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 15);
             this.panel2.TabIndex = 136;
@@ -155,7 +157,7 @@
             // lblEditedDate
             // 
             this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(456, 459);
+            this.lblEditedDate.Location = new System.Drawing.Point(456, 456);
             this.lblEditedDate.Name = "lblEditedDate";
             this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
             this.lblEditedDate.TabIndex = 134;
@@ -175,7 +177,7 @@
             this.lblEdited.AutoSize = true;
             this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblEdited.ForeColor = System.Drawing.Color.Blue;
-            this.lblEdited.Location = new System.Drawing.Point(333, 459);
+            this.lblEdited.Location = new System.Drawing.Point(333, 456);
             this.lblEdited.Name = "lblEdited";
             this.lblEdited.Size = new System.Drawing.Size(43, 13);
             this.lblEdited.TabIndex = 137;
@@ -186,7 +188,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(203, 459);
+            this.label8.Location = new System.Drawing.Point(203, 456);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 13);
             this.label8.TabIndex = 132;
@@ -195,7 +197,7 @@
             // chDelIntr
             // 
             this.chDelIntr.AutoSize = true;
-            this.chDelIntr.Location = new System.Drawing.Point(14, 457);
+            this.chDelIntr.Location = new System.Drawing.Point(14, 454);
             this.chDelIntr.Name = "chDelIntr";
             this.chDelIntr.Size = new System.Drawing.Size(171, 17);
             this.chDelIntr.TabIndex = 131;
@@ -206,7 +208,7 @@
             // lblMod
             // 
             this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(382, 459);
+            this.lblMod.Location = new System.Drawing.Point(382, 456);
             this.lblMod.Name = "lblMod";
             this.lblMod.Size = new System.Drawing.Size(68, 13);
             this.lblMod.TabIndex = 138;
