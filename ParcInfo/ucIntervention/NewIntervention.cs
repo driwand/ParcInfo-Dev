@@ -146,9 +146,7 @@ namespace ParcInfo.ucInterevntion
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var currentIntervention = context.Interventions.Find(currentInterv);
-
                     int totHours = Convert.ToInt32(numHeur.Value);
-
                     bool verify = false;
                     string res = "";
 
@@ -187,7 +185,6 @@ namespace ParcInfo.ucInterevntion
 
                                 if (res != "")
                                     totHours = int.Parse(res.ToString());
-
                                 done = true;
                             }
                         }
@@ -485,7 +482,11 @@ namespace ParcInfo.ucInterevntion
                 var res = MessageBox.Show("Are you sure ?", "Confiramtion", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
-                    db.Interventions.Find(currentInterv).IsDeleted = 1;
+                    var interv = db.Interventions.Find(currentInterv);
+                    interv.IsDeleted = 1;
+                    interv.Datemodification = DateTime.Now;
+                    interv.Modifierpar = GlobVars.cuUser.Id;
+                    
                     db.SaveChanges();
 
                     GlobVars.frmindex.ShowControl(GlobVars.frmBack);

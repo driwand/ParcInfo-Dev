@@ -99,6 +99,7 @@ namespace ParcInfo.ucClient
                     ProduitInfo pd = new ProduitInfo(d,listT);
                     pd.Name = "pd";
                     pd.Location = new Point(18, 50);
+                    //pd.txtPrix.ReadOnly = false;
                     this.Controls.Add(pd);
                 }
                 // Check IF 
@@ -298,7 +299,6 @@ namespace ParcInfo.ucClient
                 var lblDep = (from x in tbx.pnlProp.Controls.OfType<lblProduit>()
                               select x
                          ).ToList();
-
                 var prod = context.Produits.Find(idProd);
                 foreach (var item in prod.ValeurProps)
                 {

@@ -42,13 +42,7 @@ namespace ParcInfo.ucClient
             PnlDepart.Controls.Add(depr);
             if (idClient > 0)
             {
-                idC = idClient;
-                // Hide Button Ajouter
                 btnAddClient.Visible = false;
-                btnAddClient.Location = new Point(619, 443);
-                btnEditClient.Visible = true;
-                btnEditClient.Location = new Point(738, 443);
-                btnDelClient.Visible = true;
                 lblClient.Text = "Fiche du client : ";
                 lblNameClient.Text =  Code;
                 picHeader.Image = Resources.viewDetail;
@@ -56,6 +50,22 @@ namespace ParcInfo.ucClient
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var client = context.Clients.Find(idClient);
+                    idC = idClient;
+                    if (client.IsDeleted == 0)
+                    {
+                        // Hide Button Ajouter
+                        btnAddClient.Location = new Point(619, 443);
+                        btnEditClient.Visible = true;
+                        btnEditClient.Location = new Point(738, 443);
+                        btnDelClient.Visible = true;
+                    }
+                    else
+                    {
+                        BtnAddUser.Visible = false;
+                        btnAddDepartement.Visible = false;
+                    }
+
+  
                     txtNom.Text = client.Nom;
                     txtAdr.Text = client.Adresse;
                     txtVille.Text = client.Ville;
@@ -357,33 +367,72 @@ namespace ParcInfo.ucClient
         {
         }
 
-
-
         private void btnDelClient_Click(object sender, EventArgs e)
         {
-
-
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 Client c = context.Clients.Find(idC);
-
-                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("voulez-vous supprimer le client et retourner les produits au stock ? ", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-
                     c.IsDeleted = 1;
-                    c.Datemodification = DateTime.Now;
-                    c.Modifierpar = 1;
-                    context.SaveChanges();
+                    c.ProduitClients.ToList().ForEach(cc =>
+                    {
+                        cc.IsDeleted = 1;
+                        cc.Datemodification = DateTime.Now;
+                        cc.Modifierpar = GlobVars.cuUser.Id;
+                    });
+                    c.Employees.ToList().ForEach(em =>
+                    {
+                        em.IsDeleted = 1;
+                        em.Datemodification = DateTime.Now;
+                        em.Modifierpar = GlobVars.cuUser.Id;
+                        em.Demandes.ToList().ForEach(dm =>
+                            {
+                                dm.IsDeleted = 1;
+                            });
+                    });
                     MessageBox.Show("client supprimé");
                     Methods.Clear(this);
+                    c.Datemodification = DateTime.Now;
+                    c.Modifierpar = GlobVars.cuUser.Id;
+                    context.SaveChanges();
+
                 }
                 else if (result == DialogResult.No)
                 {
-
+                    c.IsDeleted = 1;
+                    c.ProduitClients.ToList().ForEach(cc =>
+                    {
+                        cc.IsDeleted = 1;
+                        cc.Datemodification = DateTime.Now;
+                        cc.Modifierpar = GlobVars.cuUser.Id;
+                        cc.Produit.IsDeleted = 1;
+                        cc.Produit.Datemodification = DateTime.Now;
+                        cc.Produit.Modifierpar = GlobVars.cuUser.Id;
+                    });
+                    c.Employees.ToList().ForEach(em =>
+                    {
+                        em.IsDeleted = 1;
+                        em.Datemodification = DateTime.Now;
+                        em.Modifierpar = GlobVars.cuUser.Id;
+                        em.Demandes.ToList().ForEach(dm =>
+                            {
+                                dm.IsDeleted = 1;
+                            });
+                    });
+                    c.Interventions.ToList().ForEach(i => 
+                    {
+                        i.IsDeleted = 1;
+                        i.Datemodification = DateTime.Now;
+                        i.Modifierpar = GlobVars.cuUser.Id;
+                    });
+                    MessageBox.Show("client supprimé");
+                    Methods.Clear(this);
+                    c.Datemodification = DateTime.Now;
+                    c.Modifierpar = GlobVars.cuUser.Id;
+                    context.SaveChanges();
                 }
-
-
             }
         }
 

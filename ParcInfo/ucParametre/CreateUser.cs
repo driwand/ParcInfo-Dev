@@ -45,10 +45,9 @@ namespace ParcInfo.ucParametre
             {
                 var user = context.Utilisateurs.Find(idUser);
                 var listC = (from cx in context.AffectationClients
-                             where cx.Idutilisateur == idUser && cx.IsDeleted == 0
                              join x in context.Clients on cx.Idclient equals x.id
+                             where cx.Idutilisateur == idUser && cx.IsDeleted == 0
                              select x).ToList();
-                
                 dgClient.DataSource = Methods.ToDataTable(listC.Where(d=> d.IsDeleted == 0).Select(
                     cl => new {
                     cl.IdCLient,

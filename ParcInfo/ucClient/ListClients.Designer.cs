@@ -43,42 +43,42 @@
             this.btnNewClient = new System.Windows.Forms.Button();
             this.btnCons = new System.Windows.Forms.Button();
             this.btnStartIntervention = new System.Windows.Forms.Button();
-            this.gpDemande = new ParcInfo.Classes.GradientPanel();
-            this.lblDemC = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.gpEmployee = new ParcInfo.Classes.GradientPanel();
             this.lblEmpC = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.gpProduit = new ParcInfo.Classes.GradientPanel();
-            this.lblProdC = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.gpIntervention = new ParcInfo.Classes.GradientPanel();
             this.lblInterC = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.gpDemande = new ParcInfo.Classes.GradientPanel();
+            this.lblDemC = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.gpProduit = new ParcInfo.Classes.GradientPanel();
+            this.lblProdC = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgClients)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.gpDemande.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.gpEmployee.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.gpProduit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.gpIntervention.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            this.gpEmployee.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.gpIntervention.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.gpDemande.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.gpProduit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // dgClients
@@ -92,8 +92,8 @@
             this.dgClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgClients.Size = new System.Drawing.Size(716, 351);
             this.dgClients.TabIndex = 4;
+            this.dgClients.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgClients_CellDoubleClick);
             this.dgClients.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgClients_RowEnter);
-            this.dgClients.DoubleClick += new System.EventHandler(this.GridListClient_DoubleClick);
             // 
             // CkDeletedClient
             // 
@@ -173,6 +173,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(445, 20);
             this.txtFind.TabIndex = 42;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // label15
             // 
@@ -241,64 +242,46 @@
             this.btnStartIntervention.UseVisualStyleBackColor = false;
             this.btnStartIntervention.Click += new System.EventHandler(this.btnStartIntervention_Click);
             // 
-            // gpDemande
+            // label1
             // 
-            this.gpDemande.Angle = 0F;
-            this.gpDemande.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(107)))), ((int)(((byte)(126)))));
-            this.gpDemande.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(73)))), ((int)(((byte)(97)))));
-            this.gpDemande.Controls.Add(this.lblDemC);
-            this.gpDemande.Controls.Add(this.panel6);
-            this.gpDemande.Controls.Add(this.label12);
-            this.gpDemande.Controls.Add(this.pictureBox6);
-            this.gpDemande.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpDemande.Location = new System.Drawing.Point(3, 161);
-            this.gpDemande.Name = "gpDemande";
-            this.gpDemande.Size = new System.Drawing.Size(141, 73);
-            this.gpDemande.TabIndex = 58;
-            this.gpDemande.Click += new System.EventHandler(this.gpDemande_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(55, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Liste des Clients";
             // 
-            // lblDemC
+            // pictureBox1
             // 
-            this.lblDemC.AutoSize = true;
-            this.lblDemC.BackColor = System.Drawing.Color.Transparent;
-            this.lblDemC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDemC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDemC.Location = new System.Drawing.Point(76, 39);
-            this.lblDemC.Name = "lblDemC";
-            this.lblDemC.Size = new System.Drawing.Size(16, 16);
-            this.lblDemC.TabIndex = 9;
-            this.lblDemC.Text = "0";
+            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
             // 
-            // panel6
+            // panel1
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.panel6.Location = new System.Drawing.Point(50, 46);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(70, 1);
-            this.panel6.TabIndex = 7;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.panel1.Location = new System.Drawing.Point(14, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(863, 2);
+            this.panel1.TabIndex = 34;
             // 
-            // label12
+            // flowLayoutPanel1
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(55, 12);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "Demandes";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::ParcInfo.Properties.Resources.Demandes;
-            this.pictureBox6.Location = new System.Drawing.Point(6, 18);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
+            this.flowLayoutPanel1.Controls.Add(this.gpEmployee);
+            this.flowLayoutPanel1.Controls.Add(this.gpIntervention);
+            this.flowLayoutPanel1.Controls.Add(this.gpDemande);
+            this.flowLayoutPanel1.Controls.Add(this.gpProduit);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(735, 101);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(141, 316);
+            this.flowLayoutPanel1.TabIndex = 89;
             // 
             // gpEmployee
             // 
@@ -359,6 +342,125 @@
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
+            // gpIntervention
+            // 
+            this.gpIntervention.Angle = 0F;
+            this.gpIntervention.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(229)))), ((int)(((byte)(190)))));
+            this.gpIntervention.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(208)))), ((int)(((byte)(148)))));
+            this.gpIntervention.Controls.Add(this.lblInterC);
+            this.gpIntervention.Controls.Add(this.panel4);
+            this.gpIntervention.Controls.Add(this.label9);
+            this.gpIntervention.Controls.Add(this.pictureBox2);
+            this.gpIntervention.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gpIntervention.Location = new System.Drawing.Point(3, 82);
+            this.gpIntervention.Name = "gpIntervention";
+            this.gpIntervention.Size = new System.Drawing.Size(141, 73);
+            this.gpIntervention.TabIndex = 56;
+            this.gpIntervention.Click += new System.EventHandler(this.gpIntervention_Click);
+            // 
+            // lblInterC
+            // 
+            this.lblInterC.AutoSize = true;
+            this.lblInterC.BackColor = System.Drawing.Color.Transparent;
+            this.lblInterC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInterC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblInterC.Location = new System.Drawing.Point(76, 39);
+            this.lblInterC.Name = "lblInterC";
+            this.lblInterC.Size = new System.Drawing.Size(16, 16);
+            this.lblInterC.TabIndex = 9;
+            this.lblInterC.Text = "0";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
+            this.panel4.Location = new System.Drawing.Point(51, 46);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(70, 1);
+            this.panel4.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label9.Location = new System.Drawing.Point(52, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Inteventions";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::ParcInfo.Properties.Resources.Employe;
+            this.pictureBox2.Location = new System.Drawing.Point(6, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // gpDemande
+            // 
+            this.gpDemande.Angle = 0F;
+            this.gpDemande.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(107)))), ((int)(((byte)(126)))));
+            this.gpDemande.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(73)))), ((int)(((byte)(97)))));
+            this.gpDemande.Controls.Add(this.lblDemC);
+            this.gpDemande.Controls.Add(this.panel6);
+            this.gpDemande.Controls.Add(this.label12);
+            this.gpDemande.Controls.Add(this.pictureBox6);
+            this.gpDemande.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gpDemande.Location = new System.Drawing.Point(3, 161);
+            this.gpDemande.Name = "gpDemande";
+            this.gpDemande.Size = new System.Drawing.Size(141, 73);
+            this.gpDemande.TabIndex = 58;
+            this.gpDemande.Click += new System.EventHandler(this.gpDemande_Click);
+            // 
+            // lblDemC
+            // 
+            this.lblDemC.AutoSize = true;
+            this.lblDemC.BackColor = System.Drawing.Color.Transparent;
+            this.lblDemC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDemC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblDemC.Location = new System.Drawing.Point(76, 39);
+            this.lblDemC.Name = "lblDemC";
+            this.lblDemC.Size = new System.Drawing.Size(16, 16);
+            this.lblDemC.TabIndex = 9;
+            this.lblDemC.Text = "0";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
+            this.panel6.Location = new System.Drawing.Point(50, 46);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(70, 1);
+            this.panel6.TabIndex = 7;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label12.Location = new System.Drawing.Point(55, 12);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Demandes";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Image = global::ParcInfo.Properties.Resources.Demandes;
+            this.pictureBox6.Location = new System.Drawing.Point(6, 18);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
             // gpProduit
             // 
             this.gpProduit.Angle = 0F;
@@ -418,108 +520,6 @@
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             // 
-            // gpIntervention
-            // 
-            this.gpIntervention.Angle = 0F;
-            this.gpIntervention.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(229)))), ((int)(((byte)(190)))));
-            this.gpIntervention.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(208)))), ((int)(((byte)(148)))));
-            this.gpIntervention.Controls.Add(this.lblInterC);
-            this.gpIntervention.Controls.Add(this.panel4);
-            this.gpIntervention.Controls.Add(this.label9);
-            this.gpIntervention.Controls.Add(this.pictureBox2);
-            this.gpIntervention.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gpIntervention.Location = new System.Drawing.Point(3, 82);
-            this.gpIntervention.Name = "gpIntervention";
-            this.gpIntervention.Size = new System.Drawing.Size(141, 73);
-            this.gpIntervention.TabIndex = 56;
-            this.gpIntervention.Click += new System.EventHandler(this.gpIntervention_Click);
-            this.gpIntervention.Paint += new System.Windows.Forms.PaintEventHandler(this.gpIntervention_Paint);
-            // 
-            // lblInterC
-            // 
-            this.lblInterC.AutoSize = true;
-            this.lblInterC.BackColor = System.Drawing.Color.Transparent;
-            this.lblInterC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInterC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblInterC.Location = new System.Drawing.Point(76, 39);
-            this.lblInterC.Name = "lblInterC";
-            this.lblInterC.Size = new System.Drawing.Size(16, 16);
-            this.lblInterC.TabIndex = 9;
-            this.lblInterC.Text = "0";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
-            this.panel4.Location = new System.Drawing.Point(51, 46);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(70, 1);
-            this.panel4.TabIndex = 7;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(52, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Inteventions";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::ParcInfo.Properties.Resources.Employe;
-            this.pictureBox2.Location = new System.Drawing.Point(6, 18);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(55, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Liste des Clients";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParcInfo.Properties.Resources.listForms;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.panel1.Location = new System.Drawing.Point(14, 40);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(863, 2);
-            this.panel1.TabIndex = 34;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.gpEmployee);
-            this.flowLayoutPanel1.Controls.Add(this.gpIntervention);
-            this.flowLayoutPanel1.Controls.Add(this.gpDemande);
-            this.flowLayoutPanel1.Controls.Add(this.gpProduit);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(735, 101);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(141, 316);
-            this.flowLayoutPanel1.TabIndex = 89;
-            // 
             // ListClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -546,20 +546,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgClients)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.gpDemande.ResumeLayout(false);
-            this.gpDemande.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.gpEmployee.ResumeLayout(false);
             this.gpEmployee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.gpProduit.ResumeLayout(false);
-            this.gpProduit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.gpIntervention.ResumeLayout(false);
             this.gpIntervention.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.gpDemande.ResumeLayout(false);
+            this.gpDemande.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.gpProduit.ResumeLayout(false);
+            this.gpProduit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

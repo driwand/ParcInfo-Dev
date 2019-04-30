@@ -35,6 +35,12 @@ namespace ParcInfo.ucControls
                 txtPrix.Text = p.Prix.ToString();
                 txtQte.Value = 1;
                 txtQte.Enabled = false;
+                txtPrix.Enabled = false;
+                txtPrix.Enabled = false;
+                txtMarque.Enabled = false;
+                txtModel.Enabled = false;
+                isHardware.Enabled = false;
+                DateProduit.Enabled = false;
                 cbType.Enabled = false;
                 DateProduit.Text = p.Datefabrication.ToString();
                 txtModel.Text = p.Model;

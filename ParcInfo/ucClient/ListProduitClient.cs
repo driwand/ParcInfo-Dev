@@ -13,7 +13,6 @@ namespace ParcInfo.ucClient
 {
     public partial class ListProduitClient : UserControl
     {
-
         public int idEmp;
         public ListProduitClient(int idEmploye)
         {
@@ -30,7 +29,15 @@ namespace ParcInfo.ucClient
                                     select new { pr, p, c }).ToList();
                     var d = (from c in listProd
                              where c.c.IsDeleted == 0
-                             select new { c.pr.CodeP,c.pr.id, c.pr.TypeProduit.Nom, c.pr.Marque, c.c.Login_u, c.c.Password_u, c.c.Dateaffectation }).ToList();
+                             select new {
+                                 c.pr.CodeP,
+                                 c.pr.id,
+                                 c.pr.TypeProduit.Nom,
+                                 c.pr.Marque,
+                                 c.c.Login_u,
+                                 c.c.Password_u,
+                                 c.c.Dateaffectation
+                             }).ToList();
                     dgProduit.DataSource = Methods.ToDataTable(d);
                    
                     Methods.Nice_grid(
@@ -67,8 +74,9 @@ namespace ParcInfo.ucClient
                                            d.TypeProduit.Nom,
                                            d.Marque,
                                            d.Model,
-                                           hardware = d.IsHardware == 1 ? "Oui" : "Non"
-/*                                           employe = pu.Employee.Nom + pu.Employee.Prenom*/  ,
+                                           count = f.ProduitUtilisers.Count(),
+                                           //hardware = d.IsHardware == 1 ? "Oui" : "Non"
+                                           /* employe = pu.Employee.Nom + pu.Employee.Prenom*/
                                            f.Dateaffectation
                                        }).ToList();
 
@@ -76,8 +84,8 @@ namespace ParcInfo.ucClient
 
                    
                     Methods.Nice_grid(
-                                   new string[] { "CodeP", "id", "idP", "Nom", "Adresse", "Marque", "Model", "hardware", "Dateaffectation" },
-                                   new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Model", "hardware", "Date d'affectation" },
+                                   new string[] { "CodeP", "id", "idP", "Nom", "Adresse", "Marque", "Model", "count", "Dateaffectation" },
+                                   new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Model","Totale des emplyees affecter", "Date d'affectation" },
                                    dgProduit
                                    );
                     Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
@@ -93,25 +101,7 @@ namespace ParcInfo.ucClient
 
         private void dgProduit_DoubleClick(object sender, EventArgs e)
         {
-            if (dgProduit.SelectedRows.Count > 0)
-            {
-                var myrow = dgProduit.Rows[dgProduit.CurrentRow.Index];
-                if (idEmp > 0)
-                {
-                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                    string idE = idEmp.ToString();
-                    GlobVars.frmindex.ShowControl(new DetailProduit(id, idE));
-                }
-                else
-                {
-
-                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                    int idP = int.Parse(myrow.Cells["idP"].Value.ToString());
-                    GlobVars.frmBack = this;
-                    GlobVars.frmindex.ShowControl(new DetailProduit(id, idP));
-                }
-
-            }
+    
         }
 
         private void dgProduit_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -120,8 +110,6 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgProduit.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-
-
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                    // var cli = context.ProduitClients.Where(c => c.Idproduit == id).FirstOrDefault();
@@ -145,10 +133,28 @@ namespace ParcInfo.ucClient
                         lblEditedDate.Text = "****-**-**";
                     }
                 }
-
             }
+        }
 
-
+        private void dgProduit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                var myrow = dgProduit.Rows[dgProduit.CurrentRow.Index];
+                if (idEmp > 0)
+                {
+                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                    string idE = idEmp.ToString();
+                    GlobVars.frmindex.ShowControl(new DetailProduit(id, idE));
+                }
+                else
+                {
+                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                    int idP = int.Parse(myrow.Cells["idP"].Value.ToString());
+                    GlobVars.frmBack = this;
+                    GlobVars.frmindex.ShowControl(new DetailProduit(id, idP));
+                }
+            }
         }
     }
 }

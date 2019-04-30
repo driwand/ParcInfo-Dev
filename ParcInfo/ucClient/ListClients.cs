@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ParcInfo.Classes;
-using ParcInfo.frmDefault;
-using System.Data.Sql;
-using System.Data.SqlClient;
-using System.Linq.Dynamic;
+﻿using ParcInfo.Classes;
 using ParcInfo.ucInterevntion;
-using System.Reflection;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Linq.Dynamic;
+using System.Windows.Forms;
 
 namespace ParcInfo.ucClient
 {
@@ -23,17 +16,16 @@ namespace ParcInfo.ucClient
         public ListClients()
         {
             InitializeComponent();
+            
             Methods.CheckRoles(Controls);
             var t = GlobVars.cuUser.RoleUtilisateurs1;
             foreach (var v in t)
                 if (v.Nom.Contains("Consulter") && v.Nom.Contains("client") && v.IsDeleted != 1)
                     GetRoleName = v.Nom;
-
-            // ControlsClass.CreateRadiusBorder(this);
         }
         private void ListClients_Load(object sender, EventArgs e)
         {
-
+       
             if (GlobVars.cuUser.isAdmin == 0)
                 if (GetRoleName == "Consulter tous les client")
                     GetAllClients();
@@ -145,17 +137,6 @@ namespace ParcInfo.ucClient
             myGrid();
         }
 
-        private void GridListClient_DoubleClick(object sender, EventArgs e)
-        {
-            if (dgClients.SelectedRows.Count > 0)
-            {
-                var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                string code = myrow.Cells["IdCLient"].Value.ToString();
-                GlobVars.frmindex.ShowControl(new CreateClient(id, code));
-            }
-        }
-
         private void gpEmployee_Click(object sender, EventArgs e)
         {
             if (dgClients.SelectedRows.Count > 0)
@@ -230,15 +211,18 @@ namespace ParcInfo.ucClient
         }
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)
         {
+            btnStartIntervention.Click -= btnStartIntervention_Click;
+
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-
                 if (GlobVars.cuUser.isAdmin == 0)
                     if (GetRoleName == "Consulter tous les client")
                         if (CkDeletedClient.Checked)
                             GetAllDeletedClients();
                         else
-                            GetAllClients();
+                        {
+                            GetAllClients();  
+                        }
                     else
                         if (CkDeletedClient.Checked)
                             GetAssigneDeletedClients();
@@ -248,19 +232,22 @@ namespace ParcInfo.ucClient
                     if (CkDeletedClient.Checked)
                     GetAllDeletedClients();
                 else
+                {
                     GetAllClients();
+                    btnStartIntervention.Click += btnStartIntervention_Click;
+                }
+                  
             }
         }
 
         private void dgClients_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgClients.SelectedRows.Count > 0)
+            if (e.RowIndex > -1)
             {
                 var myrow = dgClients.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-
                     // Modifier par / date modification
                     string nomUser = myrow.Cells["userMod"].Value.ToString();
                     string date = myrow.Cells["dateMod"].Value.ToString();
@@ -268,17 +255,20 @@ namespace ParcInfo.ucClient
                     lblEdited.Text = nomUser;
                     loc += lblEdited.Width;
                     lblMod.Location = new Point(loc, 462);
-
                     lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
                     lblEditedDate.Text = date;
                     var Cli = context.Clients.Where(c => c.id == id).FirstOrDefault();
-                    lblEmpC.Text = Cli.Employees.Where(d => d.IsDeleted == 0).Count().ToString();
-                    lblInterC.Text = Cli.Interventions.Where(d => d.IsDeleted == 0).Count().ToString();
-                    var demC = (from c in Cli.Employees
-                                from d in c.Demandes
-                                select d).ToList();
-                    lblDemC.Text = demC.Where(d => d.IsDeleted == 0).Count().ToString();
-                    lblProdC.Text = Cli.ProduitClients.Where(d => d.IsDeleted == 0).Count().ToString();
+                    if (Cli != null)
+                    {
+                        lblEmpC.Text = Cli.Employees.Where(d => d.IsDeleted == 0).Count().ToString();
+                        lblInterC.Text = Cli.Interventions.Where(d => d.IsDeleted == 0).Count().ToString();
+                        var demC = (from c in Cli.Employees
+                                    from d in c.Demandes
+                                    select d).ToList();
+                        lblDemC.Text = demC.Where(d => d.IsDeleted == 0).Count().ToString();
+                        lblProdC.Text = Cli.ProduitClients.Where(d => d.IsDeleted == 0).Count().ToString();
+                    }
+
                 }
             }
 
@@ -298,9 +288,39 @@ namespace ParcInfo.ucClient
 
         }
 
-        private void gpIntervention_Paint(object sender, PaintEventArgs e)
+        private void dgClients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex > -1)
+            {
+                //if (dgClients.SelectedRows.Count > 0)
+                //{
+                var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                string code = myrow.Cells["IdCLient"].Value.ToString();
+                GlobVars.frmindex.ShowControl(new CreateClient(id, code));
+                //}
+            }
+        }
+        public void CountToZero()
+        {
+            if (dgClients.Rows.Count == 0)
+            {
+                lblDemC.Text = "0";
+                lblEmpC.Text = "0";
+                lblInterC.Text = "0";
+                lblProdC.Text = "0";
+            }
+        }
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            CountToZero();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
+            int id = int.Parse(myrow.Cells["id"].Value.ToString());
+            MessageBox.Show(id.ToString());
         }
     }
 }

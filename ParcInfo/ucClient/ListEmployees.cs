@@ -37,7 +37,7 @@ namespace ParcInfo.ucClient
                                    where emp.IsDeleted != 1
                                    select new { emp.IdEmploye, emp.Id,
                                        emp.Nom, emp.Prenom,
-                                       emp.Email, emp.Password_e,
+                                       emp.Email,
                                        departement = d.Nom,
                                        userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
                                        dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
@@ -121,8 +121,6 @@ namespace ParcInfo.ucClient
                 //GlobVars.BtnName = "editEmploye";
                 frmCreateEmploye frm = new frmCreateEmploye(id,idC,code,dgEmployees);
                 frm.Show();
-
-
             }
         }
 
@@ -148,8 +146,6 @@ namespace ParcInfo.ucClient
                     enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
                     allCount.Text = Cli.Demandes.Where(d => d.IsDeleted == 0).Count().ToString();
                     produitCount.Text = Cli.ProduitUtilisers.Where(d=> d.IsDeleted == 0).Count().ToString();
-
-
                 }
             }
         }
@@ -158,12 +154,7 @@ namespace ParcInfo.ucClient
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-
-            
                 Client c = context.Clients.Find(idC);
-
-
-
                 var listEmp = (from emp in c.Employees
                                join d in c.Departements on emp.IdDep equals d.id
                                select new { emp.IdEmploye, emp.Id,
@@ -191,10 +182,9 @@ namespace ParcInfo.ucClient
 
         public void myGrid()
         {
-           
             Methods.Nice_grid(
-                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement"},
-                new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
+                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email",  "departement"},
+                new string[] { "ID Employee", "id", "Nom", "Prenom", "Email",  "Departement" },
                 dgEmployees
                 );
             //dgEmployees.Columns["userMod"].Visible = false;

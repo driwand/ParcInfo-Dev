@@ -124,7 +124,6 @@ namespace ParcInfo.frmList
                 lblTotalDem.Text = context.GetAssignedRequestbyStatut().Count.ToString();
                 lblTotalInterv.Text = context.GetAssignedInterventionBystatut().Count.ToString();
                 var listOrder = new List<string> { "en retard", "en attente", "en cours", "terminer" };
-
                 var ls = (from c in context.GetAssignedRequestbyStatut()
                           select new
                           {

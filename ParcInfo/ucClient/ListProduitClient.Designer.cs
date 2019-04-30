@@ -87,6 +87,7 @@
             this.dgProduit.ReadOnly = true;
             this.dgProduit.Size = new System.Drawing.Size(863, 351);
             this.dgProduit.TabIndex = 118;
+            this.dgProduit.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduit_CellDoubleClick);
             this.dgProduit.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduit_RowEnter);
             this.dgProduit.DoubleClick += new System.EventHandler(this.dgProduit_DoubleClick);
             // 
