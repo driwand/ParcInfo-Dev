@@ -19,6 +19,10 @@ namespace ParcInfo
         {
             get
             {
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
                 return Interventions.Where(x => x.IsDeleted == 0);
             }
         }
@@ -26,30 +30,46 @@ namespace ParcInfo
         {
             get
             {
-                return Interventions.Where(x => x.IsDeleted == 1);
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
+                return inte.Where(x => x.IsDeleted == 1);
             }
         }
         public IQueryable<Intervention> GetIntervenretard
         {
             get
             {
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
                 var retarddate = DateTime.Now;
-                return GetInterventions.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
+                return inte.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
             }
         }
         public IQueryable<Intervention> GetIntervEncours
         {
             get
             {
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
                 var retarddate = DateTime.Now;
-                return GetInterventions.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
+                return inte.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
             }
         }
         public IQueryable<Intervention> GetIntervtermine
         {
             get
             {
-                return GetInterventions.Where(x => x.Statut == "terminer");
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
+                return inte.Where(x => x.Statut == "terminer");
             }
         }
 
@@ -94,37 +114,57 @@ namespace ParcInfo
         {
             get
             {
-                return Interventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0);
+                var inte = (from i in Interventions
+                          join c in Clients on i.Idclient equals c.id
+                          where c.IsDeleted == 0
+                          select i);
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0);
             }
         }
         public IQueryable<Intervention> GetAssignedInterventionsDeleted
         {
             get
             {
-                return Interventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 1);
+                var inte = (from i in Interventions
+                          join c in Clients on i.Idclient equals c.id
+                          where c.IsDeleted == 0
+                          select i);
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 1);
             }
         }
         public IQueryable<Intervention> GetAssignedIntervenretard
         {
             get
             {
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
                 var retarddate = DateTime.Now;
-                return GetInterventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
             }
         }
         public IQueryable<Intervention> GeAssignedtIntervEncours
         {
             get
             {
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
                 var retarddate = DateTime.Now;
-                return GetInterventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
             }
         }
         public IQueryable<Intervention> GetAssignedIntervtermine
         {
             get
             {
-                return GetInterventions.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "terminer");
+                var inte = (from i in Interventions
+                            join c in Clients on i.Idclient equals c.id
+                            where c.IsDeleted == 0
+                            select i);
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "terminer");
             }
         }
 
@@ -178,7 +218,7 @@ namespace ParcInfo
         {
             get
             {
-                return Demandes.Where(x => x.IsDeleted == 1);
+                return Demandes.Where(x => x.IsDeleted == 1 && x.Employee.Client.IsDeleted == 0);
             }
         }
 
@@ -187,7 +227,7 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) < retarddate);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2 ) < retarddate && x.Employee.Client.IsDeleted == 0);
             }
         }
         public IQueryable<Demande> GetRequestCours
@@ -195,7 +235,7 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate && x.Employee.Client.IsDeleted == 0);
             }
         }
 
@@ -203,7 +243,7 @@ namespace ParcInfo
         {
             get
             {
-                return GetRequests.Where(x => x.Statut == "en attente");
+                return GetRequests.Where(x => x.Statut == "en attente" && x.Employee.Client.IsDeleted == 0);
             }
         }
 
@@ -211,7 +251,7 @@ namespace ParcInfo
         {
             get
             {
-                return GetRequests.Where(x => x.Statut == "terminer");
+                return GetRequests.Where(x => x.Statut == "terminer" && x.Employee.Client.IsDeleted == 0);
             }
         }
         public ICollection<Demande> GetRequestbyStatut(Label[] lbl = null, string statut = "", int idEmp = 0, bool isdeleted = false)
@@ -269,7 +309,7 @@ namespace ParcInfo
                          join em in Employees on d.IdEmployee equals em.Id
                          join c in Clients on em.Idclient equals c.id
                          join af in AffectationClients on c.id equals af.Idclient
-                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
 
                 return v.Where(x => x.IsDeleted == 0);
@@ -284,7 +324,7 @@ namespace ParcInfo
                          join em in Employees on d.IdEmployee equals em.Id
                          join c in Clients on em.Idclient equals c.id
                          join af in AffectationClients on c.id equals af.Idclient
-                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
                 return Demandes.Where(x => x.IsDeleted == 1);
             }
@@ -298,7 +338,7 @@ namespace ParcInfo
                          join em in Employees on d.IdEmployee equals em.Id
                          join c in Clients on em.Idclient equals c.id
                          join af in AffectationClients on c.id equals af.Idclient
-                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
 
                 var retarddate = DateTime.Now;
@@ -313,7 +353,7 @@ namespace ParcInfo
                          join em in Employees on d.IdEmployee equals em.Id
                          join c in Clients on em.Idclient equals c.id
                          join af in AffectationClients on c.id equals af.Idclient
-                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
 
                 var retarddate = DateTime.Now;
@@ -329,7 +369,7 @@ namespace ParcInfo
                          join em in Employees on d.IdEmployee equals em.Id
                          join c in Clients on em.Idclient equals c.id
                          join af in AffectationClients on c.id equals af.Idclient
-                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
 
                 return v.Where(x => x.Statut == "en attente");
@@ -344,7 +384,7 @@ namespace ParcInfo
                          join em in Employees on d.IdEmployee equals em.Id
                          join c in Clients on em.Idclient equals c.id
                          join af in AffectationClients on c.id equals af.Idclient
-                         where af.Idutilisateur == GlobVars.cuUser.Id
+                         where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
 
                 return v.Where(x => x.Statut == "terminer");
@@ -405,6 +445,5 @@ namespace ParcInfo
         }
 
         #endregion
-
     }
 }

@@ -40,14 +40,9 @@
             this.lblTotalRequest = new System.Windows.Forms.Label();
             this.lblEmployeClient = new System.Windows.Forms.Label();
             this.cbDelete = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblEditedDate = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStartIntervention = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblMod = new System.Windows.Forms.Label();
-            this.lblEdited = new System.Windows.Forms.Label();
             this.gpFind.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDemande)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -58,7 +53,7 @@
             this.gpFind.Controls.Add(this.btnFind);
             this.gpFind.Controls.Add(this.txtFind);
             this.gpFind.Controls.Add(this.label15);
-            this.gpFind.Location = new System.Drawing.Point(14, 48);
+            this.gpFind.Location = new System.Drawing.Point(14, 45);
             this.gpFind.Name = "gpFind";
             this.gpFind.Size = new System.Drawing.Size(732, 50);
             this.gpFind.TabIndex = 122;
@@ -101,7 +96,7 @@
             this.btnTraiter.ForeColor = System.Drawing.Color.White;
             this.btnTraiter.Image = global::ParcInfo.Properties.Resources.start;
             this.btnTraiter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTraiter.Location = new System.Drawing.Point(752, 56);
+            this.btnTraiter.Location = new System.Drawing.Point(752, 53);
             this.btnTraiter.Name = "btnTraiter";
             this.btnTraiter.Size = new System.Drawing.Size(125, 35);
             this.btnTraiter.TabIndex = 123;
@@ -112,7 +107,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.panel1.Location = new System.Drawing.Point(14, 40);
+            this.panel1.Location = new System.Drawing.Point(14, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(863, 2);
             this.panel1.TabIndex = 120;
@@ -122,7 +117,7 @@
             this.lblListRequest.AutoSize = true;
             this.lblListRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblListRequest.ForeColor = System.Drawing.Color.Black;
-            this.lblListRequest.Location = new System.Drawing.Point(55, 14);
+            this.lblListRequest.Location = new System.Drawing.Point(55, 11);
             this.lblListRequest.Name = "lblListRequest";
             this.lblListRequest.Size = new System.Drawing.Size(129, 15);
             this.lblListRequest.TabIndex = 117;
@@ -133,33 +128,31 @@
             this.dgDemande.AllowUserToAddRows = false;
             this.dgDemande.AllowUserToDeleteRows = false;
             this.dgDemande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgDemande.Location = new System.Drawing.Point(14, 104);
+            this.dgDemande.Location = new System.Drawing.Point(14, 101);
             this.dgDemande.Name = "dgDemande";
             this.dgDemande.ReadOnly = true;
             this.dgDemande.Size = new System.Drawing.Size(863, 347);
             this.dgDemande.TabIndex = 118;
+            this.dgDemande.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDemande_CellDoubleClick);
             this.dgDemande.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDemande_CellMouseDown);
-            this.dgDemande.Click += new System.EventHandler(this.dgDemande_Click);
-            this.dgDemande.Paint += new System.Windows.Forms.PaintEventHandler(this.dgDemande_Paint);
-            this.dgDemande.DoubleClick += new System.EventHandler(this.dgDemande_DoubleClick);
             // 
             // lblTotalRequest
             // 
             this.lblTotalRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.lblTotalRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalRequest.ForeColor = System.Drawing.Color.White;
-            this.lblTotalRequest.Location = new System.Drawing.Point(22, 13);
+            this.lblTotalRequest.Location = new System.Drawing.Point(22, 10);
             this.lblTotalRequest.Name = "lblTotalRequest";
             this.lblTotalRequest.Size = new System.Drawing.Size(21, 18);
             this.lblTotalRequest.TabIndex = 123;
-            this.lblTotalRequest.Text = "33";
+            this.lblTotalRequest.Text = "0";
             this.lblTotalRequest.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEmployeClient
             // 
             this.lblEmployeClient.AutoSize = true;
             this.lblEmployeClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployeClient.Location = new System.Drawing.Point(187, 15);
+            this.lblEmployeClient.Location = new System.Drawing.Point(187, 12);
             this.lblEmployeClient.Name = "lblEmployeClient";
             this.lblEmployeClient.Size = new System.Drawing.Size(44, 13);
             this.lblEmployeClient.TabIndex = 121;
@@ -169,39 +162,13 @@
             // cbDelete
             // 
             this.cbDelete.AutoSize = true;
-            this.cbDelete.Location = new System.Drawing.Point(14, 457);
+            this.cbDelete.Location = new System.Drawing.Point(14, 454);
             this.cbDelete.Name = "cbDelete";
             this.cbDelete.Size = new System.Drawing.Size(171, 17);
             this.cbDelete.TabIndex = 125;
             this.cbDelete.Text = "Afficher les elements supprimer";
             this.cbDelete.UseVisualStyleBackColor = true;
             this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(203, 459);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 13);
-            this.label8.TabIndex = 126;
-            this.label8.Text = "Dernier modification par :";
-            // 
-            // lblEditedDate
-            // 
-            this.lblEditedDate.AutoSize = true;
-            this.lblEditedDate.Location = new System.Drawing.Point(464, 459);
-            this.lblEditedDate.Name = "lblEditedDate";
-            this.lblEditedDate.Size = new System.Drawing.Size(49, 13);
-            this.lblEditedDate.TabIndex = 128;
-            this.lblEditedDate.Text = "****/**/**";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(191, 458);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 15);
-            this.panel2.TabIndex = 130;
             // 
             // contextMenuStrip1
             // 
@@ -225,38 +192,11 @@
             this.menuStartIntervention.Text = "Demarer Intervention";
             this.menuStartIntervention.Click += new System.EventHandler(this.menuStartIntervention_Click);
             // 
-            // lblMod
-            // 
-            this.lblMod.AutoSize = true;
-            this.lblMod.Location = new System.Drawing.Point(386, 459);
-            this.lblMod.Name = "lblMod";
-            this.lblMod.Size = new System.Drawing.Size(61, 13);
-            this.lblMod.TabIndex = 126;
-            this.lblMod.Text = "Modifier le :";
-            // 
-            // lblEdited
-            // 
-            this.lblEdited.AutoSize = true;
-            this.lblEdited.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblEdited.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblEdited.ForeColor = System.Drawing.Color.Blue;
-            this.lblEdited.Location = new System.Drawing.Point(333, 459);
-            this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(37, 13);
-            this.lblEdited.TabIndex = 126;
-            this.lblEdited.Text = "aucun";
-            this.lblEdited.Click += new System.EventHandler(this.lblEdited_Click);
-            // 
             // ListDemande
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.lblEditedDate);
-            this.Controls.Add(this.lblEdited);
-            this.Controls.Add(this.lblMod);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.cbDelete);
             this.Controls.Add(this.btnTraiter);
             this.Controls.Add(this.lblTotalRequest);
@@ -289,13 +229,8 @@
         public System.Windows.Forms.TextBox txtFind;
         public System.Windows.Forms.Button btnTraiter;
         private System.Windows.Forms.CheckBox cbDelete;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblEditedDate;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuDetails;
         private System.Windows.Forms.ToolStripMenuItem menuStartIntervention;
-        private System.Windows.Forms.Label lblMod;
-        private System.Windows.Forms.Label lblEdited;
     }
 }

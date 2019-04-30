@@ -85,5 +85,12 @@ namespace ParcInfo
                 return $"PRT{Methods.Splitdate(Produit.Datecreation.ToString()) + Produit.id}";
             }
         }
+        public string LastEdit
+        {
+            get
+            {
+                return Produit.ProduitClients.Last().Creepar.ToString();
+            }
+        }
     }
 }

@@ -192,6 +192,8 @@ namespace ParcInfo.frmDefault
         private void BtnListClient_Click(object sender, EventArgs e)
         {
             ListClients frmcc = new ListClients();
+            GlobVars.lsback.Add(frmcc);
+
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(frmcc);
             frmcc.BringToFront();
@@ -513,9 +515,11 @@ namespace ParcInfo.frmDefault
 
         private void PicBack_Click_1(object sender, EventArgs e)
         {
-        
             ShowOldControl();
         }
+
+        
+
         public void activeBtn(Button btn )
         {
             btn.BackColor = Color.FromArgb(58, 61, 82);
@@ -553,6 +557,20 @@ namespace ParcInfo.frmDefault
         private void BtnHome_Click(object sender, EventArgs e)
         {
             ShowControl(new Dashboard());
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (GlobVars.lsback.Count > 0)
+            {
+                PanelContainer.Controls.Clear();
+                var rev = GlobVars.lsback;
+                (rev as IEnumerable<Control>).Reverse();
+                if (rev.Count > 1)
+                    PanelContainer.Controls.Add(rev.Skip(1).Take(1).First());
+                else
+                    PanelContainer.Controls.Add(rev.First());
+            }
         }
     }
 }

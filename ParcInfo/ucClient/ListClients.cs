@@ -33,7 +33,6 @@ namespace ParcInfo.ucClient
         }
         private void ListClients_Load(object sender, EventArgs e)
         {
-
             if (GlobVars.cuUser.isAdmin == 0)
                 if (GetRoleName == "Consulter tous les client")
                     GetAllClients();
@@ -41,7 +40,6 @@ namespace ParcInfo.ucClient
                     GetAssignedClients();
             else
                 GetAllClients();
-
         }
 
         public void GetAllClients()
@@ -162,7 +160,9 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                GlobVars.frmBack = this;
+                ListEmployees lsem = new ListEmployees(id);
+                GlobVars.lsback.Add(lsem);
+
                 GlobVars.frmindex.ShowControl(new ListEmployees(id), true);
             }
         }
