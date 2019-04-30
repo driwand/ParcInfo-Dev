@@ -49,7 +49,6 @@
             this.picEmp = new System.Windows.Forms.PictureBox();
             this.btnDelEmp = new System.Windows.Forms.Button();
             this.lblEMP = new System.Windows.Forms.Label();
-            this.btnEditEmployee = new System.Windows.Forms.Button();
             this.dragControl1 = new ParcInfo.ucControls.DragControl();
             this.gbEmploye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmp)).BeginInit();
@@ -271,19 +270,6 @@
             this.lblEMP.Text = "label1";
             this.lblEMP.Visible = false;
             // 
-            // btnEditEmployee
-            // 
-            this.btnEditEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnEditEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditEmployee.ForeColor = System.Drawing.Color.White;
-            this.btnEditEmployee.Location = new System.Drawing.Point(317, 446);
-            this.btnEditEmployee.Name = "btnEditEmployee";
-            this.btnEditEmployee.Size = new System.Drawing.Size(113, 28);
-            this.btnEditEmployee.TabIndex = 55;
-            this.btnEditEmployee.Text = "Modifier";
-            this.btnEditEmployee.UseVisualStyleBackColor = false;
-            this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
-            // 
             // dragControl1
             // 
             this.dragControl1.SelectControl = this;
@@ -297,7 +283,6 @@
             this.Controls.Add(this.lblEMP);
             this.Controls.Add(this.btnDelEmp);
             this.Controls.Add(this.btnAnnuler);
-            this.Controls.Add(this.btnEditEmployee);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.gbEmploye);
             this.Controls.Add(this.panel1);
@@ -307,7 +292,6 @@
             this.Name = "frmCreateEmploye";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nouveau employee";
-            this.Load += new System.EventHandler(this.frmCreateEmploye_Load);
             this.gbEmploye.ResumeLayout(false);
             this.gbEmploye.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmp)).EndInit();
@@ -340,6 +324,5 @@
         private System.Windows.Forms.Label lblEMP;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Button btnEditEmployee;
     }
 }

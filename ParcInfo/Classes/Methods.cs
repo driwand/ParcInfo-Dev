@@ -402,13 +402,23 @@ namespace ParcInfo.Classes
                 { new string []{ "Supprimer affectation d'un produit" },  new string []{ "BtnDelAffeProduct" } },
 
                 { new string []{ "Consulter les employees" }, new string []{ "gpEmployee" } },
-                { new string []{ "Ajouter un employee" }, new string []{ "btnNewEmployee", "btnAjouter" } }, //errr
-                { new string []{ "Modifier un employee" }, new string []{ "btnEditEmployee", "btnAnnuler" } }, //errr
+                //{ new string []{ "Ajouter un employee" }, new string []{ "btnNewEmployee", "btnAjouter" } }, //errr
+                //{ new string []{ "Modifier un employee" }, new string []{ "btnEditEmployee", "btnAnnuler" } }, //errr
                 { new string []{ "Supprimer un employee" }, new string []{ "btnDelEmp" } },
 
                 //Interevntion
-                //{ new string []{ "Consulter les intervention concerner", "Consulter tous les interventions" },
-                //  new string []{ "DropIntervention" } },
+                { new string []{ "Consulter les intervention concerner","Consulter tous les interventions" }, new string[] { "DropIntervention" } },
+
+                //demande
+                { new string []{ "Consulter les demandes concerner", "Consulter tous les demandes" }, new string[] { "DropDemande" } },
+
+
+                //produit
+                { new string []{ "Consulter tous les produits" }, new string[] { "btnListProduct" } },
+                { new string []{ "Affecter les produits" }, new string[] { "gpAffectationProduit" } },
+                { new string []{ "Ajouter produit" }, new string[] { "btnAddProduct", "btnClear" } },
+                { new string []{ "Modifier produit" }, new string[] { "btnAddProduct" } },
+                { new string []{ "supprimer produit" }, new string[] { "btnDelP" } },
             };
 
             Dictionary<string, Control> cs = new Dictionary<string, Control>();

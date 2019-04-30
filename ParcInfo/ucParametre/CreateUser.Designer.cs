@@ -91,6 +91,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnEditUser = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -342,7 +343,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 141);
+            this.checkBox4.Location = new System.Drawing.Point(6, 140);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(184, 17);
             this.checkBox4.TabIndex = 7;
@@ -414,7 +415,7 @@
             // chClientEdit
             // 
             this.chClientEdit.AutoSize = true;
-            this.chClientEdit.Location = new System.Drawing.Point(68, 63);
+            this.chClientEdit.Location = new System.Drawing.Point(71, 63);
             this.chClientEdit.Name = "chClientEdit";
             this.chClientEdit.Size = new System.Drawing.Size(63, 17);
             this.chClientEdit.TabIndex = 3;
@@ -480,7 +481,7 @@
             // chInterventionEdit
             // 
             this.chInterventionEdit.AutoSize = true;
-            this.chInterventionEdit.Location = new System.Drawing.Point(68, 63);
+            this.chInterventionEdit.Location = new System.Drawing.Point(71, 63);
             this.chInterventionEdit.Name = "chInterventionEdit";
             this.chInterventionEdit.Size = new System.Drawing.Size(63, 17);
             this.chInterventionEdit.TabIndex = 3;
@@ -512,7 +513,7 @@
             // rbConsulterDemande2
             // 
             this.rbConsulterDemande2.AutoSize = true;
-            this.rbConsulterDemande2.Location = new System.Drawing.Point(6, 40);
+            this.rbConsulterDemande2.Location = new System.Drawing.Point(6, 42);
             this.rbConsulterDemande2.Name = "rbConsulterDemande2";
             this.rbConsulterDemande2.Size = new System.Drawing.Size(160, 17);
             this.rbConsulterDemande2.TabIndex = 1;
@@ -543,6 +544,7 @@
             // 
             // gpProduit
             // 
+            this.gpProduit.Controls.Add(this.checkBox5);
             this.gpProduit.Controls.Add(this.chProduitAdd);
             this.gpProduit.Controls.Add(this.rbConsulterProduit);
             this.gpProduit.Controls.Add(this.chProduitEdit);
@@ -550,7 +552,7 @@
             this.gpProduit.Location = new System.Drawing.Point(13, 458);
             this.gpProduit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.gpProduit.Name = "gpProduit";
-            this.gpProduit.Size = new System.Drawing.Size(221, 65);
+            this.gpProduit.Size = new System.Drawing.Size(221, 88);
             this.gpProduit.TabIndex = 34;
             this.gpProduit.TabStop = false;
             this.gpProduit.Text = "Produit";
@@ -558,7 +560,7 @@
             // chProduitAdd
             // 
             this.chProduitAdd.AutoSize = true;
-            this.chProduitAdd.Location = new System.Drawing.Point(6, 42);
+            this.chProduitAdd.Location = new System.Drawing.Point(6, 62);
             this.chProduitAdd.Name = "chProduitAdd";
             this.chProduitAdd.Size = new System.Drawing.Size(59, 17);
             this.chProduitAdd.TabIndex = 27;
@@ -579,7 +581,7 @@
             // chProduitEdit
             // 
             this.chProduitEdit.AutoSize = true;
-            this.chProduitEdit.Location = new System.Drawing.Point(68, 42);
+            this.chProduitEdit.Location = new System.Drawing.Point(71, 62);
             this.chProduitEdit.Name = "chProduitEdit";
             this.chProduitEdit.Size = new System.Drawing.Size(63, 17);
             this.chProduitEdit.TabIndex = 22;
@@ -589,7 +591,7 @@
             // chProduitDel
             // 
             this.chProduitDel.AutoSize = true;
-            this.chProduitDel.Location = new System.Drawing.Point(140, 42);
+            this.chProduitDel.Location = new System.Drawing.Point(140, 62);
             this.chProduitDel.Name = "chProduitDel";
             this.chProduitDel.Size = new System.Drawing.Size(73, 17);
             this.chProduitDel.TabIndex = 21;
@@ -767,6 +769,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(6, 40);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(119, 17);
+            this.checkBox5.TabIndex = 28;
+            this.checkBox5.Text = "Affecter les produits";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -873,5 +885,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox5;
     }
 }

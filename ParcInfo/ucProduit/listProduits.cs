@@ -22,6 +22,7 @@ namespace ParcInfo.ucClient
         }
         private void listProduits_Load(object sender, EventArgs e)
         {
+            Methods.CheckRoles(Controls);
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 pd = new ProduitInfo(context.TypeProduits.ToList());
