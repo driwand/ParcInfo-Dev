@@ -103,7 +103,6 @@ namespace ParcInfo.frmDefault
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
-            this.PanelContainer.SuspendLayout();
             this.DropIntervention.SuspendLayout();
             this.PanelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBack)).BeginInit();
@@ -205,7 +204,6 @@ namespace ParcInfo.frmDefault
             // PanelContainer
             // 
             this.PanelContainer.BackColor = System.Drawing.Color.White;
-            this.PanelContainer.Controls.Add(this.DropIntervention);
             this.PanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContainer.Location = new System.Drawing.Point(20, 20);
             this.PanelContainer.Name = "PanelContainer";
@@ -224,7 +222,7 @@ namespace ParcInfo.frmDefault
             this.DropIntervention.Controls.Add(this.btnInterventionCours);
             this.DropIntervention.Controls.Add(this.btnListIntervention);
             this.DropIntervention.Controls.Add(this.btnIntervention);
-            this.DropIntervention.Location = new System.Drawing.Point(80, 104);
+            this.DropIntervention.Location = new System.Drawing.Point(3, 257);
             this.DropIntervention.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropIntervention.Name = "DropIntervention";
             this.DropIntervention.Size = new System.Drawing.Size(224, 41);
@@ -483,6 +481,7 @@ namespace ParcInfo.frmDefault
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.DropIntervention);
             this.pnlMenu.Controls.Add(this.DropParametre);
             this.pnlMenu.Controls.Add(this.DropProduit);
             this.pnlMenu.Controls.Add(this.DropClient);
@@ -603,7 +602,7 @@ namespace ParcInfo.frmDefault
             this.DropProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.DropProduit.Controls.Add(this.btnListProduct);
             this.DropProduit.Controls.Add(this.BtnProduct);
-            this.DropProduit.Location = new System.Drawing.Point(14, 120);
+            this.DropProduit.Location = new System.Drawing.Point(3, 115);
             this.DropProduit.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropProduit.Name = "DropProduit";
             this.DropProduit.Size = new System.Drawing.Size(224, 41);
@@ -1025,7 +1024,6 @@ namespace ParcInfo.frmDefault
             this.panel2.ResumeLayout(false);
             this.PanelMain.ResumeLayout(false);
             this.DropdownUserMenu.ResumeLayout(false);
-            this.PanelContainer.ResumeLayout(false);
             this.DropIntervention.ResumeLayout(false);
             this.PanelHeader.ResumeLayout(false);
             this.PanelHeader.PerformLayout();

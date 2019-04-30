@@ -39,10 +39,7 @@ namespace ParcInfo.ucInterevntion
                 }
                 else
                 {
-                    if (GlobVars.cuUser.isAdmin == 0)
-                        GetInterventionByStatut(statutInterv, true);
-                    else
-                        GetInterventionByStatut(statutInterv);
+                    GetInterventionByStatut(statutInterv);
                 }
 
                 Methods.Nice_grid(
@@ -167,11 +164,12 @@ namespace ParcInfo.ucInterevntion
 
         public void GetInterventionByStatut(string statutInterv, bool assigned = false)
         {
-            if (assigned == true)
+            int hasll = 0;
+            if (GlobVars.cuUser.isAdmin == 0)
             {
                 if (RoleName == "Consulter tous les interventions".ToLower())
                 {
-                    assigned = false;
+                    hasll = 1;
                     GetALlInterevntions();
                 }
                 else
@@ -200,7 +198,7 @@ namespace ParcInfo.ucInterevntion
                     }
                 }
             }
-            else
+            if (GlobVars.cuUser.isAdmin == 1 || hasll == 1)
                 using (var context = new ParcInformatiqueEntities())
                 {
                     var ls = (from ir in context.GetInterventionBystatut(new Label[] { lblTotalIntervention, lblTitleIntervention }, statutInterv)

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.nuAffecter = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpAffectationProduit = new System.Windows.Forms.GroupBox();
             this.btnAffecter = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
@@ -42,13 +42,13 @@
             this.dgProduits = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddProduit = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnDelP = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gpAffectationProduit.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,16 +67,16 @@
             0});
             this.nuAffecter.ValueChanged += new System.EventHandler(this.nuAffecter_ValueChanged);
             // 
-            // groupBox1
+            // gpAffectationProduit
             // 
-            this.groupBox1.Controls.Add(this.btnAffecter);
-            this.groupBox1.Controls.Add(this.nuAffecter);
-            this.groupBox1.Location = new System.Drawing.Point(772, 49);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(102, 49);
-            this.groupBox1.TabIndex = 151;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "affecter";
+            this.gpAffectationProduit.Controls.Add(this.btnAffecter);
+            this.gpAffectationProduit.Controls.Add(this.nuAffecter);
+            this.gpAffectationProduit.Location = new System.Drawing.Point(772, 49);
+            this.gpAffectationProduit.Name = "gpAffectationProduit";
+            this.gpAffectationProduit.Size = new System.Drawing.Size(102, 49);
+            this.gpAffectationProduit.TabIndex = 151;
+            this.gpAffectationProduit.TabStop = false;
+            this.gpAffectationProduit.Text = "affecter";
             // 
             // btnAffecter
             // 
@@ -110,7 +110,7 @@
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
             this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(347, 14);
+            this.btnFind.Location = new System.Drawing.Point(342, 14);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
             this.btnFind.TabIndex = 51;
@@ -198,20 +198,20 @@
             this.label1.TabIndex = 138;
             this.label1.Text = "Liste des produits";
             // 
-            // btnAddProduit
+            // btnAddProduct
             // 
-            this.btnAddProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnAddProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProduit.ForeColor = System.Drawing.Color.White;
-            this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.btnedit;
-            this.btnAddProduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddProduit.Location = new System.Drawing.Point(278, 435);
-            this.btnAddProduit.Name = "btnAddProduit";
-            this.btnAddProduit.Size = new System.Drawing.Size(107, 32);
-            this.btnAddProduit.TabIndex = 147;
-            this.btnAddProduit.Text = "  Enregister";
-            this.btnAddProduit.UseVisualStyleBackColor = false;
-            this.btnAddProduit.Click += new System.EventHandler(this.btnAddProduit_Click);
+            this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProduct.ForeColor = System.Drawing.Color.White;
+            this.btnAddProduct.Image = global::ParcInfo.Properties.Resources.btnedit;
+            this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddProduct.Location = new System.Drawing.Point(278, 435);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(107, 32);
+            this.btnAddProduct.TabIndex = 147;
+            this.btnAddProduct.Text = "  Enregister";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduit_Click);
             // 
             // btnDelP
             // 
@@ -267,8 +267,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnAddProduit);
+            this.Controls.Add(this.gpAffectationProduit);
+            this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.btnDelP);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
@@ -283,7 +283,7 @@
             this.Size = new System.Drawing.Size(890, 481);
             this.Load += new System.EventHandler(this.listProduits_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.gpAffectationProduit.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduits)).EndInit();
@@ -296,9 +296,9 @@
         #endregion
 
         private System.Windows.Forms.NumericUpDown nuAffecter;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpAffectationProduit;
         private System.Windows.Forms.Button btnAffecter;
-        private System.Windows.Forms.Button btnAddProduit;
+        private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button btnDelP;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox2;
