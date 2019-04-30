@@ -54,7 +54,6 @@ namespace ParcInfo.ucDemande
                 }
             }
         }
-
         void ShowIntervention(string idInterv, string intervenant, string dateinter, string debut, string fin, string duree, string type, string statut)
         {
             InfoInterv infointerv = new InfoInterv();
