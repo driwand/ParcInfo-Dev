@@ -61,7 +61,9 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                GlobVars.frmBack = this;
+
+                GlobVars.lsback.Add(null);
+
                 GlobVars.frmindex.ShowControl(new ListDemande("en cours",0,id), true);
             }
         }
@@ -72,8 +74,8 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-
-                GlobVars.frmBack = this;
+                GlobVars.lsback.Add(null);
+                
                 GlobVars.frmindex.ShowControl(new ListDemande("en retard", 0, id), true);
             }
         }
@@ -85,7 +87,7 @@ namespace ParcInfo.ucClient
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
 
-                GlobVars.frmBack = this;
+                GlobVars.lsback.Add(null);
                 GlobVars.frmindex.ShowControl(new ListDemande("", 0, id), true);
             }
         }
@@ -97,7 +99,7 @@ namespace ParcInfo.ucClient
                 var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
 
-                GlobVars.frmBack = this;
+                GlobVars.lsback.Add(null);
                 GlobVars.frmindex.ShowControl(new ListProduitClient(id), true);
             }
         }

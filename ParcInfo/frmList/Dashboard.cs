@@ -14,7 +14,8 @@ namespace ParcInfo.frmList
 {
     public partial class Dashboard : UserControl
     {
-
+        public string RoleI;
+        public string RoleR;
         public Color GetColor(string statut)
         {
             Color color = Color.Transparent;
@@ -38,6 +39,17 @@ namespace ParcInfo.frmList
 
             return color;
         }
+        public void GetRolesName()
+        {
+
+            var t = GlobVars.cuUser.RoleUtilisateurs1.Where(x => x.IdUtilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0);
+            foreach (var v in t)
+                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("demandes".ToLower()) && v.IsDeleted != 1)
+                    RoleR = v.Nom.ToLower();
+            foreach (var v in t)
+                if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("interventions".ToLower()) && v.IsDeleted != 1)
+                    RoleI = v.Nom.ToLower();
+        }
 
         public Dashboard()
         {
@@ -50,11 +62,14 @@ namespace ParcInfo.frmList
                 {
                     if (u.isAdmin == 1)
                     {
-                        GetDashAdmin();
+                        GetDashAdmin(true, true);
                     }
                     else
                     {
-                        GetDashUser();
+                        if (RoleI == "Consulter tous les interventions".ToLower() && RoleR == "Consulter tous les demandes".ToLower())
+                            GetDashAdmin(true, true);
+                        else
+                            GetDashUser();
                     }
                 }
             }
@@ -72,44 +87,59 @@ namespace ParcInfo.frmList
             lbl.lblStatutColor = color;
             c.Controls.Add(lbl);
         }
-        public void GetDashAdmin()
+
+        public void GetDashAdmin(bool hasallr,bool hasalli)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                lblDemEncours.Text = context.GetRequestCours.Count().ToString();
-                lblDemEnRetard.Text = context.GetRequestRetard.Count().ToString();
-                lblIntEnCours.Text = context.GetIntervEncours.Count().ToString();
-                lblIntEnCours.Text = context.GetIntervenretard.Count().ToString();
-                lblTotalDem.Text = context.GetRequestbyStatut().Count.ToString();
-                lblTotalInterv.Text = context.GetInterventionBystatut().Count.ToString();
                 var listOrder = new List<string> { "en retard", "en attente", "en cours", "terminer" };
-                var ls = (from c in context.GetRequestbyStatut()
-                          select new
-                          {
-                              c.IdReq,
-                              c.Id,
-                              c.Employee.Client.Nom,
-                              c.Datedemande,
-                              c.Getstatut,
-                              color = GetColor(c.Getstatut)
-                          }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).Take(5).ToList();
-                foreach (var item in ls)
+
+                if (hasallr == true)
                 {
-                    CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
+                    //demande
+                    lblDemEncours.Text = context.GetRequestCours.Count().ToString();
+                    lblDemEnRetard.Text = context.GetRequestRetard.Count().ToString();
+                    lblTotalDem.Text = context.GetRequestbyStatut().Count.ToString();
+
+                    var ls = (from c in context.GetRequestbyStatut()
+                              select new
+                              {
+                                  c.IdReq,
+                                  c.Id,
+                                  c.Employee.Client.Nom,
+                                  c.Datedemande,
+                                  c.Getstatut,
+                                  color = GetColor(c.Getstatut)
+                              }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).Take(5).ToList();
+
+                    foreach (var item in ls)
+                    {
+                        CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
+                    }
                 }
-                var lsx = (from c in context.GetInterventionBystatut()
-                           select new
-                           {
-                               c.IdIntrv,
-                               c.Id,
-                               c.Client.Nom,
-                               c.DateIntervention,
-                               c.Getstatut,
-                               color = GetColor(c.Getstatut)
-                           }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).Take(5).ToList();
-                foreach (var item in lsx)
+
+                if (hasalli == true)
                 {
-                    CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
+                    //interevention
+                    lblIntEnCours.Text = context.GetIntervEncours.Count().ToString();
+                    lblIntEnCours.Text = context.GetIntervenretard.Count().ToString();
+                    lblTotalInterv.Text = context.GetInterventionBystatut().Count.ToString();
+
+                    var lsx = (from c in context.GetInterventionBystatut()
+                               select new
+                               {
+                                   c.IdIntrv,
+                                   c.Id,
+                                   c.Client.Nom,
+                                   c.DateIntervention,
+                                   c.Getstatut,
+                                   color = GetColor(c.Getstatut)
+                               }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).Take(5).ToList();
+
+                    foreach (var item in lsx)
+                    {
+                        CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
+                    }
                 }
             }
         }
@@ -117,40 +147,65 @@ namespace ParcInfo.frmList
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                lblDemEncours.Text = context.GetAssignedRequestCours.Count().ToString();
-                lblDemEnRetard.Text = context.GetAssignedRequestRetard.Count().ToString();
-                lblIntEnCours.Text = context.GeAssignedtIntervEncours.Count().ToString();
-                lblIntEnCours.Text = context.GetAssignedIntervenretard.Count().ToString();
-                lblTotalDem.Text = context.GetAssignedRequestbyStatut().Count.ToString();
-                lblTotalInterv.Text = context.GetAssignedInterventionBystatut().Count.ToString();
                 var listOrder = new List<string> { "en retard", "en attente", "en cours", "terminer" };
-                var ls = (from c in context.GetAssignedRequestbyStatut()
-                          select new
-                          {
-                              c.IdReq,
-                              c.Id,
-                              c.Employee.Client.Nom,
-                              c.Datedemande,
-                              c.Getstatut,
-                              color = GetColor(c.Getstatut)
-                          }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).Take(5).ToList();
-                foreach (var item in ls)
+
+                bool hasallr = false;
+                bool hasalli = false;
+
+                if (RoleR == "Consulter tous les demandes".ToLower())
+                    hasallr = true;
+                if (RoleI == "Consulter tous les interventions".ToLower())
+                    hasalli = true;
+
+                if (hasalli == true)
+                    GetDashAdmin(false, true);
+                if (hasallr == true)
+                    GetDashAdmin(true, false);
+
+                if (hasallr == false)
                 {
-                    CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
+                    //demande
+                    lblDemEncours.Text = context.GetAssignedRequestCours.Count().ToString();
+                    lblDemEnRetard.Text = context.GetAssignedRequestRetard.Count().ToString();
+                    lblTotalDem.Text = context.GetAssignedRequestbyStatut().Count.ToString();
+
+                    var ls = (from c in context.GetAssignedRequestbyStatut()
+                              select new
+                              {
+                                  c.IdReq,
+                                  c.Id,
+                                  c.Employee.Client.Nom,
+                                  c.Datedemande,
+                                  c.Getstatut,
+                                  color = GetColor(c.Getstatut)
+                              }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).Take(5).ToList();
+                    foreach (var item in ls)
+                    {
+                        CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
+                    }
+
                 }
-                var lsx = (from c in context.GetAssignedInterventionBystatut()
-                           select new
-                           {
-                               c.IdIntrv,
-                               c.Id,
-                               c.Client.Nom,
-                               c.DateIntervention,
-                               c.Getstatut,
-                               color = GetColor(c.Getstatut)
-                           }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).Take(5).ToList();
-                foreach (var item in lsx)
+                if (hasalli == false)
                 {
-                    CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
+                    //intervention
+                    lblIntEnCours.Text = context.GeAssignedtIntervEncours.Count().ToString();
+                    lblIntEnCours.Text = context.GetAssignedIntervenretard.Count().ToString();
+                    lblTotalInterv.Text = context.GetAssignedInterventionBystatut().Count.ToString();
+
+                    var lsx = (from c in context.GetAssignedInterventionBystatut()
+                               select new
+                               {
+                                   c.IdIntrv,
+                                   c.Id,
+                                   c.Client.Nom,
+                                   c.DateIntervention,
+                                   c.Getstatut,
+                                   color = GetColor(c.Getstatut)
+                               }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.DateIntervention).Take(5).ToList();
+                    foreach (var item in lsx)
+                    {
+                        CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
+                    }
                 }
             }
         }

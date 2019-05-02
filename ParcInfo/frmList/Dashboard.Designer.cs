@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblClient = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlDemande = new System.Windows.Forms.FlowLayoutPanel();
@@ -65,6 +66,8 @@
             this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.lblDemEnRetard = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.TmrReal = new System.Windows.Forms.Timer(this.components);
+            this.getRealData = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.pnlDemande.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -499,6 +502,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Demande en retard";
             // 
+            // TmrReal
+            // 
+            
+            // 
+            // getRealData
+            // 
+            
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,5 +592,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTotalInterv;
         private System.Windows.Forms.Label lblTotalDem;
+        private System.Windows.Forms.Timer TmrReal;
+        private System.ComponentModel.BackgroundWorker getRealData;
     }
 }
