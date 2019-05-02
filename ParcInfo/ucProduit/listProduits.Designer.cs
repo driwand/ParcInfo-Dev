@@ -177,6 +177,7 @@
             this.dgProduits.Name = "dgProduits";
             this.dgProduits.Size = new System.Drawing.Size(482, 310);
             this.dgProduits.TabIndex = 142;
+            this.dgProduits.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduits_CellDoubleClick);
             this.dgProduits.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduits_RowEnter);
             // 
             // panel1

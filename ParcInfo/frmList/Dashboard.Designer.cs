@@ -355,8 +355,8 @@
             // 
             this.gradientPanel4.Angle = 0F;
             this.gradientPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(199)))), ((int)(((byte)(246)))));
-            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(122)))), ((int)(((byte)(142)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(64)))));
             this.gradientPanel4.Controls.Add(this.lblIntEnRetard);
             this.gradientPanel4.Controls.Add(this.label4);
             this.gradientPanel4.Location = new System.Drawing.Point(653, 48);
@@ -392,8 +392,8 @@
             // 
             this.gradientPanel3.Angle = 0F;
             this.gradientPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(231)))), ((int)(((byte)(163)))));
-            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(222)))), ((int)(((byte)(129)))));
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(180)))), ((int)(((byte)(80)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(152)))), ((int)(((byte)(15)))));
             this.gradientPanel3.Controls.Add(this.lblIntEnCours);
             this.gradientPanel3.Controls.Add(this.label3);
             this.gradientPanel3.Location = new System.Drawing.Point(447, 48);
@@ -429,8 +429,8 @@
             // 
             this.gpDemandeEnCours.Angle = 0F;
             this.gpDemandeEnCours.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gpDemandeEnCours.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(113)))), ((int)(((byte)(250)))));
-            this.gpDemandeEnCours.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(47)))), ((int)(((byte)(248)))));
+            this.gpDemandeEnCours.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(120)))));
+            this.gpDemandeEnCours.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(195)))), ((int)(((byte)(18)))));
             this.gpDemandeEnCours.Controls.Add(this.lblDemEncours);
             this.gpDemandeEnCours.Controls.Add(this.label2);
             this.gpDemandeEnCours.Location = new System.Drawing.Point(35, 48);

@@ -103,11 +103,9 @@ namespace ParcInfo.Classes
                                 ).LastOrDefault();
                     if (em != null)
                     {
-
                         em.Focus();
                         count++;
                     }
-
                 }
 
             }

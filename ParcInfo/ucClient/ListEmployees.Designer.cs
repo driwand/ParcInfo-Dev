@@ -143,6 +143,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(550, 20);
             this.txtFind.TabIndex = 42;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // label15
             // 
@@ -194,6 +195,7 @@
             this.dgEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgEmployees.Size = new System.Drawing.Size(716, 351);
             this.dgEmployees.TabIndex = 69;
+            this.dgEmployees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmployees_CellDoubleClick);
             this.dgEmployees.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmployees_RowEnter);
             // 
             // lblClientName

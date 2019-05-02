@@ -53,7 +53,7 @@ namespace ParcInfo.ucClient
                     c.Prixheur,
                     c.Heurecontract,
                     c.Debutcontract,
-                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
@@ -76,7 +76,7 @@ namespace ParcInfo.ucClient
                     c.Prixheur,
                     c.Heurecontract,
                     c.Debutcontract,
-                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
@@ -104,7 +104,7 @@ namespace ParcInfo.ucClient
                     c.Prixheur,
                     c.Heurecontract,
                     c.Debutcontract,
-                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
@@ -131,7 +131,7 @@ namespace ParcInfo.ucClient
                 c.Prixheur,
                 c.Heurecontract,
                 c.Debutcontract,
-                userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                 dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
             }).ToList());
             myGrid();
@@ -212,6 +212,10 @@ namespace ParcInfo.ucClient
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)
         {
             btnStartIntervention.Click -= btnStartIntervention_Click;
+            gpEmployee.Click -= gpEmployee_Click;
+            gpProduit.Click -= gpProduit_Click;
+            gpIntervention.Click -= gpIntervention_Click;
+            gpDemande.Click -= gpDemande_Click;
 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
@@ -235,6 +239,10 @@ namespace ParcInfo.ucClient
                 {
                     GetAllClients();
                     btnStartIntervention.Click += btnStartIntervention_Click;
+                    gpEmployee.Click += gpEmployee_Click;
+                    gpProduit.Click += gpProduit_Click;
+                    gpIntervention.Click += gpIntervention_Click;
+                    gpDemande.Click += gpDemande_Click;
                 }
                   
             }

@@ -19,34 +19,49 @@ namespace ParcInfo.ucClient
         int idProd;
         int idC;
         int idEmploye;
-        public DetailProduit(int idClient,int idP)
+        int idProduitClient;
+        public DetailProduit(int idClient, int idP,int idPc = 0)
         {
             InitializeComponent();
             if (idClient > 0 && idP > 0)
             {
                 idC = idClient;
                 idProd = idP;
+                idProduitClient = idPc;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var c = context.Clients.Find(idClient);
                     var p = c.ProduitClients.Where(d => d.Idproduit == idP).Select(s => s).FirstOrDefault();
-                    lblClient.Text = $"[{c.IdCLient}]";
-                    if (p.Utilisateur != null)
+                    var sx = p.Produit.TypeProduit.SupportingSoftware;
+                    var px = p.Produit.TypeProduit.SupportingUser;
+                    if (px == 0 && sx == 0)
                     {
-                        int loc = 87;
-                        lblUser.Text = p.Utilisateur.Nom;
-                        loc += lblUser.Width;
-                        lblDateAffectation.Location = new Point(loc, 20);
-                        lblDateAff.Text = p.Dateaffectation.Value.ToShortDateString();
-                        lblDateAff.Location = new Point(lblDateAffectation.Location.X + lblDateAffectation.Width, 20);
-                        lblPrixVente.Location = new Point(lblDateAff.Location.X + lblDateAff.Width, 20);
-                        lblPrix.Text = p.Prixvente.ToString();
-                        lblPrix.Location = new Point(lblPrixVente.Location.X + lblPrixVente.Width, 20);
+                        gpMaterielLogiciel.Visible = false;
+
+                        gpEmploye.Size = new Size(467, 315);
+                        btnAddEmployee.Location = new Point(414, 277);
+                        FpEmployee.MaximumSize = new Size(427, 252);
+                        FpEmployee.Size = new Size(427, 252);
+                        
                     }
-                }            
+                        lblClient.Text = $"[{c.IdCLient}]";
+                        if (p.Utilisateur != null)
+                        {
+                            int loc = 87;
+                            lblUser.Text = p.Utilisateur.Nom;
+                            loc += lblUser.Width;
+                            lblDateAffectation.Location = new Point(loc, 20);
+                            lblDateAff.Text = p.Dateaffectation.Value.ToShortDateString();
+                            lblDateAff.Location = new Point(lblDateAffectation.Location.X + lblDateAffectation.Width, 20);
+                            lblPrixVente.Location = new Point(lblDateAff.Location.X + lblDateAff.Width, 20);
+                            lblPrix.Text = p.Prixvente.ToString();
+                            lblPrix.Location = new Point(lblPrixVente.Location.X + lblPrixVente.Width, 20);
+                        }
+
+                }
             }
         }
-        public DetailProduit(int idP,string idEmp)
+        public DetailProduit(int idP, string idEmp)
         {
             InitializeComponent();
             if (idP > 0)
@@ -56,11 +71,11 @@ namespace ParcInfo.ucClient
                     int idemp = int.Parse(idEmp);
                     idProd = idP;
                     idEmploye = idemp;
-                    var e = context.Employees.Where(d=> d.IsDeleted == 0 && d.Id == idEmploye).FirstOrDefault();
+                    var e = context.Employees.Where(d => d.IsDeleted == 0 && d.Id == idEmploye).FirstOrDefault();
                     var p = (from c in e.ProduitUtilisers
                              join pr in context.ProduitClients on c.IdProduitClient equals pr.Id
                              where idP == pr.Idproduit && c.IsDeleted == 0
-                             select new { c, pr.Prixvente}).FirstOrDefault();
+                             select new { c, pr.Prixvente }).FirstOrDefault();
                     lblClient.Text = $"[{e.IdEmploye}]";
                     if (p.c.Utilisateur != null)
                     {
@@ -77,13 +92,11 @@ namespace ParcInfo.ucClient
                 }
             }
         }
-
-      
         private void ListProduitClient_Load(object sender, EventArgs e)
         {
             Methods.CheckRoles(Controls);
 
-            CreateControl("userC", userName, FpEmployee, 0, 0, 0);
+            CreateControl("userC", userName, FpEmployee, 0, 0, idProd);
             userName++;
             CreateControl("log", logName, FpProduit, 0, 0, idProd);
             logName++;
@@ -96,7 +109,7 @@ namespace ParcInfo.ucClient
                 {
                     List<TypeProduit> listT = new List<TypeProduit>();
                     listT.Add(d.TypeProduit);
-                    ProduitInfo pd = new ProduitInfo(d,listT);
+                    ProduitInfo pd = new ProduitInfo(d,pc.Id, listT);
                     pd.Name = "pd";
                     pd.Location = new Point(18, 50);
                     //pd.txtPrix.ReadOnly = false;
@@ -123,9 +136,9 @@ namespace ParcInfo.ucClient
                         tbx.LblAff = user.Id.ToString();
                         foreach (var item in pu.Skip(1))
                         {
-                           
+
                             //first lblTexbox to fill user
-                            lblTextbox user2 = new lblTextbox(idC,0, "emp");
+                            lblTextbox user2 = new lblTextbox(idC, idProd, "emp",idProduitClient);
                             user2.TxtValue = item.Employee.Nom + " " + item.Employee.Prenom;
                             user2.Name = "userC" + userName;
                             user2.Lblid = item.IdEmployee.ToString();
@@ -136,7 +149,7 @@ namespace ParcInfo.ucClient
                             FpEmployee.Controls.Add(user2);
                         }
                     }
-                     tbx = this.Controls.Find("log1", true).FirstOrDefault() as lblTextbox;
+                    tbx = this.Controls.Find("log1", true).FirstOrDefault() as lblTextbox;
                     if (ins != null && ins.Count > 0)
                     {
                         var logM = ins.FirstOrDefault();
@@ -145,13 +158,13 @@ namespace ParcInfo.ucClient
                         tbx.LblAff = logM.id.ToString();
                         foreach (var item in ins.Skip(1))
                         {
-                            lblTextbox logx = new lblTextbox(idC,0, "log");
+                            lblTextbox logx = new lblTextbox(idC, idProd, "log",idProduitClient);
                             logx.Name = "log" + logName;
                             logx.LblText = "Nom :";
                             logx.TxtValue = item.ProduitClient.Produit.CodeP;
                             logx.Margin = new Padding(0, 0, 0, 12);
                             logx.LblAff = item.Idhardsoft.ToString();
-                            logx.Lblid = item.id.ToString() ;
+                            logx.Lblid = item.id.ToString();
                             logName++;
                             FpProduit.Controls.Add(logx);
                         }
@@ -181,10 +194,10 @@ namespace ParcInfo.ucClient
                     gpMaterielLogiciel.Size = new Size(467, 182);
                     gpMaterielLogiciel.Location = new Point(405, 245);
 
-                   // FpEmployee.Size = new Size(473, 126);
+                    // FpEmployee.Size = new Size(473, 126);
                     btnAddProduit.Location = new Point(410, 144);
                 }
-              
+
 
             }
         }
@@ -228,7 +241,8 @@ namespace ParcInfo.ucClient
                                     Login_u = item.Login,
                                     Password_u = item.Pass,
                                     IsDeleted = 0,
-                                    Creepar = GlobVars.currentUser
+                                    Creepar = GlobVars.currentUser,
+                                    Dateaffectation = DateTime.Now
                                 });
                             }
                         }
@@ -264,12 +278,13 @@ namespace ParcInfo.ucClient
                         else if (item.Idaffectation == 0 && !item.IsDeleted && item.Id > 0)
                         {
                             // add log if not exists
-                            var dx = idprodClient.Installers1.Where(d => d.Idhardsoft == item.Id && d.Idproduitclient == idprodClient.Id && d.IsDeleted ==0).FirstOrDefault() ;
+                            var dx = idprodClient.Installers1.Where(d => d.Idhardsoft == item.Id && d.Idproduitclient == idprodClient.Id && d.IsDeleted == 0).FirstOrDefault();
                             if (dx == null)
                             {
-                                context.Installers.Add(new Installer { Idhardsoft = item.Id, Idproduitclient = idprodClient.Id,IsDeleted = 0,Creepar = GlobVars.currentUser });
+                                context.Installers.Add(new Installer { Idhardsoft = item.Id, Idproduitclient = idprodClient.Id, IsDeleted = 0, Creepar = GlobVars.currentUser });
                             }
-                        }else if(item.Idaffectation >= 0 && item.IsDeleted)
+                        }
+                        else if (item.Idaffectation >= 0 && item.IsDeleted)
                         {
                             // Delete
                             var d = idprodClient.Installers1.Where(pu => item.Idaffectation == pu.id).FirstOrDefault();
@@ -293,6 +308,8 @@ namespace ParcInfo.ucClient
                     {
                         emp.Login_u = loginx.TxtLogin;
                         emp.Password_u = loginx.TxtPass;
+                        emp.Modifierpar = GlobVars.currentUser;
+                        emp.Datemodification = DateTime.Now;
                     }
                 }
                 ProduitInfo tbx = this.Controls.Find("pd", true).FirstOrDefault() as ProduitInfo;
@@ -310,7 +327,7 @@ namespace ParcInfo.ucClient
                         }
                     }
                 }
-                
+
                 context.SaveChanges();
             }
 
@@ -318,7 +335,8 @@ namespace ParcInfo.ucClient
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            lblTextbox user1 = new lblTextbox(idC,0, "emp");
+
+            lblTextbox user1 = new lblTextbox(idC, idProd, "emp",idProduitClient);
             user1.Name = "userC" + userName;
             user1.LblText = "Nom :";
             user1.Lblid = "0";
@@ -334,7 +352,7 @@ namespace ParcInfo.ucClient
         }
         private void btnAddProduit_Click(object sender, EventArgs e)
         {
-            lblTextbox log = new lblTextbox(idC,0, "log");
+            lblTextbox log = new lblTextbox(idC, idProd, "log",idProduitClient);
             log.Name = "log" + userName;
             log.LblText = "Nom :";
             log.Lblid = "0";
@@ -362,7 +380,7 @@ namespace ParcInfo.ucClient
             {
                 nameParms = "log";
             }
-            lblTextbox user1 = new lblTextbox(idC, idPr, nameParms);
+            lblTextbox user1 = new lblTextbox(idC, idPr, nameParms,idProduitClient);
             user1.Name = name + count;
             user1.LblText = "Nom :";
             user1.TxtValue = txtvalue;

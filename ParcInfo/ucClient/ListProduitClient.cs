@@ -36,7 +36,9 @@ namespace ParcInfo.ucClient
                                  c.pr.Marque,
                                  c.c.Login_u,
                                  c.c.Password_u,
-                                 c.c.Dateaffectation
+                                 c.c.Dateaffectation,
+                                userMod = c.c.Utilisateur1 != null ? c.c.Utilisateur1.Nom : "aucune",
+                                 dateMod = c.c.Datemodification != null ? c.c.Datemodification.ToString() : "**-**-****",
                              }).ToList();
                     dgProduit.DataSource = Methods.ToDataTable(d);
                    
@@ -69,15 +71,16 @@ namespace ParcInfo.ucClient
                                        select new
                                        {
                                            d.CodeP,
+                                           idPC = f.Id,
                                            id = f.Idclient,
                                            idP = f.Idproduit,
                                            d.TypeProduit.Nom,
                                            d.Marque,
                                            d.Model,
                                            count = f.ProduitUtilisers.Count(),
-                                           //hardware = d.IsHardware == 1 ? "Oui" : "Non"
-                                           /* employe = pu.Employee.Nom + pu.Employee.Prenom*/
-                                           f.Dateaffectation
+                                           f.Dateaffectation,
+                                           userMod = f.Utilisateur1 != null ? f.Utilisateur1.Nom : "aucune",
+                                           dateMod = f.Datemodification != null ? f.Datemodification.ToString() : "**-**-****",
                                        }).ToList();
 
                     dgProduit.DataSource = Methods.ToDataTable(listProduit);
@@ -90,6 +93,7 @@ namespace ParcInfo.ucClient
                                    );
                     Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
                     dgProduit.Columns["idP"].Visible = false;
+
                 }
 
             }
@@ -103,36 +107,35 @@ namespace ParcInfo.ucClient
         {
     
         }
-
+    
         private void dgProduit_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
                 var myrow = dgProduit.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-                {
-                   // var cli = context.ProduitClients.Where(c => c.Idproduit == id).FirstOrDefault();
-                    var clt = (from c in context.ProduitClients
-                               where c.Idproduit == id && c.Modifierpar != null
-                               join u in context.Utilisateurs on c.Modifierpar equals u.Id
-                               select new { u.Nom, c.Datemodification }).FirstOrDefault();
-                    if (clt != null)
-                    {
+                string nomUser = myrow.Cells["userMod"].Value.ToString();
+                string date = myrow.Cells["dateMod"].Value.ToString();
+
+                    // var cli = context.ProduitClients.Where(c => c.Idproduit == id).FirstOrDefault();
+
+                    //var clt = (from c in context.ProduitClients
+                    //           where c.Idproduit == id && c.Modifierpar != null
+                    //           join u in context.Utilisateurs on c.Modifierpar equals u.Id
+                    //           select new { u.Nom, c.Datemodification }).FirstOrDefault();
+                    //var pu = (from c in context.ProduitUtilisers
+                    //           where c.Id == idPU && c.Modifierpar != null
+                    //           join u in context.Utilisateurs on c.Modifierpar equals u.Id
+                    //           select new { u.Nom, c.Datemodification }).FirstOrDefault();
+                  
                         int loc = 331;
-                        lblEdited.Text = clt.Nom;
+                        lblEdited.Text = nomUser;
                         loc += lblEdited.Width ;
                         lblMod.Location = new Point(loc, 462);
                         // MessageBox.Show(clt.Nom.Length.ToString());
-                        lblEditedDate.Location = new Point(lblMod.Location.X + loc, 462);
-                        lblEditedDate.Text = clt.Datemodification.ToString();
-                    }
-                    else
-                    {
-                        lblEdited.Text = "aucune";
-                        lblEditedDate.Text = "****-**-**";
-                    }
-                }
+                        lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+                        lblEditedDate.Text = date;
+       
             }
         }
 
@@ -144,6 +147,7 @@ namespace ParcInfo.ucClient
                 if (idEmp > 0)
                 {
                     int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
                     string idE = idEmp.ToString();
                     GlobVars.frmindex.ShowControl(new DetailProduit(id, idE));
                 }
@@ -151,8 +155,10 @@ namespace ParcInfo.ucClient
                 {
                     int id = int.Parse(myrow.Cells["id"].Value.ToString());
                     int idP = int.Parse(myrow.Cells["idP"].Value.ToString());
+                    int idPC = int.Parse(myrow.Cells["idPC"].Value.ToString());
+
                     GlobVars.frmBack = this;
-                    GlobVars.frmindex.ShowControl(new DetailProduit(id, idP));
+                    GlobVars.frmindex.ShowControl(new DetailProduit(id, idP,idPC));
                 }
             }
         }

@@ -122,42 +122,16 @@ namespace ParcInfo.ucClient
                 nuAffecter.Value = c;
 
                 var myrow = dgProduits.Rows[e.RowIndex];
-                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                string nomUser = myrow.Cells["userMod"].Value.ToString();
+                string date = myrow.Cells["dateMod"].Value.ToString();
+                int loc = 522;
+                lblUser.Text = nomUser;
+                loc += lblUser.Width;
+                lblM.Location = new Point(loc, 454);
+                lblDateMod.Text = date;
 
-                btnDelP.Visible = true;
-                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-                {
-                    var p = context.Produits.Find(id);
-                    if (p != null)
-                    {
-                        pd.cbType.SelectedValue = p.IdType;
-                        pd.txtMarque.Text = p.Marque;
-                        pd.txtModel.Text = p.Model;
-                        pd.txtPrix.Text = p.Prix.ToString();
-                        pd.DateProduit.Text = p.Datefabrication.ToString();
-                        pd.lblID.Text = p.id.ToString();
-                        if (p.IsHardware == 1)
-                        {
-                            pd.isHardware.Checked = true;
-                        }
-                        else
-                        {
-                            pd.isHardware.Checked = false;
+                lblDateMod.Location = new Point(lblM.Location.X + lblM.Width, 454);
 
-                        }
-                        if (p.Utilisateur1 != null)
-                        {
-                            int loc = 522;
-                            lblUser.Text = p.Utilisateur1.Nom;
-                            loc += lblUser.Width;
-                            lblM.Location = new Point(loc, 454);
-                            lblDateMod.Text = p.Datemodification.ToString();
-                            
-                            lblDateMod.Location = new Point(lblM.Location.X + lblM.Width, 454);
-                        }
-                        GetValue(pd.pnlProp, p);
-                    }
-                }
             }
         }
 
@@ -258,7 +232,16 @@ namespace ParcInfo.ucClient
                 var listProduitClient = context.ProduitClients.ToList();
                 var listProduit = (from p in listType
                                    where !(listProduitClient.Any(it => it.Idproduit == p.id && it.IsDeleted == 0))
-                                   select new { p.CodeP, p.id, p.TypeProduit.Nom, p.Marque, p.Model, p.Prix, p.Datefabrication }).ToList();
+                                   select new { p.CodeP,
+                                       p.id,
+                                       p.TypeProduit.Nom,
+                                       p.Marque,
+                                       p.Model,
+                                       p.Prix,
+                                       p.Datefabrication,
+                                       userMod = p.Utilisateur1 != null ? p.Utilisateur1.Nom : "aucune",
+                                       dateMod = p.Datemodification != null ? p.Datemodification.ToString() : "**-**-****",
+                                   }).ToList();
                 dgProduits.DataSource = Methods.ToDataTable(listProduit);
 
                 Methods.Nice_grid(
@@ -312,6 +295,50 @@ namespace ParcInfo.ucClient
         private void dgProduits_DoubleClick(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgProduits_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                var myrow = dgProduits.Rows[e.RowIndex];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+
+                btnDelP.Visible = true;
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+                {
+                    var p = context.Produits.Find(id);
+                    if (p != null)
+                    {
+                        pd.cbType.SelectedValue = p.IdType;
+                        pd.txtMarque.Text = p.Marque;
+                        pd.txtModel.Text = p.Model;
+                        pd.txtPrix.Text = p.Prix.ToString();
+                        pd.DateProduit.Text = p.Datefabrication.ToString();
+                        pd.lblID.Text = p.id.ToString();
+                        if (p.IsHardware == 1)
+                        {
+                            pd.isHardware.Checked = true;
+                        }
+                        else
+                        {
+                            pd.isHardware.Checked = false;
+
+                        }
+                        //if (p.Utilisateur1 != null)
+                        //{
+                        //    int loc = 522;
+                        //    lblUser.Text = p.Utilisateur1.Nom;
+                        //    loc += lblUser.Width;
+                        //    lblM.Location = new Point(loc, 454);
+                        //    lblDateMod.Text = p.Datemodification.ToString();
+
+                        //    lblDateMod.Location = new Point(lblM.Location.X + lblM.Width, 454);
+                        //}
+                        GetValue(pd.pnlProp, p);
+                    }
+                }
+            }
         }
     }
 }

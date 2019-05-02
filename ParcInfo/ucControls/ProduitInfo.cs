@@ -23,7 +23,7 @@ namespace ParcInfo.ucControls
                 listType = listT.Where(d=> d.IsDeleted == 0).ToList();
             }
         }
-        public ProduitInfo(Produit p, List<TypeProduit> listT)
+        public ProduitInfo(Produit p,int idPc, List<TypeProduit> listT)
         {
             InitializeComponent();
             if (p != null)
@@ -44,7 +44,7 @@ namespace ParcInfo.ucControls
                 cbType.Enabled = false;
                 DateProduit.Text = p.Datefabrication.ToString();
                 txtModel.Text = p.Model;
-
+               
                 if (p.IsHardware == 1)
                 {
                     isHardware.Checked = true;

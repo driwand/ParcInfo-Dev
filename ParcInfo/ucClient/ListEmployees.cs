@@ -14,8 +14,6 @@ namespace ParcInfo.ucClient
 {
     public partial class ListEmployees : UserControl
     {
-
-
         public int idC = 0;
         public ListEmployees(int idClient)
         {
@@ -34,17 +32,16 @@ namespace ParcInfo.ucClient
 
                     var listEmp = (from emp in c.Employees
                                    join d in c.Departements on emp.IdDep equals d.id
-                                   where emp.IsDeleted != 1
+                                   where emp.IsDeleted == 0
                                    select new { emp.IdEmploye, emp.Id,
                                        emp.Nom, emp.Prenom,
                                        emp.Email,
                                        departement = d.Nom,
-                                       userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
-                                       dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                                       userMod =  emp.Utilisateur1 != null ? emp.Utilisateur1.Nom : "aucune",
+                                       dateMod = emp.Datemodification != null ? emp.Datemodification.ToString() : "**-**-****",
                                    }).ToList();
                     dgEmployees.DataSource = Methods.ToDataTable(listEmp);
                     myGrid();
-                   
                 }
             }
 
@@ -126,26 +123,37 @@ namespace ParcInfo.ucClient
 
         private void dgEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgEmployees.SelectedRows.Count > 0)
+            if (e.RowIndex > -1)
             {
                 var myrow = dgEmployees.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-
-                    var Cli = context.Employees.Where(c => c.Id == id).FirstOrDefault();
+                    var emp = context.Employees.Where(c => c.Id == id).FirstOrDefault();
                     string nomUser = myrow.Cells["userMod"].Value.ToString();
                     string date = myrow.Cells["dateMod"].Value.ToString();
                     int loc = 333;
                     lblEdited.Text = nomUser;
                     loc += lblEdited.Width;
                     lblMod.Location = new Point(loc, 462);
-                
+                    lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+                    lblEditedDate.Text = date;
                     // Employe Count
-                    encoursCount.Text = context.GetRequestCours.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
-                    enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == Cli.Id).Count().ToString();
-                    allCount.Text = Cli.Demandes.Where(d => d.IsDeleted == 0).Count().ToString();
-                    produitCount.Text = Cli.ProduitUtilisers.Where(d=> d.IsDeleted == 0).Count().ToString();
+                    if (emp != null)
+                    {
+                        encoursCount.Text = context.GetRequestCours.Where(req => req.IdEmployee == emp.Id).Count().ToString();
+                        enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == emp.Id).Count().ToString();
+                        allCount.Text = emp.Demandes.Where(d => d.IsDeleted == 0).Count().ToString();
+                        produitCount.Text = emp.ProduitUtilisers.Where(d => d.IsDeleted == 0).Count().ToString();
+                        if (emp.IsDeleted == 1)
+                        {
+                            gpDemande.Click -= gpDemande_Click;
+                            gpProduits.Click -= gpProduits_Click;
+                            gpDemandeEnCours.Click -= gpDemandeEnCours_Click;
+                            gpDemandeRetard.Click -= gpDemandeRetard_Click;
+                        }
+                    }
+          
                 }
             }
         }
@@ -161,12 +169,11 @@ namespace ParcInfo.ucClient
                                    emp.Nom, emp.Prenom,
                                    emp.Email , emp.Password_e,
                                    departement = d.Nom, emp.IsDeleted,
-                                   userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
-                                   dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                                   userMod = emp.Utilisateur1 != null ? emp.Utilisateur1.Nom : "aucune",
+                                   dateMod = emp.Datemodification != null ? emp.Datemodification.ToString() : "**-**-****",
                                }).ToList();
                 if (cbDeleted.Checked)
                 {
-
                     var EmployeesDeleted = listEmp.Where(d => d.IsDeleted == 1).ToList();
                     dgEmployees.DataSource = Methods.ToDataTable(EmployeesDeleted);
                     myGrid();
@@ -183,7 +190,7 @@ namespace ParcInfo.ucClient
         public void myGrid()
         {
             Methods.Nice_grid(
-                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email",  "departement"},
+                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email",  "departement"  },
                 new string[] { "ID Employee", "id", "Nom", "Prenom", "Email",  "Departement" },
                 dgEmployees
                 );
@@ -192,6 +199,32 @@ namespace ParcInfo.ucClient
             Methods.FilterDataGridViewIni(dgEmployees, txtFind, btnFind);
         }
 
-     
+        private void dgEmployees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >-1)
+            {
+                    var myrow = dgEmployees.Rows[dgEmployees.CurrentRow.Index];
+                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                    string code = myrow.Cells["IdEmploye"].Value.ToString();
+                    //GlobVars.selectedEmploye = int.Parse(id);
+                    //GlobVars.BtnName = "editEmploye";
+                    frmCreateEmploye frm = new frmCreateEmploye(id, idC, code, dgEmployees);
+                    frm.Show();
+            }
+        }
+        public void CountToZero()
+        {
+            if (dgEmployees.Rows.Count == 0)
+            {
+                encoursCount.Text = "0";
+                enretardCount.Text = "0";
+                allCount.Text = "0";
+                produitCount.Text = "0";
+            }
+        }
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            CountToZero();
+        }
     }
 }

@@ -232,6 +232,12 @@
     <Compile Include="ucControls\lblDemInt.Designer.cs">
       <DependentUpon>lblDemInt.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucControls\lblProdCol.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\lblProdCol.Designer.cs">
+      <DependentUpon>lblProdCol.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\lblProduit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -339,6 +345,12 @@
     </Compile>
     <Compile Include="ucDemande\FicheDemande1.Designer.cs">
       <DependentUpon>FicheDemande1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucFacture\CreateFacture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFacture\CreateFacture.Designer.cs">
+      <DependentUpon>CreateFacture.cs</DependentUpon>
     </Compile>
     <Compile Include="ucIntervention\ListeIntervention.cs">
       <SubType>UserControl</SubType>
@@ -473,6 +485,9 @@
     <EmbeddedResource Include="ucControls\lblDemInt.resx">
       <DependentUpon>lblDemInt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\lblProdCol.resx">
+      <DependentUpon>lblProdCol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\lblProduit.resx">
       <DependentUpon>lblProduit.cs</DependentUpon>
     </EmbeddedResource>
@@ -520,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucDemande\FicheDemande1.resx">
       <DependentUpon>FicheDemande1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucFacture\CreateFacture.resx">
+      <DependentUpon>CreateFacture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucIntervention\ListeIntervention.resx">
       <DependentUpon>ListeIntervention.cs</DependentUpon>

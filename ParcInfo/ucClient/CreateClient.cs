@@ -19,7 +19,7 @@ namespace ParcInfo.ucClient
         int deparName = 1;
         int idC = 0;
 
-        public CreateClient(int idClient,string Code)
+        public CreateClient(int idClient, string Code)
         {
             InitializeComponent();
             //ControlsClass.CreateRadiusBorder(this);
@@ -44,7 +44,7 @@ namespace ParcInfo.ucClient
             {
                 btnAddClient.Visible = false;
                 lblClient.Text = "Fiche du client : ";
-                lblNameClient.Text =  Code;
+                lblNameClient.Text = Code;
                 picHeader.Image = Resources.viewDetail;
                 lblNameClient.Visible = true;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -65,7 +65,7 @@ namespace ParcInfo.ucClient
                         btnAddDepartement.Visible = false;
                     }
 
-  
+
                     txtNom.Text = client.Nom;
                     txtAdr.Text = client.Adresse;
                     txtVille.Text = client.Ville;
@@ -174,76 +174,83 @@ namespace ParcInfo.ucClient
             {
                 var labelControlList = Methods.GetidList(PnlDepart);
                 var cli = context.Clients.Find(idC);
-                //Departement
-                foreach (var item in labelControlList)
+                int txtEmpty = 0;
+                txtEmpty = Methods.Focus(this);
+
+                if (txtEmpty == 0)
                 {
-                    if (item.Id > 0 && !item.IsDeleted)
+                    //Departement
+                    foreach (var item in labelControlList)
                     {
-                        var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
-                        dep.Nom = item.Value;
-                    }
-                    else if (item.Id == 0)
-                    {
-                        context.Departements.Add(new Departement { Nom = item.Value, IdCLient = idC });
-                    }
-                    else if (item.Id >= 0 && item.IsDeleted)
-                    {
-                        var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
-                        dep.IsDeleted = 1;
-                        txtlblDepartement tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as txtlblDepartement;
-                        PnlDepart.Controls.Remove(tbx);
-                    }
-                }
-                //Utilisateur 
-                var labelControlList2 = Methods.GetidList(PnlUsers);
-                foreach (var item in labelControlList2)
-                {
-                    if (item.Idaffectation > 0 && !item.IsDeleted)
-                    {
-                        var aff = cli.AffectationClients.Where(d =>  item.Id == d.Idutilisateur && d.IsDeleted == 0).FirstOrDefault();
-                        if (aff == null)
+                        if (item.Id > 0 && !item.IsDeleted)
                         {
-                            aff = cli.AffectationClients.Where(a => a.Id == item.Idaffectation).FirstOrDefault();
-                            aff.IsDeleted = 1;
-                            aff.Datemodification = DateTime.Now;
-                           aff.Modifierpar = GlobVars.currentUser;
-                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id,IsDeleted = 0});
+                            var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
+                            dep.Nom = item.Value;
+                        }
+                        else if (item.Id == 0)
+                        {
+                            context.Departements.Add(new Departement { Nom = item.Value, IdCLient = idC });
+                        }
+                        else if (item.Id >= 0 && item.IsDeleted)
+                        {
+                            var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
+                            dep.IsDeleted = 1;
+                            txtlblDepartement tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as txtlblDepartement;
+                            PnlDepart.Controls.Remove(tbx);
                         }
                     }
-                    else if (item.Idaffectation == 0)
+                    //Utilisateur 
+                    var labelControlList2 = Methods.GetidList(PnlUsers);
+                    foreach (var item in labelControlList2)
                     {
-                        var ac = cli.AffectationClients.Where(af => af.Idutilisateur == item.Id && af.IsDeleted == 0).FirstOrDefault();
-                      
-                        // check if user already 
-                        if (ac == null)
+                        if (item.Idaffectation > 0 && !item.IsDeleted)
                         {
-                            context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, Dateaffectation = DateTime.Now, IsDeleted = 0 });
+                            var aff = cli.AffectationClients.Where(d => item.Id == d.Idutilisateur && d.IsDeleted == 0).FirstOrDefault();
+                            if (aff == null)
+                            {
+                                aff = cli.AffectationClients.Where(a => a.Id == item.Idaffectation).FirstOrDefault();
+                                aff.IsDeleted = 1;
+                                aff.Datemodification = DateTime.Now;
+                                aff.Modifierpar = GlobVars.currentUser;
+                                context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, IsDeleted = 0 });
+                            }
+                        }
+                        else if (item.Idaffectation == 0)
+                        {
+                            var ac = cli.AffectationClients.Where(af => af.Idutilisateur == item.Id && af.IsDeleted == 0).FirstOrDefault();
+
+                            // check if user already 
+                            if (ac == null)
+                            {
+                                context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, Dateaffectation = DateTime.Now, IsDeleted = 0 });
+                            }
+                        }
+                        else if (item.Idaffectation >= 0 && item.IsDeleted)
+                        {
+                            var affectation = cli.AffectationClients.Where(d => d.Id == item.Idaffectation).FirstOrDefault();
+                            affectation.IsDeleted = 1;
+                            affectation.Datemodification = DateTime.Now;
+                            affectation.Modifierpar = GlobVars.currentUser;
+                            lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
+                            PnlUsers.Controls.Remove(tbx);
                         }
                     }
-                    else if (item.Idaffectation >= 0 && item.IsDeleted)
-                    {
-                        var affectation = cli.AffectationClients.Where(d => d.Id == item.Idaffectation).FirstOrDefault();
-                        affectation.IsDeleted = 1;
-                        affectation.Datemodification = DateTime.Now;
-                        affectation.Modifierpar = GlobVars.currentUser;
-                        lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
-                        PnlUsers.Controls.Remove(tbx);
-                    }
+                    // get Values From Textbox
+                    cli.Nom = txtNom.Text;
+                    cli.Adresse = txtAdr.Text;
+                    cli.Ville = txtVille.Text;
+                    cli.Tel = txtTel.Text;
+                    cli.Fax = txtFax.Text;
+                    cli.Siteweb = txtSiteweb.Text;
+                    cli.Datemodification = DateTime.Now;
+                    cli.Modifierpar = GlobVars.currentUser;
+                    cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
+                    cli.Prixheur = float.Parse(txtPrix.Text);
+                    cli.Heurecontract = int.Parse(txtHeure.Text);
+                    context.SaveChanges();
+                    MessageBox.Show("Client modifié");
                 }
-                // get Values From Textbox
-                cli.Nom = txtNom.Text;
-                cli.Adresse = txtAdr.Text;
-                cli.Ville = txtVille.Text;
-                cli.Tel = txtTel.Text;
-                cli.Fax = txtFax.Text;
-                cli.Siteweb = txtSiteweb.Text;
-                cli.Datemodification = DateTime.Now;
-                cli.Modifierpar = GlobVars.currentUser;
-                cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
-                cli.Prixheur = float.Parse(txtPrix.Text);
-                cli.Heurecontract = int.Parse(txtHeure.Text);
-                context.SaveChanges();
-                MessageBox.Show("Client modifié");
+
             }
         }
         private void btnAddClient_Click(object sender, EventArgs e)
@@ -259,8 +266,8 @@ namespace ParcInfo.ucClient
             DepartementList = Methods.GetidList(PnlDepart);
             // check if user empty
             //txtEmpty = Methods.Focus2(PnlDepart);
-          //  checkErr = Methods.Focus2(PnlUsers);
-           txtEmpty = Methods.Focus(this);
+            //  checkErr = Methods.Focus2(PnlUsers);
+            txtEmpty = Methods.Focus(this);
             //Fil list UtilisateurID
             if (txtEmpty == 0)
             { // get Values From Textbox
@@ -289,7 +296,6 @@ namespace ParcInfo.ucClient
                         Prixheur = Prix,
                         Datecreation = DateTime.Now,
                         IsDeleted = 0,
-                        Datemodification = DateTime.Now,
                         Creepar = GlobVars.currentUser
                     };
                     context.Clients.Add(client);
@@ -298,7 +304,7 @@ namespace ParcInfo.ucClient
                     {
                         if (item.Id == 0 && !item.IsDeleted && item.Value != "")
                         {
-                            dt = new Departement { IdCLient = client.id, Nom = item.Value ,IsDeleted = 0 };
+                            dt = new Departement { IdCLient = client.id, Nom = item.Value, IsDeleted = 0 };
                             context.Departements.Add(dt);
                             //    MessageBox.Show("Nom du Département existant");
                         }
@@ -316,7 +322,9 @@ namespace ParcInfo.ucClient
 
                             if (!d)
                             {
-                                user = new AffectationClient { Idclient = client.id,
+                                user = new AffectationClient
+                                {
+                                    Idclient = client.id,
                                     Idutilisateur = item.Id,
                                     Dateaffectation = DateTime.Now,
                                     IsDeleted = 0,
@@ -421,7 +429,7 @@ namespace ParcInfo.ucClient
                                 dm.IsDeleted = 1;
                             });
                     });
-                    c.Interventions.ToList().ForEach(i => 
+                    c.Interventions.ToList().ForEach(i =>
                     {
                         i.IsDeleted = 1;
                         i.Datemodification = DateTime.Now;
@@ -446,7 +454,7 @@ namespace ParcInfo.ucClient
             if (em != null)
             {
                 em.Focus();
-              
+
             }
         }
     }

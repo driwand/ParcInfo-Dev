@@ -48,7 +48,13 @@ namespace ParcInfo.ucClient
                     btnAjouter.Text = "Enregistrer";
                     btnDelEmp.Visible = true;
                     var emp = context.Employees.Find(idEmploye);
-                    if (emp != null)
+                    if (emp.IsDeleted == 1)
+                    {
+                        btnDelEmp.Visible = false;
+                        btnAnnuler.Visible = false;
+                        btnAjouter.Visible = false;
+                    }
+                    if (emp != null )
                     {
                         txtNom.Text = emp.Nom;
                         txtPrenom.Text = emp.Prenom;
@@ -84,12 +90,13 @@ namespace ParcInfo.ucClient
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 int txtEmpty = 0;
-                //  txtEmpty += Methods.Foucs(gbEmploye);
+                txtEmpty += Methods.Focus(this);
                 if (btnAjouter.Text == "Enregistrer")
                 {
                     this.Text = "Modifier employee";
                     // get values 
                     var idEmp = context.Employees.Find(idE);
+                 
                     string pass = txtPass.Text;
                     idEmp.Nom = txtNom.Text;
                     idEmp.Prenom = txtPrenom.Text;
@@ -182,24 +189,33 @@ namespace ParcInfo.ucClient
                 {
                     c.IsDeleted = 1;
                     c.Modifierpar = GlobVars.currentUser;
+
+                    c.Demandes.ToList().ForEach(cc =>
+                    {
+                        cc.IsDeleted = 1;
+                    });
+                    c.ProduitUtilisers.ToList().ForEach(pr =>
+                    {
+                        pr.IsDeleted = 1;
+                        pr.Datemodification = DateTime.Now;
+                        pr.Modifierpar = GlobVars.cuUser.Id;
+                    });
+
                     c.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     MessageBox.Show("Employé supprimé");
                     Methods.Clear(this);
                     Close();
+                    updateGrid();
                 }
                 else if (result == DialogResult.No)
                 {
 
                 }
-
-
             }
         }
-
         public void updateGrid()
         {
-
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var c = context.Clients.Find(idC);

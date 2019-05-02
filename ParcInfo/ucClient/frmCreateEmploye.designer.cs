@@ -289,6 +289,7 @@
             this.Controls.Add(this.lblHeading);
             this.Controls.Add(this.picEmp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmCreateEmploye";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nouveau employee";

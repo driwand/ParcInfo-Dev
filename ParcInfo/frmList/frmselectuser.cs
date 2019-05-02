@@ -19,6 +19,7 @@ namespace ParcInfo
         public int idClient;
         public List<int> listProdid = new List<int>();
         public string pC;
+        int idPrd;
         public frmselectuser(lblTextbox txtbx)
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace ParcInfo
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var userList = context.Utilisateurs.ToList();
-                dgUsers.DataSource = Methods.ToDataTable(userList.Select(c => new { c.IdUser,c.Id,c.Nom,c.Prenom,c.Adresse,c.Tel}).ToList());
+                dgUsers.DataSource = Methods.ToDataTable(userList.Select(c => new { c.IdUser, c.Id, c.Nom, c.Prenom, c.Adresse, c.Tel }).ToList());
                 Methods.Nice_grid(
                        new string[] { "IdUser", "Id", "Nom", "Prenom", "Adresse", "Adresse", "Tel" },
                        new string[] { "ID Utilisateur", "id", "Nom", "Prenom", "Adresse", "Tel" },
@@ -34,21 +35,29 @@ namespace ParcInfo
                        );
             }
         }
-        public frmselectuser(lblTextbox txtbx, string cod, int id,int idProd)
+        public frmselectuser(lblTextbox txtbx, string cod, int id, int idProd, int idProdC)
         {
             InitializeComponent();
             tbx = txtbx;
+            idPrd = idProd;
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (cod == "emp" && id > 0)
                 {
-                    var empLIST = context.Employees.Where(c=> c.Idclient == id).ToList();
+
+                    //where !(listProduitClient.Any(it => it.Idproduit == p.id && it.IsDeleted == 0))
+                    var s = context.Employees.Where(d => d.Idclient == id && d.IsDeleted == 0).ToList();
+                    var pu = context.ProduitUtilisers.ToList();
+                    var empLIST = (from c in s
+                                   where !(pu.Any(it => it.IdEmployee == c.Id && idProdC == it.IdProduitClient))
+                                   select c).ToList();
+                    /*context.Employees.Where(c=> c.Idclient == id).ToList();*/
                     idemp = id;
                     this.Text = "Liste des Employees";
                     lblText.Text = "Les Employees : ";
-                    dgUsers.DataSource = Methods.ToDataTable(empLIST.Select(c => new { c.IdEmploye,c.Id, c.Nom, c.Prenom, c.Email, c.Tel }).ToList());
+                    dgUsers.DataSource = Methods.ToDataTable(empLIST.Select(c => new { c.IdEmploye, c.Id, c.Nom, c.Prenom, c.Email, c.Tel }).ToList());
                     Methods.Nice_grid(
-                          new string[] { "IdEmploye", "id", "Nom", "Prenom", "Email", "Tel"},
+                          new string[] { "IdEmploye", "id", "Nom", "Prenom", "Email", "Tel" },
                           new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Tel" },
                           dgUsers
                   );
@@ -61,13 +70,18 @@ namespace ParcInfo
                     var listProd = (from c in context.ProduitClients
                                     join p in context.Produits on c.Idproduit equals p.id
                                     where c.Idclient == id && idProd != c.Idproduit
-                                    select new { c,p }).ToList();
+                                    select new { c, p }).ToList();
 
-                    dgUsers.DataSource = Methods.ToDataTable(listProd.Select(s => new { s.p.CodeP, s.c.Id,
+                    dgUsers.DataSource = Methods.ToDataTable(listProd.Select(s => new
+                    {
+                        s.p.CodeP,
+                        s.c.Id,
                         idP = s.p.id,
                         s.p.TypeProduit.Nom,
-                        s.p.Marque, s.p.Model,
-                        Datefabrication = s.p.Datefabrication.Value.ToShortDateString() }).ToList());
+                        s.p.Marque,
+                        s.p.Model,
+                        Datefabrication = s.p.Datefabrication.Value.ToShortDateString()
+                    }).ToList());
                     Methods.Nice_grid(
                          new string[] { "CodeP", "Id", "idP", "Nom", "Marque", "Model", "Datefabrication" },
                          new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Model", "Date de fabrication" },
@@ -80,23 +94,23 @@ namespace ParcInfo
         int idemp = 0;
         public frmselectuser(List<int> listAf)
         {
-            InitializeComponent(); 
+            InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (listAf != null && listAf.Count > 0)
                 {
                     listProdid = listAf;
                     var cList = context.Clients.Where(c => c.IsDeleted == 0).ToList();
-                  
+
                     var clientList = (from c in cList
                                       select new { c.IdCLient, c.id, c.Nom, c.Adresse, c.Tel, c.Siteweb }).ToList();
                     dgUsers.DataSource = Methods.ToDataTable(clientList);
                     Methods.Nice_grid(
-                           new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel",  "Siteweb" },
-                           new string[] { "ID Client", "id", "Nom", "Adresse", "Tel","Site web " },
+                           new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Siteweb" },
+                           new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Site web " },
                            dgUsers
                            );
-                   // Methods.FilterDataGridViewIni(dgUsers, txtFind, btnFind);
+                    // Methods.FilterDataGridViewIni(dgUsers, txtFind, btnFind);
                 }
             }
         }
@@ -105,7 +119,7 @@ namespace ParcInfo
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-               
+
             }
         }
 
@@ -120,54 +134,62 @@ namespace ParcInfo
 
         private void btn_select_Click(object sender, EventArgs e)
         {
-            if(dgUsers.SelectedRows.Count > 0)
+            if (dgUsers.SelectedRows.Count > 0)
             {
-                if (listProdid.Count > 0)
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
-                    using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+                    if (listProdid.Count > 0)
                     {
+
                         var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
                         int id = int.Parse(myrow.Cells["id"].Value.ToString());
                         frmAffecter frm = new frmAffecter(id, listProdid);
                         frm.ShowDialog();
+
                     }
+                    else if (idemp > 0)
+                    {
+                        var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
+                        int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                        string Nom = myrow.Cells["Nom"].Value.ToString();
+                        string Prenom = myrow.Cells["Prenom"].Value.ToString();
+                        tbx.TxtValue = Nom + " " + Prenom;
+                        tbx.Lblid = id.ToString();
+
+                        var pd = context.Produits.Find(idPrd);
+                        if (pd.TypeProduit.SupportingUser == 1)
+                        {
+                            frmAffecter frm = new frmAffecter(tbx, id);
+                            frm.ShowDialog();
+                        }
+                       
+                    }
+                    else if (pC == "log")
+                    {
+                        var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
+                        string id = myrow.Cells["id"].Value.ToString();
+                        string Nom = myrow.Cells["codeP"].Value.ToString();
+                        tbx.TxtValue = Nom;
+                        tbx.Lblid = id;
+                    }
+                    else
+                    {
+                        var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
+                        string id = myrow.Cells["id"].Value.ToString();
+                        string Nom = myrow.Cells["Nom"].Value.ToString();
+                        string Prenom = myrow.Cells["Prenom"].Value.ToString();
+                        tbx.TxtValue = Nom + " " + Prenom;
+                        tbx.Lblid = id;
+
+                    }
+                    Close();
                 }
-                else if (idemp > 0)
-                {
-                    var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
-                    int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                    string Nom = myrow.Cells["Nom"].Value.ToString();
-                    string Prenom = myrow.Cells["Prenom"].Value.ToString();
-                    tbx.TxtValue = Nom + " " + Prenom;
-                    tbx.Lblid = id.ToString();
-                    frmAffecter frm = new frmAffecter(tbx,id);
-                    frm.ShowDialog();
-                }
-                else if (pC == "log")
-                {
-                    var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
-                    string id = myrow.Cells["id"].Value.ToString();
-                    string Nom = myrow.Cells["codeP"].Value.ToString();
-                    tbx.TxtValue = Nom;
-                    tbx.Lblid = id;
-                }
-                else
-                {
-                    var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
-                    string id = myrow.Cells["id"].Value.ToString();
-                    string Nom = myrow.Cells["Nom"].Value.ToString();
-                    string Prenom = myrow.Cells["Prenom"].Value.ToString();
-                    tbx.TxtValue = Nom + " " + Prenom;
-                    tbx.Lblid = id;
-                    
-                }
-                Close();
             }
             else
             {
                 MessageBox.Show("aucune");
             }
-            
+
 
 
         }
