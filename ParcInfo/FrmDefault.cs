@@ -559,7 +559,6 @@ namespace ParcInfo.frmDefault
                         }
                     }
                 }
-
             }
         }
 
@@ -573,7 +572,7 @@ namespace ParcInfo.frmDefault
             DropdownUserMenu.Visible = false;
             ShowControl(new userProfile());
         }
-
+         
         private void BtnHome_Click(object sender, EventArgs e)
         {
             ShowControl(new Dashboard());

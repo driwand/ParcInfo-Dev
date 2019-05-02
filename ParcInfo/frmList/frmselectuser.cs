@@ -168,8 +168,10 @@ namespace ParcInfo
                     {
                         var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
                         string id = myrow.Cells["id"].Value.ToString();
-                        string Nom = myrow.Cells["codeP"].Value.ToString();
-                        tbx.TxtValue = Nom;
+                        string Marque = myrow.Cells["Marque"].Value.ToString();
+                        string Model = myrow.Cells["Model"].Value.ToString();
+
+                        tbx.TxtValue = $"{Marque} {Model}";
                         tbx.Lblid = id;
                     }
                     else
