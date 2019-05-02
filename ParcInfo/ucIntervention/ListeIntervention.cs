@@ -92,6 +92,7 @@ namespace ParcInfo.ucInterevntion
 
         private void ListeIntervention_Load(object sender, EventArgs e)
         {
+            Methods.ChangeColorCell(dgIntervention);
 
         }
 
@@ -338,9 +339,9 @@ namespace ParcInfo.ucInterevntion
 
                 int loc = 333;
                 loc += lblEdited.Width;
-                lblMod.Location = new Point(loc, 459);
+                lblMod.Location = new Point(loc, 456);
 
-                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 459);
+                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 456);
                 lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
             }
         }

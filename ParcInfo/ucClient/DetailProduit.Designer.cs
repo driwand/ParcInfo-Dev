@@ -49,6 +49,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
+            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gpMaterielLogiciel.SuspendLayout();
             this.gpEmploye.SuspendLayout();
@@ -84,13 +86,17 @@
             this.BtnDelAffeProduct.Size = new System.Drawing.Size(32, 32);
             this.BtnDelAffeProduct.TabIndex = 10011;
             this.BtnDelAffeProduct.UseVisualStyleBackColor = false;
+            this.BtnDelAffeProduct.Click += new System.EventHandler(this.BtnDelAffeProduct_Click);
             // 
             // gpMaterielLogiciel
             // 
+            this.gpMaterielLogiciel.Controls.Add(this.gradientPanel1);
             this.gpMaterielLogiciel.Controls.Add(this.btnAddProduit);
             this.gpMaterielLogiciel.Controls.Add(this.FpProduit);
             this.gpMaterielLogiciel.Location = new System.Drawing.Point(405, 279);
+            this.gpMaterielLogiciel.Margin = new System.Windows.Forms.Padding(0);
             this.gpMaterielLogiciel.Name = "gpMaterielLogiciel";
+            this.gpMaterielLogiciel.Padding = new System.Windows.Forms.Padding(0);
             this.gpMaterielLogiciel.Size = new System.Drawing.Size(467, 148);
             this.gpMaterielLogiciel.TabIndex = 10009;
             this.gpMaterielLogiciel.TabStop = false;
@@ -102,7 +108,7 @@
             this.btnAddProduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProduit.ForeColor = System.Drawing.Color.White;
             this.btnAddProduit.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.btnAddProduit.Location = new System.Drawing.Point(410, 113);
+            this.btnAddProduit.Location = new System.Drawing.Point(410, 112);
             this.btnAddProduit.Name = "btnAddProduit";
             this.btnAddProduit.Size = new System.Drawing.Size(32, 32);
             this.btnAddProduit.TabIndex = 131;
@@ -133,10 +139,12 @@
             // 
             // gpEmploye
             // 
+            this.gpEmploye.Controls.Add(this.gradientPanel4);
             this.gpEmploye.Controls.Add(this.btnAddEmployee);
             this.gpEmploye.Controls.Add(this.FpEmployee);
             this.gpEmploye.Location = new System.Drawing.Point(405, 112);
             this.gpEmploye.Name = "gpEmploye";
+            this.gpEmploye.Padding = new System.Windows.Forms.Padding(0);
             this.gpEmploye.Size = new System.Drawing.Size(467, 161);
             this.gpEmploye.TabIndex = 10007;
             this.gpEmploye.TabStop = false;
@@ -272,6 +280,28 @@
             this.lblClient.TabIndex = 10012;
             this.lblClient.Text = " [client1]";
             // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.Angle = 0F;
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel4.Location = new System.Drawing.Point(0, 158);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(467, 3);
+            this.gradientPanel4.TabIndex = 132;
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 145);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(467, 3);
+            this.gradientPanel1.TabIndex = 133;
+            // 
             // DetailProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,5 +355,7 @@
         private System.Windows.Forms.Label lblPrix;
         private System.Windows.Forms.Label lblDateAff;
         private System.Windows.Forms.Label lblUser;
+        private Classes.GradientPanel gradientPanel4;
+        private Classes.GradientPanel gradientPanel1;
     }
 }

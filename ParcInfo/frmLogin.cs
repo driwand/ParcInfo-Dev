@@ -71,7 +71,7 @@ namespace ParcInfo
                     if (user != null)
                     {
                         pnlError.Visible = false;
-                        GlobVars.currentUser = user.Id;
+                      
                         GlobVars.cuUser = user;
                         GoToDefault();
 
@@ -119,16 +119,21 @@ namespace ParcInfo
                 var par = db.ParametreParcinfoes.FirstOrDefault();
                 if (par != null)
                 {
-                    deffrm.logoPic.BringToFront();
-                    deffrm.logoPic.Image = Methods.ByteArrayToImage(par.Logoapp);
-                    deffrm.logoPic.SizeMode = PictureBoxSizeMode.Zoom;
-                    if (par.Iconapp != null)
+                    if (par.Logoapp != null)
                     {
-                        System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
-                        IntPtr ico = bitmap.GetHicon();
-                        Icon icon = Icon.FromHandle(ico);
 
-                        deffrm.Icon = icon;
+                        deffrm.logoPic.BringToFront();
+                        deffrm.logoPic.Image = Methods.ByteArrayToImage(par.Logoapp);
+                        deffrm.logoPic.SizeMode = PictureBoxSizeMode.Zoom;
+                        if (par.Iconapp != null)
+                        {
+                            System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                            IntPtr ico = bitmap.GetHicon();
+                            Icon icon = Icon.FromHandle(ico);
+
+                            deffrm.Icon = icon;
+                        }
+
                     }
                 }
             }

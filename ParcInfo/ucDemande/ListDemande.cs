@@ -14,8 +14,10 @@ using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucClient
 {
+
     public partial class ListDemande : UserControl
     {
+
         public string LblText
         {
             get { return lblEmployeClient.Text; }
@@ -219,6 +221,7 @@ namespace ParcInfo.ucClient
         private void ListRequest_Load(object sender, EventArgs e)
         {
             //ControlsClass.CreateRadiusBorder(this);
+            Methods.ChangeColorCell(dgDemande);
         }
 
         private void btnTraiter_Click(object sender, EventArgs e)

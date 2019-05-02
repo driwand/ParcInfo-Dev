@@ -78,7 +78,7 @@ namespace ParcInfo.ucParametre
                 defpara.Logoapp = pr.Logoapp;
                 defpara.Nomapp = pr.Nomapp;
                 defpara.Reatrddemande = pr.Reatrddemande;
-                
+
                 db.SaveChanges();
 
                 if (imglogo != null || imgicon != null)
@@ -95,9 +95,9 @@ namespace ParcInfo.ucParametre
         public void Fullbackup()
         {
             Backup bkpDBFull = new Backup();
-            
+
             bkpDBFull.Action = BackupActionType.Database;
-            
+
             bkpDBFull.Database = "ParcInformatique";
             bkpDBFull.Devices.AddDevice(@"D:\ParcInformatiqueFull.bak", DeviceType.File);
             bkpDBFull.BackupSetName = "ParcInformatique database Backup";
@@ -116,7 +116,7 @@ namespace ParcInfo.ucParametre
             Backup bkpDBDifferential = new Backup();
 
             bkpDBDifferential.Action = BackupActionType.Database;
-            
+
             bkpDBDifferential.Database = "ParcInformatique";
 
             bkpDBDifferential.Devices.AddDevice(@"D:\ParcInformatique.bak", DeviceType.File);
@@ -137,7 +137,7 @@ namespace ParcInfo.ucParametre
             {
                 MessageBox.Show("You cant do a differential backup with out having an existing full back up");
             }
-            
+
         }
 
 
@@ -161,7 +161,7 @@ namespace ParcInfo.ucParametre
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Choisire icon";
-                
+
                 dlg.Filter = "Icon files (*.Icon)|*.Ico";
 
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -181,16 +181,20 @@ namespace ParcInfo.ucParametre
                 var par = db.ParametreParcinfoes.FirstOrDefault();
                 if (par != null)
                 {
-                    applogo.Image = Methods.ByteArrayToImage(par.Logoapp);
-                    applogo.SizeMode = PictureBoxSizeMode.Zoom;
-                    //if (par.Iconapp != null)
-                    //{
-                    //    System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
-                    //    IntPtr ico = bitmap.GetHicon();
-                    //    Icon icon = Icon.FromHandle(ico);
+                    if (par.Logoapp != null)
+                    {
+                        applogo.Image = Methods.ByteArrayToImage(par.Logoapp);
+                        applogo.SizeMode = PictureBoxSizeMode.Zoom;
+                        //if (par.Iconapp != null)
+                        //{
+                        //    System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                        //    IntPtr ico = bitmap.GetHicon();
+                        //    Icon icon = Icon.FromHandle(ico);
 
-                    //    deffrm.Icon = icon;
-                    //}
+                        //    deffrm.Icon = icon;
+                        //}
+                    }
+
                 }
             }
         }

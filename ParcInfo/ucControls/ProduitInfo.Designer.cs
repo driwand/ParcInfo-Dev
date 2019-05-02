@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.isHardware = new System.Windows.Forms.CheckBox();
             this.txtQte = new System.Windows.Forms.NumericUpDown();
@@ -45,7 +46,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pnlProp = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQte)).BeginInit();
             this.groupBox6.SuspendLayout();
@@ -53,6 +55,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.gradientPanel1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblID);
             this.groupBox1.Controls.Add(this.isHardware);
@@ -70,15 +73,26 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox1.Size = new System.Drawing.Size(369, 199);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produit";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(287, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "0";
+            this.label3.Visible = false;
+            // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(327, 21);
+            this.lblID.Location = new System.Drawing.Point(324, 18);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(13, 13);
             this.lblID.TabIndex = 49;
@@ -88,7 +102,7 @@
             // isHardware
             // 
             this.isHardware.AutoSize = true;
-            this.isHardware.Location = new System.Drawing.Point(96, 176);
+            this.isHardware.Location = new System.Drawing.Point(93, 173);
             this.isHardware.Name = "isHardware";
             this.isHardware.Size = new System.Drawing.Size(79, 17);
             this.isHardware.TabIndex = 48;
@@ -110,7 +124,7 @@
             // lblIdAff
             // 
             this.lblIdAff.AutoSize = true;
-            this.lblIdAff.Location = new System.Drawing.Point(171, 147);
+            this.lblIdAff.Location = new System.Drawing.Point(168, 144);
             this.lblIdAff.Name = "lblIdAff";
             this.lblIdAff.Size = new System.Drawing.Size(52, 13);
             this.lblIdAff.TabIndex = 45;
@@ -161,7 +175,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 116);
+            this.label6.Location = new System.Drawing.Point(5, 113);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 13);
             this.label6.TabIndex = 39;
@@ -170,7 +184,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 147);
+            this.label7.Location = new System.Drawing.Point(5, 144);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 39;
@@ -179,7 +193,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 54);
+            this.label5.Location = new System.Drawing.Point(5, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 39;
@@ -188,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 85);
+            this.label4.Location = new System.Drawing.Point(5, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 38;
@@ -197,7 +211,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 22);
+            this.label2.Location = new System.Drawing.Point(5, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 37;
@@ -205,9 +219,11 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.gradientPanel4);
             this.groupBox6.Controls.Add(this.pnlProp);
             this.groupBox6.Location = new System.Drawing.Point(3, 212);
             this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox6.Size = new System.Drawing.Size(369, 164);
             this.groupBox6.TabIndex = 60;
             this.groupBox6.TabStop = false;
@@ -221,15 +237,27 @@
             this.pnlProp.Size = new System.Drawing.Size(358, 124);
             this.pnlProp.TabIndex = 0;
             // 
-            // label3
+            // gradientPanel4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(290, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 13);
-            this.label3.TabIndex = 50;
-            this.label3.Text = "0";
-            this.label3.Visible = false;
+            this.gradientPanel4.Angle = 0F;
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel4.Location = new System.Drawing.Point(0, 161);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(369, 3);
+            this.gradientPanel4.TabIndex = 135;
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 196);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(369, 3);
+            this.gradientPanel1.TabIndex = 136;
             // 
             // ProduitInfo
             // 
@@ -238,7 +266,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ProduitInfo";
             this.Size = new System.Drawing.Size(375, 386);
             this.Load += new System.EventHandler(this.ProduitInfo_Load);
@@ -270,5 +297,7 @@
         public System.Windows.Forms.CheckBox isHardware;
         public System.Windows.Forms.Label lblID;
         public System.Windows.Forms.Label label3;
+        private Classes.GradientPanel gradientPanel4;
+        private Classes.GradientPanel gradientPanel1;
     }
 }

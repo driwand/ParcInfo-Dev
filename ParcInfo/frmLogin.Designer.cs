@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlLogin = new System.Windows.Forms.Panel();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.pnlError = new ParcInfo.Classes.GradientPanel();
             this.closeError = new System.Windows.Forms.PictureBox();
@@ -40,6 +41,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.lblForget = new System.Windows.Forms.LinkLabel();
+            this.pnlLogin.SuspendLayout();
             this.pnlContainer.SuspendLayout();
             this.pnlError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeError)).BeginInit();
@@ -48,9 +50,19 @@
             this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // pnlLogin
+            // 
+            this.pnlLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlLogin.Controls.Add(this.pnlContainer);
+            this.pnlLogin.Controls.Add(this.gradientPanel1);
+            this.pnlLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLogin.Location = new System.Drawing.Point(0, 0);
+            this.pnlLogin.Name = "pnlLogin";
+            this.pnlLogin.Size = new System.Drawing.Size(512, 304);
+            this.pnlLogin.TabIndex = 0;
+            // 
             // pnlContainer
             // 
-            this.pnlContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlContainer.Controls.Add(this.pnlError);
             this.pnlContainer.Controls.Add(this.btnLogin);
             this.pnlContainer.Controls.Add(this.lblHead);
@@ -61,9 +73,8 @@
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContainer.Location = new System.Drawing.Point(0, 0);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(512, 247);
-            this.pnlContainer.TabIndex = 126;
-            
+            this.pnlContainer.Size = new System.Drawing.Size(510, 245);
+            this.pnlContainer.TabIndex = 128;
             // 
             // pnlError
             // 
@@ -158,8 +169,7 @@
             this.txtPassword.Size = new System.Drawing.Size(360, 28);
             this.txtPassword.TabIndex = 126;
             this.txtPassword.Tag = "required";
-            this.txtPassword.Text = "Iznm9L9D";
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
+            this.txtPassword.Text = "rIgj93dD";
             // 
             // txtEmail
             // 
@@ -170,7 +180,7 @@
             this.txtEmail.Size = new System.Drawing.Size(360, 28);
             this.txtEmail.TabIndex = 125;
             this.txtEmail.Tag = "required";
-            this.txtEmail.Text = "q";
+            this.txtEmail.Text = "parcinfoit@gmail.com";
             // 
             // gradientPanel1
             // 
@@ -180,10 +190,10 @@
             this.gradientPanel1.ColorTop = System.Drawing.Color.Empty;
             this.gradientPanel1.Controls.Add(this.lblForget);
             this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 247);
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 245);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(512, 57);
-            this.gradientPanel1.TabIndex = 125;
+            this.gradientPanel1.Size = new System.Drawing.Size(510, 57);
+            this.gradientPanel1.TabIndex = 127;
             // 
             // lblForget
             // 
@@ -202,12 +212,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(512, 304);
-            this.Controls.Add(this.pnlContainer);
-            this.Controls.Add(this.gradientPanel1);
+            this.Controls.Add(this.pnlLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
+            this.pnlLogin.ResumeLayout(false);
             this.pnlContainer.ResumeLayout(false);
             this.pnlContainer.PerformLayout();
             this.pnlError.ResumeLayout(false);
@@ -222,8 +232,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.LinkLabel lblForget;
-        private Classes.GradientPanel gradientPanel1;
+
+        private System.Windows.Forms.Panel pnlLogin;
         private System.Windows.Forms.Panel pnlContainer;
         private Classes.GradientPanel pnlError;
         private System.Windows.Forms.PictureBox closeError;
@@ -234,5 +244,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtEmail;
+        private Classes.GradientPanel gradientPanel1;
+        private System.Windows.Forms.LinkLabel lblForget;
     }
 }

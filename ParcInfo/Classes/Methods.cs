@@ -19,7 +19,29 @@ namespace ParcInfo.Classes
 {
     public static class Methods
     {
+        public static Color GetColor(string statut)
+        {
+            Color color = Color.Black;
+            switch (statut)
+            {
+                case "en attente":
+                    color = Color.FromArgb(255, 192, 0);
+                    break;
+                case "en retard":
+                    color = Color.FromArgb(238, 82, 83);
+                    break;
+                case "en cours":
+                    color = Color.FromArgb(241, 196, 15);
+                    break;
+                case "terminer":
+                    color = Color.FromArgb(46, 204, 113);
+                    break;
+                default:
+                    break;
+            }
 
+            return color;
+        }
         public static void Clear(Control control)
         {
             foreach (Control c in control.Controls)
@@ -111,26 +133,7 @@ namespace ParcInfo.Classes
             }
             return count;
         }
-        public static bool Focus2(Control control)
-        {
-            bool isFoucsed = false;
-            foreach (Control c in control.Controls)
-            {
 
-                var em = (from x in c.Controls.OfType<lblTextbox>()
-                          where x.TxtValue == ""
-                          select x
-                           ).FirstOrDefault();
-                if (em != null)
-                {
-                    em.Focus();
-                    isFoucsed = true;
-                }
-
-
-            }
-            return isFoucsed;
-        }
         public static List<LabelControl> GetidList(Control control)
         {
             List<LabelControl> list = new List<LabelControl>();
@@ -255,6 +258,7 @@ namespace ParcInfo.Classes
             grid.AllowUserToDeleteRows = false;
             grid.AllowUserToResizeColumns = true;
             grid.AllowUserToResizeRows = false;
+
             foreach (var c in columns)
             {
                 if (c.ToLower() == "id")
@@ -281,7 +285,7 @@ namespace ParcInfo.Classes
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
-
+    
             int x = 0;
             foreach (DataGridViewColumn column in grid.Columns)
                 x += column.Width;
@@ -302,12 +306,20 @@ namespace ParcInfo.Classes
                     r.HeaderText = columnstext[index - 1];
                 }
             }
+            
+
         }
 
+        public static void ChangeColorCell(DataGridView grid)
+        {
+            foreach (DataGridViewRow item in grid.Rows)
+            {
 
-
-
-
+                var t = item.Cells["Getstatut"].Value.ToString();
+                item.Cells["Getstatut"].Style.ForeColor = Methods.GetColor(t);
+                item.Cells["Getstatut"].Style.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+            }
+        }
         //methods for Password
 
         public static string stringMsg(string nom, string prenom, string email, string password)
@@ -385,6 +397,7 @@ namespace ParcInfo.Classes
 
         public static Image ByteArrayToImage(byte[] byteArrayIn)
         {
+
             MemoryStream ms = new MemoryStream(byteArrayIn);
             Image returnImage = Image.FromStream(ms);
             return returnImage;

@@ -70,6 +70,7 @@
             this.rbConsulterDemande1 = new System.Windows.Forms.RadioButton();
             this.chDemandeDel = new System.Windows.Forms.CheckBox();
             this.gpProduit = new System.Windows.Forms.GroupBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.chProduitAdd = new System.Windows.Forms.CheckBox();
             this.rbConsulterProduit = new System.Windows.Forms.RadioButton();
             this.chProduitEdit = new System.Windows.Forms.CheckBox();
@@ -90,8 +91,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnEditUser = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -557,6 +556,16 @@
             this.gpProduit.TabStop = false;
             this.gpProduit.Text = "Produit";
             // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(6, 40);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(119, 17);
+            this.checkBox5.TabIndex = 28;
+            this.checkBox5.Text = "Affecter les produits";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
             // chProduitAdd
             // 
             this.chProduitAdd.AutoSize = true;
@@ -759,32 +768,11 @@
             this.btnEditUser.Visible = false;
             this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(403, 434);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 167;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 40);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(119, 17);
-            this.checkBox5.TabIndex = 28;
-            this.checkBox5.Text = "Affecter les produits";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.gpRoles);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnEditUser);
@@ -878,7 +866,6 @@
         private System.Windows.Forms.CheckBox chkClientAffectation;
         private System.Windows.Forms.CheckBox chClientConsulterEmployee;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;

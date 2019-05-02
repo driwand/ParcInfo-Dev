@@ -31,9 +31,15 @@ namespace ParcInfo.ucClient
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var c = context.Clients.Find(idClient);
-                    var p = c.ProduitClients.Where(d => d.Idproduit == idP).Select(s => s).FirstOrDefault();
+                    var p = c.ProduitClients.Where(d => d.Id == idProduitClient).Select(s => s).FirstOrDefault();
                     var sx = p.Produit.TypeProduit.SupportingSoftware;
                     var px = p.Produit.TypeProduit.SupportingUser;
+                    if (p.IsDeleted == 1)
+                    {
+                        BtnDelAffeProduct.Visible = false;
+                        btnEdit.Visible = false;
+                        btnAddEmployee.Visible = false;
+                    }
                     if (px == 0 && sx == 0)
                     {
                         gpMaterielLogiciel.Visible = false;
@@ -42,7 +48,6 @@ namespace ParcInfo.ucClient
                         btnAddEmployee.Location = new Point(414, 277);
                         FpEmployee.MaximumSize = new Size(427, 252);
                         FpEmployee.Size = new Size(427, 252);
-                        
                     }
                         lblClient.Text = $"[{c.IdCLient}]";
                         if (p.Utilisateur != null)
@@ -224,8 +229,15 @@ namespace ParcInfo.ucClient
                                 d = idprodClient.ProduitUtilisers.Where(pu => pu.Id == item.Idaffectation).FirstOrDefault();
                                 d.IsDeleted = 1;
                                 d.Datemodification = DateTime.Now;
-                                d.Modifierpar = GlobVars.currentUser;
-                                context.ProduitUtilisers.Add(new ProduitUtiliser { IdProduitClient = idprodClient.Id, IdEmployee = item.Id, Login_u = item.Login, Password_u = item.Pass, IsDeleted = 0 });
+                                d.Modifierpar = GlobVars.cuUser.Id;
+                                context.ProduitUtilisers.Add(new ProduitUtiliser {
+                                    IdProduitClient = idprodClient.Id,
+                                    IdEmployee = item.Id,
+                                    Login_u = item.Login,
+                                    Password_u = item.Pass,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.cuUser.Id
+                                });
                             }
                         }
                         else if (item.Idaffectation == 0 && !item.IsDeleted && item.Id > 0)
@@ -241,7 +253,7 @@ namespace ParcInfo.ucClient
                                     Login_u = item.Login,
                                     Password_u = item.Pass,
                                     IsDeleted = 0,
-                                    Creepar = GlobVars.currentUser,
+                                    Creepar = GlobVars.cuUser.Id,
                                     Dateaffectation = DateTime.Now
                                 });
                             }
@@ -271,8 +283,13 @@ namespace ParcInfo.ucClient
                                 d = idprodClient.Installers1.Where(pu => pu.id == item.Idaffectation).FirstOrDefault();
                                 d.IsDeleted = 1;
                                 d.Datemodification = DateTime.Now;
-                                d.Modifierpar = GlobVars.currentUser;
-                                context.Installers.Add(new Installer { Idhardsoft = item.Id, Idproduitclient = idprodClient.Id, IsDeleted = 0, Creepar = GlobVars.currentUser });
+                                d.Modifierpar = GlobVars.cuUser.Id;
+                                context.Installers.Add(new Installer {
+                                    Idhardsoft = item.Id,
+                                    Idproduitclient = idprodClient.Id,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.cuUser.Id
+                            });
                             }
                         }
                         else if (item.Idaffectation == 0 && !item.IsDeleted && item.Id > 0)
@@ -281,7 +298,12 @@ namespace ParcInfo.ucClient
                             var dx = idprodClient.Installers1.Where(d => d.Idhardsoft == item.Id && d.Idproduitclient == idprodClient.Id && d.IsDeleted == 0).FirstOrDefault();
                             if (dx == null)
                             {
-                                context.Installers.Add(new Installer { Idhardsoft = item.Id, Idproduitclient = idprodClient.Id, IsDeleted = 0, Creepar = GlobVars.currentUser });
+                                context.Installers.Add(new Installer {
+                                    Idhardsoft = item.Id,
+                                    Idproduitclient = idprodClient.Id,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.cuUser.Id
+                            });
                             }
                         }
                         else if (item.Idaffectation >= 0 && item.IsDeleted)
@@ -292,7 +314,7 @@ namespace ParcInfo.ucClient
                             {
                                 d.IsDeleted = 1;
                                 d.Datemodification = DateTime.Now;
-                                d.Modifierpar = GlobVars.currentUser;
+                                d.Modifierpar = GlobVars.cuUser.Id;
                                 lblTextbox lbltxt = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                                 FpProduit.Controls.Remove(lbltxt);
                             }
@@ -308,7 +330,7 @@ namespace ParcInfo.ucClient
                     {
                         emp.Login_u = loginx.TxtLogin;
                         emp.Password_u = loginx.TxtPass;
-                        emp.Modifierpar = GlobVars.currentUser;
+                        emp.Modifierpar = GlobVars.cuUser.Id;
                         emp.Datemodification = DateTime.Now;
                     }
                 }
@@ -390,5 +412,43 @@ namespace ParcInfo.ucClient
             pnl.Controls.Add(user1);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelAffeProduct_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("voulez-vous supprimer le produits ? ", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+                {
+                    var d = context.ProduitClients.Find(idProduitClient);
+                    d.IsDeleted = 1;
+                    d.Modifierpar = GlobVars.cuUser.Id;
+                    d.Dateaffectation = DateTime.Now;
+                    d.ProduitUtilisers.ToList().ForEach(dx =>
+                    {
+                        dx.IsDeleted = 1;
+                        dx.Modifierpar = GlobVars.cuUser.Id;
+                        dx.Datemodification = DateTime.Now;
+                    });
+                    d.Installers.ToList().ForEach(dx =>
+                   {
+                       dx.IsDeleted = 1;
+                       dx.Modifierpar = GlobVars.cuUser.Id;
+                       dx.Datemodification = DateTime.Now;
+                   });
+                    MessageBox.Show("produit supprimé");
+                    Methods.Clear(this);
+                   
+                    context.SaveChanges();
+                    int id = (int)d.Idclient;
+                    GlobVars.frmindex.ShowControl(new ListProduitClient(id, d.Client.IdCLient));
+                }
+            }
+        }
     }
 }

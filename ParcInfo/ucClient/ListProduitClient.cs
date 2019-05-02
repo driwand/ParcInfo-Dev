@@ -14,6 +14,7 @@ namespace ParcInfo.ucClient
     public partial class ListProduitClient : UserControl
     {
         public int idEmp;
+        public int idC;
         public ListProduitClient(int idEmploye)
         {
             InitializeComponent();
@@ -60,6 +61,7 @@ namespace ParcInfo.ucClient
             {
                 if (idClient > 0)
                 {
+                    idC = idClient;
                     lblClient.Text = $"[{code}]";
                     lblClient.Visible = true;
                     var c = context.Clients.Find(idClient);
@@ -85,14 +87,8 @@ namespace ParcInfo.ucClient
 
                     dgProduit.DataSource = Methods.ToDataTable(listProduit);
 
-                   
-                    Methods.Nice_grid(
-                                   new string[] { "CodeP", "id", "idP", "Nom", "Adresse", "Marque", "Model", "count", "Dateaffectation" },
-                                   new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Model","Totale des emplyees affecter", "Date d'affectation" },
-                                   dgProduit
-                                   );
-                    Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
-                    dgProduit.Columns["idP"].Visible = false;
+                    myGrid();
+                
 
                 }
 
@@ -161,6 +157,56 @@ namespace ParcInfo.ucClient
                     GlobVars.frmindex.ShowControl(new DetailProduit(id, idP,idPC));
                 }
             }
+        }
+
+        private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var c = context.ProduitClients.Where(i => idC == i.Idclient).ToList() ;
+                var listProduit = (from f in c
+                                   join d in context.Produits on f.Idproduit equals d.id
+                                   //join pu in context.ProduitUtilisers on f.Id equals pu.IdProduitClient
+                                   select new
+                                   {
+                                       d.CodeP,
+                                       idPC = f.Id,
+                                       id = f.Idclient,
+                                       idP = f.Idproduit,
+                                       d.TypeProduit.Nom,
+                                       d.Marque,
+                                       d.Model,
+                                       count = f.ProduitUtilisers.Count(),
+                                       f.Dateaffectation,
+                                       userMod = f.Utilisateur1 != null ? f.Utilisateur1.Nom : "aucune",
+                                       dateMod = f.Datemodification != null ? f.Datemodification.ToString() : "**-**-****",
+                                       f.IsDeleted
+                                   }).ToList();
+                if (ckDeleteProd.Checked)
+                {
+                    var ProduitDeleted = listProduit.Where(d => d.IsDeleted == 1).ToList();
+                    dgProduit.DataSource = Methods.ToDataTable(ProduitDeleted);
+                }
+                else
+                {
+                    var Produit = listProduit.Where(d => d.IsDeleted != 1).ToList();
+                    dgProduit.DataSource = Methods.ToDataTable(Produit);
+                }
+                myGrid();
+            }
+        }
+
+
+
+        public void myGrid()
+        {
+            Methods.Nice_grid(
+                                new string[] { "CodeP", "id", "idP", "Nom", "Adresse", "Marque", "Model", "count", "Dateaffectation" },
+                                new string[] { "Code Produit", "id", "idP", "Type", "Marque", "Model", "Totale des emplyees affecter", "Date d'affectation" },
+                                dgProduit
+                                );
+            Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
+            dgProduit.Columns["idP"].Visible = false;
         }
     }
 }

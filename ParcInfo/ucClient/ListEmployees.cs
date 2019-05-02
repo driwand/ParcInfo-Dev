@@ -29,7 +29,10 @@ namespace ParcInfo.ucClient
                     lblClientName.Visible = true;
                     lblClientName.Text = $"[{c.Nom}]";
 
-
+                    if (c.IsDeleted == 1)
+                    {
+                        btnNewEmployee.Click -= btnNewEmploye_Click;
+                    }
                     var listEmp = (from emp in c.Employees
                                    join d in c.Departements on emp.IdDep equals d.id
                                    where emp.IsDeleted == 0
@@ -145,13 +148,13 @@ namespace ParcInfo.ucClient
                         enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == emp.Id).Count().ToString();
                         allCount.Text = emp.Demandes.Where(d => d.IsDeleted == 0).Count().ToString();
                         produitCount.Text = emp.ProduitUtilisers.Where(d => d.IsDeleted == 0).Count().ToString();
-                        if (emp.IsDeleted == 1)
-                        {
-                            gpDemande.Click -= gpDemande_Click;
-                            gpProduits.Click -= gpProduits_Click;
-                            gpDemandeEnCours.Click -= gpDemandeEnCours_Click;
-                            gpDemandeRetard.Click -= gpDemandeRetard_Click;
-                        }
+                        //if (emp.IsDeleted == 1)
+                        //{
+                        //    gpDemande.Click -= gpDemande_Click;
+                        //    gpProduits.Click -= gpProduits_Click;
+                        //    gpDemandeEnCours.Click -= gpDemandeEnCours_Click;
+                        //    gpDemandeRetard.Click -= gpDemandeRetard_Click;
+                        //}
                     }
           
                 }
@@ -225,6 +228,11 @@ namespace ParcInfo.ucClient
         private void txtFind_TextChanged(object sender, EventArgs e)
         {
             CountToZero();
+        }
+
+        private void cbDeleted_CheckedChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

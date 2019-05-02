@@ -41,7 +41,7 @@
             this.lblEditedDate = new System.Windows.Forms.Label();
             this.lblMod = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.CkDeletedClient = new System.Windows.Forms.CheckBox();
+            this.ckDeleteProd = new System.Windows.Forms.CheckBox();
             this.lblEdited = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduit)).BeginInit();
@@ -178,15 +178,16 @@
             this.label8.TabIndex = 127;
             this.label8.Text = "Dernier modification par :";
             // 
-            // CkDeletedClient
+            // ckDeleteProd
             // 
-            this.CkDeletedClient.AutoSize = true;
-            this.CkDeletedClient.Location = new System.Drawing.Point(17, 460);
-            this.CkDeletedClient.Name = "CkDeletedClient";
-            this.CkDeletedClient.Size = new System.Drawing.Size(171, 17);
-            this.CkDeletedClient.TabIndex = 126;
-            this.CkDeletedClient.Text = "Afficher les elements supprimer";
-            this.CkDeletedClient.UseVisualStyleBackColor = true;
+            this.ckDeleteProd.AutoSize = true;
+            this.ckDeleteProd.Location = new System.Drawing.Point(17, 460);
+            this.ckDeleteProd.Name = "ckDeleteProd";
+            this.ckDeleteProd.Size = new System.Drawing.Size(171, 17);
+            this.ckDeleteProd.TabIndex = 126;
+            this.ckDeleteProd.Text = "Afficher les elements supprimer";
+            this.ckDeleteProd.UseVisualStyleBackColor = true;
+            this.ckDeleteProd.CheckedChanged += new System.EventHandler(this.CkDeletedClient_CheckedChanged);
             // 
             // lblEdited
             // 
@@ -208,7 +209,7 @@
             this.Controls.Add(this.lblEditedDate);
             this.Controls.Add(this.lblMod);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.CkDeletedClient);
+            this.Controls.Add(this.ckDeleteProd);
             this.Controls.Add(this.lblClient);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgProduit);
@@ -242,7 +243,7 @@
         private System.Windows.Forms.Label lblEditedDate;
         private System.Windows.Forms.Label lblMod;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox CkDeletedClient;
+        private System.Windows.Forms.CheckBox ckDeleteProd;
         private System.Windows.Forms.LinkLabel lblEdited;
     }
 }

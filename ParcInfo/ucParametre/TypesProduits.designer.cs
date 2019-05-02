@@ -196,6 +196,7 @@
             this.dgType.Name = "dgType";
             this.dgType.Size = new System.Drawing.Size(468, 319);
             this.dgType.TabIndex = 0;
+            this.dgType.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgType_CellDoubleClick);
             this.dgType.DoubleClick += new System.EventHandler(this.dgType_DoubleClick);
             // 
             // groupBox4

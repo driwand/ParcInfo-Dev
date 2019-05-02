@@ -163,7 +163,7 @@
             this.cbDeleted.TabIndex = 75;
             this.cbDeleted.Text = "Afficher les elements supprimer";
             this.cbDeleted.UseVisualStyleBackColor = true;
-            this.cbDeleted.Click += new System.EventHandler(this.cbDeleted_CheckedChanged);
+            this.cbDeleted.CheckedChanged += new System.EventHandler(this.cbDeleted_CheckedChanged);
             // 
             // panel1
             // 

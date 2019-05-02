@@ -30,32 +30,44 @@ namespace ParcInfo.frmDefault
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-        
+
         }
         protected override void OnClosed(EventArgs e)
         {
-           
-            
+
+
         }
         public FrmDefault()
         {
             InitializeComponent();
             GetRolesName();
             ControlsClass.CreateRadiusBorder(PanelContainer);
-           // this.MaximizeBox = false;
+            // this.MaximizeBox = false;
             GlobVars.frmindex = this;
             MenuLeft();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (GlobVars.cuUser != null)
                 {
+                    int loc = 85;
+                    int pnlLoc = 814;
                     var u = GlobVars.cuUser;
-                        lblUser.Text = $"{u.Nom} {u.Prenom}";
-                        if (u.PassChanged == 1)
-                        {
-                            ShowControl(new userProfile());
-                        }
-                       
+                    lblUser.Text = $"{u.Nom} {u.Prenom}";
+                    loc += lblUser.Width;
+                    pnlUserName.Size = new Size(loc,32);
+                    pcUser.Location = new Point(6 + lblUser.Width, -1);
+                    PicShowMenu.Location = new Point(pcUser.Location.X + pcUser.Width,5);
+                    pnlLoc -= lblUser.Width -20;
+                    pnlUserName.Location = new Point(pnlLoc, 18);
+                    lineVertical.Location = new Point(pnlUserName.Location.X - 3, 18);
+                    PickBell.Location = new Point(pnlUserName.Location.X - 40, 18);
+                    lblNotif.Location = new Point(pnlUserName.Location.X - 20, 15);
+
+                    if (u.PassChanged == 1)
+                    {
+                        ShowControl(new userProfile());
+                    }
+
                 }
             }
             ControlsClass.CursorChanger(pnlMenu);
@@ -89,7 +101,7 @@ namespace ParcInfo.frmDefault
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(GlobVars.OldControl);
             //mycontrol.BringToFront();
-           // PicBack.Visible = hideback;
+            // PicBack.Visible = hideback;
         }
         MultiLineLabel ml = new MultiLineLabel();
 
@@ -182,11 +194,11 @@ namespace ParcInfo.frmDefault
         // Create Client 
         private void BtnCreateClient_Click(object sender, EventArgs e)
         {
-            CreateClient frmcc = new CreateClient(0,"");
+            CreateClient frmcc = new CreateClient(0, "");
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(frmcc);
             frmcc.BringToFront();
-         //  BtnCreateClient.BackColor = Color.FromArgb(93, 98, 132);
+            //  BtnCreateClient.BackColor = Color.FromArgb(93, 98, 132);
             activeBtn(BtnCreateClient);
         }
         private void BtnListClient_Click(object sender, EventArgs e)
@@ -319,7 +331,7 @@ namespace ParcInfo.frmDefault
         //all the interventions
         private void btnListIntervention_Click(object sender, EventArgs e)
         {
-                ListeIntervention intervention = new ListeIntervention("",0);
+            ListeIntervention intervention = new ListeIntervention("", 0);
             ShowControl(intervention);
             activeBtn(btnListIntervention);
         }
@@ -340,7 +352,7 @@ namespace ParcInfo.frmDefault
         //intervention 'terminer'
         private void btnInterventionTerminer_Click(object sender, EventArgs e)
         {
-            ListeIntervention intervention = new ListeIntervention("terminer",countIntervTerminer);
+            ListeIntervention intervention = new ListeIntervention("terminer", countIntervTerminer);
             ShowControl(intervention);
             activeBtn(btnInterventionTerminer);
         }
@@ -351,7 +363,7 @@ namespace ParcInfo.frmDefault
         private void PicBack_Click(object sender, EventArgs e)
         {
             ListClients frmcc = new ListClients();
-            
+
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(frmcc);
             frmcc.BringToFront();
@@ -447,7 +459,7 @@ namespace ParcInfo.frmDefault
                     }
 
                 }
-                else 
+                else
                 {
                     //count interventions
                     countIntervTerminer = db.GetIntervtermine.Count();
@@ -472,7 +484,7 @@ namespace ParcInfo.frmDefault
 
         public void GetRolesName()
         {
-            
+
             var t = GlobVars.cuUser.RoleUtilisateurs1.Where(x => x.IdUtilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0);
             foreach (var v in t)
                 if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("demandes".ToLower()) && v.IsDeleted != 1)
@@ -519,9 +531,9 @@ namespace ParcInfo.frmDefault
             ShowOldControl();
         }
 
-        
 
-        public void activeBtn(Button btn )
+
+        public void activeBtn(Button btn)
         {
             btn.BackColor = Color.FromArgb(58, 61, 82);
             foreach (Control item in pnlMenu.Controls)
@@ -540,7 +552,7 @@ namespace ParcInfo.frmDefault
                         }
                     }
                 }
-           
+
             }
         }
 

@@ -23,7 +23,7 @@ namespace ParcInfo.settings
         }
         void DelDep_clicked(object sender, EventArgs e)
         {
-           
+
         }
         private void TypesProduits_Load(object sender, EventArgs e)
         {
@@ -38,12 +38,12 @@ namespace ParcInfo.settings
             {
                 var list = (from c in context.TypeProduits
                             where c.IsDeleted == 0
-                            select new {c.id, c.Nom, supportUser = c.SupportingUser == 1 ? "Oui" : "Non", supportLog = c.SupportingSoftware == 1 ? "Oui" : "Non" }).ToList();
+                            select new { c.id, c.Nom, supportUser = c.SupportingUser == 1 ? "Oui" : "Non", supportLog = c.SupportingSoftware == 1 ? "Oui" : "Non" }).ToList();
                 dgType.DataSource = list;
             }
-            
+
             Methods.Nice_grid(
-                             new string[] { "id", "Nom", "supportLog", "supportUser",   },
+                             new string[] { "id", "Nom", "supportLog", "supportUser", },
                              new string[] { "id", "Type", "Supporte le logiciel", "Supporte utilisateur" },
                              dgType
                              );
@@ -65,7 +65,7 @@ namespace ParcInfo.settings
                 pnlProp.AutoScroll = true;
 
             }
-           
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -110,7 +110,8 @@ namespace ParcInfo.settings
                         {
                             if (item.TxtValue != "")
                             {
-                                context.ProprietesProduits.Add(new ProprietesProduit {
+                                context.ProprietesProduits.Add(new ProprietesProduit
+                                {
                                     Nom = item.TxtValue,
                                     idType = tp.id,
                                     IsDeleted = 0
@@ -144,20 +145,20 @@ namespace ParcInfo.settings
                                 pnlProp.Controls.Remove(tbx);
                             }
                         }
-                        else if (item.Visible && int.Parse(item.LblID) == 0 && item.TxtValue != "" )
+                        else if (item.Visible && int.Parse(item.LblID) == 0 && item.TxtValue != "")
                         {
                             context.ProprietesProduits.Add(new ProprietesProduit { Nom = item.TxtValue, idType = t.id, IsDeleted = 0 });
                         }
-                        else if(item.Visible && int.Parse(item.LblID) > 0)
+                        else if (item.Visible && int.Parse(item.LblID) > 0)
                         {
                             var tprop = t.ProprietesProduits.Where(d => d.Id == int.Parse(item.LblID)).FirstOrDefault();
                             tprop.Nom = item.TxtValue;
                         }
                     }
-        
+
                     context.SaveChanges();
                 }
-                
+
             }
         }
         public void Clear()
@@ -192,6 +193,39 @@ namespace ParcInfo.settings
         {
             if (dgType.SelectedRows.Count > 0)
             {
+
+            }
+        }
+
+        private void btnDelType_Click(object sender, EventArgs e)
+        {
+
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var myrow = dgType.Rows[dgType.CurrentRow.Index];
+                int id = int.Parse(myrow.Cells["id"].Value.ToString());
+                TypeProduit c = context.TypeProduits.Find(id);
+
+                DialogResult result = MessageBox.Show("Voulez-vous supprimer le type suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    c.IsDeleted = 1;
+
+                    context.SaveChanges();
+                    MessageBox.Show("type supprimé");
+                    Clear();
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+            }
+        }
+
+        private void dgType_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
                 Clear();
                 var myrow = dgType.Rows[dgType.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
@@ -215,16 +249,16 @@ namespace ParcInfo.settings
                         txtlblType tbx = this.Controls.Find("type1", true).FirstOrDefault() as txtlblType;
                         if (tbx != null)
                         {
-                            var frs = t.ProprietesProduits.Where(d=> d.IsDeleted == 0).FirstOrDefault();
+                            var frs = t.ProprietesProduits.Where(d => d.IsDeleted == 0).FirstOrDefault();
                             if (frs != null)
                             {
                                 tbx.TxtValue = frs.Nom;
                                 tbx.LblID = frs.Id.ToString();
                             }
-                           
+
                         }
 
-                        foreach (var item in t.ProprietesProduits.Where(d=> d.IsDeleted == 0).Skip(1))
+                        foreach (var item in t.ProprietesProduits.Where(d => d.IsDeleted == 0).Skip(1))
                         {
                             txtlblType type = new txtlblType();
                             type.Name = "type" + typeName;
@@ -240,31 +274,6 @@ namespace ParcInfo.settings
                             }
                         }
                     }
-                }
-            }
-        }
-
-        private void btnDelType_Click(object sender, EventArgs e)
-        {
-
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-            {
-                var myrow = dgType.Rows[dgType.CurrentRow.Index];
-                int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                TypeProduit c = context.TypeProduits.Find(id);
-
-                DialogResult result = MessageBox.Show("Voulez-vous supprimer le type suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    c.IsDeleted = 1;
-                   
-                    context.SaveChanges();
-                    MessageBox.Show("type supprimé");
-                    Clear();
-                }
-                else if (result == DialogResult.No)
-                {
-
                 }
             }
         }

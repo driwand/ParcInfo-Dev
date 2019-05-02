@@ -212,10 +212,10 @@ namespace ParcInfo.ucClient
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)
         {
             btnStartIntervention.Click -= btnStartIntervention_Click;
-            gpEmployee.Click -= gpEmployee_Click;
-            gpProduit.Click -= gpProduit_Click;
-            gpIntervention.Click -= gpIntervention_Click;
-            gpDemande.Click -= gpDemande_Click;
+            //gpEmployee.Click -= gpEmployee_Click;
+            //gpProduit.Click -= gpProduit_Click;
+            //gpIntervention.Click -= gpIntervention_Click;
+            //gpDemande.Click -= gpDemande_Click;
 
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
@@ -239,10 +239,10 @@ namespace ParcInfo.ucClient
                 {
                     GetAllClients();
                     btnStartIntervention.Click += btnStartIntervention_Click;
-                    gpEmployee.Click += gpEmployee_Click;
-                    gpProduit.Click += gpProduit_Click;
-                    gpIntervention.Click += gpIntervention_Click;
-                    gpDemande.Click += gpDemande_Click;
+                    //gpEmployee.Click += gpEmployee_Click;
+                    //gpProduit.Click += gpProduit_Click;
+                    //gpIntervention.Click += gpIntervention_Click;
+                    //gpDemande.Click += gpDemande_Click;
                 }
                   
             }

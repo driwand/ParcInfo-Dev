@@ -259,50 +259,57 @@ namespace ParcInfo.ucParametre
         }
         private void btnEditUser_Click(object sender, EventArgs e)
         {
+            
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                List<string> lst = new List<string>();
-                var listRoles = context.GetListRoles(idU);
-                CheckBoxC(pnlRoles, lst);
-                var deleteList = listRoles.Select(cs => cs.Nom).ToList().Except(lst);
-                var insertList = lst.Except(listRoles.Select(c => c.Nom).ToList());
-                var user = context.Utilisateurs.Find(idU);
-                foreach (var r in deleteList)
+                int txtEmpty = 0;
+                txtEmpty = Methods.Focus(this);
+                if (txtEmpty == 0)
                 {
-                    var c = listRoles.Where(ro => ro.Nom == r).FirstOrDefault();
-                    if (c != null)
+                    List<string> lst = new List<string>();
+                    var listRoles = context.GetListRoles(idU);
+                    CheckBoxC(pnlRoles, lst);
+                    var deleteList = listRoles.Select(cs => cs.Nom).ToList().Except(lst);
+                    var insertList = lst.Except(listRoles.Select(c => c.Nom).ToList());
+                    var user = context.Utilisateurs.Find(idU);
+                    foreach (var r in deleteList)
                     {
-                        c.IsDeleted = 1;
-                        c.Datemodification = DateTime.Now;
-                        c.Modifierpar = GlobVars.cuUser.Id;
+                        var c = listRoles.Where(ro => ro.Nom == r).FirstOrDefault();
+                        if (c != null)
+                        {
+                            c.IsDeleted = 1;
+                            c.Datemodification = DateTime.Now;
+                            c.Modifierpar = GlobVars.cuUser.Id;
+                        }
                     }
-                }
-                foreach (var item in insertList)
-                {
-                    context.RoleUtilisateurs.Add(new RoleUtilisateur
+                    foreach (var item in insertList)
                     {
-                        Nom = item,
-                        IdUtilisateur = idU,
-                        IsDeleted = 0,
-                        Creepar = GlobVars.cuUser.Id,
-                    Datecreation = DateTime.Now
-                    });
+                        context.RoleUtilisateurs.Add(new RoleUtilisateur
+                        {
+                            Nom = item,
+                            IdUtilisateur = idU,
+                            IsDeleted = 0,
+                            Creepar = GlobVars.cuUser.Id,
+                            Datecreation = DateTime.Now
+                        });
+                    }
+                    user.Nom = txtNom.Text;
+                    user.Prenom = txtPrenom.Text;
+                    user.Adresse = txtAdresse.Text;
+                    user.Ville = txtVille.Text;
+                    user.Tel = txtTel.Text;
+                    txtEmail.Text = txtEmail.Text;
+                    int isAdmin = 0;
+                    if (ckAdmin.Checked)
+                    {
+                        isAdmin = 1;
+                    }
+                    user.isAdmin = isAdmin;
+                    user.Datemodification = DateTime.Now;
+                    user.Modifierpar = GlobVars.cuUser.Id;
+                    context.SaveChanges();  
                 }
-                user.Nom = txtNom.Text;
-                user.Prenom = txtPrenom.Text;
-                user.Adresse = txtAdresse.Text;
-                user.Ville = txtVille.Text;
-                user.Tel = txtTel.Text;
-                txtEmail.Text = txtEmail.Text;
-                int isAdmin = 0;
-                if (ckAdmin.Checked)
-                {
-                    isAdmin = 1;
-                }
-                user.isAdmin = isAdmin;
-                user.Datemodification = DateTime.Now;
-                user.Modifierpar = GlobVars.cuUser.Id;
-                context.SaveChanges();
+               
 
             }
         }

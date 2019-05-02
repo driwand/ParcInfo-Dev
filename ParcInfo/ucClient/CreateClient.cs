@@ -400,6 +400,10 @@ namespace ParcInfo.ucClient
                                 dm.IsDeleted = 1;
                             });
                     });
+                    c.Departements.ToList().ForEach(d =>
+                    {
+                        d.IsDeleted = 1;
+                    });
                     MessageBox.Show("client supprimé");
                     Methods.Clear(this);
                     c.Datemodification = DateTime.Now;
