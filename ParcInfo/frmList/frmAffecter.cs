@@ -57,7 +57,9 @@ namespace ParcInfo
                         this.Text = "produit";
                         var p = listprod.Where(i => item == i.id).FirstOrDefault();
                         prixVente prop = new prixVente();
-                        prop.LblCode = p.CodeP;
+                        prop.TxtValue = p.Prix.ToString();
+                        prop.LblCode = $"{p.Marque} {p.Model}";
+                      
                         prop.Lblid = item.ToString();
                         // prop.Margin = new Padding(0, 0, 0, 12);
                         prixName++;
