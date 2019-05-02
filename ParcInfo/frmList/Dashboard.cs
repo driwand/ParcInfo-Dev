@@ -217,6 +217,7 @@ namespace ParcInfo.frmList
                 var dc = (from c in context.Demandes
                           join i in context.Interventions on c.Id equals i.IdDemande
                           select new {ad =  DbFunctions.DiffMinutes(c.Datedemande, i.DateIntervention) }).ToList();
+                
                 var d = dc.Sum(dx => dx.ad) / dc.Count;
                 string varx = string.Format("{0}:{1}", (d / 60), (d % 60));
                 MessageBox.Show(varx);

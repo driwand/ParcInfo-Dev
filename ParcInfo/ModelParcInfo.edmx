@@ -1004,7 +1004,7 @@
           <Property Name="Description_d" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Statut" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="IdEmployee" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Demande__IdEmplo__4BAC3F29" FromRole="Demande" ToRole="Employee" />
           <NavigationProperty Name="Interventions" Relationship="Self.FK__Intervent__IdDem__52593CB8" FromRole="Demande" ToRole="Intervention" />
         </EntityType>
@@ -1056,7 +1056,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Installer__Creep__68487DD7" FromRole="Installer" ToRole="Utilisateur" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__Installer__Idhar__656C112C" FromRole="Installer" ToRole="ProduitClient" />
           <NavigationProperty Name="ProduitClient1" Relationship="Self.FK__Installer__Idpro__66603565" FromRole="Installer" ToRole="ProduitClient" />
@@ -1079,7 +1079,7 @@
           <Property Name="Idclient" Type="Int32" />
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Intervent__Idcli__5441852A" FromRole="Intervention" ToRole="Client" />
           <NavigationProperty Name="Demande" Relationship="Self.FK__Intervent__IdDem__52593CB8" FromRole="Intervention" ToRole="Demande" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Intervent__Iduti__534D60F1" FromRole="Intervention" ToRole="Utilisateur" />
@@ -1098,7 +1098,7 @@
           <Property Name="Textobservation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Dateobservation" Type="DateTime" Precision="3" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Detailproduit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Intervention" Relationship="Self.FK__observati__IdInt__59063A47" FromRole="observation" ToRole="Intervention" />
         </EntityType>
         <EntityType Name="ParametreParcinfo">
@@ -1146,7 +1146,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK__ProduitCl__Idcli__5DCAEF64" FromRole="ProduitClient" ToRole="Client" />
           <NavigationProperty Name="Installers" Relationship="Self.FK__Installer__Idhar__656C112C" FromRole="ProduitClient" ToRole="Installer" />
           <NavigationProperty Name="Installers1" Relationship="Self.FK__Installer__Idpro__66603565" FromRole="ProduitClient" ToRole="Installer" />
@@ -1171,7 +1171,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__ProduitUt__IdEmp__6E01572D" FromRole="ProduitUtiliser" ToRole="Employee" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__ProduitUt__IdPro__6D0D32F4" FromRole="ProduitUtiliser" ToRole="ProduitClient" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__ProduitUt__Creep__6FE99F9F" FromRole="ProduitUtiliser" ToRole="Utilisateur" />
