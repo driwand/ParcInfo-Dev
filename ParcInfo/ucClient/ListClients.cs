@@ -143,8 +143,13 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListEmployees(id), true);
+                
+                ListEmployees lse = new ListEmployees(id);
+
+                GlobVars.lsback.Add(lse);
+                GlobVars.frmindex.pictureBox2.Show();
+
+                GlobVars.frmindex.ShowControl(lse, true);
             }
         }
         private void btnNewClient_Click(object sender, EventArgs e)
@@ -170,8 +175,13 @@ namespace ParcInfo.ucClient
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 string code = myrow.Cells["IdCLient"].Value.ToString();
-                GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListeIntervention(id, code));
+
+                ListeIntervention lsinter = new ListeIntervention(id, code);
+
+                GlobVars.lsback.Add(lsinter);
+                GlobVars.frmindex.pictureBox2.Show();
+
+                GlobVars.frmindex.ShowControl(lsinter);
             }
 
         }
@@ -182,6 +192,12 @@ namespace ParcInfo.ucClient
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 string nom = myrow.Cells["IdCLient"].Value.ToString();
+
+                ListDemande lsinter = new ListDemande(id, nom);
+
+                GlobVars.lsback.Add(lsinter);
+                GlobVars.frmindex.pictureBox2.Show();
+
                 GlobVars.frmindex.ShowControl(new ListDemande(id, nom));
             }
         }
@@ -192,8 +208,13 @@ namespace ParcInfo.ucClient
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 string code = myrow.Cells["IdCLient"].Value.ToString();
-                GlobVars.frmBack = this;
-                GlobVars.frmindex.ShowControl(new ListProduitClient(id, code));
+
+                ListProduitClient lsinter = new ListProduitClient(id, code);
+
+                GlobVars.lsback.Add(lsinter);
+                GlobVars.frmindex.pictureBox2.Show();
+
+                GlobVars.frmindex.ShowControl(lsinter);
             }
         }
 

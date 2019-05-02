@@ -35,7 +35,6 @@ namespace ParcInfo.frmDefault
         protected override void OnClosed(EventArgs e)
         {
            
-            
         }
         public FrmDefault()
         {
@@ -55,12 +54,29 @@ namespace ParcInfo.frmDefault
                         {
                             ShowControl(new userProfile());
                         }
-                       
                 }
             }
             ControlsClass.CursorChanger(pnlMenu);
             tmrReal.Start();
             ShowControl(new Dashboard());
+
+            
+        }
+
+        private void HideBack(object sender, EventArgs e)
+        {
+            pictureBox2.Hide();
+        }
+
+        public void AddClickHide(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is Button)
+                    (c).Click += HideBack;
+                if (c is Panel)
+                    AddClickHide(c);
+            }
         }
         public int countIntervTerminer;
         public int countIntervCours;
@@ -78,19 +94,12 @@ namespace ParcInfo.frmDefault
             if (PanelContainer.Controls.Count > 0)
             {
                 GlobVars.OldControl = (UserControl)PanelContainer.Controls[0];
-                PicBack.Visible = true;
             }
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(mycontrol);
             mycontrol.BringToFront();
         }
-        public void ShowOldControl()
-        {
-            PanelContainer.Controls.Clear();
-            PanelContainer.Controls.Add(GlobVars.OldControl);
-            //mycontrol.BringToFront();
-           // PicBack.Visible = hideback;
-        }
+
         MultiLineLabel ml = new MultiLineLabel();
 
         #region Timers
@@ -192,6 +201,7 @@ namespace ParcInfo.frmDefault
         private void BtnListClient_Click(object sender, EventArgs e)
         {
             ListClients frmcc = new ListClients();
+            
             GlobVars.lsback.Add(frmcc);
 
             PanelContainer.Controls.Clear();
@@ -355,7 +365,6 @@ namespace ParcInfo.frmDefault
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(frmcc);
             frmcc.BringToFront();
-            PicBack.Visible = false;
         }
 
         private void btnListProduct_Click(object sender, EventArgs e)
@@ -511,15 +520,9 @@ namespace ParcInfo.frmDefault
         {
             //  this.ControlBox = false;
             Methods.CheckRoles(Controls);
+            AddClickHide(pnlMenu);
             logoPic.BringToFront();
         }
-
-        private void PicBack_Click_1(object sender, EventArgs e)
-        {
-            ShowOldControl();
-        }
-
-        
 
         public void activeBtn(Button btn )
         {
@@ -558,6 +561,7 @@ namespace ParcInfo.frmDefault
         private void BtnHome_Click(object sender, EventArgs e)
         {
             ShowControl(new Dashboard());
+            GlobVars.lsback.Clear();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -566,9 +570,13 @@ namespace ParcInfo.frmDefault
             {
                 PanelContainer.Controls.Clear();
                 var rev = GlobVars.lsback;
-                (rev as IEnumerable<Control>).Reverse();
-                if (rev.Count > 1)
-                    PanelContainer.Controls.Add(rev.Skip(1).Take(1).First());
+                if (rev.Count > 0)
+                {
+                    PanelContainer.Controls.Add(GlobVars.lsback.ElementAt(rev.Count - 2));
+                    rev.RemoveAt(rev.Count - 1);
+                    if (rev.Count == 1)
+                        pictureBox2.Hide();
+                }
                 else
                     PanelContainer.Controls.Add(rev.First());
             }
