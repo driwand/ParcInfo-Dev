@@ -812,6 +812,7 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Lineage_OS_Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

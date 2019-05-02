@@ -69,6 +69,7 @@
             this.Name = "frmAffecter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAffecter";
+            this.Load += new System.EventHandler(this.frmAffecter_Load);
             this.ResumeLayout(false);
 
         }

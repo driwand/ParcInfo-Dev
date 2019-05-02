@@ -511,6 +511,7 @@ namespace ParcInfo.frmDefault
         {
             //  this.ControlBox = false;
             Methods.CheckRoles(Controls);
+            logoPic.BringToFront();
         }
 
         private void PicBack_Click_1(object sender, EventArgs e)

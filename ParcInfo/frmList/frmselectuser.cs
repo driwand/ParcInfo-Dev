@@ -174,6 +174,21 @@ namespace ParcInfo
 
         private void frmselectuser_Load(object sender, EventArgs e)
         {
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var par = db.ParametreParcinfoes.FirstOrDefault();
+                if (par != null)
+                {
+                    if (par.Iconapp != null)
+                    {
+                        System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                        IntPtr ico = bitmap.GetHicon();
+                        Icon icon = Icon.FromHandle(ico);
+
+                        this.Icon = icon;
+                    }
+                }
+            }
             Methods.FilterDataGridViewIni(dgUsers, txtFind, btnFind);
         }
     }
