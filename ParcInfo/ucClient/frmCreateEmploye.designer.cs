@@ -293,6 +293,7 @@
             this.Name = "frmCreateEmploye";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nouveau employee";
+            this.Load += new System.EventHandler(this.frmCreateEmploye_Load);
             this.gbEmploye.ResumeLayout(false);
             this.gbEmploye.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmp)).EndInit();

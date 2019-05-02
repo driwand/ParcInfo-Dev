@@ -160,8 +160,9 @@ namespace ParcInfo.ucParametre
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
-                dlg.Title = "Open Image";
-                dlg.Filter = "Png files (*.png)|*.png";
+                dlg.Title = "Choisire icon";
+                
+                dlg.Filter = "Icon files (*.Icon)|*.Ico";
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -169,6 +170,45 @@ namespace ParcInfo.ucParametre
 
                     imgicon = new Bitmap(dlg.FileName);
                     picIcon.Image = imgicon;
+                }
+            }
+        }
+
+        private void AppSettingcs_Load(object sender, EventArgs e)
+        {
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var par = db.ParametreParcinfoes.FirstOrDefault();
+                if (par != null)
+                {
+                    applogo.Image = Methods.ByteArrayToImage(par.Logoapp);
+                    applogo.SizeMode = PictureBoxSizeMode.Zoom;
+                    //if (par.Iconapp != null)
+                    //{
+                    //    System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                    //    IntPtr ico = bitmap.GetHicon();
+                    //    Icon icon = Icon.FromHandle(ico);
+
+                    //    deffrm.Icon = icon;
+                    //}
+                }
+            }
+        }
+
+        private void btnpicklogo_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Choisire Logo";
+
+                dlg.Filter = "Icon files (*.png)|*.png";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    PictureBox PictureBox1 = new PictureBox();
+
+                    imglogo = new Bitmap(dlg.FileName);
+                    applogo.Image = imglogo;
                 }
             }
         }

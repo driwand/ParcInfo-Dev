@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.ucControls;
+using ParcInfo.Classes;
 
 namespace ParcInfo.ucDemande
 {
@@ -74,6 +75,16 @@ namespace ParcInfo.ucDemande
         }
 
         private void pnlDesc_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FicheDemande1_Load(object sender, EventArgs e)
+        {
+            Methods.CheckRoles(Controls);
+        }
+
+        private void BtnstartInterventionFich_Click(object sender, EventArgs e)
         {
 
         }

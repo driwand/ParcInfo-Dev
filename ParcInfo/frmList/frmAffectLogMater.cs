@@ -46,7 +46,21 @@ namespace ParcInfo.frmList
 
         private void frmAffectLogMater_Load(object sender, EventArgs e)
         {
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var par = db.ParametreParcinfoes.FirstOrDefault();
+                if (par != null)
+                {
+                    if (par.Iconapp != null)
+                    {
+                        System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                        IntPtr ico = bitmap.GetHicon();
+                        Icon icon = Icon.FromHandle(ico);
 
+                        this.Icon = icon;
+                    }
+                }
+            }
         }
 
         private void btn_select_Click(object sender, EventArgs e)

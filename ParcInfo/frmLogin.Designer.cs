@@ -63,6 +63,7 @@
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(512, 247);
             this.pnlContainer.TabIndex = 126;
+            
             // 
             // pnlError
             // 
@@ -157,7 +158,7 @@
             this.txtPassword.Size = new System.Drawing.Size(360, 28);
             this.txtPassword.TabIndex = 126;
             this.txtPassword.Tag = "required";
-            this.txtPassword.Text = "rIgj93dD";
+            this.txtPassword.Text = "Iznm9L9D";
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // txtEmail
@@ -169,7 +170,7 @@
             this.txtEmail.Size = new System.Drawing.Size(360, 28);
             this.txtEmail.TabIndex = 125;
             this.txtEmail.Tag = "required";
-            this.txtEmail.Text = "parcinfoit@gmail.com";
+            this.txtEmail.Text = "q";
             // 
             // gradientPanel1
             // 

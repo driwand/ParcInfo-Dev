@@ -373,7 +373,13 @@ namespace ParcInfo.Classes
         public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            return ms.ToArray();
+        }
+        public static byte[] ImageToByteArrayIcon(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Icon);
             return ms.ToArray();
         }
 
@@ -406,6 +412,7 @@ namespace ParcInfo.Classes
 
                 //Interevntion
                 { new string []{ "Consulter les intervention concerner","Consulter tous les interventions" }, new string[] { "DropIntervention" } },
+                { new string []{ "Ajouter intervention" }, new string[] { "BtnstartInterventionFich", "btnTraiter", "btnStartIntervention" } },
 
                 //demande
                 { new string []{ "Consulter les demandes concerner", "Consulter tous les demandes" }, new string[] { "DropDemande" } },

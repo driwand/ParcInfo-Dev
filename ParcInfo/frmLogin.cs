@@ -18,6 +18,22 @@ namespace ParcInfo
         public frmLogin()
         {
             InitializeComponent();
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var par = db.ParametreParcinfoes.FirstOrDefault();
+                if (par != null)
+                {
+                    if (par.Iconapp != null)
+                    {
+                        System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                        IntPtr ico = bitmap.GetHicon();
+                        Icon icon = Icon.FromHandle(ico);
+
+                        this.Icon = icon;
+                    }
+                }
+            }
+
             lblForget.Text = "Forget Password ?";
         }
         private void lblForget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -57,9 +73,8 @@ namespace ParcInfo
                         pnlError.Visible = false;
                         GlobVars.currentUser = user.Id;
                         GlobVars.cuUser = user;
-                       
-                        FrmDefault frm = new FrmDefault();
-                        frm.Show();
+                        GoToDefault();
+
                         this.Hide();
                     }
                     else
@@ -94,6 +109,30 @@ namespace ParcInfo
         {
             if (e.KeyCode == Keys.Enter)
                 e.SuppressKeyPress = true;
+        }
+
+        public void GoToDefault()
+        {
+            FrmDefault deffrm = new FrmDefault();
+            using (var db = new ParcInformatiqueEntities())
+            {
+                var par = db.ParametreParcinfoes.FirstOrDefault();
+                if (par != null)
+                {
+                    deffrm.logoPic.BringToFront();
+                    deffrm.logoPic.Image = Methods.ByteArrayToImage(par.Logoapp);
+                    deffrm.logoPic.SizeMode = PictureBoxSizeMode.Zoom;
+                    if (par.Iconapp != null)
+                    {
+                        System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                        IntPtr ico = bitmap.GetHicon();
+                        Icon icon = Icon.FromHandle(ico);
+
+                        deffrm.Icon = icon;
+                    }
+                }
+            }
+            deffrm.Show();
         }
     }
 }

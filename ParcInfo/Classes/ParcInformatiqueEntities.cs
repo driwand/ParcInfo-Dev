@@ -210,7 +210,7 @@ namespace ParcInfo
         {
             get
             {
-                return Demandes.Where(x => x.IsDeleted == 0);
+                return Demandes.Where(x => x.IsDeleted == 0 && x.Employee.Client.IsDeleted == 0);
             }
         }
 
@@ -227,7 +227,8 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2 ) < retarddate && x.Employee.Client.IsDeleted == 0);
+                int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) < retarddate && x.Employee.Client.IsDeleted == 0);
             }
         }
         public IQueryable<Demande> GetRequestCours
@@ -235,7 +236,8 @@ namespace ParcInfo
             get
             {
                 var retarddate = DateTime.Now;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate && x.Employee.Client.IsDeleted == 0);
+                int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) > retarddate && x.Employee.Client.IsDeleted == 0);
             }
         }
 
@@ -342,7 +344,8 @@ namespace ParcInfo
                          select d);
 
                 var retarddate = DateTime.Now;
-                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) < retarddate);
+                int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
+                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) < retarddate);
             }
         }
         public IQueryable<Demande> GetAssignedRequestCours
@@ -357,7 +360,8 @@ namespace ParcInfo
                          select d);
 
                 var retarddate = DateTime.Now;
-                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, 2) > retarddate);
+                int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
+                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) > retarddate);
             }
         }
 
