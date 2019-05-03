@@ -310,12 +310,6 @@
     <Compile Include="ucControls\userHistory.Designer.cs">
       <DependentUpon>userHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucDemande\FichDemande.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucDemande\FichDemande.Designer.cs">
-      <DependentUpon>FichDemande.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,7 +394,6 @@
     <Compile Include="ucDemande\ListDemande.Designer.cs">
       <DependentUpon>ListDemande.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucClient\selectedUsers.cs" />
     <Compile Include="FrmDefault.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -520,9 +513,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\userHistory.resx">
       <DependentUpon>userHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucDemande\FichDemande.resx">
-      <DependentUpon>FichDemande.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucClient\CreateClient.resx">
       <DependentUpon>CreateClient.cs</DependentUpon>

@@ -112,7 +112,7 @@ namespace ParcInfo.ucClient
                         Respo = 1;
                     }
                     idEmp.IsResponsable = Respo;
-                    idEmp.Modifierpar = GlobVars.currentUser;
+                    idEmp.Modifierpar = GlobVars.cuUser.Id;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
                     var msg = Methods.StringForget(idEmp.Nom, idEmp.Prenom, pass);
@@ -157,7 +157,7 @@ namespace ParcInfo.ucClient
                                 Datecreation = DateTime.Now,
                                 Password_e = pass,
                                 IsDeleted = 0,
-                                Creepar = GlobVars.currentUser,
+                                Creepar = GlobVars.cuUser.Id,
                             };
                             context.Employees.Add(emp);
                             context.SaveChanges();
@@ -188,7 +188,7 @@ namespace ParcInfo.ucClient
                 if (result == DialogResult.Yes)
                 {
                     c.IsDeleted = 1;
-                    c.Modifierpar = GlobVars.currentUser;
+                    c.Modifierpar = GlobVars.cuUser.Id;
 
                     c.Demandes.ToList().ForEach(cc =>
                     {

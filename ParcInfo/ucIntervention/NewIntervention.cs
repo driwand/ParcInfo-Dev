@@ -356,7 +356,7 @@ namespace ParcInfo.ucInterevntion
         private void lblSource_Click(object sender, EventArgs e)
         {
             if (selectedRequest != 0)
-                GlobVars.frmindex.ShowControl(new FichDemande(selectedRequest));
+                GlobVars.frmindex.ShowControl(new FicheDemande1(selectedRequest));
             else
                 GlobVars.frmindex.ShowControl(new CreateClient(selectedClient, ""));
         }
@@ -493,7 +493,7 @@ namespace ParcInfo.ucInterevntion
                     
                     db.SaveChanges();
 
-                    GlobVars.frmindex.ShowControl(GlobVars.frmBack);
+                    
                 }
             }
         }

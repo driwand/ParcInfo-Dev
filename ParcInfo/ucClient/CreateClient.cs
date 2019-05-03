@@ -211,7 +211,7 @@ namespace ParcInfo.ucClient
                                 aff = cli.AffectationClients.Where(a => a.Id == item.Idaffectation).FirstOrDefault();
                                 aff.IsDeleted = 1;
                                 aff.Datemodification = DateTime.Now;
-                                aff.Modifierpar = GlobVars.currentUser;
+                                aff.Modifierpar = GlobVars.cuUser.Id;
                                 context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, IsDeleted = 0 });
                             }
                         }
@@ -230,7 +230,7 @@ namespace ParcInfo.ucClient
                             var affectation = cli.AffectationClients.Where(d => d.Id == item.Idaffectation).FirstOrDefault();
                             affectation.IsDeleted = 1;
                             affectation.Datemodification = DateTime.Now;
-                            affectation.Modifierpar = GlobVars.currentUser;
+                            affectation.Modifierpar = GlobVars.cuUser.Id;
                             lblTextbox tbx = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                             PnlUsers.Controls.Remove(tbx);
                         }
@@ -243,7 +243,7 @@ namespace ParcInfo.ucClient
                     cli.Fax = txtFax.Text;
                     cli.Siteweb = txtSiteweb.Text;
                     cli.Datemodification = DateTime.Now;
-                    cli.Modifierpar = GlobVars.currentUser;
+                    cli.Modifierpar = GlobVars.cuUser.Id;
                     cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
                     cli.Prixheur = float.Parse(txtPrix.Text);
                     cli.Heurecontract = int.Parse(txtHeure.Text);
@@ -296,7 +296,7 @@ namespace ParcInfo.ucClient
                         Prixheur = Prix,
                         Datecreation = DateTime.Now,
                         IsDeleted = 0,
-                        Creepar = GlobVars.currentUser
+                        Creepar = GlobVars.cuUser.Id
                     };
                     context.Clients.Add(client);
                     // ADD Departement To Client 
@@ -328,7 +328,7 @@ namespace ParcInfo.ucClient
                                     Idutilisateur = item.Id,
                                     Dateaffectation = DateTime.Now,
                                     IsDeleted = 0,
-                                    Creepar = GlobVars.currentUser
+                                    Creepar = GlobVars.cuUser.Id
                                 };
                                 context.AffectationClients.Add(user);
                                 context.SaveChanges();

@@ -66,7 +66,7 @@ namespace ParcInfo.ucClient
                                 IdType = pType,
                                 IsDeleted = 0,
                                 Datecreation = DateTime.Now,
-                                Creepar = GlobVars.currentUser
+                                Creepar = GlobVars.cuUser.Id
                             };
                             context.Produits.Add(prod);
                             foreach (Control c in pd.pnlProp.Controls)
@@ -92,7 +92,7 @@ namespace ParcInfo.ucClient
                     p.Model = pd.txtModel.Text;
                     p.Prix = float.Parse(pd.txtPrix.Text);
                     p.Datefabrication = pd.DateProduit.Value;
-                    p.Modifierpar = GlobVars.currentUser ;
+                    p.Modifierpar = GlobVars.cuUser.Id;
                     p.Datemodification = DateTime.Now;
                     var lblDep = (from x in pd.pnlProp.Controls.OfType<lblProduit>()
                                   select x
@@ -208,7 +208,7 @@ namespace ParcInfo.ucClient
                 {
                     c.IsDeleted = 1;
                     c.Datemodification = DateTime.Now;
-                    c.Modifierpar = GlobVars.currentUser;
+                    c.Modifierpar = GlobVars.cuUser.Id;
                     context.SaveChanges();
                     MessageBox.Show("produit supprimé");
                     Clear();

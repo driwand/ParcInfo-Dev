@@ -361,7 +361,7 @@ namespace ParcInfo.ucInterevntion
 
                 if (dgIntervention.Rows[index].Cells["IdDemande"].Value.ToString() != "")
                 {
-                    GlobVars.frmBack = this;
+                    
 
                     GlobVars.frmindex.ShowControl(
                         new NewIntervention(
@@ -373,7 +373,7 @@ namespace ParcInfo.ucInterevntion
                 }
                 else
                 {
-                    GlobVars.frmBack = this;
+                    
 
                     GlobVars.frmindex.ShowControl(
                         new NewIntervention(

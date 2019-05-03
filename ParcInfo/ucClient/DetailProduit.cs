@@ -266,7 +266,7 @@ namespace ParcInfo.ucClient
                             {
                                 d.IsDeleted = 1;
                                 d.Datemodification = DateTime.Now;
-                                d.Modifierpar = GlobVars.currentUser;
+                                d.Modifierpar = GlobVars.cuUser.Id;
                                 lblTextbox lbltxt = this.Controls.Find(item.Controlname, true).FirstOrDefault() as lblTextbox;
                                 FpEmployee.Controls.Remove(lbltxt);
                             }

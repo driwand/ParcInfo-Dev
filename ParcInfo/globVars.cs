@@ -14,12 +14,8 @@ namespace ParcInfo
 {
     public static class GlobVars
     {
-        public static UserControl frmBack;
-        public static UserControl frmBack2;
         public static FrmDefault frmindex;
-        public static int currentUser = 1;
         public static Utilisateur cuUser;
-        public static UserControl OldControl;
 
         public static List<Control> lsback = new List<Control>();
     }

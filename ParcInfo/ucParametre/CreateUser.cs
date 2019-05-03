@@ -139,7 +139,7 @@ namespace ParcInfo.ucParametre
                                     Nom = item,
                                     IdUtilisateur = user.Id,
                                     IsDeleted = 0,
-                                    Creepar = GlobVars.currentUser
+                                    Creepar = GlobVars.cuUser.Id
                                 });
                            }
 
@@ -149,7 +149,7 @@ namespace ParcInfo.ucParametre
                                 {
                                     Idclient = item,
                                     Idutilisateur = user.Id,
-                                    Creepar = GlobVars.currentUser,
+                                    Creepar = GlobVars.cuUser.Id,
                                     
                                     IsDeleted = 0
                                 });

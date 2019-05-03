@@ -74,7 +74,7 @@ namespace ParcInfo.frmList
                     {
                         Idhardsoft = idpr,
                         Idproduitclient = (int)dgProdcuts.Rows[dgProdcuts.CurrentRow.Index].Cells["Idpclient"].Value,
-                        Creepar = GlobVars.currentUser
+                        Creepar = GlobVars.cuUser.Id
                     };
                     db.Installers.Add(inst);
                     db.SaveChanges();

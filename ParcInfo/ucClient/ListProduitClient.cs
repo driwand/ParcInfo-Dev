@@ -153,7 +153,7 @@ namespace ParcInfo.ucClient
                     int idP = int.Parse(myrow.Cells["idP"].Value.ToString());
                     int idPC = int.Parse(myrow.Cells["idPC"].Value.ToString());
 
-                    GlobVars.frmBack = this;
+                    
                     GlobVars.frmindex.ShowControl(new DetailProduit(id, idP,idPC));
                 }
             }

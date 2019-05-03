@@ -105,10 +105,6 @@ namespace ParcInfo.frmDefault
 
         public void ShowControl(Control mycontrol, bool hideback = false)
         {
-            if (PanelContainer.Controls.Count > 0)
-            {
-                GlobVars.OldControl = (UserControl)PanelContainer.Controls[0];
-            }
             PanelContainer.Controls.Clear();
             PanelContainer.Controls.Add(mycontrol);
             mycontrol.BringToFront();
