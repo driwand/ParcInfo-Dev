@@ -125,16 +125,17 @@ namespace ParcInfo
                         deffrm.logoPic.BringToFront();
                         deffrm.logoPic.Image = Methods.ByteArrayToImage(par.Logoapp);
                         deffrm.logoPic.SizeMode = PictureBoxSizeMode.Zoom;
-                        if (par.Iconapp != null)
-                        {
-                            System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
-                            IntPtr ico = bitmap.GetHicon();
-                            Icon icon = Icon.FromHandle(ico);
-
-                            deffrm.Icon = icon;
-                        }
 
                     }
+                    if (par.Iconapp != null)
+                    {
+                        System.Drawing.Bitmap bitmap = Methods.ByteArrayToImage(par.Iconapp) as System.Drawing.Bitmap;
+                        IntPtr ico = bitmap.GetHicon();
+                        Icon icon = Icon.FromHandle(ico);
+
+                        deffrm.Icon = icon;
+                    }
+
                 }
             }
             deffrm.Show();

@@ -596,5 +596,11 @@ namespace ParcInfo.frmDefault
                     PanelContainer.Controls.Add(rev.First());
             }
         }
+
+        private void FrmDefault_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //oooloo
+            Application.Exit();
+        }
     }
 }

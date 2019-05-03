@@ -413,12 +413,16 @@ namespace ParcInfo.ucInterevntion
                     {
                         selectedRequest = currentintr.Demande.Id;
 
+                        string reqtext = "Demande : \n";
                         AddTxtDescription(
                             currentintr.Demande.Employee.Nom,
                             currentintr.Demande.Datedemande.Value,
-                            currentintr.Demande.Description_d,
+                            reqtext + currentintr.Demande.Description_d,
                             0,
-                            pnlObservetion);
+                            pnlObservetion,
+                            null,
+                            0,
+                            true);
                     }
 
                     var activities = (from d in db.observations
@@ -495,7 +499,7 @@ namespace ParcInfo.ucInterevntion
         }
 
         int nametxt = 1;
-        public void AddTxtDescription(string userInfo, DateTime date, string description, int idobs, Panel container, string details = null, int IdCli = 0)
+        public void AddTxtDescription(string userInfo, DateTime date, string description, int idobs, Panel container, string details = null, int IdCli = 0,bool IsReq = false)
         {
             MultiLineLabel ml = new MultiLineLabel();
 
@@ -523,6 +527,17 @@ namespace ParcInfo.ucInterevntion
                 ml.ForeColor = Color.White;
             }
 
+            if (IsReq == true)
+            {
+                us.BackColor = Color.FromArgb(33, 150, 243);
+                us.lblDetails.ForeColor = Color.White;
+                us.lblIdAffecta.ForeColor = Color.White;
+                us.lblUser.ForeColor = Color.White;
+                us.pnlLine.BackColor = Color.White;
+
+                ml.ForeColor = Color.White;
+            }
+
             if (description != null)
                 ml.Text = description; //show text of description
 
@@ -539,7 +554,7 @@ namespace ParcInfo.ucInterevntion
                 us.pnlLine.BackColor = Color.White;
                 us.btnDelProd.Show();
 
-                ml.Text = $"this product {details.Split(' ').Take(2).Last()} by {userInfo}";
+                ml.Text = $"this product {details.Split(' ').Take(2).Last()} was assigned by {userInfo}";
                 ml.ForeColor = Color.White;
                 us.Click += new EventHandler((sender, e) => GetProduct(sender, e, IdCli, details.Split(' ').Take(1).Last()));
                 //us.btnDelProd.Click += new EventHandler((sender, e) => Del(sender,e,IdAffe,"us"+nametxt));
