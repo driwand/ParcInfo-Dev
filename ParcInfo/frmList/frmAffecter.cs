@@ -16,6 +16,7 @@ namespace ParcInfo
     public partial class frmAffecter : Form
     {
         int prixName = 1;
+
         int idC;
         lblTextbox lblx;
         loginPass lg;
