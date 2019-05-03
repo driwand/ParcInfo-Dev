@@ -18,6 +18,7 @@ namespace ParcInfo
         int prixName = 1;
 
         int idC;
+
         lblTextbox lblx;
         loginPass lg;
         int idprd = 0;
