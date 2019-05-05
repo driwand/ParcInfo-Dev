@@ -9,18 +9,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.ucControls;
 using ParcInfo.Classes;
+using ParcInfo.ucInterevntion;
 
 namespace ParcInfo.ucDemande
 {
     public partial class FicheDemande1 : UserControl
     {
         public int interventionName = 1;
+        public int ReqId;
+        public int ClientId;
+        public string ReqStat;
+
         public FicheDemande1(int IdReq)
         {
             InitializeComponent();
             using (var db = new ParcInformatiqueEntities())
             {
                 var currentReq = db.GetRequests.Where(r => r.Id == IdReq).FirstOrDefault();
+                ReqId = IdReq;
+                ReqStat = currentReq.Getstatut;
+                ClientId = currentReq.Employee.Client.id;
+
                 txtNom.Text = currentReq.Employee.Nom;
                 txtPrenom.Text = currentReq.Employee.Prenom;
                 txtDepart.Text = currentReq.Employee.Departement.Nom;
@@ -36,7 +45,7 @@ namespace ParcInfo.ucDemande
                 ml.Text = currentReq.Description_d;//show text of description
                 int o = ml.Height;
 
-               // pnlDesc.Size = new Size(300, o); //make size of panel as the height of text
+                // pnlDesc.Size = new Size(300, o); //make size of panel as the height of text
 
                 ml = new MultiLineLabel();
                 pnlDesc.Controls.Add(ml);
@@ -82,13 +91,15 @@ namespace ParcInfo.ucDemande
         private void FicheDemande1_Load(object sender, EventArgs e)
         {
             Methods.CheckRoles(Controls);
+
+            if (ReqStat == "terminer")
+                BtnstartInterventionFich.Visible = false;
         }
 
         private void BtnstartInterventionFich_Click(object sender, EventArgs e)
         {
-
+            if (ReqStat != "terminer")
+                GlobVars.frmindex.ShowControl(new NewIntervention(ClientId, ReqId));
         }
     }
-
-
 }

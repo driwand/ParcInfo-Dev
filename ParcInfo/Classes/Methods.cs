@@ -264,7 +264,7 @@ namespace ParcInfo.Classes
                 if (c.ToLower() == "id")
                     grid.Columns["id"].Visible = false;
             }
-
+            
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             DataGridViewCellStyle DataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;

@@ -35,6 +35,31 @@ namespace ParcInfo
             }
         }
     }
+
+    public partial class Demande
+    {
+        public string Getstatut
+        {
+            get
+            {
+                int delay = 0;
+                using (var db = new ParcInformatiqueEntities())
+                {
+                    delay = (int)db.ParametreParcinfoes.FirstOrDefault().Reatrddemande;
+                }
+                if (Datedemande.Value.AddDays(delay) < DateTime.Now && Statut != "terminer" && Statut != "en attente") return "en retard";
+                else return Statut;
+            }
+        }
+        public string IdReq
+        {
+            get
+            {
+                return "DEM-" + Methods.Splitdate(Datedemande.ToString()) + Id;
+            }
+        }
+    }
+
     public partial class Client
     {
         public string IdCLient

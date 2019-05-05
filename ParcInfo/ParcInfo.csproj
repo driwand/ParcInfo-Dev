@@ -75,7 +75,6 @@
     <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\ParcInformatiqueEntities.cs" />
     <Compile Include="Classes\ControlsClass.cs" />
-    <Compile Include="Classes\Demande.cs" />
     <Compile Include="Classes\GradientPanel.cs">
       <SubType>Component</SubType>
     </Compile>
