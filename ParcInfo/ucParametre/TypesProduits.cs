@@ -21,33 +21,16 @@ namespace ParcInfo.settings
         {
             InitializeComponent();
         }
-        void DelDep_clicked(object sender, EventArgs e)
-        {
-
-        }
+     
         private void TypesProduits_Load(object sender, EventArgs e)
         {
-            // txtlblDepartement depr = new txtlblDepartement();
             txtlblType type = new txtlblType();
             type.Name = "type" + typeName;
             type.Margin = new Padding(0, 0, 0, 12);
             typeName++;
             pnlProp.Controls.Add(type);
+            UpdateGrid();
 
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
-            {
-                var list = (from c in context.TypeProduits
-                            where c.IsDeleted == 0
-                            select new { c.id, c.Nom, supportUser = c.SupportingUser == 1 ? "Oui" : "Non", supportLog = c.SupportingSoftware == 1 ? "Oui" : "Non" }).ToList();
-                dgType.DataSource = list;
-            }
-
-            Methods.Nice_grid(
-                             new string[] { "id", "Nom", "supportLog", "supportUser", },
-                             new string[] { "id", "Type", "Supporte le logiciel", "Supporte utilisateur" },
-                             dgType
-                             );
-            dgType.Columns["id"].Visible = true;
         }
 
         private void btnAddProp_Click(object sender, EventArgs e)
@@ -76,14 +59,15 @@ namespace ParcInfo.settings
                 int idType = int.Parse(lblID.Text);
                 if (idType == 0)
                 {
-                    if (txtType.Text == "")
+                    if (txtType.Text.Trim() == "")
                     {
                         txtType.Focus();
+                        ErrorColor();
                     }
                     else
                     {
                         // get Type Nom
-                        var TypeP = txtType.Text;
+                        var TypeP = Methods.RemoveSpace(txtType.Text.Trim());
                         int supportLog = 0;
                         int supportUser = 0;
                         if (cbUser.Checked)
@@ -108,20 +92,22 @@ namespace ParcInfo.settings
                                   ).ToList();
                         foreach (var item in lblType)
                         {
-                            if (item.TxtValue != "")
+                            if (item.TxtValue.Trim() != "")
                             {
                                 context.ProprietesProduits.Add(new ProprietesProduit
                                 {
-                                    Nom = item.TxtValue,
+                                    Nom = Methods.RemoveSpace(item.TxtValue.Trim()),
                                     idType = tp.id,
                                     IsDeleted = 0
                                 });
-
                             }
                         }
-
                         context.SaveChanges();
                         MessageBox.Show("Insertion effectuée");
+                        UpdateGrid();
+                        dgType.ClearSelection();
+                        btnNewType.Visible = false;
+                        btnDelType.Visible = false;
                         Clear();
                         Methods.Clear(this);
                     }
@@ -130,39 +116,62 @@ namespace ParcInfo.settings
                 {
                     var id = int.Parse(lblID.Text);
                     var t = context.TypeProduits.Find(id);
-                    var lblDep = (from x in pnlProp.Controls.OfType<txtlblType>()
-                                  select x
-                   ).ToList();
-                    foreach (var item in lblDep)
+                    if (txtType.Text.Trim() == "")
                     {
-                        if (!item.Visible && int.Parse(item.LblID) > 0)
+                        txtType.Focus();
+                        ErrorColor();
+
+                    }
+                    else
+                    {
+
+                        t.Nom = txtType.Text.Trim();
+                        int supportLog = 0;
+                        int supportUser = 0;
+                        if (cbUser.Checked)
+                            supportUser = 1;
+                        if (cbLog.Checked)
+                            supportLog = 1;
+                        t.SupportingUser = supportUser;
+                        t.SupportingSoftware = supportLog;
+
+                        var lblDep = (from x in pnlProp.Controls.OfType<txtlblType>()
+                                      select x
+                                     ).ToList();
+                        foreach (var item in lblDep)
                         {
-                            var tprop = t.ProprietesProduits.Where(d => d.Id == int.Parse(item.LblID)).FirstOrDefault();
-                            if (tprop != null)
+                            if (!item.Visible && int.Parse(item.LblID) > 0)
                             {
-                                tprop.IsDeleted = 1;
-                                txtlblType tbx = this.Controls.Find(item.Name, true).FirstOrDefault() as txtlblType;
-                                pnlProp.Controls.Remove(tbx);
+                                var tprop = t.ProprietesProduits.Where(d => d.Id == int.Parse(item.LblID)).FirstOrDefault();
+                                if (tprop != null)
+                                {
+                                    tprop.IsDeleted = 1;
+                                    txtlblType tbx = this.Controls.Find(item.Name, true).FirstOrDefault() as txtlblType;
+                                    pnlProp.Controls.Remove(tbx);
+                                }
+                            }
+                            else if (item.Visible && int.Parse(item.LblID) == 0 && item.TxtValue != "")
+                            {
+                                context.ProprietesProduits.Add(new ProprietesProduit { Nom = item.TxtValue, idType = t.id, IsDeleted = 0 });
+                            }
+                            else if (item.Visible && int.Parse(item.LblID) > 0)
+                            {
+                                var tprop = t.ProprietesProduits.Where(d => d.Id == int.Parse(item.LblID)).FirstOrDefault();
+                                tprop.Nom = item.TxtValue;
                             }
                         }
-                        else if (item.Visible && int.Parse(item.LblID) == 0 && item.TxtValue != "")
-                        {
-                            context.ProprietesProduits.Add(new ProprietesProduit { Nom = item.TxtValue, idType = t.id, IsDeleted = 0 });
-                        }
-                        else if (item.Visible && int.Parse(item.LblID) > 0)
-                        {
-                            var tprop = t.ProprietesProduits.Where(d => d.Id == int.Parse(item.LblID)).FirstOrDefault();
-                            tprop.Nom = item.TxtValue;
-                        }
                     }
-
                     context.SaveChanges();
+                    dgType.ClearSelection();
+                    btnNewType.Visible = false;
+                    btnDelType.Visible = false;
+                    UpdateGrid();
                 }
-
             }
         }
         public void Clear()
         {
+
             typeName = 1;
             var lblDep = (from x in pnlProp.Controls.OfType<txtlblType>()
                           select x
@@ -184,19 +193,14 @@ namespace ParcInfo.settings
 
         private void btnNewType_Click(object sender, EventArgs e)
         {
+
+            dgType.ClearSelection();
             Clear();
+
             btnNewType.Visible = false;
             btnDelType.Visible = false;
+
         }
-
-        private void dgType_DoubleClick(object sender, EventArgs e)
-        {
-            if (dgType.SelectedRows.Count > 0)
-            {
-
-            }
-        }
-
         private void btnDelType_Click(object sender, EventArgs e)
         {
 
@@ -214,6 +218,11 @@ namespace ParcInfo.settings
                     context.SaveChanges();
                     MessageBox.Show("type supprimé");
                     Clear();
+                    
+                    btnNewType.Visible = false;
+                    btnDelType.Visible = false;
+                    UpdateGrid();
+                   
                 }
                 else if (result == DialogResult.No)
                 {
@@ -222,12 +231,15 @@ namespace ParcInfo.settings
             }
         }
 
-        private void dgType_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+     
+
+        private void dgType_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
                 Clear();
-                var myrow = dgType.Rows[dgType.CurrentRow.Index];
+
+                var myrow = dgType.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
@@ -255,6 +267,10 @@ namespace ParcInfo.settings
                                 tbx.TxtValue = frs.Nom;
                                 tbx.LblID = frs.Id.ToString();
                             }
+                            else
+                            {
+                                pnlProp.Controls.Remove(tbx);
+                            }
 
                         }
 
@@ -277,5 +293,49 @@ namespace ParcInfo.settings
                 }
             }
         }
+        // Update Datagrid View
+        public void UpdateGrid()
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var list = (from c in context.TypeProduits
+                            where c.IsDeleted == 0
+                            select new { c.id, c.Nom, supportUser = c.SupportingUser == 1 ? "Oui" : "Non", supportLog = c.SupportingSoftware == 1 ? "Oui" : "Non" }).ToList();
+                dgType.DataSource = Methods.ToDataTable(list);
+
+            }
+
+            Methods.Nice_grid(
+                             new string[] { "id", "Nom", "supportLog", "supportUser", },
+                             new string[] { "id", "Type", "Supporte le logiciel", "Supporte utilisateur" },
+                             dgType
+                             );
+            dgType.Columns["id"].Visible = true;
+            Methods.FilterDataGridViewIni(dgType, txtFind, btnFind);
+           
+        }
+        
+
+        // Set Error
+        public void ErrorColor()
+        {
+            txtType.BackColor = Color.FromArgb(235, 77, 75);
+            txtType.ForeColor = Color.White;
+        }
+
+        private void txtType_TextChanged(object sender, EventArgs e)
+        {
+            if (txtType.Text.Trim() != "")
+            {
+                txtType.BackColor = Color.White;
+                txtType.ForeColor = Color.Black;
+            }
+            //else
+            //{
+            //    ErrorColor();
+            //}
+        }
+
+      
     }
 }

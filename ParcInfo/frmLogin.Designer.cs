@@ -169,7 +169,7 @@
             this.txtPassword.Size = new System.Drawing.Size(360, 28);
             this.txtPassword.TabIndex = 126;
             this.txtPassword.Tag = "required";
-            this.txtPassword.Text = "Iznm9L9D";
+            this.txtPassword.Text = "V6ZEFwkS";
             // 
             // txtEmail
             // 
@@ -180,7 +180,7 @@
             this.txtEmail.Size = new System.Drawing.Size(360, 28);
             this.txtEmail.TabIndex = 125;
             this.txtEmail.Tag = "required";
-            this.txtEmail.Text = "q";
+            this.txtEmail.Text = "parcinfoit@gmail.com";
             // 
             // gradientPanel1
             // 

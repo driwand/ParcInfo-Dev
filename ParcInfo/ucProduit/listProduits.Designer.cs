@@ -45,7 +45,7 @@
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnDelP = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnNewType = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
             this.gpAffectationProduit.SuspendLayout();
@@ -57,6 +57,11 @@
             // nuAffecter
             // 
             this.nuAffecter.Location = new System.Drawing.Point(14, 18);
+            this.nuAffecter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nuAffecter.Name = "nuAffecter";
             this.nuAffecter.Size = new System.Drawing.Size(44, 20);
             this.nuAffecter.TabIndex = 0;
@@ -122,6 +127,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(238, 20);
             this.txtFind.TabIndex = 42;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // label15
             // 
@@ -177,7 +183,6 @@
             this.dgProduits.Name = "dgProduits";
             this.dgProduits.Size = new System.Drawing.Size(482, 310);
             this.dgProduits.TabIndex = 142;
-            this.dgProduits.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduits_CellDoubleClick);
             this.dgProduits.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduits_RowEnter);
             // 
             // panel1
@@ -238,18 +243,18 @@
             this.pictureBox1.TabIndex = 139;
             this.pictureBox1.TabStop = false;
             // 
-            // btnClear
+            // btnNewType
             // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Image = global::ParcInfo.Properties.Resources.btnadd;
-            this.btnClear.Location = new System.Drawing.Point(241, 435);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(32, 32);
-            this.btnClear.TabIndex = 153;
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnNewType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnNewType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewType.ForeColor = System.Drawing.Color.White;
+            this.btnNewType.Image = global::ParcInfo.Properties.Resources.btnadd;
+            this.btnNewType.Location = new System.Drawing.Point(240, 435);
+            this.btnNewType.Name = "btnNewType";
+            this.btnNewType.Size = new System.Drawing.Size(32, 32);
+            this.btnNewType.TabIndex = 153;
+            this.btnNewType.UseVisualStyleBackColor = false;
+            this.btnNewType.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lblUser
             // 
@@ -267,7 +272,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblUser);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnNewType);
             this.Controls.Add(this.gpAffectationProduit);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.btnDelP);
@@ -313,7 +318,7 @@
         private System.Windows.Forms.DataGridView dgProduits;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnNewType;
         private System.Windows.Forms.LinkLabel lblUser;
     }
 }

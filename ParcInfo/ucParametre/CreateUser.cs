@@ -313,5 +313,31 @@ namespace ParcInfo.ucParametre
 
             }
         }
+
+        private void btnDelUser_Click(object sender, EventArgs e)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+              
+                Utilisateur c = context.Utilisateurs.Find(idU);
+
+                DialogResult result = MessageBox.Show("Voulez-vous supprimer le utlisateur suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    c.IsDeleted = 1;
+                    c.Datemodification = DateTime.Now;
+                    c.Modifierpar = GlobVars.cuUser.Id;
+                    context.SaveChanges();
+                    MessageBox.Show("utlisateur supprimé");
+                    GlobVars.frmindex.ShowControl(new ListUtilisateur());
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+
+
+            }
+        }
     }
 }

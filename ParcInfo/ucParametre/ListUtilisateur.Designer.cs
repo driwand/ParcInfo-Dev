@@ -41,7 +41,7 @@
             this.lblMod = new System.Windows.Forms.Label();
             this.lblEdited = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.chDelIntr = new System.Windows.Forms.CheckBox();
+            this.ckDeleted = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -173,15 +173,16 @@
             this.label8.TabIndex = 138;
             this.label8.Text = "Dernier modification par :";
             // 
-            // chDelIntr
+            // ckDeleted
             // 
-            this.chDelIntr.AutoSize = true;
-            this.chDelIntr.Location = new System.Drawing.Point(15, 457);
-            this.chDelIntr.Name = "chDelIntr";
-            this.chDelIntr.Size = new System.Drawing.Size(171, 17);
-            this.chDelIntr.TabIndex = 137;
-            this.chDelIntr.Text = "Afficher les elements supprimer";
-            this.chDelIntr.UseVisualStyleBackColor = true;
+            this.ckDeleted.AutoSize = true;
+            this.ckDeleted.Location = new System.Drawing.Point(15, 457);
+            this.ckDeleted.Name = "ckDeleted";
+            this.ckDeleted.Size = new System.Drawing.Size(171, 17);
+            this.ckDeleted.TabIndex = 137;
+            this.ckDeleted.Text = "Afficher les elements supprimer";
+            this.ckDeleted.UseVisualStyleBackColor = true;
+            this.ckDeleted.CheckedChanged += new System.EventHandler(this.chDelIntr_CheckedChanged);
             // 
             // ListUtilisateur
             // 
@@ -193,7 +194,7 @@
             this.Controls.Add(this.lblMod);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.chDelIntr);
+            this.Controls.Add(this.ckDeleted);
             this.Controls.Add(this.dgUtilisateur);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
@@ -226,6 +227,6 @@
         private System.Windows.Forms.Label lblMod;
         private System.Windows.Forms.Label lblEdited;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox chDelIntr;
+        private System.Windows.Forms.CheckBox ckDeleted;
     }
 }

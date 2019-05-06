@@ -619,6 +619,7 @@
             this.btnDelUser.TabIndex = 162;
             this.btnDelUser.UseVisualStyleBackColor = false;
             this.btnDelUser.Visible = false;
+            this.btnDelUser.Click += new System.EventHandler(this.btnDelUser_Click);
             // 
             // label3
             // 
@@ -763,7 +764,7 @@
             this.btnEditUser.Name = "btnEditUser";
             this.btnEditUser.Size = new System.Drawing.Size(100, 32);
             this.btnEditUser.TabIndex = 163;
-            this.btnEditUser.Text = "Modifier";
+            this.btnEditUser.Text = "  Enregister";
             this.btnEditUser.UseVisualStyleBackColor = false;
             this.btnEditUser.Visible = false;
             this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);

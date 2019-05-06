@@ -43,11 +43,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgType = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnNewType = new System.Windows.Forms.Button();
             this.btnDelType = new System.Windows.Forms.Button();
+            this.btnNewType = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -104,7 +104,7 @@
             this.cbUser.Location = new System.Drawing.Point(74, 77);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(125, 17);
-            this.cbUser.TabIndex = 3;
+            this.cbUser.TabIndex = 2;
             this.cbUser.Text = "Supporte utilisateur ?";
             this.cbUser.UseVisualStyleBackColor = true;
             // 
@@ -114,7 +114,7 @@
             this.cbLog.Location = new System.Drawing.Point(74, 55);
             this.cbLog.Name = "cbLog";
             this.cbLog.Size = new System.Drawing.Size(124, 17);
-            this.cbLog.TabIndex = 2;
+            this.cbLog.TabIndex = 1;
             this.cbLog.Text = "Supporte le logiciel ?";
             this.cbLog.UseVisualStyleBackColor = true;
             // 
@@ -123,7 +123,8 @@
             this.txtType.Location = new System.Drawing.Point(74, 28);
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(253, 20);
-            this.txtType.TabIndex = 1;
+            this.txtType.TabIndex = 0;
+            this.txtType.TextChanged += new System.EventHandler(this.txtType_TextChanged);
             // 
             // label3
             // 
@@ -150,9 +151,9 @@
             this.btnAddProp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnAddProp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProp.ForeColor = System.Drawing.Color.White;
-            this.btnAddProp.Location = new System.Drawing.Point(252, 228);
+            this.btnAddProp.Location = new System.Drawing.Point(315, 228);
             this.btnAddProp.Name = "btnAddProp";
-            this.btnAddProp.Size = new System.Drawing.Size(113, 28);
+            this.btnAddProp.Size = new System.Drawing.Size(50, 28);
             this.btnAddProp.TabIndex = 72;
             this.btnAddProp.Text = "Ajouter";
             this.btnAddProp.UseVisualStyleBackColor = false;
@@ -171,10 +172,10 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(759, 436);
+            this.btnSave.Location = new System.Drawing.Point(294, 436);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 28);
-            this.btnSave.TabIndex = 71;
+            this.btnSave.Size = new System.Drawing.Size(101, 28);
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Enregistrer";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -196,13 +197,12 @@
             this.dgType.Name = "dgType";
             this.dgType.Size = new System.Drawing.Size(468, 319);
             this.dgType.TabIndex = 0;
-            this.dgType.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgType_CellDoubleClick);
-            this.dgType.DoubleClick += new System.EventHandler(this.dgType_DoubleClick);
+            this.dgType.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgType_RowEnter);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.btnFind);
+            this.groupBox4.Controls.Add(this.txtFind);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Location = new System.Drawing.Point(401, 55);
             this.groupBox4.Name = "groupBox4";
@@ -212,24 +212,24 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Recherche";
             // 
-            // button2
+            // btnFind
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.button2.Location = new System.Drawing.Point(424, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(28, 28);
-            this.button2.TabIndex = 51;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
+            this.btnFind.Location = new System.Drawing.Point(424, 14);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(28, 28);
+            this.btnFind.TabIndex = 51;
+            this.btnFind.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txtFind
             // 
-            this.textBox2.Location = new System.Drawing.Point(101, 18);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(317, 20);
-            this.textBox2.TabIndex = 42;
+            this.txtFind.Location = new System.Drawing.Point(101, 18);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(317, 20);
+            this.txtFind.TabIndex = 42;
             // 
             // label2
             // 
@@ -240,20 +240,6 @@
             this.label2.TabIndex = 41;
             this.label2.Text = "Filtrer les produit";
             // 
-            // btnNewType
-            // 
-            this.btnNewType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnNewType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewType.ForeColor = System.Drawing.Color.White;
-            this.btnNewType.Location = new System.Drawing.Point(640, 436);
-            this.btnNewType.Name = "btnNewType";
-            this.btnNewType.Size = new System.Drawing.Size(113, 28);
-            this.btnNewType.TabIndex = 171;
-            this.btnNewType.Text = "Nouveau";
-            this.btnNewType.UseVisualStyleBackColor = false;
-            this.btnNewType.Visible = false;
-            this.btnNewType.Click += new System.EventHandler(this.btnNewType_Click);
-            // 
             // btnDelType
             // 
             this.btnDelType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
@@ -263,18 +249,31 @@
             this.btnDelType.Location = new System.Drawing.Point(18, 436);
             this.btnDelType.Name = "btnDelType";
             this.btnDelType.Size = new System.Drawing.Size(28, 28);
-            this.btnDelType.TabIndex = 10016;
+            this.btnDelType.TabIndex = 0;
             this.btnDelType.UseVisualStyleBackColor = false;
             this.btnDelType.Visible = false;
             this.btnDelType.Click += new System.EventHandler(this.btnDelType_Click);
+            // 
+            // btnNewType
+            // 
+            this.btnNewType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnNewType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewType.ForeColor = System.Drawing.Color.White;
+            this.btnNewType.Image = global::ParcInfo.Properties.Resources.btnadd;
+            this.btnNewType.Location = new System.Drawing.Point(260, 436);
+            this.btnNewType.Name = "btnNewType";
+            this.btnNewType.Size = new System.Drawing.Size(28, 28);
+            this.btnNewType.TabIndex = 1;
+            this.btnNewType.UseVisualStyleBackColor = false;
+            this.btnNewType.Click += new System.EventHandler(this.btnNewType_Click);
             // 
             // TypesProduits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.btnDelType);
             this.Controls.Add(this.btnNewType);
+            this.Controls.Add(this.btnDelType);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
@@ -313,11 +312,11 @@
         private System.Windows.Forms.Button btnAddProp;
         private System.Windows.Forms.DataGridView dgType;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button2;
-        public System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnFind;
+        public System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.Button btnNewType;
         private System.Windows.Forms.Button btnDelType;
+        private System.Windows.Forms.Button btnNewType;
     }
 }

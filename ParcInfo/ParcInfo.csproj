@@ -376,12 +376,6 @@
     <Compile Include="ucParametre\ListUtilisateur.Designer.cs">
       <DependentUpon>ListUtilisateur.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucParametre\Roles.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucParametre\Roles.Designer.cs">
-      <DependentUpon>Roles.cs</DependentUpon>
-    </Compile>
     <Compile Include="ucParametre\CreateUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -543,9 +537,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucParametre\ListUtilisateur.resx">
       <DependentUpon>ListUtilisateur.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucParametre\Roles.resx">
-      <DependentUpon>Roles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucParametre\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>

@@ -34,7 +34,7 @@ namespace ParcInfo.ucControls
                 txtModel.Text = p.Model;
                 txtPrix.Text = p.Prix.ToString();
                 txtQte.Value = 1;
-                txtQte.Enabled = false;
+                txtQte.Visible = false;
                 txtPrix.Enabled = false;
                 txtPrix.Enabled = false;
                 txtMarque.Enabled = false;
@@ -133,6 +133,39 @@ namespace ParcInfo.ucControls
                     }
                 }
             }
+        }
+       
+        private void txtMarque_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtMarque);
+
+        }
+
+        public void ChangeColor(TextBox txt)
+        {
+            if (txt.Text.Trim() != "")
+            {
+                txt.BackColor = Color.White;
+                txt.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtModel_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtModel);
+
+        }
+
+        private void txtPrix_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtPrix);
+
+        }
+
+        private void txtPrix_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
         }
     }
 }

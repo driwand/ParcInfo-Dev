@@ -11,6 +11,7 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.Control;
@@ -120,18 +121,27 @@ namespace ParcInfo.Classes
                 if (c is GroupBox)
                 {
                     var em = (from x in c.Controls.OfType<TextBox>()
-                              where x.Text == "" && x.Tag != null
+                              where x.Text.Trim() == "" && x.Tag != null 
                               select x
                                 ).LastOrDefault();
                     if (em != null)
                     {
                         em.Focus();
+                        em.BackColor = Color.FromArgb(235, 77, 75);
+                        em.ForeColor = Color.White;
                         count++;
                     }
                 }
 
             }
             return count;
+        }
+
+
+        public static string RemoveSpace(string x)
+        {
+            return  Regex.Replace(x, @"\s+", " ");
+            
         }
 
         public static List<LabelControl> GetidList(Control control)

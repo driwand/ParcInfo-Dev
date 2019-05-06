@@ -40,13 +40,10 @@ namespace ParcInfo.ucParametre
                     userMod = s.Utilisateur3 != null ? s.Utilisateur3.Nom : "aucune",
                     dateMod = s.Datemodification != null ? s.Datemodification.ToString() : "**-**-****",
                 }).ToList());
+                MyGrid();
+
             }
-            Methods.Nice_grid(
-                            new string[] { "IdUser", "Nom", "Prenom", "Adresse", "Ville", "Tel", "Email" },
-                            new string[] { "ID Utilisateur", "Nom", "Prenom", "Adresse", "Ville", "Tel", "Email" },
-                            dgUtilisateur
-                            );
-            Methods.FilterDataGridViewIni(dgUtilisateur, txtFind, btnFind);
+
         }
         private void dgUtilisateur_DoubleClick(object sender, EventArgs e)
         {
@@ -82,6 +79,54 @@ namespace ParcInfo.ucParametre
                     lblEditedDate.Text = date;
                 }
             }
+        }
+
+        private void chDelIntr_CheckedChanged(object sender, EventArgs e)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var li = context.Utilisateurs.ToList();
+                var listUser = (from emp in li
+                                select new 
+                               {
+                                   emp.IdUser,
+                                   emp.Id,
+                                   emp.Nom,
+                                   emp.Prenom,
+                                   emp.Email,
+                                   emp.Password_u,
+                                   emp.IsDeleted,
+                                   userMod = emp.Utilisateur3 != null ? emp.Utilisateur3.Nom : "aucune",
+                                   dateMod = emp.Datemodification != null ? emp.Datemodification.ToString() : "**-**-****",
+                               }).ToList();
+
+                if (ckDeleted.Checked)
+                {
+                    var UserDeleted = listUser.Where(d => d.IsDeleted == 1).ToList();
+                    dgUtilisateur.DataSource = Methods.ToDataTable(UserDeleted);
+                    MyGrid();
+                }
+                else
+                {
+                    var Users = listUser.Where(d => d.IsDeleted == 0).ToList();
+                    dgUtilisateur.DataSource = Methods.ToDataTable(Users);
+                    MyGrid();
+
+                }
+            }
+        }
+
+
+
+
+        public void MyGrid()
+        {
+            Methods.Nice_grid(
+                new string[] { "IdUser", "Nom", "Prenom", "Adresse", "Ville", "Tel", "Email" },
+                new string[] { "ID Utilisateur", "Nom", "Prenom", "Adresse", "Ville", "Tel", "Email" },
+                dgUtilisateur
+                );
+            Methods.FilterDataGridViewIni(dgUtilisateur, txtFind, btnFind);
         }
     }
 }

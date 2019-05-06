@@ -53,6 +53,7 @@
             this.txtValue.Name = "txtValue";
             this.txtValue.Size = new System.Drawing.Size(253, 20);
             this.txtValue.TabIndex = 10;
+            this.txtValue.Leave += new System.EventHandler(this.txtValue_Leave);
             // 
             // label3
             // 

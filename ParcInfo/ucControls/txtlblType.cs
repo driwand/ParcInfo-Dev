@@ -12,6 +12,7 @@ namespace ParcInfo.ucControls
 {
     public partial class txtlblType : UserControl
     {
+      
         public string TxtValue
         {
             get { return txtValue.Text; }
@@ -27,13 +28,24 @@ namespace ParcInfo.ucControls
         {
             InitializeComponent();
         }
+   
 
 
 
-     
         private void button2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+
+        private void txtValue_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValue_Leave(object sender, EventArgs e)
+        {
+         
+           
         }
     }
 }
