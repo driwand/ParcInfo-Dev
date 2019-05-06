@@ -78,7 +78,6 @@ namespace ParcInfo.ucInterevntion
                 };
                 context.observations.Add(obs);
 
-
                 var getRequest = context.Demandes.Find(selectedRequest); //current request
                 if (getRequest.Statut == "en attente")
                     getRequest.Statut = "en cours";
@@ -87,16 +86,24 @@ namespace ParcInfo.ucInterevntion
                 currentInterv = intr.Id;
 
                 //show request description and details
+                string reqtext = "Demande : \n";
                 AddTxtDescription(
                     getRequest.Employee.Nom,
                     getRequest.Datedemande.Value,
-                    getRequest.Description_d,
+                    reqtext + getRequest.Description_d,
                     0,
-                    pnlObservetion);
-
+                    pnlObservetion,
+                    null,
+                    0,
+                    true);
 
                 //to fill with first intervention informations
-                AddTxtDescription("Parc Info", obs.Dateobservation, obs.Textobservation, obs.Id, pnlObservetion);
+                AddTxtDescription(
+                    "Parc Info",
+                    obs.Dateobservation,
+                    obs.Textobservation,
+                    obs.Id,
+                    pnlObservetion);
 
                 lblSource.Text = intr.Demande.IdReq;
             }
@@ -140,7 +147,7 @@ namespace ParcInfo.ucInterevntion
         private void btnDone_Click(object sender, EventArgs e)
         {
             if (cbType.Text == "" || cbPlace.Text == "")
-                MessageBox.Show("les champs obligatoires doivent être remplient ?");
+                MessageBox.Show("le type et liux d'intervention sont obligatoires");
             else
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -159,17 +166,15 @@ namespace ParcInfo.ucInterevntion
                         {
                             res = Interaction.InputBox("Autre information", "Enter les heurs");
                             if (res == "")
-                            {
                                 break;
-                            }
-                            if (Regex.IsMatch(res, @"\d"))
-                            {
+                            
+                            if (Regex.IsMatch(res, @"^[1-9]\d*$") && !string.IsNullOrWhiteSpace(res))
                                 verify = true;
-                            }
+                            
                             else
                             {
                                 verify = false;
-                                MessageBox.Show("l'entrée doit être un chiffre");
+                                MessageBox.Show("l'entrée doit être un chiffre et supérieur a zero");
                             }
                         }
                     }
@@ -221,44 +226,47 @@ namespace ParcInfo.ucInterevntion
 
         public void AddDescription(string codeid = null, int idaffecattion = 0)
         {
-            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            if (!string.IsNullOrWhiteSpace(txtAddDescription.Text))
             {
-                var interv = (from it in context.Interventions
-                              where it.Id == currentInterv
-                              select it).FirstOrDefault();
-
-                observation obs = new observation()
+                using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
+                    var interv = (from it in context.Interventions
+                                  where it.Id == currentInterv
+                                  select it).FirstOrDefault();
 
-                    IdUser = GlobVars.cuUser.Nom.ToString(),
-                    TypeOb = cbType.Text,
-                    IdIntervention = interv.Id
-                };
-                if (codeid == null)
-                {
-                    //add new description to an exesiting intervention of selected client
-                    obs.Textobservation = txtAddDescription.Text;
+                    observation obs = new observation()
+                    {
+
+                        IdUser = GlobVars.cuUser.Nom.ToString(),
+                        TypeOb = cbType.Text,
+                        IdIntervention = interv.Id
+                    };
+                    if (codeid == null)
+                    {
+                        //add new description to an exesiting intervention of selected client
+                        obs.Textobservation = txtAddDescription.Text;
+                    }
+                    else
+                        obs.Detailproduit = codeid;
+
+
+
+                    context.observations.Add(obs);
+
+                    context.SaveChanges();
+
+                    AddTxtDescription(
+                        interv.Utilisateur.Nom.ToString(),
+                        DateTime.Now,
+                        obs.Textobservation.Trim(),
+                        obs.Id,
+                        pnlObservetion,
+                        codeid ?? codeid,
+                        selectedClient);
+
+                    if (codeid == null)
+                        txtAddDescription.Clear();
                 }
-                else
-                    obs.Detailproduit = codeid;
-
-
-
-                context.observations.Add(obs);
-
-                context.SaveChanges();
-
-                AddTxtDescription(
-                    interv.Utilisateur.Nom.ToString(),
-                    DateTime.Now,
-                    obs.Textobservation,
-                    obs.Id,
-                    pnlObservetion,
-                    codeid ?? codeid,
-                    selectedClient);
-
-                if (codeid == null)
-                    txtAddDescription.Clear();
             }
         }
 

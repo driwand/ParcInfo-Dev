@@ -55,7 +55,7 @@ namespace ParcInfo.ucClient
                                  d.Getstatut,
                                  IdClient = d.Employee.Client.id,
                                  d.IsDeleted
-                             }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                             }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).ToList();
 
 
                 dgDemande.DataSource = Methods.ToDataTable(lsreq);
@@ -72,6 +72,13 @@ namespace ParcInfo.ucClient
         {
             InitializeComponent();
             {
+                if (statutReq == "terminer")
+                {
+                    btnTraiter.Visible = false;
+                    gpFind.Size = new Size(863, 50);
+                    txtFind.Size = new Size(683, 20);
+                    btnFind.Location = new Point(829, 15);
+                }   
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     employee = idEmploye;
@@ -82,9 +89,9 @@ namespace ParcInfo.ucClient
                             GetAllRequest();
                         else
                             if (RoleName == "Consulter tous les demandes".ToLower())
-                            GetAllRequest();
-                        else
-                            GetAllRequest(true);
+                                GetAllRequest();
+                            else
+                                GetAllRequest(true);
                     }
 
                     else
@@ -115,7 +122,6 @@ namespace ParcInfo.ucClient
                         dgDemande.Columns["Nom"].Visible = false;
                         lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
                     }
-
                 }
             }
         }
@@ -152,7 +158,7 @@ namespace ParcInfo.ucClient
                                      d.Getstatut,
                                      IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
                                      d.IsDeleted
-                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                                 }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                 }
@@ -169,7 +175,7 @@ namespace ParcInfo.ucClient
                                      d.Getstatut,
                                      IdClient = d.Employee.Client.id != 0 ? d.Employee.Client.id.ToString() : "",
                                      d.IsDeleted
-                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                                 }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                 }
@@ -193,7 +199,7 @@ namespace ParcInfo.ucClient
                                      d.Getstatut,
                                      IdClient = d.Employee.Client.id,
                                      d.IsDeleted
-                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                                 }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                 }
@@ -210,7 +216,7 @@ namespace ParcInfo.ucClient
                                      d.Getstatut,
                                      IdClient = d.Employee.Client.id,
                                      d.IsDeleted
-                                 }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                                 }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).ToList();
 
                     Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind, lsreq);
                 }
@@ -222,14 +228,21 @@ namespace ParcInfo.ucClient
         {
             //ControlsClass.CreateRadiusBorder(this);
             Methods.ChangeColorCell(dgDemande);
+            if (dgDemande.SelectedRows.Count > 0)
+                dgDemande.Rows[0].Selected = false;
         }
 
         private void btnTraiter_Click(object sender, EventArgs e)
         {
-            if ((int)dgDemande.Rows[dgDemande.CurrentRow.Index].Cells["IsDeleted"].Value == 0)
-                StartIntervention();
-            else
-                MessageBox.Show("Vous ne pouvez pas traiter une demande supprimer");
+            var result = MessageBox.Show("Confirmation", "Etes-vous sûr de vouloir commencer une intervention ?", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (dgDemande.SelectedRows.Count > 0)
+                    if ((int)dgDemande.Rows[dgDemande.CurrentRow.Index].Cells["IsDeleted"].Value == 0)
+                        StartIntervention();
+                    else
+                        MessageBox.Show("Vous ne pouvez pas traiter une demande supprimer");
+            }
         }
 
         private void dgDemande_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -304,6 +317,11 @@ namespace ParcInfo.ucClient
                 ShowRequest(0, employee, true);
             else if (!cbDelete.Checked && employee != 0)
                 ShowRequest(0, employee, false);
+
+            if (dgDemande.SelectedRows.Count > 0)
+                dgDemande.Rows[0].Selected = false;
+
+            Methods.ChangeColorCell(dgDemande);
         }
         public void ShowRequest(int idclt = 0, int idemployee = 0, bool isdeleted = false, string statut = null)
         {
@@ -334,7 +352,7 @@ namespace ParcInfo.ucClient
                                       d.Getstatut,
                                       IdClient = d.Employee.Client.id,
                                       d.IsDeleted
-                                  }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                                  }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).ToList();
 
                         if (idclt != 0)
                             ls = ls.Where(i => i.IdClient == idclt).ToList();
@@ -358,7 +376,7 @@ namespace ParcInfo.ucClient
                                   d.Getstatut,
                                   IdClient = d.Employee.Client.id,
                                   d.IsDeleted
-                              }).OrderBy(d => d.Datedemande).ThenBy(i => toorderby.IndexOf(i.Getstatut)).ToList();
+                              }).OrderBy(i => toorderby.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).ToList();
 
                     if (idclt != 0)
                         ls = ls.Where(i => i.IdClient == idclt).ToList();

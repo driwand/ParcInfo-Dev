@@ -40,9 +40,9 @@
             this.lblTotalRequest = new System.Windows.Forms.Label();
             this.lblEmployeClient = new System.Windows.Forms.Label();
             this.cbDelete = new System.Windows.Forms.CheckBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStartIntervention = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gpFind.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDemande)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -55,7 +55,7 @@
             this.gpFind.Controls.Add(this.label15);
             this.gpFind.Location = new System.Drawing.Point(14, 45);
             this.gpFind.Name = "gpFind";
-            this.gpFind.Size = new System.Drawing.Size(732, 50);
+            this.gpFind.Size = new System.Drawing.Size(711, 50);
             this.gpFind.TabIndex = 122;
             this.gpFind.TabStop = false;
             this.gpFind.Text = "Recherche";
@@ -66,7 +66,7 @@
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
             this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(699, 15);
+            this.btnFind.Location = new System.Drawing.Point(677, 14);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
             this.btnFind.TabIndex = 51;
@@ -76,7 +76,7 @@
             // 
             this.txtFind.Location = new System.Drawing.Point(140, 19);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(553, 20);
+            this.txtFind.Size = new System.Drawing.Size(532, 20);
             this.txtFind.TabIndex = 42;
             // 
             // label15
@@ -96,11 +96,11 @@
             this.btnTraiter.ForeColor = System.Drawing.Color.White;
             this.btnTraiter.Image = global::ParcInfo.Properties.Resources.start;
             this.btnTraiter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTraiter.Location = new System.Drawing.Point(752, 53);
+            this.btnTraiter.Location = new System.Drawing.Point(731, 55);
             this.btnTraiter.Name = "btnTraiter";
-            this.btnTraiter.Size = new System.Drawing.Size(125, 35);
+            this.btnTraiter.Size = new System.Drawing.Size(146, 35);
             this.btnTraiter.TabIndex = 123;
-            this.btnTraiter.Text = "  Traitee";
+            this.btnTraiter.Text = "  Demarer Intervention";
             this.btnTraiter.UseVisualStyleBackColor = false;
             this.btnTraiter.Click += new System.EventHandler(this.btnTraiter_Click);
             // 
@@ -170,14 +170,6 @@
             this.cbDelete.UseVisualStyleBackColor = true;
             this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDetails,
-            this.menuStartIntervention});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 48);
-            // 
             // menuDetails
             // 
             this.menuDetails.Name = "menuDetails";
@@ -191,6 +183,14 @@
             this.menuStartIntervention.Size = new System.Drawing.Size(186, 22);
             this.menuStartIntervention.Text = "Demarer Intervention";
             this.menuStartIntervention.Click += new System.EventHandler(this.menuStartIntervention_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDetails,
+            this.menuStartIntervention});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 48);
             // 
             // ListDemande
             // 
@@ -229,8 +229,8 @@
         public System.Windows.Forms.TextBox txtFind;
         public System.Windows.Forms.Button btnTraiter;
         private System.Windows.Forms.CheckBox cbDelete;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuDetails;
         private System.Windows.Forms.ToolStripMenuItem menuStartIntervention;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

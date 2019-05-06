@@ -383,17 +383,19 @@ namespace ParcInfo.ucInterevntion
                             int.Parse(dgIntervention.Rows[index].Cells["Idclient"].Value.ToString()))
                             );
                 }
-
             }
         }
 
         private void txtFind_TextChanged(object sender, EventArgs e)
         {
-            if (dgIntervention.Rows.Count == 0)
+            if (dgIntervention.SelectedRows.Count == 0)
             {
-                lblEditedDate.Text = "aucun";
+                lblEdited.Text = "aucun";
+                lblEdited.Click -= lblEdited_Click;
                 lblEditedDate.Text = "**/**/****";
             }
+            else if (dgIntervention.SelectedRows.Count > 0 && !string.IsNullOrWhiteSpace(txtFind.Text))
+                lblEdited.Click += lblEdited_Click;
         }
     }
 }

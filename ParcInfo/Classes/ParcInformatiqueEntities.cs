@@ -210,7 +210,7 @@ namespace ParcInfo
         {
             get
             {
-                return Demandes.Where(x => x.IsDeleted == 0 && x.Employee.Client.IsDeleted == 0);
+                return Demandes.Where(x => x.IsDeleted == 0);
             }
         }
 
@@ -218,7 +218,7 @@ namespace ParcInfo
         {
             get
             {
-                return Demandes.Where(x => x.IsDeleted == 1 && x.Employee.Client.IsDeleted == 0);
+                return Demandes.Where(x => x.IsDeleted == 1);
             }
         }
 
@@ -228,7 +228,7 @@ namespace ParcInfo
             {
                 var retarddate = DateTime.Now;
                 int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) < retarddate && x.Employee.Client.IsDeleted == 0);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) < retarddate);
             }
         }
         public IQueryable<Demande> GetRequestCours
@@ -237,7 +237,7 @@ namespace ParcInfo
             {
                 var retarddate = DateTime.Now;
                 int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
-                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) > retarddate && x.Employee.Client.IsDeleted == 0);
+                return GetRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) > retarddate);
             }
         }
 
@@ -245,7 +245,7 @@ namespace ParcInfo
         {
             get
             {
-                return GetRequests.Where(x => x.Statut == "en attente" && x.Employee.Client.IsDeleted == 0);
+                return GetRequests.Where(x => x.Statut == "en attente");
             }
         }
 
@@ -253,7 +253,7 @@ namespace ParcInfo
         {
             get
             {
-                return GetRequests.Where(x => x.Statut == "terminer" && x.Employee.Client.IsDeleted == 0);
+                return GetRequests.Where(x => x.Statut == "terminer");
             }
         }
         public ICollection<Demande> GetRequestbyStatut(Label[] lbl = null, string statut = "", int idEmp = 0, bool isdeleted = false)
