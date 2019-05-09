@@ -130,6 +130,7 @@
             this.dgIntervention.Size = new System.Drawing.Size(863, 347);
             this.dgIntervention.TabIndex = 112;
             this.dgIntervention.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgIntervention_CellDoubleClick);
+            this.dgIntervention.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgIntervention_RowValidating);
             this.dgIntervention.Click += new System.EventHandler(this.dgIntervention_Click);
             this.dgIntervention.Paint += new System.Windows.Forms.PaintEventHandler(this.dgIntervention_Paint);
             this.dgIntervention.DoubleClick += new System.EventHandler(this.dgIntervention_DoubleClick);

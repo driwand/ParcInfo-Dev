@@ -328,7 +328,7 @@ namespace ParcInfo
                          join af in AffectationClients on c.id equals af.Idclient
                          where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
-                return Demandes.Where(x => x.IsDeleted == 1);
+                return v.Where(x => x.IsDeleted == 1);
             }
         }
 
@@ -345,7 +345,7 @@ namespace ParcInfo
 
                 var retarddate = DateTime.Now;
                 int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
-                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) < retarddate);
+                return GetAssignedRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) < retarddate);
             }
         }
         public IQueryable<Demande> GetAssignedRequestCours
@@ -361,7 +361,7 @@ namespace ParcInfo
 
                 var retarddate = DateTime.Now;
                 int delay = (int)ParametreParcinfoes.FirstOrDefault().Reatrddemande;
-                return v.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) > retarddate);
+                return GetAssignedRequests.Where(x => x.Statut != "terminer" && x.Statut != "en attente" && DbFunctions.AddDays(x.Datedemande, delay) > retarddate);
             }
         }
 
@@ -376,7 +376,7 @@ namespace ParcInfo
                          where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
 
-                return v.Where(x => x.Statut == "en attente");
+                return GetAssignedRequests.Where(x => x.Statut == "en attente");
             }
         }
 
@@ -391,7 +391,7 @@ namespace ParcInfo
                          where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 0
                          select d);
 
-                return v.Where(x => x.Statut == "terminer");
+                return GetAssignedRequests.Where(x => x.Statut == "terminer");
             }
         }
         public ICollection<Demande> GetAssignedRequestbyStatut(Label[] lbl = null, string statut = "", int idEmp = 0, bool isdeleted = false)

@@ -249,6 +249,8 @@ namespace ParcInfo.ucInterevntion
                 Showintervention(0, true, statutit);
             else if (!chDelIntr.Checked && statutit != null)
                 Showintervention(0, false, statutit);
+
+            Methods.ChangeColorCell(dgIntervention);
         }
 
         public void Showintervention(int id = 0, bool isdeleted = false, string statut = null)
@@ -325,6 +327,7 @@ namespace ParcInfo.ucInterevntion
             if (dgIntervention.SelectedRows.Count > 0)
             {
                 GetDetails();
+
             }
         }
 
@@ -344,6 +347,14 @@ namespace ParcInfo.ucInterevntion
                 lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 456);
                 lblEditedDate.Text = dgIntervention.Rows[index].Cells["Datemodification"].Value.ToString();
             }
+            else
+            {
+                lblEdited.Text = "aucun";
+                lblEdited.Location = new Point(333, 456);
+                lblEditedDate.Text = "**/**/****";
+            }
+
+
         }
 
         private void lblEdited_Click(object sender, EventArgs e)
@@ -388,14 +399,12 @@ namespace ParcInfo.ucInterevntion
 
         private void txtFind_TextChanged(object sender, EventArgs e)
         {
-            if (dgIntervention.SelectedRows.Count == 0)
-            {
-                lblEdited.Text = "aucun";
-                lblEdited.Click -= lblEdited_Click;
-                lblEditedDate.Text = "**/**/****";
-            }
-            else if (dgIntervention.SelectedRows.Count > 0 && !string.IsNullOrWhiteSpace(txtFind.Text))
-                lblEdited.Click += lblEdited_Click;
+
+        }
+
+        private void dgIntervention_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            GetDetails();
         }
     }
 }

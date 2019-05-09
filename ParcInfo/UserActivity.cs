@@ -16,6 +16,7 @@ namespace ParcInfo
     {
         public int Id { get; set; }
         public Nullable<int> Iduser { get; set; }
+        public string Acitivity { get; set; }
     
         public virtual Utilisateur Utilisateur { get; set; }
     }
