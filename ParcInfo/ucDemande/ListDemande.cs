@@ -234,14 +234,16 @@ namespace ParcInfo.ucClient
 
         private void btnTraiter_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Confirmation", "Etes-vous sûr de vouloir commencer une intervention ?", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (dgDemande.SelectedRows.Count > 0)
             {
-                if (dgDemande.SelectedRows.Count > 0)
+                var result = MessageBox.Show("Etes-vous sûr de vouloir commencer une intervention?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question); if (result == DialogResult.Yes)
+                {
+
                     if ((int)dgDemande.Rows[dgDemande.CurrentRow.Index].Cells["IsDeleted"].Value == 0)
                         StartIntervention();
                     else
                         MessageBox.Show("Vous ne pouvez pas traiter une demande supprimer");
+                }
             }
         }
 

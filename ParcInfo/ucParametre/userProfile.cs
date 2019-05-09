@@ -59,11 +59,11 @@ namespace ParcInfo.ucParametre
                 if (txtOldPass.Text != "" && txtNewPass.Text != "" && txtConfPass.Text != "")
                 {
                     var hashPass = Methods.MD5Hash(txtOldPass.Text);
-                    if (hashPass == u.Password_u)
+                    if (hashPass == u.password_u)
                     {
                         if (txtNewPass.Text == txtConfPass.Text)
                         {
-                            u.Password_u = Methods.MD5Hash(txtNewPass.Text);
+                            u.password_u = Methods.MD5Hash(txtNewPass.Text);
                             u.PassChanged = 0;
                         }
                     }

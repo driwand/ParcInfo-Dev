@@ -33,7 +33,7 @@ namespace ParcInfo.ucControls
 
                         var hashPass = Methods.MD5Hash(pass);
                       
-                        userE.Password_u = hashPass;
+                        userE.password_u = hashPass;
                         userE.PassChanged = 1;
                         Methods.sendEmail(txtEmail.Text, stringmsg);
                         txtEmail.Text = "";

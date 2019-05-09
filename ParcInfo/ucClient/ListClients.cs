@@ -223,11 +223,15 @@ namespace ParcInfo.ucClient
         {
             if (dgClients.SelectedRows.Count > 0)
             {
-                int index = dgClients.CurrentRow.Index;
-                int id = int.Parse(dgClients.Rows[index].Cells["id"].Value.ToString());
-                //GlobVars.selectedClient = id;
+                var result = MessageBox.Show("Etes-vous sûr de vouloir commencer une intervention?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    int index = dgClients.CurrentRow.Index;
+                    int id = int.Parse(dgClients.Rows[index].Cells["id"].Value.ToString());
+                    //GlobVars.selectedClient = id;
 
-                GlobVars.frmindex.ShowControl(new NewIntervention(id));
+                    GlobVars.frmindex.ShowControl(new NewIntervention(id));
+                }
             }
         }
         private void CkDeletedClient_CheckedChanged(object sender, EventArgs e)

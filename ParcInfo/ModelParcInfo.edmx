@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ParcInformatiqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ParcInformatiqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AffectationClient">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,11 +45,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Datedemande" Type="datetime" />
           <Property Name="Description_d" Type="text" />
           <Property Name="Statut" Type="varchar" MaxLength="30" />
           <Property Name="IdEmployee" Type="int" />
           <Property Name="IsDeleted" Type="int" />
+          <Property Name="Datedemande" Type="datetime" />
         </EntityType>
         <EntityType Name="Departement">
           <Key>
@@ -129,11 +129,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nomapp" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Logoapp" Type="varbinary(max)" />
           <Property Name="Reatrddemande" Type="int" />
           <Property Name="Iconapp" Type="varbinary(max)" />
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Produit">
           <Key>
@@ -222,6 +222,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Iduser" Type="int" />
+          <Property Name="Acitivity" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Utilisateur">
           <Key>
@@ -234,7 +235,7 @@
           <Property Name="Adresse" Type="varchar" MaxLength="100" />
           <Property Name="Ville" Type="varchar" MaxLength="30" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="Password_u" Type="varchar(max)" />
+          <Property Name="password_u" Type="varchar(max)" />
           <Property Name="PassChanged" Type="int" />
           <Property Name="isAdmin" Type="int" />
           <Property Name="Datecreation" Type="datetime" />
@@ -324,7 +325,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Demande__IdEmplo__4BAC3F29">
+        <Association Name="FK__Demande__IdEmplo__4AB81AF0">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
           <ReferentialConstraint>
@@ -396,7 +397,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Installer__Creep__68487DD7">
+        <Association Name="FK__Installer__Creep__6754599E">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="Installer" Type="Self.Installer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -408,7 +409,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Installer__Idhar__656C112C">
+        <Association Name="FK__Installer__Idhar__6477ECF3">
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="0..1" />
           <End Role="Installer" Type="Self.Installer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -420,7 +421,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Installer__Idpro__66603565">
+        <Association Name="FK__Installer__Idpro__656C112C">
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="0..1" />
           <End Role="Installer" Type="Self.Installer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -432,7 +433,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Installer__Modif__693CA210">
+        <Association Name="FK__Installer__Modif__68487DD7">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="Installer" Type="Self.Installer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -444,7 +445,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Intervent__Idcli__5441852A">
+        <Association Name="FK__Intervent__Idcli__52593CB8">
           <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="*" />
           <ReferentialConstraint>
@@ -456,7 +457,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Intervent__IdDem__52593CB8">
+        <Association Name="FK__Intervent__IdDem__5070F446">
           <End Role="Demande" Type="Self.Demande" Multiplicity="0..1" />
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="*" />
           <ReferentialConstraint>
@@ -468,7 +469,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Intervent__Iduti__534D60F1">
+        <Association Name="FK__Intervent__Iduti__5165187F">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="*" />
           <ReferentialConstraint>
@@ -480,7 +481,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Intervent__Modif__5535A963">
+        <Association Name="FK__Intervent__Modif__534D60F1">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="*" />
           <ReferentialConstraint>
@@ -492,7 +493,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__observati__IdInt__59063A47">
+        <Association Name="FK__observati__IdInt__571DF1D5">
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="0..1" />
           <End Role="observation" Type="Self.observation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -540,7 +541,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitCl__Creep__60A75C0F">
+        <Association Name="FK__ProduitCl__Creep__5FB337D6">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="*" />
           <ReferentialConstraint>
@@ -552,7 +553,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitCl__Idcli__5DCAEF64">
+        <Association Name="FK__ProduitCl__Idcli__5CD6CB2B">
           <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="*" />
           <ReferentialConstraint>
@@ -564,7 +565,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitCl__Idpro__5EBF139D">
+        <Association Name="FK__ProduitCl__Idpro__5DCAEF64">
           <End Role="Produit" Type="Self.Produit" Multiplicity="0..1" />
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="*" />
           <ReferentialConstraint>
@@ -576,7 +577,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitCl__Modif__619B8048">
+        <Association Name="FK__ProduitCl__Modif__60A75C0F">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="*" />
           <ReferentialConstraint>
@@ -588,7 +589,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitCl__ParIn__5FB337D6">
+        <Association Name="FK__ProduitCl__ParIn__5EBF139D">
           <End Role="Intervention" Type="Self.Intervention" Multiplicity="0..1" />
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="*" />
           <ReferentialConstraint>
@@ -600,7 +601,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitUt__Creep__6FE99F9F">
+        <Association Name="FK__ProduitUt__Creep__6EF57B66">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="ProduitUtiliser" Type="Self.ProduitUtiliser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -612,7 +613,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitUt__IdEmp__6E01572D">
+        <Association Name="FK__ProduitUt__IdEmp__6D0D32F4">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="ProduitUtiliser" Type="Self.ProduitUtiliser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -624,7 +625,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitUt__IdPro__6D0D32F4">
+        <Association Name="FK__ProduitUt__IdPro__6C190EBB">
           <End Role="ProduitClient" Type="Self.ProduitClient" Multiplicity="1" />
           <End Role="ProduitUtiliser" Type="Self.ProduitUtiliser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -636,7 +637,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProduitUt__Modif__70DDC3D8">
+        <Association Name="FK__ProduitUt__Modif__6FE99F9F">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="ProduitUtiliser" Type="Self.ProduitUtiliser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -696,7 +697,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserActiv__Iduse__07C12930">
+        <Association Name="FK__UserActiv__Iduse__778AC167">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="UserActivities" Type="Self.UserActivities" Multiplicity="*" />
           <ReferentialConstraint>
@@ -799,7 +800,7 @@
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK__Demande__IdEmplo__4BAC3F29" Association="Self.FK__Demande__IdEmplo__4BAC3F29">
+          <AssociationSet Name="FK__Demande__IdEmplo__4AB81AF0" Association="Self.FK__Demande__IdEmplo__4AB81AF0">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Demande" EntitySet="Demande" />
           </AssociationSet>
@@ -823,39 +824,39 @@
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Installer__Creep__68487DD7" Association="Self.FK__Installer__Creep__68487DD7">
+          <AssociationSet Name="FK__Installer__Creep__6754599E" Association="Self.FK__Installer__Creep__6754599E">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Installer" EntitySet="Installer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Installer__Idhar__656C112C" Association="Self.FK__Installer__Idhar__656C112C">
+          <AssociationSet Name="FK__Installer__Idhar__6477ECF3" Association="Self.FK__Installer__Idhar__6477ECF3">
             <End Role="ProduitClient" EntitySet="ProduitClient" />
             <End Role="Installer" EntitySet="Installer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Installer__Idpro__66603565" Association="Self.FK__Installer__Idpro__66603565">
+          <AssociationSet Name="FK__Installer__Idpro__656C112C" Association="Self.FK__Installer__Idpro__656C112C">
             <End Role="ProduitClient" EntitySet="ProduitClient" />
             <End Role="Installer" EntitySet="Installer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Installer__Modif__693CA210" Association="Self.FK__Installer__Modif__693CA210">
+          <AssociationSet Name="FK__Installer__Modif__68487DD7" Association="Self.FK__Installer__Modif__68487DD7">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Installer" EntitySet="Installer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Intervent__Idcli__5441852A" Association="Self.FK__Intervent__Idcli__5441852A">
+          <AssociationSet Name="FK__Intervent__Idcli__52593CB8" Association="Self.FK__Intervent__Idcli__52593CB8">
             <End Role="Client" EntitySet="Client" />
             <End Role="Intervention" EntitySet="Intervention" />
           </AssociationSet>
-          <AssociationSet Name="FK__Intervent__IdDem__52593CB8" Association="Self.FK__Intervent__IdDem__52593CB8">
+          <AssociationSet Name="FK__Intervent__IdDem__5070F446" Association="Self.FK__Intervent__IdDem__5070F446">
             <End Role="Demande" EntitySet="Demande" />
             <End Role="Intervention" EntitySet="Intervention" />
           </AssociationSet>
-          <AssociationSet Name="FK__Intervent__Iduti__534D60F1" Association="Self.FK__Intervent__Iduti__534D60F1">
+          <AssociationSet Name="FK__Intervent__Iduti__5165187F" Association="Self.FK__Intervent__Iduti__5165187F">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Intervention" EntitySet="Intervention" />
           </AssociationSet>
-          <AssociationSet Name="FK__Intervent__Modif__5535A963" Association="Self.FK__Intervent__Modif__5535A963">
+          <AssociationSet Name="FK__Intervent__Modif__534D60F1" Association="Self.FK__Intervent__Modif__534D60F1">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Intervention" EntitySet="Intervention" />
           </AssociationSet>
-          <AssociationSet Name="FK__observati__IdInt__59063A47" Association="Self.FK__observati__IdInt__59063A47">
+          <AssociationSet Name="FK__observati__IdInt__571DF1D5" Association="Self.FK__observati__IdInt__571DF1D5">
             <End Role="Intervention" EntitySet="Intervention" />
             <End Role="observation" EntitySet="observation" />
           </AssociationSet>
@@ -871,39 +872,39 @@
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Produit" EntitySet="Produit" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitCl__Creep__60A75C0F" Association="Self.FK__ProduitCl__Creep__60A75C0F">
+          <AssociationSet Name="FK__ProduitCl__Creep__5FB337D6" Association="Self.FK__ProduitCl__Creep__5FB337D6">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="ProduitClient" EntitySet="ProduitClient" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitCl__Idcli__5DCAEF64" Association="Self.FK__ProduitCl__Idcli__5DCAEF64">
+          <AssociationSet Name="FK__ProduitCl__Idcli__5CD6CB2B" Association="Self.FK__ProduitCl__Idcli__5CD6CB2B">
             <End Role="Client" EntitySet="Client" />
             <End Role="ProduitClient" EntitySet="ProduitClient" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitCl__Idpro__5EBF139D" Association="Self.FK__ProduitCl__Idpro__5EBF139D">
+          <AssociationSet Name="FK__ProduitCl__Idpro__5DCAEF64" Association="Self.FK__ProduitCl__Idpro__5DCAEF64">
             <End Role="Produit" EntitySet="Produit" />
             <End Role="ProduitClient" EntitySet="ProduitClient" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitCl__Modif__619B8048" Association="Self.FK__ProduitCl__Modif__619B8048">
+          <AssociationSet Name="FK__ProduitCl__Modif__60A75C0F" Association="Self.FK__ProduitCl__Modif__60A75C0F">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="ProduitClient" EntitySet="ProduitClient" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitCl__ParIn__5FB337D6" Association="Self.FK__ProduitCl__ParIn__5FB337D6">
+          <AssociationSet Name="FK__ProduitCl__ParIn__5EBF139D" Association="Self.FK__ProduitCl__ParIn__5EBF139D">
             <End Role="Intervention" EntitySet="Intervention" />
             <End Role="ProduitClient" EntitySet="ProduitClient" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitUt__Creep__6FE99F9F" Association="Self.FK__ProduitUt__Creep__6FE99F9F">
+          <AssociationSet Name="FK__ProduitUt__Creep__6EF57B66" Association="Self.FK__ProduitUt__Creep__6EF57B66">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="ProduitUtiliser" EntitySet="ProduitUtiliser" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitUt__IdEmp__6E01572D" Association="Self.FK__ProduitUt__IdEmp__6E01572D">
+          <AssociationSet Name="FK__ProduitUt__IdEmp__6D0D32F4" Association="Self.FK__ProduitUt__IdEmp__6D0D32F4">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ProduitUtiliser" EntitySet="ProduitUtiliser" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitUt__IdPro__6D0D32F4" Association="Self.FK__ProduitUt__IdPro__6D0D32F4">
+          <AssociationSet Name="FK__ProduitUt__IdPro__6C190EBB" Association="Self.FK__ProduitUt__IdPro__6C190EBB">
             <End Role="ProduitClient" EntitySet="ProduitClient" />
             <End Role="ProduitUtiliser" EntitySet="ProduitUtiliser" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProduitUt__Modif__70DDC3D8" Association="Self.FK__ProduitUt__Modif__70DDC3D8">
+          <AssociationSet Name="FK__ProduitUt__Modif__6FE99F9F" Association="Self.FK__ProduitUt__Modif__6FE99F9F">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="ProduitUtiliser" EntitySet="ProduitUtiliser" />
           </AssociationSet>
@@ -923,7 +924,7 @@
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="RoleUtilisateur" EntitySet="RoleUtilisateur" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserActiv__Iduse__07C12930" Association="Self.FK__UserActiv__Iduse__07C12930">
+          <AssociationSet Name="FK__UserActiv__Iduse__778AC167" Association="Self.FK__UserActiv__Iduse__778AC167">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="UserActivities" EntitySet="UserActivities" />
           </AssociationSet>
@@ -944,8 +945,7 @@
             <End Role="ValeurProp" EntitySet="ValeurProp" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ParcInformatiqueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1004,7 +1004,7 @@
           <Property Name="Description_d" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Statut" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="IdEmployee" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Demande__IdEmplo__4BAC3F29" FromRole="Demande" ToRole="Employee" />
           <NavigationProperty Name="Interventions" Relationship="Self.FK__Intervent__IdDem__52593CB8" FromRole="Demande" ToRole="Intervention" />
         </EntityType>
@@ -1056,7 +1056,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Installer__Creep__68487DD7" FromRole="Installer" ToRole="Utilisateur" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__Installer__Idhar__656C112C" FromRole="Installer" ToRole="ProduitClient" />
           <NavigationProperty Name="ProduitClient1" Relationship="Self.FK__Installer__Idpro__66603565" FromRole="Installer" ToRole="ProduitClient" />
@@ -1079,7 +1079,7 @@
           <Property Name="Idclient" Type="Int32" />
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK__Intervent__Idcli__5441852A" FromRole="Intervention" ToRole="Client" />
           <NavigationProperty Name="Demande" Relationship="Self.FK__Intervent__IdDem__52593CB8" FromRole="Intervention" ToRole="Demande" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Intervent__Iduti__534D60F1" FromRole="Intervention" ToRole="Utilisateur" />
@@ -1096,9 +1096,9 @@
           <Property Name="IdUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TypeOb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Textobservation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Dateobservation" Type="DateTime" Precision="3" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Dateobservation" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="Detailproduit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Intervention" Relationship="Self.FK__observati__IdInt__59063A47" FromRole="observation" ToRole="Intervention" />
         </EntityType>
         <EntityType Name="ParametreParcinfo">
@@ -1146,7 +1146,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK__ProduitCl__Idcli__5DCAEF64" FromRole="ProduitClient" ToRole="Client" />
           <NavigationProperty Name="Installers" Relationship="Self.FK__Installer__Idhar__656C112C" FromRole="ProduitClient" ToRole="Installer" />
           <NavigationProperty Name="Installers1" Relationship="Self.FK__Installer__Idpro__66603565" FromRole="ProduitClient" ToRole="Installer" />
@@ -1171,7 +1171,7 @@
           <Property Name="Datemodification" Type="DateTime" Precision="3" />
           <Property Name="Creepar" Type="Int32" />
           <Property Name="Modifierpar" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__ProduitUt__IdEmp__6E01572D" FromRole="ProduitUtiliser" ToRole="Employee" />
           <NavigationProperty Name="ProduitClient" Relationship="Self.FK__ProduitUt__IdPro__6D0D32F4" FromRole="ProduitUtiliser" ToRole="ProduitClient" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__ProduitUt__Creep__6FE99F9F" FromRole="ProduitUtiliser" ToRole="Utilisateur" />
@@ -1223,6 +1223,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Iduser" Type="Int32" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__UserActiv__Iduse__07C12930" FromRole="UserActivities" ToRole="Utilisateur" />
+          <Property Name="Acitivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Utilisateur">
           <Key>
@@ -1235,7 +1236,6 @@
           <Property Name="Adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Ville" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password_u" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PassChanged" Type="Int32" />
           <Property Name="isAdmin" Type="Int32" />
           <Property Name="Datecreation" Type="DateTime" Precision="3" />
@@ -1268,6 +1268,7 @@
           <NavigationProperty Name="Utilisateur2" Relationship="Self.FK__Utilisate__Creep__1273C1CD" FromRole="Utilisateur1" ToRole="Utilisateur" />
           <NavigationProperty Name="Utilisateur11" Relationship="Self.FK__Utilisate__Modif__1367E606" FromRole="Utilisateur" ToRole="Utilisateur1" />
           <NavigationProperty Name="Utilisateur3" Relationship="Self.FK__Utilisate__Modif__1367E606" FromRole="Utilisateur1" ToRole="Utilisateur" />
+          <Property Name="password_u" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ValeurProp">
           <Key>
@@ -2203,6 +2204,7 @@
           <EntitySetMapping Name="UserActivities">
             <EntityTypeMapping TypeName="ParcInformatiqueModel.UserActivity">
               <MappingFragment StoreEntitySet="UserActivities">
+                <ScalarProperty Name="Acitivity" ColumnName="Acitivity" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Iduser" ColumnName="Iduser" />
               </MappingFragment>
@@ -2211,6 +2213,7 @@
           <EntitySetMapping Name="Utilisateurs">
             <EntityTypeMapping TypeName="ParcInformatiqueModel.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="password_u" ColumnName="password_u" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />
@@ -2218,7 +2221,6 @@
                 <ScalarProperty Name="Adresse" ColumnName="Adresse" />
                 <ScalarProperty Name="Ville" ColumnName="Ville" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password_u" ColumnName="Password_u" />
                 <ScalarProperty Name="PassChanged" ColumnName="PassChanged" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
                 <ScalarProperty Name="Datecreation" ColumnName="Datecreation" />

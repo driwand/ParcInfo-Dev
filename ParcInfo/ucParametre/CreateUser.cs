@@ -20,10 +20,10 @@ namespace ParcInfo.ucParametre
         {
             InitializeComponent();
 
-            using (ParcInformatiqueEntities context  = new ParcInformatiqueEntities())
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var c = context.Clients.Where(d => d.IsDeleted == 0).ToList();
-                dgClient.DataSource = Methods.ToDataTable(c.Select(cl => new { cl.IdCLient,cl.id, cl.Nom, cl.Tel }).ToList());
+                dgClient.DataSource = Methods.ToDataTable(c.Select(cl => new { cl.IdCLient, cl.id, cl.Nom, cl.Tel }).ToList());
                 Methods.Nice_grid(
                                  new string[] { "IdCLient", "id", "Nom", "Tel" },
                                  new string[] { "ID Client", "id", "Nom", "Tel" },
@@ -48,11 +48,14 @@ namespace ParcInfo.ucParametre
                              join x in context.Clients on cx.Idclient equals x.id
                              where cx.Idutilisateur == idUser && cx.IsDeleted == 0
                              select x).ToList();
-                dgClient.DataSource = Methods.ToDataTable(listC.Where(d=> d.IsDeleted == 0).Select(
-                    cl => new {
-                    cl.IdCLient,
-                    cl.id,
-                    cl.Nom, cl.Tel }).ToList());
+                dgClient.DataSource = Methods.ToDataTable(listC.Where(d => d.IsDeleted == 0).Select(
+                    cl => new
+                    {
+                        cl.IdCLient,
+                        cl.id,
+                        cl.Nom,
+                        cl.Tel
+                    }).ToList());
                 Methods.Nice_grid(
                                  new string[] { "IdCLient", "id", "Nom", "Tel" },
                                  new string[] { "ID Client", "id", "Nom", "Tel" },
@@ -73,10 +76,9 @@ namespace ParcInfo.ucParametre
                 }
                 if (user.Utilisateur3 != null)
                 {
-                    lblDateMod.Text = user.Datemodification.ToString();
-                    lblUserMod.Text = user.Utilisateur3.Nom;
+
                 }
-              
+
                 GetAllCheckbox(pnlRoles);
             }
         }
@@ -118,9 +120,9 @@ namespace ParcInfo.ucParametre
                         Email = Email,
                         isAdmin = isAdmin,
                         Datecreation = DateTime.Now,
-                       Password_u = haspass,
-                       IsDeleted = 0,
-                       Creepar = GlobVars.cuUser.Id
+                        password_u = haspass,
+                        IsDeleted = 0,
+                        Creepar = GlobVars.cuUser.Id
                     };
                     context.Utilisateurs.Add(user);
                     var emailEmp = context.Employees.Any(i => i.Email == Email);
@@ -132,8 +134,8 @@ namespace ParcInfo.ucParametre
                         idListClient = getSelectedClient();
                         if (isAdmin == 0)
                         {
-                           foreach (var item in lst)
-                           {
+                            foreach (var item in lst)
+                            {
                                 context.RoleUtilisateurs.Add(new RoleUtilisateur
                                 {
                                     Nom = item,
@@ -141,7 +143,7 @@ namespace ParcInfo.ucParametre
                                     IsDeleted = 0,
                                     Creepar = GlobVars.cuUser.Id
                                 });
-                           }
+                            }
 
                             foreach (var item in idListClient)
                             {
@@ -150,32 +152,32 @@ namespace ParcInfo.ucParametre
                                     Idclient = item,
                                     Idutilisateur = user.Id,
                                     Creepar = GlobVars.cuUser.Id,
-                                    
+
                                     IsDeleted = 0
                                 });
                             }
                         }
                         context.SaveChanges();
-                       Methods.sendEmail(Email, body);
+                        Methods.sendEmail(Email, body);
                     }
                     else
                     {
                         MessageBox.Show("email already exists");
                     }
-                }       
+                }
             }
         }
 
 
         // get checkbox value
-        public void GetAllCheckbox(Control ctrl )
+        public void GetAllCheckbox(Control ctrl)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-                   var listR = context.GetListRoles(idU);
+                var listR = context.GetListRoles(idU);
                 foreach (Control item in ctrl.Controls)
                 {
-                    if (item is GroupBox)
+                    if (item is GroupBox && item.Enabled == true)
                     {
                         GetAllCheckbox(item);
                     }
@@ -204,7 +206,7 @@ namespace ParcInfo.ucParametre
             }
         }
         // get Selected Client
-        public  List<int> getSelectedClient()
+        public List<int> getSelectedClient()
         {
             List<int> listC = new List<int>();
             if (dgClient.SelectedRows.Count > 0)
@@ -218,21 +220,21 @@ namespace ParcInfo.ucParametre
             return listC;
         }
         // Get Roles Values
-        public void CheckBoxC(Control ctrl,List<string> ls)
+        public void CheckBoxC(Control ctrl, List<string> ls)
         {
             List<string> str = new List<string>();
             foreach (Control item in ctrl.Controls)
             {
                 if (item is GroupBox)
                 {
-                    CheckBoxC(item,ls);
+                    CheckBoxC(item, ls);
                 }
                 else if (item is CheckBox cv)
                 {
                     if (cv.Checked)
                     {
                         var t = "";
-                        if (cv.Text == "Ajouter" ||  cv.Text == "Modifier" || cv.Text == "Supprimer")
+                        if (cv.Text == "Ajouter" || cv.Text == "Modifier" || cv.Text == "Supprimer")
                             t = cv.Text + " " + item.Parent.Text;
                         else
                             t = cv.Text;
@@ -248,18 +250,18 @@ namespace ParcInfo.ucParametre
                     }
                 }
             }
-           
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-           
+
             GetAllCheckbox(pnlRoles);
-            
+
         }
         private void btnEditUser_Click(object sender, EventArgs e)
         {
-            
+
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 int txtEmpty = 0;
@@ -307,9 +309,9 @@ namespace ParcInfo.ucParametre
                     user.isAdmin = isAdmin;
                     user.Datemodification = DateTime.Now;
                     user.Modifierpar = GlobVars.cuUser.Id;
-                    context.SaveChanges();  
+                    context.SaveChanges();
                 }
-               
+
 
             }
         }
@@ -318,7 +320,7 @@ namespace ParcInfo.ucParametre
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-              
+
                 Utilisateur c = context.Utilisateurs.Find(idU);
 
                 DialogResult result = MessageBox.Show("Voulez-vous supprimer le utlisateur suivant ?", "confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
@@ -338,6 +340,27 @@ namespace ParcInfo.ucParametre
 
 
             }
+        }
+
+        private void chreq_CheckedChanged(object sender, EventArgs e)
+        {
+            ManageCheckGroupBox(chreq, gpDemande);
+        }
+
+        private void ManageCheckGroupBox(CheckBox chk, GroupBox grp)
+        {
+            if (chk.Parent == grp)
+            {
+                grp.Parent.Controls.Add(chk);
+
+                chk.Location = new Point(
+                    chk.Left + grp.Left,
+                    chk.Top + grp.Top);
+
+                chk.BringToFront();
+            }
+
+            grp.Enabled = chk.Checked;
         }
     }
 }
