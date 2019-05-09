@@ -225,6 +225,13 @@ namespace ParcInfo.ucClient
                 enretardCount.Text = "0";
                 allCount.Text = "0";
                 produitCount.Text = "0";
+                int loc = 333;
+                loc += lblEdited.Width;
+                lblMod.Location = new Point(loc, 462);
+                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+                lblEdited.Text = "aucune";
+                lblEditedDate.Text = "**-**-****";
+
             }
         }
         private void txtFind_TextChanged(object sender, EventArgs e)

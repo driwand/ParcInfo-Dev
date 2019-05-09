@@ -26,6 +26,8 @@ namespace ParcInfo.frmDefault
     public partial class FrmDefault : Form
     {
         public bool isClicked = true;
+        public bool NotifClicked = true;
+
         public Button btnClicked;
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -45,6 +47,7 @@ namespace ParcInfo.frmDefault
             // this.MaximizeBox = false;
             GlobVars.frmindex = this;
             MenuLeft();
+          
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (GlobVars.cuUser != null)
@@ -62,12 +65,17 @@ namespace ParcInfo.frmDefault
                     lineVertical.Location = new Point(pnlUserName.Location.X - 3, 18);
                     PickBell.Location = new Point(pnlUserName.Location.X - 40, 18);
                     lblNotif.Location = new Point(pnlUserName.Location.X - 20, 15);
+                    pnlNotif.Location = new Point(pnlUserName.Location.X - pnlUserName.Width);
 
                     if (u.PassChanged == 1)
                     {
                         ShowControl(new userProfile());
                     }
 
+                    ucNotifList notf = new ucNotifList(context.GetAssignedRequestAttent.ToList());
+                    pnlNotif.Size = notf.Size;
+                    pnlNotif.Controls.Add(notf);
+                    
                 }
             }
             ControlsClass.CursorChanger(pnlMenu);
@@ -252,6 +260,20 @@ namespace ParcInfo.frmDefault
             {
                 DropdownUserMenu.Visible = false;
                 isClicked = true;
+            }
+        }
+        void showNotif()
+        {
+            if (NotifClicked)
+            {
+                pnlNotif.Visible = true;
+                NotifClicked = false;
+
+            }
+            else
+            {
+                pnlNotif.Visible = false;
+                NotifClicked = true;
             }
         }
         public void HideMenu(object sender, EventArgs e)
@@ -459,8 +481,7 @@ namespace ParcInfo.frmDefault
                         countRequestCours = db.GetRequestCours.Count();
                         countRequestRetard = db.GetRequestRetard.Count();
                         countRequestAttente = db.GetRequestAttent.Count();
-
-
+                        
                         countRequestDeInt = countRequestRetard + countRequestCours;
 
                     }
@@ -597,6 +618,18 @@ namespace ParcInfo.frmDefault
         {
             //oooloo
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmLogin frm = new frmLogin();
+            frm.Show();
+        }
+
+        private void PickBell_Click(object sender, EventArgs e)
+        {
+            showNotif();
         }
     }
 }

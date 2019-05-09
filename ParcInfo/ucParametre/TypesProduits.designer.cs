@@ -86,7 +86,7 @@
             this.groupBox1.Size = new System.Drawing.Size(377, 101);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Type";
             // 
             // lblID
             // 
@@ -230,6 +230,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(317, 20);
             this.txtFind.TabIndex = 42;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // label2
             // 

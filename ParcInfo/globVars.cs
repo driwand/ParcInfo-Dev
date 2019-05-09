@@ -16,6 +16,7 @@ namespace ParcInfo
     {
         public static FrmDefault frmindex;
         public static Utilisateur cuUser;
+        public static frmLogin cuLogin;
 
         public static List<Control> lsback = new List<Control>();
     }

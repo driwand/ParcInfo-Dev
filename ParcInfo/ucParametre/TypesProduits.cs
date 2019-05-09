@@ -336,6 +336,12 @@ namespace ParcInfo.settings
             //}
         }
 
-      
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            if (dgType.Rows.Count > 0)
+            {
+                Clear();
+            }
+        }
     }
 }

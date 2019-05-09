@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -54,7 +56,7 @@ namespace ParcInfo.ucClient
                         btnAnnuler.Visible = false;
                         btnAjouter.Visible = false;
                     }
-                    if (emp != null )
+                    if (emp != null)
                     {
                         txtNom.Text = emp.Nom;
                         txtPrenom.Text = emp.Prenom;
@@ -96,10 +98,10 @@ namespace ParcInfo.ucClient
                     this.Text = "Modifier employee";
                     // get values 
                     var idEmp = context.Employees.Find(idE);
-                 
-                    string pass = txtPass.Text;
-                    idEmp.Nom = txtNom.Text;
-                    idEmp.Prenom = txtPrenom.Text;
+
+                    string pass = Methods.RemoveSpace(txtPass.Text);
+                    idEmp.Nom = Methods.RemoveSpace(txtNom.Text);
+                    idEmp.Prenom = Methods.RemoveSpace(txtPrenom.Text);
                     idEmp.Tel = txtTel.Text;
                     if (txtPass.Text != "")
                     {
@@ -111,6 +113,8 @@ namespace ParcInfo.ucClient
                     {
                         Respo = 1;
                     }
+
+
                     idEmp.IsResponsable = Respo;
                     idEmp.Modifierpar = GlobVars.cuUser.Id;
                     idEmp.Datemodification = DateTime.Now;
@@ -125,10 +129,10 @@ namespace ParcInfo.ucClient
                     if (txtEmpty == 0)
                     {
                         // get values 
-                        string Nom = txtNom.Text;
-                        string Prenom = txtPrenom.Text;
-                        string Tel = txtTel.Text;
-                        string Email = txtEmail.Text;
+                        string Nom = Methods.RemoveSpace(txtNom.Text);
+                        string Prenom = Methods.RemoveSpace(txtPrenom.Text);
+                        string Tel = Methods.RemoveSpace(txtTel.Text);
+                        string Email = Methods.RemoveSpace(txtEmail.Text);
                         int Departement = int.Parse(txtDeaprt.SelectedValue.ToString());
                         string login = txtPass.Text;
 
@@ -137,40 +141,50 @@ namespace ParcInfo.ucClient
                         {
                             Respo = 1;
                         }
-
                         string pass = Methods.CreatePassword(8);
                         string msg = Methods.stringMsg(Nom, Prenom, Email, pass);
                         pass = Methods.MD5Hash(pass);
                         var emailE = context.Employees.Any(t => t.Email == Email);
                         var emailU = context.Utilisateurs.Any(t => t.Email == Email);
-                        if (!emailE && !emailU)
+
+                        var emailValid = IsValid(Email);
+                        if (emailValid)
                         {
-                            Employee emp = new Employee
+                            if (!emailE && !emailU)
                             {
-                                Nom = Nom,
-                                Prenom = Prenom,
-                                Tel = Tel,
-                                Email = Email,
-                                IdDep = Departement,
-                                Idclient = idC,
-                                IsResponsable = Respo,
-                                Datecreation = DateTime.Now,
-                                Password_e = pass,
-                                IsDeleted = 0,
-                                Creepar = GlobVars.cuUser.Id,
-                            };
-                            context.Employees.Add(emp);
-                            context.SaveChanges();
-                            Methods.sendEmail(Email, msg);
-                            MessageBox.Show("L'Employé a été ajouté");
-                            // clear textbox 
-                            Methods.Clear(this);
-                            Close();
-                            updateGrid();
+                                Employee emp = new Employee
+                                {
+                                    Nom = Nom,
+                                    Prenom = Prenom,
+                                    Tel = Tel,
+                                    Email = Email,
+                                    IdDep = Departement,
+                                    Idclient = idC,
+                                    IsResponsable = Respo,
+                                    Datecreation = DateTime.Now,
+                                    Password_e = pass,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.cuUser.Id,
+                                };
+                                context.Employees.Add(emp);
+                                context.SaveChanges();
+                                Methods.sendEmail(Email, msg);
+                                MessageBox.Show("L'Employé a été ajouté");
+                                // clear textbox 
+                                Methods.Clear(this);
+                                Close();
+                                updateGrid();
+                            }
+                            else
+                            {
+                                MessageBox.Show("email already exists");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("email already exists");
+                            txtEmail.BackColor = Color.FromArgb(235, 77, 75);
+                            txtEmail.ForeColor = Color.White;
+                            txtEmail.Focus();
                         }
                     }
                 }
@@ -260,6 +274,65 @@ namespace ParcInfo.ucClient
                     }
                 }
             }
+        }
+
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtNom);
+        }
+
+
+        public void ChangeColor(TextBox txt)
+        {
+            if (txt.Text.Trim() != "")
+            {
+                txt.BackColor = Color.White;
+                txt.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtPrenom_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtPrenom);
+
+        }
+
+        private void txtTel_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtTel);
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtEmail);
+
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            var s = IsValid(txtEmail.Text.Trim());
+            if (!s)
+            {
+                txtEmail.Focus();
+            }
+        }
+
+
+        public bool IsValid(string emailaddress)
+        {
+            //string email = emailaddress;
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(emailaddress);
+            if (match.Success)
+                return true;
+            else
+                return false;
         }
     }
 }

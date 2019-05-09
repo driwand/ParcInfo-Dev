@@ -271,9 +271,9 @@ namespace ParcInfo.ucClient
             //Fil list UtilisateurID
             if (txtEmpty == 0)
             { // get Values From Textbox
-                string Nom = txtNom.Text;
-                string Adr = txtAdr.Text;
-                string Ville = txtVille.Text;
+                string Nom = Methods.RemoveSpace(txtNom.Text);
+                string Adr = Methods.RemoveSpace(txtAdr.Text);
+                string Ville = Methods.RemoveSpace(txtVille.Text);
                 string Tel = txtTel.Text;
                 string Fax = txtFax.Text;
                 string Siteweb = txtSiteweb.Text;
@@ -448,18 +448,56 @@ namespace ParcInfo.ucClient
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+
+        public void ChangeColor(TextBox txt)
         {
-            var em = (from x in PnlUsers.Controls.OfType<lblTextbox>()
-                      where x.TxtValue == ""
-                      select x
-                                ).LastOrDefault();
-
-            if (em != null)
+            if (txt.Text.Trim() != "")
             {
-                em.Focus();
-
+                txt.BackColor = Color.White;
+                txt.ForeColor = Color.Black;
             }
         }
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtNom);
+        }
+
+        private void txtAdr_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtAdr);
+
+        }
+
+        private void txtVille_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtVille);
+
+        }
+
+        private void txtTel_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtTel);
+
+        }
+
+        private void txtFax_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrix_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtPrix);
+
+        }
+
+        private void txtHeure_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtHeure);
+
+        }
+
+     
     }
 }

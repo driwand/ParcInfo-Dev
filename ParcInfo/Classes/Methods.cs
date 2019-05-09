@@ -124,13 +124,16 @@ namespace ParcInfo.Classes
                               where x.Text.Trim() == "" && x.Tag != null 
                               select x
                                 ).LastOrDefault();
+
                     if (em != null)
                     {
                         em.Focus();
                         em.BackColor = Color.FromArgb(235, 77, 75);
                         em.ForeColor = Color.White;
                         count++;
+                      
                     }
+                 
                 }
 
             }

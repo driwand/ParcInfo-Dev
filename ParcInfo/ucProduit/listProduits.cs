@@ -16,6 +16,7 @@ namespace ParcInfo.ucClient
     public partial class listProduits : UserControl
     {
         ProduitInfo pd;
+        int IsDeleted = 0;
         public listProduits()
         {
             InitializeComponent();
@@ -213,13 +214,23 @@ namespace ParcInfo.ucClient
                 int idprod = int.Parse(row.Cells["id"].Value.ToString());
                 listAff.Add(idprod);
             }
-            frmselectuser frm = new frmselectuser(listAff);
-            frm.ShowDialog();
+            if (IsDeleted ==1)
+            {
+                MessageBox.Show("Produit Affecter");
+            }
+            else
+            {
+                frmselectuser frm = new frmselectuser(listAff,dgProduits);
+                frm.ShowDialog();
+            }
+       
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
         }
+
+
 
         private void cbDelete_CheckedChanged(object sender, EventArgs e)
         {
@@ -231,8 +242,11 @@ namespace ParcInfo.ucClient
                 if (cbDelete.Checked)
                 {
                     displayData(1);
+
+                    IsDeleted = 1;
                     if (dgProduits.Rows.Count > 0)
                     {
+                        
                         dgProduits.Rows[0].Selected = true;
                     }
                 }

@@ -92,13 +92,15 @@ namespace ParcInfo
             }
         }
         int idemp = 0;
-        public frmselectuser(List<int> listAf)
+        DataGridView dggrid;
+        public frmselectuser(List<int> listAf,DataGridView dg)
         {
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (listAf != null && listAf.Count > 0)
                 {
+                    dggrid = dg;
                     listProdid = listAf;
                     var cList = context.Clients.Where(c => c.IsDeleted == 0).ToList();
 
@@ -111,9 +113,16 @@ namespace ParcInfo
                            dgUsers
                            );
                     // Methods.FilterDataGridViewIni(dgUsers, txtFind, btnFind);
+
+                    
+
+                    
                 }
             }
         }
+
+
+      
         public frmselectuser()
         {
             InitializeComponent();
@@ -143,7 +152,7 @@ namespace ParcInfo
 
                         var myrow = dgUsers.Rows[dgUsers.CurrentRow.Index];
                         int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                        frmAffecter frm = new frmAffecter(id, listProdid);
+                        frmAffecter frm = new frmAffecter(id, listProdid,dggrid);
                         frm.ShowDialog();
 
                     }

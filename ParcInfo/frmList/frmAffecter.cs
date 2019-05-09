@@ -45,13 +45,15 @@ namespace ParcInfo
             }
          
         }
-        public frmAffecter(int idClient, List<int> prod)
+        DataGridView dggrid;
+        public frmAffecter(int idClient, List<int> prod,DataGridView dg)
         {
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 if (prod.Count > 0 && prod != null)
                 {
+                    dggrid = dg;
                     idC = idClient;
                     var listprod = context.Produits.ToList();
                     foreach (var item in prod)
@@ -134,12 +136,47 @@ namespace ParcInfo
                     }
                     context.SaveChanges();
                     this.Close();
+                    if (dggrid != null)
+                    {
+                        displayData();
+                    }
                 }
             }
          
 
         }
 
+        public void displayData(int deleted = 0)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var listType = context.Produits.Where(c => c.IsDeleted == deleted).ToList();
+                var listProduitClient = context.ProduitClients.ToList();
+                var listProduit = (from p in listType
+                                   where !(listProduitClient.Any(it => it.Idproduit == p.id && it.IsDeleted == 0))
+                                   select new
+                                   {
+                                       p.CodeP,
+                                       p.id,
+                                       p.TypeProduit.Nom,
+                                       p.Marque,
+                                       p.Model,
+                                       p.Prix,
+                                       p.Datefabrication,
+                                       p.IsDeleted,
+                                       userMod = p.Utilisateur1 != null ? p.Utilisateur1.Nom : "aucune",
+                                       dateMod = p.Datemodification != null ? p.Datemodification.ToString() : "**-**-****",
+                                   }).ToList();
+                dggrid.DataSource = Methods.ToDataTable(listProduit);
+
+                Methods.Nice_grid(
+                    new string[] { "CodeP", "id", "Nom", "Marque", "Model", "Prix", "Datefabrication" },
+                    new string[] { "Code Produit", "id", "Type", "Marque", "Model", "Prix", "Date de fabrication" },
+                    dggrid
+                    );
+
+            }
+        }
         private void frmAffecter_Load(object sender, EventArgs e)
         {
             using (var db = new ParcInformatiqueEntities())

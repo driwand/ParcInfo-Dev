@@ -208,5 +208,16 @@ namespace ParcInfo.ucClient
             Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
             dgProduit.Columns["idP"].Visible = false;
         }
+
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+            int loc = 331;
+            loc += lblEdited.Width;
+            lblMod.Location = new Point(loc, 462);
+            // MessageBox.Show(clt.Nom.Length.ToString());
+            lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+            lblEdited.Text = "aucune";
+            lblEditedDate.Text = "**-**-****";
+        }
     }
 }

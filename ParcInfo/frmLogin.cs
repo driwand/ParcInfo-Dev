@@ -73,6 +73,7 @@ namespace ParcInfo
                         pnlError.Visible = false;
                       
                         GlobVars.cuUser = user;
+                        GlobVars.cuLogin = this;
                         GoToDefault();
 
                         this.Hide();
@@ -105,12 +106,7 @@ namespace ParcInfo
             return count++;
         }
 
-        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                e.SuppressKeyPress = true;
-        }
-
+ 
         public void GoToDefault()
         {
             FrmDefault deffrm = new FrmDefault();
@@ -139,6 +135,27 @@ namespace ParcInfo
                 }
             }
             deffrm.Show();
+        }
+
+        private void txtPassword_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+         
+        }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
+            }
         }
     }
 }
