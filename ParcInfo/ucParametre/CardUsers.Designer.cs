@@ -32,35 +32,30 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblUser = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblNom = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblPrenom = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblAdresse = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblVille = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblTel = new System.Windows.Forms.Label();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtTel = new System.Windows.Forms.TextBox();
+            this.txtVille = new System.Windows.Forms.TextBox();
+            this.txtAdr = new System.Windows.Forms.TextBox();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlActivites = new System.Windows.Forms.FlowLayoutPanel();
             this.gpActivities = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblEdited = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblCreated = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lbldatecreaton = new System.Windows.Forms.Label();
-            this.lbldateedit = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnEditUser = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgClient = new System.Windows.Forms.DataGridView();
+            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gpActivities.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgClient)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -94,270 +89,211 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblEmail);
+            this.groupBox1.Controls.Add(this.gradientPanel1);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.txtTel);
+            this.groupBox1.Controls.Add(this.txtVille);
+            this.groupBox1.Controls.Add(this.txtAdr);
+            this.groupBox1.Controls.Add(this.txtPrenom);
+            this.groupBox1.Controls.Add(this.txtNom);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.lblTel);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.lblVille);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.lblAdresse);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.lblPrenom);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.lblNom);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 63);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(354, 221);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox1.Size = new System.Drawing.Size(354, 200);
             this.groupBox1.TabIndex = 95;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
             // 
-            // label1
+            // gradientPanel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nom :";
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 197);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(354, 3);
+            this.gradientPanel1.TabIndex = 52;
             // 
-            // lblNom
+            // txtEmail
             // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(89, 37);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(13, 13);
-            this.lblNom.TabIndex = 1;
-            this.lblNom.Text = "tt";
+            this.txtEmail.Location = new System.Drawing.Point(85, 169);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(252, 20);
+            this.txtEmail.TabIndex = 6;
             // 
-            // label3
+            // txtTel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Prenom :";
+            this.txtTel.Location = new System.Drawing.Point(85, 140);
+            this.txtTel.Name = "txtTel";
+            this.txtTel.ReadOnly = true;
+            this.txtTel.Size = new System.Drawing.Size(252, 20);
+            this.txtTel.TabIndex = 5;
             // 
-            // lblPrenom
+            // txtVille
             // 
-            this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(89, 62);
-            this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(35, 13);
-            this.lblPrenom.TabIndex = 1;
-            this.lblPrenom.Text = "label2";
+            this.txtVille.Location = new System.Drawing.Point(85, 111);
+            this.txtVille.Name = "txtVille";
+            this.txtVille.ReadOnly = true;
+            this.txtVille.Size = new System.Drawing.Size(252, 20);
+            this.txtVille.TabIndex = 4;
             // 
-            // label5
+            // txtAdr
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 89);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Adresse :";
+            this.txtAdr.Location = new System.Drawing.Point(85, 82);
+            this.txtAdr.Name = "txtAdr";
+            this.txtAdr.ReadOnly = true;
+            this.txtAdr.Size = new System.Drawing.Size(252, 20);
+            this.txtAdr.TabIndex = 3;
             // 
-            // lblAdresse
+            // txtPrenom
             // 
-            this.lblAdresse.AutoSize = true;
-            this.lblAdresse.Location = new System.Drawing.Point(89, 89);
-            this.lblAdresse.Name = "lblAdresse";
-            this.lblAdresse.Size = new System.Drawing.Size(35, 13);
-            this.lblAdresse.TabIndex = 1;
-            this.lblAdresse.Text = "label2";
+            this.txtPrenom.Location = new System.Drawing.Point(85, 53);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.ReadOnly = true;
+            this.txtPrenom.Size = new System.Drawing.Size(252, 20);
+            this.txtPrenom.TabIndex = 2;
             // 
-            // label7
+            // txtNom
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 119);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Ville :";
-            // 
-            // lblVille
-            // 
-            this.lblVille.AutoSize = true;
-            this.lblVille.Location = new System.Drawing.Point(89, 119);
-            this.lblVille.Name = "lblVille";
-            this.lblVille.Size = new System.Drawing.Size(35, 13);
-            this.lblVille.TabIndex = 1;
-            this.lblVille.Text = "label2";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(25, 150);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Tel :";
-            // 
-            // lblTel
-            // 
-            this.lblTel.AutoSize = true;
-            this.lblTel.Location = new System.Drawing.Point(89, 150);
-            this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(35, 13);
-            this.lblTel.TabIndex = 1;
-            this.lblTel.Text = "label2";
+            this.txtNom.Location = new System.Drawing.Point(85, 24);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.ReadOnly = true;
+            this.txtNom.Size = new System.Drawing.Size(252, 20);
+            this.txtNom.TabIndex = 1;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(25, 179);
+            this.label11.Location = new System.Drawing.Point(22, 170);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Email :";
             // 
-            // lblEmail
+            // label9
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(89, 179);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(35, 13);
-            this.lblEmail.TabIndex = 1;
-            this.lblEmail.Text = "label2";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 141);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Tel :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 112);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Ville :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Adresse :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Prenom :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nom :";
+            // 
+            // pnlActivites
+            // 
+            this.pnlActivites.Location = new System.Drawing.Point(21, 30);
+            this.pnlActivites.MaximumSize = new System.Drawing.Size(442, 359);
+            this.pnlActivites.Name = "pnlActivites";
+            this.pnlActivites.Size = new System.Drawing.Size(442, 359);
+            this.pnlActivites.TabIndex = 0;
             // 
             // gpActivities
             // 
-            this.gpActivities.Controls.Add(this.flowLayoutPanel1);
+            this.gpActivities.Controls.Add(this.gradientPanel3);
+            this.gpActivities.Controls.Add(this.pnlActivites);
             this.gpActivities.Location = new System.Drawing.Point(395, 65);
+            this.gpActivities.Margin = new System.Windows.Forms.Padding(0);
             this.gpActivities.Name = "gpActivities";
-            this.gpActivities.Size = new System.Drawing.Size(481, 343);
+            this.gpActivities.Padding = new System.Windows.Forms.Padding(0);
+            this.gpActivities.Size = new System.Drawing.Size(481, 401);
             this.gpActivities.TabIndex = 96;
             this.gpActivities.TabStop = false;
             this.gpActivities.Text = "Hostorique des activites";
             // 
-            // groupBox3
+            // gradientPanel3
             // 
-            this.groupBox3.Controls.Add(this.panel2);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.lbldateedit);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.lbldatecreaton);
-            this.groupBox3.Controls.Add(this.lblEdited);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.lblCreated);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(13, 300);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(354, 108);
-            this.groupBox3.TabIndex = 97;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Information du creatioon";
+            this.gradientPanel3.Angle = 0F;
+            this.gradientPanel3.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel3.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel3.Location = new System.Drawing.Point(0, 398);
+            this.gradientPanel3.Name = "gradientPanel3";
+            this.gradientPanel3.Size = new System.Drawing.Size(481, 3);
+            this.gradientPanel3.TabIndex = 54;
             // 
-            // lblEdited
+            // groupBox2
             // 
-            this.lblEdited.AutoSize = true;
-            this.lblEdited.Location = new System.Drawing.Point(93, 76);
-            this.lblEdited.Name = "lblEdited";
-            this.lblEdited.Size = new System.Drawing.Size(35, 13);
-            this.lblEdited.TabIndex = 4;
-            this.lblEdited.Text = "label2";
+            this.groupBox2.Controls.Add(this.dgClient);
+            this.groupBox2.Controls.Add(this.gradientPanel2);
+            this.groupBox2.Location = new System.Drawing.Point(13, 266);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Size = new System.Drawing.Size(354, 200);
+            this.groupBox2.TabIndex = 96;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Clients";
             // 
-            // label4
+            // dgClient
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 76);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Modifier par :";
+            this.dgClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgClient.Location = new System.Drawing.Point(7, 27);
+            this.dgClient.Name = "dgClient";
+            this.dgClient.Size = new System.Drawing.Size(340, 161);
+            this.dgClient.TabIndex = 54;
             // 
-            // lblCreated
+            // gradientPanel2
             // 
-            this.lblCreated.AutoSize = true;
-            this.lblCreated.Location = new System.Drawing.Point(93, 32);
-            this.lblCreated.Name = "lblCreated";
-            this.lblCreated.Size = new System.Drawing.Size(35, 13);
-            this.lblCreated.TabIndex = 5;
-            this.lblCreated.Text = "label2";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 32);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 13);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Cree par:";
-            // 
-            // lbldatecreaton
-            // 
-            this.lbldatecreaton.AutoSize = true;
-            this.lbldatecreaton.Location = new System.Drawing.Point(248, 32);
-            this.lbldatecreaton.Name = "lbldatecreaton";
-            this.lbldatecreaton.Size = new System.Drawing.Size(35, 13);
-            this.lbldatecreaton.TabIndex = 7;
-            this.lbldatecreaton.Text = "label2";
-            // 
-            // lbldateedit
-            // 
-            this.lbldateedit.AutoSize = true;
-            this.lbldateedit.Location = new System.Drawing.Point(248, 76);
-            this.lbldateedit.Name = "lbldateedit";
-            this.lbldateedit.Size = new System.Drawing.Size(35, 13);
-            this.lbldateedit.TabIndex = 9;
-            this.lbldateedit.Text = "label2";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(197, 76);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(36, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Date :";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(197, 32);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(36, 13);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Date :";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(22, 60);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(299, 1);
-            this.panel2.TabIndex = 11;
-            // 
-            // btnEditUser
-            // 
-            this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditUser.ForeColor = System.Drawing.Color.White;
-            this.btnEditUser.Image = global::ParcInfo.Properties.Resources.edit201;
-            this.btnEditUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditUser.Location = new System.Drawing.Point(776, 429);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(100, 32);
-            this.btnEditUser.TabIndex = 164;
-            this.btnEditUser.Text = "Modifier";
-            this.btnEditUser.UseVisualStyleBackColor = false;
-            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(21, 30);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(442, 294);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 197);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(354, 3);
+            this.gradientPanel2.TabIndex = 53;
             // 
             // CardUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.btnEditUser);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gpActivities);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
@@ -369,8 +305,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gpActivities.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgClient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,25 +322,19 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox gpActivities;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnEditUser;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        public System.Windows.Forms.Label lblNom;
-        public System.Windows.Forms.Label lblEmail;
-        public System.Windows.Forms.Label lblTel;
-        public System.Windows.Forms.Label lblVille;
-        public System.Windows.Forms.Label lblAdresse;
-        public System.Windows.Forms.Label lblPrenom;
-        public System.Windows.Forms.Label lbldateedit;
-        public System.Windows.Forms.Label lbldatecreaton;
-        public System.Windows.Forms.Label lblEdited;
-        public System.Windows.Forms.Label lblCreated;
         public System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.FlowLayoutPanel pnlActivites;
+        private System.Windows.Forms.GroupBox gpActivities;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtTel;
+        private System.Windows.Forms.TextBox txtVille;
+        private System.Windows.Forms.TextBox txtAdr;
+        private System.Windows.Forms.TextBox txtPrenom;
+        private System.Windows.Forms.TextBox txtNom;
+        private Classes.GradientPanel gradientPanel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private Classes.GradientPanel gradientPanel2;
+        private Classes.GradientPanel gradientPanel3;
+        private System.Windows.Forms.DataGridView dgClient;
     }
 }

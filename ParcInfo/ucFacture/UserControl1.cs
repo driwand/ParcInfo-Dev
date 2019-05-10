@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ParcInfo.ucControls
+namespace ParcInfo.ucFacture
 {
-    public partial class notification : UserControl
+    public partial class UserControl1 : UserControl
     {
-        public notification()
+        public UserControl1()
         {
             InitializeComponent();
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

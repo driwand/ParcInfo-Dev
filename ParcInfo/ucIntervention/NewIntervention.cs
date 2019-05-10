@@ -122,7 +122,11 @@ namespace ParcInfo.ucInterevntion
                     Datemodification = DateTime.Now
                 };
                 context.Interventions.Add(intr);
-
+                //context.UserActivities.Add(new UserActivity
+                //{
+                //    Iduser = GlobVars.cuUser.Id,
+                //    Acitivity = $"Intervention [{intr.id}] Démarrer  le {DateTime.Now}"
+                //});
                 //create first observetion that contain date and who started the intervention
                 observation obs = new observation()
                 {

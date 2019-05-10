@@ -67,6 +67,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgClients)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -160,7 +161,7 @@
             this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.Clear_Search_20px;
             this.btnFind.Location = new System.Drawing.Point(552, 15);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
@@ -193,6 +194,7 @@
             this.lblEdited.TabIndex = 88;
             this.lblEdited.TabStop = true;
             this.lblEdited.Text = "aucune";
+            this.lblEdited.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEdited_LinkClicked);
             // 
             // btnNewClient
             // 
@@ -238,7 +240,7 @@
             this.btnStartIntervention.Name = "btnStartIntervention";
             this.btnStartIntervention.Size = new System.Drawing.Size(141, 35);
             this.btnStartIntervention.TabIndex = 52;
-            this.btnStartIntervention.Text = "      Demarer Intervention";
+            this.btnStartIntervention.Text = "      Demarrer intervention";
             this.btnStartIntervention.UseVisualStyleBackColor = false;
             this.btnStartIntervention.Click += new System.EventHandler(this.btnStartIntervention_Click);
             // 
@@ -327,9 +329,9 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(55, 20);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 8;
-            this.label7.Text = "Employees";
+            this.label7.Text = "Employés";
             // 
             // pictureBox5
             // 
@@ -520,11 +522,23 @@
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(495, 463);
+            this.lblID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 90;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
+            // 
             // ListClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.btnNewClient);
@@ -604,5 +618,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label lblID;
     }
 }

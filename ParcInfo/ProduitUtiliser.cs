@@ -23,7 +23,7 @@ namespace ParcInfo
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
+        public int IsDeleted { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual ProduitClient ProduitClient { get; set; }

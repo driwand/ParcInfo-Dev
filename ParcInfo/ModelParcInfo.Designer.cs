@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\hk\Desktop\New folder (3)\ParcInfo-Dev2\ParcInfo-Dev\ParcInfo\ModelParcInfo.edmx'. 
+﻿// T4 code generation is enabled for model 'I:\LastVersion\ParcInfo-Dev\ParcInfo\ModelParcInfo.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -43,5 +43,6 @@ namespace ParcInfo
         public virtual DbSet<UserActivity> UserActivities { get; set; }
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
         public virtual DbSet<ValeurProp> ValeurProps { get; set; }
+        public virtual DbSet<Facture> Factures { get; set; }
     }
 }

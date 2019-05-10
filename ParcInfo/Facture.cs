@@ -12,12 +12,8 @@ namespace ParcInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class UserActivity
+    public partial class Facture
     {
         public int Id { get; set; }
-        public Nullable<int> Iduser { get; set; }
-        public string Activity { get; set; }
-    
-        public virtual Utilisateur Utilisateur { get; set; }
     }
 }

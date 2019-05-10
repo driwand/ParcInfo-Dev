@@ -50,6 +50,7 @@
     <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
     </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -91,6 +92,9 @@
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Facture.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="frmList\Dashboard.cs">
@@ -201,6 +205,12 @@
     <Compile Include="ucControls\DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ucControls\FactCntrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\FactCntrl.Designer.cs">
+      <DependentUpon>FactCntrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\ForgetPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -258,12 +268,6 @@
     <Compile Include="ucControls\MultiLineLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ucControls\notification.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucControls\notification.Designer.cs">
-      <DependentUpon>notification.cs</DependentUpon>
-    </Compile>
     <Compile Include="ucControls\notifMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -302,6 +306,18 @@
     </Compile>
     <Compile Include="ucControls\txtlblType.designer.cs">
       <DependentUpon>txtlblType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucControls\ucNotifcs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\ucNotifcs.Designer.cs">
+      <DependentUpon>ucNotifcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucControls\ucNotifList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\ucNotifList.Designer.cs">
+      <DependentUpon>ucNotifList.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControls\userHistory.cs">
       <SubType>UserControl</SubType>
@@ -344,6 +360,12 @@
     </Compile>
     <Compile Include="ucFacture\CreateFacture.Designer.cs">
       <DependentUpon>CreateFacture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucFacture\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFacture\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
     <Compile Include="ucIntervention\ListeIntervention.cs">
       <SubType>UserControl</SubType>
@@ -456,6 +478,9 @@
     <EmbeddedResource Include="ucControls\AffectEmloyee.resx">
       <DependentUpon>AffectEmloyee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\FactCntrl.resx">
+      <DependentUpon>FactCntrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\ForgetPassword.resx">
       <DependentUpon>ForgetPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -483,9 +508,6 @@
     <EmbeddedResource Include="ucControls\loginPass.resx">
       <DependentUpon>loginPass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucControls\notification.resx">
-      <DependentUpon>notification.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\notifMenu.resx">
       <DependentUpon>notifMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -504,6 +526,12 @@
     <EmbeddedResource Include="ucControls\txtlblType.resx">
       <DependentUpon>txtlblType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\ucNotifcs.resx">
+      <DependentUpon>ucNotifcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\ucNotifList.resx">
+      <DependentUpon>ucNotifList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\userHistory.resx">
       <DependentUpon>userHistory.cs</DependentUpon>
     </EmbeddedResource>
@@ -521,6 +549,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucFacture\CreateFacture.resx">
       <DependentUpon>CreateFacture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucFacture\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucIntervention\ListeIntervention.resx">
       <DependentUpon>ListeIntervention.cs</DependentUpon>
@@ -810,6 +841,11 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Next_16px.png" />
+    <None Include="Resources\Next_20px.png" />
+    <None Include="Resources\Clear Search_20px.png" />
+    <None Include="Resources\Checked_48px.png" />
+    <None Include="Resources\Verified Account_48px.png" />
     <None Include="Resources\Lineage_OS_Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

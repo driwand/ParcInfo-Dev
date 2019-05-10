@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -54,7 +56,7 @@ namespace ParcInfo.ucClient
                         btnAnnuler.Visible = false;
                         btnAjouter.Visible = false;
                     }
-                    if (emp != null )
+                    if (emp != null)
                     {
                         txtNom.Text = emp.Nom;
                         txtPrenom.Text = emp.Prenom;
@@ -96,14 +98,16 @@ namespace ParcInfo.ucClient
                     this.Text = "Modifier employee";
                     // get values 
                     var idEmp = context.Employees.Find(idE);
-                 
-                    string pass = txtPass.Text;
-                    idEmp.Nom = txtNom.Text;
-                    idEmp.Prenom = txtPrenom.Text;
+
+                    string pass = Methods.RemoveSpace(txtPass.Text);
+                    idEmp.Nom = Methods.RemoveSpace(txtNom.Text);
+                    idEmp.Prenom = Methods.RemoveSpace(txtPrenom.Text);
                     idEmp.Tel = txtTel.Text;
-                    if (txtPass.Text != "")
+                    if (txtPass.Text.Trim() != "")
                     {
                         idEmp.Password_e = Methods.MD5Hash(pass);
+                        var msg = Methods.StringForget(idEmp.Nom, idEmp.Prenom, pass);
+                        Methods.sendEmail(txtEmail.Text, msg);
                     }
                     idEmp.IdDep = int.Parse(txtDeaprt.SelectedValue.ToString());
                     int Respo = 0;
@@ -111,24 +115,29 @@ namespace ParcInfo.ucClient
                     {
                         Respo = 1;
                     }
+
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Employé [{idEmp.IdEmploye}] Modifié le {DateTime.Now}"
+                    });
                     idEmp.IsResponsable = Respo;
                     idEmp.Modifierpar = GlobVars.cuUser.Id;
                     idEmp.Datemodification = DateTime.Now;
                     context.SaveChanges();
-                    var msg = Methods.StringForget(idEmp.Nom, idEmp.Prenom, pass);
-                    Methods.sendEmail(txtEmail.Text, msg);
+                   
                     Close();
-                    updateGrid();
+                    GlobVars.frmindex.ShowControl(new ListEmployees(idC));
                 }
                 else if (btnAjouter.Text == "Ajouter")
                 {
                     if (txtEmpty == 0)
                     {
                         // get values 
-                        string Nom = txtNom.Text;
-                        string Prenom = txtPrenom.Text;
-                        string Tel = txtTel.Text;
-                        string Email = txtEmail.Text;
+                        string Nom = Methods.RemoveSpace(txtNom.Text);
+                        string Prenom = Methods.RemoveSpace(txtPrenom.Text);
+                        string Tel = Methods.RemoveSpace(txtTel.Text);
+                        string Email = Methods.RemoveSpace(txtEmail.Text);
                         int Departement = int.Parse(txtDeaprt.SelectedValue.ToString());
                         string login = txtPass.Text;
 
@@ -137,47 +146,62 @@ namespace ParcInfo.ucClient
                         {
                             Respo = 1;
                         }
-
                         string pass = Methods.CreatePassword(8);
                         string msg = Methods.stringMsg(Nom, Prenom, Email, pass);
                         pass = Methods.MD5Hash(pass);
                         var emailE = context.Employees.Any(t => t.Email == Email);
                         var emailU = context.Utilisateurs.Any(t => t.Email == Email);
-                        if (!emailE && !emailU)
+
+                        var emailValid = IsValid(Email);
+                        if (emailValid)
                         {
-                            Employee emp = new Employee
+                            if (!emailE && !emailU)
                             {
-                                Nom = Nom,
-                                Prenom = Prenom,
-                                Tel = Tel,
-                                Email = Email,
-                                IdDep = Departement,
-                                Idclient = idC,
-                                IsResponsable = Respo,
-                                Datecreation = DateTime.Now,
-                                Password_e = pass,
-                                IsDeleted = 0,
-                                Creepar = GlobVars.cuUser.Id,
-                            };
-                            context.Employees.Add(emp);
-                            context.SaveChanges();
-                            Methods.sendEmail(Email, msg);
-                            MessageBox.Show("L'Employé a été ajouté");
-                            // clear textbox 
-                            Methods.Clear(this);
-                            Close();
-                            updateGrid();
+                                Employee emp = new Employee
+                                {
+                                    Nom = Nom,
+                                    Prenom = Prenom,
+                                    Tel = Tel,
+                                    Email = Email,
+                                    IdDep = Departement,
+                                    Idclient = idC,
+                                    IsResponsable = Respo,
+                                    Datecreation = DateTime.Now,
+                                    Password_e = pass,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.cuUser.Id,
+                                };
+                                context.Employees.Add(emp);
+                                context.UserActivities.Add(new UserActivity
+                                {
+                                    Iduser = GlobVars.cuUser.Id,
+                                    Activity = $"Employé [{emp.IdEmploye}] Ajouté  le {DateTime.Now}"
+                                });
+                                context.SaveChanges();
+                                Methods.sendEmail(Email, msg);
+                                MessageBox.Show("L'Employé a été ajouté");
+                                // clear textbox 
+                                Methods.Clear(this);
+                                Close();
+                                GlobVars.frmindex.ShowControl(new ListEmployees(idC));
+                            }
+                            else
+                            {
+                                MessageBox.Show("email already exists");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("email already exists");
+                            txtEmail.BackColor = Color.FromArgb(235, 77, 75);
+                            txtEmail.ForeColor = Color.White;
+                            txtEmail.Focus();
                         }
                     }
                 }
 
             }
         }
-
+    
         private void btnDelEmp_Click(object sender, EventArgs e)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -203,6 +227,11 @@ namespace ParcInfo.ucClient
 
                     c.Datemodification = DateTime.Now;
                     context.SaveChanges();
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Employé [{c.IdEmploye}] Supprimé  le {DateTime.Now}"
+                    });
                     MessageBox.Show("Employé supprimé");
                     Methods.Clear(this);
                     Close();
@@ -229,17 +258,20 @@ namespace ParcInfo.ucClient
                                    emp.Nom,
                                    emp.Prenom,
                                    emp.Email,
-                                   emp.Password_e,
                                    departement = d.Nom,
                                    userMod = c.Utilisateur1 != null ? c.Utilisateur.Nom : "aucune",
+                                   userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
+
                                    dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****"
                                }).ToList();
                 dgEmp.DataSource = listEmp;
                 Methods.Nice_grid(
-                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "Login_e", "Password_e", "departement" },
-                new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Login", "Password", "Departement" },
+                new string[] { "IdEmploye", "Id", "Nom", "Prenom", "Email", "departement" },
+                new string[] { "ID Employee", "id", "Nom", "Prenom", "Email", "Departement" },
                 dgEmp
                 );
+
+               
             }
         }
 
@@ -260,6 +292,65 @@ namespace ParcInfo.ucClient
                     }
                 }
             }
+        }
+
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtNom);
+        }
+
+
+        public void ChangeColor(TextBox txt)
+        {
+            if (txt.Text.Trim() != "")
+            {
+                txt.BackColor = Color.White;
+                txt.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtPrenom_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtPrenom);
+
+        }
+
+        private void txtTel_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtTel);
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtEmail);
+
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            var s = IsValid(txtEmail.Text.Trim());
+            if (!s)
+            {
+                txtEmail.Focus();
+            }
+        }
+
+
+        public bool IsValid(string emailaddress)
+        {
+            //string email = emailaddress;
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(emailaddress);
+            if (match.Success)
+                return true;
+            else
+                return false;
         }
     }
 }

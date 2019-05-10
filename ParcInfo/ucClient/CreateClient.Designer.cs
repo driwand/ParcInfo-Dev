@@ -46,9 +46,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtTel = new System.Windows.Forms.TextBox();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.txtSiteweb = new System.Windows.Forms.TextBox();
-            this.txtTel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -215,8 +215,9 @@
             this.txtPrix.Location = new System.Drawing.Point(246, 22);
             this.txtPrix.Name = "txtPrix";
             this.txtPrix.Size = new System.Drawing.Size(124, 20);
-            this.txtPrix.TabIndex = 1;
+            this.txtPrix.TabIndex = 0;
             this.txtPrix.Tag = "required";
+            this.txtPrix.TextChanged += new System.EventHandler(this.txtPrix_TextChanged);
             this.txtPrix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrix_KeyPress);
             // 
             // label8
@@ -241,8 +242,9 @@
             this.txtHeure.Location = new System.Drawing.Point(94, 52);
             this.txtHeure.Name = "txtHeure";
             this.txtHeure.Size = new System.Drawing.Size(108, 20);
-            this.txtHeure.TabIndex = 2;
+            this.txtHeure.TabIndex = 1;
             this.txtHeure.Tag = "required";
+            this.txtHeure.TextChanged += new System.EventHandler(this.txtHeure_TextChanged);
             this.txtHeure.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHeure_KeyPress);
             // 
             // label9
@@ -265,9 +267,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtTel);
             this.groupBox2.Controls.Add(this.txtFax);
             this.groupBox2.Controls.Add(this.txtSiteweb);
-            this.groupBox2.Controls.Add(this.txtTel);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
@@ -278,20 +280,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Les information de contact";
             // 
-            // txtFax
-            // 
-            this.txtFax.Location = new System.Drawing.Point(94, 62);
-            this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(276, 20);
-            this.txtFax.TabIndex = 1;
-            // 
-            // txtSiteweb
-            // 
-            this.txtSiteweb.Location = new System.Drawing.Point(94, 99);
-            this.txtSiteweb.Name = "txtSiteweb";
-            this.txtSiteweb.Size = new System.Drawing.Size(276, 20);
-            this.txtSiteweb.TabIndex = 2;
-            // 
             // txtTel
             // 
             this.txtTel.Location = new System.Drawing.Point(94, 29);
@@ -299,8 +287,23 @@
             this.txtTel.Size = new System.Drawing.Size(276, 20);
             this.txtTel.TabIndex = 0;
             this.txtTel.Tag = "required";
+            this.txtTel.TextChanged += new System.EventHandler(this.txtTel_TextChanged);
             this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
-            this.txtTel.Validating += new System.ComponentModel.CancelEventHandler(this.txtTel_Validating);
+            // 
+            // txtFax
+            // 
+            this.txtFax.Location = new System.Drawing.Point(94, 62);
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(276, 20);
+            this.txtFax.TabIndex = 1;
+            this.txtFax.TextChanged += new System.EventHandler(this.txtFax_TextChanged);
+            // 
+            // txtSiteweb
+            // 
+            this.txtSiteweb.Location = new System.Drawing.Point(94, 99);
+            this.txtSiteweb.Name = "txtSiteweb";
+            this.txtSiteweb.Size = new System.Drawing.Size(276, 20);
+            this.txtSiteweb.TabIndex = 2;
             // 
             // label2
             // 
@@ -363,6 +366,7 @@
             this.txtVille.Size = new System.Drawing.Size(108, 20);
             this.txtVille.TabIndex = 2;
             this.txtVille.Tag = "required";
+            this.txtVille.TextChanged += new System.EventHandler(this.txtVille_TextChanged);
             // 
             // txtAdr
             // 
@@ -371,6 +375,7 @@
             this.txtAdr.Size = new System.Drawing.Size(276, 20);
             this.txtAdr.TabIndex = 1;
             this.txtAdr.Tag = "required";
+            this.txtAdr.TextChanged += new System.EventHandler(this.txtAdr_TextChanged);
             // 
             // txtNom
             // 
@@ -379,6 +384,7 @@
             this.txtNom.Size = new System.Drawing.Size(276, 20);
             this.txtNom.TabIndex = 0;
             this.txtNom.Tag = "required";
+            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             // 
             // label5
             // 
@@ -534,7 +540,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSiteweb;
-        private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -554,5 +559,6 @@
         private Classes.GradientPanel gradientPanel3;
         private System.Windows.Forms.Button BtnAddUser;
         private Classes.GradientPanel gradientPanel4;
+        private System.Windows.Forms.TextBox txtTel;
     }
 }

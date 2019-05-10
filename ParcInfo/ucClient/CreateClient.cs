@@ -189,7 +189,16 @@ namespace ParcInfo.ucClient
                         }
                         else if (item.Id == 0)
                         {
-                            context.Departements.Add(new Departement { Nom = item.Value, IdCLient = idC });
+                           var  dep = cli.Departements.Where(d => d.Nom == item.Value).FirstOrDefault();
+                            if (dep != null)
+                            {
+                                dep.IsDeleted = 0;
+                            }
+                            else
+                            {
+                                context.Departements.Add(new Departement { Nom = item.Value, IdCLient = idC, IsDeleted = 0 });
+
+                            }
                         }
                         else if (item.Id >= 0 && item.IsDeleted)
                         {
@@ -212,7 +221,12 @@ namespace ParcInfo.ucClient
                                 aff.IsDeleted = 1;
                                 aff.Datemodification = DateTime.Now;
                                 aff.Modifierpar = GlobVars.cuUser.Id;
-                                context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, IsDeleted = 0 });
+                                context.AffectationClients.Add(new AffectationClient {
+                                    Idclient = idC,
+                                    Idutilisateur = item.Id,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.cuUser.Id
+                                });
                             }
                         }
                         else if (item.Idaffectation == 0)
@@ -222,7 +236,14 @@ namespace ParcInfo.ucClient
                             // check if user already 
                             if (ac == null)
                             {
-                                context.AffectationClients.Add(new AffectationClient { Idclient = idC, Idutilisateur = item.Id, Dateaffectation = DateTime.Now, IsDeleted = 0 });
+                                context.AffectationClients.Add(new AffectationClient {
+                                    Idclient = idC,
+                                    Idutilisateur = item.Id,
+                                    Dateaffectation = DateTime.Now,
+                                    IsDeleted = 0,
+                                    Creepar = GlobVars.cuUser.Id
+
+                                });
                             }
                         }
                         else if (item.Idaffectation >= 0 && item.IsDeleted)
@@ -247,6 +268,11 @@ namespace ParcInfo.ucClient
                     cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
                     cli.Prixheur = float.Parse(txtPrix.Text);
                     cli.Heurecontract = int.Parse(txtHeure.Text);
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Client [{cli.IdCLient}] Modifié le {DateTime.Now}"
+                    });
                     context.SaveChanges();
                     MessageBox.Show("Client modifié");
                 }
@@ -271,9 +297,9 @@ namespace ParcInfo.ucClient
             //Fil list UtilisateurID
             if (txtEmpty == 0)
             { // get Values From Textbox
-                string Nom = txtNom.Text;
-                string Adr = txtAdr.Text;
-                string Ville = txtVille.Text;
+                string Nom = Methods.RemoveSpace(txtNom.Text);
+                string Adr = Methods.RemoveSpace(txtAdr.Text);
+                string Ville = Methods.RemoveSpace(txtVille.Text);
                 string Tel = txtTel.Text;
                 string Fax = txtFax.Text;
                 string Siteweb = txtSiteweb.Text;
@@ -299,6 +325,12 @@ namespace ParcInfo.ucClient
                         Creepar = GlobVars.cuUser.Id
                     };
                     context.Clients.Add(client);
+                    // add userActiv
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Client [{client.IdCLient}] Ajouté le {DateTime.Now}"
+                    });
                     // ADD Departement To Client 
                     foreach (var item in DepartementList)
                     {
@@ -340,6 +372,7 @@ namespace ParcInfo.ucClient
                             PnlUsers.Controls.Remove(tbx);
                         }
                     }
+                   
                     //save Change
                     context.SaveChanges();
                     MessageBox.Show("Ajout d'un client effectué");
@@ -404,11 +437,18 @@ namespace ParcInfo.ucClient
                     {
                         d.IsDeleted = 1;
                     });
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Client [{c.IdCLient}] Supprimé le {DateTime.Now}"
+                    });
                     MessageBox.Show("client supprimé");
                     Methods.Clear(this);
                     c.Datemodification = DateTime.Now;
                     c.Modifierpar = GlobVars.cuUser.Id;
                     context.SaveChanges();
+
+                    GlobVars.frmindex.ShowControl(new ListClients());
 
                 }
                 else if (result == DialogResult.No)
@@ -439,27 +479,72 @@ namespace ParcInfo.ucClient
                         i.Datemodification = DateTime.Now;
                         i.Modifierpar = GlobVars.cuUser.Id;
                     });
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Client [{c.IdCLient}] Supprimé le {DateTime.Now}"
+                    });
                     MessageBox.Show("client supprimé");
                     Methods.Clear(this);
                     c.Datemodification = DateTime.Now;
                     c.Modifierpar = GlobVars.cuUser.Id;
                     context.SaveChanges();
+                    GlobVars.frmindex.ShowControl(new ListClients());
+
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+
+        public void ChangeColor(TextBox txt)
         {
-            var em = (from x in PnlUsers.Controls.OfType<lblTextbox>()
-                      where x.TxtValue == ""
-                      select x
-                                ).LastOrDefault();
-
-            if (em != null)
+            if (txt.Text.Trim() != "")
             {
-                em.Focus();
-
+                txt.BackColor = Color.White;
+                txt.ForeColor = Color.Black;
             }
         }
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtNom);
+        }
+
+        private void txtAdr_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtAdr);
+
+        }
+
+        private void txtVille_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtVille);
+
+        }
+
+        private void txtTel_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtTel);
+
+        }
+
+        private void txtFax_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrix_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtPrix);
+
+        }
+
+        private void txtHeure_TextChanged(object sender, EventArgs e)
+        {
+            ChangeColor(txtHeure);
+
+        }
+
+     
     }
 }

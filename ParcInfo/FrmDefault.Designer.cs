@@ -33,6 +33,7 @@ namespace ParcInfo.frmDefault
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PanelMain = new System.Windows.Forms.Panel();
+            this.flowNotif = new System.Windows.Forms.FlowLayoutPanel();
             this.DropdownUserMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.line3 = new System.Windows.Forms.Panel();
@@ -136,6 +137,7 @@ namespace ParcInfo.frmDefault
             // 
             // PanelMain
             // 
+            this.PanelMain.Controls.Add(this.flowNotif);
             this.PanelMain.Controls.Add(this.DropdownUserMenu);
             this.PanelMain.Controls.Add(this.PanelContainer);
             this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -144,6 +146,16 @@ namespace ParcInfo.frmDefault
             this.PanelMain.Padding = new System.Windows.Forms.Padding(20);
             this.PanelMain.Size = new System.Drawing.Size(932, 523);
             this.PanelMain.TabIndex = 2;
+            // 
+            // flowNotif
+            // 
+            this.flowNotif.BackColor = System.Drawing.Color.White;
+            this.flowNotif.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowNotif.Location = new System.Drawing.Point(537, 1);
+            this.flowNotif.Name = "flowNotif";
+            this.flowNotif.Size = new System.Drawing.Size(200, 60);
+            this.flowNotif.TabIndex = 2;
+            this.flowNotif.Visible = false;
             // 
             // DropdownUserMenu
             // 
@@ -175,6 +187,7 @@ namespace ParcInfo.frmDefault
             this.button1.TabIndex = 3;
             this.button1.Text = "Logout";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // line3
             // 
@@ -211,6 +224,7 @@ namespace ParcInfo.frmDefault
             this.PanelContainer.Name = "PanelContainer";
             this.PanelContainer.Size = new System.Drawing.Size(892, 483);
             this.PanelContainer.TabIndex = 0;
+            this.PanelContainer.Click += new System.EventHandler(this.PanelContainer_Click);
             // 
             // PanelHeader
             // 
@@ -237,6 +251,7 @@ namespace ParcInfo.frmDefault
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pnlUserName
@@ -305,12 +320,13 @@ namespace ParcInfo.frmDefault
             // PickBell
             // 
             this.PickBell.Image = global::ParcInfo.Properties.Resources.Notification;
-            this.PickBell.Location = new System.Drawing.Point(785, 18);
+            this.PickBell.Location = new System.Drawing.Point(784, 18);
             this.PickBell.Name = "PickBell";
             this.PickBell.Size = new System.Drawing.Size(32, 32);
             this.PickBell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.PickBell.TabIndex = 0;
             this.PickBell.TabStop = false;
+            this.PickBell.Click += new System.EventHandler(this.PickBell_Click);
             // 
             // PanelLeftSide
             // 
@@ -342,7 +358,7 @@ namespace ParcInfo.frmDefault
             this.DropClient.Controls.Add(this.BtnListClient);
             this.DropClient.Controls.Add(this.BtnCreateClient);
             this.DropClient.Controls.Add(this.btnClients);
-            this.DropClient.Location = new System.Drawing.Point(14, 68);
+            this.DropClient.Location = new System.Drawing.Point(3, 56);
             this.DropClient.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropClient.Name = "DropClient";
             this.DropClient.Size = new System.Drawing.Size(224, 41);
@@ -1130,5 +1146,6 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Panel lineVertical;
         private System.Windows.Forms.PictureBox PickBell;
         public System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.FlowLayoutPanel flowNotif;
     }
 }

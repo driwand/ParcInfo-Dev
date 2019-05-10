@@ -154,6 +154,8 @@
             this.txtEmail.Size = new System.Drawing.Size(267, 20);
             this.txtEmail.TabIndex = 44;
             this.txtEmail.Tag = "required";
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // label2
             // 
@@ -171,6 +173,8 @@
             this.txtTel.Size = new System.Drawing.Size(267, 20);
             this.txtTel.TabIndex = 42;
             this.txtTel.Tag = "required";
+            this.txtTel.TextChanged += new System.EventHandler(this.txtTel_TextChanged);
+            this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // txtPrenom
             // 
@@ -179,6 +183,7 @@
             this.txtPrenom.Size = new System.Drawing.Size(267, 20);
             this.txtPrenom.TabIndex = 41;
             this.txtPrenom.Tag = "required";
+            this.txtPrenom.TextChanged += new System.EventHandler(this.txtPrenom_TextChanged);
             // 
             // txtNom
             // 
@@ -187,6 +192,7 @@
             this.txtNom.Size = new System.Drawing.Size(267, 20);
             this.txtNom.TabIndex = 40;
             this.txtNom.Tag = "required";
+            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             // 
             // label5
             // 

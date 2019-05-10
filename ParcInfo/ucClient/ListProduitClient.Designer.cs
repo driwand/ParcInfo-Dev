@@ -108,7 +108,7 @@
             this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.Clear_Search_20px;
             this.btnFind.Location = new System.Drawing.Point(829, 15);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(28, 28);
@@ -121,6 +121,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(701, 20);
             this.txtFind.TabIndex = 42;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // label2
             // 

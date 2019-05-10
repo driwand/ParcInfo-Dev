@@ -1,5 +1,6 @@
 ﻿using ParcInfo.Classes;
 using ParcInfo.ucInterevntion;
+using ParcInfo.ucParametre;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,6 +55,7 @@ namespace ParcInfo.ucClient
                     c.Heurecontract,
                     c.Debutcontract,
                     userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
+                    userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
@@ -77,6 +79,7 @@ namespace ParcInfo.ucClient
                     c.Heurecontract,
                     c.Debutcontract,
                     userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
+                    userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
@@ -105,6 +108,7 @@ namespace ParcInfo.ucClient
                     c.Heurecontract,
                     c.Debutcontract,
                     userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
+                    userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 myGrid();
@@ -132,6 +136,7 @@ namespace ParcInfo.ucClient
                 c.Heurecontract,
                 c.Debutcontract,
                 userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
+                userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                 dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
             }).ToList());
             myGrid();
@@ -229,7 +234,7 @@ namespace ParcInfo.ucClient
                     int index = dgClients.CurrentRow.Index;
                     int id = int.Parse(dgClients.Rows[index].Cells["id"].Value.ToString());
                     //GlobVars.selectedClient = id;
-
+                   
                     GlobVars.frmindex.ShowControl(new NewIntervention(id));
                 }
             }
@@ -284,10 +289,13 @@ namespace ParcInfo.ucClient
                     // Modifier par / date modification
                     string nomUser = myrow.Cells["userMod"].Value.ToString();
                     string date = myrow.Cells["dateMod"].Value.ToString();
+                    int idUser = (int)myrow.Cells["userID"].Value;
+
                     int loc = 325;
                     lblEdited.Text = nomUser;
                     loc += lblEdited.Width;
                     lblMod.Location = new Point(loc, 462);
+                    lblID.Text = idUser.ToString();
                     lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
                     lblEditedDate.Text = date;
                     var Cli = context.Clients.Where(c => c.id == id).FirstOrDefault();
@@ -342,6 +350,12 @@ namespace ParcInfo.ucClient
                 lblEmpC.Text = "0";
                 lblInterC.Text = "0";
                 lblProdC.Text = "0";
+                int loc = 325;
+                loc += lblEdited.Width;
+                lblMod.Location = new Point(loc, 462);
+                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+                lblEdited.Text = "aucune";
+                lblEditedDate.Text = "**-**-****";
             }
         }
         private void txtFind_TextChanged(object sender, EventArgs e)
@@ -354,6 +368,15 @@ namespace ParcInfo.ucClient
             var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
             int id = int.Parse(myrow.Cells["id"].Value.ToString());
             MessageBox.Show(id.ToString());
+        }
+
+        private void lblEdited_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int idU = int.Parse(lblID.Text);
+            if (idU > 0)
+            {
+                GlobVars.frmindex.ShowControl(new CardUsers(idU));
+            }
         }
     }
 }

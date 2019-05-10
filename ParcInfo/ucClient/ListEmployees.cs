@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.ucClient;
 using ParcInfo.Classes;
+using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucClient
 {
@@ -41,6 +42,7 @@ namespace ParcInfo.ucClient
                                        emp.Email,
                                        departement = d.Nom,
                                        userMod =  emp.Utilisateur1 != null ? emp.Utilisateur1.Nom : "aucune",
+                                       userID = emp.Utilisateur1 != null ? emp.Utilisateur1.Id : 0,
                                        dateMod = emp.Datemodification != null ? emp.Datemodification.ToString() : "**-**-****",
                                    }).ToList();
                     dgEmployees.DataSource = Methods.ToDataTable(listEmp);
@@ -137,6 +139,8 @@ namespace ParcInfo.ucClient
                     var emp = context.Employees.Where(c => c.Id == id).FirstOrDefault();
                     string nomUser = myrow.Cells["userMod"].Value.ToString();
                     string date = myrow.Cells["dateMod"].Value.ToString();
+                    int idUser = (int)myrow.Cells["userID"].Value;
+                    lblID.Text = idUser.ToString();
                     int loc = 333;
                     lblEdited.Text = nomUser;
                     loc += lblEdited.Width;
@@ -175,12 +179,14 @@ namespace ParcInfo.ucClient
                                    emp.Email , emp.Password_e,
                                    departement = d.Nom, emp.IsDeleted,
                                    userMod = emp.Utilisateur1 != null ? emp.Utilisateur1.Nom : "aucune",
+                                   userID = emp.Utilisateur1 != null ? emp.Utilisateur1.Id : 0,
                                    dateMod = emp.Datemodification != null ? emp.Datemodification.ToString() : "**-**-****",
                                }).ToList();
                 if (cbDeleted.Checked)
                 {
                     var EmployeesDeleted = listEmp.Where(d => d.IsDeleted == 1).ToList();
                     dgEmployees.DataSource = Methods.ToDataTable(EmployeesDeleted);
+                    CountToZero();
                     myGrid();
                 }
                 else
@@ -225,6 +231,13 @@ namespace ParcInfo.ucClient
                 enretardCount.Text = "0";
                 allCount.Text = "0";
                 produitCount.Text = "0";
+                int loc = 333;
+                loc += lblEdited.Width;
+                lblMod.Location = new Point(loc, 462);
+                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+                lblEdited.Text = "aucune";
+                lblEditedDate.Text = "**-**-****";
+
             }
         }
         private void txtFind_TextChanged(object sender, EventArgs e)
@@ -235,6 +248,15 @@ namespace ParcInfo.ucClient
         private void cbDeleted_CheckedChanged_1(object sender, EventArgs e)
         {
 
+        }
+        
+        private void lblEdited_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int idU = int.Parse(lblID.Text);
+            if (idU > 0)
+            {
+                GlobVars.frmindex.ShowControl(new CardUsers(idU));
+            }
         }
     }
 }
