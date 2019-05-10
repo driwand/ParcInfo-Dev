@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ParcInfo.Classes;
+using ParcInfo.ucControls;
 
 namespace ParcInfo.ucParametre
 {
     public partial class CardUsers : UserControl
     {
         int idus;
+        int uaName = 1;
         public CardUsers(int iduser)
         {
             InitializeComponent();
@@ -24,36 +27,48 @@ namespace ParcInfo.ucParametre
 
                 lblUser.Text = currentuser.IdUser;
 
-                lblNom.Text = currentuser.Nom;
-                lblPrenom.Text = currentuser.Prenom;
-                lblAdresse.Text = currentuser.Adresse;
-                lblVille.Text = currentuser.Ville;
-                lblTel.Text = currentuser.Tel;
-                lblEmail.Text = currentuser.Tel;
-
-                if (currentuser.Utilisateur3 != null)
+                txtNom.Text = currentuser.Nom;
+                txtPrenom.Text = currentuser.Prenom;
+                txtAdr.Text = currentuser.Adresse;
+                txtVille.Text = currentuser.Ville;
+                txtTel.Text = currentuser.Tel;
+                txtEmail.Text = currentuser.Email;
+                var cl = currentuser.AffectationClients1.ToList();
+                dgClient.DataSource = Methods.ToDataTable(cl.Where(c => c.Client.IsDeleted == 0 && c.IsDeleted == 0).Select(c => new
                 {
-                    lblEdited.Text = currentuser.Utilisateur3.Nom;
-                    lbldateedit.Text = currentuser.Datemodification.ToString();
-                }
+                    c.Client.IdCLient,
+                    c.Client.id,
+                    c.Client.Nom,
+                    c.Client.Ville,
+                    c.Client.Tel,
+                }).ToList());
 
-                if (currentuser.Utilisateur2 != null)
+                Methods.Nice_grid(
+                    new string[] { "IdCLient", "id", "Nom", "Ville", "Tel"  },
+                    new string[] { "ID Client", "id", "Nom", "Ville", "Tel"   },
+                    dgClient
+                    );
+                
+                foreach (var item in currentuser.UserActivities.OrderByDescending(i=> i.Id))
                 {
-                    lblCreated.Text = currentuser.Utilisateur2.Nom;
-                    lbldatecreaton.Text = currentuser.Datecreation.ToString();
-                }
+                    userHistory uc = new userHistory();
+                    uc.Name = "activiy" + uaName;
+                    uc.LblActiv = item.Activity;
+                    pnlActivites.Controls.Add(uc);
+                    pnlActivites.Height  += 30;
+                    if (pnlActivites.Size == pnlActivites.MaximumSize)
+                    {
+                        pnlActivites.AutoScroll = true;
 
-                var interv = db.Interventions.Where(user => user.Idutilisateur == iduser).ToList();
-                if (interv != null)
-                {
-
+                    }
                 }
+               
             }
         }
 
         private void btnEditUser_Click(object sender, EventArgs e)
         {
-
+           
         }
     }
 }

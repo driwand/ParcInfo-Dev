@@ -33,19 +33,27 @@ namespace ParcInfo.frmDefault
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PanelMain = new System.Windows.Forms.Panel();
+            this.flowNotif = new System.Windows.Forms.FlowLayoutPanel();
             this.DropdownUserMenu = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.line3 = new System.Windows.Forms.Panel();
+            this.btnProfile = new System.Windows.Forms.Button();
             this.PanelContainer = new System.Windows.Forms.Panel();
             this.PanelHeader = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlUserName = new System.Windows.Forms.Panel();
+            this.PicShowMenu = new System.Windows.Forms.PictureBox();
             this.lblUser = new System.Windows.Forms.Label();
+            this.pcUser = new System.Windows.Forms.PictureBox();
             this.lblNotif = new System.Windows.Forms.Label();
             this.lineVertical = new System.Windows.Forms.Panel();
+            this.PickBell = new System.Windows.Forms.PictureBox();
             this.PanelLeftSide = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.DropClient = new System.Windows.Forms.Panel();
             this.BtnListClient = new System.Windows.Forms.Button();
             this.BtnCreateClient = new System.Windows.Forms.Button();
+            this.btnClients = new System.Windows.Forms.Button();
             this.DropIntervention = new System.Windows.Forms.Panel();
             this.lblInterventionTerminer = new System.Windows.Forms.Label();
             this.btnInterventionTerminer = new System.Windows.Forms.Button();
@@ -55,13 +63,16 @@ namespace ParcInfo.frmDefault
             this.btnInterventionRetard = new System.Windows.Forms.Button();
             this.btnInterventionCours = new System.Windows.Forms.Button();
             this.btnListIntervention = new System.Windows.Forms.Button();
+            this.btnIntervention = new System.Windows.Forms.Button();
             this.DropParametre = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnTypeProduct = new System.Windows.Forms.Button();
             this.btnListUsers = new System.Windows.Forms.Button();
             this.btnNewUser = new System.Windows.Forms.Button();
+            this.btnParam = new System.Windows.Forms.Button();
             this.DropProduit = new System.Windows.Forms.Panel();
             this.btnListProduct = new System.Windows.Forms.Button();
+            this.BtnProduct = new System.Windows.Forms.Button();
             this.DropDemande = new System.Windows.Forms.Panel();
             this.lblRequestRetard = new System.Windows.Forms.Label();
             this.lblRequestTerminer = new System.Windows.Forms.Label();
@@ -73,11 +84,13 @@ namespace ParcInfo.frmDefault
             this.btnDemandeCours = new System.Windows.Forms.Button();
             this.btnDemandeAttent = new System.Windows.Forms.Button();
             this.btnListDemande = new System.Windows.Forms.Button();
+            this.btnRequest = new System.Windows.Forms.Button();
             this.BtnHome = new System.Windows.Forms.Button();
             this.PanelLogo = new System.Windows.Forms.Panel();
             this.lblLogoName = new System.Windows.Forms.Label();
             this.line1 = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.logoPic = new System.Windows.Forms.PictureBox();
             this.FrmPanel = new System.Windows.Forms.Panel();
             this.tmrIntervention = new System.Windows.Forms.Timer(this.components);
             this.TmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
@@ -88,24 +101,15 @@ namespace ParcInfo.frmDefault
             this.tmrReal = new System.Windows.Forms.Timer(this.components);
             this.tmrRetard = new System.Windows.Forms.Timer(this.components);
             this.getRealdata = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnProfile = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.PicShowMenu = new System.Windows.Forms.PictureBox();
-            this.pcUser = new System.Windows.Forms.PictureBox();
-            this.PickBell = new System.Windows.Forms.PictureBox();
-            this.btnClients = new System.Windows.Forms.Button();
-            this.btnIntervention = new System.Windows.Forms.Button();
-            this.btnParam = new System.Windows.Forms.Button();
-            this.BtnProduct = new System.Windows.Forms.Button();
-            this.btnRequest = new System.Windows.Forms.Button();
-            this.logoPic = new System.Windows.Forms.PictureBox();
-            this.pnlNotif = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
             this.PanelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlUserName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicShowMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PickBell)).BeginInit();
             this.PanelLeftSide.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.DropClient.SuspendLayout();
@@ -115,12 +119,8 @@ namespace ParcInfo.frmDefault
             this.DropDemande.SuspendLayout();
             this.PanelLogo.SuspendLayout();
             this.pnlLogo.SuspendLayout();
-            this.FrmPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicShowMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PickBell)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
+            this.FrmPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -137,7 +137,7 @@ namespace ParcInfo.frmDefault
             // 
             // PanelMain
             // 
-            this.PanelMain.Controls.Add(this.pnlNotif);
+            this.PanelMain.Controls.Add(this.flowNotif);
             this.PanelMain.Controls.Add(this.DropdownUserMenu);
             this.PanelMain.Controls.Add(this.PanelContainer);
             this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -146,6 +146,16 @@ namespace ParcInfo.frmDefault
             this.PanelMain.Padding = new System.Windows.Forms.Padding(20);
             this.PanelMain.Size = new System.Drawing.Size(932, 523);
             this.PanelMain.TabIndex = 2;
+            // 
+            // flowNotif
+            // 
+            this.flowNotif.BackColor = System.Drawing.Color.White;
+            this.flowNotif.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowNotif.Location = new System.Drawing.Point(537, 1);
+            this.flowNotif.Name = "flowNotif";
+            this.flowNotif.Size = new System.Drawing.Size(200, 60);
+            this.flowNotif.TabIndex = 2;
+            this.flowNotif.Visible = false;
             // 
             // DropdownUserMenu
             // 
@@ -161,6 +171,24 @@ namespace ParcInfo.frmDefault
             this.DropdownUserMenu.TabIndex = 0;
             this.DropdownUserMenu.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ParcInfo.Properties.Resources.userLogout;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 49);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(146, 42);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Logout";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // line3
             // 
             this.line3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(237)))));
@@ -170,6 +198,24 @@ namespace ParcInfo.frmDefault
             this.line3.Size = new System.Drawing.Size(146, 1);
             this.line3.TabIndex = 2;
             // 
+            // btnProfile
+            // 
+            this.btnProfile.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProfile.FlatAppearance.BorderSize = 0;
+            this.btnProfile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.btnProfile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfile.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProfile.Image = global::ParcInfo.Properties.Resources.userProfile;
+            this.btnProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProfile.Location = new System.Drawing.Point(0, 0);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(146, 48);
+            this.btnProfile.TabIndex = 99;
+            this.btnProfile.Text = "My Profile";
+            this.btnProfile.UseVisualStyleBackColor = true;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
+            // 
             // PanelContainer
             // 
             this.PanelContainer.BackColor = System.Drawing.Color.White;
@@ -178,6 +224,7 @@ namespace ParcInfo.frmDefault
             this.PanelContainer.Name = "PanelContainer";
             this.PanelContainer.Size = new System.Drawing.Size(892, 483);
             this.PanelContainer.TabIndex = 0;
+            this.PanelContainer.Click += new System.EventHandler(this.PanelContainer_Click);
             // 
             // PanelHeader
             // 
@@ -194,6 +241,19 @@ namespace ParcInfo.frmDefault
             this.PanelHeader.TabIndex = 1;
             this.PanelHeader.Click += new System.EventHandler(this.PanelHeader_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::ParcInfo.Properties.Resources.Back_100px;
+            this.pictureBox2.Location = new System.Drawing.Point(20, 15);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(38, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // pnlUserName
             // 
             this.pnlUserName.Controls.Add(this.PicShowMenu);
@@ -205,6 +265,17 @@ namespace ParcInfo.frmDefault
             this.pnlUserName.TabIndex = 11;
             this.pnlUserName.Click += new System.EventHandler(this.panel1_Click);
             // 
+            // PicShowMenu
+            // 
+            this.PicShowMenu.Image = global::ParcInfo.Properties.Resources.arrowDown1;
+            this.PicShowMenu.Location = new System.Drawing.Point(60, 3);
+            this.PicShowMenu.Name = "PicShowMenu";
+            this.PicShowMenu.Size = new System.Drawing.Size(20, 20);
+            this.PicShowMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicShowMenu.TabIndex = 13;
+            this.PicShowMenu.TabStop = false;
+            this.PicShowMenu.Click += new System.EventHandler(this.PicShowMenu_Click);
+            // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
@@ -215,6 +286,17 @@ namespace ParcInfo.frmDefault
             this.lblUser.TabIndex = 11;
             this.lblUser.Text = "0";
             this.lblUser.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // pcUser
+            // 
+            this.pcUser.Image = global::ParcInfo.Properties.Resources.User;
+            this.pcUser.Location = new System.Drawing.Point(24, -1);
+            this.pcUser.Name = "pcUser";
+            this.pcUser.Size = new System.Drawing.Size(32, 32);
+            this.pcUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pcUser.TabIndex = 12;
+            this.pcUser.TabStop = false;
+            this.pcUser.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lblNotif
             // 
@@ -234,6 +316,17 @@ namespace ParcInfo.frmDefault
             this.lineVertical.Name = "lineVertical";
             this.lineVertical.Size = new System.Drawing.Size(1, 32);
             this.lineVertical.TabIndex = 2;
+            // 
+            // PickBell
+            // 
+            this.PickBell.Image = global::ParcInfo.Properties.Resources.Notification;
+            this.PickBell.Location = new System.Drawing.Point(784, 18);
+            this.PickBell.Name = "PickBell";
+            this.PickBell.Size = new System.Drawing.Size(32, 32);
+            this.PickBell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PickBell.TabIndex = 0;
+            this.PickBell.TabStop = false;
+            this.PickBell.Click += new System.EventHandler(this.PickBell_Click);
             // 
             // PanelLeftSide
             // 
@@ -306,6 +399,25 @@ namespace ParcInfo.frmDefault
             this.BtnCreateClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCreateClient.UseVisualStyleBackColor = true;
             this.BtnCreateClient.Click += new System.EventHandler(this.BtnCreateClient_Click);
+            // 
+            // btnClients
+            // 
+            this.btnClients.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClients.FlatAppearance.BorderSize = 0;
+            this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClients.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClients.ForeColor = System.Drawing.Color.White;
+            this.btnClients.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClients.Location = new System.Drawing.Point(0, 0);
+            this.btnClients.Name = "btnClients";
+            this.btnClients.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnClients.Size = new System.Drawing.Size(224, 41);
+            this.btnClients.TabIndex = 3;
+            this.btnClients.Text = "Clients";
+            this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClients.UseVisualStyleBackColor = true;
+            this.btnClients.Click += new System.EventHandler(this.BtnClients_Click);
             // 
             // DropIntervention
             // 
@@ -445,6 +557,25 @@ namespace ParcInfo.frmDefault
             this.btnListIntervention.UseVisualStyleBackColor = true;
             this.btnListIntervention.Click += new System.EventHandler(this.btnListIntervention_Click);
             // 
+            // btnIntervention
+            // 
+            this.btnIntervention.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIntervention.FlatAppearance.BorderSize = 0;
+            this.btnIntervention.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIntervention.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIntervention.ForeColor = System.Drawing.Color.White;
+            this.btnIntervention.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.btnIntervention.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIntervention.Location = new System.Drawing.Point(0, 0);
+            this.btnIntervention.Name = "btnIntervention";
+            this.btnIntervention.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnIntervention.Size = new System.Drawing.Size(224, 41);
+            this.btnIntervention.TabIndex = 3;
+            this.btnIntervention.Text = "Intervention";
+            this.btnIntervention.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIntervention.UseVisualStyleBackColor = true;
+            this.btnIntervention.Click += new System.EventHandler(this.btnIntervention_Click);
+            // 
             // DropParametre
             // 
             this.DropParametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -531,6 +662,25 @@ namespace ParcInfo.frmDefault
             this.btnNewUser.UseVisualStyleBackColor = true;
             this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
             // 
+            // btnParam
+            // 
+            this.btnParam.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnParam.FlatAppearance.BorderSize = 0;
+            this.btnParam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnParam.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParam.ForeColor = System.Drawing.Color.White;
+            this.btnParam.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.btnParam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnParam.Location = new System.Drawing.Point(0, 0);
+            this.btnParam.Name = "btnParam";
+            this.btnParam.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnParam.Size = new System.Drawing.Size(224, 41);
+            this.btnParam.TabIndex = 3;
+            this.btnParam.Text = "paramétre";
+            this.btnParam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnParam.UseVisualStyleBackColor = true;
+            this.btnParam.Click += new System.EventHandler(this.btnParam_Click);
+            // 
             // DropProduit
             // 
             this.DropProduit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -559,6 +709,25 @@ namespace ParcInfo.frmDefault
             this.btnListProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListProduct.UseVisualStyleBackColor = true;
             this.btnListProduct.Click += new System.EventHandler(this.btnListProduct_Click);
+            // 
+            // BtnProduct
+            // 
+            this.BtnProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnProduct.FlatAppearance.BorderSize = 0;
+            this.BtnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnProduct.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnProduct.ForeColor = System.Drawing.Color.White;
+            this.BtnProduct.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.BtnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnProduct.Location = new System.Drawing.Point(0, 0);
+            this.BtnProduct.Name = "BtnProduct";
+            this.BtnProduct.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.BtnProduct.Size = new System.Drawing.Size(224, 41);
+            this.BtnProduct.TabIndex = 3;
+            this.BtnProduct.Text = "Produit";
+            this.BtnProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnProduct.UseVisualStyleBackColor = true;
+            this.BtnProduct.Click += new System.EventHandler(this.BtnProduct_Click);
             // 
             // DropDemande
             // 
@@ -730,6 +899,25 @@ namespace ParcInfo.frmDefault
             this.btnListDemande.UseVisualStyleBackColor = true;
             this.btnListDemande.Click += new System.EventHandler(this.btnListDemande_Click);
             // 
+            // btnRequest
+            // 
+            this.btnRequest.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRequest.FlatAppearance.BorderSize = 0;
+            this.btnRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRequest.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRequest.ForeColor = System.Drawing.Color.White;
+            this.btnRequest.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRequest.Location = new System.Drawing.Point(0, 0);
+            this.btnRequest.Name = "btnRequest";
+            this.btnRequest.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnRequest.Size = new System.Drawing.Size(224, 41);
+            this.btnRequest.TabIndex = 3;
+            this.btnRequest.Text = "Demande";
+            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.UseVisualStyleBackColor = true;
+            this.btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
+            // 
             // BtnHome
             // 
             this.BtnHome.Dock = System.Windows.Forms.DockStyle.Top;
@@ -785,6 +973,16 @@ namespace ParcInfo.frmDefault
             this.pnlLogo.Size = new System.Drawing.Size(223, 66);
             this.pnlLogo.TabIndex = 1;
             // 
+            // logoPic
+            // 
+            this.logoPic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logoPic.Location = new System.Drawing.Point(0, 0);
+            this.logoPic.Name = "logoPic";
+            this.logoPic.Size = new System.Drawing.Size(223, 66);
+            this.logoPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPic.TabIndex = 0;
+            this.logoPic.TabStop = false;
+            // 
             // FrmPanel
             // 
             this.FrmPanel.Controls.Add(this.panel2);
@@ -834,202 +1032,6 @@ namespace ParcInfo.frmDefault
             this.getRealdata.DoWork += new System.ComponentModel.DoWorkEventHandler(this.getRealdata_DoWork);
             this.getRealdata.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.getRealdata_RunWorkerCompleted);
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ParcInfo.Properties.Resources.userLogout;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 42);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnProfile
-            // 
-            this.btnProfile.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProfile.FlatAppearance.BorderSize = 0;
-            this.btnProfile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.btnProfile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProfile.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProfile.Image = global::ParcInfo.Properties.Resources.userProfile;
-            this.btnProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfile.Location = new System.Drawing.Point(0, 0);
-            this.btnProfile.Name = "btnProfile";
-            this.btnProfile.Size = new System.Drawing.Size(146, 48);
-            this.btnProfile.TabIndex = 99;
-            this.btnProfile.Text = "My Profile";
-            this.btnProfile.UseVisualStyleBackColor = true;
-            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::ParcInfo.Properties.Resources.Back_100px;
-            this.pictureBox2.Location = new System.Drawing.Point(20, 15);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(38, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // PicShowMenu
-            // 
-            this.PicShowMenu.Image = global::ParcInfo.Properties.Resources.arrowDown1;
-            this.PicShowMenu.Location = new System.Drawing.Point(60, 3);
-            this.PicShowMenu.Name = "PicShowMenu";
-            this.PicShowMenu.Size = new System.Drawing.Size(20, 20);
-            this.PicShowMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicShowMenu.TabIndex = 13;
-            this.PicShowMenu.TabStop = false;
-            this.PicShowMenu.Click += new System.EventHandler(this.PicShowMenu_Click);
-            // 
-            // pcUser
-            // 
-            this.pcUser.Image = global::ParcInfo.Properties.Resources.User;
-            this.pcUser.Location = new System.Drawing.Point(24, -1);
-            this.pcUser.Name = "pcUser";
-            this.pcUser.Size = new System.Drawing.Size(32, 32);
-            this.pcUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pcUser.TabIndex = 12;
-            this.pcUser.TabStop = false;
-            this.pcUser.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // PickBell
-            // 
-            this.PickBell.Image = global::ParcInfo.Properties.Resources.Notification;
-            this.PickBell.Location = new System.Drawing.Point(784, 18);
-            this.PickBell.Name = "PickBell";
-            this.PickBell.Size = new System.Drawing.Size(32, 32);
-            this.PickBell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PickBell.TabIndex = 0;
-            this.PickBell.TabStop = false;
-            this.PickBell.Click += new System.EventHandler(this.PickBell_Click);
-            // 
-            // btnClients
-            // 
-            this.btnClients.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClients.FlatAppearance.BorderSize = 0;
-            this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClients.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClients.ForeColor = System.Drawing.Color.White;
-            this.btnClients.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
-            this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClients.Location = new System.Drawing.Point(0, 0);
-            this.btnClients.Name = "btnClients";
-            this.btnClients.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnClients.Size = new System.Drawing.Size(224, 41);
-            this.btnClients.TabIndex = 3;
-            this.btnClients.Text = "Clients";
-            this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClients.UseVisualStyleBackColor = true;
-            this.btnClients.Click += new System.EventHandler(this.BtnClients_Click);
-            // 
-            // btnIntervention
-            // 
-            this.btnIntervention.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnIntervention.FlatAppearance.BorderSize = 0;
-            this.btnIntervention.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIntervention.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIntervention.ForeColor = System.Drawing.Color.White;
-            this.btnIntervention.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
-            this.btnIntervention.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIntervention.Location = new System.Drawing.Point(0, 0);
-            this.btnIntervention.Name = "btnIntervention";
-            this.btnIntervention.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnIntervention.Size = new System.Drawing.Size(224, 41);
-            this.btnIntervention.TabIndex = 3;
-            this.btnIntervention.Text = "Intervention";
-            this.btnIntervention.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIntervention.UseVisualStyleBackColor = true;
-            this.btnIntervention.Click += new System.EventHandler(this.btnIntervention_Click);
-            // 
-            // btnParam
-            // 
-            this.btnParam.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnParam.FlatAppearance.BorderSize = 0;
-            this.btnParam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParam.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParam.ForeColor = System.Drawing.Color.White;
-            this.btnParam.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
-            this.btnParam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnParam.Location = new System.Drawing.Point(0, 0);
-            this.btnParam.Name = "btnParam";
-            this.btnParam.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnParam.Size = new System.Drawing.Size(224, 41);
-            this.btnParam.TabIndex = 3;
-            this.btnParam.Text = "paramétre";
-            this.btnParam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParam.UseVisualStyleBackColor = true;
-            this.btnParam.Click += new System.EventHandler(this.btnParam_Click);
-            // 
-            // BtnProduct
-            // 
-            this.BtnProduct.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnProduct.FlatAppearance.BorderSize = 0;
-            this.BtnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnProduct.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnProduct.ForeColor = System.Drawing.Color.White;
-            this.BtnProduct.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
-            this.BtnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnProduct.Location = new System.Drawing.Point(0, 0);
-            this.BtnProduct.Name = "BtnProduct";
-            this.BtnProduct.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BtnProduct.Size = new System.Drawing.Size(224, 41);
-            this.BtnProduct.TabIndex = 3;
-            this.BtnProduct.Text = "Produit";
-            this.BtnProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnProduct.UseVisualStyleBackColor = true;
-            this.BtnProduct.Click += new System.EventHandler(this.BtnProduct_Click);
-            // 
-            // btnRequest
-            // 
-            this.btnRequest.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRequest.FlatAppearance.BorderSize = 0;
-            this.btnRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRequest.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequest.ForeColor = System.Drawing.Color.White;
-            this.btnRequest.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
-            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRequest.Location = new System.Drawing.Point(0, 0);
-            this.btnRequest.Name = "btnRequest";
-            this.btnRequest.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnRequest.Size = new System.Drawing.Size(224, 41);
-            this.btnRequest.TabIndex = 3;
-            this.btnRequest.Text = "Demande";
-            this.btnRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequest.UseVisualStyleBackColor = true;
-            this.btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
-            // 
-            // logoPic
-            // 
-            this.logoPic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPic.Location = new System.Drawing.Point(0, 0);
-            this.logoPic.Name = "logoPic";
-            this.logoPic.Size = new System.Drawing.Size(223, 66);
-            this.logoPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoPic.TabIndex = 0;
-            this.logoPic.TabStop = false;
-            // 
-            // pnlNotif
-            // 
-            this.pnlNotif.BackColor = System.Drawing.Color.White;
-            this.pnlNotif.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlNotif.Location = new System.Drawing.Point(537, 1);
-            this.pnlNotif.Name = "pnlNotif";
-            this.pnlNotif.Size = new System.Drawing.Size(200, 100);
-            this.pnlNotif.TabIndex = 1;
-            this.pnlNotif.Visible = false;
-            // 
             // FrmDefault
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1049,8 +1051,12 @@ namespace ParcInfo.frmDefault
             this.DropdownUserMenu.ResumeLayout(false);
             this.PanelHeader.ResumeLayout(false);
             this.PanelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlUserName.ResumeLayout(false);
             this.pnlUserName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicShowMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PickBell)).EndInit();
             this.PanelLeftSide.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.DropClient.ResumeLayout(false);
@@ -1061,12 +1067,8 @@ namespace ParcInfo.frmDefault
             this.PanelLogo.ResumeLayout(false);
             this.PanelLogo.PerformLayout();
             this.pnlLogo.ResumeLayout(false);
-            this.FrmPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicShowMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PickBell)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).EndInit();
+            this.FrmPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1144,6 +1146,6 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Panel lineVertical;
         private System.Windows.Forms.PictureBox PickBell;
         public System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel pnlNotif;
+        private System.Windows.Forms.FlowLayoutPanel flowNotif;
     }
 }

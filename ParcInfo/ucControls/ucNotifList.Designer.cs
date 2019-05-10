@@ -76,8 +76,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel pnlList;
+        public System.Windows.Forms.FlowLayoutPanel pnlList;
         private System.Windows.Forms.Button btnViewMore;
     }
 }

@@ -94,6 +94,9 @@
     <Compile Include="Employee.cs">
       <DependentUpon>ModelParcInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Facture.cs">
+      <DependentUpon>ModelParcInfo.tt</DependentUpon>
+    </Compile>
     <Compile Include="frmList\Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>

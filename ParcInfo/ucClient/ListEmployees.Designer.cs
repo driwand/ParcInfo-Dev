@@ -65,6 +65,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -261,6 +262,7 @@
             this.lblEdited.TabIndex = 113;
             this.lblEdited.TabStop = true;
             this.lblEdited.Text = "aucune";
+            this.lblEdited.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEdited_LinkClicked);
             // 
             // gpProduits
             // 
@@ -499,11 +501,23 @@
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(505, 462);
+            this.lblID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 114;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
+            // 
             // ListEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.gpProduits);
             this.Controls.Add(this.gpDemandeRetard);
@@ -584,5 +598,6 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel lblEdited;
+        private System.Windows.Forms.Label lblID;
     }
 }

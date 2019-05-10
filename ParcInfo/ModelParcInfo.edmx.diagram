@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="45c23b79df05494bb42b37608454cb28" Name="Diagram1" ZoomLevel="63">
+      <Diagram DiagramId="45c23b79df05494bb42b37608454cb28" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="ParcInformatiqueModel.AffectationClient" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Client" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ParcInformatiqueModel.Demande" Width="1.5" PointX="9.75" PointY="14.25" IsExpanded="true" />
@@ -65,6 +65,7 @@
         <AssociationConnector Association="ParcInformatiqueModel.FK__UserActiv__Iduse__07C12930" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Creep__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="ParcInformatiqueModel.FK__Utilisate__Modif__1367E606" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ParcInformatiqueModel.Facture" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

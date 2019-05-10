@@ -36,6 +36,7 @@
             this.lblidDem = new System.Windows.Forms.Label();
             this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.lblIDC = new System.Windows.Forms.Label();
+            this.pnlBottom = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // panel1
@@ -73,7 +74,7 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(9, 28);
+            this.lblDate.Location = new System.Drawing.Point(9, 26);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(64, 16);
             this.lblDate.TabIndex = 10;
@@ -86,7 +87,7 @@
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.ForeColor = System.Drawing.Color.White;
             this.btnNew.Image = global::ParcInfo.Properties.Resources.Next_16px;
-            this.btnNew.Location = new System.Drawing.Point(172, 25);
+            this.btnNew.Location = new System.Drawing.Point(173, 23);
             this.btnNew.Margin = new System.Windows.Forms.Padding(0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(21, 21);
@@ -125,11 +126,21 @@
             this.lblIDC.Text = "0";
             this.lblIDC.Visible = false;
             // 
+            // pnlBottom
+            // 
+            this.pnlBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
+            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottom.Location = new System.Drawing.Point(3, 46);
+            this.pnlBottom.Name = "pnlBottom";
+            this.pnlBottom.Size = new System.Drawing.Size(199, 1);
+            this.pnlBottom.TabIndex = 55;
+            // 
             // ucNotifcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.lblIDC);
             this.Controls.Add(this.lblidDem);
             this.Controls.Add(this.btnNew);
@@ -155,5 +166,6 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Label lblidDem;
         private System.Windows.Forms.Label lblIDC;
+        private System.Windows.Forms.Panel pnlBottom;
     }
 }

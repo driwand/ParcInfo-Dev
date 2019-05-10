@@ -34,18 +34,16 @@
             this.pnlDemande = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lblDemInt1 = new ParcInfo.ucControls.lblDemInt();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlIntervention = new System.Windows.Forms.FlowLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.lblDemInt2 = new ParcInfo.ucControls.lblDemInt();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.lbltest = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.TmrReal = new System.Windows.Forms.Timer(this.components);
+            this.getRealData = new System.ComponentModel.BackgroundWorker();
             this.gradientPanel6 = new ParcInfo.Classes.GradientPanel();
             this.lblTotalInterv = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -54,6 +52,8 @@
             this.lblTotalDem = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.gradientPanel7 = new ParcInfo.Classes.GradientPanel();
+            this.lblDemInt2 = new ParcInfo.ucControls.lblDemInt();
+            this.lblDemInt1 = new ParcInfo.ucControls.lblDemInt();
             this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
             this.lblIntEnRetard = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -66,8 +66,6 @@
             this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.lblDemEnRetard = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.TmrReal = new System.Windows.Forms.Timer(this.components);
-            this.getRealData = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.pnlDemande.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -133,15 +131,6 @@
             this.panel5.Size = new System.Drawing.Size(380, 1);
             this.panel5.TabIndex = 4;
             // 
-            // lblDemInt1
-            // 
-            this.lblDemInt1.BackColor = System.Drawing.Color.White;
-            this.lblDemInt1.DateLbl = "Date Demande";
-            this.lblDemInt1.Location = new System.Drawing.Point(13, 37);
-            this.lblDemInt1.Name = "lblDemInt1";
-            this.lblDemInt1.Size = new System.Drawing.Size(380, 25);
-            this.lblDemInt1.TabIndex = 5;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(89)))));
@@ -193,15 +182,6 @@
             this.panel6.Size = new System.Drawing.Size(380, 1);
             this.panel6.TabIndex = 4;
             // 
-            // lblDemInt2
-            // 
-            this.lblDemInt2.BackColor = System.Drawing.Color.White;
-            this.lblDemInt2.DateLbl = "Date Interventions";
-            this.lblDemInt2.Location = new System.Drawing.Point(13, 37);
-            this.lblDemInt2.Name = "lblDemInt2";
-            this.lblDemInt2.Size = new System.Drawing.Size(380, 25);
-            this.lblDemInt2.TabIndex = 6;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(89)))));
@@ -213,46 +193,23 @@
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(45, 407);
+            this.label11.Location = new System.Drawing.Point(37, 407);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(120, 17);
+            this.label11.Size = new System.Drawing.Size(316, 40);
             this.label11.TabIndex = 3;
-            this.label11.Text = "Debit Demande :";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(45, 437);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(136, 17);
-            this.label12.TabIndex = 10014;
-            this.label12.Text = "Demande en retard";
+            this.label11.Text = "Le temps total pour l\'exécution d\'une intervention :";
             // 
             // lbltest
             // 
             this.lbltest.AutoSize = true;
-            this.lbltest.Location = new System.Drawing.Point(181, 409);
+            this.lbltest.Location = new System.Drawing.Point(137, 427);
             this.lbltest.Name = "lbltest";
             this.lbltest.Size = new System.Drawing.Size(35, 13);
             this.lbltest.TabIndex = 10015;
             this.lbltest.Text = "label5";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(275, 428);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10016;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gradientPanel6
             // 
@@ -353,6 +310,24 @@
             this.gradientPanel7.Name = "gradientPanel7";
             this.gradientPanel7.Size = new System.Drawing.Size(4, 67);
             this.gradientPanel7.TabIndex = 0;
+            // 
+            // lblDemInt2
+            // 
+            this.lblDemInt2.BackColor = System.Drawing.Color.White;
+            this.lblDemInt2.DateLbl = "Date Interventions";
+            this.lblDemInt2.Location = new System.Drawing.Point(13, 37);
+            this.lblDemInt2.Name = "lblDemInt2";
+            this.lblDemInt2.Size = new System.Drawing.Size(380, 25);
+            this.lblDemInt2.TabIndex = 6;
+            // 
+            // lblDemInt1
+            // 
+            this.lblDemInt1.BackColor = System.Drawing.Color.White;
+            this.lblDemInt1.DateLbl = "Date Demande";
+            this.lblDemInt1.Location = new System.Drawing.Point(13, 37);
+            this.lblDemInt1.Name = "lblDemInt1";
+            this.lblDemInt1.Size = new System.Drawing.Size(380, 25);
+            this.lblDemInt1.TabIndex = 5;
             // 
             // gradientPanel4
             // 
@@ -502,24 +477,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Demande en retard";
             // 
-            // TmrReal
-            // 
-            
-            // 
-            // getRealData
-            // 
-            
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbltest);
             this.Controls.Add(this.gradientPanel6);
             this.Controls.Add(this.gradientPanel5);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -581,14 +546,12 @@
         private ucControls.lblDemInt lblDemInt1;
         private ucControls.lblDemInt lblDemInt2;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private Classes.GradientPanel gradientPanel5;
         private Classes.GradientPanel gradientPanel7;
         private Classes.GradientPanel gradientPanel6;
         private Classes.GradientPanel gradientPanel8;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lbltest;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTotalInterv;
         private System.Windows.Forms.Label lblTotalDem;

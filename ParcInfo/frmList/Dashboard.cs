@@ -63,13 +63,24 @@ namespace ParcInfo.frmList
                     if (u.isAdmin == 1)
                     {
                         GetDashAdmin(true, true);
+                        Dem(context.GetRequestbyStatut(), context.GetInterventionBystatut());
+
                     }
                     else
                     {
                         if (RoleI == "Consulter tous les interventions".ToLower() && RoleR == "Consulter tous les demandes".ToLower())
+                        {
                             GetDashAdmin(true, true);
+
+                            Dem(context.GetRequestbyStatut(), context.GetInterventionBystatut());
+                        }
                         else
+                        {
                             GetDashUser();
+                            Dem(context.GetAssignedRequestbyStatut(), context.GetInterventionBystatut());
+                        }
+                           
+
                     }
                 }
             }
@@ -100,7 +111,6 @@ namespace ParcInfo.frmList
                     lblDemEncours.Text = context.GetRequestCours.Count().ToString();
                     lblDemEnRetard.Text = context.GetRequestRetard.Count().ToString();
                     lblTotalDem.Text = context.GetRequestbyStatut().Count.ToString();
-
                     var ls = (from c in context.GetRequestbyStatut()
                               select new
                               {
@@ -111,7 +121,6 @@ namespace ParcInfo.frmList
                                   c.Getstatut,
                                   color = GetColor(c.Getstatut)
                               }).OrderBy(i => listOrder.IndexOf(i.Getstatut)).ThenBy(d => d.Datedemande).Take(5).ToList();
-
                     foreach (var item in ls)
                     {
                         CreateLblDash("dem", item.Id, item.IdReq, item.Nom, item.Datedemande.ToString(), item.Getstatut, item.color, pnlDemande);
@@ -141,6 +150,8 @@ namespace ParcInfo.frmList
                         CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
                     }
                 }
+           
+
             }
         }
         public void GetDashUser()
@@ -207,22 +218,52 @@ namespace ParcInfo.frmList
                         CreateLblDash("int", item.Id, item.IdIntrv, item.Nom, item.DateIntervention.ToString(), item.Getstatut, item.color, pnlIntervention);
                     }
                 }
+
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var d = DateTime.Now;
+            var d2 = DateTime.Now.AddDays(1);
+
+            MessageBox.Show((d2 - d).TotalMinutes.ToString());
+         
+        }
+       
+        public string GetNum(int n)
+        {
+            return n < 9 ? "0" : "";
+
+        }
+        public void Dem(ICollection<Demande> listD, ICollection<Intervention> listI)
+        {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var dc = (from c in context.Demandes
                           join i in context.Interventions on c.Id equals i.IdDemande
-                          select new {ad =  DbFunctions.DiffMinutes(c.Datedemande, i.DateIntervention) }).ToList();
-                
-                var d = dc.Sum(dx => dx.ad) / dc.Count;
-                string varx = string.Format("{0}:{1}", (d / 60), (d % 60));
-                MessageBox.Show(varx);
+                          select new
+                          { ad = DbFunctions.DiffMinutes(c.Datedemande, i.DateIntervention) }).ToList();
+               // var listDx = dc.AsEnumerable().AsQueryable();
+               // var ds = dc.Select(c => new {  ad = (c.DateIntervention.Value - c.Datedemande.Value).TotalMinutes }).ToList();
+               
+              //ad = DbFunctions.DiffMinutes(c.Datedemande, i.DateIntervention)
+                if (dc.Count > 0)
+                {
+                    var d = dc.Sum(dx => dx.ad) / dc.Count;
+
+                    var days = GetNum((int)(d / 1440));
+                    var hours = GetNum((int)(d / 60));
+                    var min = GetNum((int)(d % 60));
+                    string varx = string.Format("{0}:{1}:{2}",(days + (d / 1440)), (hours + (d / 60)), (min + (d % 60)));
+                    lbltest.Text = varx.ToString();
+                }
+                else
+                {
+                    lbltest.Text = "00:00:00";
+                }
+
             }
-          
         }
     }
 }

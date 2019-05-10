@@ -65,16 +65,16 @@ namespace ParcInfo.frmDefault
                     lineVertical.Location = new Point(pnlUserName.Location.X - 3, 18);
                     PickBell.Location = new Point(pnlUserName.Location.X - 40, 18);
                     lblNotif.Location = new Point(pnlUserName.Location.X - 20, 15);
-                    pnlNotif.Location = new Point(pnlUserName.Location.X - pnlUserName.Width);
+                    flowNotif.Location = new Point(pnlUserName.Location.X - pnlUserName.Width);
 
                     if (u.PassChanged == 1)
                     {
                         ShowControl(new userProfile());
                     }
-
-                    ucNotifList notf = new ucNotifList(context.GetAssignedRequestAttent.ToList());
-                    pnlNotif.Size = notf.Size;
-                    pnlNotif.Controls.Add(notf);
+                    
+                    //ucNotifList notf = new ucNotifList(context.GetRequestAttent.ToList());
+                    //pnlNotif.Size = notf.Size;
+                    //pnlNotif.Controls.Add(notf);
                     
                 }
             }
@@ -264,22 +264,29 @@ namespace ParcInfo.frmDefault
         }
         void showNotif()
         {
-            if (NotifClicked)
+            if (NotifClicked && int.Parse(lblNotif.Text) > 0)
             {
-                pnlNotif.Visible = true;
+                flowNotif.Visible = true;
                 NotifClicked = false;
 
             }
             else
             {
-                pnlNotif.Visible = false;
+                flowNotif.Visible = false;
                 NotifClicked = true;
             }
         }
         public void HideMenu(object sender, EventArgs e)
         {
+         
             DropdownUserMenu.Visible = false;
             isClicked = true;
+        }
+        public void hidNotif()
+        {
+            flowNotif.Visible = false;
+            NotifClicked = true;
+
         }
 
         // Hide Profile Menu
@@ -287,6 +294,8 @@ namespace ParcInfo.frmDefault
         {
             DropdownUserMenu.Visible = false;
             isClicked = true;
+
+            hidNotif();
         }
 
         #region list of request
@@ -433,6 +442,8 @@ namespace ParcInfo.frmDefault
         private void getRealdata_DoWork(object sender, DoWorkEventArgs e)
         {
             checkDb();
+        
+         
         }
         void checkDb()
         {
@@ -502,7 +513,7 @@ namespace ParcInfo.frmDefault
                     countRequestRetard = db.GetRequestRetard.Count();
                     countRequestAttente = db.GetRequestAttent.Count();
 
-
+                    
                     countRequestDeInt = countRequestRetard + countRequestCours;
                 }
             }
@@ -545,8 +556,66 @@ namespace ParcInfo.frmDefault
             lblTotalIntervention.Update();
             lblInterventionRetard.Update();
             lblIntereventionCours.Update();
+           
+            RealNotif();
         }
 
+        
+        int notifName = 1;
+        List<int> idDem = new List<int>();
+        public void ListDem(List<int> idDem)
+        {
+            foreach (Control item in flowNotif.Controls)
+            {
+                if (item is ucNotifcs t)
+                {
+                    idDem.Add(int.Parse(t.LblidDem));
+                }
+            }
+        }
+        public void RealNotif()
+        {
+            ListDem(idDem);
+
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+              
+                var listD = context.GetRequestAttent.ToList().Take(3);
+                foreach (var item in listD)
+                {
+                    var tr = idDem.Any(i => i == item.Id);
+                    if (!tr)
+                    {
+                        ucNotifcs ucn = new ucNotifcs();
+                        ucn.Name = "ucNotif" + notifName;
+                        ucn.LblCli = $"[{item.Employee.Client.Nom}]";
+                        ucn.LblEmp = $"{item.Employee.Nom} {item.Employee.Prenom} -";
+                        ucn.LblDate = item.Datedemande.ToString();
+                        ucn.LblIDC = item.Employee.Idclient.ToString();
+                        ucn.LblidDem = item.Id.ToString();
+                        var loc = ucn.LblEmpLocation.X;
+                        loc += ucn.lblEmpWidth;
+                        ucn.LblCliLocation = new Point(loc, ucn.LblEmpLocation.Y);
+                        flowNotif.Controls.Add(ucn);
+                        ucn.BringToFront();
+                    
+                    }
+                    Red();
+                }
+            
+            
+            }
+
+        }
+        public void Red()
+        {
+            var allbtnsvisible = flowNotif.Controls.OfType<ucNotifcs>().Where(x => x.Visible);
+            if (allbtnsvisible.Count() > 0)
+            {
+                var pheight = allbtnsvisible.Sum(y => y.Height);
+                flowNotif.Size = new Size(flowNotif.Width, pheight);
+            }
+        }
         private void FrmDefault_Load(object sender, EventArgs e)
         {
             //  this.ControlBox = false;
@@ -554,7 +623,7 @@ namespace ParcInfo.frmDefault
             AddClickHide(pnlMenu);
             logoPic.BringToFront();
         }
-
+        
         
 
         public void activeBtn(Button btn )
@@ -630,6 +699,11 @@ namespace ParcInfo.frmDefault
         private void PickBell_Click(object sender, EventArgs e)
         {
             showNotif();
+        }
+
+        private void PanelContainer_Click(object sender, EventArgs e)
+        {
+         
         }
     }
 }

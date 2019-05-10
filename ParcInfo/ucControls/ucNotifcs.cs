@@ -57,6 +57,11 @@ namespace ParcInfo.ucControls
             get { return lblIDC.Text; }
             set { lblIDC.Text = value; }
         }
+        public string LblDem
+        {
+            get { return lblIDC.Text; }
+            set { lblIDC.Text = value; }
+        }
         private void btnNew_Click(object sender, EventArgs e)
         {
             StartIntervention();
@@ -66,7 +71,8 @@ namespace ParcInfo.ucControls
             int idClient = int.Parse(LblIDC);
             int idDem = int.Parse(LblidDem);
             GlobVars.frmindex.ShowControl(new NewIntervention(idClient, idDem));
-            this.Parent.Parent.Parent.Visible = false ;
+            this.Visible = false;
+            this.Parent.Visible = false ;
         }
     }
 }

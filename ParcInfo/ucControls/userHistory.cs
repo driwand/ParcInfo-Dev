@@ -16,5 +16,20 @@ namespace ParcInfo.ucControls
         {
             InitializeComponent();
         }
+        public string LblActiv
+        {
+            get { return lblVarchar.Text; }
+            set { lblVarchar.Text = value; }
+        }
+        public Color LeftColor
+        {
+            get { return leftLine.BackColor; }
+            set { leftLine.BackColor = value; }
+        }
+        private void userHistory_Load(object sender, EventArgs e)
+        {
+       
+
+        }
     }
 }
