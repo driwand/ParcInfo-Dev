@@ -103,6 +103,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnEditUser = new System.Windows.Forms.Button();
+            this.chproducts = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgClient)).BeginInit();
@@ -319,6 +320,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chproducts);
             this.groupBox1.Controls.Add(this.checkBox6);
             this.groupBox1.Controls.Add(this.checkBox7);
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -330,7 +332,6 @@
             this.groupBox1.Size = new System.Drawing.Size(448, 86);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "les produits du stock";
             // 
             // checkBox6
             // 
@@ -925,6 +926,16 @@
             this.btnEditUser.Visible = false;
             this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
+            // chproducts
+            // 
+            this.chproducts.AutoSize = true;
+            this.chproducts.Location = new System.Drawing.Point(6, 0);
+            this.chproducts.Name = "chproducts";
+            this.chproducts.Size = new System.Drawing.Size(123, 17);
+            this.chproducts.TabIndex = 29;
+            this.chproducts.Text = "les produits du stock";
+            this.chproducts.UseVisualStyleBackColor = true;
+            // 
             // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1045,5 +1056,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox chproducts;
     }
 }
