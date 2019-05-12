@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ParcInfo.ucFacture
 {
-    public partial class UserControl1 : UserControl
+    public partial class iu : UserControl
     {
-        public UserControl1()
+        public iu()
         {
             InitializeComponent();
         }

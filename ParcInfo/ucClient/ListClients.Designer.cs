@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListClients));
             this.dgClients = new System.Windows.Forms.DataGridView();
             this.CkDeletedClient = new System.Windows.Forms.CheckBox();
@@ -47,6 +48,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblID = new System.Windows.Forms.Label();
             this.gpEmployee = new ParcInfo.Classes.GradientPanel();
             this.lblEmpC = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -67,7 +69,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgClients)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -86,6 +87,14 @@
             // 
             this.dgClients.AllowUserToAddRows = false;
             this.dgClients.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(222)))), ((int)(((byte)(129)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgClients.Location = new System.Drawing.Point(14, 104);
             this.dgClients.Name = "dgClients";
@@ -159,20 +168,21 @@
             // btnFind
             // 
             this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatAppearance.BorderSize = 0;
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.Clear_Search_20px;
-            this.btnFind.Location = new System.Drawing.Point(552, 15);
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
+            this.btnFind.Location = new System.Drawing.Point(566, 19);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(28, 28);
-            this.btnFind.TabIndex = 51;
+            this.btnFind.Size = new System.Drawing.Size(20, 20);
+            this.btnFind.TabIndex = 52;
             this.btnFind.UseVisualStyleBackColor = false;
             // 
             // txtFind
             // 
             this.txtFind.Location = new System.Drawing.Point(101, 19);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(445, 20);
+            this.txtFind.Size = new System.Drawing.Size(485, 20);
             this.txtFind.TabIndex = 42;
             this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
@@ -284,6 +294,17 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(141, 316);
             this.flowLayoutPanel1.TabIndex = 89;
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(495, 463);
+            this.lblID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 90;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
             // 
             // gpEmployee
             // 
@@ -522,17 +543,6 @@
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(495, 463);
-            this.lblID.Margin = new System.Windows.Forms.Padding(0);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(13, 13);
-            this.lblID.TabIndex = 90;
-            this.lblID.Text = "0";
-            this.lblID.Visible = false;
-            // 
             // ListClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -609,7 +619,6 @@
         private System.Windows.Forms.Label lblEditedDate;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Label label15;
         public System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Button btnNewClient;
@@ -619,5 +628,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Button btnFind;
     }
 }

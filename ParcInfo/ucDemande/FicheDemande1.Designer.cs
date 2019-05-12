@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gpEmploye = new System.Windows.Forms.GroupBox();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
             this.txtDepart = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.txtPrenom = new System.Windows.Forms.TextBox();
@@ -42,6 +43,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gpDemande = new System.Windows.Forms.GroupBox();
             this.pnlDesc = new System.Windows.Forms.FlowLayoutPanel();
+            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtStatut = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,10 +51,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panInterv = new System.Windows.Forms.FlowLayoutPanel();
-            this.BtnstartInterventionFich = new System.Windows.Forms.Button();
             this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
+            this.BtnstartInterventionFich = new System.Windows.Forms.Button();
             this.lblClientName = new System.Windows.Forms.Label();
             this.gpEmploye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -78,6 +78,17 @@
             this.gpEmploye.TabIndex = 72;
             this.gpEmploye.TabStop = false;
             this.gpEmploye.Text = "Employée ";
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 163);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(404, 3);
+            this.gradientPanel1.TabIndex = 41;
             // 
             // txtDepart
             // 
@@ -203,6 +214,17 @@
             this.pnlDesc.TabIndex = 42;
             this.pnlDesc.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDesc_Paint);
             // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 196);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(404, 3);
+            this.gradientPanel2.TabIndex = 41;
+            // 
             // txtDate
             // 
             this.txtDate.Location = new System.Drawing.Point(122, 58);
@@ -267,6 +289,18 @@
             this.panInterv.Size = new System.Drawing.Size(443, 349);
             this.panInterv.TabIndex = 43;
             // 
+            // gradientPanel4
+            // 
+            this.gradientPanel4.Angle = 0F;
+            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
+            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel4.Location = new System.Drawing.Point(0, 368);
+            this.gradientPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.gradientPanel4.Name = "gradientPanel4";
+            this.gradientPanel4.Size = new System.Drawing.Size(449, 3);
+            this.gradientPanel4.TabIndex = 42;
+            // 
             // BtnstartInterventionFich
             // 
             this.BtnstartInterventionFich.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
@@ -283,47 +317,13 @@
             this.BtnstartInterventionFich.UseVisualStyleBackColor = false;
             this.BtnstartInterventionFich.Click += new System.EventHandler(this.BtnstartInterventionFich_Click);
             // 
-            // gradientPanel4
-            // 
-            this.gradientPanel4.Angle = 0F;
-            this.gradientPanel4.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
-            this.gradientPanel4.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel4.Location = new System.Drawing.Point(0, 368);
-            this.gradientPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.gradientPanel4.Name = "gradientPanel4";
-            this.gradientPanel4.Size = new System.Drawing.Size(449, 3);
-            this.gradientPanel4.TabIndex = 42;
-            // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.Angle = 0F;
-            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
-            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel2.Location = new System.Drawing.Point(0, 196);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(404, 3);
-            this.gradientPanel2.TabIndex = 41;
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.Angle = 0F;
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(83)))), ((int)(((byte)(112)))));
-            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 163);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(404, 3);
-            this.gradientPanel1.TabIndex = 41;
-            // 
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
             this.lblClientName.BackColor = System.Drawing.Color.White;
             this.lblClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(170)))), ((int)(((byte)(242)))));
-            this.lblClientName.Location = new System.Drawing.Point(181, 16);
+            this.lblClientName.Location = new System.Drawing.Point(170, 16);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(76, 13);
             this.lblClientName.TabIndex = 125;

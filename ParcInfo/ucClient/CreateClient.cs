@@ -19,6 +19,7 @@ namespace ParcInfo.ucClient
         int deparName = 1;
         int idC = 0;
 
+         
         public CreateClient(int idClient, string Code)
         {
             InitializeComponent();
@@ -58,9 +59,11 @@ namespace ParcInfo.ucClient
                         btnEditClient.Visible = true;
                         btnEditClient.Location = new Point(738, 443);
                         btnDelClient.Visible = true;
+                   
                     }
                     else
                     {
+                      //  HideBtn();
                         BtnAddUser.Visible = false;
                         btnAddDepartement.Visible = false;
                     }
@@ -82,7 +85,7 @@ namespace ParcInfo.ucClient
                     var listUtilisateur = (from c in client.AffectationClients
                                            where c.Idclient == idClient && c.IsDeleted == 0
                                            join d in context.Utilisateurs on c.Idutilisateur equals d.Id
-                                           select new { idAff = c.Id, d.Id, d.Nom, d.Prenom }).ToList();
+                                           select new { idAff = c.Id, d.Id, d.Nom, d.Prenom ,c.Client.IsDeleted}).ToList();
                     // DepartementID = listDepart.Select(c => c.id).ToList();
                     txtlblDepartement tbx = this.Controls.Find("ucDepart1", true).FirstOrDefault() as txtlblDepartement;
                     lblTextbox ltb = this.Controls.Find("userC1", true).FirstOrDefault() as lblTextbox;
@@ -92,6 +95,8 @@ namespace ParcInfo.ucClient
                         var depart = listDepart.FirstOrDefault();
                         tbx.TxtValue = depart.Nom;
                         tbx.Lblid = depart.id.ToString();
+                        if (client.IsDeleted == 1)
+                            tbx.BtnDel = false;
                         foreach (var item in listDepart.Skip(1))
                         {
                             txtlblDepartement depr1 = new txtlblDepartement();
@@ -102,6 +107,8 @@ namespace ParcInfo.ucClient
                             depr1.Margin = new Padding(0, 0, 0, 12);
                             deparName++;
                             PnlDepart.Controls.Add(depr1);
+                            if (client.IsDeleted == 1)
+                                depr1.BtnDel = false;
                         }
                     }
                     if (listUtilisateur != null && listUtilisateur.Count > 0)
@@ -110,6 +117,12 @@ namespace ParcInfo.ucClient
                         ltb.TxtValue = user.Nom + " " + user.Prenom;
                         ltb.Lblid = user.Id.ToString();
                         ltb.LblAff = user.idAff.ToString();
+                        if (client.IsDeleted == 1)
+                        {
+                            ltb.BtnDel = false;
+                            ltb.BtnAdd = false;
+                        }
+                            
                         foreach (var item in listUtilisateur.Skip(1))
                         {
                             //first lblTexbox to fill user
@@ -122,10 +135,39 @@ namespace ParcInfo.ucClient
                             user2.Margin = new Padding(0, 0, 0, 12);
                             userName++;
                             PnlUsers.Controls.Add(user2);
+                            if (client.IsDeleted == 1)
+                            {
+                                user2.BtnDel = false;
+                                user2.BtnAdd = false;
+                            }
+
                         }
                     }
                 }
             }
+        }
+
+        public void HideBtn()
+        {
+            //Depart
+            var lblDep = (from x in PnlDepart.Controls.OfType<txtlblDepartement>()
+                          select x
+                          ).ToList();
+            foreach (var d in lblDep)
+            {
+                d.BtnDel = false;
+              
+            }
+            // Users
+            var lblUser = (from x in PnlUsers.Controls.OfType<lblTextbox>()
+                          select x
+                        ).ToList();
+            foreach (var u in lblUser)
+            {
+                u.BtnAdd = false;
+                u.BtnDel = false;
+            }
+           
         }
         private void CreateClient_Load(object sender, EventArgs e)
         {

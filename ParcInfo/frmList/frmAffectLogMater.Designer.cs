@@ -33,7 +33,6 @@
             this.dgProdcuts = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbltype = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblproduct = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
+            this.btnFind = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdcuts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,8 +83,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnFind);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtFind);
             this.groupBox1.Location = new System.Drawing.Point(12, 72);
             this.groupBox1.Name = "groupBox1";
@@ -102,23 +102,11 @@
             this.label1.TabIndex = 53;
             this.label1.Text = "Filtrer les produits :";
             // 
-            // btnFind
-            // 
-            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(529, 16);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(28, 28);
-            this.btnFind.TabIndex = 52;
-            this.btnFind.UseVisualStyleBackColor = false;
-            // 
             // txtFind
             // 
             this.txtFind.Location = new System.Drawing.Point(115, 20);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(408, 20);
+            this.txtFind.Size = new System.Drawing.Size(431, 20);
             this.txtFind.TabIndex = 43;
             // 
             // groupBox2
@@ -190,6 +178,19 @@
             this.lbl1.TabIndex = 53;
             this.lbl1.Text = "Produit :";
             // 
+            // btnFind
+            // 
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatAppearance.BorderSize = 0;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
+            this.btnFind.Location = new System.Drawing.Point(526, 20);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(20, 20);
+            this.btnFind.TabIndex = 54;
+            this.btnFind.UseVisualStyleBackColor = false;
+            // 
             // frmAffectLogMater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,7 +222,6 @@
         private System.Windows.Forms.DataGridView dgProdcuts;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.Label lbltype;
@@ -230,5 +230,6 @@
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label lblproduct;
         public System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Button btnFind;
     }
 }

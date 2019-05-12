@@ -57,6 +57,7 @@ namespace ParcInfo.ucClient
                     userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                     userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                    c.IsDeleted
                 }).ToList());
                 myGrid();
             }
@@ -81,6 +82,7 @@ namespace ParcInfo.ucClient
                     userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                     userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                    c.IsDeleted
                 }).ToList());
                 myGrid();
             }
@@ -110,6 +112,7 @@ namespace ParcInfo.ucClient
                     userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                     userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                     dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                    c.IsDeleted
                 }).ToList());
                 myGrid();
             }
@@ -138,6 +141,7 @@ namespace ParcInfo.ucClient
                 userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
                 userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
                 dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                c.IsDeleted
             }).ToList());
             myGrid();
         }
@@ -196,7 +200,7 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                string nom = myrow.Cells["IdCLient"].Value.ToString();
+                string nom = myrow.Cells["Nom"].Value.ToString();
 
                 ListDemande lsinter = new ListDemande(id, nom);
 
@@ -252,19 +256,31 @@ namespace ParcInfo.ucClient
                 if (GlobVars.cuUser.isAdmin == 0)
                     if (GetRoleName == "Consulter tous les client")
                         if (CkDeletedClient.Checked)
+                        {
                             GetAllDeletedClients();
+                          //  Methods.ChangeDeltedRow(dgClients);
+                        }
                         else
                         {
-                            GetAllClients();  
+                            GetAllClients();
+                           
                         }
                     else
                         if (CkDeletedClient.Checked)
+                        {
                             GetAssigneDeletedClients();
+                         //   Methods.ChangeDeltedRow(dgClients);
+                        }
+                           
                         else
                             GetAssignedClients();
                 else
                     if (CkDeletedClient.Checked)
+                {
                     GetAllDeletedClients();
+                   // Methods.ChangeDeltedRow(dgClients);
+                }
+               
                 else
                 {
                     GetAllClients();
@@ -320,8 +336,8 @@ namespace ParcInfo.ucClient
 
 
             Methods.Nice_grid(
-                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract" },
-                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract" },
+                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract", "IsDeleted" },
+                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract", "IsDeleted" },
                 dgClients
                 );
 

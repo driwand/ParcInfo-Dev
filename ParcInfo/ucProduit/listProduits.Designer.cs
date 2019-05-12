@@ -47,6 +47,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnNewType = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.LinkLabel();
+            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nuAffecter)).BeginInit();
             this.gpAffectationProduit.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -112,12 +113,13 @@
             // btnFind
             // 
             this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatAppearance.BorderSize = 0;
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(342, 14);
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
+            this.btnFind.Location = new System.Drawing.Point(347, 18);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(28, 28);
+            this.btnFind.Size = new System.Drawing.Size(20, 20);
             this.btnFind.TabIndex = 51;
             this.btnFind.UseVisualStyleBackColor = false;
             // 
@@ -125,7 +127,7 @@
             // 
             this.txtFind.Location = new System.Drawing.Point(103, 18);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(238, 20);
+            this.txtFind.Size = new System.Drawing.Size(264, 20);
             this.txtFind.TabIndex = 42;
             this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
@@ -265,12 +267,25 @@
             this.lblUser.TabIndex = 154;
             this.lblUser.TabStop = true;
             this.lblUser.Text = "aucune";
+            this.lblUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblUser_LinkClicked);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(575, 433);
+            this.lblID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 155;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
             // 
             // listProduits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnNewType);
             this.Controls.Add(this.gpAffectationProduit);
@@ -320,5 +335,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNewType;
         private System.Windows.Forms.LinkLabel lblUser;
+        private System.Windows.Forms.Label lblID;
     }
 }

@@ -20,35 +20,39 @@ namespace ParcInfo.ucDemande
         public int ClientId;
         public string ReqStat;
 
-        public FicheDemande1(int IdReq)
+        public FicheDemande1(int IdReq,string NomClient = "")
         {
             InitializeComponent();
             using (var db = new ParcInformatiqueEntities())
             {
-                var currentReq = db.GetRequests.Where(r => r.Id == IdReq).FirstOrDefault();
-                ReqId = IdReq;
-                ReqStat = currentReq.Getstatut;
-                ClientId = currentReq.Employee.Client.id;
+                var currentReq = db.Demandes.Where(r => r.Id == IdReq).FirstOrDefault();
+                if (currentReq != null)
+                {
+                    ReqId = IdReq;
+                    lblClientName.Text = currentReq.Employee.Client.Nom;
+                    ReqStat = currentReq.Getstatut;
+                    ClientId = currentReq.Employee.Client.id;
+                    txtNom.Text = currentReq.Employee.Nom;
+                    txtPrenom.Text = currentReq.Employee.Prenom;
+                    txtDepart.Text = currentReq.Employee.Departement.Nom;
+                    txtTel.Text = currentReq.Employee.Tel;
+                    txtStatut.Text = currentReq.Getstatut;
+                    txtDate.Text = currentReq.Datedemande.ToString();
+                    MultiLineLabel ml = new MultiLineLabel();
 
-                txtNom.Text = currentReq.Employee.Nom;
-                txtPrenom.Text = currentReq.Employee.Prenom;
-                txtDepart.Text = currentReq.Employee.Departement.Nom;
-                txtTel.Text = currentReq.Employee.Tel;
-                txtStatut.Text = currentReq.Getstatut;
-                txtDate.Text = currentReq.Datedemande.ToString();
-                MultiLineLabel ml = new MultiLineLabel();
+                    ml.Parent = pnlDesc;
+                    ml.Margin = new Padding(0, 4, 0, 0);
+                    ml.AutoSize = true;
+                    ml.MultiLine = true;
+                    ml.Text = currentReq.Description_d;//show text of description
+                    int o = ml.Height;
 
-                ml.Parent = pnlDesc;
-                ml.Margin = new Padding(0, 4, 0, 0);
-                ml.AutoSize = true;
-                ml.MultiLine = true;
-                ml.Text = currentReq.Description_d;//show text of description
-                int o = ml.Height;
+                    // pnlDesc.Size = new Size(300, o); //make size of panel as the height of text
 
-                // pnlDesc.Size = new Size(300, o); //make size of panel as the height of text
-
-                ml = new MultiLineLabel();
-                pnlDesc.Controls.Add(ml);
+                    ml = new MultiLineLabel();
+                    pnlDesc.Controls.Add(ml);
+                }
+           
                 foreach (var inter in currentReq.Interventions)
                 {
                     ShowIntervention(
@@ -62,6 +66,7 @@ namespace ParcInfo.ucDemande
                         inter.Statut
                         );
                 }
+                lblClientName.Text = $"[{NomClient}]";
             }
         }
         void ShowIntervention(string idInterv, string intervenant, string dateinter, string debut, string fin, string duree, string type, string statut)
