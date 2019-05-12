@@ -172,7 +172,7 @@ namespace ParcInfo.ucInterevntion
                             if (res == "")
                                 break;
                             
-                            if (Regex.IsMatch(res, @"^[1-9]\d*$") && !string.IsNullOrWhiteSpace(res))
+                            if (Regex.IsMatch(res, @"^[1-9]\d+$") && !string.IsNullOrWhiteSpace(res))
                                 verify = true;
                             
                             else

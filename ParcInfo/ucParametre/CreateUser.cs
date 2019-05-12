@@ -80,6 +80,7 @@ namespace ParcInfo.ucParametre
                 }
 
                 GetAllCheckbox(pnlRoles);
+                //if chk
             }
         }
 
