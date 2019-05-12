@@ -170,6 +170,7 @@ namespace ParcInfo.ucParametre
 
 
         // get checkbox value
+        
         public void GetAllCheckbox(Control ctrl)
         {
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -177,7 +178,7 @@ namespace ParcInfo.ucParametre
                 var listR = context.GetListRoles(idU);
                 foreach (Control item in ctrl.Controls)
                 {
-                    if (item is GroupBox && item.Enabled == true)
+                    if (item is GroupBox)
                     {
                         GetAllCheckbox(item);
                     }
@@ -225,7 +226,7 @@ namespace ParcInfo.ucParametre
             List<string> str = new List<string>();
             foreach (Control item in ctrl.Controls)
             {
-                if (item is GroupBox)
+                if (item is GroupBox && item.Enabled == true)
                 {
                     CheckBoxC(item, ls);
                 }
@@ -337,8 +338,6 @@ namespace ParcInfo.ucParametre
                 {
 
                 }
-
-
             }
         }
 
@@ -346,6 +345,27 @@ namespace ParcInfo.ucParametre
         {
             ManageCheckGroupBox(chreq, gpDemande);
         }
+
+        private void chinterv_CheckedChanged(object sender, EventArgs e)
+        {
+            ManageCheckGroupBox(chinterv, gpIntervention);
+        }
+
+        private void chproduct_CheckedChanged(object sender, EventArgs e)
+        {
+            ManageCheckGroupBox(chproduct, gpProduitAff);
+        }
+
+        private void chkemployee_CheckedChanged(object sender, EventArgs e)
+        {
+            ManageCheckGroupBox(chkemployee, gpemployee);
+        }
+
+        private void chproducts_CheckedChanged(object sender, EventArgs e)
+        {
+            ManageCheckGroupBox(chproducts, gpProduit);
+        }
+
 
         private void ManageCheckGroupBox(CheckBox chk, GroupBox grp)
         {
