@@ -126,14 +126,28 @@ namespace ParcInfo
                 list = Methods.GetidList(pnlCntrl);
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
+                    var c = context.Clients.Find(idC);
                     foreach (var item in list)
                     {
-                        context.ProduitClients.Add(new ProduitClient { Idproduit = item.Id,
-                            Idclient = idC, Prixvente = float.Parse(item.Value),
+                         ProduitClient prod = new ProduitClient()
+                        {
+                            Idproduit = item.Id,
+                            Idclient = idC,
+                            Prixvente = float.Parse(item.Value),
                             Dateaffectation = DateTime.Now,
                             Creepar = GlobVars.cuUser.Id,
-                            IsDeleted = 0 });
+                            IsDeleted = 0
+                        };
+                        context.ProduitClients.Add(prod);
+                        var p = context.Produits.Find(item.Id);
+                      
+                        context.UserActivities.Add(new UserActivity
+                        {
+                            Iduser = GlobVars.cuUser.Id,
+                            Activity = $"Le Produit [{p.CodeP}] a été affecté au Client [{c.IdCLient}] Le [{DateTime.Now}]"
+                        });
                     }
+
                     context.SaveChanges();
                     this.Close();
                     if (dggrid != null)
@@ -165,6 +179,7 @@ namespace ParcInfo
                                        p.Datefabrication,
                                        p.IsDeleted,
                                        userMod = p.Utilisateur1 != null ? p.Utilisateur1.Nom : "aucune",
+                                       userID = p.Utilisateur1 != null ? p.Utilisateur1.Id : 0,
                                        dateMod = p.Datemodification != null ? p.Datemodification.ToString() : "**-**-****",
                                    }).ToList();
                 dggrid.DataSource = Methods.ToDataTable(listProduit);
@@ -174,6 +189,10 @@ namespace ParcInfo
                     new string[] { "Code Produit", "id", "Type", "Marque", "Model", "Prix", "Date de fabrication" },
                     dggrid
                     );
+                if (dggrid.Rows.Count > 0)
+                {
+                    dggrid.Rows[0].Selected = true;
+                }
 
             }
         }

@@ -205,11 +205,11 @@
     <Compile Include="ucControls\DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ucControls\FactCntrl.cs">
+    <Compile Include="ucControls\FactureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucControls\FactCntrl.Designer.cs">
-      <DependentUpon>FactCntrl.cs</DependentUpon>
+    <Compile Include="ucControls\FactureBox.Designer.cs">
+      <DependentUpon>FactureBox.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControls\ForgetPassword.cs">
       <SubType>UserControl</SubType>
@@ -222,12 +222,6 @@
     </Compile>
     <Compile Include="ucControls\InfoInterv.Designer.cs">
       <DependentUpon>InfoInterv.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ucControls\infoIntervention.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucControls\infoIntervention.Designer.cs">
-      <DependentUpon>infoIntervention.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControls\lblDashTablecs.cs">
       <SubType>UserControl</SubType>
@@ -478,17 +472,14 @@
     <EmbeddedResource Include="ucControls\AffectEmloyee.resx">
       <DependentUpon>AffectEmloyee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucControls\FactCntrl.resx">
-      <DependentUpon>FactCntrl.cs</DependentUpon>
+    <EmbeddedResource Include="ucControls\FactureBox.resx">
+      <DependentUpon>FactureBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\ForgetPassword.resx">
       <DependentUpon>ForgetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\InfoInterv.resx">
       <DependentUpon>InfoInterv.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucControls\infoIntervention.resx">
-      <DependentUpon>infoIntervention.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControls\lblDashTablecs.resx">
       <DependentUpon>lblDashTablecs.cs</DependentUpon>
@@ -841,6 +832,14 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\ClearSearch.png" />
+    <None Include="Resources\CalendarBlackpx.png" />
+    <None Include="Resources\Checked_64px.png" />
+    <None Include="Resources\Checked_C52px.png" />
+    <None Include="Resources\Checked_52px.png" />
+    <None Include="Resources\Communicate_48px.png" />
+    <None Include="Resources\Product_52px.png" />
+    <None Include="Resources\Calendar_52px.png" />
     <None Include="Resources\Next_16px.png" />
     <None Include="Resources\Next_20px.png" />
     <None Include="Resources\Clear Search_20px.png" />

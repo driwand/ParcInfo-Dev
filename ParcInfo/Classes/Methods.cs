@@ -29,7 +29,7 @@ namespace ParcInfo.Classes
                     color = Color.FromArgb(255, 192, 0);
                     break;
                 case "en retard":
-                    color = Color.FromArgb(238, 82, 83);
+                    color = Color.FromArgb(235, 59, 90);
                     break;
                 case "en cours":
                     color = Color.FromArgb(241, 196, 15);
@@ -276,6 +276,8 @@ namespace ParcInfo.Classes
             {
                 if (c.ToLower() == "id")
                     grid.Columns["id"].Visible = false;
+                else if (c.ToLower() == "isdeleted")
+                    grid.Columns["IsDeleted"].Visible = false;
             }
             
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
@@ -288,8 +290,10 @@ namespace ParcInfo.Classes
             DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 
+
+            
             DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            grid.BackgroundColor = Color.WhiteSmoke;
+            grid.BackgroundColor = Color.FromArgb(222, 228, 234);
             grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1;
             grid.ReadOnly = true;
             grid.ColumnHeadersHeight = 40;
@@ -298,7 +302,11 @@ namespace ParcInfo.Classes
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
-    
+
+            // row style row 
+             DataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(69, 170, 242);
+            grid.RowsDefaultCellStyle = DataGridViewCellStyle1;
             int x = 0;
             foreach (DataGridViewColumn column in grid.Columns)
                 x += column.Width;
@@ -319,7 +327,17 @@ namespace ParcInfo.Classes
                     r.HeaderText = columnstext[index - 1];
                 }
             }
-            
+            //foreach (DataGridViewRow item in grid.Rows)
+            //{
+            //    var t = item.Cells["IsDeleted"].Value.ToString();
+            //    if (int.Parse(t) == 1)
+            //    {
+            //        DataGridViewCellStyle1 = new DataGridViewCellStyle();
+            //        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 71, 87);
+            //        grid.RowsDefaultCellStyle = DataGridViewCellStyle1;
+            //    }
+
+            //}
 
         }
 
@@ -329,10 +347,26 @@ namespace ParcInfo.Classes
             {
 
                 var t = item.Cells["Getstatut"].Value.ToString();
-                item.Cells["Getstatut"].Style.ForeColor = Methods.GetColor(t);
+                item.Cells["Getstatut"].Style.BackColor = Methods.GetColor(t);
+                item.Cells["Getstatut"].Style.ForeColor = Color.White;
                 item.Cells["Getstatut"].Style.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+                item.Cells["Getstatut"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             }
         }
+
+
+        //ChangeColorDeleted
+        public static void ChangeDeltedRow(DataGridView grid)
+        {
+            foreach (DataGridViewRow item in grid.Rows)
+            {
+
+                item.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 71, 87);
+                item.DefaultCellStyle.SelectionForeColor = Color.White;
+            }
+        }
+
         //methods for Password
 
         public static string stringMsg(string nom, string prenom, string email, string password)

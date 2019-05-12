@@ -32,8 +32,8 @@
             this.btn_select = new System.Windows.Forms.Button();
             this.dgProdcuts = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnFind = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtFind = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdcuts)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -75,8 +75,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnFind);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtFind);
             this.groupBox1.Location = new System.Drawing.Point(14, 13);
             this.groupBox1.Name = "groupBox1";
@@ -84,6 +84,19 @@
             this.groupBox1.TabIndex = 75;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rechercher";
+            // 
+            // btnFind
+            // 
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatAppearance.BorderSize = 0;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
+            this.btnFind.Location = new System.Drawing.Point(537, 20);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(20, 20);
+            this.btnFind.TabIndex = 54;
+            this.btnFind.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -94,23 +107,11 @@
             this.label1.TabIndex = 53;
             this.label1.Text = "Filtrer les produits :";
             // 
-            // btnFind
-            // 
-            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(529, 16);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(28, 28);
-            this.btnFind.TabIndex = 52;
-            this.btnFind.UseVisualStyleBackColor = false;
-            // 
             // txtFind
             // 
             this.txtFind.Location = new System.Drawing.Point(115, 20);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(408, 20);
+            this.txtFind.Size = new System.Drawing.Size(442, 20);
             this.txtFind.TabIndex = 43;
             // 
             // frmListProducts
@@ -142,7 +143,7 @@
         private System.Windows.Forms.DataGridView dgProdcuts;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Button btnFind;
     }
 }

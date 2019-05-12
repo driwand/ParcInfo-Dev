@@ -56,7 +56,7 @@ namespace ParcInfo.ucControls
             {
                 if (this.Name == "dem")
                 {
-                    GlobVars.frmindex.ShowControl(new FicheDemande1(int.Parse(ID)));
+                    GlobVars.frmindex.ShowControl(new FicheDemande1(int.Parse(ID),LblClient));
                 }
                 else
                 {

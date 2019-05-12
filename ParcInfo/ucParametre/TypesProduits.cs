@@ -104,12 +104,18 @@ namespace ParcInfo.settings
                         }
                         context.SaveChanges();
                         MessageBox.Show("Insertion effectuée");
-                        UpdateGrid();
+                       
                         dgType.ClearSelection();
                         btnNewType.Visible = false;
                         btnDelType.Visible = false;
                         Clear();
+                      
                         Methods.Clear(this);
+                        UpdateGrid();
+                        if (dgType.Rows.Count > 0)
+                        {
+                            dgType.Rows[0].Selected = true;
+                        }
                     }
                 }
                 else
@@ -166,6 +172,7 @@ namespace ParcInfo.settings
                     btnNewType.Visible = false;
                     btnDelType.Visible = false;
                     UpdateGrid();
+                
                 }
             }
         }
@@ -200,6 +207,8 @@ namespace ParcInfo.settings
             btnNewType.Visible = false;
             btnDelType.Visible = false;
 
+            
+
         }
         private void btnDelType_Click(object sender, EventArgs e)
         {
@@ -222,7 +231,11 @@ namespace ParcInfo.settings
                     btnNewType.Visible = false;
                     btnDelType.Visible = false;
                     UpdateGrid();
-                   
+                    if (dgType.Rows.Count > 0)
+                    {
+                        dgType.Rows[0].Selected = true;
+                    }
+
                 }
                 else if (result == DialogResult.No)
                 {
@@ -237,7 +250,7 @@ namespace ParcInfo.settings
         {
             if (e.RowIndex > -1)
             {
-                Clear();
+               
 
                 var myrow = dgType.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());

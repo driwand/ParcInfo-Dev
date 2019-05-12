@@ -26,7 +26,16 @@ namespace ParcInfo.ucControls
             get { return txtValue.Text; }
             set { txtValue.Text = value; }
         }
-
+        public bool BtnAdd
+        {
+            get { return btn_nouveau.Visible; }
+            set { btn_nouveau.Visible = value; }
+        }
+        public bool BtnDel
+        {
+            get { return btn_supprimer.Visible; }
+            set { btn_supprimer.Visible = value; }
+        }
         public string Lblid
         {
             get { return lblid.Text; }

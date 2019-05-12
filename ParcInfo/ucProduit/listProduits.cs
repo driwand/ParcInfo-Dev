@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ParcInfo.ucControls;
 using ParcInfo.Classes;
 using System.Text.RegularExpressions;
+using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucClient
 {
@@ -17,6 +18,7 @@ namespace ParcInfo.ucClient
     {
         ProduitInfo pd;
         int IsDeleted = 0;
+        
         public listProduits()
         {
             InitializeComponent();
@@ -90,6 +92,11 @@ namespace ParcInfo.ucClient
                             context.Produits.Add(prod);
                             context.SaveChanges();
                             var d = prod.id;
+                            context.UserActivities.Add(new UserActivity
+                            {
+                                Iduser = GlobVars.cuUser.Id,
+                                Activity = $"Produit [{prod.CodeP}] Créer le {DateTime.Now}"
+                            });
                             foreach (Control c in pd.pnlProp.Controls)
                             {
                                 if (c is lblProduit)
@@ -111,9 +118,10 @@ namespace ParcInfo.ucClient
                                 }
                             }
                         }
-
+                 
                         context.SaveChanges();
                         displayData();
+                        dgProduits.Rows[0].Selected = true;
                     }
                 }
                 // Edit Produit
@@ -144,8 +152,16 @@ namespace ParcInfo.ucClient
                                 }
                             }
                         }
+                        context.UserActivities.Add(new UserActivity
+                        {
+                            Iduser = GlobVars.cuUser.Id,
+                            Activity = $"Produit [{p.CodeP}] Modifié le {DateTime.Now}"
+                        });
+                         
+                      
                         context.SaveChanges();
                         displayData();
+                        dgProduits.Rows[0].Selected = true;
                     }
 
                 }
@@ -167,6 +183,8 @@ namespace ParcInfo.ucClient
                 string nomUser = myrow.Cells["userMod"].Value.ToString();
                 string date = myrow.Cells["dateMod"].Value.ToString();
                 int isDeleted = int.Parse(myrow.Cells["isDeleted"].Value.ToString());
+                int idUser = (int)myrow.Cells["userID"].Value;
+
                 if (isDeleted == 1)
                 {
                     btnDelP.Visible = false;
@@ -185,6 +203,7 @@ namespace ParcInfo.ucClient
                 lblM.Location = new Point(loc, 454);
                 lblDateMod.Text = date;
                 lblDateMod.Location = new Point(lblM.Location.X + lblM.Width, 454);
+                lblID.Text = idUser.ToString();
             }
         }
 
@@ -228,6 +247,7 @@ namespace ParcInfo.ucClient
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
+            dgProduits.ClearSelection();
         }
 
 
@@ -275,6 +295,11 @@ namespace ParcInfo.ucClient
                     c.IsDeleted = 1;
                     c.Datemodification = DateTime.Now;
                     c.Modifierpar = GlobVars.cuUser.Id;
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Produit [{c.CodeP}] Supprimé le {DateTime.Now}"
+                    });
                     context.SaveChanges();
                     MessageBox.Show("produit supprimé");
                     Clear();
@@ -285,13 +310,12 @@ namespace ParcInfo.ucClient
                     {
                         dgProduits.Rows[0].Selected = true;
                     }
+
                 }
                 else if (result == DialogResult.No)
                 {
 
                 }
-
-
             }
         }
 
@@ -315,6 +339,7 @@ namespace ParcInfo.ucClient
                                        p.Datefabrication,
                                        p.IsDeleted,
                                        userMod = p.Utilisateur1 != null ? p.Utilisateur1.Nom : "aucune",
+                                       userID = p.Utilisateur1 != null ? p.Utilisateur1.Id : 0,
                                        dateMod = p.Datemodification != null ? p.Datemodification.ToString() : "**-**-****",
                                    }).ToList();
                 dgProduits.DataSource = Methods.ToDataTable(listProduit);
@@ -326,6 +351,7 @@ namespace ParcInfo.ucClient
                     );
                 Methods.FilterDataGridViewIni(dgProduits, txtFind, btnFind);
                 dgProduits.MultiSelect = true;
+               
             }
         }
 
@@ -413,6 +439,13 @@ namespace ParcInfo.ucClient
             }
         }
 
-
+        private void LblUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int idU = int.Parse(lblID.Text);
+            if (idU > 0)
+            {
+                GlobVars.frmindex.ShowControl(new CardUsers(idU));
+            }
+        }
     }
 }

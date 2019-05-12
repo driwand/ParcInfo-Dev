@@ -663,6 +663,7 @@ namespace ParcInfo.frmDefault
         {
             ShowControl(new Dashboard());
             GlobVars.lsback.Clear();
+           // activeBtn(BtnHome);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

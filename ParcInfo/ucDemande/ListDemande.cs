@@ -42,7 +42,9 @@ namespace ParcInfo.ucClient
             using (var db = new ParcInformatiqueEntities())
             {
                 Idcli = idClient;
-
+                lblEmployeClient.Text = $"[{nom}]";
+                lblEmployeClient.Visible = true;
+                lblEmployeClient.ForeColor = Color.FromArgb(0, 168, 255);
                 var lsreq = (from d in db.GetRequestbyStatut()
                              where d.Employee.Client.id == idClient
                              select new
@@ -62,7 +64,7 @@ namespace ParcInfo.ucClient
 
                 Methods.Nice_grid(
                     new string[] { "IdReq", "Datedemande", "Desc", "Nom", "Getstatut" },
-                    new string[] { "ID Demande", "Date Demande", "Description", "Employee", "Statut" },
+                    new string[] { "ID Demande" ,"Date Demande", "Description", "Employee", "Statut" },
                     dgDemande);
 
                 Methods.FilterDataGridViewIni(dgDemande, txtFind, btnFind);
@@ -109,8 +111,8 @@ namespace ParcInfo.ucClient
                     HideColumns(new string[] { "id", "IdClient" }, dgDemande);
 
                     Methods.Nice_grid(
-                        new string[] { "IdReq", "Datedemande", "Desc", "Nom", "Getstatut" },
-                        new string[] { "ID Demande", "Date Demande", "Description", "Employee", "Statut" },
+                        new string[] { "IdReq", "ClientNom", "Datedemande", "Desc", "Nom", "Getstatut" },
+                        new string[] { "ID Demande","Client", "Date Demande", "Description", "Employee", "Statut" },
                         dgDemande);
 
                     if (idEmploye > 0)
@@ -152,6 +154,7 @@ namespace ParcInfo.ucClient
                                  {
                                      d.Id,
                                      d.IdReq,
+                                     ClientNom = d.Employee.Client.Nom,
                                      d.Datedemande,
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
@@ -169,6 +172,7 @@ namespace ParcInfo.ucClient
                                  {
                                      d.Id,
                                      d.IdReq,
+                                     ClientNom = d.Employee.Client.Nom,
                                      d.Datedemande,
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      Nom = d.Employee.Nom != null ? d.Employee.Nom : "",
@@ -193,6 +197,7 @@ namespace ParcInfo.ucClient
                                  {
                                      d.Id,
                                      d.IdReq,
+                                     ClientNom = d.Employee.Client.Nom,
                                      d.Datedemande,
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      d.Employee.Nom,
@@ -210,6 +215,7 @@ namespace ParcInfo.ucClient
                                  {
                                      d.Id,
                                      d.IdReq,
+                                     ClientNom = d.Employee.Client.Nom,
                                      d.Datedemande,
                                      Desc = Methods.GetDesc(d.Description_d, 4),
                                      d.Employee.Nom,
@@ -348,6 +354,7 @@ namespace ParcInfo.ucClient
                                   {
                                       d.Id,
                                       d.IdReq,
+                                      ClientNom = d.Employee.Client.Nom,
                                       d.Datedemande,
                                       Desc = Methods.GetDesc(d.Description_d, 4),
                                       d.Employee.Nom,
@@ -372,6 +379,8 @@ namespace ParcInfo.ucClient
                               {
                                   d.Id,
                                   d.IdReq,
+                                  ClientNom = d.Employee.Client.Nom,
+
                                   d.Datedemande,
                                   Desc = Methods.GetDesc(d.Description_d, 4),
                                   d.Employee.Nom,

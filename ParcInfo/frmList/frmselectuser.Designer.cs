@@ -32,8 +32,8 @@
             this.btn_select = new System.Windows.Forms.Button();
             this.dgUsers = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblText = new System.Windows.Forms.Label();
             this.btnFind = new System.Windows.Forms.Button();
+            this.lblText = new System.Windows.Forms.Label();
             this.txtFind = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -76,8 +76,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblText);
             this.groupBox1.Controls.Add(this.btnFind);
+            this.groupBox1.Controls.Add(this.lblText);
             this.groupBox1.Controls.Add(this.txtFind);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -85,6 +85,19 @@
             this.groupBox1.TabIndex = 67;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rechercher";
+            // 
+            // btnFind
+            // 
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatAppearance.BorderSize = 0;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
+            this.btnFind.Location = new System.Drawing.Point(532, 19);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(20, 20);
+            this.btnFind.TabIndex = 54;
+            this.btnFind.UseVisualStyleBackColor = false;
             // 
             // lblText
             // 
@@ -95,23 +108,11 @@
             this.lblText.TabIndex = 53;
             this.lblText.Text = "Les utilisateurs :";
             // 
-            // btnFind
-            // 
-            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.Find16;
-            this.btnFind.Location = new System.Drawing.Point(529, 16);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(28, 28);
-            this.btnFind.TabIndex = 52;
-            this.btnFind.UseVisualStyleBackColor = false;
-            // 
             // txtFind
             // 
-            this.txtFind.Location = new System.Drawing.Point(108, 20);
+            this.txtFind.Location = new System.Drawing.Point(126, 20);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(415, 20);
+            this.txtFind.Size = new System.Drawing.Size(426, 20);
             this.txtFind.TabIndex = 43;
             // 
             // frmselectuser
@@ -143,7 +144,7 @@
         private System.Windows.Forms.DataGridView dgUsers;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Label lblText;
-        private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Button btnFind;
     }
 }

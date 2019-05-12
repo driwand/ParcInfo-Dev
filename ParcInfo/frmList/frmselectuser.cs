@@ -26,6 +26,8 @@ namespace ParcInfo
             tbx = txtbx;
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
+                this.Text = "Affectation d'un utilisateur à un client";
+                lblText.Text = "Filtrer les utilisateurs :";
                 var userList = context.Utilisateurs.ToList();
                 dgUsers.DataSource = Methods.ToDataTable(userList.Select(c => new { c.IdUser, c.Id, c.Nom, c.Prenom, c.Adresse, c.Tel }).ToList());
                 Methods.Nice_grid(
@@ -66,7 +68,7 @@ namespace ParcInfo
                 {
                     pC = "log";
                     this.Text = "Liste des produits";
-                    lblText.Text = "Les produits : ";
+                    lblText.Text = "Filtrer les produits :";
                     var listProd = (from c in context.ProduitClients
                                     join p in context.Produits on c.Idproduit equals p.id
                                     where c.Idclient == id && idProd != c.Idproduit
@@ -100,6 +102,8 @@ namespace ParcInfo
             {
                 if (listAf != null && listAf.Count > 0)
                 {
+                    this.Text = "Affectation d'un produit à un client";
+                    lblText.Text = "Filtrer les client :";
                     dggrid = dg;
                     listProdid = listAf;
                     var cList = context.Clients.Where(c => c.IsDeleted == 0).ToList();

@@ -131,7 +131,7 @@ namespace ParcInfo.frmList
                 {
                     //interevention
                     lblIntEnCours.Text = context.GetIntervEncours.Count().ToString();
-                    lblIntEnCours.Text = context.GetIntervenretard.Count().ToString();
+                    lblIntEnRetard.Text = context.GetIntervenretard.Count().ToString();
                     lblTotalInterv.Text = context.GetInterventionBystatut().Count.ToString();
 
                     var lsx = (from c in context.GetInterventionBystatut()
