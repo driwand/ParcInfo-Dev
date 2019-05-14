@@ -121,7 +121,7 @@ namespace ParcInfo.Classes
                 if (c is GroupBox)
                 {
                     var em = (from x in c.Controls.OfType<TextBox>()
-                              where x.Text.Trim() == "" && x.Tag != null 
+                              where x.Text.Trim() == "" && x.Tag != null
                               select x
                                 ).LastOrDefault();
 
@@ -131,9 +131,9 @@ namespace ParcInfo.Classes
                         em.BackColor = Color.FromArgb(235, 77, 75);
                         em.ForeColor = Color.White;
                         count++;
-                      
+
                     }
-                 
+
                 }
 
             }
@@ -143,8 +143,8 @@ namespace ParcInfo.Classes
 
         public static string RemoveSpace(string x)
         {
-            return  Regex.Replace(x, @"\s+", " ");
-            
+            return Regex.Replace(x, @"\s+", " ");
+
         }
 
         public static List<LabelControl> GetidList(Control control)
@@ -279,7 +279,7 @@ namespace ParcInfo.Classes
                 else if (c.ToLower() == "isdeleted")
                     grid.Columns["IsDeleted"].Visible = false;
             }
-            
+
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             DataGridViewCellStyle DataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -291,7 +291,7 @@ namespace ParcInfo.Classes
             DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 
 
-            
+
             DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grid.BackgroundColor = Color.FromArgb(222, 228, 234);
             grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1;
@@ -304,7 +304,7 @@ namespace ParcInfo.Classes
             grid.MultiSelect = false;
 
             // row style row 
-             DataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(69, 170, 242);
             grid.RowsDefaultCellStyle = DataGridViewCellStyle1;
             int x = 0;
@@ -452,10 +452,56 @@ namespace ParcInfo.Classes
 
         public static void CheckRoles(ControlCollection controlcol)
         {
+            Dictionary<string, object> gr = new Dictionary<string, object>
+            {
+                {
+                    "Client" ,
+                    new Dictionary<string[],string[]>
+                    {
+                        { new string[] { "Consulter les clients concernes", "Consulter tous les client" }, new string[] { "BtnListClient" } },
+                        { new string[] { "Ajouter client" }, new string[] { "BtnCreateClient", "btnNewClient" } },
+
+                    }
+                },
+
+                {
+                    "Demande" ,
+                    new Dictionary<string[],string[]>
+                    {
+                        { new string []{ "Consulter les demandes concernes", "Consulter tous les demandes" }, new string[] { "DropDemande", "gpDemande" } },
+                    }
+                },
+                {
+                    "Intervention" ,
+                    new Dictionary<string[],string[]>
+                    {
+                        { new string []{ "Consulter les interventions concernes", "Consulter tous les interventions" }, new string[] { "DropIntervention", "gpIntervention" } },
+                        { new string []{ "Ajouter Intervention" }, new string[] { "BtnstartInterventionFich", "btnTraiter", "btnStartIntervention", "PickBell", "lblNotif", "lineVertical" } },
+                        { new string []{ "Anuller Intervention" }, new string[] { "cnl" } },
+                        { new string []{ "Supprimer Intervention" }, new string[] { "btnDelInt" } },
+                    }
+                },
+                {
+                    "Employes" ,
+                    new Dictionary<string[],string[]>
+                    {
+                        { new string []{ "Consulter les employees" }, new string []{ "gpEmployee" } },
+
+                    }
+                },
+                {
+                    "Produits" ,
+                    new Dictionary<string[],string[]>
+                    {
+                        { new string []{ "Consulter les employees" }, new string []{ "gpProduit" } },
+
+                    }
+                }
+            };
             Dictionary<string[], string[]> AllRoles = new Dictionary<string[], string[]>
             {
                 //client
-                { new string []{ "Consulter les client concerner","Consulter tous les client"},  new string []{ "BtnListClient" } },
+                { new string []{ "Consulter les client concernes", "Consulter tous les client"},  new string []{ "BtnListClient" } },
 
                 { new string []{ "Ajouter Client"}, new string []{ "BtnCreateClient", "btnNewClient" } },
                 { new string []{ "Modifier Client"}, new string []{ "btnEditClient" } },
@@ -471,11 +517,11 @@ namespace ParcInfo.Classes
                 { new string []{ "Supprimer un employee" }, new string []{ "btnDelEmp" } },
 
                 //Interevntion
-                { new string []{ "Consulter les intervention concerner","Consulter tous les interventions" }, new string[] { "DropIntervention" } },
+                { new string []{ "Consulter les interventions concernes", "Consulter tous les interventions" }, new string[] { "DropIntervention" } },
                 { new string []{ "Ajouter intervention" }, new string[] { "BtnstartInterventionFich", "btnTraiter", "btnStartIntervention" } },
 
                 //demande
-                { new string []{ "Consulter les demandes concerner", "Consulter tous les demandes" }, new string[] { "DropDemande" } },
+                { new string []{ "Consulter les demandes concernes", "Consulter tous les demandes" }, new string[] { "DropDemande" } },
 
 
                 //produit
@@ -486,25 +532,40 @@ namespace ParcInfo.Classes
                 { new string []{ "supprimer produit" }, new string[] { "btnDelP" } },
             };
 
-            Dictionary<string, Control> cs = new Dictionary<string, Control>();
             var rolesuser = GlobVars.cuUser.GetRoles.ToList();
             if (GlobVars.cuUser.isAdmin == 0)
-                foreach (var r in AllRoles)
-                {
-                    foreach (var b in r.Value)
+                foreach (var r in gr)
+                    foreach (var t in r.Value as Dictionary<string[], string[]>)
                     {
-                        Control c = controlcol.Find(b, true).FirstOrDefault();
-                        if (c != null)
+                        foreach (var b in t.Value)
                         {
-                            foreach (var k in r.Key)
+                            Control c = controlcol.Find(b, true).FirstOrDefault();
+                            if (c != null)
                             {
-                                c.Visible = rolesuser.Contains(k);
-                                if (c.Visible == true)
-                                    break;
+                                foreach (var k in t.Key)
+                                {
+                                    c.Visible = rolesuser.Contains(k);
+                                    if (c.Visible == true)
+                                        break;
+                                }
                             }
                         }
                     }
-                }
+            //foreach (var r in AllRoles)
+            //    foreach (var b in r.Value)
+            //    {
+            //        Control c = controlcol.Find(b, true).FirstOrDefault();
+            //        if (c != null)
+            //        {
+            //            foreach (var k in r.Key)
+            //            {
+            //                c.Visible = rolesuser.Contains(k);
+            //                if (c.Visible == true)
+            //                    break;
+            //            }
+            //        }
+            //    }
+
             var plmenu = controlcol.Find("pnlMenu", true).FirstOrDefault();
             if (plmenu != null)
                 foreach (Control v in plmenu.Controls)

@@ -58,7 +58,6 @@
             this.chreq = new System.Windows.Forms.CheckBox();
             this.rbConsulterDemande2 = new System.Windows.Forms.RadioButton();
             this.rbConsulterDemande1 = new System.Windows.Forms.RadioButton();
-            this.chDemandeDel = new System.Windows.Forms.CheckBox();
             this.gpProduitAff = new System.Windows.Forms.GroupBox();
             this.chproduct = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
@@ -72,21 +71,9 @@
             this.chInterventionAdd = new System.Windows.Forms.CheckBox();
             this.rbConsulterIntervention2 = new System.Windows.Forms.RadioButton();
             this.rbConsulterIntervention1 = new System.Windows.Forms.RadioButton();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chInterventionDel = new System.Windows.Forms.CheckBox();
             this.rbConsulterClient2 = new System.Windows.Forms.RadioButton();
-            this.gpClient = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.chClientSupAffectation = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.chkClientAffectation = new System.Windows.Forms.CheckBox();
-            this.chClientConsulterEmployee = new System.Windows.Forms.CheckBox();
-            this.chClientAdd = new System.Windows.Forms.CheckBox();
-            this.chClientEdit = new System.Windows.Forms.CheckBox();
-            this.chClientDel = new System.Windows.Forms.CheckBox();
             this.btnDelUser = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
@@ -113,7 +100,6 @@
             this.gpDemande.SuspendLayout();
             this.gpProduitAff.SuspendLayout();
             this.gpIntervention.SuspendLayout();
-            this.gpClient.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -247,23 +233,23 @@
             this.gpemployee.Controls.Add(this.radioButton2);
             this.gpemployee.Controls.Add(this.checkBox12);
             this.gpemployee.Controls.Add(this.checkBox13);
+            this.gpemployee.Enabled = false;
             this.gpemployee.Location = new System.Drawing.Point(234, 122);
             this.gpemployee.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.gpemployee.Name = "gpemployee";
             this.gpemployee.Size = new System.Drawing.Size(221, 90);
             this.gpemployee.TabIndex = 37;
             this.gpemployee.TabStop = false;
+            this.gpemployee.Text = "Employes";
             // 
             // chkemployee
             // 
             this.chkemployee.AutoSize = true;
-            this.chkemployee.Checked = true;
-            this.chkemployee.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkemployee.Location = new System.Drawing.Point(6, 0);
             this.chkemployee.Name = "chkemployee";
-            this.chkemployee.Size = new System.Drawing.Size(72, 17);
+            this.chkemployee.Size = new System.Drawing.Size(66, 17);
             this.chkemployee.TabIndex = 39;
-            this.chkemployee.Text = "Employee";
+            this.chkemployee.Text = "Employe";
             this.chkemployee.UseVisualStyleBackColor = true;
             this.chkemployee.CheckedChanged += new System.EventHandler(this.chkemployee_CheckedChanged);
             // 
@@ -293,16 +279,16 @@
             this.radioButton2.Checked = true;
             this.radioButton2.Location = new System.Drawing.Point(6, 19);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(148, 17);
+            this.radioButton2.Size = new System.Drawing.Size(132, 17);
             this.radioButton2.TabIndex = 26;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Consulter tous les produits";
+            this.radioButton2.Text = "Consulter les employes";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // checkBox12
             // 
             this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(71, 62);
+            this.checkBox12.Location = new System.Drawing.Point(72, 62);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.Size = new System.Drawing.Size(63, 17);
             this.checkBox12.TabIndex = 22;
@@ -312,7 +298,7 @@
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(140, 62);
+            this.checkBox13.Location = new System.Drawing.Point(141, 62);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(73, 17);
             this.checkBox13.TabIndex = 21;
@@ -327,23 +313,23 @@
             this.gpProduit.Controls.Add(this.radioButton1);
             this.gpProduit.Controls.Add(this.checkBox8);
             this.gpProduit.Controls.Add(this.checkBox9);
+            this.gpProduit.Enabled = false;
             this.gpProduit.Location = new System.Drawing.Point(8, 223);
             this.gpProduit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.gpProduit.Name = "gpProduit";
             this.gpProduit.Size = new System.Drawing.Size(448, 86);
             this.gpProduit.TabIndex = 36;
             this.gpProduit.TabStop = false;
+            this.gpProduit.Text = "Les produits du stock";
             // 
             // chproducts
             // 
             this.chproducts.AutoSize = true;
-            this.chproducts.Checked = true;
-            this.chproducts.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chproducts.Location = new System.Drawing.Point(6, 0);
             this.chproducts.Name = "chproducts";
-            this.chproducts.Size = new System.Drawing.Size(123, 17);
+            this.chproducts.Size = new System.Drawing.Size(127, 17);
             this.chproducts.TabIndex = 29;
-            this.chproducts.Text = "les produits du stock";
+            this.chproducts.Text = "Les produits du stock";
             this.chproducts.UseVisualStyleBackColor = true;
             this.chproducts.CheckedChanged += new System.EventHandler(this.chproducts_CheckedChanged);
             // 
@@ -412,18 +398,17 @@
             this.gpDemande.Controls.Add(this.chreq);
             this.gpDemande.Controls.Add(this.rbConsulterDemande2);
             this.gpDemande.Controls.Add(this.rbConsulterDemande1);
-            this.gpDemande.Controls.Add(this.chDemandeDel);
+            this.gpDemande.Enabled = false;
             this.gpDemande.Location = new System.Drawing.Point(8, 30);
             this.gpDemande.Name = "gpDemande";
             this.gpDemande.Size = new System.Drawing.Size(221, 86);
             this.gpDemande.TabIndex = 31;
             this.gpDemande.TabStop = false;
+            this.gpDemande.Text = "Demande";
             // 
             // chreq
             // 
             this.chreq.AutoSize = true;
-            this.chreq.Checked = true;
-            this.chreq.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chreq.Location = new System.Drawing.Point(6, 0);
             this.chreq.Name = "chreq";
             this.chreq.Size = new System.Drawing.Size(72, 17);
@@ -435,7 +420,7 @@
             // rbConsulterDemande2
             // 
             this.rbConsulterDemande2.AutoSize = true;
-            this.rbConsulterDemande2.Location = new System.Drawing.Point(6, 42);
+            this.rbConsulterDemande2.Location = new System.Drawing.Point(6, 40);
             this.rbConsulterDemande2.Name = "rbConsulterDemande2";
             this.rbConsulterDemande2.Size = new System.Drawing.Size(160, 17);
             this.rbConsulterDemande2.TabIndex = 1;
@@ -446,23 +431,13 @@
             // 
             this.rbConsulterDemande1.AutoSize = true;
             this.rbConsulterDemande1.Checked = true;
-            this.rbConsulterDemande1.Location = new System.Drawing.Point(6, 21);
+            this.rbConsulterDemande1.Location = new System.Drawing.Point(6, 17);
             this.rbConsulterDemande1.Name = "rbConsulterDemande1";
-            this.rbConsulterDemande1.Size = new System.Drawing.Size(188, 17);
+            this.rbConsulterDemande1.Size = new System.Drawing.Size(190, 17);
             this.rbConsulterDemande1.TabIndex = 0;
             this.rbConsulterDemande1.TabStop = true;
-            this.rbConsulterDemande1.Text = "Consulter les demandes concerner";
+            this.rbConsulterDemande1.Text = "Consulter les demandes concernes";
             this.rbConsulterDemande1.UseVisualStyleBackColor = true;
-            // 
-            // chDemandeDel
-            // 
-            this.chDemandeDel.AutoSize = true;
-            this.chDemandeDel.Location = new System.Drawing.Point(6, 63);
-            this.chDemandeDel.Name = "chDemandeDel";
-            this.chDemandeDel.Size = new System.Drawing.Size(73, 17);
-            this.chDemandeDel.TabIndex = 2;
-            this.chDemandeDel.Text = "Supprimer";
-            this.chDemandeDel.UseVisualStyleBackColor = true;
             // 
             // gpProduitAff
             // 
@@ -472,18 +447,18 @@
             this.gpProduitAff.Controls.Add(this.rbConsulterProduit);
             this.gpProduitAff.Controls.Add(this.chProduitEdit);
             this.gpProduitAff.Controls.Add(this.chProduitDel);
+            this.gpProduitAff.Enabled = false;
             this.gpProduitAff.Location = new System.Drawing.Point(8, 122);
             this.gpProduitAff.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.gpProduitAff.Name = "gpProduitAff";
             this.gpProduitAff.Size = new System.Drawing.Size(221, 88);
             this.gpProduitAff.TabIndex = 34;
             this.gpProduitAff.TabStop = false;
+            this.gpProduitAff.Text = "Produit";
             // 
             // chproduct
             // 
             this.chproduct.AutoSize = true;
-            this.chproduct.Checked = true;
-            this.chproduct.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chproduct.Location = new System.Drawing.Point(6, 0);
             this.chproduct.Name = "chproduct";
             this.chproduct.Size = new System.Drawing.Size(59, 17);
@@ -497,9 +472,9 @@
             this.checkBox5.AutoSize = true;
             this.checkBox5.Location = new System.Drawing.Point(6, 40);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(119, 17);
+            this.checkBox5.Size = new System.Drawing.Size(181, 17);
             this.checkBox5.TabIndex = 28;
-            this.checkBox5.Text = "Affecter les produits";
+            this.checkBox5.Text = "Affecter les produits au employes";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // chProduitAdd
@@ -518,10 +493,10 @@
             this.rbConsulterProduit.Checked = true;
             this.rbConsulterProduit.Location = new System.Drawing.Point(6, 19);
             this.rbConsulterProduit.Name = "rbConsulterProduit";
-            this.rbConsulterProduit.Size = new System.Drawing.Size(148, 17);
+            this.rbConsulterProduit.Size = new System.Drawing.Size(125, 17);
             this.rbConsulterProduit.TabIndex = 26;
             this.rbConsulterProduit.TabStop = true;
-            this.rbConsulterProduit.Text = "Consulter tous les produits";
+            this.rbConsulterProduit.Text = "Consulter les produits";
             this.rbConsulterProduit.UseVisualStyleBackColor = true;
             // 
             // chProduitEdit
@@ -550,10 +525,10 @@
             this.rbConsulterClient1.Checked = true;
             this.rbConsulterClient1.Location = new System.Drawing.Point(8, 7);
             this.rbConsulterClient1.Name = "rbConsulterClient1";
-            this.rbConsulterClient1.Size = new System.Drawing.Size(164, 17);
+            this.rbConsulterClient1.Size = new System.Drawing.Size(171, 17);
             this.rbConsulterClient1.TabIndex = 0;
             this.rbConsulterClient1.TabStop = true;
-            this.rbConsulterClient1.Text = "Consulter les client concerner";
+            this.rbConsulterClient1.Text = "Consulter les clients concernes";
             this.rbConsulterClient1.UseVisualStyleBackColor = true;
             // 
             // gpIntervention
@@ -562,18 +537,19 @@
             this.gpIntervention.Controls.Add(this.chInterventionAdd);
             this.gpIntervention.Controls.Add(this.rbConsulterIntervention2);
             this.gpIntervention.Controls.Add(this.rbConsulterIntervention1);
+            this.gpIntervention.Controls.Add(this.checkBox1);
             this.gpIntervention.Controls.Add(this.chInterventionDel);
+            this.gpIntervention.Enabled = false;
             this.gpIntervention.Location = new System.Drawing.Point(235, 30);
             this.gpIntervention.Name = "gpIntervention";
             this.gpIntervention.Size = new System.Drawing.Size(221, 86);
             this.gpIntervention.TabIndex = 32;
             this.gpIntervention.TabStop = false;
+            this.gpIntervention.Text = "Intervention";
             // 
             // chinterv
             // 
             this.chinterv.AutoSize = true;
-            this.chinterv.Checked = true;
-            this.chinterv.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chinterv.Location = new System.Drawing.Point(6, 0);
             this.chinterv.Name = "chinterv";
             this.chinterv.Size = new System.Drawing.Size(82, 17);
@@ -608,16 +584,26 @@
             this.rbConsulterIntervention1.Checked = true;
             this.rbConsulterIntervention1.Location = new System.Drawing.Point(6, 17);
             this.rbConsulterIntervention1.Name = "rbConsulterIntervention1";
-            this.rbConsulterIntervention1.Size = new System.Drawing.Size(194, 17);
+            this.rbConsulterIntervention1.Size = new System.Drawing.Size(201, 17);
             this.rbConsulterIntervention1.TabIndex = 0;
             this.rbConsulterIntervention1.TabStop = true;
-            this.rbConsulterIntervention1.Text = "Consulter les intervention concerner";
+            this.rbConsulterIntervention1.Text = "Consulter les interventions concernes";
             this.rbConsulterIntervention1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(72, 63);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(58, 17);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Anuller";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // chInterventionDel
             // 
             this.chInterventionDel.AutoSize = true;
-            this.chInterventionDel.Location = new System.Drawing.Point(71, 63);
+            this.chInterventionDel.Location = new System.Drawing.Point(141, 63);
             this.chInterventionDel.Name = "chInterventionDel";
             this.chInterventionDel.Size = new System.Drawing.Size(73, 17);
             this.chInterventionDel.TabIndex = 4;
@@ -627,149 +613,12 @@
             // rbConsulterClient2
             // 
             this.rbConsulterClient2.AutoSize = true;
-            this.rbConsulterClient2.Location = new System.Drawing.Point(178, 7);
+            this.rbConsulterClient2.Location = new System.Drawing.Point(185, 7);
             this.rbConsulterClient2.Name = "rbConsulterClient2";
             this.rbConsulterClient2.Size = new System.Drawing.Size(136, 17);
             this.rbConsulterClient2.TabIndex = 1;
             this.rbConsulterClient2.Text = "Consulter tous les client";
             this.rbConsulterClient2.UseVisualStyleBackColor = true;
-            // 
-            // gpClient
-            // 
-            this.gpClient.Controls.Add(this.panel3);
-            this.gpClient.Controls.Add(this.panel2);
-            this.gpClient.Controls.Add(this.checkBox3);
-            this.gpClient.Controls.Add(this.checkBox2);
-            this.gpClient.Controls.Add(this.chClientSupAffectation);
-            this.gpClient.Controls.Add(this.checkBox4);
-            this.gpClient.Controls.Add(this.checkBox1);
-            this.gpClient.Controls.Add(this.chkClientAffectation);
-            this.gpClient.Controls.Add(this.chClientConsulterEmployee);
-            this.gpClient.Controls.Add(this.chClientAdd);
-            this.gpClient.Controls.Add(this.chClientEdit);
-            this.gpClient.Controls.Add(this.chClientDel);
-            this.gpClient.Location = new System.Drawing.Point(608, 30);
-            this.gpClient.Name = "gpClient";
-            this.gpClient.Size = new System.Drawing.Size(221, 228);
-            this.gpClient.TabIndex = 33;
-            this.gpClient.TabStop = false;
-            this.gpClient.Text = "Client";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Silver;
-            this.panel3.Location = new System.Drawing.Point(7, 42);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(207, 1);
-            this.panel3.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(7, 119);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(207, 1);
-            this.panel2.TabIndex = 8;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(7, 194);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(136, 17);
-            this.checkBox3.TabIndex = 0;
-            this.checkBox3.Text = "Supprimer un employee";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(7, 171);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(126, 17);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "Modifier un employee";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // chClientSupAffectation
-            // 
-            this.chClientSupAffectation.AutoSize = true;
-            this.chClientSupAffectation.Location = new System.Drawing.Point(7, 148);
-            this.chClientSupAffectation.Name = "chClientSupAffectation";
-            this.chClientSupAffectation.Size = new System.Drawing.Size(122, 17);
-            this.chClientSupAffectation.TabIndex = 0;
-            this.chClientSupAffectation.Text = "Ajouter un employee";
-            this.chClientSupAffectation.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(7, 96);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(184, 17);
-            this.checkBox4.TabIndex = 7;
-            this.checkBox4.Text = "Supprimer affectation d\'un produit";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(7, 73);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(137, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Modifier produit affecter";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // chkClientAffectation
-            // 
-            this.chkClientAffectation.AutoSize = true;
-            this.chkClientAffectation.Location = new System.Drawing.Point(7, 50);
-            this.chkClientAffectation.Name = "chkClientAffectation";
-            this.chkClientAffectation.Size = new System.Drawing.Size(126, 17);
-            this.chkClientAffectation.TabIndex = 7;
-            this.chkClientAffectation.Text = "Consulter les produits";
-            this.chkClientAffectation.UseVisualStyleBackColor = true;
-            // 
-            // chClientConsulterEmployee
-            // 
-            this.chClientConsulterEmployee.AutoSize = true;
-            this.chClientConsulterEmployee.Location = new System.Drawing.Point(7, 125);
-            this.chClientConsulterEmployee.Name = "chClientConsulterEmployee";
-            this.chClientConsulterEmployee.Size = new System.Drawing.Size(139, 17);
-            this.chClientConsulterEmployee.TabIndex = 6;
-            this.chClientConsulterEmployee.Text = "Consulter les employees";
-            this.chClientConsulterEmployee.UseVisualStyleBackColor = true;
-            // 
-            // chClientAdd
-            // 
-            this.chClientAdd.AutoSize = true;
-            this.chClientAdd.Location = new System.Drawing.Point(7, 19);
-            this.chClientAdd.Name = "chClientAdd";
-            this.chClientAdd.Size = new System.Drawing.Size(59, 17);
-            this.chClientAdd.TabIndex = 2;
-            this.chClientAdd.Text = "Ajouter";
-            this.chClientAdd.UseVisualStyleBackColor = true;
-            // 
-            // chClientEdit
-            // 
-            this.chClientEdit.AutoSize = true;
-            this.chClientEdit.Location = new System.Drawing.Point(72, 19);
-            this.chClientEdit.Name = "chClientEdit";
-            this.chClientEdit.Size = new System.Drawing.Size(63, 17);
-            this.chClientEdit.TabIndex = 3;
-            this.chClientEdit.Text = "Modifier";
-            this.chClientEdit.UseVisualStyleBackColor = true;
-            // 
-            // chClientDel
-            // 
-            this.chClientDel.AutoSize = true;
-            this.chClientDel.Location = new System.Drawing.Point(141, 19);
-            this.chClientDel.Name = "chClientDel";
-            this.chClientDel.Size = new System.Drawing.Size(73, 17);
-            this.chClientDel.TabIndex = 4;
-            this.chClientDel.Text = "Supprimer";
-            this.chClientDel.UseVisualStyleBackColor = true;
             // 
             // btnDelUser
             // 
@@ -938,7 +787,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.gpClient);
             this.Controls.Add(this.gpRoles);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnEditUser);
@@ -968,8 +816,6 @@
             this.gpProduitAff.PerformLayout();
             this.gpIntervention.ResumeLayout(false);
             this.gpIntervention.PerformLayout();
-            this.gpClient.ResumeLayout(false);
-            this.gpClient.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -1003,12 +849,8 @@
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnEditUser;
-        private System.Windows.Forms.GroupBox gpClient;
-        private System.Windows.Forms.CheckBox chClientAdd;
         private System.Windows.Forms.RadioButton rbConsulterClient2;
         private System.Windows.Forms.RadioButton rbConsulterClient1;
-        private System.Windows.Forms.CheckBox chClientEdit;
-        private System.Windows.Forms.CheckBox chClientDel;
         private System.Windows.Forms.GroupBox gpIntervention;
         private System.Windows.Forms.CheckBox chInterventionAdd;
         private System.Windows.Forms.RadioButton rbConsulterIntervention2;
@@ -1017,22 +859,12 @@
         private System.Windows.Forms.GroupBox gpDemande;
         private System.Windows.Forms.RadioButton rbConsulterDemande2;
         private System.Windows.Forms.RadioButton rbConsulterDemande1;
-        private System.Windows.Forms.CheckBox chDemandeDel;
         private System.Windows.Forms.GroupBox gpProduitAff;
         private System.Windows.Forms.CheckBox chProduitAdd;
         private System.Windows.Forms.RadioButton rbConsulterProduit;
         private System.Windows.Forms.CheckBox chProduitEdit;
         private System.Windows.Forms.CheckBox chProduitDel;
-        private System.Windows.Forms.CheckBox chClientSupAffectation;
-        private System.Windows.Forms.CheckBox chkClientAffectation;
-        private System.Windows.Forms.CheckBox chClientConsulterEmployee;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.Panel pnlRoles;
         private System.Windows.Forms.Panel panel5;
@@ -1053,5 +885,6 @@
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.CheckBox chproducts;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

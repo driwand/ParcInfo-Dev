@@ -27,7 +27,8 @@ namespace ParcInfo.frmDefault
     {
         public bool isClicked = true;
         public bool NotifClicked = true;
-
+        public string RoleInterv;
+        public string RoleRequest;
         public Button btnClicked;
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -494,9 +495,7 @@ namespace ParcInfo.frmDefault
                         countRequestAttente = db.GetRequestAttent.Count();
                         
                         countRequestDeInt = countRequestRetard + countRequestCours;
-
                     }
-
                 }
                 else
                 {
@@ -518,12 +517,9 @@ namespace ParcInfo.frmDefault
                 }
             }
         }
-        public string RoleInterv;
-        public string RoleRequest;
 
         public void GetRolesName()
         {
-
             var t = GlobVars.cuUser.RoleUtilisateurs1.Where(x => x.IdUtilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0);
             foreach (var v in t)
                 if (v.Nom.ToLower().Contains("Consulter".ToLower()) && v.Nom.ToLower().Contains("demandes".ToLower()) && v.IsDeleted != 1)
@@ -705,6 +701,11 @@ namespace ParcInfo.frmDefault
         private void PanelContainer_Click(object sender, EventArgs e)
         {
          
+        }
+
+        private void PanelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

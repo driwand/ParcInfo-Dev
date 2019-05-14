@@ -235,22 +235,29 @@ namespace ParcInfo.ucInterevntion
 
         private void chDelIntr_CheckedChanged(object sender, EventArgs e)
         {
-            if (chDelIntr.Checked && idclient == 0)
-                Showintervention(0, true);
-            else if (!chDelIntr.Checked && idclient == 0)
-                Showintervention(0, false);
 
             if (chDelIntr.Checked && idclient != 0)
                 Showintervention(idclient, true);
             else if (!chDelIntr.Checked && idclient != 0)
                 Showintervention(idclient, false);
+            if (statutit != null)
+            {
+                if (chDelIntr.Checked)
+                    Showintervention(0, true, statutit);
+                else if (!chDelIntr.Checked)
+                    Showintervention(0, false, statutit);
+            }
+            else
+            {
+                if (chDelIntr.Checked && idclient == 0)
+                    Showintervention(0, true);
+                else if (!chDelIntr.Checked && idclient == 0)
+                    Showintervention(0, false);
 
-            if (chDelIntr.Checked && statutit != null)
-                Showintervention(0, true, statutit);
-            else if (!chDelIntr.Checked && statutit != null)
-                Showintervention(0, false, statutit);
+            }
 
             Methods.ChangeColorCell(dgIntervention);
+            
         }
 
         public void Showintervention(int id = 0, bool isdeleted = false, string statut = null)

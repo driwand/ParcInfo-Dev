@@ -13,6 +13,7 @@ using ParcInfo.ucClient;
 using ParcInfo.ucDemande;
 using System.Text.RegularExpressions;
 using ParcInfo.frmList;
+using ParcInfo.Classes;
 
 namespace ParcInfo.ucInterevntion
 {
@@ -50,7 +51,7 @@ namespace ParcInfo.ucInterevntion
 
         private void NewIntervention_Load(object sender, EventArgs e)
         {
-
+            Methods.CheckRoles(this.Controls);
         }
 
         public void StartInterRequest()

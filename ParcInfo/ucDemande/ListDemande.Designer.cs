@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.gpFind = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
@@ -40,12 +39,8 @@
             this.lblTotalRequest = new System.Windows.Forms.Label();
             this.lblEmployeClient = new System.Windows.Forms.Label();
             this.cbDelete = new System.Windows.Forms.CheckBox();
-            this.menuDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStartIntervention = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gpFind.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDemande)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpFind
@@ -170,28 +165,6 @@
             this.cbDelete.UseVisualStyleBackColor = true;
             this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
             // 
-            // menuDetails
-            // 
-            this.menuDetails.Name = "menuDetails";
-            this.menuDetails.Size = new System.Drawing.Size(186, 22);
-            this.menuDetails.Text = "Details";
-            this.menuDetails.Click += new System.EventHandler(this.menuDetails_Click);
-            // 
-            // menuStartIntervention
-            // 
-            this.menuStartIntervention.Name = "menuStartIntervention";
-            this.menuStartIntervention.Size = new System.Drawing.Size(186, 22);
-            this.menuStartIntervention.Text = "Demarer Intervention";
-            this.menuStartIntervention.Click += new System.EventHandler(this.menuStartIntervention_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDetails,
-            this.menuStartIntervention});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(187, 48);
-            // 
             // ListDemande
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,7 +184,6 @@
             this.gpFind.ResumeLayout(false);
             this.gpFind.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDemande)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,8 +201,5 @@
         public System.Windows.Forms.TextBox txtFind;
         public System.Windows.Forms.Button btnTraiter;
         private System.Windows.Forms.CheckBox cbDelete;
-        private System.Windows.Forms.ToolStripMenuItem menuDetails;
-        private System.Windows.Forms.ToolStripMenuItem menuStartIntervention;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

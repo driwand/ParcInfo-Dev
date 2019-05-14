@@ -225,6 +225,7 @@ namespace ParcInfo.frmDefault
             this.PanelContainer.Size = new System.Drawing.Size(892, 483);
             this.PanelContainer.TabIndex = 0;
             this.PanelContainer.Click += new System.EventHandler(this.PanelContainer_Click);
+            this.PanelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelContainer_Paint);
             // 
             // PanelHeader
             // 
@@ -358,7 +359,7 @@ namespace ParcInfo.frmDefault
             this.DropClient.Controls.Add(this.BtnListClient);
             this.DropClient.Controls.Add(this.BtnCreateClient);
             this.DropClient.Controls.Add(this.btnClients);
-            this.DropClient.Location = new System.Drawing.Point(3, 56);
+            this.DropClient.Location = new System.Drawing.Point(0, 59);
             this.DropClient.MinimumSize = new System.Drawing.Size(224, 41);
             this.DropClient.Name = "DropClient";
             this.DropClient.Size = new System.Drawing.Size(224, 41);
@@ -1100,7 +1101,6 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Timer TmrProduits;
         private System.Windows.Forms.Timer TmrClient;
         private System.Windows.Forms.Timer tmrRequest;
-        private ucControls.DragControl dragControl1;
         private System.Windows.Forms.Panel DropDemande;
         private System.Windows.Forms.Button btnDemandeAttent;
         private System.Windows.Forms.Button btnListDemande;

@@ -17,8 +17,7 @@ namespace ParcInfo.ucClient
         public ListClients()
         {
             InitializeComponent();
-            
-            Methods.CheckRoles(Controls);
+
             var t = GlobVars.cuUser.RoleUtilisateurs1;
             foreach (var v in t)
                 if (v.Nom.Contains("Consulter") && v.Nom.Contains("client") && v.IsDeleted != 1)
@@ -26,7 +25,8 @@ namespace ParcInfo.ucClient
         }
         private void ListClients_Load(object sender, EventArgs e)
         {
-       
+            Methods.CheckRoles(this.Controls);
+
             if (GlobVars.cuUser.isAdmin == 0)
                 if (GetRoleName == "Consulter tous les client")
                     GetAllClients();
@@ -93,10 +93,10 @@ namespace ParcInfo.ucClient
             using (var context = new ParcInformatiqueEntities())
             {
                 var clt = (from c in context.Clients
-                          join af in context.AffectationClients on c.id equals af.Idclient
-                          where af.Idutilisateur == GlobVars.cuUser.Id
-                          select c).ToList();
-                
+                           join af in context.AffectationClients on c.id equals af.Idclient
+                           where af.Idutilisateur == GlobVars.cuUser.Id
+                           select c).ToList();
+
                 dgClients.DataSource = Methods.ToDataTable(clt.Where(c => c.IsDeleted == 0).Select(c => new
                 {
                     c.IdCLient,
@@ -120,30 +120,32 @@ namespace ParcInfo.ucClient
 
         public void GetAssigneDeletedClients()
         {
-            var vr = GlobVars.cuUser.AffectationClients;
-            var cl = new List<Client>();
-            foreach (var c in vr)
+            using (var db = new ParcInformatiqueEntities())
             {
-                cl.Add(c.Client);
+                var clt = (from c in db.Clients
+                           join af in db.AffectationClients on c.id equals af.Idclient
+                           where af.Idutilisateur == GlobVars.cuUser.Id && c.IsDeleted == 1
+                           select c).ToList();
+
+                dgClients.DataSource = Methods.ToDataTable(clt.Where(c => c.IsDeleted == 1).Select(c => new
+                {
+                    c.IdCLient,
+                    c.id,
+                    c.Nom,
+                    c.Adresse,
+                    c.Tel,
+                    c.Fax,
+                    c.Siteweb,
+                    c.Prixheur,
+                    c.Heurecontract,
+                    c.Debutcontract,
+                    userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
+                    userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
+                    dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
+                    c.IsDeleted
+                }).ToList());
+                myGrid();
             }
-            dgClients.DataSource = Methods.ToDataTable(cl.Where(c => c.IsDeleted == 1).Select(c => new
-            {
-                c.IdCLient,
-                c.id,
-                c.Nom,
-                c.Adresse,
-                c.Tel,
-                c.Fax,
-                c.Siteweb,
-                c.Prixheur,
-                c.Heurecontract,
-                c.Debutcontract,
-                userMod = c.Utilisateur1 != null ? c.Utilisateur1.Nom : "aucune",
-                userID = c.Utilisateur1 != null ? c.Utilisateur1.Id : 0,
-                dateMod = c.Datemodification != null ? c.Datemodification.ToString() : "**-**-****",
-                c.IsDeleted
-            }).ToList());
-            myGrid();
         }
 
         private void gpEmployee_Click(object sender, EventArgs e)
@@ -152,7 +154,7 @@ namespace ParcInfo.ucClient
             {
                 var myrow = dgClients.Rows[dgClients.CurrentRow.Index];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
-                
+
                 ListEmployees lse = new ListEmployees(id);
 
                 GlobVars.lsback.Add(lse);
@@ -238,7 +240,7 @@ namespace ParcInfo.ucClient
                     int index = dgClients.CurrentRow.Index;
                     int id = int.Parse(dgClients.Rows[index].Cells["id"].Value.ToString());
                     //GlobVars.selectedClient = id;
-                   
+
                     GlobVars.frmindex.ShowControl(new NewIntervention(id));
                 }
             }
@@ -258,39 +260,34 @@ namespace ParcInfo.ucClient
                         if (CkDeletedClient.Checked)
                         {
                             GetAllDeletedClients();
-                          //  Methods.ChangeDeltedRow(dgClients);
+                            //  Methods.ChangeDeltedRow(dgClients);
                         }
                         else
                         {
                             GetAllClients();
-                           
+
                         }
-                    else
-                        if (CkDeletedClient.Checked)
-                        {
-                            GetAssigneDeletedClients();
-                         //   Methods.ChangeDeltedRow(dgClients);
-                        }
-                           
-                        else
-                            GetAssignedClients();
+                    else if (CkDeletedClient.Checked)
+                    {
+                        GetAssigneDeletedClients();
+                        //   Methods.ChangeDeltedRow(dgClients);
+                    }else
+                        GetAssignedClients();
                 else
                     if (CkDeletedClient.Checked)
-                {
-                    GetAllDeletedClients();
-                   // Methods.ChangeDeltedRow(dgClients);
-                }
-               
-                else
-                {
-                    GetAllClients();
-                    btnStartIntervention.Click += btnStartIntervention_Click;
-                    //gpEmployee.Click += gpEmployee_Click;
-                    //gpProduit.Click += gpProduit_Click;
-                    //gpIntervention.Click += gpIntervention_Click;
-                    //gpDemande.Click += gpDemande_Click;
-                }
-                  
+                    {
+                        GetAllDeletedClients();
+                        // Methods.ChangeDeltedRow(dgClients);
+                    }
+                    else
+                    {
+                        GetAllClients();
+                        btnStartIntervention.Click += btnStartIntervention_Click;
+                        //gpEmployee.Click += gpEmployee_Click;
+                        //gpProduit.Click += gpProduit_Click;
+                        //gpIntervention.Click += gpIntervention_Click;
+                        //gpDemande.Click += gpDemande_Click;
+                    }
             }
         }
 

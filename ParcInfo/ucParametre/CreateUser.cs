@@ -80,12 +80,8 @@ namespace ParcInfo.ucParametre
                 }
 
                 GetAllCheckbox(pnlRoles);
-                //if chk
-            }
-        }
 
-        private void CreateUser_Load(object sender, EventArgs e)
-        {
+            }
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -185,15 +181,15 @@ namespace ParcInfo.ucParametre
                     }
                     foreach (var r in listR)
                     {
-                        if (item is CheckBox cv)
+                        if (item is CheckBox cb)
                         {
-                            if (cv.Text == r.Nom)
+                            if (cb.Text == r.Nom)
                             {
-                                cv.Checked = true;
+                                cb.Checked = true;
                             }
-                            else if (cv.Text + " " + cv.Parent.Text == r.Nom)
+                            else if (cb.Text + " " + cb.Parent.Text == r.Nom)
                             {
-                                cv.Checked = true;
+                                cb.Checked = true;
                             }
                         }
                         else if (item is RadioButton rb)
@@ -367,6 +363,14 @@ namespace ParcInfo.ucParametre
             ManageCheckGroupBox(chproducts, gpProduit);
         }
 
+        private void CreateUser_Load(object sender, EventArgs e)
+        {
+            ManageCheckGroupBox(chreq, gpDemande);
+            ManageCheckGroupBox(chinterv, gpIntervention);
+            ManageCheckGroupBox(chproduct, gpProduitAff);
+            ManageCheckGroupBox(chkemployee, gpemployee);
+            ManageCheckGroupBox(chproducts, gpProduit);
+        }
 
         private void ManageCheckGroupBox(CheckBox chk, GroupBox grp)
         {

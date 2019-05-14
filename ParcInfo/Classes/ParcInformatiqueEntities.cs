@@ -21,7 +21,6 @@ namespace ParcInfo
             {
                 var inte = (from i in Interventions
                             join c in Clients on i.Idclient equals c.id
-                            where c.IsDeleted == 0
                             select i);
                 return Interventions.Where(x => x.IsDeleted == 0);
             }
@@ -32,7 +31,6 @@ namespace ParcInfo
             {
                 var inte = (from i in Interventions
                             join c in Clients on i.Idclient equals c.id
-                            where c.IsDeleted == 0
                             select i);
                 return inte.Where(x => x.IsDeleted == 1);
             }
@@ -43,10 +41,9 @@ namespace ParcInfo
             {
                 var inte = (from i in Interventions
                             join c in Clients on i.Idclient equals c.id
-                            where c.IsDeleted == 0
                             select i);
                 var retarddate = DateTime.Now;
-                return inte.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
+                return inte.Where(x => x.Statut == "en cours" && x.IsDeleted == 0 && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
             }
         }
         public IQueryable<Intervention> GetIntervEncours
@@ -55,10 +52,9 @@ namespace ParcInfo
             {
                 var inte = (from i in Interventions
                             join c in Clients on i.Idclient equals c.id
-                            where c.IsDeleted == 0
                             select i);
                 var retarddate = DateTime.Now;
-                return inte.Where(x => x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
+                return inte.Where(x => x.Statut == "en cours" && x.IsDeleted == 0 && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
             }
         }
         public IQueryable<Intervention> GetIntervtermine
@@ -67,9 +63,8 @@ namespace ParcInfo
             {
                 var inte = (from i in Interventions
                             join c in Clients on i.Idclient equals c.id
-                            where c.IsDeleted == 0
                             select i);
-                return inte.Where(x => x.Statut == "terminer");
+                return inte.Where(x => x.Statut == "terminer" && x.IsDeleted == 0);
             }
         }
 
@@ -141,7 +136,7 @@ namespace ParcInfo
                             where c.IsDeleted == 0
                             select i);
                 var retarddate = DateTime.Now;
-                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0 && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) < retarddate);
             }
         }
         public IQueryable<Intervention> GeAssignedtIntervEncours
@@ -153,7 +148,7 @@ namespace ParcInfo
                             where c.IsDeleted == 0
                             select i);
                 var retarddate = DateTime.Now;
-                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.IsDeleted == 0 && x.Statut == "en cours" && DbFunctions.AddDays(x.DateIntervention, 2) > retarddate);
             }
         }
         public IQueryable<Intervention> GetAssignedIntervtermine
@@ -164,7 +159,7 @@ namespace ParcInfo
                             join c in Clients on i.Idclient equals c.id
                             where c.IsDeleted == 0
                             select i);
-                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "terminer");
+                return inte.Where(x => x.Idutilisateur == GlobVars.cuUser.Id && x.Statut == "terminer" && x.IsDeleted == 0);
             }
         }
 

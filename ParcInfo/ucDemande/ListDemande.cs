@@ -234,6 +234,7 @@ namespace ParcInfo.ucClient
         {
             //ControlsClass.CreateRadiusBorder(this);
             Methods.ChangeColorCell(dgDemande);
+            Methods.CheckRoles(this.Controls);
             if (dgDemande.SelectedRows.Count > 0)
                 dgDemande.Rows[0].Selected = false;
         }
@@ -259,9 +260,6 @@ namespace ParcInfo.ucClient
             {
                 // Get mouse position relative to the vehicles grid
                 var relativeMousePosition = dgDemande.PointToClient(Cursor.Position);
-
-                // Show the context menu
-                contextMenuStrip1.Show(dgDemande, relativeMousePosition);
             }
         }
 
