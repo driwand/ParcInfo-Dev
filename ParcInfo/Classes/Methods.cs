@@ -345,10 +345,10 @@ namespace ParcInfo.Classes
         {
             foreach (DataGridViewRow item in grid.Rows)
             {
-
                 var t = item.Cells["Getstatut"].Value.ToString();
                 item.Cells["Getstatut"].Style.BackColor = Methods.GetColor(t);
                 item.Cells["Getstatut"].Style.ForeColor = Color.White;
+                item.DefaultCellStyle.SelectionBackColor = Methods.GetColor(t);
                 item.Cells["Getstatut"].Style.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
                 item.Cells["Getstatut"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 

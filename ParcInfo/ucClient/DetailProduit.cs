@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.ucControls;
 using ParcInfo.Classes;
+using ParcInfo.ucParametre;
 
 namespace ParcInfo.ucClient
 {
@@ -54,6 +55,7 @@ namespace ParcInfo.ucClient
                         {
                             int loc = 87;
                             lblUser.Text = p.Utilisateur.Nom;
+                         lblIDU.Text = p.Utilisateur.Id.ToString() ;
                             loc += lblUser.Width;
                             lblDateAffectation.Location = new Point(loc, 20);
                             lblDateAff.Text = p.Dateaffectation.Value.ToShortDateString();
@@ -86,6 +88,7 @@ namespace ParcInfo.ucClient
                     {
                         int loc = 87;
                         lblUser.Text = p.c.Utilisateur.Nom;
+                        lblIDU.Text = p.c.Utilisateur.Id.ToString();
                         loc += lblUser.Width;
                         lblDateAffectation.Location = new Point(loc, 20);
                         lblDateAff.Text = p.c.Dateaffectation.Value.ToShortDateString();
@@ -448,6 +451,15 @@ namespace ParcInfo.ucClient
                     int id = (int)d.Idclient;
                     GlobVars.frmindex.ShowControl(new ListProduitClient(id, d.Client.IdCLient));
                 }
+            }
+        }
+
+        private void LblUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int idU = int.Parse(lblIDU.Text);
+            if (idU > 0)
+            {
+                GlobVars.frmindex.ShowControl(new CardUsers(idU));
             }
         }
     }

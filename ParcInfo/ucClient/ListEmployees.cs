@@ -150,9 +150,9 @@ namespace ParcInfo.ucClient
                     // Employe Count
                     if (emp != null)
                     {
-                        encoursCount.Text = context.GetRequestCours.Where(req => req.IdEmployee == emp.Id).Count().ToString();
-                        enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == emp.Id).Count().ToString();
-                        allCount.Text = emp.Demandes.Where(d => d.IsDeleted == 0).Count().ToString();
+                        encoursCount.Text = context.GetRequestCours.Where(req => req.IdEmployee == emp.Id && emp.IsDeleted == 0).Count().ToString();
+                        enretardCount.Text = context.GetRequestRetard.Where(req => req.IdEmployee == emp.Id && emp.IsDeleted == 0).Count().ToString();
+                        allCount.Text = emp.Demandes.Where(d => d.IsDeleted == 0 && emp.IsDeleted == 0).Count().ToString();
                         produitCount.Text = emp.ProduitUtilisers.Where(d => d.IsDeleted == 0).Count().ToString();
                         //if (emp.IsDeleted == 1)
                         //{

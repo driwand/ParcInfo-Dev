@@ -23,36 +23,47 @@ namespace ParcInfo.ucClient
                 if (idEmploye > 0)
                 {
                     idEmp = idEmploye;
-                    var listProd = (from c in context.ProduitUtilisers
-                                    where c.IdEmployee == idEmploye
-                                    join p in context.ProduitClients on c.IdProduitClient equals p.Id
-                                    join pr in context.Produits on p.Idproduit equals pr.id
-                                    select new { pr, p, c }).ToList();
-                    var d = (from c in listProd
-                             where c.c.IsDeleted == 0
-                             select new {
-                                 c.pr.CodeP,
-                                 c.pr.id,
-                                 c.pr.TypeProduit.Nom,
-                                 c.pr.Marque,
-                                 c.c.Login_u,
-                                 c.c.Password_u,
-                                 c.c.Dateaffectation,
-                                userMod = c.c.Utilisateur1 != null ? c.c.Utilisateur1.Nom : "aucune",
-                                 dateMod = c.c.Datemodification != null ? c.c.Datemodification.ToString() : "**-**-****",
-                             }).ToList();
-                    dgProduit.DataSource = Methods.ToDataTable(d);
-                   
-                    Methods.Nice_grid(
-                                   new string[] { "CodeP", "id", "Nom", "Marque", "Login_u", "Password_u", "Dateaffectation" },
-                                   new string[] { "Code Produit", "id","Type", "Marque", "Login", "Password", "Date d'affectation" },
-                                   dgProduit
-                                   );
-            //        dgProduit.Columns["idP"].Visible = false;
-                    Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
+                    GetProductEmploye(idEmp);
                 }
             }
         }
+
+
+        public void GetProductEmploye(int idEmploye,int isDeleted = 0)
+        {
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var listProd = (from c in context.ProduitUtilisers
+                                where c.IdEmployee == idEmploye
+                                join p in context.ProduitClients on c.IdProduitClient equals p.Id
+                                join pr in context.Produits on p.Idproduit equals pr.id
+                                select new { pr, p, c }).ToList();
+                var d = (from c in listProd
+                         where c.c.IsDeleted == isDeleted
+                         select new
+                         {
+                             c.pr.CodeP,
+                             c.pr.id,
+                             c.pr.TypeProduit.Nom,
+                             c.pr.Marque,
+                             c.c.Login_u,
+                             c.c.Password_u,
+                             c.c.Dateaffectation,
+                             userMod = c.c.Utilisateur1 != null ? c.c.Utilisateur1.Nom : "aucune",
+                             dateMod = c.c.Datemodification != null ? c.c.Datemodification.ToString() : "**-**-****",
+                         }).ToList();
+                dgProduit.DataSource = Methods.ToDataTable(d);
+
+                Methods.Nice_grid(
+                               new string[] { "CodeP", "id", "Nom", "Marque", "Login_u", "Password_u", "Dateaffectation" },
+                               new string[] { "Code Produit", "id", "Type", "Marque", "Login", "Password", "Date d'affectation" },
+                               dgProduit
+                               );
+                //        dgProduit.Columns["idP"].Visible = false;
+                Methods.FilterDataGridViewIni(dgProduit, txtFind, btnFind);
+            }
+        }
+
         public ListProduitClient(int idClient, string code)
         {
             InitializeComponent();
@@ -184,15 +195,34 @@ namespace ParcInfo.ucClient
                                    }).ToList();
                 if (ckDeleteProd.Checked)
                 {
+                    if (idEmp > 0)
+                    {
+                        GetProductEmploye(idEmp, 1);
+                    }
+                    else
+                    {
                     var ProduitDeleted = listProduit.Where(d => d.IsDeleted == 1).ToList();
                     dgProduit.DataSource = Methods.ToDataTable(ProduitDeleted);
+                        myGrid();
+                    }
                 }
                 else
                 {
+                    if (idEmp > 0)
+                    {
+                        GetProductEmploye(idEmp);
+
+                    }
+                    else
+                    {
                     var Produit = listProduit.Where(d => d.IsDeleted != 1).ToList();
                     dgProduit.DataSource = Methods.ToDataTable(Produit);
+                    myGrid();
+                    }
+                
+
                 }
-                myGrid();
+               
             }
         }
 

@@ -229,7 +229,7 @@ namespace ParcInfo.ucClient
                             var dep = cli.Departements.Where(d => d.id == item.Id).FirstOrDefault();
                             dep.Nom = item.Value;
                         }
-                        else if (item.Id == 0)
+                        else if (item.Id == 0 && item.Value != "")
                         {
                            var  dep = cli.Departements.Where(d => d.Nom == item.Value).FirstOrDefault();
                             if (dep != null)
