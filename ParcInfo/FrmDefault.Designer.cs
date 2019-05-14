@@ -153,7 +153,7 @@ namespace ParcInfo.frmDefault
             this.flowNotif.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowNotif.Location = new System.Drawing.Point(537, 1);
             this.flowNotif.Name = "flowNotif";
-            this.flowNotif.Size = new System.Drawing.Size(200, 60);
+            this.flowNotif.Size = new System.Drawing.Size(200, 47);
             this.flowNotif.TabIndex = 2;
             this.flowNotif.Visible = false;
             // 

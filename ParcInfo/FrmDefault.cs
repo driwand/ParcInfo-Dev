@@ -580,7 +580,7 @@ namespace ParcInfo.frmDefault
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
               
-                var listD = context.GetRequestAttent.ToList().Take(3);
+                var listD = context.GetRequestAttent.ToList().OrderBy(d=> d.Datedemande).Take(3);
                 foreach (var item in listD)
                 {
                     var tr = idDem.Any(i => i == item.Id);
