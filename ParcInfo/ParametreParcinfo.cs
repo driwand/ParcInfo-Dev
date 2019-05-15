@@ -14,10 +14,10 @@ namespace ParcInfo
     
     public partial class ParametreParcinfo
     {
+        public int Id { get; set; }
         public string Nomapp { get; set; }
         public byte[] Logoapp { get; set; }
         public Nullable<int> Reatrddemande { get; set; }
         public byte[] Iconapp { get; set; }
-        public int Id { get; set; }
     }
 }

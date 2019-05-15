@@ -49,6 +49,7 @@ namespace ParcInfo
         public string Adresse { get; set; }
         public string Ville { get; set; }
         public string Email { get; set; }
+        public string password_u { get; set; }
         public Nullable<int> PassChanged { get; set; }
         public Nullable<int> isAdmin { get; set; }
         public Nullable<System.DateTime> Datecreation { get; set; }
@@ -56,7 +57,6 @@ namespace ParcInfo
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
         public Nullable<int> IsDeleted { get; set; }
-        public string password_u { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AffectationClient> AffectationClients { get; set; }

@@ -21,11 +21,11 @@ namespace ParcInfo
         }
     
         public int Id { get; set; }
-        public Nullable<System.DateTime> Datedemande { get; set; }
         public string Description_d { get; set; }
         public string Statut { get; set; }
         public Nullable<int> IdEmployee { get; set; }
         public int IsDeleted { get; set; }
+        public Nullable<System.DateTime> Datedemande { get; set; }
     
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

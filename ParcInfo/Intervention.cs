@@ -35,9 +35,11 @@ namespace ParcInfo
         public Nullable<System.DateTime> Datemodification { get; set; }
         public Nullable<int> Modifierpar { get; set; }
         public int IsDeleted { get; set; }
+        public Nullable<int> IdFacture { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Demande Demande { get; set; }
+        public virtual Facture Facture { get; set; }
         public virtual Utilisateur Utilisateur { get; set; }
         public virtual Utilisateur UtilisateurEdit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

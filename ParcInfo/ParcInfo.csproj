@@ -822,16 +822,6 @@
     <None Include="Resources\Plus_20px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelParcInfo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
-      <LastGenOutput>ModelParcInfo.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelParcInfo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
-      <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\ClearSearch.png" />
     <None Include="Resources\CalendarBlackpx.png" />
     <None Include="Resources\Checked_64px.png" />
@@ -846,6 +836,18 @@
     <None Include="Resources\Checked_48px.png" />
     <None Include="Resources\Verified Account_48px.png" />
     <None Include="Resources\Lineage_OS_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelParcInfo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
+      <LastGenOutput>ModelParcInfo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelParcInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelParcInfo.edmx</DependentUpon>
+      <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

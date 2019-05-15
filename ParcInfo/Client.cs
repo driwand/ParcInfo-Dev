@@ -20,6 +20,7 @@ namespace ParcInfo
             this.AffectationClients = new HashSet<AffectationClient>();
             this.Departements = new HashSet<Departement>();
             this.Employees = new HashSet<Employee>();
+            this.Factures = new HashSet<Facture>();
             this.Interventions = new HashSet<Intervention>();
             this.ProduitClients = new HashSet<ProduitClient>();
         }
@@ -39,6 +40,7 @@ namespace ParcInfo
         public Nullable<int> Creepar { get; set; }
         public Nullable<int> Modifierpar { get; set; }
         public Nullable<int> IsDeleted { get; set; }
+        public Nullable<double> Prixcontrat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AffectationClient> AffectationClients { get; set; }
@@ -48,6 +50,8 @@ namespace ParcInfo
         public virtual ICollection<Departement> Departements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Facture> Factures { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Intervention> Interventions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

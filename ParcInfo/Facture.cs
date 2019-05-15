@@ -14,6 +14,20 @@ namespace ParcInfo
     
     public partial class Facture
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Facture()
+        {
+            this.Interventions = new HashSet<Intervention>();
+        }
+    
         public int Id { get; set; }
+        public Nullable<int> IdClient { get; set; }
+        public Nullable<double> Monatant { get; set; }
+        public Nullable<int> Anne { get; set; }
+        public Nullable<int> Mois { get; set; }
+    
+        public virtual Client Client { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Intervention> Interventions { get; set; }
     }
 }
