@@ -231,7 +231,7 @@ namespace ParcInfo.ucInterevntion
 
         public void AddDescription(string codeid = null, int idaffecattion = 0)
         {
-            if (!string.IsNullOrWhiteSpace(txtAddDescription.Text))
+            if (!string.IsNullOrWhiteSpace(txtAddDescription.Text) || codeid != null)
             {
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
@@ -244,7 +244,8 @@ namespace ParcInfo.ucInterevntion
 
                         IdUser = GlobVars.cuUser.Nom.ToString(),
                         TypeOb = cbType.Text,
-                        IdIntervention = interv.Id
+                        IdIntervention = interv.Id,
+                        Textobservation = codeid != null ? "" : txtAddDescription.Text
                     };
                     if (codeid == null)
                     {

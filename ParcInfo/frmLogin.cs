@@ -32,6 +32,12 @@ namespace ParcInfo
                         this.Icon = icon;
                     }
                 }
+                else
+                {
+                    var defpara = new ParametreParcinfo { Nomapp = "Parc Info", Reatrddemande = 2 };
+                    db.ParametreParcinfoes.Add(defpara);
+                    db.SaveChanges();
+                }
             }
 
             lblForget.Text = "Forget Password ?";

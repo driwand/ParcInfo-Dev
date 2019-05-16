@@ -109,7 +109,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DateIntervention" Type="datetime" />
+          <Property Name="DateIntervention" Type="datetime" StoreGeneratedPattern="Computed" />
           <Property Name="Deplacement" Type="varchar" MaxLength="30" />
           <Property Name="TypeIntervention" Type="varchar" MaxLength="30" />
           <Property Name="Debut" Type="datetime" />
@@ -169,7 +169,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Dateaffectation" Type="datetime" />
+          <Property Name="Dateaffectation" Type="datetime" StoreGeneratedPattern="Computed" />
           <Property Name="Prixvente" Type="float" />
           <Property Name="Idclient" Type="int" />
           <Property Name="Idproduit" Type="int" />
@@ -1127,7 +1127,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateIntervention" Type="DateTime" Precision="3" />
+          <Property Name="DateIntervention" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Deplacement" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TypeIntervention" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Debut" Type="DateTime" Precision="3" />
@@ -1200,7 +1200,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Dateaffectation" Type="DateTime" Precision="3" />
+          <Property Name="Dateaffectation" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Prixvente" Type="Double" />
           <Property Name="Idclient" Type="Int32" />
           <Property Name="Idproduit" Type="Int32" />

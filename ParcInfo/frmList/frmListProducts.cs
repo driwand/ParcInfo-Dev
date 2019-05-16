@@ -25,7 +25,7 @@ namespace ParcInfo.frmList
                 var listType = context.Produits.Where(c => c.IsDeleted == 0).ToList();
                 var listProduitClient = context.ProduitClients.ToList();
                 var listProduit = (from p in listType
-                                   where !(listProduitClient.Any(it => it.Idproduit == p.id))
+                                   where !(listProduitClient.Any(it => it.Idproduit == p.id && it.IsDeleted == 0))
                                    select new { p.CodeP, p.id, p.TypeProduit.Nom, p.Marque, p.Model, p.Prix, p.Datefabrication }).ToList();
 
                 dgProdcuts.DataSource = Methods.ToDataTable(listProduit);
