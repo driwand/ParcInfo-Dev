@@ -84,5 +84,10 @@ namespace ParcInfo.frmList
                 }
             }
         }
+
+        private void Btn_annuler_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

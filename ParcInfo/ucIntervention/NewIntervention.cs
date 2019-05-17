@@ -504,10 +504,8 @@ namespace ParcInfo.ucInterevntion
                     interv.IsDeleted = 1;
                     interv.Datemodification = DateTime.Now;
                     interv.Modifierpar = GlobVars.cuUser.Id;
-                    
-                    db.SaveChanges();
 
-                    
+                    db.SaveChanges();
                 }
             }
         }

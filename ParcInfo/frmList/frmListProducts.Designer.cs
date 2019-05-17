@@ -35,6 +35,8 @@
             this.btnFind = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFind = new System.Windows.Forms.TextBox();
+            this.rdAffect1 = new System.Windows.Forms.RadioButton();
+            this.rdAffect2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdcuts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +51,7 @@
             this.btn_annuler.TabIndex = 78;
             this.btn_annuler.Text = "Annuler";
             this.btn_annuler.UseVisualStyleBackColor = true;
+            this.btn_annuler.Click += new System.EventHandler(this.Btn_annuler_Click);
             // 
             // btn_select
             // 
@@ -67,10 +70,10 @@
             // dgProdcuts
             // 
             this.dgProdcuts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProdcuts.Location = new System.Drawing.Point(14, 75);
+            this.dgProdcuts.Location = new System.Drawing.Point(14, 92);
             this.dgProdcuts.Name = "dgProdcuts";
             this.dgProdcuts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgProdcuts.Size = new System.Drawing.Size(563, 257);
+            this.dgProdcuts.Size = new System.Drawing.Size(563, 240);
             this.dgProdcuts.TabIndex = 76;
             // 
             // groupBox1
@@ -114,12 +117,37 @@
             this.txtFind.Size = new System.Drawing.Size(442, 20);
             this.txtFind.TabIndex = 43;
             // 
+            // rdAffect1
+            // 
+            this.rdAffect1.AutoSize = true;
+            this.rdAffect1.Checked = true;
+            this.rdAffect1.Location = new System.Drawing.Point(14, 71);
+            this.rdAffect1.Name = "rdAffect1";
+            this.rdAffect1.Size = new System.Drawing.Size(105, 17);
+            this.rdAffect1.TabIndex = 79;
+            this.rdAffect1.TabStop = true;
+            this.rdAffect1.Text = "Affecter au client";
+            this.rdAffect1.UseVisualStyleBackColor = true;
+            // 
+            // rdAffect2
+            // 
+            this.rdAffect2.AutoSize = true;
+            this.rdAffect2.Location = new System.Drawing.Point(142, 71);
+            this.rdAffect2.Name = "rdAffect2";
+            this.rdAffect2.Size = new System.Drawing.Size(155, 17);
+            this.rdAffect2.TabIndex = 79;
+            this.rdAffect2.TabStop = true;
+            this.rdAffect2.Text = "Affecter au produit du client";
+            this.rdAffect2.UseVisualStyleBackColor = true;
+            // 
             // frmListProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(590, 378);
+            this.Controls.Add(this.rdAffect2);
+            this.Controls.Add(this.rdAffect1);
             this.Controls.Add(this.btn_annuler);
             this.Controls.Add(this.btn_select);
             this.Controls.Add(this.dgProdcuts);
@@ -133,6 +161,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -145,5 +174,7 @@
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.RadioButton rdAffect1;
+        private System.Windows.Forms.RadioButton rdAffect2;
     }
 }

@@ -156,8 +156,7 @@ namespace ParcInfo
                     }
                 }
             }
-         
-
+            this.Close();
         }
 
         public void displayData(int deleted = 0)

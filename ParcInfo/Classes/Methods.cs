@@ -112,7 +112,6 @@ namespace ParcInfo.Classes
             }
             return res + "...";
         }
-
         public static int Focus(Control control)
         {
             int count = 0;
@@ -139,14 +138,11 @@ namespace ParcInfo.Classes
             }
             return count;
         }
-
-
         public static string RemoveSpace(string x)
         {
             return Regex.Replace(x, @"\s+", " ");
 
         }
-
         public static List<LabelControl> GetidList(Control control)
         {
             List<LabelControl> list = new List<LabelControl>();
@@ -256,15 +252,6 @@ namespace ParcInfo.Classes
                 grid.DataSource = dv;
             }
         }
-
-        public static string Replace(this string s, char[] separators, string newVal)
-        {
-            string[] temp;
-
-            temp = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-            return String.Join(newVal, temp);
-        }
-
         public static void Nice_grid(string[] columns, string[] columnstext, DataGridView grid)
         {
             grid.AllowUserToAddRows = false;
@@ -340,7 +327,6 @@ namespace ParcInfo.Classes
             //}
 
         }
-
         public static void ChangeColorCell(DataGridView grid)
         {
             foreach (DataGridViewRow item in grid.Rows)
@@ -354,8 +340,6 @@ namespace ParcInfo.Classes
 
             }
         }
-
-
         //ChangeColorDeleted
         public static void ChangeDeltedRow(DataGridView grid)
         {
@@ -366,9 +350,7 @@ namespace ParcInfo.Classes
                 item.DefaultCellStyle.SelectionForeColor = Color.White;
             }
         }
-
         //methods for Password
-
         public static string stringMsg(string nom, string prenom, string email, string password)
         {
             string msg = $"<p>Hello <b>{nom} {prenom}</b></p><br>" +
@@ -398,7 +380,6 @@ namespace ParcInfo.Classes
                 client.Send(mail);
             }
         }
-
         public static string MD5Hash(string text)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -428,7 +409,6 @@ namespace ParcInfo.Classes
             }
             return res.ToString();
         }
-
         public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             MemoryStream ms = new MemoryStream();
@@ -441,7 +421,6 @@ namespace ParcInfo.Classes
             imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Icon);
             return ms.ToArray();
         }
-
         public static Image ByteArrayToImage(byte[] byteArrayIn)
         {
 
@@ -449,7 +428,6 @@ namespace ParcInfo.Classes
             Image returnImage = Image.FromStream(ms);
             return returnImage;
         }
-
         public static void CheckRoles(ControlCollection controlcol)
         {
             Dictionary<string, object> gr = new Dictionary<string, object>
@@ -485,51 +463,23 @@ namespace ParcInfo.Classes
                     "Employes" ,
                     new Dictionary<string[],string[]>
                     {
-                        { new string []{ "Consulter les employees" }, new string []{ "gpEmployee" } },
-
+                        { new string []{ "Consulter les employes" }, new string []{ "gpEmployee" } },
                     }
                 },
                 {
                     "Produits" ,
                     new Dictionary<string[],string[]>
                     {
-                        { new string []{ "Consulter les employees" }, new string []{ "gpProduit" } },
-
+                        { new string []{ "Consulter les produits" }, new string []{ "gpProduit" } },
+                    }
+                },
+                {
+                    "Les produits du stock" ,
+                    new Dictionary<string[],string[]>
+                    {
+                        { new string []{ "Consulter les produits" }, new string []{ "gpProduit" } },
                     }
                 }
-            };
-            Dictionary<string[], string[]> AllRoles = new Dictionary<string[], string[]>
-            {
-                //client
-                { new string []{ "Consulter les client concernes", "Consulter tous les client"},  new string []{ "BtnListClient" } },
-
-                { new string []{ "Ajouter Client"}, new string []{ "BtnCreateClient", "btnNewClient" } },
-                { new string []{ "Modifier Client"}, new string []{ "btnEditClient" } },
-                { new string []{ "Supprimer Client"},  new string []{ "btnDelClient" } },
-
-                { new string []{ "Consulter les produits"},  new string []{ "gpProduit" } },
-                { new string []{ "Modifier produit affecter" },  new string []{ "btnEdit", "btnAddEmployee", "btnAddProduit" } },
-                { new string []{ "Supprimer affectation d'un produit" },  new string []{ "BtnDelAffeProduct" } },
-
-                { new string []{ "Consulter les employees" }, new string []{ "gpEmployee" } },
-                //{ new string []{ "Ajouter un employee" }, new string []{ "btnNewEmployee", "btnAjouter" } }, //errr
-                //{ new string []{ "Modifier un employee" }, new string []{ "btnEditEmployee", "btnAnnuler" } }, //errr
-                { new string []{ "Supprimer un employee" }, new string []{ "btnDelEmp" } },
-
-                //Interevntion
-                { new string []{ "Consulter les interventions concernes", "Consulter tous les interventions" }, new string[] { "DropIntervention" } },
-                { new string []{ "Ajouter intervention" }, new string[] { "BtnstartInterventionFich", "btnTraiter", "btnStartIntervention" } },
-
-                //demande
-                { new string []{ "Consulter les demandes concernes", "Consulter tous les demandes" }, new string[] { "DropDemande" } },
-
-
-                //produit
-                { new string []{ "Consulter tous les produits" }, new string[] { "btnListProduct" } },
-                { new string []{ "Affecter les produits" }, new string[] { "gpAffectationProduit" } },
-                { new string []{ "Ajouter produit" }, new string[] { "btnAddProduct", "btnClear" } },
-                { new string []{ "Modifier produit" }, new string[] { "btnAddProduct" } },
-                { new string []{ "supprimer produit" }, new string[] { "btnDelP" } },
             };
 
             var rolesuser = GlobVars.cuUser.GetRoles.ToList();
@@ -551,20 +501,6 @@ namespace ParcInfo.Classes
                             }
                         }
                     }
-            //foreach (var r in AllRoles)
-            //    foreach (var b in r.Value)
-            //    {
-            //        Control c = controlcol.Find(b, true).FirstOrDefault();
-            //        if (c != null)
-            //        {
-            //            foreach (var k in r.Key)
-            //            {
-            //                c.Visible = rolesuser.Contains(k);
-            //                if (c.Visible == true)
-            //                    break;
-            //            }
-            //        }
-            //    }
 
             var plmenu = controlcol.Find("pnlMenu", true).FirstOrDefault();
             if (plmenu != null)

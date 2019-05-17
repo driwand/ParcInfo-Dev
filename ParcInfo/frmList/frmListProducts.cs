@@ -15,6 +15,11 @@ namespace ParcInfo.frmList
     public partial class frmListProducts : Form
     {
         public NewIntervention clt;
+        public string code;
+        public string modele;
+        public string type;
+        public int idassignedproduct;
+        public int idprd;
         public frmListProducts(NewIntervention ctr)
         {
             InitializeComponent();
@@ -39,12 +44,6 @@ namespace ParcInfo.frmList
                 dgProdcuts.MultiSelect = true;
             }
         }
-
-        public string code;
-        public string modele;
-        public string type;
-        public int idassignedproduct;
-        public int idprd;
 
         private void btn_select_Click(object sender, EventArgs e)
         {
@@ -74,19 +73,16 @@ namespace ParcInfo.frmList
 
                     string codeid = Id + " " + code + " " + prd.Id; //id selected product, code of selected product and id of assingment in ProduitClient
 
-                    var typeprd = context.Produits.Find(prd.Idproduit);
-
-                    if (typeprd.IsHardware == 0)
+                    if (rdAffect2.Checked)
                     {
                         frmAffectLogMater rm = new frmAffectLogMater(this, (int)prd.Idclient, prd.Id);
                         rm.Show();
                     }
-                    else
+                    else if (rdAffect1.Checked)
                     {
                         frmAffecter assign = new frmAffecter(prd.Id);
                         assign.Show();
                     }
-                        
 
                     this.Hide();
                     clt.AddDescription(codeid);
@@ -111,6 +107,11 @@ namespace ParcInfo.frmList
                     }
                 }
             }
+        }
+
+        private void Btn_annuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

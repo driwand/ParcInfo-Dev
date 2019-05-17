@@ -71,7 +71,6 @@
             this.chInterventionAdd = new System.Windows.Forms.CheckBox();
             this.rbConsulterIntervention2 = new System.Windows.Forms.RadioButton();
             this.rbConsulterIntervention1 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chInterventionDel = new System.Windows.Forms.CheckBox();
             this.rbConsulterClient2 = new System.Windows.Forms.RadioButton();
             this.btnDelUser = new System.Windows.Forms.Button();
@@ -537,7 +536,6 @@
             this.gpIntervention.Controls.Add(this.chInterventionAdd);
             this.gpIntervention.Controls.Add(this.rbConsulterIntervention2);
             this.gpIntervention.Controls.Add(this.rbConsulterIntervention1);
-            this.gpIntervention.Controls.Add(this.checkBox1);
             this.gpIntervention.Controls.Add(this.chInterventionDel);
             this.gpIntervention.Enabled = false;
             this.gpIntervention.Location = new System.Drawing.Point(235, 30);
@@ -590,20 +588,10 @@
             this.rbConsulterIntervention1.Text = "Consulter les interventions concernes";
             this.rbConsulterIntervention1.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(72, 63);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(58, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Anuller";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // chInterventionDel
             // 
             this.chInterventionDel.AutoSize = true;
-            this.chInterventionDel.Location = new System.Drawing.Point(141, 63);
+            this.chInterventionDel.Location = new System.Drawing.Point(71, 63);
             this.chInterventionDel.Name = "chInterventionDel";
             this.chInterventionDel.Size = new System.Drawing.Size(73, 17);
             this.chInterventionDel.TabIndex = 4;
@@ -885,6 +873,5 @@
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.CheckBox chproducts;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

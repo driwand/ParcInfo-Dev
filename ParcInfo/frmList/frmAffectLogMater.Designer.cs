@@ -32,6 +32,7 @@
             this.btn_select = new System.Windows.Forms.Button();
             this.dgProdcuts = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFind = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -41,7 +42,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblproduct = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
-            this.btnFind = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdcuts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,6 +57,7 @@
             this.btn_annuler.TabIndex = 82;
             this.btn_annuler.Text = "Annuler";
             this.btn_annuler.UseVisualStyleBackColor = true;
+            this.btn_annuler.Click += new System.EventHandler(this.Btn_annuler_Click);
             // 
             // btn_select
             // 
@@ -93,6 +94,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Les produit du client";
             // 
+            // btnFind
+            // 
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatAppearance.BorderSize = 0;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
+            this.btnFind.Location = new System.Drawing.Point(526, 20);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(20, 20);
+            this.btnFind.TabIndex = 54;
+            this.btnFind.UseVisualStyleBackColor = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -127,7 +141,7 @@
             // lbltype
             // 
             this.lbltype.AutoSize = true;
-            this.lbltype.Location = new System.Drawing.Point(356, 24);
+            this.lbltype.Location = new System.Drawing.Point(374, 24);
             this.lbltype.Name = "lbltype";
             this.lbltype.Size = new System.Drawing.Size(17, 13);
             this.lbltype.TabIndex = 58;
@@ -136,7 +150,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(308, 24);
+            this.label7.Location = new System.Drawing.Point(326, 24);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 57;
@@ -145,7 +159,7 @@
             // lblmodel
             // 
             this.lblmodel.AutoSize = true;
-            this.lblmodel.Location = new System.Drawing.Point(220, 24);
+            this.lblmodel.Location = new System.Drawing.Point(227, 24);
             this.lblmodel.Name = "lblmodel";
             this.lblmodel.Size = new System.Drawing.Size(17, 13);
             this.lblmodel.TabIndex = 56;
@@ -154,7 +168,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(168, 24);
+            this.label5.Location = new System.Drawing.Point(175, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 55;
@@ -178,23 +192,11 @@
             this.lbl1.TabIndex = 53;
             this.lbl1.Text = "Produit :";
             // 
-            // btnFind
-            // 
-            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnFind.FlatAppearance.BorderSize = 0;
-            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
-            this.btnFind.Location = new System.Drawing.Point(526, 20);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(20, 20);
-            this.btnFind.TabIndex = 54;
-            this.btnFind.UseVisualStyleBackColor = false;
-            // 
             // frmAffectLogMater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(590, 410);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_annuler);
