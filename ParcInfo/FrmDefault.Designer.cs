@@ -89,7 +89,6 @@ namespace ParcInfo.frmDefault
             this.PanelLogo = new System.Windows.Forms.Panel();
             this.lblLogoName = new System.Windows.Forms.Label();
             this.line1 = new System.Windows.Forms.Panel();
-            this.pnlLogo = new System.Windows.Forms.Panel();
             this.logoPic = new System.Windows.Forms.PictureBox();
             this.FrmPanel = new System.Windows.Forms.Panel();
             this.tmrIntervention = new System.Windows.Forms.Timer(this.components);
@@ -118,7 +117,6 @@ namespace ParcInfo.frmDefault
             this.DropProduit.SuspendLayout();
             this.DropDemande.SuspendLayout();
             this.PanelLogo.SuspendLayout();
-            this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             this.FrmPanel.SuspendLayout();
             this.SuspendLayout();
@@ -940,7 +938,7 @@ namespace ParcInfo.frmDefault
             // 
             this.PanelLogo.Controls.Add(this.lblLogoName);
             this.PanelLogo.Controls.Add(this.line1);
-            this.PanelLogo.Controls.Add(this.pnlLogo);
+            this.PanelLogo.Controls.Add(this.logoPic);
             this.PanelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelLogo.Location = new System.Drawing.Point(0, 0);
             this.PanelLogo.Name = "PanelLogo";
@@ -966,18 +964,9 @@ namespace ParcInfo.frmDefault
             this.line1.Size = new System.Drawing.Size(212, 1);
             this.line1.TabIndex = 1;
             // 
-            // pnlLogo
-            // 
-            this.pnlLogo.Controls.Add(this.logoPic);
-            this.pnlLogo.Location = new System.Drawing.Point(1, 1);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(223, 66);
-            this.pnlLogo.TabIndex = 1;
-            // 
             // logoPic
             // 
-            this.logoPic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPic.Location = new System.Drawing.Point(0, 0);
+            this.logoPic.Location = new System.Drawing.Point(0, 1);
             this.logoPic.Name = "logoPic";
             this.logoPic.Size = new System.Drawing.Size(223, 66);
             this.logoPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1067,7 +1056,6 @@ namespace ParcInfo.frmDefault
             this.DropDemande.ResumeLayout(false);
             this.PanelLogo.ResumeLayout(false);
             this.PanelLogo.PerformLayout();
-            this.pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).EndInit();
             this.FrmPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1133,7 +1121,6 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.Button btnDemandeTerminer;
         private System.Windows.Forms.Label lblRequestAttente;
         private System.Windows.Forms.Button btnSettings;
-        public System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Button BtnListClient;
         public System.Windows.Forms.Button BtnCreateClient;
         public System.Windows.Forms.PictureBox logoPic;

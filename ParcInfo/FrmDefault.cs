@@ -617,7 +617,9 @@ namespace ParcInfo.frmDefault
             //  this.ControlBox = false;
             Methods.CheckRoles(Controls);
             AddClickHide(pnlMenu);
-            logoPic.BringToFront();
+            if (logoPic.Image != null)
+                logoPic.BringToFront();
+
         }
         
         

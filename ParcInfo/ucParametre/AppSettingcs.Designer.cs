@@ -32,26 +32,26 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.gpGeneral = new System.Windows.Forms.GroupBox();
+            this.btnpicklogo = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnPickIcon = new System.Windows.Forms.Button();
             this.applogo = new System.Windows.Forms.PictureBox();
+            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
+            this.btnPickIcon = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.picIcon = new System.Windows.Forms.PictureBox();
             this.txtappname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.picIcon = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnRestore = new System.Windows.Forms.Button();
+            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
             this.btnDifferentialBackup = new System.Windows.Forms.Button();
             this.btnFullback = new System.Windows.Forms.Button();
+            this.btnRestore = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numDays = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnpicklogo = new System.Windows.Forms.Button();
             this.gradientPanel3 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
-            this.gradientPanel1 = new ParcInfo.Classes.GradientPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.gpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.applogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
@@ -94,10 +94,25 @@
             this.gpGeneral.Location = new System.Drawing.Point(16, 62);
             this.gpGeneral.Name = "gpGeneral";
             this.gpGeneral.Padding = new System.Windows.Forms.Padding(0);
-            this.gpGeneral.Size = new System.Drawing.Size(401, 243);
+            this.gpGeneral.Size = new System.Drawing.Size(401, 248);
             this.gpGeneral.TabIndex = 160;
             this.gpGeneral.TabStop = false;
             this.gpGeneral.Text = "General";
+            // 
+            // btnpicklogo
+            // 
+            this.btnpicklogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnpicklogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnpicklogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpicklogo.ForeColor = System.Drawing.Color.White;
+            this.btnpicklogo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnpicklogo.Location = new System.Drawing.Point(111, 55);
+            this.btnpicklogo.Name = "btnpicklogo";
+            this.btnpicklogo.Size = new System.Drawing.Size(76, 24);
+            this.btnpicklogo.TabIndex = 165;
+            this.btnpicklogo.Text = "pick logo";
+            this.btnpicklogo.UseVisualStyleBackColor = false;
+            this.btnpicklogo.Click += new System.EventHandler(this.btnpicklogo_Click);
             // 
             // label5
             // 
@@ -107,6 +122,28 @@
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 165;
             this.label5.Text = "Icon :";
+            // 
+            // applogo
+            // 
+            this.applogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.applogo.Location = new System.Drawing.Point(111, 89);
+            this.applogo.Name = "applogo";
+            this.applogo.Size = new System.Drawing.Size(226, 67);
+            this.applogo.TabIndex = 162;
+            this.applogo.TabStop = false;
+            this.applogo.DragDrop += new System.Windows.Forms.DragEventHandler(this.applogo_DragDrop);
+            this.applogo.DragEnter += new System.Windows.Forms.DragEventHandler(this.applogo_DragEnter);
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel1.Location = new System.Drawing.Point(0, 245);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.Size = new System.Drawing.Size(401, 3);
+            this.gradientPanel1.TabIndex = 5;
             // 
             // btnPickIcon
             // 
@@ -123,17 +160,6 @@
             this.btnPickIcon.UseVisualStyleBackColor = false;
             this.btnPickIcon.Click += new System.EventHandler(this.btnPickIcon_Click);
             // 
-            // applogo
-            // 
-            this.applogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.applogo.Location = new System.Drawing.Point(111, 89);
-            this.applogo.Name = "applogo";
-            this.applogo.Size = new System.Drawing.Size(226, 67);
-            this.applogo.TabIndex = 162;
-            this.applogo.TabStop = false;
-            this.applogo.DragDrop += new System.Windows.Forms.DragEventHandler(this.applogo_DragDrop);
-            this.applogo.DragEnter += new System.Windows.Forms.DragEventHandler(this.applogo_DragEnter);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -142,15 +168,6 @@
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Logo :";
-            // 
-            // picIcon
-            // 
-            this.picIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picIcon.Location = new System.Drawing.Point(111, 200);
-            this.picIcon.Name = "picIcon";
-            this.picIcon.Size = new System.Drawing.Size(31, 28);
-            this.picIcon.TabIndex = 164;
-            this.picIcon.TabStop = false;
             // 
             // txtappname
             // 
@@ -168,35 +185,39 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nom Application :";
             // 
+            // picIcon
+            // 
+            this.picIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picIcon.Location = new System.Drawing.Point(111, 200);
+            this.picIcon.Name = "picIcon";
+            this.picIcon.Size = new System.Drawing.Size(31, 28);
+            this.picIcon.TabIndex = 164;
+            this.picIcon.TabStop = false;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.gradientPanel2);
             this.groupBox1.Controls.Add(this.btnDifferentialBackup);
             this.groupBox1.Controls.Add(this.btnFullback);
             this.groupBox1.Controls.Add(this.btnRestore);
-            this.groupBox1.Location = new System.Drawing.Point(16, 319);
+            this.groupBox1.Location = new System.Drawing.Point(16, 333);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Size = new System.Drawing.Size(401, 134);
+            this.groupBox1.Size = new System.Drawing.Size(401, 120);
             this.groupBox1.TabIndex = 161;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Backup and Restore";
             // 
-            // btnRestore
+            // gradientPanel2
             // 
-            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRestore.ForeColor = System.Drawing.Color.White;
-            this.btnRestore.Image = ((System.Drawing.Image)(resources.GetObject("btnRestore.Image")));
-            this.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRestore.Location = new System.Drawing.Point(41, 84);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(141, 35);
-            this.btnRestore.TabIndex = 162;
-            this.btnRestore.Text = "  Restore";
-            this.btnRestore.UseVisualStyleBackColor = false;
-            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradientPanel2.Location = new System.Drawing.Point(0, 117);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.Size = new System.Drawing.Size(401, 3);
+            this.gradientPanel2.TabIndex = 5;
             // 
             // btnDifferentialBackup
             // 
@@ -206,7 +227,7 @@
             this.btnDifferentialBackup.ForeColor = System.Drawing.Color.White;
             this.btnDifferentialBackup.Image = global::ParcInfo.Properties.Resources.deffBackup;
             this.btnDifferentialBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDifferentialBackup.Location = new System.Drawing.Point(41, 34);
+            this.btnDifferentialBackup.Location = new System.Drawing.Point(46, 26);
             this.btnDifferentialBackup.Name = "btnDifferentialBackup";
             this.btnDifferentialBackup.Size = new System.Drawing.Size(141, 35);
             this.btnDifferentialBackup.TabIndex = 162;
@@ -222,13 +243,29 @@
             this.btnFullback.ForeColor = System.Drawing.Color.White;
             this.btnFullback.Image = ((System.Drawing.Image)(resources.GetObject("btnFullback.Image")));
             this.btnFullback.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFullback.Location = new System.Drawing.Point(215, 34);
+            this.btnFullback.Location = new System.Drawing.Point(215, 67);
             this.btnFullback.Name = "btnFullback";
             this.btnFullback.Size = new System.Drawing.Size(141, 35);
             this.btnFullback.TabIndex = 162;
             this.btnFullback.Text = "  Full Backup";
             this.btnFullback.UseVisualStyleBackColor = false;
             this.btnFullback.Click += new System.EventHandler(this.btnFullBack_Click);
+            // 
+            // btnRestore
+            // 
+            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestore.ForeColor = System.Drawing.Color.White;
+            this.btnRestore.Image = ((System.Drawing.Image)(resources.GetObject("btnRestore.Image")));
+            this.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRestore.Location = new System.Drawing.Point(46, 67);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(141, 35);
+            this.btnRestore.TabIndex = 162;
+            this.btnRestore.Text = "  Restore";
+            this.btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // pictureBox1
             // 
@@ -275,30 +312,6 @@
             this.numDays.Size = new System.Drawing.Size(72, 20);
             this.numDays.TabIndex = 8;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(273, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Nombre des jours pour definire le retard d\'une demande :";
-            // 
-            // btnpicklogo
-            // 
-            this.btnpicklogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnpicklogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnpicklogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnpicklogo.ForeColor = System.Drawing.Color.White;
-            this.btnpicklogo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnpicklogo.Location = new System.Drawing.Point(111, 55);
-            this.btnpicklogo.Name = "btnpicklogo";
-            this.btnpicklogo.Size = new System.Drawing.Size(76, 24);
-            this.btnpicklogo.TabIndex = 165;
-            this.btnpicklogo.Text = "pick logo";
-            this.btnpicklogo.UseVisualStyleBackColor = false;
-            this.btnpicklogo.Click += new System.EventHandler(this.btnpicklogo_Click);
-            // 
             // gradientPanel3
             // 
             this.gradientPanel3.Angle = 0F;
@@ -310,27 +323,14 @@
             this.gradientPanel3.Size = new System.Drawing.Size(447, 3);
             this.gradientPanel3.TabIndex = 5;
             // 
-            // gradientPanel2
+            // label6
             // 
-            this.gradientPanel2.Angle = 0F;
-            this.gradientPanel2.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel2.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel2.Location = new System.Drawing.Point(0, 131);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.Size = new System.Drawing.Size(401, 3);
-            this.gradientPanel2.TabIndex = 5;
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.Angle = 0F;
-            this.gradientPanel1.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel1.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.gradientPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gradientPanel1.Location = new System.Drawing.Point(0, 240);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(401, 3);
-            this.gradientPanel1.TabIndex = 5;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(30, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(273, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Nombre des jours pour definire le retard d\'une demande :";
             // 
             // AppSettingcs
             // 

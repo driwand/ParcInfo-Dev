@@ -477,7 +477,14 @@ namespace ParcInfo.Classes
                     "Les produits du stock" ,
                     new Dictionary<string[],string[]>
                     {
-                        { new string []{ "Consulter les produits" }, new string []{ "gpProduit" } },
+                        { new string []{ "Consulter tous les produits" }, new string []{ "DropProduit" } },
+                    }
+                },
+                {
+                    "Parametre" ,
+                    new Dictionary<string[],string[]>
+                    {
+                        { new string []{ "have products" }, new string []{ "DropParametre" } },
                     }
                 }
             };
