@@ -34,11 +34,13 @@
             this.pnlDemande = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblDemInt1 = new ParcInfo.ucControls.lblDemInt();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlIntervention = new System.Windows.Forms.FlowLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lblDemInt2 = new ParcInfo.ucControls.lblDemInt();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.lbltest = new System.Windows.Forms.Label();
@@ -52,8 +54,6 @@
             this.lblTotalDem = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.gradientPanel7 = new ParcInfo.Classes.GradientPanel();
-            this.lblDemInt2 = new ParcInfo.ucControls.lblDemInt();
-            this.lblDemInt1 = new ParcInfo.ucControls.lblDemInt();
             this.gradientPanel4 = new ParcInfo.Classes.GradientPanel();
             this.lblIntEnRetard = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -131,6 +131,15 @@
             this.panel5.Size = new System.Drawing.Size(380, 1);
             this.panel5.TabIndex = 4;
             // 
+            // lblDemInt1
+            // 
+            this.lblDemInt1.BackColor = System.Drawing.Color.White;
+            this.lblDemInt1.DateLbl = "Date Demande";
+            this.lblDemInt1.Location = new System.Drawing.Point(13, 37);
+            this.lblDemInt1.Name = "lblDemInt1";
+            this.lblDemInt1.Size = new System.Drawing.Size(380, 25);
+            this.lblDemInt1.TabIndex = 5;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(89)))));
@@ -181,6 +190,15 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(380, 1);
             this.panel6.TabIndex = 4;
+            // 
+            // lblDemInt2
+            // 
+            this.lblDemInt2.BackColor = System.Drawing.Color.White;
+            this.lblDemInt2.DateLbl = "Date Interventions";
+            this.lblDemInt2.Location = new System.Drawing.Point(13, 37);
+            this.lblDemInt2.Name = "lblDemInt2";
+            this.lblDemInt2.Size = new System.Drawing.Size(380, 25);
+            this.lblDemInt2.TabIndex = 6;
             // 
             // panel4
             // 
@@ -310,24 +328,6 @@
             this.gradientPanel7.Name = "gradientPanel7";
             this.gradientPanel7.Size = new System.Drawing.Size(4, 67);
             this.gradientPanel7.TabIndex = 0;
-            // 
-            // lblDemInt2
-            // 
-            this.lblDemInt2.BackColor = System.Drawing.Color.White;
-            this.lblDemInt2.DateLbl = "Date Interventions";
-            this.lblDemInt2.Location = new System.Drawing.Point(13, 37);
-            this.lblDemInt2.Name = "lblDemInt2";
-            this.lblDemInt2.Size = new System.Drawing.Size(380, 25);
-            this.lblDemInt2.TabIndex = 6;
-            // 
-            // lblDemInt1
-            // 
-            this.lblDemInt1.BackColor = System.Drawing.Color.White;
-            this.lblDemInt1.DateLbl = "Date Demande";
-            this.lblDemInt1.Location = new System.Drawing.Point(13, 37);
-            this.lblDemInt1.Name = "lblDemInt1";
-            this.lblDemInt1.Size = new System.Drawing.Size(380, 25);
-            this.lblDemInt1.TabIndex = 5;
             // 
             // gradientPanel4
             // 

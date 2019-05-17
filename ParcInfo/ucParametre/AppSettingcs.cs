@@ -14,6 +14,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using ParcInfo.Classes;
 using System.Diagnostics;
+using System.Threading;
 
 namespace ParcInfo.ucParametre
 {
@@ -46,17 +47,35 @@ namespace ParcInfo.ucParametre
 
         private void btnFullBack_Click(object sender, EventArgs e)
         {
-            Fullbackup();
+            using (var dio = new SaveFileDialog())
+            {
+                dio.Filter = "Backup File (*.bak)|*.bak";
+                dio.ShowDialog();
+                if (dio.ShowDialog() == DialogResult.OK)
+                    Fullbackup(dio.FileName);
+            }
         }
 
         private void btnDifferentialBackup_Click(object sender, EventArgs e)
         {
-            DifferentialBackup();
+            using (var dio = new SaveFileDialog())
+            {
+                dio.Filter = "Backup File (*.bak)|*.bak";
+                dio.ShowDialog();
+                if (dio.ShowDialog() == DialogResult.OK)
+                    DifferentialBackup(dio.FileName);
+            }
         }
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            RestoreDatabase();
+            using (var dio = new OpenFileDialog())
+            {
+                dio.Filter = "Backup File (*.bak)|*.bak";
+                
+                if (dio.ShowDialog() == DialogResult.OK)
+                    RestoreDatabase(dio.FileName);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -92,26 +111,33 @@ namespace ParcInfo.ucParametre
             }
         }
 
-        public void Fullbackup()
+        public void Fullbackup(string path)
         {
             Backup bkpDBFull = new Backup();
 
             bkpDBFull.Action = BackupActionType.Database;
 
             bkpDBFull.Database = "ParcInformatique";
-            bkpDBFull.Devices.AddDevice(@"D:\ParcInformatiqueFull.bak", DeviceType.File);
+            bkpDBFull.Devices.AddDevice($@"{path}", DeviceType.File);
             bkpDBFull.BackupSetName = "ParcInformatique database Backup";
             bkpDBFull.BackupSetDescription = "ParcInformatique database - Full Backup";
 
             bkpDBFull.ExpirationDate = DateTime.Today.AddDays(10);
 
             bkpDBFull.Initialize = false;
-
-            Server myServer = new Server(".");
-            bkpDBFull.SqlBackup(myServer);
+            
+            try
+            {
+                Server myServer = new Server(".");
+                bkpDBFull.SqlBackup(myServer);
+            }
+            catch
+            {
+                MessageBox.Show("Error while saving backup");
+            }
         }
 
-        public void DifferentialBackup()
+        public void DifferentialBackup(string path)
         {
             Backup bkpDBDifferential = new Backup();
 
@@ -119,7 +145,7 @@ namespace ParcInfo.ucParametre
 
             bkpDBDifferential.Database = "ParcInformatique";
 
-            bkpDBDifferential.Devices.AddDevice(@"D:\ParcInformatique.bak", DeviceType.File);
+            bkpDBDifferential.Devices.AddDevice($@"{path}.bak", DeviceType.File);
             bkpDBDifferential.BackupSetName = "ParcInformatique database Backup";
             bkpDBDifferential.BackupSetDescription = "ParcInformatique database - Differential Backup";
 
@@ -142,18 +168,25 @@ namespace ParcInfo.ucParametre
 
 
 
-        public void RestoreDatabase()
+        public void RestoreDatabase(string path)
         {
             Restore restoreDB = new Restore();
             restoreDB.Database = "ParcInformatique";
             restoreDB.Action = RestoreActionType.Database;
-            restoreDB.Devices.AddDevice(@"D:\ParcInformatiqueFull.bak", DeviceType.File);
+            restoreDB.Devices.AddDevice($@"{path}", DeviceType.File);
 
             restoreDB.ReplaceDatabase = true;
             restoreDB.NoRecovery = true;
 
             Server myserver = new Server(".");
-            restoreDB.SqlRestore(myserver);
+            try
+            {
+                restoreDB.SqlRestore(myserver);
+            }
+            catch
+            {
+                MessageBox.Show("Error ");
+            }   
         }
 
         private void btnPickIcon_Click(object sender, EventArgs e)
