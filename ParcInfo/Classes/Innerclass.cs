@@ -69,6 +69,20 @@ namespace ParcInfo
                 return "CLI-" + Methods.Splitdate(Datecreation.ToString()) + id;
             }
         }
+
+        public int? GetTotalHours
+        {
+            get
+            {
+                return Interventions
+                    .Where(d => d.DateIntervention.Value.Year == DateTime.Now.Year)
+                    .Where(d => d.Statut == "terminer")
+                    .GroupBy(o => o.DateIntervention.Value.Month)
+                    .Select(s => s.Sum(o => o.Duree)).FirstOrDefault();
+
+
+            }
+        }
     }
     public partial class Employee
     {

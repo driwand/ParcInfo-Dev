@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ParcInfo.Classes;
 using ParcInfo.Properties;
 using ParcInfo.ucControls;
+using ParcInfo.ucFacture;
 
 namespace ParcInfo.ucClient
 {
@@ -78,6 +79,7 @@ namespace ParcInfo.ucClient
                     dtDebutcontract.Text = client.Debutcontract.ToString();
                     txtHeure.Text = client.Heurecontract.ToString();
                     txtPrix.Text = client.Prixheur.ToString();
+                    txtPrixC.Text = client.Prixcontrat.ToString();
 
                     var listDepart = (from d in client.Departements
                                       where d.IdCLient == idClient && d.IsDeleted == 0
@@ -309,6 +311,8 @@ namespace ParcInfo.ucClient
                     cli.Modifierpar = GlobVars.cuUser.Id;
                     cli.Debutcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
                     cli.Prixheur = float.Parse(txtPrix.Text);
+                    cli.Prixcontrat = float.Parse(txtPrixC.Text);
+
                     cli.Heurecontract = int.Parse(txtHeure.Text);
                     context.UserActivities.Add(new UserActivity
                     {
@@ -348,6 +352,8 @@ namespace ParcInfo.ucClient
                 DateTime Dtcontract = DateTime.Parse(dtDebutcontract.Value.ToShortDateString());
                 float Prix = float.Parse(txtPrix.Text);
                 int Heure = int.Parse(txtHeure.Text);
+                float prixC = float.Parse(txtPrixC.Text);
+
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     // Add Client
@@ -361,6 +367,7 @@ namespace ParcInfo.ucClient
                         Siteweb = Siteweb,
                         Debutcontract = dtDebutcontract.Value,
                         Heurecontract = Heure,
+                        Prixcontrat = prixC,
                         Prixheur = Prix,
                         Datecreation = DateTime.Now,
                         IsDeleted = 0,
@@ -587,6 +594,9 @@ namespace ParcInfo.ucClient
 
         }
 
-     
+        private void btnFacture_Click(object sender, EventArgs e)
+        {
+            GlobVars.frmindex.ShowControl(new FactureClient(idC));
+        }
     }
 }

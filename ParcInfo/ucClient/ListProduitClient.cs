@@ -248,6 +248,7 @@ namespace ParcInfo.ucClient
             lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
             lblEdited.Text = "aucune";
             lblEditedDate.Text = "**-**-****";
+            lblID.Text = "0";
         }
     }
 }

@@ -211,6 +211,12 @@
     <Compile Include="ucControls\FactureBox.Designer.cs">
       <DependentUpon>FactureBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucControls\FactureBoxV2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControls\FactureBoxV2.Designer.cs">
+      <DependentUpon>FactureBoxV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControls\ForgetPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -355,11 +361,17 @@
     <Compile Include="ucFacture\CreateFacture.Designer.cs">
       <DependentUpon>CreateFacture.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucFacture\UserControl1.cs">
+    <Compile Include="ucFacture\FactureClient.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucFacture\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="ucFacture\FactureClient.Designer.cs">
+      <DependentUpon>FactureClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucFacture\FactureDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFacture\FactureDetail.Designer.cs">
+      <DependentUpon>FactureDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="ucIntervention\ListeIntervention.cs">
       <SubType>UserControl</SubType>
@@ -475,6 +487,9 @@
     <EmbeddedResource Include="ucControls\FactureBox.resx">
       <DependentUpon>FactureBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControls\FactureBoxV2.resx">
+      <DependentUpon>FactureBoxV2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControls\ForgetPassword.resx">
       <DependentUpon>ForgetPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -541,8 +556,11 @@
     <EmbeddedResource Include="ucFacture\CreateFacture.resx">
       <DependentUpon>CreateFacture.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucFacture\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="ucFacture\FactureClient.resx">
+      <DependentUpon>FactureClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucFacture\FactureDetail.resx">
+      <DependentUpon>FactureDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucIntervention\ListeIntervention.resx">
       <DependentUpon>ListeIntervention.cs</DependentUpon>
@@ -848,6 +866,8 @@
       <DependentUpon>ModelParcInfo.edmx</DependentUpon>
       <LastGenOutput>ModelParcInfo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Approval_96px.png" />
+    <None Include="Resources\Bill_16px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

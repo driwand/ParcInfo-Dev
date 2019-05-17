@@ -214,10 +214,16 @@ namespace ParcInfo.ucClient
                     c.IsDeleted = 1;
                     c.Modifierpar = GlobVars.cuUser.Id;
 
-                    //c.Demandes.ToList().ForEach(cc =>
-                    //{
-                    //    cc.IsDeleted = 1;
-                    //});
+                    c.Demandes.ToList().ForEach(cc =>
+                    {
+                        cc.IsDeleted = 1;
+                        //cc.Interventions.ToList().ForEach(ii =>
+                        //{
+                        //    ii.IsDeleted = 1;
+                        //    ii.Datemodification = DateTime.Now;
+                        //    ii.Modifierpar = GlobVars.cuUser.Id;
+                        //});
+                    });
                     c.ProduitUtilisers.ToList().ForEach(pr =>
                     {
                         pr.IsDeleted = 1;
