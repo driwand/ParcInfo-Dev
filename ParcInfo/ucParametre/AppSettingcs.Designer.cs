@@ -191,6 +191,7 @@
             this.picIcon.Location = new System.Drawing.Point(111, 200);
             this.picIcon.Name = "picIcon";
             this.picIcon.Size = new System.Drawing.Size(31, 28);
+            this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picIcon.TabIndex = 164;
             this.picIcon.TabStop = false;
             // 

@@ -1033,7 +1033,7 @@ namespace ParcInfo.frmDefault
             this.MaximizeBox = false;
             this.Name = "FrmDefault";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmDefault";
+            this.Text = "Parc Informatique";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDefault_FormClosed);
             this.Load += new System.EventHandler(this.FrmDefault_Load);
             this.panel2.ResumeLayout(false);
