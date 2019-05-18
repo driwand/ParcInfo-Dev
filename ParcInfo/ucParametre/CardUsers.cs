@@ -98,6 +98,10 @@ namespace ParcInfo.ucParametre
             {
                 b = Color.FromArgb(235, 59, 90);
             }
+            else if (activ.Contains("Utilisateur"))
+            {
+                b = Color.FromArgb(254, 211, 48);
+            }
             return b;
         }
 
@@ -120,8 +124,9 @@ namespace ParcInfo.ucParametre
                     }
                  
                 }
-                HistoryLoad();
             }
+            HistoryLoad();
+
         }
         public void HistoryLoad()
         {
@@ -170,6 +175,11 @@ namespace ParcInfo.ucParametre
         private void PnlClient_Click(object sender, EventArgs e)
         {
             Show("Client");
+        }
+
+        private void pnlUtilisateur_Click(object sender, EventArgs e)
+        {
+            Show("Utilisateur");
         }
     }
 }

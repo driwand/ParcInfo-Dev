@@ -24,6 +24,13 @@ namespace ParcInfo
                 return "INV-" + Methods.Splitdate(DateIntervention.ToString()) + Id;
             }
         }
+        public string IdIntervINT
+        {
+            get
+            {
+                return  Methods.Splitdate(DateIntervention.ToString()) + Id;
+            }
+        }
         public int? IdSource
         {
             get
@@ -132,4 +139,15 @@ namespace ParcInfo
             }
         }
     }
+    public partial class Facture
+    {
+        public string IdFacture
+        {
+            get
+            {
+                return "Fact-" + Anne + Mois +Id;
+            }
+        }
+    }
+
 }

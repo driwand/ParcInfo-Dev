@@ -67,6 +67,10 @@ namespace ParcInfo.Classes
                 {
                     ((txtlblDepartement)c).TxtValue = "";
                 }
+                else if (c is CheckBox)
+                {
+                    ((CheckBox)c).Checked = false;
+                }
             }
 
         }

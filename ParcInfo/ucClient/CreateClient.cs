@@ -49,6 +49,7 @@ namespace ParcInfo.ucClient
                 lblNameClient.Text = Code;
                 picHeader.Image = Resources.viewDetail;
                 lblNameClient.Visible = true;
+                btnFacture.Visible = true;
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
                 {
                     var client = context.Clients.Find(idClient);
@@ -60,6 +61,7 @@ namespace ParcInfo.ucClient
                         btnEditClient.Visible = true;
                         btnEditClient.Location = new Point(738, 443);
                         btnDelClient.Visible = true;
+                     
                    
                     }
                     else
@@ -67,6 +69,7 @@ namespace ParcInfo.ucClient
                       //  HideBtn();
                         BtnAddUser.Visible = false;
                         btnAddDepartement.Visible = false;
+                        btnFacture.Visible = false;
                     }
 
 
@@ -82,7 +85,7 @@ namespace ParcInfo.ucClient
                     txtPrixC.Text = client.Prixcontrat.ToString();
 
                     var listDepart = (from d in client.Departements
-                                      where d.IdCLient == idClient && d.IsDeleted == 0
+                                      where d.IdCLient == idClient
                                       select new { d.id, d.Nom }).ToList();
                     var listUtilisateur = (from c in client.AffectationClients
                                            where c.Idclient == idClient && c.IsDeleted == 0
@@ -124,7 +127,7 @@ namespace ParcInfo.ucClient
                             ltb.BtnDel = false;
                             ltb.BtnAdd = false;
                         }
-                            
+
                         foreach (var item in listUtilisateur.Skip(1))
                         {
                             //first lblTexbox to fill user

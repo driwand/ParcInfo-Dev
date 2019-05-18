@@ -100,6 +100,10 @@ namespace ParcInfo.frmDefault
             this.tmrReal = new System.Windows.Forms.Timer(this.components);
             this.tmrRetard = new System.Windows.Forms.Timer(this.components);
             this.getRealdata = new System.ComponentModel.BackgroundWorker();
+            this.dropFact = new System.Windows.Forms.Panel();
+            this.btnListFacture = new System.Windows.Forms.Button();
+            this.btnFacture = new System.Windows.Forms.Button();
+            this.tmrFact = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.DropdownUserMenu.SuspendLayout();
@@ -119,6 +123,7 @@ namespace ParcInfo.frmDefault
             this.PanelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             this.FrmPanel.SuspendLayout();
+            this.dropFact.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -340,6 +345,7 @@ namespace ParcInfo.frmDefault
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.dropFact);
             this.pnlMenu.Controls.Add(this.DropClient);
             this.pnlMenu.Controls.Add(this.DropIntervention);
             this.pnlMenu.Controls.Add(this.DropParametre);
@@ -1022,6 +1028,59 @@ namespace ParcInfo.frmDefault
             this.getRealdata.DoWork += new System.ComponentModel.DoWorkEventHandler(this.getRealdata_DoWork);
             this.getRealdata.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.getRealdata_RunWorkerCompleted);
             // 
+            // dropFact
+            // 
+            this.dropFact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.dropFact.Controls.Add(this.btnListFacture);
+            this.dropFact.Controls.Add(this.btnFacture);
+            this.dropFact.Location = new System.Drawing.Point(2, 159);
+            this.dropFact.MinimumSize = new System.Drawing.Size(224, 41);
+            this.dropFact.Name = "dropFact";
+            this.dropFact.Size = new System.Drawing.Size(224, 41);
+            this.dropFact.TabIndex = 7;
+            // 
+            // btnListFacture
+            // 
+            this.btnListFacture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnListFacture.FlatAppearance.BorderSize = 0;
+            this.btnListFacture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListFacture.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListFacture.ForeColor = System.Drawing.Color.White;
+            this.btnListFacture.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnListFacture.Location = new System.Drawing.Point(0, 41);
+            this.btnListFacture.Name = "btnListFacture";
+            this.btnListFacture.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnListFacture.Size = new System.Drawing.Size(224, 41);
+            this.btnListFacture.TabIndex = 5;
+            this.btnListFacture.Text = "List des factures";
+            this.btnListFacture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListFacture.UseVisualStyleBackColor = true;
+            this.btnListFacture.Click += new System.EventHandler(this.btnListFacture_Click);
+            // 
+            // btnFacture
+            // 
+            this.btnFacture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFacture.FlatAppearance.BorderSize = 0;
+            this.btnFacture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacture.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacture.ForeColor = System.Drawing.Color.White;
+            this.btnFacture.Image = global::ParcInfo.Properties.Resources.arrowLeft1;
+            this.btnFacture.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFacture.Location = new System.Drawing.Point(0, 0);
+            this.btnFacture.Name = "btnFacture";
+            this.btnFacture.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnFacture.Size = new System.Drawing.Size(224, 41);
+            this.btnFacture.TabIndex = 3;
+            this.btnFacture.Text = "Facture";
+            this.btnFacture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacture.UseVisualStyleBackColor = true;
+            this.btnFacture.Click += new System.EventHandler(this.btnFacture_Click);
+            // 
+            // tmrFact
+            // 
+            this.tmrFact.Interval = 10;
+            this.tmrFact.Tick += new System.EventHandler(this.tmrFact_Tick);
+            // 
             // FrmDefault
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1058,6 +1117,7 @@ namespace ParcInfo.frmDefault
             this.PanelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).EndInit();
             this.FrmPanel.ResumeLayout(false);
+            this.dropFact.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1134,5 +1194,9 @@ namespace ParcInfo.frmDefault
         private System.Windows.Forms.PictureBox PickBell;
         public System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.FlowLayoutPanel flowNotif;
+        private System.Windows.Forms.Panel dropFact;
+        private System.Windows.Forms.Button btnListFacture;
+        private System.Windows.Forms.Button btnFacture;
+        private System.Windows.Forms.Timer tmrFact;
     }
 }

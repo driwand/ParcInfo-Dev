@@ -110,12 +110,12 @@ namespace ParcInfo.settings
                         btnDelType.Visible = false;
                         Clear();
                       
-                        Methods.Clear(this);
+                        //Methods.Clear(this);
                         UpdateGrid();
-                        if (dgType.Rows.Count > 0)
-                        {
-                            dgType.Rows[0].Selected = true;
-                        }
+                        //if (dgType.Rows.Count > 0)
+                        //{
+                        //    dgType.Rows[0].Selected = true;
+                        //}
                     }
                 }
                 else
@@ -250,8 +250,8 @@ namespace ParcInfo.settings
         {
             if (e.RowIndex > -1)
             {
-               
 
+                Clear();
                 var myrow = dgType.Rows[e.RowIndex];
                 int id = int.Parse(myrow.Cells["id"].Value.ToString());
                 using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
@@ -286,7 +286,6 @@ namespace ParcInfo.settings
                             }
 
                         }
-
                         foreach (var item in t.ProprietesProduits.Where(d => d.IsDeleted == 0).Skip(1))
                         {
                             txtlblType type = new txtlblType();

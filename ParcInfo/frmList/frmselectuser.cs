@@ -71,7 +71,10 @@ namespace ParcInfo
                     lblText.Text = "Filtrer les produits :";
                     var listProd = (from c in context.ProduitClients
                                     join p in context.Produits on c.Idproduit equals p.id
-                                    where c.Idclient == id && idProd != c.Idproduit
+                                   
+                                    where c.Idclient == id 
+                                    && idProd != c.Idproduit 
+                                    && c.Produit.TypeProduit.Nom != "ordinateur"
                                     select new { c, p }).ToList();
 
                     dgUsers.DataSource = Methods.ToDataTable(listProd.Select(s => new
@@ -82,6 +85,7 @@ namespace ParcInfo
                         s.p.TypeProduit.Nom,
                         s.p.Marque,
                         s.p.Model,
+                       
                         Datefabrication = s.p.Datefabrication.Value.ToShortDateString()
                     }).ToList());
                     Methods.Nice_grid(
@@ -117,7 +121,7 @@ namespace ParcInfo
                            dgUsers
                            );
                     // Methods.FilterDataGridViewIni(dgUsers, txtFind, btnFind);
-
+                    
                     
 
                     
@@ -125,7 +129,7 @@ namespace ParcInfo
             }
         }
 
-
+        
       
         public frmselectuser()
         {
@@ -183,9 +187,32 @@ namespace ParcInfo
                         string id = myrow.Cells["id"].Value.ToString();
                         string Marque = myrow.Cells["Marque"].Value.ToString();
                         string Model = myrow.Cells["Model"].Value.ToString();
+                        string idP = myrow.Cells["idP"].Value.ToString();
 
-                        tbx.TxtValue = $"{Marque} {Model}";
-                        tbx.Lblid = id;
+                        var idProc = int.Parse(id);
+                        int idProdC = int.Parse(idP);
+                        var produitP = (from c in context.ValeurProps
+                                       join pp in context.ProprietesProduits on c.IdPropriete equals pp.Id
+                                       where c.IdProduit == idProdC && pp.Nom == "Maximum utilisateurs"
+                                       select new { c, pp }).FirstOrDefault();
+                        var prodIn = (from c in context.ProduitClients
+                                      join ins in context.Installers on c.Id equals ins.Idproduitclient
+                                      where ins.Idhardsoft == idProc
+                                      select ins).ToList();
+                  
+                        if (prodIn.Count() < int.Parse(produitP.c.Valeur))
+                        {
+
+                            tbx.TxtValue = $"{Marque} {Model}";
+                            tbx.Lblid = id;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nombre de poste maximum pour un logiciel atteint");
+                        }
+                        //tbx.TxtValue = $"{Marque} {Model}";
+                        //tbx.Lblid = id;
+                        
                     }
                     else
                     {

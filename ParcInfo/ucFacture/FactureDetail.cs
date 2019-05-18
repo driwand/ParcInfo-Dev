@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ParcInfo.Classes;
 using ParcInfo.ucControls;
+using ParcInfo.frmList;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using ExportOptions = CrystalDecisions.Shared.ExportOptions;
 
 namespace ParcInfo.ucFacture
 {
@@ -17,12 +21,17 @@ namespace ParcInfo.ucFacture
         FactureBoxV2 factBox;
         int idClient;
         int MonthF;
+        string idFacture;
+        int RealID;
+        string Tel;
         public FactureDetail(int idC, int idFact)
         {
             InitializeComponent();
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
-             
+                var facture = context.Factures.Find(idFact);
+                idFacture = $"{facture.Anne}{GetMonth(facture.Mois)}{facture.Id}";
+                RealID = idFact;
                 btnPrint.Location = new Point(763, 450);
                 btnPrint.Visible = true;
                 btnPrint.BringToFront();
@@ -30,6 +39,8 @@ namespace ParcInfo.ucFacture
                 btnGenerer.Visible = false;
                 var c = context.Clients.Find(idC);
                 FillTextbox(c);
+                idClient = idC;
+                Tel = c.Tel;
                 var interv = (from cx in c.Interventions
                               where cx.IdFacture == idFact
                               select new
@@ -65,6 +76,7 @@ namespace ParcInfo.ucFacture
                         PrixProduitTotal += int.Parse(item.Cells["PrixProd"].Value.ToString());
                         float PrixContract = float.Parse(txtPrixContract.Text);
 
+                       // txtTotalHt.Text = String.Format("{0:0.0#}", (prixInterv + PrixProduitTotal + PrixContract).ToString());
                         txtTotalHt.Text = (prixInterv + PrixProduitTotal + PrixContract).ToString();
                         float TotalHT = float.Parse(txtTotalHt.Text);
                         txtTotal.Text = (TotalHT + (TotalHT * 0.2)).ToString();
@@ -174,6 +186,11 @@ namespace ParcInfo.ucFacture
         {
             InitializeComponent();
         }
+        public string GetMonth(int? n)
+        {
+            return n <= 9 ? $"0{n}" : $"{n}";
+        }
+     
 
         private void btnGenerer_Click(object sender, EventArgs e)
         {
@@ -188,12 +205,99 @@ namespace ParcInfo.ucFacture
                     Monatant = MontantV,
                     Mois = MonthF,
                     Anne = DateTime.Now.Year
+                  
                 };
                 context.Factures.Add(fac);
+                var interv = (from cx in context.Interventions
+                              where cx.Idclient == fac.IdClient
+                              where cx.DateIntervention.Value.Year == fac.Anne
+                              && cx.Statut == "terminer"
+                              && cx.Fin.Value.Month == fac.Mois
+                              select cx);
+                interv.ToList().ForEach(ex =>
+                {
+                    ex.IdFacture = fac.Id;
+                });
                 context.SaveChanges();
                 factBox.BackColor = Color.FromArgb(85, 230, 193);
                 factBox.FacConfirm = true;
             }
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            //fm f = new fm();
+
+            //crptFacture crp = new crptFacture();
+            //TextObject txtName = (TextObject)crp.ReportDefinition.Sections["Section2"].ReportObjects["txtName"];
+            //txtName.Text = txtNom.Text;
+            //crp.Refresh();
+            //f.crystalReportViewer1.ReportSource = crp;
+            //f.Show();
+
+            ReportDocument rdReport = new ReportDocument();
+            rdReport.Load( @"I:\Project Stage\n\ParcInfo-Dev\ParcInfo\frmList\CrystalFacture.rpt");
+
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("NomClient",typeof(string));
+            dt.Columns.Add("Adresse", typeof(string));
+            dt.Columns.Add("Ville", typeof(string));
+            dt.Columns.Add("FactureID", typeof(string));
+            dt.Columns.Add("TotalHT", typeof(string));
+            dt.Columns.Add("TotalMontant", typeof(string));
+            dt.Columns.Add("Tel", typeof(string));
+            
+            dt.Rows.Add(txtNom.Text, txtAdr.Text, txtVille.Text, idFacture, txtTotalHt.Text,txtTotal.Text,Tel);
+
+            rdReport.Database.Tables["FactureInfo"].SetDataSource(dt);
+            dt = new DataTable();
+            using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
+            {
+                var c = context.Clients.Find(idClient);
+                var interv = (from cx in c.Interventions
+                              where cx.IdFacture == RealID
+                              select new
+                              {
+                                  IdIntrv = cx.IdIntervINT,
+                                  cx.Duree,
+                                  prodCount = cx.ProduitClients.Where(cf => cf.ParIntervention == cx.Id).Count(),
+                                  PrixProd = cx.ProduitClients.Where(cf => cf.ParIntervention == cx.Id).Sum(p => p.Prixvente),
+                              }).ToList();
+                dt = Methods.ToDataTable(interv);
+                rdReport.Database.Tables["intervInfo"].SetDataSource(dt);
+
+            }
+
+
+
+            //rdReport.SetParameterValue("ClientID",idClient.ToString());
+            //rdReport.SetParameterValue("FactureN", idFacture);
+            //rdReport.SetParameterValue("idFacture", RealID);
+
+
+            ExportOptions exportOption;
+            DiskFileDestinationOptions diskFileDestination = new DiskFileDestinationOptions();
+
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "Pdf Files |*.pdf";
+            sfd.FileName = $"FACTURE N° FA{idFacture}";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                diskFileDestination.DiskFileName = sfd.FileName ;
+            }
+            exportOption = rdReport.ExportOptions;
+            {
+                exportOption.ExportDestinationType = ExportDestinationType.DiskFile;
+                exportOption.ExportFormatType = ExportFormatType.PortableDocFormat;
+                exportOption.DestinationOptions = diskFileDestination;
+                exportOption.ExportFormatOptions = new PdfRtfWordFormatOptions();
+                
+
+            }
+            rdReport.Export();
 
         }
     }

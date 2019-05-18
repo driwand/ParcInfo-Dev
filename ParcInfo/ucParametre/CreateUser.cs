@@ -154,8 +154,18 @@ namespace ParcInfo.ucParametre
                                 });
                             }
                         }
+                        context.UserActivities.Add(new UserActivity
+                        {
+                            Iduser = GlobVars.cuUser.Id,
+                            Activity = $"Utilisateur [{user.IdUser}] Créer le {DateTime.Now}"
+                        });
                         context.SaveChanges();
+                       
                         Methods.sendEmail(Email, body);
+                        MessageBox.Show("Insertion effectuée");
+                        Methods.Clear(this);
+                      
+
                     }
                     else
                     {
@@ -307,7 +317,14 @@ namespace ParcInfo.ucParametre
                     user.isAdmin = isAdmin;
                     user.Datemodification = DateTime.Now;
                     user.Modifierpar = GlobVars.cuUser.Id;
+                    context.UserActivities.Add(new UserActivity
+                    {
+                        Iduser = GlobVars.cuUser.Id,
+                        Activity = $"Utilisateur [{user.IdUser}] Modifié le {DateTime.Now}"
+                    });
                     context.SaveChanges();
+                    MessageBox.Show("Utilisateur modifié");
+
                 }
 
 

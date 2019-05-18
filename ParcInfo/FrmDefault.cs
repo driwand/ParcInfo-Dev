@@ -20,6 +20,7 @@ using System.Net;
 using System.Diagnostics;
 using System.Threading;
 using ParcInfo.frmList;
+using ParcInfo.ucFacture;
 
 namespace ParcInfo.frmDefault
 {
@@ -346,6 +347,7 @@ namespace ParcInfo.frmDefault
             ControlsClass.FixDropMenuPanelTop(pnlMenu, DropDemande);
             ControlsClass.FixDropMenuPanelTop(pnlMenu, DropIntervention);
             ControlsClass.FixDropMenuPanelTop(pnlMenu, DropProduit);
+            ControlsClass.FixDropMenuPanelTop(pnlMenu, dropFact);
             ControlsClass.FixDropMenuPanelTop(pnlMenu, DropParametre);
         }
 
@@ -708,6 +710,36 @@ namespace ParcInfo.frmDefault
         private void PanelContainer_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void tmrFact_Tick(object sender, EventArgs e)
+        {
+            if (ControlsClass.IsOpen)
+            {
+                ControlsClass.CloseMenu(ControlsClass.isTimer, ControlsClass.isbtn, ControlsClass.isPanel);
+            }
+            else
+            {
+                ControlsClass.OpenMenu(tmrFact, btnFacture, dropFact);
+            }
+        }
+
+        private void btnFacture_Click(object sender, EventArgs e)
+        {
+            tmrFact.Start();
+
+        }
+
+      
+
+        private void btnListFacture_Click(object sender, EventArgs e)
+        {
+            ListFacture frmcc = new ListFacture();
+            PanelContainer.Controls.Clear();
+            PanelContainer.Controls.Add(frmcc);
+            frmcc.BringToFront();
+            //  BtnCreateClient.BackColor = Color.FromArgb(93, 98, 132);
+            activeBtn(btnListFacture);
         }
     }
 }

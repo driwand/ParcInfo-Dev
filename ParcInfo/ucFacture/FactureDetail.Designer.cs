@@ -61,6 +61,7 @@
             this.btnGenerer = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.dgFacture = new System.Windows.Forms.DataGridView();
+            this.lblIDFACT = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -399,6 +400,7 @@
             this.btnPrint.Text = "  Imprimer";
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Visible = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // dgFacture
             // 
@@ -408,11 +410,23 @@
             this.dgFacture.Size = new System.Drawing.Size(854, 257);
             this.dgFacture.TabIndex = 10025;
             // 
+            // lblIDFACT
+            // 
+            this.lblIDFACT.AutoSize = true;
+            this.lblIDFACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDFACT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
+            this.lblIDFACT.Location = new System.Drawing.Point(803, 19);
+            this.lblIDFACT.Name = "lblIDFACT";
+            this.lblIDFACT.Size = new System.Drawing.Size(14, 13);
+            this.lblIDFACT.TabIndex = 10026;
+            this.lblIDFACT.Text = "0";
+            // 
             // FactureDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblIDFACT);
             this.Controls.Add(this.dgFacture);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnGenerer);
@@ -473,5 +487,6 @@
         private Classes.GradientPanel gradientPanel3;
         private Classes.GradientPanel gradientPanel2;
         private System.Windows.Forms.DataGridView dgFacture;
+        private System.Windows.Forms.Label lblIDFACT;
     }
 }

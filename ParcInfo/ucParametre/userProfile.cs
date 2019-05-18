@@ -47,30 +47,44 @@ namespace ParcInfo.ucParametre
             {
 
 
-                
-               var u = context.Utilisateurs.Find(GlobVars.cuUser.Id);
-                u.Nom = Methods.RemoveSpace(txtNom.Text);
-                u.Prenom = Methods.RemoveSpace(txtPrenom.Text);
-                u.Adresse = Methods.RemoveSpace(txtAdr.Text);
-                u.Ville = Methods.RemoveSpace(txtVille.Text);
-                u.Tel = txtTel.Text;
+
+                int txtempty = 0;
+
+                txtempty = Methods.Focus(gpInfo);
+                var u = context.Utilisateurs.Find(GlobVars.cuUser.Id);
+                if (txtempty > 0)
+                {
+                   
+                    u.Nom = Methods.RemoveSpace(txtNom.Text);
+                    u.Prenom = Methods.RemoveSpace(txtPrenom.Text);
+                    u.Adresse = Methods.RemoveSpace(txtAdr.Text);
+                    u.Ville = Methods.RemoveSpace(txtVille.Text);
+                    u.Tel = txtTel.Text;
+                  
+                }
+               int txtempty1 = 0;
+
+      
 
                 if (txtOldPass.Text != "" && txtNewPass.Text != "" && txtConfPass.Text != "")
                 {
-                    var hashPass = Methods.MD5Hash(txtOldPass.Text);
-                    if (hashPass == u.password_u)
-                    {
-                        if (txtNewPass.Text == txtConfPass.Text)
+                        var hashPass = Methods.MD5Hash(txtOldPass.Text);
+                        if (hashPass == u.password_u)
                         {
-                            u.password_u = Methods.MD5Hash(txtNewPass.Text);
-                            u.PassChanged = 0;
+                            if (txtNewPass.Text == txtConfPass.Text)
+                            {
+                                u.password_u = Methods.MD5Hash(txtNewPass.Text);
+                                u.PassChanged = 0;
+                            }
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("password incorrect");
-                    }
+                        else
+                        {
+                            MessageBox.Show("password incorrect");
+                        }
+                 
                 }
+               
+         
                 context.SaveChanges();
 
             }

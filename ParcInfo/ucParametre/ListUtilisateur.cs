@@ -38,6 +38,8 @@ namespace ParcInfo.ucParametre
                     s.Tel,
                     s.Email,
                     userMod = s.Utilisateur3 != null ? s.Utilisateur3.Nom : "aucune",
+                    userID = s.Utilisateur3 != null ? s.Utilisateur3.Id : 0,
+
                     dateMod = s.Datemodification != null ? s.Datemodification.ToString() : "**-**-****",
                 }).ToList());
                 MyGrid();
@@ -71,6 +73,9 @@ namespace ParcInfo.ucParametre
                     // Modifier par / date modification
                     string nomUser = myrow.Cells["userMod"].Value.ToString();
                     string date = myrow.Cells["dateMod"].Value.ToString();
+                    int idUser = (int)myrow.Cells["userID"].Value;
+
+                    lblID.Text = idUser.ToString();
                     int loc = 334;
                     lblEdited.Text = nomUser;
                     loc += lblEdited.Width;
@@ -86,19 +91,23 @@ namespace ParcInfo.ucParametre
             using (ParcInformatiqueEntities context = new ParcInformatiqueEntities())
             {
                 var li = context.Utilisateurs.ToList();
-                var listUser = (from emp in li
+                var listUser = (from s in li
                                 select new 
                                {
-                                   emp.IdUser,
-                                   emp.Id,
-                                   emp.Nom,
-                                   emp.Prenom,
-                                   emp.Email,
-                                   emp.password_u,
-                                   emp.IsDeleted,
-                                   userMod = emp.Utilisateur3 != null ? emp.Utilisateur3.Nom : "aucune",
-                                   dateMod = emp.Datemodification != null ? emp.Datemodification.ToString() : "**-**-****",
-                               }).ToList();
+                                    s.IdUser,
+                                    s.Id,
+                                    s.Nom,
+                                    s.Prenom,
+                                    s.Adresse,
+                                    s.Ville,
+                                    s.Tel,
+                                    s.Email,
+                                    userMod = s.Utilisateur3 != null ? s.Utilisateur3.Nom : "aucune",
+                                    userID = s.Utilisateur3 != null ? s.Utilisateur3.Id : 0,
+
+                                    dateMod = s.Datemodification != null ? s.Datemodification.ToString() : "**-**-****",
+                                    s.IsDeleted
+                                }).ToList();
 
                 if (ckDeleted.Checked)
                 {
@@ -127,6 +136,35 @@ namespace ParcInfo.ucParametre
                 dgUtilisateur
                 );
             Methods.FilterDataGridViewIni(dgUtilisateur, txtFind, btnFind);
+        }
+
+
+        public void CountToZero()
+        {
+            if (dgUtilisateur.Rows.Count == 0)
+            {
+                
+                int loc = 325;
+                loc += lblEdited.Width;
+                lblMod.Location = new Point(loc, 462);
+                lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
+                lblEdited.Text = "aucune";
+                lblEditedDate.Text = "**-**-****";
+                lblID.Text = "0";
+            }
+        }
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEdited_Click(object sender, EventArgs e)
+        {
+            int idU = int.Parse(lblID.Text);
+            if (idU > 0)
+            {
+                GlobVars.frmindex.ShowControl(new CardUsers(idU));
+            }
         }
     }
 }

@@ -35,9 +35,9 @@
             // 
             // txtValue
             // 
-            this.txtValue.Location = new System.Drawing.Point(89, 1);
+            this.txtValue.Location = new System.Drawing.Point(131, 1);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(244, 20);
+            this.txtValue.Size = new System.Drawing.Size(202, 20);
             this.txtValue.TabIndex = 42;
             // 
             // lblname

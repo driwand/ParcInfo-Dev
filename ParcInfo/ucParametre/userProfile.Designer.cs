@@ -45,7 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpPass = new System.Windows.Forms.GroupBox();
             this.gradientPanel2 = new ParcInfo.Classes.GradientPanel();
             this.txtConfPass = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.btnEditProfile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gpInfo.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpPass.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,9 +84,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(55, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 15);
+            this.label1.Size = new System.Drawing.Size(72, 15);
             this.label1.TabIndex = 35;
-            this.label1.Text = "My profile";
+            this.label1.Text = "Mon profil";
             // 
             // gpInfo
             // 
@@ -109,7 +109,7 @@
             this.gpInfo.Size = new System.Drawing.Size(398, 220);
             this.gpInfo.TabIndex = 38;
             this.gpInfo.TabStop = false;
-            this.gpInfo.Text = "personal information";
+            this.gpInfo.Text = "Information personnel";
             // 
             // txtEmail
             // 
@@ -220,22 +220,22 @@
             this.label3.TabIndex = 41;
             this.label3.Text = "Nom :";
             // 
-            // groupBox1
+            // grpPass
             // 
-            this.groupBox1.Controls.Add(this.gradientPanel2);
-            this.groupBox1.Controls.Add(this.txtConfPass);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtNewPass);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtOldPass);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(14, 275);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Size = new System.Drawing.Size(398, 152);
-            this.groupBox1.TabIndex = 39;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "personal information";
+            this.grpPass.Controls.Add(this.gradientPanel2);
+            this.grpPass.Controls.Add(this.txtConfPass);
+            this.grpPass.Controls.Add(this.label9);
+            this.grpPass.Controls.Add(this.txtNewPass);
+            this.grpPass.Controls.Add(this.label8);
+            this.grpPass.Controls.Add(this.txtOldPass);
+            this.grpPass.Controls.Add(this.label7);
+            this.grpPass.Location = new System.Drawing.Point(14, 275);
+            this.grpPass.Name = "grpPass";
+            this.grpPass.Padding = new System.Windows.Forms.Padding(0);
+            this.grpPass.Size = new System.Drawing.Size(398, 152);
+            this.grpPass.TabIndex = 39;
+            this.grpPass.TabStop = false;
+            this.grpPass.Text = "Changer votre mot de passe";
             // 
             // gradientPanel2
             // 
@@ -252,6 +252,7 @@
             // 
             this.txtConfPass.Location = new System.Drawing.Point(143, 105);
             this.txtConfPass.Name = "txtConfPass";
+            this.txtConfPass.PasswordChar = '*';
             this.txtConfPass.Size = new System.Drawing.Size(218, 20);
             this.txtConfPass.TabIndex = 56;
             this.txtConfPass.Tag = "required";
@@ -268,6 +269,7 @@
             // 
             this.txtNewPass.Location = new System.Drawing.Point(143, 68);
             this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(218, 20);
             this.txtNewPass.TabIndex = 54;
             this.txtNewPass.Tag = "required";
@@ -275,7 +277,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 69);
+            this.label8.Location = new System.Drawing.Point(11, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(123, 13);
             this.label8.TabIndex = 53;
@@ -285,6 +287,7 @@
             // 
             this.txtOldPass.Location = new System.Drawing.Point(143, 31);
             this.txtOldPass.Name = "txtOldPass";
+            this.txtOldPass.PasswordChar = '*';
             this.txtOldPass.Size = new System.Drawing.Size(218, 20);
             this.txtOldPass.TabIndex = 52;
             this.txtOldPass.Tag = "required";
@@ -294,9 +297,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(11, 32);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 13);
+            this.label7.Size = new System.Drawing.Size(109, 13);
             this.label7.TabIndex = 51;
-            this.label7.Text = "Mot de pass actuel :";
+            this.label7.Text = "Mot de passe actuel :";
             // 
             // btnEditProfile
             // 
@@ -319,7 +322,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnEditProfile);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpPass);
             this.Controls.Add(this.gpInfo);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
@@ -329,8 +332,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gpInfo.ResumeLayout(false);
             this.gpInfo.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpPass.ResumeLayout(false);
+            this.grpPass.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,7 +345,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gpInfo;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpPass;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

@@ -192,6 +192,7 @@ namespace ParcInfo
                 {
                     dggrid.Rows[0].Selected = true;
                 }
+                dggrid.MultiSelect = true;
 
             }
         }

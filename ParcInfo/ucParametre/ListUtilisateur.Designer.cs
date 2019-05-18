@@ -42,6 +42,7 @@
             this.lblEdited = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.ckDeleted = new System.Windows.Forms.CheckBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,6 +78,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(702, 20);
             this.txtFind.TabIndex = 42;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             // 
             // label15
             // 
@@ -163,6 +165,7 @@
             this.lblEdited.Size = new System.Drawing.Size(37, 13);
             this.lblEdited.TabIndex = 139;
             this.lblEdited.Text = "aucun";
+            this.lblEdited.Click += new System.EventHandler(this.lblEdited_Click);
             // 
             // label8
             // 
@@ -184,11 +187,23 @@
             this.ckDeleted.UseVisualStyleBackColor = true;
             this.ckDeleted.CheckedChanged += new System.EventHandler(this.chDelIntr_CheckedChanged);
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(536, 459);
+            this.lblID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 143;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
+            // 
             // ListUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
             this.Controls.Add(this.lblMod);
@@ -228,5 +243,6 @@
         private System.Windows.Forms.Label lblEdited;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox ckDeleted;
+        private System.Windows.Forms.Label lblID;
     }
 }

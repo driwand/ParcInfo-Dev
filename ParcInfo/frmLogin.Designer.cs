@@ -181,7 +181,7 @@
             this.txtEmail.Size = new System.Drawing.Size(360, 28);
             this.txtEmail.TabIndex = 125;
             this.txtEmail.Tag = "required";
-            this.txtEmail.Text = "parcinfoit@gmail.com";
+            this.txtEmail.Text = "gzproxn@gmail.com";
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
