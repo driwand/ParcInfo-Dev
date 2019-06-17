@@ -41,6 +41,9 @@ namespace ParcInfo.ucControls
             get { return pickInt.Image; }
             set { pickInt.Image = value; }
         }
+
+    
+
         private void gradientPanel1_Paint(object sender, PaintEventArgs e)
         {
 

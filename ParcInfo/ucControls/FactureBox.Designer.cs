@@ -40,7 +40,7 @@
             this.pickInt = new System.Windows.Forms.PictureBox();
             this.picProduit = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblMontant = new System.Windows.Forms.Label();
             this.lblMont = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pickMonth = new System.Windows.Forms.PictureBox();
@@ -70,7 +70,7 @@
             this.pnlContainer.Controls.Add(this.pickInt);
             this.pnlContainer.Controls.Add(this.picProduit);
             this.pnlContainer.Controls.Add(this.panel3);
-            this.pnlContainer.Controls.Add(this.label2);
+            this.pnlContainer.Controls.Add(this.lblMontant);
             this.pnlContainer.Controls.Add(this.lblMont);
             this.pnlContainer.Controls.Add(this.panel2);
             this.pnlContainer.Controls.Add(this.pickMonth);
@@ -79,7 +79,7 @@
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlContainer.Location = new System.Drawing.Point(0, 0);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(266, 111);
+            this.pnlContainer.Size = new System.Drawing.Size(266, 106);
             this.pnlContainer.TabIndex = 0;
             this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.gradientPanel1_Paint);
             // 
@@ -89,7 +89,7 @@
             this.lineLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.lineLeft.Location = new System.Drawing.Point(0, 1);
             this.lineLeft.Name = "lineLeft";
-            this.lineLeft.Size = new System.Drawing.Size(1, 109);
+            this.lineLeft.Size = new System.Drawing.Size(1, 104);
             this.lineLeft.TabIndex = 11;
             // 
             // lineTop
@@ -105,7 +105,7 @@
             // 
             this.lineBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.lineBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lineBottom.Location = new System.Drawing.Point(0, 110);
+            this.lineBottom.Location = new System.Drawing.Point(0, 105);
             this.lineBottom.Name = "lineBottom";
             this.lineBottom.Size = new System.Drawing.Size(265, 1);
             this.lineBottom.TabIndex = 4;
@@ -116,16 +116,16 @@
             this.lineRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.lineRight.Location = new System.Drawing.Point(265, 0);
             this.lineRight.Name = "lineRight";
-            this.lineRight.Size = new System.Drawing.Size(1, 111);
+            this.lineRight.Size = new System.Drawing.Size(1, 106);
             this.lineRight.TabIndex = 3;
             // 
             // pickChecked
             // 
             this.pickChecked.BackColor = System.Drawing.Color.Transparent;
             this.pickChecked.Image = global::ParcInfo.Properties.Resources.Checked_64px;
-            this.pickChecked.Location = new System.Drawing.Point(27, 69);
+            this.pickChecked.Location = new System.Drawing.Point(29, 67);
             this.pickChecked.Name = "pickChecked";
-            this.pickChecked.Size = new System.Drawing.Size(32, 32);
+            this.pickChecked.Size = new System.Drawing.Size(26, 26);
             this.pickChecked.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pickChecked.TabIndex = 10;
             this.pickChecked.TabStop = false;
@@ -133,7 +133,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(100)))), ((int)(((byte)(108)))));
-            this.panel4.Location = new System.Drawing.Point(-9, 56);
+            this.panel4.Location = new System.Drawing.Point(-9, 52);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(100, 1);
             this.panel4.TabIndex = 4;
@@ -143,7 +143,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(218, 92);
+            this.label4.Location = new System.Drawing.Point(218, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 18);
             this.label4.TabIndex = 9;
@@ -154,7 +154,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(129, 92);
+            this.label3.Location = new System.Drawing.Point(129, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(16, 18);
             this.label3.TabIndex = 8;
@@ -164,9 +164,9 @@
             // 
             this.pickInt.BackColor = System.Drawing.Color.Transparent;
             this.pickInt.Image = global::ParcInfo.Properties.Resources.Communicate_48px;
-            this.pickInt.Location = new System.Drawing.Point(213, 61);
+            this.pickInt.Location = new System.Drawing.Point(213, 57);
             this.pickInt.Name = "pickInt";
-            this.pickInt.Size = new System.Drawing.Size(28, 28);
+            this.pickInt.Size = new System.Drawing.Size(26, 26);
             this.pickInt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pickInt.TabIndex = 7;
             this.pickInt.TabStop = false;
@@ -175,9 +175,9 @@
             // 
             this.picProduit.BackColor = System.Drawing.Color.Transparent;
             this.picProduit.Image = global::ParcInfo.Properties.Resources.Product_52px;
-            this.picProduit.Location = new System.Drawing.Point(123, 61);
+            this.picProduit.Location = new System.Drawing.Point(123, 57);
             this.picProduit.Name = "picProduit";
-            this.picProduit.Size = new System.Drawing.Size(28, 28);
+            this.picProduit.Size = new System.Drawing.Size(26, 26);
             this.picProduit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picProduit.TabIndex = 6;
             this.picProduit.TabStop = false;
@@ -185,27 +185,27 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(100)))), ((int)(((byte)(108)))));
-            this.panel3.Location = new System.Drawing.Point(178, 57);
+            this.panel3.Location = new System.Drawing.Point(178, 53);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 80);
             this.panel3.TabIndex = 4;
             // 
-            // label2
+            // lblMontant
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(171, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "3330 DH";
+            this.lblMontant.AutoSize = true;
+            this.lblMontant.BackColor = System.Drawing.Color.Transparent;
+            this.lblMontant.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMontant.Location = new System.Drawing.Point(171, 30);
+            this.lblMontant.Name = "lblMontant";
+            this.lblMontant.Size = new System.Drawing.Size(56, 17);
+            this.lblMontant.TabIndex = 5;
+            this.lblMontant.Text = "3330 DH";
             // 
             // lblMont
             // 
             this.lblMont.BackColor = System.Drawing.Color.Transparent;
             this.lblMont.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMont.Location = new System.Drawing.Point(100, 11);
+            this.lblMont.Location = new System.Drawing.Point(100, 6);
             this.lblMont.Name = "lblMont";
             this.lblMont.Size = new System.Drawing.Size(163, 42);
             this.lblMont.TabIndex = 4;
@@ -214,7 +214,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(100)))), ((int)(((byte)(108)))));
-            this.panel2.Location = new System.Drawing.Point(92, 56);
+            this.panel2.Location = new System.Drawing.Point(92, 52);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 1);
             this.panel2.TabIndex = 3;
@@ -257,7 +257,7 @@
             this.Controls.Add(this.pnlContainer);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "FactureBox";
-            this.Size = new System.Drawing.Size(266, 111);
+            this.Size = new System.Drawing.Size(266, 106);
             this.pnlContainer.ResumeLayout(false);
             this.pnlContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickChecked)).EndInit();
@@ -275,7 +275,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pickMonth;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMontant;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox picProduit;
         private System.Windows.Forms.PictureBox pickInt;

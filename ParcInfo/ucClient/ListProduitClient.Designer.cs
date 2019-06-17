@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgProduit = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
@@ -42,7 +43,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.ckDeleteProd = new System.Windows.Forms.CheckBox();
             this.lblEdited = new System.Windows.Forms.LinkLabel();
-            this.btnFind = new System.Windows.Forms.Button();
+            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -102,6 +103,19 @@
             this.groupBox1.TabIndex = 123;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recherche";
+            // 
+            // btnFind
+            // 
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
+            this.btnFind.FlatAppearance.BorderSize = 0;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.ForeColor = System.Drawing.Color.White;
+            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
+            this.btnFind.Location = new System.Drawing.Point(828, 19);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(20, 20);
+            this.btnFind.TabIndex = 52;
+            this.btnFind.UseVisualStyleBackColor = false;
             // 
             // txtFind
             // 
@@ -188,24 +202,23 @@
             this.lblEdited.TabStop = true;
             this.lblEdited.Text = "aucune";
             // 
-            // btnFind
+            // lblID
             // 
-            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(62)))));
-            this.btnFind.FlatAppearance.BorderSize = 0;
-            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.ForeColor = System.Drawing.Color.White;
-            this.btnFind.Image = global::ParcInfo.Properties.Resources.ClearSearch;
-            this.btnFind.Location = new System.Drawing.Point(828, 19);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(20, 20);
-            this.btnFind.TabIndex = 52;
-            this.btnFind.UseVisualStyleBackColor = false;
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(520, 460);
+            this.lblID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 133;
+            this.lblID.Text = "0";
+            this.lblID.Visible = false;
             // 
             // ListProduitClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblEdited);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblEditedDate);
@@ -247,5 +260,6 @@
         private System.Windows.Forms.CheckBox ckDeleteProd;
         private System.Windows.Forms.LinkLabel lblEdited;
         private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.Label lblID;
     }
 }

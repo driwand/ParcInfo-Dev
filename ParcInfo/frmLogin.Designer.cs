@@ -169,7 +169,7 @@
             this.txtPassword.Size = new System.Drawing.Size(360, 28);
             this.txtPassword.TabIndex = 126;
             this.txtPassword.Tag = "required";
-            this.txtPassword.Text = "V6ZEFwkS";
+            this.txtPassword.Text = "test2009";
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown_1);
             // 
             // txtEmail

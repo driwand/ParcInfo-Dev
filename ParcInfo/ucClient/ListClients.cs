@@ -51,6 +51,7 @@ namespace ParcInfo.ucClient
                     c.Tel,
                     c.Fax,
                     c.Siteweb,
+                    Duree = ((c.GetTotalHours > 0 ? c.GetTotalHours : 0) + "/" + c.Heurecontract),
                     c.Prixheur,
                     c.Heurecontract,
                     c.Debutcontract,
@@ -76,6 +77,7 @@ namespace ParcInfo.ucClient
                     c.Tel,
                     c.Fax,
                     c.Siteweb,
+                    Duree = ((c.GetTotalHours > 0 ? c.GetTotalHours : 0) + "/" + c.Heurecontract),
                     c.Prixheur,
                     c.Heurecontract,
                     c.Debutcontract,
@@ -106,6 +108,7 @@ namespace ParcInfo.ucClient
                     c.Tel,
                     c.Fax,
                     c.Siteweb,
+                    Duree = ((c.GetTotalHours > 0 ? c.GetTotalHours : 0) + "/" + c.Heurecontract),
                     c.Prixheur,
                     c.Heurecontract,
                     c.Debutcontract,
@@ -136,6 +139,7 @@ namespace ParcInfo.ucClient
                     c.Tel,
                     c.Fax,
                     c.Siteweb,
+                    Duree = ((c.GetTotalHours > 0 ? c.GetTotalHours : 0) + "/" + c.Heurecontract),
                     c.Prixheur,
                     c.Heurecontract,
                     c.Debutcontract,
@@ -330,11 +334,9 @@ namespace ParcInfo.ucClient
 
         public void myGrid()
         {
-
-
             Methods.Nice_grid(
-                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb", "Prixheur", "Heurecontract", "Debutcontract", "IsDeleted" },
-                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ", "Prix Heure", "Heure Contract", "Debut Contract", "IsDeleted" },
+                new string[] { "IdCLient", "id", "Nom", "Adresse", "Tel", "Fax", "Siteweb","Duree", "Prixheur", "Heurecontract", "Debutcontract", "IsDeleted" },
+                new string[] { "ID Client", "id", "Nom", "Adresse", "Tel", "Fax", "Site web ","Duree", "Prix Heure", "Heure Contract", "Debut Contract", "IsDeleted" },
                 dgClients
                 );
 
@@ -369,6 +371,7 @@ namespace ParcInfo.ucClient
                 lblEditedDate.Location = new Point(lblMod.Location.X + lblMod.Width, 462);
                 lblEdited.Text = "aucune";
                 lblEditedDate.Text = "**-**-****";
+                lblID.Text = "0";
             }
         }
         private void txtFind_TextChanged(object sender, EventArgs e)
